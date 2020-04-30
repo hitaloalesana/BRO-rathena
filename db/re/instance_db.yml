@@ -233,9 +233,9 @@ Body:
 #    Name: Temple of the Demon God
 #    Enter:
 #      Map: 1@eom
-#      X: 101
-#      Y: 16
-  - Id: 28
+#     X: 102
+#     Y: 16
+ - Id: 28
     Name: Central Laboratory
     Enter:
       Map: 1@lab
