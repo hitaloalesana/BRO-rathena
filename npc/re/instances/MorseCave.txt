@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //===== Alayne Scripts =======================================
 //= Morse Cave Instance
 //===== By: ================================================== 
@@ -925,4 +926,933 @@ OnInit:
 }
 
 1@rev,71,181,5	warp	mocwarp#1	2,2,1@rev,112,39
+=======
+//===== Alayne Scripts =======================================
+//= Morse Cave Instance
+//===== By: ================================================== 
+//= Alayne
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//= hercules SVN
+//===== Description: ========================================= 
+//= The official instance Morse Cave transcription
+//===== Todo Remaining: ======================================
+// enabling pop of ice walls when splitting team
+//===== Additional Comments: =================================
+//
+//
+//============================================================
+
+warzone,195,222,3	script	Rastreador Senior::alamocst	4_M_CATMAN2,{
+	set .@npcname$, "[Rastreador Senior]";
+	//RATHENA
+	if(checkquest(.questId) == -1)
+	//HERCULES
+	//if(questprogress(.questId) == 0)
+	{
+		goto OnStart;
+	}
+	//RATHENA
+	else if(checkquest(.questId) < 2)
+	//HERCULES
+	//else if(questprogress(.questId) < 2)
+	{
+		//uncomplete quest
+		mes .@npcname$;
+		mes "Voce ainda nao cumpriu a missao, nao e ?";
+		goto OnStart;
+	}
+	//RATHENA
+	else if(checkquest(.questId, HUNTING) == 2)
+	//HERCULES
+	//else if(questprogress(.questId, HUNTING) == 2)
+	{
+		//complete quest
+		mes .@npcname$;
+		mes "Ei! Voce Conseguiu!";
+		//getitem reward
+		completequest .questId;
+	}
+	else
+	{
+		goto OnStart;
+	}
+	close;
+
+OnStart:
+	set .@party_id, getcharid(1);
+	set .@moc_leader, ( getcharid(0) == getpartyleader(.@party_id,2) );
+
+	//RATHENA
+	set .@has_instance, MOC_INSTANCE_ID > 0;
+	//HERCULES
+	//set .@has_instance, has_instance(.map$[0], instance_id());
+	set .@instance_delay, ( instance_delay_morsec - gettimetick(2) );
+
+	set .@npcname$, "[Rastreador Senior]";
+	mes .@npcname$;
+	mes "Oque voce esta fazendo aqui?";
+	mes "Voce nao sabe que e um lugar perigoso ?";
+	if( .@instance_delay > 0 )
+	{
+		mes "Voce precisa esperar : ^FF0000"+.@instance_delay+" segundos.^000000";
+		close;
+	}
+	next; 
+	mes .@npcname$;
+	mes "Morocc esta quase acordado!";
+	mes "E nao podemos fazer nada para impedir isso...";
+	mes "Seu poder ira dominar todos nos!";
+	next;		
+	switch( select( 
+		(( .@party_id && .@moc_leader && !.@has_instance )?"Criar " + .instance_name$:""),
+		(( .@party_id && .@moc_leader && .@has_instance )?"Destruir " + .instance_name$:""),
+	"Deixa pra la."
+		)){
+	case 1:
+		getpartymember .@party_id,2;
+		if( .min_party_member >= 1 ){
+			set .@origin, getcharid(3);
+			set .@gettimetick, gettimetick(2);
+			for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
+				if( attachrid( $@partymemberaid[.@i] ) ){
+					set .@member_count, .@member_count + 1;
+					if( BaseLevel < .base_level[0] || BaseLevel > .base_level[1] ) set .@fail, .@fail|1;
+					if( Zeny < .instance_zeny ) set .@fail, .@fail|2;
+					if( instance_delay_morsec > .@gettimetick ) set .@fail, .@fail|4;
+					if( .@fail ){
+						set .@name$, strcharinfo(0);
+						break;
+					}
+				}
+			attachrid( .@origin );
+		}
+		
+		//clean any previously remaining instance
+		if(MOC_INSTANCE_ID != -1)
+		{
+			getpartymember getcharid(1),2;
+			for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
+				if( attachrid( $@partymemberaid[.@i] ) && MOC_INSTANCE_ID > 0){
+					set MOC_INSTANCE_ID, -1;
+				}
+			instance_destroy instance_id();
+		}
+		
+		if( .@name$ != "" && .@fail ){
+			mes "^FF0000[ Falha ]^000000";
+			mes "^0055FF"+.@name$+"^000000, Voce nao pode participar agora.";
+			mes " ";
+			mes "^FF0000[ Razao: ]^000000";
+			if( .@fail & 1 ) mes "^777777Voce precisa de Level: "+.base_level[0]+" - "+.base_level[1]+"^000000";
+			if( .@fail & 2 ) mes "^777777Voce precisa de "+ .instance_zeny +" Zenys^000000";
+			if( .@fail & 4 ) mes "^777777E muito recente, voce deve esperar!^000000";
+			break;
+		}
+		
+		getpartymember getcharid(1),0;
+		if (instance_check_party(.@party_id, .min_party_member, .base_level[0], .base_level[1]) == 0) {
+			mes "^0055FF[ "+.instance_name$+" ]^000000";
+			mes "Crie ou participe de um grupo com pelo menos "+.min_party_member+" membros e tente novamente, com nível entre " +.base_level[0] + " e " + .base_level[1] + ".";
+		}
+		else{
+			//RATHENA
+			set .@instance, instance_create( .instance_name$ );
+			//HERCULES
+			//set .@instance, instance_create( .instance_name$, .@party_id, IOT_PARTY );
+			if( .@instance < 0 ) {
+				npctalk .instance_name$ + " a reserva falhou.";
+				mes "^0000FF"+ .instance_name$ +" ^000000 - Reserva Falhou!";
+				close;
+			}
+			mes "^0055FF[ "+.instance_name$+" ]^000000";
+			mes "^0000FF"+.instance_name$+" ^000000 - Reservada";
+			set .@gettimetick, gettimetick(2);
+			getpartymember .@party_id,2;
+			for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
+				if( attachrid( $@partymemberaid[.@i] ) ){
+					set instance_delay_morsec, ( .@gettimetick + ( .instance_delay ));
+					set Zeny, Zeny - .instance_zeny;
+					set MOC_INSTANCE_ID, .@instance;
+					dispbottom "["+.instance_name$+"] -"+ .instance_zeny +" Zeny e Cooldown da Instancia Aplicados.";
+				}
+			attachrid( .@origin );
+			npctalk .instance_name$ + " foi gerada para o grupo - " + getpartyname( .@party_id );
+			
+			//HERCULES
+			//for( set .@i, 0; .@i < getarraysize(.map$); set .@i,.@i+1 )
+			//{
+			//	if( instance_attachmap( .map$[.@i],.@instance ) == "" ){
+			//		setmapflag .map$[.@i],mf_zone,"Memorial Dungeon";
+			//		setmapflag .map$,mf_monster_noteleport;
+			//		npctalk .instance_name$ + " reservation failed due to map attach failure.";
+			//		mes "- ^FF0000Reservation Failed!^000000";
+			//		instance_destroy( .@instance );
+			//		close;
+			//	}
+			//}
+			//instance_set_timeout .instance_delay,300,instance_id();
+			//instance_init(instance_id());			
+			
+			//disable unused npcs for now
+			disablenpc instance_npcname( "mocwarp#1", .@instance );
+			disablenpc instance_npcname( "mocwarp#2", .@instance );
+			
+			next;
+			mes "^0055FF[ "+.instance_name$+" ]^000000";
+			mes "Va para a ^FF0000Flor Vermelha^000000, para entrar dentro da " + .instance_name$;
+ 		}
+		break;
+	case 2:
+		mes .instance_name$ + " Destruido.";
+		getpartymember getcharid(1),2;
+		for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
+			if( attachrid( $@partymemberaid[.@i] ) && MOC_INSTANCE_ID > 0){
+				set MOC_INSTANCE_ID, -1;
+			}
+		instance_destroy instance_id();
+		break;
+	default: 
+		break;
+}
+close;
+
+OnInit:
+	setarray .base_level[0], 255, 300;
+	setarray .map$[0],"1@rev";
+	set .map_size, getarraysize( .map$ );
+	set .min_party_member, 1;
+	set .instance_zeny, 1000000;
+	set .instance_delay, 0;
+	set $moc_timer_delay, 3600; //1 hour to clean the instance
+	set .instance_name$, "Morse's Cave";
+	set .questId, 61300;
+	end;
+}
+
+warzone,199,222,3	script	Flor Vermelha::alamocrf	977,{
+	if( MOC_INSTANCE_ID <= 0 ){
+		mes .instance_name$ + " nao foi criada para o grupo - "+getpartyname( .@party_id );
+	}
+	else{
+		//RATHENA
+		switch(instance_enter(.instance_name$)) {
+			default:
+				mes "Um erro desconhecido ocorreu.";
+				close;
+			case 2:
+				mes "A Dungeon Memorial " + .instance_name$ + " nao foi criada.";
+				mes "O lider do grupo ainda nao gerou a Dungeon.";
+				close;
+			case 1:
+				mes "Voce pode entrar na Dungeon depois de criar um grupo.";
+				close;
+			case 0:
+				instance_announce instance_id(), strcharinfo(0)+" do grupo, " +getpartyname( .@party_id )+", esta entrando na dungeon, "+.instance_name$+".",bc_map,"0x00ff99",FW_NORMAL,12;
+				end;
+		}
+		
+		//HERCULES
+		//if( has_instance( .map$[0] ) == "" ){
+		//	mes .instance_name$ + " doesnt exist for Party - "+getpartyname( .@party_id );
+		//}
+		//else{
+		//	warp .map$[0],24,181;
+		//	instance_announce instance_id(), getpartyname(getcharid(1))+"  entered in the "+.instance_name$+"!",bc_map,"0x00ff99";
+		//}
+	}
+	end;
+
+OnInit:
+	setarray .map$[0],"1@rev";
+	set .instance_name$, "Morse's Cave";
+	end;
+}
+
+1@rev,101,107,4	script	morse_s_cave	HIDDEN_WARP_NPC,2,2,{
+function summon_normal;
+function summon_guardian;
+end;
+
+OnInstanceInit:
+	set .@map$, strnpcinfo(4);
+	set .@npc_name$, instance_npcname( strnpcinfo(0), instance_id() );
+	
+	set 'instance_moc_level, 0;
+	set .randomPop, 0;
+	set .max_moc_level, 6;
+	
+	set .timerCount, 0;
+	initnpctimer;
+	end;
+
+function	summon_normal	{
+	set .@map$, getarg(0);
+	set .@npcname$, getarg(1);
+	set .@increaseFloor, getarg(2);
+	
+	if(.@increaseFloor == 1)
+	{
+		'instance_moc_level++;
+	}
+	
+	switch( 'instance_moc_level ){
+		case 1:
+			//morroc's ghouls
+			setarray .@monster,3001,3001,3001;
+			setarray .@amount,15,15,15;
+			setarray .@coordX, 26, 38, 41, 53, 57, 71; //for each monster, two value of x to define the area
+			setarray .@coordY, 185, 178, 185, 178, 183, 178; //for each monster, two value of y to define the area
+			break;
+		case 3:
+			//random mobs (morocc ghouls, archer skel)
+			//mob on two areas	
+			if(getarraysize('mocTeam1) > 0)
+			{		
+				set .@clabel$, .@npcname$ + "::OnNormalDied";
+				areamonster .@map$,102,127,107,121,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,102,127,107,121,"--ja--",3003,2,.@clabel$;
+				areamonster .@map$,115,128,123,119,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,115,128,123,119,"--ja--",3003,2,.@clabel$;
+				areamonster .@map$,116,113,121,109,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,116,113,121,109,"--ja--",3003,2,.@clabel$;
+				areamonster .@map$,107,114,102,108,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,107,114,102,108,"--ja--",3003,2,.@clabel$;
+			}
+			if(getarraysize('mocTeam2) > 0)
+			{
+				set .@clabel$, .@npcname$ + "::OnNormalDied2";
+				areamonster .@map$,29,43,24,38,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,29,43,24,38,"--ja--",3003,2,.@clabel$;
+				areamonster .@map$,29,51,25,57,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,29,51,25,57,"--ja--",3003,2,.@clabel$;
+				areamonster .@map$,38,51,43,57,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,38,51,43,57,"--ja--",3003,2,.@clabel$;
+				areamonster .@map$,38,44,43,38,"--ja--",3001,2,.@clabel$;
+				areamonster .@map$,38,44,43,38,"--ja--",3003,2,.@clabel$;
+			}
+			break;
+		case 4:
+			//random mobs (morocc ghouls, archer skel)
+			setarray .@monster,3001,3003,3004,3005,3006;
+			setarray .@amount,30,30,15,20,20;
+			setarray .@coordinate,100, 54, 121, 38;
+			break;
+		case 5:
+			//morocc mage astral mode
+			setarray .@monster,2999;
+			setarray .@amount,1;
+			setarray .@coordinate,108, 51, 115, 44;
+			break;
+		case 6:
+			//random mobs (morocc ghouls, archer skel, verit, ancient mummy)
+			setarray .@monster,3001,3002,3003,3004,3005,3006;
+			setarray .@amount,30,30,15,20,15;
+			setarray .@coordinate,100, 54, 121, 38;
+			break;
+	}
+	
+	if('instance_moc_level != 3)
+	{
+		set .@monster_size, getarraysize( .@monster );
+		for( set .@i, 0; .@i < .@monster_size; set .@i,.@i+1 ){
+			set .@target_amount, ( .@amount[.@i] );
+			set .@size, 0;
+			if(getarraysize(.@label$) == 0)
+			{
+				set .@clabel$, .@npcname$ + "::OnNormalDied";
+			}
+			else
+			{
+				set .@clabel$, .@npcname$ + "::" + .@label$[.@i];
+			}
+			if(getarraysize(.@coordX) > 0)
+			{
+				set .@coordinate[0], .@coordX[.@i * 2];
+				set .@coordinate[2], .@coordX[.@i * 2 + 1];
+				set .@coordinate[1], .@coordY[.@i * 2];
+				set .@coordinate[3], .@coordY[.@i * 2 + 1];
+			}
+			
+			areamonster .@map$,.@coordinate[0],.@coordinate[1],.@coordinate[2],.@coordinate[3],"--ja--",.@monster[.@i],.@target_amount,.@clabel$,.@size;
+		}
+	}
+	
+	if('instance_moc_level == 3)
+	{
+		switch(rand(0,8))
+		{
+			case 0:
+				instance_announce instance_id(), "Boa! Continue resistindo a mim, pois sua esperanca alimentara minha crueldade!", bc_map, 0xFF0000;
+				break;
+			case 1:
+				instance_announce instance_id(), "Meus soldados, festejem em seus cadaveres ainda quentes!", bc_map, 0xFF0000;
+				break;
+			case 2:
+				instance_announce instance_id(), "Lute! Lute e sofra com sua queda!", bc_map, 0xFF0000;
+				break;
+			case 3:
+				instance_announce instance_id(), "Mais! Mais! Faca-os sentir o medo!", bc_map, 0xFF0000;
+				break;
+			case 4:
+				instance_announce instance_id(), "Meus soldados! Voce nao sentira medo, deixe isso para eles!", bc_map, 0xFF0000;
+				break;
+			case 5:
+				instance_announce instance_id(), "Boa! Tente resistir a mim!", bc_map, 0xFF0000;
+				break;
+			case 6:
+				instance_announce instance_id(), "Resista a mim! Ate a morte te levar.", bc_map, 0xFF0000;
+				break;
+			case 7:
+				instance_announce instance_id(), "Bom Bom! Continuem assim, aventureiros! No final, eu vou ganhar!", bc_map, 0xFF0000;
+				break;
+			case 8:
+				instance_announce instance_id(), "Eu posso sentir isso! Meu poder ... esta voltando para mim!", bc_map, 0xFF0000;
+				break;
+		}
+	}
+	else if('instance_moc_level == 4)
+	{
+		switch(rand(0,7))
+		{
+			case 0:
+				instance_announce instance_id(), "Eu quero meu poder de volta!", bc_map, 0xFF0000;
+				break;
+			case 1:
+				instance_announce instance_id(), "Mais! Eu preciso de mais!", bc_map, 0xFF0000;
+				break;
+			case 2:
+				instance_announce instance_id(), "Lute, lute, e entao voce falhara", bc_map, 0xFF0000;
+				break;
+			case 3:
+				instance_announce instance_id(), "VOCE PERTENCE A MIM!", bc_map, 0xFF0000;
+				break;
+			case 4:
+				instance_announce instance_id(), "AHHHHH esse poder !!! Isso e tao bom", bc_map, 0xFF0000;
+				break;
+			case 5:
+				instance_announce instance_id(), "Medo! Tema meus exercitos!", bc_map, 0xFF0000;
+				break;
+			case 6:
+				instance_announce instance_id(), "Esta quase pronto! Eu posso sentir isso!", bc_map, 0xFF0000;
+				break;
+			case 7:
+				instance_announce instance_id(), "Rasga-los em pedacos!", bc_map, 0xFF0000;
+				break;
+		}
+	}
+	else if('instance_moc_level == 6)
+	{
+		switch(rand(0,3))
+		{
+			case 0:
+				instance_announce instance_id(), "Sinta o poder do meu exercito!", bc_map, 0xFF0000;
+				break;
+			case 1:
+				instance_announce instance_id(), "Voce esta enfraquecendo! eu posso sentir isso", bc_map, 0xFF0000;
+				break;
+			case 2:
+				instance_announce instance_id(), "Somos soldados Morroquinos. Nao temos piedade!", bc_map, 0xFF0000;
+				break;
+			case 3:
+				instance_announce instance_id(), "Voce esta fazendo o seu melhor. Mas nao sera suficiente!", bc_map, 0xFF0000;
+				break;
+		}
+	}
+	return;
+}
+
+function	summon_guardian	{
+	set .@map$, getarg(0);
+	set .@label$, getarg(1);
+	
+	setarray .@coordinate,108, 51, 115, 44;
+			
+	switch( 'instance_moc_level ){
+		case 2:
+			//weakened wounded morroc
+			setarray .@monster,2998;
+			break;
+		case 6:
+			//morocc mage
+			setarray .@monster,3000;
+			break;
+	}
+	set .@monster_size, getarraysize( .@monster );
+	for( set .@i, 0; .@i < .@monster_size; set .@i,.@i+1 ){
+		areamonster .@map$,.@coordinate[0],.@coordinate[1],.@coordinate[2],.@coordinate[3],"--ja--",.@monster[.@i],1,.@label$;
+	}
+	return;
+}
+
+OnNormalDied2:
+	set .@map$, strnpcinfo(4);
+	set .@mob_dead_num2, mobcount(.@map$,.@npc_name$+"::OnNormalDied2" );
+OnNormalDied:
+	set .@map$, strnpcinfo(4);
+	set .@npc_name$, instance_npcname( strnpcinfo(0), instance_id() );
+	set .@mob_dead_num, mobcount(.@map$,.@npc_name$+"::OnNormalDied" );
+	if( .@mob_dead_num == 0 && .@mob_dead_num2 == 0 ){
+		sleep2 1500;
+
+		if('instance_moc_level == 1)
+		{
+			//yanku talk + warp enabled
+			enablenpc instance_npcname( "alamocya", instance_id() );
+			donpcevent instance_npcname( "alamocya", instance_id() ) + "::OnTalk";
+		}
+		else if('instance_moc_level == 3)
+		{
+			set .popCount, .popCount + 1;
+			if(.popCount <= .randomPopCount)
+			{
+				callsub OnPopIceWalls;
+				summon_normal( .@map$, .@npc_name$, 0 );
+			}
+			else
+			{
+				killmonster .@map$, "All";
+				attachrid 'mocTalking;
+				//warp all players to fourth room + summon
+				getpartymember getcharid(1),0;
+				set .@memberCount, $@partymembercount;
+				copyarray .@members[0], $@partymemberaid[0], .@memberCount;
+				for(set .@i,0; .@i<.@memberCount; set .@i,.@i+1)
+				{
+					if(attachrid(.@members[.@i]) == 1)
+					{
+						warp .@map$, 111, 44;
+					}
+				}
+				donpcevent instance_npcname( "alamocmo", instance_id() ) + "::OnTalk3";
+			}
+		}
+		else if('instance_moc_level == 4)
+		{
+			set .popCount, .popCount + 1;
+			if(.popCount <= .randomPopCount)
+			{
+				summon_normal( .@map$, .@npc_name$, 0 );				
+			}
+			else
+			{
+				donpcevent instance_npcname( "alamocmo", instance_id() ) + "::OnTalk4";				
+			}
+		}
+		else if('instance_moc_level == 5)
+		{
+			instance_announce instance_id(), "[ Necromante ] Voce e mais forte do que parecia ...", bc_map, 0x0000FF;
+			sleep2 1500;
+			instance_announce instance_id(), "[ Necromante ] Agora eu devo mostrar meu verdadeiro poder.", bc_map, 0x0000FF;
+			sleep2 1500;
+			instance_announce instance_id(), "[ Necromante ] Implore meu perdao. Por suas vidas!", bc_map, 0x0000FF;
+			sleep2 1500;
+			
+			'instance_moc_level++;
+			//pop morocc mage true form + enable random pops
+			summon_guardian( .@map$,.@npc_name$+"::OnGuardianDied" );
+			set .randomPop, 1;
+		}
+	}
+	end;
+	
+OnGuardianDied:
+	set .@map$, strnpcinfo(4);
+	set .@npc_name$, instance_npcname( strnpcinfo(0), instance_id() );
+	set .@mob_dead_num, mobcount(.@map$,.@npc_name$+"::OnGuardianDied" );
+	set .@party_id, getcharid(1);
+	
+	if( !.@mob_dead_num ){	
+		if('instance_moc_level == 2)
+		{
+			//wounded talk 2
+			donpcevent instance_npcname( "alamocmo", instance_id() ) + "::OnTalk2";
+		}
+		else if ('instance_moc_level == .max_moc_level)
+		{
+			set .randomPop, 0;
+			
+			instance_announce instance_id(), "[ Necromante ] Eu ... nao posso acreditar ...", bc_map, 0x0000FF;
+			sleep2 1500;
+			instance_announce instance_id(), "[ Necromante ] Mas nao seja tao egoísta! Nosso mestre e senhor estara de volta em breve ...", bc_map, 0x0000FF;
+			sleep2 1500;
+			instance_announce instance_id(), "[ Necromante ] Agora que voce o alimentou, e apenas uma questao de tempo!", bc_map, 0x0000FF;
+			sleep 5000;
+			
+			instance_announce instance_id(), "[ Caverna Morse ] : A dimensao entrara em colapso em alguns instantes.", bc_map, 0x00FF00;
+			
+			//enable portal
+			enablenpc instance_npcname( "alamocde", instance_id() );
+		
+			sleep2 15000;
+			getpartymember getcharid(1),2;
+			for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
+				if( attachrid( $@partymemberaid[.@i] ) && MOC_INSTANCE_ID > 0){
+					set MOC_INSTANCE_ID, -1;
+				}
+			instance_destroy instance_id();
+			end;
+		}
+		
+		sleep 5000;
+		summon_normal( .@map$,.@npc_name$, 0 );
+	}
+	end;
+	
+OnTimer10000:
+	stopnpctimer;
+	//each 10s, increase timer
+	set .timerCount, .timerCount + 10;
+	if(.timerCount == $moc_timer_delay)
+	{
+		instance_announce instance_id(), "[ Caverna Morse ] O colapso da dimensao! Eu tenho que tirar voce de la!", bc_map, 0x00FF00;
+		sleep 5000;
+		getpartymember getcharid(1),2;
+		for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
+			if( attachrid( $@partymemberaid[.@i] ) && MOC_INSTANCE_ID > 0){
+				set MOC_INSTANCE_ID, -1;
+			}
+		instance_destroy instance_id();
+		stopnpctimer;
+	}
+	if(.randomPop == 1)
+	{
+		set .@map$, strnpcinfo(4);
+		set .@npc_name$, instance_npcname( strnpcinfo(0), instance_id() );
+		set .@mob_dead_num, mobcount(.@map$,.@npc_name$+"::OnGuardianDied" );
+		if(.@mob_dead_num == 0)
+		{
+			summon_normal( .@map$,.@npc_name$, 0 );
+		}
+	}
+	initnpctimer;
+	end;
+	
+OnKeaTalkEnd:
+	set .@map$, strnpcinfo(4);
+	set .@npcname$, instance_npcname(strnpcinfo(0), instance_id());
+	summon_normal( .@map$,.@npcname$,1 );
+	end;
+	
+OnMoTalkEnd:
+	set .@map$, strnpcinfo(4);
+	set .@npcname$, instance_npcname(strnpcinfo(0), instance_id());
+	'instance_moc_level++;
+	//pop weakened wounded morroc
+	summon_guardian( .@map$, .@npcname$+"::OnGuardianDied" );
+	end;
+	
+OnMoTalk2End:
+	attachrid 'mocTalking;
+	//split team
+	deletearray 'mocTeam1[0], getarraysize('mocTeam1);
+	deletearray 'mocTeam2[0], getarraysize('mocTeam2);
+	getpartymember getcharid(1),0;
+	set .@memberCount, $@partymembercount;
+	copyarray .@members[0], $@partymemberaid[0], .@memberCount;
+	for(set .@i,0; .@i<.@memberCount - 1; set .@i,.@i+1)
+	{
+		if(attachrid(.@members[.@i]) == 1)
+		{
+			set .@lastRank, .@i;
+			if(rand(0,1) == 1)
+			{
+				set 'mocTeam1[getarraysize('mocTeam1)], .@members[.@i];
+			}
+			else
+			{
+				set 'mocTeam2[getarraysize('mocTeam2)], .@members[.@i];
+			}
+		}
+	}	
+	//ensure there's at least one member in each team
+	if(attachrid(.@members[.@memberCount - 1]) == 1)
+	{
+		set .@team1Size, getarraysize('mocTeam1);
+		set .@team2Size, getarraysize('mocTeam2);
+		if(.@team1Size == 0)
+		{	
+			set 'mocTeam1[getarraysize('mocTeam1)], .@members[.@memberCount - 1];
+		}
+		else if(.@team2Size == 0)
+		{
+			set 'mocTeam2[getarraysize('mocTeam2)], .@members[.@memberCount - 1];
+		}
+		else
+		{
+			if(rand(0,1) == 1)
+			{
+				set 'mocTeam1[getarraysize('mocTeam1)], .@members[.@memberCount - 1];
+			}
+			else
+			{
+				set 'mocTeam2[getarraysize('mocTeam2)], .@members[.@memberCount - 1];
+			}
+		}
+	}
+	
+	set .@map$, strnpcinfo(4);
+	set .@npcname$, instance_npcname(strnpcinfo(0), instance_id());
+	
+	//warp team 1 on point 1
+	for(set .@i,0; .@i<getarraysize('mocTeam1); set .@i,.@i+1)
+	{
+		if(attachrid('mocTeam1[.@i]) == 1)
+		{
+			warp .@map$, 111, 117;
+		}
+	}
+	
+	//warp team 2 on point 2
+	for(set .@i,0; .@i<getarraysize('mocTeam2); set .@i,.@i+1)
+	{
+		if(attachrid('mocTeam2[.@i]) == 1)
+		{
+			warp .@map$, 34, 47;
+		}
+	}
+
+	callsub OnPopIceWalls;
+	
+	//summon monsters
+	set .randomPopCount, rand(0, 10);
+	
+	instance_announce instance_id(), "[Morocc] Voce estara invadindo esta area onde tudo e meu!", bc_map, 0xFF0000;
+	sleep2 1500;
+	instance_announce instance_id(), "[Morocc] Seus corpos sao alimento para o meu corpo ressuscitar", bc_map, 0xFF0000;
+	sleep2 1500;
+	instance_announce instance_id(), "[Morocc] Suas almas sao alimento para o meu poder voltar a crescer", bc_map, 0xFF0000;
+	sleep2 1500;
+	instance_announce instance_id(), "[Morocc] Meus soldados! Rasgue-os em pedacos!", bc_map, 0xFF0000;
+
+	summon_normal( .@map$, .@npcname$, 1 );	
+	end;
+
+OnPopIceWalls:
+	set .@GID, getnpcid(0, strnpcinfo(3));
+
+	//pop ice walls
+	unitskillusepos .@GID, 87, 10, 108, 120;
+	unitskillusepos .@GID, 87, 10, 112, 122;
+	unitskillusepos .@GID, 87, 10, 115, 120;
+	unitskillusepos .@GID, 87, 10, 116, 117;
+	unitskillusepos .@GID, 87, 10, 111, 113;
+	unitskillusepos .@GID, 87, 10, 108, 115;
+	
+	//pop ice walls
+	unitskillusepos .@GID, 87, 5, 29, 47;
+	unitskillusepos .@GID, 87, 5, 32, 51;
+	unitskillusepos .@GID, 87, 5, 38, 48;
+	unitskillusepos .@GID, 87, 5, 34, 43;
+	return;
+	
+OnMoTalk3End:
+	set .@map$, strnpcinfo(4);
+	set .@npcname$, instance_npcname(strnpcinfo(0), instance_id());
+	//pop mob waves
+	set .popCount, 0;
+	set .randomPopCount, rand(0, 10);
+	//summon mobs
+	summon_normal( .@map$, .@npcname$, 1 );
+	end;
+	
+OnMoTalk4End:
+	set .@map$, strnpcinfo(4);
+	set .@npcname$, instance_npcname(strnpcinfo(0), instance_id());
+	//pop morocc mage
+	summon_normal( .@map$, .@npcname$, 1 );
+	end;
+}
+
+1@rev,27,181,4	script	Kaep::alamocka	HIDDEN_WARP_NPC,2,2,{
+	end;
+	
+OnTouch:
+	if(.talking == 0)
+	{
+		set 'mocTalking, getcharid(3);
+		set .talking, 1;
+		npctalk "Chegamos ao lugar certo!";
+		instance_announce instance_id(), "[Kaep] Chegamos ao lugar certo!", bc_map, 0x00FF99;
+		sleep2 1500;
+		npctalk "Espere, ha algo pela frente!";
+		instance_announce instance_id(), "[Kaep] Espere, ha algo pela frente!", bc_map, 0x00FF99;
+		sleep2 1500;
+		npctalk "Esses monstros hediondos sao lacaios de Morocc ?!";
+		instance_announce instance_id(), "[Kaep] Esses monstros hediondos sao lacaios de Morocc ?!", bc_map, 0x00FF99;
+		sleep2 1500;
+		donpcevent instance_npcname("morse_s_cave", instance_id()) + "::OnKeaTalkEnd";
+	}
+	end;
+	
+OnInit:
+OnInstanceInit:
+	enablenpc strnpcinfo(3);
+	set .talking, 0;
+	end;
+}
+
+1@rev,64,184,4	script	Yanku::alamocya	4_M_DEATH2,{
+	end;
+	
+OnTalk:
+	attachrid('mocTalking);
+	set .@map$, strnpcinfo(4);
+	
+	npctalk "* Risadas * Nos encontramos novamente";
+	instance_announce instance_id(), "[Yanku] * Risadas * Nos encontramos novamente", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	npctalk "Este mundo reside em sua mente";
+	instance_announce instance_id(), "[Yanku] Este mundo reside em sua mente", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	npctalk "Voce nao pode fazer nada contra a vontade dele";
+	instance_announce instance_id(), "[Yanku] Voce nao pode fazer nada contra a vontade dele", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	npctalk "Lorde Morocc esta esperando por voce. Deixe-me leva-lo para ele * Risadas *";
+	instance_announce instance_id(), "[Yanku] Lorde Morocc esta esperando por voce. Deixe-me leva-lo para ele * Risadas *", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	enablenpc instance_npcname( "mocwarp#"+'instance_moc_level, instance_id() );
+	disablenpc strnpcinfo(3);
+	end;
+	
+OnInstanceInit:
+OnInit:
+	disablenpc strnpcinfo(3);
+	end;
+}
+
+1@rev,112,38,4	script	entrance::alamocen	HIDDEN_WARP_NPC,2,2,{
+	end;
+	
+OnTouch:
+	set 'mocTalking, getcharid(3);
+	if('instance_moc_level == 1)
+	{
+		enablenpc instance_npcname( "alamocmo", instance_id() );
+		donpcevent instance_npcname( "alamocmo", instance_id() ) + "::OnTalk";
+	}
+	end;
+}
+
+1@rev,111,47,4	script	Morocc::alamocmo	1917,{
+	end;
+	
+OnTalk:
+	if(.talking == 0)
+	{
+		attachrid('mocTalking);
+		set .talking, 1;
+		set .@map$, strnpcinfo(4);
+
+		npctalk "Eu deveria puni-lo por perturbar meu sono";
+		instance_announce instance_id(), "[Morocc] Eu deveria puni-lo por perturbar meu sono", bc_map, 0xFF0000;
+		sleep2 1500;
+		
+		npctalk "Voce realmente acha que pode me parar?";
+		instance_announce instance_id(), "[Morocc] Voce realmente acha que pode me parar?", bc_map, 0xFF0000;
+		sleep2 1500;
+		
+		npctalk "Posso nao ter recuperado toda a minha forca";
+		instance_announce instance_id(), "[Morocc] Posso nao ter recuperado toda a minha forca", bc_map, 0xFF0000;
+		sleep2 1500;
+		
+		npctalk "mas ainda posso derrubar um monte de voces facilmente.";
+		instance_announce instance_id(), "[Morocc] mas ainda posso derrubar um monte de voces facilmente.", bc_map, 0xFF0000;
+		sleep2 1500;
+		
+		npctalk "A morte e sua única fuga.";
+		instance_announce instance_id(), "[Morocc] A morte e sua unica fuga.", bc_map, 0xFF0000;
+		sleep2 1500;
+		
+		disablenpc strnpcinfo(3);
+		donpcevent instance_npcname( "morse_s_cave", instance_id() ) + "::OnMoTalkEnd";
+	}
+	end;
+	
+OnTalk2:
+	attachrid('mocTalking);
+	set .@map$, strnpcinfo(4);
+
+	npctalk "Lucros que ainda nao recuperei";
+	instance_announce instance_id(), "[Morocc] Lucros que ainda nao recuperei", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	npctalk "Eu tenho que te deixar vivo por enquanto";
+	instance_announce instance_id(), "[Morocc] Eu tenho que te deixar vivo por enquanto", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	npctalk "Faca o seu melhor para escapar do meu mundo";
+	instance_announce instance_id(), "[Morocc] Faca o seu melhor para escapar do meu mundo", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	npctalk "No final, voce encontrara um destino inevitavel";
+	instance_announce instance_id(), "[Morocc] No final, voce encontrara um destino inevitavel", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	npctalk "e suas almas serao minhas!";
+	instance_announce instance_id(), "[Morocc] e suas almas serao minhas!", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	donpcevent instance_npcname( "morse_s_cave", instance_id() ) + "::OnMoTalk2End";
+	end;
+	
+OnTalk3:	
+	attachrid('mocTalking);
+	set .@map$, strnpcinfo(4);
+
+	instance_announce instance_id(), "[Morocc] Mas e o suficiente agora. Estou cansado desses pequenos jogadores", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	instance_announce instance_id(), "[Morocc] Seus corpos e almas me pertencem", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	instance_announce instance_id(), "[Morocc] Meus soldados! Quebre-os e traga-os para mim!", bc_map, 0xFF0000;
+	sleep2 1500;
+
+	donpcevent instance_npcname( "morse_s_cave", instance_id() ) + "::OnMoTalk3End";
+	end;
+	
+OnTalk4:
+	attachrid('mocTalking);
+	set .@map$, strnpcinfo(4);
+
+	instance_announce instance_id(), "[Morocc] Estou surpreso que voce durou tanto tempo", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	instance_announce instance_id(), "[Morocc] Mas eu posso sentir agora. Estou de volta!", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	instance_announce instance_id(), "[Morocc] Meu necromante! Eu os deixo para voce! Traga-me suas almas", bc_map, 0xFF0000;
+	sleep2 1500;
+	
+	instance_announce instance_id(), "[Morocc] Festejarei todas as suas esperancas e derrotarei sentimentos", bc_map, 0xFF0000;
+	sleep2 1500;
+
+	donpcevent instance_npcname( "morse_s_cave", instance_id() ) + "::OnMoTalk4End";
+	end;
+	
+OnInstanceInit:
+OnInit:
+	set .talking, 0;
+	end;
+}
+
+1@rev,111,57,4	script	Dispositivo Dimensional::alamocde	PORTAL,{
+	warp "moro_cav", 59, 66;
+	end;
+	
+OnInstanceInit:
+OnInit:
+	disablenpc strnpcinfo(3);
+	end;
+}
+
+1@rev,71,181,5	warp	mocwarp#1	2,2,1@rev,112,39
+>>>>>>> 5278334a1f468ae505e9e4001d8b17dd41698822
 1@rev,119,154,5	warp	mocwarp#2	2,2,1@rev,292,42
