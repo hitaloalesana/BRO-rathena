@@ -562,7 +562,7 @@ OnNPCKillEvent:
 		if( #item_l ) end;
 		if( check_item_l < 1000 ){
 			set check_item_l, check_item_l + 1;
-			message strcharinfo(0), getmonsterinfo( 22203,MOB_NAME ) +" ("+ check_item_l +"/20).";
+			message strcharinfo(0), getmonsterinfo( 22203,MOB_NAME ) +" ("+ check_item_l +"/1000).";
 			end;
 		} else {
 			message strcharinfo(0), getmonsterinfo( 22203,MOB_NAME ) +" (Completo).";
@@ -574,7 +574,7 @@ OnNPCKillEvent:
 		if( #item_m ) end;
 		if( check_item_m < 1000 ){
 			set check_item_m, check_item_m + 1;
-			message strcharinfo(0), getmonsterinfo( 22207,MOB_NAME ) +" ("+ check_item_m +"/20).";
+			message strcharinfo(0), getmonsterinfo( 22207,MOB_NAME ) +" ("+ check_item_m +"/1000).";
 			end;
 		} else {
 			message strcharinfo(0), getmonsterinfo( 22207,MOB_NAME ) +" (Completo).";

@@ -101,9 +101,9 @@
 //====================================================================================================
 // BrasilRO - Cartões, Tickets, Caixas, Baús, Etc...
 //====================================================================================================
-//40000,Cartão_VIP_1_Dia,Cartão VIP 1 Dia,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//40001,Cartão_VIP_15_Dias,Cartão VIP 15 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//40002,Cartão_VIP_30_Dias,Cartão VIP 30 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40000,Cartão_VIP_1_Dia,Cartão VIP 1 Dia,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40001,Cartão_VIP_15_Dias,Cartão VIP 15 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40002,Cartão_VIP_30_Dias,Cartão VIP 30 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40003,Caixa_de_Frutos_de_Yggdrasil_100un.,Caixa de Frutos de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40004,Caixa_de_Garrafa_de_Veneno_100un.,Caixa de Garrafa de Veneno 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40005,Caixa_de_Bombas_e_Revestimentos_100un.,Caixa de Bombas e Revestimentos 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -151,7 +151,7 @@
 40047,Album_de_Cartas,Album de Cartas,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40048,caixa_do_pesadelo,Caixa do Pesadelo,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40049,maçãencantanda,Maçã Encantada,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40050,Yggdrasilberry2,Fruto de Yggdrasil Iniciante,0,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40050,Yggdrasilberry2,Fruto de Yggdrasil Iniciante,0,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 100,100; },{},{}
 40051,Ticket_Rops,Ticket Rops,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40052,Caixa_de_Poções_Compacta_200un.,Caixa de Poções Compacta 200un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40053,Caixa_de_Premiação_WoE,Caixa de Frutos de Premiação WoE,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -165,7 +165,7 @@
 40061,Cupom_Evento_BrasilRO,Ticket de Acesso BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //40062,Martelo_de_Conserto,Martelo de Conserto,0,5,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40063,caixa_de_encantamentos,Caixa de Encantamentos,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40064,Pack_Iniciante,Pack Iniciante,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40064,Pack_Iniciante,Pack Iniciante,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Caixa#Brasil"; },{},{}
 40065,Caixa_de_Enriquecidos_Avancados,Caixa de Enriquecidos Avaçados,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40066,Moeda_dos_desejos_BrasilRO,Moeda dos desejos,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40067,Poringdrasil_Berry,Poringdrasil Berry,0,5000,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -1184,8 +1184,8 @@
 47011,cartolabrasilro,Cartola BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3529,{},{},{}
 47012,mochila_aurora,Mochila da Kafra Aurora,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3530,{},{},{}
 47013,pikachu,Pikachu,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3531,{},{},{}
-47014,BrasilroFemale,BrasilRO Menina,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3532,{},{},{}
-47015,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{},{},{}
+47014,BrasilroFemale,BrasilRO Menina,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3532,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47015,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 
 //INSTÂNCIAS ADICIONADAS A PARTE
 //=========== TEMPLE OF DEMON GOD ==================//

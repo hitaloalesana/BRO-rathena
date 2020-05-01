@@ -1,4 +1,4 @@
-﻿-	shop	cat_shop	-1,42025:200
+﻿-	shop	cat_shop	-1,41051:200
 new_zone01,49,128,5	script	Gato	554,{
 	announce "Loja de Aluguel | Moeda: '"+ getitemname( .requer_id ) +"'", bc_blue|bc_self;
 	dispbottom "Atenção: Os itens desta loja são de Aluguel (3 dias).",0x00FF00;
@@ -8,7 +8,7 @@ new_zone01,49,128,5	script	Gato	554,{
 OnInit:
 	set .requer_id, 7539;
 	setarray .item_id[0], 42025;
-	setarray .item_qnt[0], 200;
+	setarray .item_qnt[0], 100;
 
 	npcshopitem "cat_shop",.item_id[0],.item_qnt[0];
 	for( set .x, 1; .x < getarraysize( .item_id ); set .x, .x + 1 ){

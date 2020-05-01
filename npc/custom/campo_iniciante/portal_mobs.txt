@@ -12,6 +12,9 @@ Oninit:
 	end;
 }
 new_zone01,66,114,6	script	Quadro Informativo#B	111,{
+	mes "^0099FFBrasil Ragnarök Online^000000 ";
+	mes "Servidor baseado em Quests. ";
+	mes "Level 300/150 e Rates: 1.000x | 1.000x ";
 	mes "Rates: 1.000x | 1.000x";
 	close;
 }
@@ -31,11 +34,21 @@ new_zone01,47,88,5	script	Funcionária Kafra#n	758,{
 	mes "Tenho um contrato com o ^0099FFBrasil Ragnarök Online^000000 e estou aqui para te ajudar!";
 	next;
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-	mes "Caso queira adquírir sua ^EEAD0ECaixa de Iniciante^000000 é necessário que faça uma quest servada para todos os Aprendizes que iniciam sua jornada aqui.";
+	mes "Caso queira adquírir sua ^EEAD0ECaixa de Iniciante^000000 é necessário que faça uma quest, flae com o Ajudante de Iniciantes";
 	mes "^777777Deseja realizar a quest iniciante?^000000";
 	next;
 	if(select("^00CC00•^000000 Fazer ^EEAD0EQuest Iniciante^000000.:^00CC00•^000000 Ir para Prontera.") == 1){ 
 		dispbottom "Siga as setas e fale com o (Ajudante de Iniciantes).",0x00FFFF;
+		if( sex ) {
+				//Homem
+				getitem 47015,1;
+				end;
+			}
+		else {
+				//Mulher
+				getitem 47014,1;
+				end;
+			}
 		navigateto("new_zone01", 124, 124, NAV_NONE, 1); 
 		close;
 	}
