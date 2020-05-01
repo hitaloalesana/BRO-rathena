@@ -8,9 +8,9 @@ new_zone01,69,146,5	script	Cão	81,{
 OnInit:
 	set .requer_id, 7539;
 	setarray .item_id[0], 41051;
-	setarray .item_qnt[0], 200;
+	setarray .item_qnt[0], 100;
 
-	npcshopitem "godly_shop",.item_id[0],.item_qnt[0];
+	npcshopitem "dog_shop",.item_id[0],.item_qnt[0];
 	for( set .x, 1; .x < getarraysize( .item_id ); set .x, .x + 1 ){
  		npcshopadditem "dog_shop", .item_id[.x], .item_qnt[.x];
 	}

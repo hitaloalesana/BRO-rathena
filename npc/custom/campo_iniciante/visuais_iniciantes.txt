@@ -7,8 +7,8 @@ new_zone01,151,144,4	script	Vendedora de Chapéus#bg	55,{
 	end;
 OnInit:
 	set .requer_id, 7539;
-	setarray .item_id[0], 43118, 43123, 18892, 43067, 44045, 44048, 44104, 44100, 44107, 44070, 45019, 44078, 44043, 26010;
-	setarray .item_qnt[0], 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20;
+	setarray .item_id[0], 43118, 43123, 18892, 43067, 44045, 44048, 44104, 44100, 44107, 44070, 44078, 44043, 26010;
+	setarray .item_qnt[0], 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20;
 
 	npcshopitem "poring_shop",.item_id[0],.item_qnt[0];
 	for( set .x, 1; .x < getarraysize( .item_id ); set .x, .x + 1 ){
