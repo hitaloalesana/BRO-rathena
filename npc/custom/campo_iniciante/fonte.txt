@@ -1,0 +1,34 @@
+new_zone01,154,127,6	script	Fonte dos Desejos	111,{
+	//---------------------------------------------
+	set .@zeny, 1000000;	// Valor a receber.
+	set .@id, 7539;	// ID da Moeda.
+	//---------------------------------------------
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Esta é a "+ strnpcinfo(1) +", jogue uma ^00CC00"+ getitemname(.@id) +"^000000, feche os olhos e faça seu pedido, poderá receber ^777777de 2.000 até 10.000 Zenys^000000.";
+	dispbottom "As chances de um pedido ser realizado ou não realizado são iguais.",0x00BFFF;
+	next;
+	if(select("^00CC00•^000000 Jogar ^0099FF"+ getitemname(.@id) +".^000000:^00CC00•^000000 Sair.") == 2 ) close;
+		close2;
+		if( countitem( .@id ) < 1 ){
+			message strcharinfo(0), "Você precisa de "+ getitemname(.@id) +" para fazer um pedido na Fonte.";
+			end;
+		}
+		delitem .@id, 1;
+		message strcharinfo(0), "Moeda jogada, veremos se o pedido é realizado...";
+		sleep2 3000;
+		specialeffect2 53;
+		switch( rand(2) ){
+			case 0:
+				specialeffect2 67;
+				message strcharinfo(0), "Não veio nada em seu pedido...";
+				emotion 23, 1;
+				break;
+			case 1: 
+				specialeffect2 66;
+				set .@r, rand( 2000,10000 );
+				set Zeny, Zeny + .@r;
+				message strcharinfo(0), "Pedido realizado!!!";
+				dispbottom "Zeny obtido: "+ .@r +"z.",0x00BFFF;
+				break;
+				}
+}
