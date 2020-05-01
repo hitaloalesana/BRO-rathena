@@ -1,0 +1,33 @@
+function	script	Caixa#Brasil	{
+	if((( Weight * 100) / MaxWeight ) > 49 ){
+        	message strcharinfo(0), "[ Você está acima peso para abrir sua caixa ].";
+        	end;
+    	}
+	mes "[ ^a60536Caixa de Iniciante^000000 ]";
+	mes "Abrir sua ^EF8319Caixa de Iniciante^000000 virão:";
+	mes " ^FF0000»^000000 1000x ^0000FF"+ getitemname(40050) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(17176) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(12202) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(12203) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(12204) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(12205) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(12206) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(12207) +"^000000";
+	mes " ^FF0000»^000000 1x ^0000FF"+ getitemname(2677) +"^000000";
+	if(select("^00CC00•^000000 Pegar Prêmio.:^00CC00•^000000 Saír.") == 2 ) close;
+		close2;
+		delitem 40064, 1;
+		rentitem 2677, 2592000;
+		getitem 40050, 1000;
+		getitem 17176, 1;
+		getitem 12202, 1;
+		getitem 12203, 1;
+		getitem 12204, 1;
+		getitem 12205, 1;
+		getitem 12206, 1;
+		getitem 12207, 1;
+		getitem 17176, 1;
+		message strcharinfo(0), "[ Comece sua jornada! ].";
+		specialeffect2 885; specialeffect2 899;
+		end;
+}
