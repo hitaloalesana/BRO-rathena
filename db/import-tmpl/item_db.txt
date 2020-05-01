@@ -1186,3 +1186,10 @@
 47013,pikachu,Pikachu,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3531,{},{},{}
 47014,BrasilroFemale,BrasilRO Menina,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3532,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47015,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+
+//INSTÂNCIAS ADICIONADAS A PARTE
+//=========== TEMPLE OF DEMON GOD ==================//
+6713,Heart_of_Soul,Heart of Soul,3,0,,0,,,,,,,,,,,,,{},{},{}
+6714,Sheenas_Soul,Sheena's Soul,3,20,,0,,,,,,,,,,,,,{},{},{}
+22567,Expedition_Award_Box,Expedition Award Box,0,20,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "IGF_SquadPrize"; },{},{}
+
