@@ -1,0 +1,90 @@
+//Encantar elemental
+
+//===== Cronus Script =======================================
+//===== Por: ================================================
+//= [Barbiroto]
+//===== Versão Atual: =======================================
+//= 1.0	- Script Inicializado. [Barbiroto]
+//= 1.1 - Adicionado função de checagem de sexo mais clean. [Palito]
+//===== Compatível Com: =====================================
+//= Cronus / eAthena
+//===== Descrição: ==========================================
+//= Encanta a Arma com qualquer elemento.
+//===== Bugs: ===============================================
+//= Não encontrei nenhum.
+//===========================================================
+vip,68,60,5	script	Encantador Elemental	967,{
+
+mes "[ ^a60536Encantador^000000 ]";
+mes "Olá ^FF0000"+strcharinfo(0)+"^000000,";
+mes "Eu posso encantar sua arma com o elemento desejado por 30 minutos.";
+mes "Custa apenas 500.000z";
+mes "Deseja encantar com qual elemento?";
+switch(select("[^ff0000»^000000] Fogo","[^ff0000»^000000] Água","[^ff0000»^000000] Vento","[^ff0000»^000000] Terra","[^ff0000»^000000] Nada")){
+
+	case 1:
+		next;
+		if(Zeny < 500000) {
+		mes "[ ^a60536Encantador^000000 ]";
+		mes "Você não possui os itens necessarios!";
+		close2;
+		end;
+		}
+		set Zeny, Zeny - 500000;
+		sc_start SC_FIREWEAPON,1800000,0;
+		sc_end SC_WATERWEAPON;
+		sc_end SC_WINDWEAPON;
+		sc_end SC_EARTHWEAPON;
+		specialeffect2 255;
+		break;
+
+
+	case 2:
+		next;
+		if(Zeny < 500000) {
+		mes "[Encantador]";
+		mes "Você não possui os itens necessarios!";
+		close2;
+		end;
+		}
+		sc_start SC_WATERWEAPON,1800000,0;
+		sc_end SC_FIREWEAPON;
+		sc_end SC_WINDWEAPON;
+		sc_end SC_EARTHWEAPON;
+		specialeffect2 256;
+		break;
+	case 3:
+		next;
+		if(Zeny < 500000) {
+		mes "[Encantador]";
+		mes "Você não possui os itens necessarios!";
+		close2;
+		end;
+		}
+		sc_start SC_WINDWEAPON,1800000,0;
+		sc_end SC_FIREWEAPON;
+		sc_end SC_WATERWEAPON;
+		sc_end SC_EARTHWEAPON;
+		specialeffect2 257;
+		break;
+	case 4:
+		next;
+		if(Zeny < 500000) {
+		mes "[Encantador]";
+		mes "Você não possui os itens necessarios!";
+		close2;
+		end;
+		}
+		sc_start SC_EARTHWEAPON,1800000,0;
+		sc_end SC_FIREWEAPON;
+		sc_end SC_WATERWEAPON;
+		sc_end SC_WINDWEAPON;
+		specialeffect2 258;
+		break;
+	
+	case 5:
+		break;
+	
+	}
+	close;
+	}

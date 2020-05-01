@@ -1,0 +1,8 @@
+function	script	EleSwFnc	{
+	if( getequipid( EQI_HAND_R ) == 13414 || getequipid(EQI_HAND_L) == 13414 ){
+		dispbottom "[ Você não pode equipar duas Espadas Elementais ].";
+	if( getequipid( EQI_HAND_L ) == 13414 ) unequip EQI_HAND_L;
+	if( getequipid( EQI_HAND_R ) == 13414 ) unequip EQI_HAND_R;
+	end;
+	}
+}

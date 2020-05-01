@@ -1,0 +1,132 @@
+-	script	Cod_Premiado#Cmd	-1,{
+OnInit:
+	bindatcmd "codpremiado", strnpcinfo(0) +"::OnCodPremiado", 60, 100;
+	disablenpc "Códigos Prêmiados#Evt";
+	end;
+OnCodPremiado:
+	dispbottom "---------------------------------------------------------";
+	dispbottom "[ Digite '@codpremiado on' para ligar ].";
+	dispbottom "[ Digite '@codpremiado off' para desligar ].";
+	dispbottom "---------------------------------------------------------";
+	if( compare( .@atcmd_parameters$, "on" ) ){
+		enablenpc "Códigos Prêmiados#Evt";
+		end;
+	} 
+	if( compare( .@atcmd_parameters$, "off" ) ){
+		disablenpc "Códigos Prêmiados#Evt";
+		end;
+	}
+}
+prontera,167,230,4	script	Códigos Prêmiados#Evt	529,{
+
+	set .@nome$, "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+
+	//------------------------------------------------------------------------------
+	// Letras e números gerados no Código Prêmiado.
+	//------------------------------------------------------------------------------
+	setarray .pin_letra$[0],
+		"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+		"N", "O", "P", "Q", "R", "S", "T", "U", "W", "X", "Y", "Z", "@", "#";
+	//-------------------------------------------------------------------------------
+
+	mes .@nome$;
+	mes "Tem algum ^0000ffCódigo Prêmiado^000000 para resgatar?";
+	mes "Comigo você pode realizar resgate dos seus códigos prêmiados, é simples, só digitar e se estiver válidado resgatar o valor em Cash que tiver ativo no código.";
+	next;
+	switch( select("[^EF8319»^000000] Validar Código Prêmiado.","[^EF8319»^000000] O que é Código Prêmiado?:[^EF8319»^000000] Cancelar.",(getgmlevel() >= 80 ? "^FF0000[»] [ADM]^000000 Gerar Código.":""))){
+		case 3: 
+			mes .@nome$;
+			mes "Tudo bem, volte quando tiver um código!";
+			close;
+		case 2:
+			mes .@nome$;
+			mes "Afinal, o que é um Código Prêmiado?";
+			mes "São códigos distribuidos ^FF4500Staff SmartRO^000000.";
+			mes "Sempre há eventos em nossa página do ^0000FFFacebook^000000 ou então no ^FF0000Fórum e Discord^000000, é só ficar atento por lá que você pode pegar um desse códigos.";
+			mes "Ao pegar um desses códigos é só vir até mim o mais rápido possível que você poderá trocá-lo por Cash.";
+			next;
+			mes .@nome$;
+			mes "Mais lembre-se: Você deve digitar o código igual ao postado e apenas o primeiro a digitar é prêmiado!";
+			close;
+		case 1:
+			mes .@nome$;
+			mes "Para resgatar seus Código Prêmiado é necessário que digite corretamente.";
+			mes "Irei checar se está válidado em meu sistema.";
+			next;
+			input @pin$;
+			callfunc "PinCode", 1;
+			if( @pin3 >= 1 ){
+				close2;
+				message strcharinfo(0), "[ Código Prêmiado já utilizado ].";
+				dispbottom "[ Código Prêmiado não válido. Verifique se digitou corretamente ou ele já foi utilizado! ].";
+				end;
+			}
+			if( @pin$ != @pin2$ || @pin$ == "0" || @pin$ == "" ){
+				close2;
+				message strcharinfo(0), "[ Código Prêmiado já utilizado ].";
+				dispbottom "[ Código Prêmiado não válido. Verifique se digitou corretamente ou ele já foi utilizado! ].";
+				end;
+			}
+			mes .@nome$;
+			mes "^0000FFCódigo foi inserido é válidado, apto para ser resgatado.^000000";
+			next;
+			mes .@nome$;
+			mes "Código Prêmiado: ^FF0000"+ @pin$ +"^000000";
+			mes "Possui o valor de: ^FF0000"+ @qrops +"x^000000";
+			mes "Deseja receber o Cash agora?";
+			next;
+			if( select("[^EF8319»^000000] Sim.:[^EF8319»^000000] Não.") == 1 ){
+				message strcharinfo(0), "[ Parabéns! ].";
+				close2;
+				set #CASHPOINTS, #CASHPOINTS + @qrops;
+				announce "[Códigos Prêmiados]: » "+ strcharinfo(0) +" « acaba de receber o prêmio de um códigos prêmiados!", bc_all|bc_blue;
+				callfunc "PinCode", 2;
+				end;
+			}
+			close;
+		case 4:
+			mes .@nome$;
+			set @pinrandom, rand( 1,999 );
+			set @pinrandom2, rand( 1,999 );
+			set @pinrandom3, rand( 1,999 );
+			set @prd, rand( getarraysize( .pin_letra$ ));
+			set @prd2, rand( getarraysize( .pin_letra$ ));
+			set @prd3, rand( getarraysize( .pin_letra$ ));
+			set @pinrandom2$, .pin_letra$[@prd] + @pinrandom+"-"+ .pin_letra$[@prd2] + @pinrandom2 +"-"+ .pin_letra$[@prd3] + @pinrandom3;
+			mes "Código Prêmiado gerado:";
+			mes "^FF0000"+ @pinrandom2$ +"^000000.";
+			mes "Deseja utilizar este mesmo?";
+			if( getgmlevel() < 80 ) close;
+			next;
+			if( select("[^EF8319»^000000] Sim.:[^EF8319»^000000] Não.") == 2 ) close;
+				callfunc "PinCode", 4;
+				mes .@nome$;
+				if( @pinrandom2$ ==  @pinc2$ ){
+					mes "Já existe um código registrado com esse número, vou gerar um novo cógido.";
+					close;
+				}
+				mes "Agora informe quantos Cashs que deseja atribuir este Código Prêmiado:";
+				mes "^FF0000"+ @pinrandom2$ +"^000000.";
+				next;
+				input @pinrandom2;
+				mes .@nome$;
+				mes "Você digitou ^FF0000"+ @pinrandom2 +"^000000 está correto?";
+				next;
+				if( select("[^EF8319»^000000] Sim.:[^EF8319»^000000] Não.") == 2 ) close;
+					mes .@nome$;
+					mes "Muito bem, foi gerado o código:";
+					mes "^FF0000"+ @pinrandom2$ +"^000000 com ^FF0000"+@pinrandom2+"x^000000 em Cash.";
+					close2;
+					callfunc "PinCode", 3;
+					message strcharinfo(0), "[ Você gerou um código de número: "+ @pinrandom2$ +" ].";
+					message strcharinfo(0), "[ O Valor de resgate é: "+ @pinrandom2 +"x em Cash ]."; 
+					message strcharinfo(0), "[ Tempo Ativo: até ser resgatado ].";
+					end;
+					}
+}
+function	script	PinCode	{
+	if( getarg(0) == 1 ){ query_sql "SELECT `pin_code`,`pin_ativo`,`qnt_rops` FROM `pincode` WHERE `pin_code`='"+ @pin$ +"'", @pin2$, @pin3, @qrops; return; }
+	if( getarg(0) == 2 ){ query_sql "UPDATE `pincode` SET `pin_ativo` = '1' WHERE `pin_code` = '"+ @pin$ +"'"; return; }
+	if( getarg(0) == 3 ){ query_sql "INSERT INTO `pincode` (`quem_adc`,`pin_code`,`qnt_rops`,`pin_ativo`,`data_do_adc`) VALUES ('"+ strcharinfo(0) +"','"+ @pinrandom2$ +"','"+ @pinrandom2 +"','0','"+ gettimestr("%d-%m-%Y %H:%M:%S",21) +"')"; return;	 }
+	if( getarg(0) == 4 ){ set @pinc2$, 0; query_sql "SELECT `pin_code` FROM `pincode` WHERE `pin_code`='"+ @pinrandom2$ +"'", @pinc2$; return; }
+}

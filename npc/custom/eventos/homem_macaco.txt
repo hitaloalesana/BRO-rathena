@@ -1,0 +1,281 @@
+prontera,111,126,4	script	Homem Macaco	666,{
+	mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+	mes "O evento ^D2691E"+ strnpcinfo(1) +"^000000 é a transformação de um homem em um macaco muito louco, 3 baús no total são invocados por ele e no final quem sobreviver leva um prêmio!";
+	mes "^777777Prêmio do Evento:^000000";
+	mes " ^FF0000»^000000 ^0000FF"+getitemname(21024)+".^000000";
+	mes " ^FF0000»^000000 ^0000FF"+getitemname(21000)+".^000000";
+	mes " ^FF0000»^000000 ^0000FF30,000,000z.^000000";
+	mes "Deseja participar do evento?";
+	next;
+	switch( select("[^a60536»^000000] Participar.","[^a60536»^000000] Saír.") ){
+		case 1:
+			if( getgmlevel() >= 60 ){
+ warp "safari", 42, 50; end; }
+			mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+			if ( $@Start_Event == 0 ){
+				mes "No momento o evento está fechado.";
+				close;
+			}
+			announce "["+ strnpcinfo(1) +"]: O jogador » "+strcharinfo(0)+" « acabou de entrar no evento.", bc_all|bc_blue;
+			setcart 0;
+			setfalcon 0;
+			setriding 0; 
+			if( Class == 4041 || Class == 18 || Class == 4019 ){
+				atcommand "@useskill 244 1 "+ strcharinfo(0); 
+			}
+			if( getpetinfo(2) != "null" ){ 
+				dispbottom "[ Remova seu pet para entrar no evento ].";
+				close; 
+			}
+			sc_end SC_ALL;
+			sc_start SC_DECREASEAGI, 1200000, 10;
+			percentheal 100, 100;
+			atcommand "@storeall";
+			warp "safari", 50, 47;
+			end;
+		case 2:
+			mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+			mes "Até logo.";
+			break;
+		}
+		close;
+OnInit:
+	disablenpc "Prêmiador#1";
+	disablenpc "Transformando...";
+	set $@Start_Event, 0;
+	end;
+
+
+}
+-	script	Monkey#Evt	-1,{
+OnWhisperGlobal:
+
+	if( getgmlevel() >= 60 ){
+
+		if( @whispervar0$ == "ativar" )
+ 
+			donpcevent strnpcinfo(0) +"::OnMonkey"; 
+	}
+	end;
+OnMonkey:
+	set $@Start_Event, 1;
+	announce "[Homem Macaco]: O evento » Homem Macaco « iniciará em 3 minutos!", bc_all | bc_blue;
+	killmonsterall "safari";
+	sleep 60000;
+	announce "[Homem Macaco]: O evento » Homem Macaco « iniciará em 2 minutos!", bc_all | bc_blue;
+	sleep 60000;
+	announce "[Homem Macaco]: O evento » Homem Macaco « iniciará em 1 minutos!", bc_all | bc_blue;
+	sleep 60000;
+	if( getmapusers("safari") == 1 ){
+		mapannounce "safari","[Homem Macaco]: Evento cancelado devido a falta de participantes.", bc_all|bc_blue;
+		set $@Start_Event, 0;
+		killmonsterall "safari";
+		end;
+	}
+	enablenpc "Transformando...";
+	specialeffect 800,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 690,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 55,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 62,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 55,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 62,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 55,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 62,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 62,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 62,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 602,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 58,AREA,"Transformando...";
+	sleep 200;
+	specialeffect 540,AREA,"Transformando...";
+	sleep 500;
+	specialeffect 800,AREA,"Transformando...";
+	disablenpc "Transformando...";
+	mapannounce "safari","» 1º Baú do Tesouro sendo invocado «", bc_all | bc_blue;
+	sleep 1000;
+	monster "safari", 44, 52, "Baú do Tesouro", 1798, 1, strnpcinfo(0)+"::OnBoxBreak";
+	sleep 1000;
+	mapannounce "safari","» O Homem Macaco também foi invocado «", bc_all | bc_blue;
+	monster "safari", 50, 47, "Homem Macaco", 1585, 1, 4;
+	sleep 20000;
+	mapannounce "safari","» 2º Baú do Tesouro sendo invocado «", bc_all | bc_blue;
+	sleep 1000;
+	monster "safari", 54, 52, "Baú do Tesouro", 1798, 1, strnpcinfo(0)+"::OnBoxBreak";
+	sleep 20000;
+	mapannounce "safari","» 3º Baú do Tesouro sendo invocado «", bc_all | bc_blue;
+	sleep 1000;
+	monster "safari", 49, 42, "Baú do Tesouro", 1798, 1, strnpcinfo(0)+"::OnBoxBreak";
+	sleep 30000;
+	while( getmapusers("safari") > 1 ){
+		mapannounce "safari","» "+ getmapusers("safari") +" jogadore(s) vivos «", bc_all|bc_blue;
+		sleep 1000;
+	}
+	killmonsterall "safari";
+	announce "[Homem Macaco]: O evento terminou. Tiveram ["+ getmapusers("safari") +" sobreviventes].", bc_all|bc_blue;
+	set $@Start_Event, 0;
+	enablenpc "Prêmiador#1";
+	end;
+OnBoxBreak:
+	set .monkey_x, rand( 41,57 );
+	set .monkey_y, rand( 40,55 );
+	makeitem 21000, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21024, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21024, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21024, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21003, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21003, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21003, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21003, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 21003, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 610, 1, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;	
+	makeitem 513, 12, "safari", .monkey_x, .monkey_y;
+	end;
+
+}
+safari,50,47,6	script	Transformando...	1861,{
+end;
+}
+-	script	Monkey_Die#Evt	-1,{
+OnPCDieEvent:
+	getmapxy .@map_avz$, .@x, .@y, 0;
+	if( .@map_avz$ == "safari" ){
+		dispbottom "[ Você morreu e foi eliminado ].";
+		sleep2 8000;
+		warp "SavePoint", 0, 0;
+	}
+	end;
+}
+safari,49,47,3	script	Prêmiador#1	72,{
+	if( getmapusers("safari") > 1 ){
+		dispbottom "[ Apenas o vencedor por retirar o prêmio ].";
+		end;
+	}
+	dispbottom "» Parabéns pela sua vitória no evento.";
+	announce "[Homem Macaco]: O jogador » "+strcharinfo(0)+" « foi o sobrevivente!", bc_all|bc_blue;
+	getitem 21024, 10;
+	getitem 21000, 3;
+	set Zeny, Zeny + 30000000;
+	query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
+	warp "SavePoint", 0, 0;
+	disablenpc "Prêmiador#1";
+	end;
+}
+
+safari,36,45,5	script	Choco#C1::Mchoco	1214,{
+OnInit:
+	initnpctimer;
+	npcspeed 200;
+	end;
+OnTimer3000:
+	npcwalkto rand(41,55),rand(188,208);
+	initnpctimer;
+	end;
+}
+safari,53,59,5	duplicate(Mchoco)	Choco#2	1214,{
+safari,38,43,5	script	Yoyo#Y1::Myoyo	1057,{
+OnInit:
+	initnpctimer;
+	npcspeed 200;
+	end;
+OnTimer3000:
+	npcwalkto rand(41,55),rand(188,208);
+	initnpctimer;
+	end;
+}
+
+
+safari,38,46,4	duplicate(Myoyo)	Yoyo#2	1057
+safari,35,44,5	duplicate(Myoyo)	Yoyo#3	1057
+safari,51,59,5	duplicate(Myoyo)	Yoyo#4	1057
+safari,53,61,5	duplicate(Myoyo)	Yoyo#5	1057
+safari,51,62,5	duplicate(Myoyo)	Yoyo#6	1057
+
+safari	mapflag	nowarpto
+safari	mapflag	nowarp
+safari	mapflag	noteleport
+safari	mapflag	nomemo
+safari	mapflag	nosave
+safari	mapflag	nobranch
+safari	mapflag	noicewall
+safari	mapflag	nopenalty
+safari	mapflag	nobranch
+safari	mapflag	noexp
+safari	mapflag	noreturn
+safari	mapflag	restricted	1

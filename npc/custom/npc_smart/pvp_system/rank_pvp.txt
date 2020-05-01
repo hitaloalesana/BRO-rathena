@@ -1,0 +1,78 @@
+function	script	Rank_System	{
+	//= Configurações [ PvP ]
+		set .pvpLIMIT,10; //= Padrão: 10
+	//= Configurações [ GvG ]
+		set .gvgLIMIT,10; //= Padrão: 10
+	//= Addon: Reset nos Rankings
+	//= [MANUAL] Nível de GM que poderá efetuar o reset do ranking [ Para desativar mude o level de 99 para 100 ] 
+		set .GMreset, 99; //= Padrão: 99
+	//= [MANUAL] Código para confirmação do reset dos ranking
+		set .PWreset$,"smart"; //= Padrão: C0D1G0
+	
+	if(getgmlevel() >= .GMreset){
+		mes "^FF0000(Painel Administrador)^000000:";
+		mes "Veio para resetar o Ranking PvP ou GvG?";
+		next;
+		if(select("Sim:Não") == 1){
+				mes .ranking$;
+				mes "Por favor forneça o código para confirmação dessa operação";
+				next;
+				input .@codigo$;
+				mes .ranking$;
+				if(.@codigo$ == .PWreset$){
+					mes "Código correto! Qual ranking gostaria de resetar?";
+					next;
+					switch(select("^FFA500Ranking PvP (TOP "+.pvpLIMIT+")^000000","^008B8BRanking GvG (TOP "+.gvgLIMIT+")^000000","^66CDAARanking PvP & GvG^000000")){
+						case 1: 
+							mes .ranking$;
+							mes "Operação realizada com sucesso!"; 
+							query_sql "TRUNCATE `pvp`";
+							close;
+						case 2: 
+							mes .ranking$;
+							mes "Operação realizada com sucesso!"; 
+							query_sql "TRUNCATE `gvg`";
+							close;
+						case 3:
+							mes .ranking$;
+							mes "Operação realizada com sucesso!"; 
+							query_sql "TRUNCATE `pvp`";
+							query_sql "TRUNCATE `gvg`";
+							close;
+					}
+				}else{
+					mes "Código Incorreto! Abortando operação";
+					close;
+				}
+
+			}else{
+					close2;
+					mes .ranking$;
+				}
+	}
+	switch( select("[^EF8319»^000000] Ranking PvP ^777777[TOP "+.pvpLIMIT+"]^000000.","[^EF8319»^000000] Meu Ranking.","[^EF8319»^000000] Saír.") ){
+		case 1:
+			set .@query, query_sql ("SELECT `nick`, `vitorias`, `derrotas` FROM `pvp` ORDER BY `vitorias` DESC LIMIT "+((.pvpLIMIT > 125) ? 125 : .pvpLIMIT)+"",.@nick$,.@vitorias,.@derrotas);
+			mes "^EF8319[Ranking PvP (TOP "+.pvpLIMIT+")]^000000";
+			mes "^CDC9C9---------------------------------^000000";
+			mes "^2596C2Pos.^000000 ^CDC9C9|^000000 ^777777Nome^000000 ^CDC9C9|^000000 ^458B00Vit.^000000 ^CDC9C9|^000000 ^CD3333Derr.^000000 ^CDC9C9|^000000 ^CD8500Total^000000";
+			mes "^CDC9C9---------------------------------^000000";
+			for( set .@i, 0; .@i < .@query; set .@i, .@i+1 ){
+				mes "^2596C2("+(.@i+1)+").^000000 ^777777"+.@nick$[.@i]+"^000000 ^CDC9C9|^000000 ^458B00"+.@vitorias[.@i]+"^000000 ^CDC9C9|^000000 ^CD3333"+.@derrotas[.@i]+"^000000 ^CDC9C9|^000000 ^CD8500"+(.@vitorias[.@i] - .@derrotas[.@i])+"^000000";
+			}
+			mes "^CDC9C9---------------------------------^000000";
+			close;
+		case 2:
+			query_sql "SELECT `vitorias`, `derrotas` FROM `pvp` WHERE `char_id` = '"+getcharid(0)+"'",.@vitorias,.@derrotas;
+			set .@pontuacao, .@vitorias - .@derrotas;
+			mes "^EF8319[Meu Ranking]^000000";
+			mes "^CDC9C9---------------------------------^000000";
+			mes "^458B00Vit.^000000 ^CDC9C9|^000000 ^CD3333Derr.^000000 ^CDC9C9|^000000 ^CD8500Total^000000";
+			mes "^CDC9C9---------------------------------^000000";
+			mes "^458B00"+.@vitorias+"^000000 ^CDC9C9|^000000 ^CD3333"+.@derrotas+"^000000 ^CDC9C9|^000000 ^CD8500"+.@pontuacao;
+			mes "^CDC9C9---------------------------------^000000";
+			close;
+		case 3:
+			close;
+			}
+}

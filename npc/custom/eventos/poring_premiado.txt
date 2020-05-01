@@ -1,0 +1,122 @@
+prontera,126,126,4	script	Poring Prêmiado	644,{
+		mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+		mes "No evento ^CD2990Poring Prêmiado^000000 terá diversos porings, todos com nomes estranhos, encontre o certo e será recompensado!";
+		mes "^777777Prêmio do Evento:^000000";
+		mes " ^FF0000»^000000 ^0000FF"+ getitemname(21024)+"^000000 e ^0000FF10,000,000z.^000000";
+		next;
+		if( select("[^ff0000»^000000] Participar.:[^ff0000»^000000] Saír.") == 1 ){
+			mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+			if( !$act_poring ){
+				mes "A entrada no evento não está disponível no momento.";
+				close;
+			}
+			if( isequipped(4147) == 1 || countitem(4147) >= 1 || checkcart() ){
+				mes "Você não pode entrar no evento com ^0000FF"+getitemname(4147)+"^000000 equipada em algum item ou utilizando um ^0000FFCarrinho^000000.";
+				close;
+			}
+			mes "Boa sorte.";
+			close2;
+			announce "[Poring Prêmiado]: » "+strcharinfo(0)+" « acaba de entrar no evento!", bc_all|bc_blue;
+			warp "pvp_n_2-2", 100, 100;
+			end;
+		}
+		close;
+}
+-	script	PP#Evt	-1,{
+OnInit:
+	set $act_poring, 0;
+	killmonsterall "pvp_n_2-2";
+	end;
+
+OnWhisperGlobal:
+
+	if( getgmlevel() >= 60 ){
+
+		if( @whispervar0$ == "ativar" )
+ 
+			donpcevent strnpcinfo(0) +"::OnEventStart"; 
+	}
+	end;
+
+
+OnClock1000:
+OnClock0300:
+OnClock0500:
+OnEventStart:
+	set $act_poring, 1;
+	announce "[Poring Prêmiado]: O evento » Poring Prêmiado « começa em 3 minutos!", bc_all|bc_blue;
+	sleep 60000;
+	announce "[Poring Prêmiado]: O evento » Poring Prêmiado « começa em 2 minutos!", bc_all|bc_blue;
+	sleep 60000;
+	announce "[Poring Prêmiado]: O evento » Poring Prêmiado « começa em 1 minutos!", bc_all|bc_blue;
+	sleep 60000;
+	announce "[Poring Prêmiado]: O portal para o evento se fechou. 10 minutos para encontrar o Poring!", bc_all|bc_blue;
+	initnpctimer;
+	monster "pvp_n_2-2", 0, 0,"Poring", 1002, 1, strnpcinfo(0) +"::OnMobKilled";
+			
+	monster "pvp_n_2-2", 0, 0, "Pouring", 1002, 40, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0, "Proing", 1002, 25, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Poirng", 1002, 40, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Poing", 1002, 25, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Porimg", 1002, 40, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Porinq", 1002, 25, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Porinng", 1113, 40, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Poriing", 1062, 25, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Por|ng", 1002, 40, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Por1ng", 1002, 25, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Porong", 1002, 40, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"P0ring", 1002, 20, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Puring", 1002, 40, strnpcinfo(0) +"::OnWrongKilled";
+	monster "pvp_n_2-2", 0, 0,"Porng", 1002, 25, strnpcinfo(0) +"::OnWrongKilled";
+	sleep 600000;
+	while( getmapusers("pvp_n_2-2") > 1 ){
+		mapannounce "pvp_n_2-2","» "+ getmapusers("safari") +" jogadore(s) e ninguém encontrou o Poring «", bc_all|bc_blue;
+		sleep 5000;
+	}
+	announce "[Poring Prêmiado]: O tempo acabou, obrigado pela participação.", bc_all|bc_blue;
+	set $act_poring, 0;
+	killmonsterall "pvp_n_2-2";
+	end;
+
+OnMobKilled:
+	killmonsterall "pvp_n_2-2";
+	announce "[Poring Prêmiado]: » "+strcharinfo(0)+" « encontrou o Poring Prêmiado. O evento terminou!", bc_all|bc_blue;
+	message strcharinfo(0),"[ Parabéns, você achou o Poring Prêmiado ].";
+	query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
+	getitem 21024, 10;
+	set Zeny, Zeny + 15000000;
+	sleep 6500;
+	mapwarp "pvp_n_2-2","prontera", 156, 191; 
+
+	set $act_poring, 0;
+	end;
+
+OnWrongKilled:
+	set .@hp, rand(10,50);
+	message strcharinfo(0),"» Você matou um Poring errado.";
+	switch( rand(1,4) ){
+		case 1:
+		case 3: 
+			specialeffect2 28;
+			dispbottom "[ Você foi Congelado, atente-se ].";
+			sc_start SC_FREEZE, 2000, 0;
+			end;
+		case 2:
+		case 4:
+			specialeffect2 18;
+			dispbottom "[ -"+ .@hp +"% de HP, cuidado você pode morrer ].";
+			percentheal -.@hp, 100;
+			end;
+	}
+	end;
+}
+pvp_n_2-2	mapflag	noskill
+pvp_n_2-2	mapflag	nowarpto
+pvp_n_2-2	mapflag	nowarp
+pvp_n_2-2	mapflag	nosave
+pvp_n_2-2	mapflag	nomemo
+pvp_n_2-2	mapflag	noreturn
+pvp_n_2-2	mapflag	nobranch
+pvp_n_2-2	mapflag	nodrop
+pvp_n_2-2	mapflag	novending
+pvp_n_2-2	mapflag	noloot

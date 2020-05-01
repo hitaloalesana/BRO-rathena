@@ -1,0 +1,14 @@
+-	script	woe_warp#smart	-1,{
+OnInit:
+	bindatcmd("woe", strnpcinfo(0) +"::OnWoE");
+	end;
+OnWoE:
+	switch( select("[^ff0000»^000000] Castelo ^ff0000Horn^000000.","[^ff0000»^000000] Castelo ^ff0000Kriemhild^000000.","[^ff0000»^000000] Castelo ^ff0000Vidblain^000000.","[^ff0000»^000000] Saír.") ){
+		case 1: warp "aru_gld", 68, 152;
+ end;
+		case 2: warp "prt_gld", 132, 64; end;
+		case 3: warp "sch_gld", 97, 185;
+ end;
+		case 4: close;
+		}
+}

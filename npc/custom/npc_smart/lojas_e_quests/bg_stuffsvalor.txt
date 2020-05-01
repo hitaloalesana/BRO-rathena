@@ -1,0 +1,14 @@
+prt_smart,1,1,5,7829	sshop	valor	111,12118:30,12119:30,12120:30,12121:30,21052:80,7321:40,12247:100,14287:40,14288:40,21044:10,21004:60,21005:10,21006:60,21007:60,21008:60,21009:60,21010:60,21011:60,21012:60,21013:60,21014:60,21015:400
+prt_smart,196,189,4	script	Loja de Stuffs 2#bg2	672,{
+		callshop "valor",0;
+		end;
+	OnInit:
+ 		waitingroom "", 0;
+	OnTimer2000:
+		setarray .@Display$, "[ Valor ]", "» Stuffs & Itens";
+		set .@msg, rand( getarraysize( .@Display$) );
+		delwaitingroom;
+		waitingroom .@Display$[.@msg], 0;
+		initnpctimer;
+		end;
+}

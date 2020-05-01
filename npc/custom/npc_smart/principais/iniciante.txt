@@ -1,0 +1,553 @@
+/*
+CREATE TABLE IF NOT EXISTS `iniciante_premiacao` (
+  `account_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
+  `ip` VARCHAR(100) NOT NULL DEFAULT '',
+  `mac` VARCHAR(18) NOT NULL DEFAULT '',
+  PRIMARY KEY (`account_id`, `ip`, `mac`)
+) ENGINE=MyISAM;
+*/
+
+new_1-1,172,83,5	script	ConnectRAG Iniciante#job1	831,{
+
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Olá!, Bem-vindo(a) ao ConnectRAG, " + strcharinfo(0) + ".";
+	mes "Vejo que você é novo no servidor, e meu trabalho é dar uma ajuda aos novos membros da família ConnectRAG.";
+	mes "Posso transformar você em qualquer classe a sua escolha e com isso você irá receber uma Caixa com as quests principais dessa mesma classe.";
+	next;
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Requerimentos:";
+	mes "- Você deve ser um Aprendiz 1/1.";
+	mes "- Você só poderá receber 1 prêmio por MAC e Conta.";
+	next;
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Você está interessado na nossa ajuda?";
+	next;
+	if( select("[^ff0000»^000000] Sim, adoraria.:Não, obrigado.") == 2 ){
+		mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+		mes "Caso queira nossa ajuda, volte em breve!!";
+		close;
+	}
+
+	set .@lastIP$, callsub(sub_Querys,0,getcharid(3));
+	set .@lastMac$, callsub(sub_Querys,1,getcharid(3));
+
+	set .@check, callsub(sub_Querys,2,.@lastIP$, .@lastMac$, getcharid(3));
+
+	if( .@check || BaseLevel > 1 || JobLevel > 1 || Class != Job_Novice || #WelcomeBonus != 0 )
+	{
+		mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+		mes "Desculpa mas você não possui os requisitos necessários ou você ja pegou sua premiação.";
+		next;
+		warp "prontera",156,191;
+		close;
+	}
+
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Vejo que você escolheu aceitar a nossa ajuda!";
+	next;
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Você está pronto para escolher a sua classe?";
+	mes "Lembre-se este serviço só pode ser usado ^0000FFUma vez por conta e MAC address^000000.";
+	mes "Então, espero que você esteja certo sobre a sua escolha.";
+	next;
+
+	if( BaseLevel > 1 || JobLevel > 1 || Class != Job_Novice ){
+		mes "Desculpa, mas este serviço é somente para aprendiz de base level 1 e job level 1";
+		close;
+	}
+
+	if( #WelcomeBonus != 0 ){
+		mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+		mes "Espere... Você não possui todos os requisitos ou ja pegou sua premiação.";
+		mes "Desculpa, mas você não devia estar aqui.";
+		close;
+	}
+
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Ok deixe-me mostrar o menu das classes:";
+	next;
+
+	if( getarraysize(.Classes) <= 0 )
+		donpcevent "ConnectRAG Iniciante#job1::OnInit";
+
+	set .@Job, select(.Menu$) - 1;
+
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Você escolheu a classe ^0000FF" + jobname(.Classes[.@Job]) + "^000000.";
+	mes "Por favor, pense se está certo disso. O botão para continuar com o processo irá aparecer em 5 segundos.";
+	sleep2 5000;
+	mes "Você está certo sobre isso?";
+	next;
+	if( select("[^ff0000»^000000] ^0000FFSim, estou.^000000:Não, desculpe... Vou escolher outra classe.") == 2 ){
+		mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+		mes "Ok, leve o tempo que quiser e escolha certo.";
+		close;
+	}
+
+	if( (.Classes[.@Job] == Job_Bard || .Classes[.@Job] == Job_Clown || .Classes[.@Job] == Job_Baby_Bard) && Sex == 0 ){
+		mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+		mes "A classe selecionada não está disponível para o seu sexo.";
+		close;
+	}
+	if( (.Classes[.@Job] == Job_Dancer || .Classes[.@Job] == Job_Gypsy || .Classes[.@Job] == Job_Baby_Dancer) && Sex == 1 ){
+		mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+		mes "A classe selecionada não está disponível para o seu sexo.";
+		close;
+	}
+
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Agora deixe-me fazer a mágica, você irá virar um ^0000FF" + jobname(.Classes[.@Job]) + "^000000.";
+	next;
+
+	// Convertion Process
+	// =========================================================
+
+	if( .Classes[.@Job] >= Job_Lord_Knight && .Classes[.@Job] <= Job_Paladin2 )
+		atcommand "@job 4001"; // High Novice
+	else if( .Classes[.@Job] >= Job_Baby_Knight && .Classes[.@Job] <= Job_Super_Baby )
+		atcommand "@job 4023"; // Baby Novice
+	else
+		atcommand "@job 0"; // Novice
+
+		atcommand "@reset";
+		atcommand "@joblevel 9";
+		atcommand "@baselevel 299";
+
+	switch( .Classes[.@Job] ){
+	// ********************
+	// * Advanced Classes *
+	// ********************
+	case Job_Lord_Knight:
+	case Job_Lord_Knight2:
+		atcommand "@job 4002";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 144,1,0;
+		skill 145,1,0;			
+		skill 146,1,0;
+		atcommand "@job 4008";
+		atcommand "@joblevel 119";
+		skill 1001,1,0;
+		rentitem 24003,1209600;
+		rentitem 25050,1209600;
+		rentitem 26030,1209600;
+		rentitem 27502,1209600;
+		rentitem 27502,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1426,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		
+		break;
+	case Job_High_Priest:
+		atcommand "@job 4005";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 156,1,0;
+		atcommand "@job 4009";
+		atcommand "@joblevel 119";
+		skill 1014,1,0;
+		rentitem 24062,1209600;
+		rentitem 25041,1209600;
+		rentitem 26059,1209600;
+		rentitem 27505,1209600;
+		rentitem 27505,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1640,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_High_Wizard:
+		atcommand "@job 4003";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 157,1,0;
+		atcommand "@job 4010";
+		atcommand "@joblevel 119";
+		skill 1006,1,0;
+		rentitem 24062,1209600;
+		rentitem 25041,1209600;
+		rentitem 26024,1209600;
+		rentitem 27505,1209600;
+		rentitem 27505,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1640,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Whitesmith:
+		atcommand "@job 4006";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 153,1,0;
+		skill 154,1,0;
+		skill 155,1,0;
+		atcommand "@job 4011";
+		atcommand "@joblevel 119";
+		skill 1012,1,0;
+		skill 1013,1,0;
+		rentitem 24003,1209600;
+		rentitem 25050,1209600;
+		rentitem 26031,1209600;
+		rentitem 27502,1209600;
+		rentitem 27502,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1310,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Sniper:
+		atcommand "@job 4004";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 147,1,0;
+		skill 148,1,0;
+		atcommand "@job 4012";
+		atcommand "@joblevel 119";
+		skill 1009,1,0;
+		rentitem 1743,1209600;
+		rentitem 24064,1209600;
+		rentitem 25047,1209600;
+		rentitem 26009,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Assassin_Cross:
+		atcommand "@job 4007";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 149,1,0;
+		skill 150,1,0;
+		skill 151,1,0;
+		skill 152,1,0;
+		atcommand "@job 4013";
+		atcommand "@joblevel 119";
+		skill 1003,1,0;
+		skill 1004,1,0;
+		rentitem 13042,1209600;
+		rentitem 13042,1209600;
+		rentitem 24080,1209600;
+		rentitem 25042,1209600;
+		rentitem 26014,1209600;
+		rentitem 27502,1209600;
+		rentitem 27502,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Paladin:
+	case Job_Paladin2:
+		atcommand "@job 4002";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 144,1,0;
+		skill 145,1,0;
+		skill 146,1,0;
+		atcommand "@job 4015";
+		atcommand "@joblevel 119";
+		skill 1002,1,0;
+		rentitem 24076,1209600;
+		rentitem 25044,1209600;
+		rentitem 26027,1209600;
+		rentitem 27501,1209600;
+		rentitem 27501,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 13416,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Champion:
+		atcommand "@job 4005";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 156,1,0;
+		atcommand "@job 4016";
+		atcommand "@joblevel 119";
+		skill 1015,1,0;
+		skill 1016,1,0;
+		rentitem 24003,1209600;
+		rentitem 25050,1209600;
+		rentitem 26021,1209600;
+		rentitem 27502,1209600;
+		rentitem 27502,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1827,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Professor:
+		atcommand "@job 4003";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 157,1,0;
+		atcommand "@job 4017";
+		atcommand "@joblevel 119";
+		skill 1007,1,0;
+		rentitem 24062,1209600;
+		rentitem 25041,1209600;
+		rentitem 26024,1209600;
+		rentitem 27505,1209600;
+		rentitem 27505,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1577,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Stalker:
+		atcommand "@job 4007";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 149,1,0;
+		skill 150,1,0;
+		skill 151,1,0;
+		skill 152,1,0;
+		atcommand "@job 4018";
+		atcommand "@joblevel 119";
+		skill 1005,1,0;
+		rentitem 1743,1209600;
+		rentitem 24064,1209600;
+		rentitem 25047,1209600;
+		rentitem 26009,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Creator:
+		atcommand "@job 4006";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 153,1,0;
+		skill 154,1,0;
+		skill 155,1,0;
+		atcommand "@job 4019";
+		atcommand "@joblevel 119";
+		skill 238,1,0;
+		rentitem 24002,1209600;
+		rentitem 26022,1209600;
+		rentitem 25041,1209600;
+		rentitem 13042,1209600;
+		rentitem 27505,1209600;
+		rentitem 27505,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Clown:
+		atcommand "@job 4004";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 147,1,0;
+		skill 148,1,0;
+		atcommand "@job 4020";
+		atcommand "@joblevel 119";
+		skill 1010,1,0;
+		rentitem 1927,1209600;
+		rentitem 24011,1209600;
+		rentitem 24084,1209600;
+		rentitem 26034,1209600;
+		rentitem 25047,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Gypsy:
+		atcommand "@job 4004";
+		atcommand "@joblevel 49";
+		skill 142,1,0;
+		skill 147,1,0;
+		skill 148,1,0;
+		atcommand "@job 4021";
+		atcommand "@joblevel 119";
+		skill 1011,1,0;
+		rentitem 1981,1209600;
+		rentitem 24011,1209600;
+		rentitem 24084,1209600;
+		rentitem 26034,1209600;
+		rentitem 25047,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	// *******************
+	// * Expanded Classes *
+	// *******************
+	case Job_Star_Gladiator:
+		atcommand "@job 4046";
+		atcommand "@joblevel 49";
+		atcommand "@job 4047";
+		atcommand "@joblevel 119";
+		rentitem 24064,1209600;
+		rentitem 25047,1209600;
+		rentitem 26009,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1576,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Soul_Linker:
+		atcommand "@job 4046";
+		atcommand "@joblevel 49";
+		atcommand "@job 4049";
+		atcommand "@joblevel 119";
+		rentitem 24064,1209600;
+		rentitem 25047,1209600;
+		rentitem 26009,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1576,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Gunslinger:
+		atcommand "@job 24";
+		atcommand "@joblevel 119";
+		rentitem 24064,1209600;
+		rentitem 25047,1209600;
+		rentitem 26009,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 13110,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Ninja:
+		atcommand "@job 25";
+		atcommand "@joblevel 119";
+		rentitem 13307,1209600;
+		rentitem 24045,1209600;
+		rentitem 25041,1209600;
+		rentitem 26036,1209600;
+		rentitem 27505,1209600;
+		rentitem 27505,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	case Job_Taekwon:
+		atcommand "@job 4046";
+		atcommand "@joblevel 49";
+		rentitem 24064,1209600;
+		rentitem 25047,1209600;
+		rentitem 26009,1209600;
+		rentitem 27500,1209600;
+		rentitem 27500,1209600;
+		rentitem 27004,1209600;
+		rentitem 27005,1209600;
+		rentitem 27006,1209600;
+		rentitem 27007,1209600;
+		rentitem 1576,1209600;
+		getitem 21003,5;
+		getitem 12103,15;
+		break;
+	}
+
+	query_sql("INSERT INTO `iniciante_premiacao` VALUES (" + getcharid(3) + ", '" + .@lastIP$ + "', '" + .@lastMac$ + "')");
+	set #WelcomeBonus, getcharid(0);
+	// =========================================================
+
+	mes "[ ^a60536ConnectRAG Iniciante^000000 ]";
+	mes "Ok, serviço feito.";
+	mes "Aproveite o nosso servidor e chame seus amigos também para jogar!!";
+	next;
+	savepoint "prontera",142,168;
+	warp "prontera",142,168;
+	close;
+
+	sub_Querys:
+		switch(getarg(0)) {
+			case 0:
+				query_sql("SELECT `last_ip` FROM `login` WHERE `account_id`='" + getarg(1) + "'", .@lastIP$);
+				return getarraysize(.@lastIP$) ? .@lastIP$[0] : "";
+			case 1:
+				query_sql("SELECT `last_mac` FROM `login` WHERE `account_id`='" + getarg(1) + "'", .@lastMac$);
+				return getarraysize(.@lastMac$) ? .@lastMac$[0] : "";
+			case 2:
+				query_sql("SELECT `account_id` FROM `iniciante_premiacao` WHERE `account_id`='" + getarg(3) + "' OR `ip`='" + getarg(1) + "' OR `mac`='" + getarg(2) + "'", .@aid);
+				return getarraysize(.@aid) ? 1 : 0;
+			default:
+				break;
+		}
+	return 0;
+
+OnInit:
+	setarray .Classes[0]
+	// Second Class
+	//	,Job_Knight,Job_Priest,Job_Wizard,Job_Blacksmith,Job_Hunter,Job_Assassin,Job_Crusader,Job_Monk,Job_Sage,Job_Rogue,Job_Alchemist,Job_Bard,Job_Dancer
+	// Advanced
+		,Job_Lord_Knight,Job_High_Priest,Job_High_Wizard,Job_Whitesmith,Job_Sniper,Job_Assassin_Cross,Job_Paladin,Job_Champion,Job_Professor,Job_Stalker,Job_Creator,Job_Clown,Job_Gypsy
+	// Expanded Class
+		,Job_Gunslinger,Job_Ninja,Job_Taekwon,Job_Star_Gladiator,Job_Soul_Linker
+	// Baby Second Class
+	//	,Job_Baby_Knight,Job_Baby_Priest,Job_Baby_Wizard,Job_Baby_Blacksmith,Job_Baby_Hunter,Job_Baby_Assassin,Job_Baby_Crusader,Job_Baby_Monk,Job_Baby_Sage,Job_Baby_Rogue,Job_Baby_Alchemist,Job_Baby_Bard,Job_Baby_Dancer
+	;
+
+	set .@Limit, getarraysize(.Classes);
+	set .Menu$, "";
+	for( set .@i, 0; .@i < .@Limit; set .@i, .@i + 1 )
+		set .Menu$, .Menu$ + jobname(.Classes[.@i]) + ":";
+	end;
+}

@@ -1,0 +1,80 @@
+prontera,161,191,3	script	Registro de Guilds	652,{
+	set @npc$,"[ ^a60536Registro de Guilds^000000 ]";
+	set @lvl,99; // Level para administrar o npc
+	if (getgmlevel() == @lvl){ 
+		mes @npc$;
+		mes "Olá "+strcharinfo(0)+" o que deseja fazer?";
+		switch(select("[^ff0000»^000000] Adicionar Nova Guild.:[^ff0000»^000000] Remover Guild.:[^ff0000»^000000] Ver as Guilds Registradas.")){
+		case 1:
+			next;
+			mes @npc$;
+			mes "Digite o nome da guild para registrar.";
+			input .@registro$;
+			query_sql "SELECT `guild_id` FROM `guild` WHERE `name`='"+.@registro$+"'",.@semnome;
+			if(.@semnome == 0){
+				next;
+				mes @npc$;
+				mes "Desculpe mais você não digitou o nome da guild corretamente.";
+				close;
+			}
+			next;
+
+			mes @npc$;
+			mes "Tem certeza que deseja registrar a guild ^ff0000"+.@registro$+"^000000?";
+			if (select("[^ff0000»^000000] Sim.:Não.") == 2) close;
+				next;
+				query_sql "UPDATE `guild` SET `register_woe` = '1' WHERE `name`='"+.@registro$+"'",.@semnome;
+				mes @npc$;
+				mes "O registro da guild "+.@registro$+" foi realizada com sucesso!";
+			close;
+			
+		case 2:
+			next;
+			mes @npc$;
+			mes "Digite o nome da guild para remover o registro.";
+			input .@registro$;
+			query_sql "SELECT `guild_id` FROM `guild` WHERE `name`='"+.@registro$+"'",.@semnome;
+			if(.@semnome == 0){
+				next;
+				mes @npc$;
+				mes "Desculpe mais você não digitou o nome da guild corretamente.";
+				close;
+			}
+			next;
+
+			mes @npc$;
+			mes "Tem certeza que deseja remover o registro da guild ^ff0000"+.@registro$+"^000000?";
+			if (select("[^ff0000»^000000] Sim.:Não.") == 2) close;
+				next;
+				query_sql "UPDATE `guild` SET `register_woe` = '0' WHERE `name`='"+.@registro$+"'",.@semnome;
+				mes @npc$;
+				mes "A remoção do registro da guild "+.@registro$+" foi realizada com sucesso!";
+			close;
+			
+		case 3:
+			next;
+			mes @npc$;
+			query_sql "SELECT `register_woe`, `guild_id`, `name` FROM `guild`",.@register_woe,.@guild_id,.@nome_guild$;
+			for( set .@i,0; .@i < getarraysize(.@guild_id); set .@i,.@i+1 )
+				if(.@register_woe[.@i] == 1)
+					mes .@nome_guild$[.@i];
+			close;
+		}	
+	} else {
+		mes @npc$;
+		mes "Olá "+strcharinfo(0)+" o que deseja fazer?";
+		switch(select("[^ff0000»^000000] Ver as Guilds Registradas.:Nada.")){
+		
+		case 1:
+			next;
+			mes @npc$;
+			query_sql "SELECT `register_woe`, `guild_id`, `name` FROM `guild`",.@register_woe,.@guild_id,.@nome_guild$;
+			for( set .@i,0; .@i < getarraysize(.@guild_id); set .@i,.@i+1 )
+				if(.@register_woe[.@i] == 1)
+					mes .@nome_guild$[.@i];
+			close;
+		case 2:
+			close;
+		}
+	}
+}

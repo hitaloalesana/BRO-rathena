@@ -1,0 +1,241 @@
+/*.---------------------------------------------------------------------.
+  .		 ____                          __                          		.
+  .		/\  _`\                       /\ \__  __                   		.
+  .		\ \ \/\_\  _ __    __     __  \ \ ,_\/\_\  __  __     __   		.
+  .		 \ \ \/_/_/\`'__\/'__`\ /'__`\ \ \ \/\/\ \/\ \/\ \  /'__`\ 		.
+  .		  \ \ \s\ \ \ \//\  __//\ \d\.\_\ \ \_\ \ \ \ \_/ |/\  __/ 		.
+  .		   \ \____/\ \_\\ \____\ \__/.\_\\ \__\\ \_\ \___/ \ \____\		.
+  .		    \/___/  \/_/ \/____/\/__/\/_/ \/__/ \/_/\/__/   \/____/		.
+  .																		.
+  .				2014~2015 © Creative Services and Developent			.
+  .						  www.creativesd.com.br							.
+  .					    www.sbkmod.ragnagreen.com                       .
+  .---------------------------------------------------------------------.
+  . Script:													            .
+  .	   Sistema de Reestoque                                             .
+  .---------------------------------------------------------------------.
+  . Autor: Romulo SM (sbk_)                                 Versão: 1.1	.
+  .                                                                     .
+  . Compátivel:	eAthena                                             	.
+  .---------------------------------------------------------------------.
+  . Descrição:															.
+  .	   Reestoque de itens usáveis do Armazém para o Inventário.         .
+  *---------------------------------------------------------------------*/
+-	script	Restock#main	-1,{
+	set .RestockPricePay, getbattleflag("restock_zeny_cost");
+	set .@loop_1, 1;
+	while(.@loop_1)
+	{
+		mes "[ ^a60536Sistema de Restoque^000000 ]";
+		mes "Bem-vindo ao Sistema de Restoque, em que posso ajudar?";
+		next;
+		switch( select("[^ff0000»^000000] Configurar um item para Restoque.",  "[^ff0000»^000000] Remover um item do Restoque.", "[^ff0000»^000000] Sobre o Sistema de Restoque.", "Sair.") )
+		{
+			case 1:
+				if( Zeny < .RestockPricePay )
+				{
+					mes "[ ^a60536Sistema de Restoque^000000 ]";
+					mes "Para utilizar o Sistema de Restoque é necessário de " + .RestockPricePay + " Zenys.";
+					next;
+					break;
+				}
+				
+				if( callfunc("Restock",1,getcharid(0)) >= MAX_RESTOCK_ITEM )
+				{
+					mes "[ ^a60536Sistema de Restoque^000000 ]";
+					mes "Você tem muitos itens no Reabastecimento Automático, remova alguns.";
+					next;
+					break;
+				}
+				
+				deletearray .@tmp_id,getarraysize(.@tmp_id);
+				deletearray .@item_id,getarraysize(.@item_id);
+				
+				query_sql "SELECT `nameid` FROM `storage` WHERE `account_id`='" + getcharid(3) + "'", .@tmp_id;
+				for( set .@i,0; .@i < getarraysize(.@tmp_id); set .@i,.@i+1 )
+				{
+					set .@type, getiteminfo(.@tmp_id[.@i],2);
+					if( .@type == 0 || .@type == 1 || .@type == 2 || .@type == 10 || .@type == 11 || .@type == 12 )
+						set .@item_id[getarraysize(.@item_id)], .@tmp_id[.@i];
+				}
+				
+				if( !getarraysize(.@item_id) )
+				{
+					mes "[ ^a60536Sistema de Restoque^000000 ]";
+					mes "Você não tem itens no seu Armazém para configurar no Sistema de Restoque.";
+					next;
+					break;
+				}
+				
+				set .@loop_2, 1;
+				while(.@loop_2)
+				{
+					mes "[ ^a60536Sistema de Restoque^000000 ]";
+					mes "Por favor, selecione um item no qual deseja configurar no Sistema de Restoque.";
+					next;
+					set .@build_menu$, "";
+					for( set .@i,0; .@i < getarraysize(.@item_id); set .@i,.@i+1 )
+						set .@build_menu$, .@build_menu$ + "- " + getitemname(.@item_id[.@i]) + (callfunc("Restock",0,.@item_id[.@i],getcharid(0))?" ^0000FF[Reabastecendo]^000000":"") + ".:";
+					
+					set .@choose, select(.@build_menu$+"[^ff0000»^000000] Voltar ao menu.:Sair.")-1;
+					
+					if( .@choose == getarraysize(.@item_id) )
+						break;
+					if( .@choose > getarraysize(.@item_id) )
+					{
+						set .@loop_2, 0;
+						set .@loop_1, 0;
+						break;
+					}
+				
+					set .@loop_3, 1;
+					while(.@loop_3)
+					{
+						mes "[ ^a60536Sistema de Restoque^000000 ]";
+						mes "Digite a quantidade de ^0000FF" + getitemname(.@item_id[.@choose]) + "^000000 que deseja configurar para o reabastecimento?";
+						mes "^FF0000Se você digitar 0 irá abortar esta operação.^000000.";
+						next;
+						input .@amount;
+						if( !.@amount )
+							break;
+						
+						mes "[ ^a60536Sistema de Restoque^000000 ]";
+						mes "Você optou por ^0000FF" + .@amount + "x " + getitemname(.@item_id[.@choose]) + "^000000 de reabastecimento automático.";
+						if( .RestockPricePay )
+							mes "Para configurar este item é necessário de " + .RestockPricePay + " Zenys.";
+						mes "Tem certeza que deseja configurar este item para reabastecimento automático?";
+						next;
+						switch( select("[^ff0000»^000000] Sim, por favor.", "[^ff0000»^000000] Voltar ao menu.", "Saír.") )
+						{
+							case 1:
+								if( addrestock(.@item_id[.@choose],.@amount) )
+								{
+									set Zeny, Zeny - .RestockPricePay;
+									mes "[ ^a60536Sistema de Restoque^000000 ]";
+									mes "A Operação foi um sucesso! ^0000FF" + .@amount + "x " + getitemname(.@item_id[.@choose]) + "^000000 foram configurado para reabastecimento automático.";
+									next;
+									set .@loop_3, 0;
+									set .@loop_2, 0;
+								}
+								else {
+									mes "[ ^a60536Sistema de Restoque^000000 ]";
+									mes "Houve um erro ao fazer o cadastro, reporte ao Administrador.";
+									next;
+									set .@loop_3, 0;
+									set .@loop_2, 0;
+									set .@loop_1, 0;
+								}
+								break;
+							case 2:
+								set .@loop_2, 0;
+								set .@loop_3, 0;
+								break;
+							case 3:
+								set .@loop_1, 0;
+								set .@loop_2, 0;
+								set .@loop_3, 0;
+								break;
+						}
+					}
+				}
+				break;
+			case 2:
+				set .@loop_2, 1;
+				while(.@loop_2)
+				{
+					deletearray .@item_id, getarraysize(.@item_id);
+					query_sql "SELECT `nameid` FROM `restock` WHERE `char_id`='" + getcharid(0) + "'", .@item_id;
+					
+					if( !getarraysize(.@item_id) )
+					{
+						mes "[ ^a60536Sistema de Restoque^000000 ]";
+						mes "Você não tem nenhum item configurado para remover.";
+						next;
+						break;
+					}
+					
+					mes "[ ^a60536Sistema de Restoque^000000 ]";
+					mes "Selecione o item que deseja remover.";
+					next;
+					set .@build_menu$, "";
+					for( set .@i,0; .@i < getarraysize(.@item_id); set .@i,.@i+1 )
+						set .@build_menu$, .@build_menu$ + "- " + getitemname(.@item_id[.@i]) + ".:";
+						
+					set .@choose, select(.@build_menu$ + ":[^ff0000»^000000] Voltar ao menu.:Sair.")-1;
+					
+					if( .@choose == getarraysize(.@item_id) )
+						break;
+					if( .@choose > getarraysize(.@item_id) )
+					{
+						set .@loop_2, 0;
+						set .@loop_1, 0;
+						break;
+					}
+					
+					mes "[ ^a60536Sistema de Restoque^000000 ]";
+					mes "Tem certeza que deseja remover o item ^0000FF" + getitemname(.@item_id[.@choose]) + "^000000 do reabastecimento automático?";
+					next;
+					switch( select("[^ff0000»^000000] Sim, por favor.", "[^ff0000»^000000] Voltar ao menu.", "Sair.") )
+					{
+						case 1:
+							if( delrestock(.@item_id[.@choose]) )
+							{
+								mes "[ ^a60536Sistema de Restoque^000000 ]";
+								mes "Muito bem, o item ^0000FF" + getitemname(.@item_id[.@choose]) + "^000000 foi removido do sistema.";
+								next;
+							}
+							else {
+								mes "[ ^a60536Sistema de Restoque^000000 ]";
+								mes "Houve um erro ao remover o cadastro, reporte ao Administrador.";
+								next;
+								set .@loop_3, 0;
+								set .@loop_2, 0;
+								set .@loop_1, 0;
+							}
+							break;
+						case 2:
+							break;
+						case 3:
+							set .@loop_2, 0;
+							set .@loop_1, 0;
+							break;
+					}
+				}
+				break;
+			case 3:
+				mes "[ ^a60536Sistema de Restoque^000000 ]";
+				mes "O Sistema de Restoque permite que você configure itens usáveis e que guarde maior parte dele no Armazém para ser reabastecido automáticamente.";
+				next;
+				break;
+			case 4:
+				set .@loop_1, 0;
+				break;
+				
+		}
+	}
+	mes "[ ^a60536Sistema de Restoque^000000 ]";
+	mes "Volte assim que necessitar utilizar o Sistema.";
+	close;
+}
+
+//
+//	Checa se um item já está configurado, caso esteja retorna com a quantidade do item.";
+//		Restok 0,<item_id>,<account_id>;
+//
+//	Conta quantos itens tem no Reabastecimento.
+//		Restok 1,<account_id>;
+//
+function	script	Restock	{
+	switch(getarg(0))
+	{
+		case 0:
+			query_sql "SELECT `amount` FROM `restock` WHERE `char_id`='" + getarg(2) + "' AND `nameid`='" + getarg(1) + "'", .@count;
+			return getarraysize(.@count) ? .@count : false;
+		case 1:
+			query_sql "SELECT `nameid` FROM `restock` WHERE `char_id`='" + getarg(1) + "'", .@count;
+			return getarraysize(.@count);
+		default:
+			debugmes "[Restock System] Index Arg(" + getarg(0) + ") not found in function.";
+			end;
+	}
+}

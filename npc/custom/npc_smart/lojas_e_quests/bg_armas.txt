@@ -1,0 +1,19 @@
+prt_smart,1,1,5,7773	sshop	ArmasGuerraEB1	111,1187:2000,1281:2000,1282:2000,1310:2000,1382:2000,1426:2000,1486:2000,1546:2000,1576:2000,1577:2000,1640:2000,1641:2000,1743:2000,1826:2000,1827:2000,1927:2000,1981:2000,2002:2000,13042:2000,13110:2000,13176:2000,13177:2000,13178:2000,13179:2000,13307:2000,13416:2000,13417:2000,13418:2000
+prt_smart,1,1,5,7773	sshop	ArmasGuerraEB2	111,20000:13000,1831:13000,1655:13000,20005:13000,1700:13000,1435:13000,1656:13000,1150:13000,1316:13000,1317:13000,1200:13000,13310:13000,13114:13000,20006:13000,1987:13000,1932:13000,1289:13000;
+prt_smart,200,189,4	script	Loja de Armas#bg 	670,{
+	if( select("[^ff0000»^000000] Armas Gloriosas.","[^ff0000»^000000] Armas Custons.") == 1 ){
+			callshop "ArmasGuerraEB1", 0;
+			end;
+		}
+		callshop "ArmasGuerraEB2", 0;
+		end;
+	OnInit:
+ 		waitingroom "", 0;
+	OnTimer2000:
+		setarray .@Display$, "[ Guerra ]", "» Armas";
+		set .@msg, rand( getarraysize( .@Display$) );
+		delwaitingroom;
+		waitingroom .@Display$[.@msg], 0;
+		initnpctimer;
+		end;
+}

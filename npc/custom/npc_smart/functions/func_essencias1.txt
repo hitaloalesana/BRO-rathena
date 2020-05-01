@@ -1,0 +1,18 @@
+function	script	essencias1	{
+	setarray .BoxItems[0],7074,7080,7073,7076,7075,7082,7088,7083,7087;
+	
+	set .Random, getarraysize( .BoxItems );
+	getitem .BoxItems[ rand( .Random ) ], 1;
+	
+//	set .@rand, rand(10000);
+//	if(.@rand >= 1000 && .@rand < 2000) getitem 7088,1;
+//	if(.@rand >= 1000 && .@rand < 2000) getitem 7083,1;
+//	if(.@rand >= 1000 && .@rand < 2000) getitem 7087,1; // 1%
+//	if(.@rand >= 10000 && .@rand < 20000) getitem 7074,1;
+//	if(.@rand >= 10000 && .@rand < 20000) getitem 7080,1;
+//	if(.@rand >= 10000 && .@rand < 20000) getitem 7073,1;
+//	if(.@rand >= 10000 && .@rand < 20000) getitem 7076,1;
+//	if(.@rand >= 10000 && .@rand < 20000) getitem 7075,1;
+//	if(.@rand >= 10000 && .@rand < 20000) getitem 7082,1; // 100%
+	end;
+}

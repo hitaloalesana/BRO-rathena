@@ -1,0 +1,370 @@
+-	script	Organize_Att#prt_smart	-1,{
+OnInit:
+	// Bloqueio
+	setcell "prt_smart", 173, 154, 209, 152, cell_novending, 1;
+	setcell "prt_smart", 173, 154, 209, 152, cell_novending, 1;
+	setcell "prt_smart", 173, 153, 209, 152, cell_novending, 1;
+	setcell "prt_smart", 173, 152, 209, 152, cell_novending, 1;
+	setcell "prt_smart", 173, 151, 209, 151, cell_novending, 1;
+
+	setcell "prt_smart", 173, 150, 209, 150, cell_novending, 1;
+	setcell "prt_smart", 173, 149, 209, 149, cell_novending, 1;
+	setcell "prt_smart", 173, 148, 209, 150, cell_novending, 1;
+	setcell "prt_smart", 173, 147, 209, 147, cell_novending, 1;
+	setcell "prt_smart", 173, 146, 209, 146, cell_novending, 1;
+	setcell "prt_smart", 173, 145, 209, 145, cell_novending, 1;
+	setcell "prt_smart", 173, 144, 209, 144, cell_novending, 1;
+	setcell "prt_smart", 173, 143, 209, 143, cell_novending, 1;
+	setcell "prt_smart", 173, 142, 209, 142, cell_novending, 1;
+	setcell "prt_smart", 173, 140, 209, 140, cell_novending, 1;
+	setcell "prt_smart", 173, 139, 209, 139, cell_novending, 1;
+	setcell "prt_smart", 173, 138, 209, 138, cell_novending, 1;
+	setcell "prt_smart", 173, 137, 209, 137, cell_novending, 1;
+	setcell "prt_smart", 173, 136, 209, 136, cell_novending, 1;
+	setcell "prt_smart", 173, 135, 209, 135, cell_novending, 1;
+	setcell "prt_smart", 173, 134, 209, 134, cell_novending, 1;
+	setcell "prt_smart", 173, 133, 209, 133, cell_novending, 1;
+	// Liberação
+	setcell "prt_smart", 174, 150, 174, 150, cell_novending, 0;
+	setcell "prt_smart", 174, 146, 174, 146, cell_novending, 0;
+	setcell "prt_smart", 174, 142, 174, 142, cell_novending, 0;
+	setcell "prt_smart", 174, 138, 174, 138, cell_novending, 0;
+	setcell "prt_smart", 174, 134, 174, 134, cell_novending, 0;
+	setcell "prt_smart", 178, 150, 178, 150, cell_novending, 0;
+	setcell "prt_smart", 178, 146, 178, 146, cell_novending, 0;
+	setcell "prt_smart", 178, 142, 178, 142, cell_novending, 0;
+	setcell "prt_smart", 178, 138, 178, 138, cell_novending, 0;
+	setcell "prt_smart", 178, 134, 178, 134, cell_novending, 0;
+	setcell "prt_smart", 182, 150, 182, 150, cell_novending, 0;
+	setcell "prt_smart", 182, 146, 182, 146, cell_novending, 0;
+	setcell "prt_smart", 182, 142, 182, 142, cell_novending, 0;
+	setcell "prt_smart", 182, 138, 182, 138, cell_novending, 0;
+	setcell "prt_smart", 182, 134, 182, 134, cell_novending, 0;
+	setcell "prt_smart", 186, 150, 186, 150, cell_novending, 0;
+	setcell "prt_smart", 186, 146, 186, 146, cell_novending, 0;
+	setcell "prt_smart", 186, 142, 186, 142, cell_novending, 0;
+	setcell "prt_smart", 186, 138, 186, 138, cell_novending, 0;
+	setcell "prt_smart", 186, 134, 186, 134, cell_novending, 0;
+	setcell "prt_smart", 190, 150, 190, 150, cell_novending, 0;
+	setcell "prt_smart", 190, 146, 190, 146, cell_novending, 0;
+	setcell "prt_smart", 190, 142, 190, 142, cell_novending, 0;
+	setcell "prt_smart", 190, 138, 190, 138, cell_novending, 0;
+	setcell "prt_smart", 190, 134, 190, 134, cell_novending, 0;
+	setcell "prt_smart", 194, 150, 194, 150, cell_novending, 0;
+	setcell "prt_smart", 194, 146, 194, 146, cell_novending, 0;
+	setcell "prt_smart", 194, 142, 194, 142, cell_novending, 0;
+	setcell "prt_smart", 194, 138, 194, 138, cell_novending, 0;
+	setcell "prt_smart", 194, 134, 194, 134, cell_novending, 0;
+	setcell "prt_smart", 198, 150, 198, 150, cell_novending, 0;
+	setcell "prt_smart", 198, 146, 198, 146, cell_novending, 0;
+	setcell "prt_smart", 198, 142, 198, 142, cell_novending, 0;
+	setcell "prt_smart", 198, 138, 198, 138, cell_novending, 0;
+	setcell "prt_smart", 198, 134, 198, 134, cell_novending, 0;
+	setcell "prt_smart", 202, 150, 202, 150, cell_novending, 0;
+	setcell "prt_smart", 202, 146, 202, 146, cell_novending, 0;
+	setcell "prt_smart", 202, 142, 202, 142, cell_novending, 0;
+	setcell "prt_smart", 202, 138, 202, 138, cell_novending, 0;
+	setcell "prt_smart", 202, 134, 202, 134, cell_novending, 0;
+	setcell "prt_smart", 206, 150, 206, 150, cell_novending, 0;
+	setcell "prt_smart", 206, 146, 206, 146, cell_novending, 0;
+	setcell "prt_smart", 206, 142, 206, 142, cell_novending, 0;
+	setcell "prt_smart", 206, 138, 206, 138, cell_novending, 0;
+	setcell "prt_smart", 206, 134, 206, 134, cell_novending, 0;
+	end;
+}
+-	shop	att_l#1	50,28005:1000000
+prt_smart,169,142,6	script	Comércio#prt_smart	858,{ 
+	getmapxy( .@map$, .@x, .@y, 0 );
+	if ( .@x == 174 && .@y == 153 ) close;
+	if ( .@x == 174 && .@y == 152 ) close;
+	if ( .@x == 174 && .@y == 151 ) close;
+	if ( .@x == 174 && .@y == 150 ) close;
+	if ( .@x == 174 && .@y == 149 ) close;
+	if ( .@x == 174 && .@y == 148 ) close;
+	if ( .@x == 174 && .@y == 147 ) close;
+	if ( .@x == 174 && .@y == 146 ) close;
+	if ( .@x == 174 && .@y == 145 ) close;
+	if ( .@x == 174 && .@y == 144 ) close;
+	if ( .@x == 174 && .@y == 143 ) close;
+	if ( .@x == 174 && .@y == 142 ) close;
+	if ( .@x == 174 && .@y == 141 ) close;
+	if ( .@x == 174 && .@y == 140 ) close;
+	if ( .@x == 174 && .@y == 139 ) close;
+	if ( .@x == 174 && .@y == 138 ) close;
+	if ( .@x == 174 && .@y == 137 ) close;
+	if ( .@x == 174 && .@y == 136 ) close;
+	if ( .@x == 174 && .@y == 135 ) close;
+	if ( .@x == 174 && .@y == 134 ) close;
+	if ( .@x == 174 && .@y == 133 ) close;
+	cutin "autotrade_img", 3;
+	set @menu, select ("[^ff0000»^000000] ^0000ffAbrir Loja.^000000:[^ff0000»^000000] ^777777Comprar Anúncio de Autotrade.^000000");
+	if( @menu == 2 ){
+		mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+		mes "O ^0000ffAnúncio de Autotrade^000000 é o item requerido para anúnciar a abertura de sua loja. Você não é obrigado a ter uma para abrir sua loja, porém, para anunciar ao servidor que está abrindo seu autotrade você precisa de uma!";
+		close2;
+		cutin "", 255;
+		callshop "att_l#1", 1;
+		end;
+	}
+	set .@lvl, getskilllv( 41 );
+	set .@player_name$, strcharinfo( 0 );
+	if( !checkcart() ){
+		message strcharinfo(0), "[ Você precisa de um carrinho ].";
+		dispbottom "[ Você só pode utilizar o auto-alinhamento se você estiver carregando um carrinho ].";
+		cutin "", 255;
+		close;
+	}
+	// P1
+	if( !getareausers("prt_smart", 174, 150, 174, 150 )){
+		warp "prt_smart", 174, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 174, 146, 174, 146 )){
+		warp "prt_smart", 174, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 174, 142, 174, 142 )){
+		warp "prt_smart", 174, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 174, 138, 174, 138 )){
+		warp "prt_smart", 174, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 174, 134, 174, 134 )){
+		warp "prt_smart", 174, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P2
+	if( !getareausers("prt_smart", 178, 150, 178, 150 )){
+		warp "prt_smart", 178, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 178, 146, 178, 146 )){
+		warp "prt_smart", 178, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 174, 142, 174, 142 )){
+		warp "prt_smart", 174, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 174, 138, 174, 138 )){
+		warp "prt_smart", 174, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 174, 134, 174, 134 )){
+		warp "prt_smart", 174, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P3
+	if( !getareausers("prt_smart", 182, 150, 182, 150 )){
+		warp "prt_smart", 182, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 182, 146, 182, 146 )){
+		warp "prt_smart", 182, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 182, 142, 182, 142 )){
+		warp "prt_smart", 182, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 182, 138, 182, 138 )){
+		warp "prt_smart", 182, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 182, 134, 182, 134 )){
+		warp "prt_smart", 182, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P4
+	if( !getareausers("prt_smart", 186, 150, 186, 150 )){
+		warp "prt_smart", 186, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 186, 146, 186, 146 )){
+		warp "prt_smart", 186, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 186, 142, 186, 142 )){
+		warp "prt_smart", 186, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 186, 138, 186, 138 )){
+		warp "prt_smart", 186, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 186, 134, 186, 134 )){
+		warp "prt_smart", 186, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P5
+	if( !getareausers("prt_smart", 190, 150, 190, 150 )){
+		warp "prt_smart", 190, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 190, 146, 190, 146 )){
+		warp "prt_smart", 190, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 190, 142, 190, 142 )){
+		warp "prt_smart", 190, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 190, 138, 190, 138 )){
+		warp "prt_smart", 190, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 190, 134, 190, 134 )){
+		warp "prt_smart", 190, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P6
+	if( !getareausers("prt_smart", 194, 150, 194, 150 )){
+		warp "prt_smart", 194, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 194, 146, 194, 146 )){
+		warp "prt_smart", 194, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 194, 142, 194, 142 )){
+		warp "prt_smart", 194, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 194, 138, 194, 138 )){
+		warp "prt_smart", 194, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 194, 134, 194, 134 )){
+		warp "prt_smart", 194, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P7
+	if( !getareausers("prt_smart", 198, 150, 198, 150 )){
+		warp "prt_smart", 198, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 198, 146, 198, 146 )){
+		warp "prt_smart", 198, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 198, 142, 198, 142 )){
+		warp "prt_smart", 198, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 198, 138, 198, 138 )){
+		warp "prt_smart", 198, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 198, 134, 198, 134 )){
+		warp "prt_smart", 198, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P8
+	if( !getareausers("prt_smart", 202, 150, 202, 150 )){
+		warp "prt_smart", 202, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 202, 146, 202, 146 )){
+		warp "prt_smart", 202, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 202, 142, 202, 142 )){
+		warp "prt_smart", 202, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 202, 138, 202, 138 )){
+		warp "prt_smart", 202, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 202, 134, 202, 134 )){
+		warp "prt_smart", 202, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+
+	// P9
+	if( !getareausers("prt_smart", 206, 150, 206, 150 )){
+		warp "prt_smart", 206, 150;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 206, 146, 206, 146 )){
+		warp "prt_smart", 206, 146;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 206, 142, 206, 142 )){
+		warp "prt_smart", 206, 142;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 206, 138, 206, 138 )){
+		warp "prt_smart", 206, 138;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	} else if( !getareausers("prt_smart", 206, 134, 206, 134 )){
+		warp "prt_smart", 206, 134;
+		sleep2 1000;
+		atcommand "@useskill 41 " + .@lvl + " " + .@player_name$;
+		end;
+	}
+	cutin "", 255;
+	end;
+}

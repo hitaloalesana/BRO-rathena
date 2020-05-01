@@ -1,0 +1,40 @@
+-	script	@changelog#Cmd	-1,{
+OnInit:
+	bindatcmd "changelog", strnpcinfo(0) +"::OnChangelog", 0, 100;
+	end;
+OnChangelog:
+	callfunc("Changelog#Smart");
+	end;
+}
+sala_gm,261,250,4	script	Changelog#1	76,{
+	callfunc("Changelog#Smart");
+	end;
+}
+function	script	Changelog#Smart	{
+message strcharinfo(0), "[ Changelog: 08/10/2018 ].";
+mes "[ ^a60536Changelog^000000 ]";
+mes "^0000ffModificado:^000000";
+mes "^ff0000»^000000 Alteração no status da Armadura de Brinhyld.";
+mes "^ff0000»^000000 Alteração no status do Sapatos Convergentes.";
+mes "^ff0000»^000000 Remoção da Cartas Bafomé de todos os jogadores.";
+mes "^ff0000»^000000 Novo efeito Carta Bafome.";
+mes "^ff0000»^000000 Novo efeito Carta Angeling.";
+mes "^ff0000»^000000 Novas Asas Quests, no NPC Central de Quests.";
+mes "^ff0000»^000000 Novos Visuais no NPC Central de Donates.";
+mes "^ff0000»^000000 Novos Enchants, no NPC Central de Donates.";
+mes "^ff0000»^000000 Novas poções elementais, por emblemas de bravura/valor, no NPC Central de Emblemas.";
+mes "^ff0000»^000000 Redução no HP base da classe Wizzard.";
+mes "^ff0000»^000000 Aumento no HP e ataque da classe Assasin.";
+mes "^ff0000»^000000 @restoque Desativado.";
+mes "^ff0000»^000000 Remoção de Buffs ao entrar no PvP/BG.";
+mes "^ff0000»^000000 Todos os elmos estão liberados para refine (Topo, Meio e Baixo).";
+mes "^ff0000»^000000 Removido o drop de cupom de evento do Baú Premiado da Torre sem Fim.";
+mes "^ff0000»^000000 Aumento do número de Ticket Disguise no NPC que transforma equipamentos em visuais.";
+mes "^ff0000»^000000 Aumento na quantia de Zenys para refinar itens.";
+mes "^ff0000»^000000 Troca de Castelos da Guerra do Emperium:";
+mes "  ^ff0000»^000000 Krinhild 1.0 - Terça Feira.";
+mes "  ^ff0000»^000000 Horn 2.0 - Quinta Feira.";
+mes "  ^ff0000»^000000 Vidblainn 2.0 - Domingo.";
+close;
+}
+new_1-1,176,82,0	warp	prontera#11	1,1,prontera,156,191

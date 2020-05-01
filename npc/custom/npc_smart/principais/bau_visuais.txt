@@ -1,0 +1,209 @@
+prontera,144,196,5	script	Baú de Visuais	741,{
+	cutin "visual_img", 3;
+	switch( select("[^ff0000»^000000] ^2596C2Abrir Baú de Visuais.^000000","[^ff0000»^000000] ^ff0000Transformar Item em Visual.^000000","[^ff0000»^000000] Ver Itens da ^FFB90F[Chave de Ouro]^000000.","[^ff0000»^000000] Ver Itens da ^838B8B[Chave de Prata]^000000.","[^ff0000»^000000] Ver Itens da ^CD661D[Chave de Bronze]^000000.","[^ff0000»^000000] Informações.","Saír.") ){
+		case 1:
+			switch( select("[^ff0000»^000000] Usar ^FFB90F[Chave de Ouro]^000000.","[^ff0000»^000000] Usar ^838B8B[Chave de Prata]^000000.","[^ff0000»^000000] Usar ^CD661D[Chave de Bronze]^000000.","Saír.") ){
+				cutin "", 255;
+				case 1: 
+					if((( Weight * 100 ) / MaxWeight ) > 49 ){
+						mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+        					mes "Você está acima peso. Guarde alguns itens em seu storage!";
+        					close;
+    					}
+					if( countitem( 6268 ) < 1 ){
+						mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+						mes "Você não tem a chave para abrir este Baú de Visuais.";
+						close;
+					}
+					delitem 6268, 1;
+					callfunc "chave_ouro";
+					break;
+				case 2:
+					if((( Weight * 100 ) / MaxWeight ) > 49 ){
+						mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+        					mes "Você está acima peso. Guarde alguns itens em seu storage!";
+        					close;
+    					}
+					if( countitem( 6267 ) < 1 ){
+						mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+						mes "Você não tem a chave para abrir este Baú de Visuais.";
+						close;
+					}
+					delitem 6267, 1;
+					callfunc "chave_prata";
+					break;
+				case 3: 
+					if((( Weight * 100 ) / MaxWeight ) > 49 ){
+						mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+        					mes "Você está acima peso. Guarde alguns itens em seu storage!";
+        					close;
+    					}
+					if( countitem( 6266 ) < 1 ){
+						mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+						mes "Você não tem a chave para abrir este Baú de Visuais.";
+						close;
+					}
+					delitem 6266, 1;
+					callfunc "chave_bronze";
+					break;
+				case 4:
+					close;
+			}
+		case 2:
+			cutin "", 255;
+			mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+			mes "É possível customizar itens que vão na cabeça, boca e orelha. Porém, as cartas, atributos dos equipamentos e refinamentos no item serão perdidos.";
+			mes "^2596C2- Custo do Processo: 5x "+ getitemname( 21034 ) +".^000000";
+			mes "^777777Selecione o item que deseja transformar em visual:^000000";
+			next;
+			setarray .@Position$[ 1 ], "Topo", "Meio", "Baixo";
+			setarray .@Position[ 1 ],     1,    9,   10;
+			set .@Menu$,"";
+			for( set .@i, 1; .@i < 4; set .@i, .@i + 1 ){
+			if( getequipisequiped( .@Position[ .@i ] ))
+				set .@Menu$, .@Menu$ + .@Position$[ .@i ] + " - " + "^777777["+ getequipname( .@Position[ .@i ] ) +"]^000000";
+				set .@Menu$, .@Menu$ + ":";
+			}
+			set .@Part, .@Position[ select( .@Menu$ ) ];
+			mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+			if( !getequipisequiped( .@Part )){
+				mes "Nenhum item equipado neste slot.";
+				close;
+			}
+			if( countitem( 21034 ) < 5){
+				mes "Para realizar esta ação é necessário "+ .@price +"x "+ getitemname( .@id_price ) +".";
+				close;
+			}
+			getinventorylist;
+			for( set .@i, 0; .@i < @inventorylist_count; set .@i, .@i + 1 )
+			if( @inventorylist_expire[.@i] != 0 ){
+				mes "^777777Atenção: Você está com itens de aluguel em seu personagem, não trabalho com este tipo de item.^000000";
+				emotion e_hmm;
+				close;
+			}
+			mes "Item selecionado para transformação: ^DAA520["+ getitemname( getequipid( .@Part )) +"]^000000.";
+			mes "^777777Confirme abaixo a transformação de item para visual:^000000";	
+			next;
+			if( select("[^ff0000»^000000] Confirmar.:[^ff0000»^000000] Cancelar.") == 1 ){
+				delitem 21034, 5;
+				specialeffect2 111;
+				costume .@Part;
+				mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+				mes "Processo finalizado, item transformado em visual com sucesso.";
+				close;
+			}
+			close;
+		case 3:
+			cutin "", 255;
+			message strcharinfo( 0 ), "[ Carregando lista de itens ].";
+			progressbar "0xFF0000", 3;
+			callshop "b_ouro#hide", 1;
+			end;
+		case 4:
+			cutin "", 255;
+			message strcharinfo( 0 ), "[ Carregando lista de itens ].";
+			progressbar "0xFF0000", 3;
+			callshop "b_prata#hide", 1;
+			end;
+		case 5:
+			cutin "", 255;
+			message strcharinfo( 0 ), "[ Carregando lista de itens ].";
+			progressbar "0xFF0000", 3;
+			callshop "b_bronze#hide", 1;
+			end;
+		case 6:
+			mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+			mes "Cada chave consistente em níveis diferentes de visuais:";
+			mes "^FFB90F- Chave de Ouro.^000000"; 
+			mes "^838B8B- Chave de Prata.^000000";
+			mes "^CD661D- Chave de Bronze.^000000";
+			next;
+			mes "[ ^a60536"+ strnpcinfo( 1 ) +"^000000 ]";
+			mes "Você deve selecionar opção que corresponde a Chave que você tem em seu inventário. São muitos visuais, a ^FFB90FChave de Ouro^000000 por exemplo libera os visuais mais raros, ^838B8BChave de Prata^000000 aqueles intermediários e ^CD661DChave de Bronze^000000 os mais básicos.";
+			close2;
+			dispbottom "[ Os visuais saem de forma aleatória no Baú de Visuais ].";
+			cutin "", 255;
+			end;
+		case 7: 
+			cutin "", 255;
+			close;
+	}
+	OnInit:
+		npcshopattach "b_ouro#hide";
+		npcshopattach "b_prata#hide";
+		npcshopattach "b_bronze#hide";
+		end;
+}
+-	cashshop	b_ouro#hide	-1,23036:0,23037:0,24058:0,24115:0,24182:0
+-	cashshop	b_prata#hide	-1,24044:0,24043:0,24075:0,24085:0
+-	cashshop	b_bronze#hide	-1,24030:0,24031:0,24032:0,24033:0,24034:0,24035:0,24036:0
+
+function	script	chave_ouro	{
+	setarray .chave_ouro[0],6268,23036,23037,24058,24115,24182;
+	set .@a, 0;
+	set .@b, 0;
+	while( .@a < 20 ){
+		cutin rand(1,3) +"_noluck_img", 3;
+		set .@a, .@a + 1;
+		sleep2 500;
+	}
+	while( .@b < 10 ){
+		cutin rand(1,2) +"_luck_img", 3;
+		set .@b, .@b + 1;
+		sleep2 500;
+	}
+	message strcharinfo(0), "[ Baú aberto com sucesso! ].";
+	sleep2 500;
+	cutin "", 255;
+	set .r, rand( getarraysize( .chave_ouro ));
+	getitem .chave_ouro[ .r ], 1;
+	announce "[Baú de Visuais]: "+ strcharinfo(0) +" destrancou o baú com uma Chave de Ouro e dropou ["+ getitemname( .chave_ouro[.r] ) +"].", bc_all|bc_blue;
+	specialeffect2 12;
+	close;
+}
+function	script	chave_prata	{
+	setarray .chave_prata[0],6267,24044,24043,24075,24085;
+	set .@a, 0;
+	set .@b, 0;
+	while( .@a < 20 ){
+		cutin rand(1,3) +"_noluck_img", 3;
+		set .@a, .@a + 1;
+		sleep2 500;
+	}
+	while( .@b < 10 ){
+		cutin rand(1,2) +"_luck_img", 3;
+		set .@b, .@b + 1;
+		sleep2 500;
+	}
+	message strcharinfo(0), "[ Baú aberto com sucesso! ].";
+	sleep2 500;
+	cutin "", 255;
+	set .r, rand( getarraysize( .chave_prata ));
+	getitem .chave_prata[.r], 1;
+	announce "[Baú de Visuais]: "+ strcharinfo(0) +" destrancou o baú com uma Chave de Prata e dropou ["+ getitemname( .chave_prata[.r] ) +"].", bc_all|bc_blue;
+	specialeffect2 12;
+	close;
+}
+function	script	chave_bronze	{
+	setarray .chave_bronze[0],6266,24030,24031,24032,24033,24034,24035,24036;
+	set .@a, 0;
+	set .@b, 0;
+	while( .@a < 20 ){
+		cutin rand(1,3) +"_noluck_img", 3;
+		set .@a, .@a + 1;
+		sleep2 500;
+	}
+	while( .@b < 10 ){
+		cutin rand(1,2) +"_luck_img", 3;
+		set .@b, .@b + 1;
+		sleep2 500;
+	}
+	message strcharinfo(0), "[ Baú aberto com sucesso! ].";
+	sleep2 500;
+	cutin "", 255;
+	set .r, rand( getarraysize( .chave_bronze ));
+	getitem .chave_bronze[.r], 1;
+	announce "[Baú de Visuais]: "+ strcharinfo(0) +" destrancou o baú com uma Chave de Bronze e dropou ["+ getitemname( .chave_bronze[.r] ) +"].", bc_all|bc_blue;
+	specialeffect2 12;
+	close;
+}

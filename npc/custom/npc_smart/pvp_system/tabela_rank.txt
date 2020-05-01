@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS `pvp` (
+  `char_id` int(11) unsigned NOT NULL default '0',
+  `nick` varchar(255) NOT NULL default '0',
+  `matou` int(11) unsigned NOT NULL default '0',
+  `vitorias` int(11) unsigned NOT NULL default '0',
+  `derrotas` int(11) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `gvg` (
+  `guild_id` int(11) unsigned NOT NULL default '0',
+  `nome` varchar(255) NOT NULL default '0',
+  `matou` int(11) unsigned NOT NULL default '0',
+  `vitorias` int(11) unsigned NOT NULL default '0',
+  `derrotas` int(11) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

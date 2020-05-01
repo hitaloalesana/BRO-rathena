@@ -1,0 +1,422 @@
+sro_job,260,260,5	script	Upador 300/150#job1	831,{
+	mes "[ ^a60536Job Master^000000 ]";
+	mes "Olá!";
+	mes "Você gostaria de escolher sua classe agora?";
+	next;
+	switch( select("[^ff0000»^000000] Sim.:[^ff0000»^000000] Não.") ){
+	case 1:
+		mes "[ ^a60536Job Master^000000 ]";
+		mes "Você está realmente pronto para escolher sua classe?";
+		mes "Espero que faça a escolha certa.";
+		next;
+
+		if( BaseLevel > 1 || JobLevel > 1 || Class != Job_Novice )
+		{
+			mes "[ ^a60536Job Master^000000 ]";
+			mes "Desculpa, esse serviço é apenas para aprendiz lvl 1/1.";
+			mes "Tome seu ticket devolta...";
+			next;
+			getitem 21016,1;
+			warp "prontera",156,191;
+			close;
+		}
+
+		mes "[ ^a60536Job Master^000000 ]";
+		mes "Ok deixe-me te mostrar o menu de classes.";
+		mes "É separado em grupos: Avançada, Expandida e Bebê Classe.";
+		mes "Então, cheque a lista toda antes de decidir.";
+		next;
+
+		if( getarraysize(.Classes) <= 0 )
+			donpcevent "Chronos Girl#job1::OnInit";
+
+		set .@Job, select(.Menu$) - 1;
+
+		mes "[ ^a60536Job Master^000000 ]";
+		mes "Você escolheu ^0000FF" + jobname(.Classes[.@Job]) + "^000000.";
+		mes "Por favor, pense sobre essa classe. O próximo botão aparecerá em 5 segundos.";
+		sleep2 5000;
+		mes "Você está realmente certo sobre a escolha dessa classe?";
+		next;
+		if( select("[^ff0000»^000000] Sim, estou certo.:Não, desculpa... Eu vou escolher outra classe.") == 2 )
+		{
+			mes "[ ^a60536Job Master^000000 ]";
+			mes "Ok, leve o seu tempo e pense direito sobre cada classe.";
+			close;
+		}
+
+		if( (.Classes[.@Job] == Job_Clown || .Classes[.@Job] == Job_Baby_Bard) && Sex == 0 )
+		{
+			mes "[ ^a60536Job Master^000000 ]";
+			mes "A classe selecionada não está disponível para seu sexo.";
+			close;
+		}
+		if( (.Classes[.@Job] == Job_Gypsy || .Classes[.@Job] == Job_Baby_Dancer) && Sex == 1 )
+		{
+			mes "[ ^a60536Job Master^000000 ]";
+			mes "A classe selecionada não está disponível para seu sexo.";
+			close;
+		}
+
+		mes "[ ^a60536Job Master^000000 ]";
+		mes "Agora deixe-me fazer a mágica, você se tornará um ^0000FF" + jobname(.Classes[.@Job]) + "^000000.";
+		next;
+
+		// Convertion Process
+		// =========================================================
+
+		if( .Classes[.@Job] >= Job_Lord_Knight && .Classes[.@Job] <= Job_Paladin2 )
+			atcommand "@job 4001"; // High Novice
+		else if( .Classes[.@Job] >= Job_Baby_Knight && .Classes[.@Job] <= Job_Super_Baby )
+			atcommand "@job 4023"; // Baby Novice
+		else
+			atcommand "@job 0"; // Novice
+
+		atcommand "@reset";
+		atcommand "@joblevel 149";
+		atcommand "@baselevel 299";
+
+		switch( .Classes[.@Job] )
+		{
+		// ****************
+		// * Baby Classes *
+		// ****************
+		case Job_Baby_Knight:
+			atcommand "@job 4024";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			atcommand "@job 4030";
+			atcommand "@joblevel 49";
+			skill 1001,1,0;
+			break;
+		case Job_Baby_Priest:
+			atcommand "@job 4027";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 156,1,0;
+			atcommand "@job 4031";
+			atcommand "@joblevel 49";
+			skill 1014,1,0;
+			break;
+		case Job_Baby_Wizard:
+			atcommand "@job 4025";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 157,1,0;
+			atcommand "@job 4032";
+			atcommand "@joblevel 49";
+			skill 1006,1,0;
+			break;
+		case Job_Baby_Blacksmith:
+			atcommand "@job 4028";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			atcommand "@job 4033";
+			atcommand "@joblevel 49";
+			skill 1012,1,0;
+			skill 1013,1,0;
+			break;
+		case Job_Baby_Hunter:
+			atcommand "@job 4026";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			atcommand "@job 4034";
+			atcommand "@joblevel 49";
+			skill 1009,1,0;
+			break;
+		case Job_Baby_Assassin:
+			atcommand "@job 4029";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			atcommand "@job 4035";
+			atcommand "@joblevel 49";
+			skill 1003,1,0;
+			skill 1004,1,0;
+			break;
+		case Job_Baby_Crusader:
+			atcommand "@job 4024";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			atcommand "@job 4037";
+			atcommand "@joblevel 49";
+			skill 1002,1,0;
+			break;
+		case Job_Baby_Monk:
+			atcommand "@job 4027";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 156,1,0;
+			atcommand "@job 4038";
+			atcommand "@joblevel 49";
+			skill 1015,1,0;
+			skill 1016,1,0;
+			break;
+		case Job_Baby_Sage:
+			atcommand "@job 4025";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 157,1,0;
+			atcommand "@job 4039";
+			atcommand "@joblevel 49";
+			skill 1007,1,0;
+			break;
+		case Job_Baby_Rogue:
+			atcommand "@job 4029";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			atcommand "@job 4040";
+			atcommand "@joblevel 49";
+			skill 1005,1,0;
+			break;
+		case Job_Baby_Alchemist:
+			atcommand "@job 4028";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			atcommand "@job 4041";
+			atcommand "@joblevel 49";
+			skill 238,1,0;
+			break;
+		case Job_Baby_Bard:
+			atcommand "@job 4026";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			atcommand "@job 4042";
+			atcommand "@joblevel 49";
+			skill 1010,1,0;
+			break;
+		case Job_Baby_Dancer:
+			atcommand "@job 4026";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			atcommand "@job 4043";
+			atcommand "@joblevel 49";
+			skill 1011,1,0;
+			break;
+
+		// ********************
+		// * Advanced Classes *
+		// ********************
+		case Job_Lord_Knight:
+		case Job_Lord_Knight2:
+			atcommand "@job 4002";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			atcommand "@job 4008";
+			atcommand "@joblevel 149";
+			skill 1001,1,0;
+			break;
+		case Job_High_Priest:
+			atcommand "@job 4005";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 156,1,0;
+			atcommand "@job 4009";
+			atcommand "@joblevel 149";
+			skill 1014,1,0;
+			break;
+		case Job_High_Wizard:
+			atcommand "@job 4003";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 157,1,0;
+			atcommand "@job 4010";
+			atcommand "@joblevel 149";
+			skill 1006,1,0;
+			break;
+		case Job_Whitesmith:
+			atcommand "@job 4006";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			atcommand "@job 4011";
+			atcommand "@joblevel 149";
+			skill 1012,1,0;
+			skill 1013,1,0;
+			break;
+		case Job_Sniper:
+			atcommand "@job 4004";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			atcommand "@job 4012";
+			atcommand "@joblevel 149";
+			skill 1009,1,0;
+			break;
+		case Job_Assassin_Cross:
+			atcommand "@job 4007";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			atcommand "@job 4013";
+			atcommand "@joblevel 149";
+			skill 1003,1,0;
+			skill 1004,1,0;
+			break;
+		case Job_Paladin:
+		case Job_Paladin2:
+			atcommand "@job 4002";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 144,1,0;
+			skill 145,1,0;
+			skill 146,1,0;
+			atcommand "@job 4015";
+			atcommand "@joblevel 149";
+			skill 1002,1,0;
+			break;
+		case Job_Champion:
+			atcommand "@job 4005";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 156,1,0;
+			atcommand "@job 4016";
+			atcommand "@joblevel 149";
+			skill 1015,1,0;
+			skill 1016,1,0;
+			break;
+		case Job_Professor:
+			atcommand "@job 4003";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 157,1,0;
+			atcommand "@job 4017";
+			atcommand "@joblevel 149";
+			skill 1007,1,0;
+			break;
+		case Job_Stalker:
+			atcommand "@job 4007";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 149,1,0;
+			skill 150,1,0;
+			skill 151,1,0;
+			skill 152,1,0;
+			atcommand "@job 4018";
+			atcommand "@joblevel 149";
+			skill 1005,1,0;
+			break;
+		case Job_Creator:
+			atcommand "@job 4006";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 153,1,0;
+			skill 154,1,0;
+			skill 155,1,0;
+			atcommand "@job 4019";
+			atcommand "@joblevel 149";
+			skill 238,1,0;
+			break;
+		case Job_Clown:
+			atcommand "@job 4004";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			atcommand "@job 4020";
+			atcommand "@joblevel 149";
+			skill 1010,1,0;
+			break;
+		case Job_Gypsy:
+			atcommand "@job 4004";
+			atcommand "@joblevel 49";
+			skill 142,1,0;
+			skill 147,1,0;
+			skill 148,1,0;
+			atcommand "@job 4021";
+			atcommand "@joblevel 149";
+			skill 1011,1,0;
+			break;
+		// *******************
+		// * Expanded Classes *
+		// *******************
+		case Job_Star_Gladiator:
+			atcommand "@job 4046";
+			atcommand "@joblevel 49";
+			atcommand "@job 4047";
+			atcommand "@joblevel 149";
+			break;
+		case Job_Soul_Linker:
+			atcommand "@job 4046";
+			atcommand "@joblevel 49";
+			atcommand "@job 4049";
+			atcommand "@joblevel 149";
+			break;
+		case Job_Gunslinger:
+			atcommand "@job 24";
+			atcommand "@joblevel 149";
+			break;
+		case Job_Ninja:
+			atcommand "@job 25";
+			atcommand "@joblevel 149";
+			break;
+		case Job_Taekwon:
+			atcommand "@job 4046";
+			atcommand "@joblevel 49";
+			break;
+		}
+
+		mes "[ ^a60536Job Master^000000 ]";
+		mes "Beleza, o serviço está pronto.";
+		warp "prontera",156,191;
+		close;	
+		
+	case 2:
+		mes "[ ^a60536Job Master^000000 ]";	
+		mes "Volte quando você ja tiver pensado em qual classe você quer se tornar.";
+		mes "E tome seu ticket devolta...";
+		next;
+		getitem 21016,1;
+		warp "prontera",156,191;
+		close;
+
+OnInit:
+	setarray .Classes[0],Job_Lord_Knight,Job_High_Priest,Job_High_Wizard,Job_Whitesmith,Job_Sniper,Job_Assassin_Cross,Job_Paladin,Job_Champion,Job_Professor,Job_Stalker,Job_Creator,Job_Clown,Job_Gypsy,Job_Gunslinger,Job_Ninja,Job_Taekwon,Job_Star_Gladiator,Job_Soul_Linker,Job_Baby_Knight,Job_Baby_Priest,Job_Baby_Wizard,Job_Baby_Blacksmith,Job_Baby_Hunter,Job_Baby_Assassin,Job_Baby_Crusader,Job_Baby_Monk,Job_Baby_Sage,Job_Baby_Rogue,Job_Baby_Alchemist,Job_Baby_Bard,Job_Baby_Dancer;
+	set .@Limit, getarraysize(.Classes);
+	set .Menu$, "";
+	for( set .@i, 0; .@i < .@Limit; set .@i, .@i + 1 )
+		set .Menu$, .Menu$ + jobname(.Classes[.@i]) + ":";
+	end;
+	}
+}
+
+sro_job	mapflag	noteleport
+sro_job	mapflag	nowarpto
+sro_job	mapflag	nowarp
+sro_job	mapflag	nomemo
+sro_job	mapflag	nopenalty
+sro_job	mapflag	nobranch

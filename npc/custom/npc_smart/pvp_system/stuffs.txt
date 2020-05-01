@@ -1,0 +1,1 @@
+501,Red_Potion,Poção Vermelha,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ if( strcharinfo(3) == "guild_vs3" ){ percentheal 100,100; delitem 501,1; } else if( strcharinfo(3) == "2@pump"){ percentheal 100,100; delitem 501,1; } else if( strcharinfo(3) == "force_1-1"){ percentheal 100,100; delitem 501,1; } else if( strcharinfo(3) == "guild_vs2"){ percentheal 100,100; delitem 501,1; } },{},{}

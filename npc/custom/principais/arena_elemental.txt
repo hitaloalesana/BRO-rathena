@@ -1,0 +1,50 @@
+prontera,170,179,4	script	Arena Elemental#prt	792,{
+	mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+	mes "Que tal testar seu dano? Temos uma arena com todos os elementos possíveis, ^CD3333Fogo, ^00B2EEÁgua, ^8B4513Terra, ^00CD00Vento, ^8A2BE2Dêmonio, ^696969Morto-Vivo, ^9AC0CDSagrado^000000 e outros.";
+	next;
+	if ( select( "[^a60536»^000000] Testar Dano.","[^a60536»^000000] Saír." ) == 2 ) close;
+		warp "pvpespacio", 150, 47;
+		end;
+}
+pvpespacio,0,0,0	script	Damage_Testing#Smart	-1,{
+OnInit:
+	monster "pvpespacio", 157, 57, strmobinfo( 1, 3134 ), 3134, 1, strnpcinfo(0) +"::OnTestKill_1";
+	monster "pvpespacio", 149, 58, strmobinfo( 1, 3135 ), 3135, 1, strnpcinfo(0) +"::OnTestKill_2";
+	monster "pvpespacio", 141, 57, strmobinfo( 1, 3136 ), 3136, 1, strnpcinfo(0) +"::OnTestKill_3";
+	monster "pvpespacio", 163, 54, strmobinfo( 1, 3137 ), 3137, 1, strnpcinfo(0) +"::OnTestKill_4";
+	monster "pvpespacio", 135, 54, strmobinfo( 1, 3138 ), 3138, 1, strnpcinfo(0) +"::OnTestKill_5";
+	monster "pvpespacio", 168, 50, strmobinfo( 1, 3139 ), 3139, 1, strnpcinfo(0) +"::OnTestKill_6";
+	monster "pvpespacio", 130, 50, strmobinfo( 1, 3140 ), 3140, 1, strnpcinfo(0) +"::OnTestKill_7";
+	monster "pvpespacio", 135, 45, strmobinfo( 1, 3141 ), 3141, 1, strnpcinfo(0) +"::OnTestKill_8";
+	monster "pvpespacio", 163, 45, strmobinfo( 1, 3142 ), 3142, 1, strnpcinfo(0) +"::OnTestKill_9";
+	monster "pvpespacio", 158, 41, strmobinfo( 1, 3143 ), 3143, 1, strnpcinfo(0) +"::OnTestKill_10";
+	monster "pvpespacio", 140, 41, strmobinfo( 1, 3144 ), 3144, 1, strnpcinfo(0) +"::OnTestKill_11";
+	end;
+
+OnTestKill_1:
+OnTestKill_2:
+OnTestKill_3:
+OnTestKill_4:
+OnTestKill_5:
+OnTestKill_6:
+OnTestKill_7:
+OnTestKill_8:
+OnTestKill_9:
+OnTestKill_10:
+OnTestKill_11:
+	monster "pvpespacio", 157, 57, strmobinfo( 1, 3134 ), 3134, 1, strnpcinfo(0) +"::OnTestKill_1";
+	monster "pvpespacio", 149, 58, strmobinfo( 1, 3135 ), 3135, 1, strnpcinfo(0) +"::OnTestKill_2";
+	monster "pvpespacio", 141, 57, strmobinfo( 1, 3136 ), 3136, 1, strnpcinfo(0) +"::OnTestKill_3";
+	monster "pvpespacio", 163, 54, strmobinfo( 1, 3137 ), 3137, 1, strnpcinfo(0) +"::OnTestKill_4";
+	monster "pvpespacio", 135, 54, strmobinfo( 1, 3138 ), 3138, 1, strnpcinfo(0) +"::OnTestKill_5";
+	monster "pvpespacio", 168, 50, strmobinfo( 1, 3139 ), 3139, 1, strnpcinfo(0) +"::OnTestKill_6";
+	monster "pvpespacio", 130, 50, strmobinfo( 1, 3140 ), 3140, 1, strnpcinfo(0) +"::OnTestKill_7";
+	monster "pvpespacio", 135, 45, strmobinfo( 1, 3141 ), 3141, 1, strnpcinfo(0) +"::OnTestKill_8";
+	monster "pvpespacio", 163, 45, strmobinfo( 1, 3142 ), 3142, 1, strnpcinfo(0) +"::OnTestKill_9";
+	monster "pvpespacio", 158, 41, strmobinfo( 1, 3143 ), 3143, 1, strnpcinfo(0) +"::OnTestKill_10";
+	monster "pvpespacio", 140, 41, strmobinfo( 1, 3144 ), 3144, 1, strnpcinfo(0) +"::OnTestKill_11";
+	end;
+}
+pvpespacio,138,62,5	script	Guardião Elemental#1	419,{ end; }
+pvpespacio,161,62,5	script	Guardião Elemental#2	413,{ end; }
+pvpespacio,150,35,0	warp	element_warp#1	1,1,prt_smart,156,191

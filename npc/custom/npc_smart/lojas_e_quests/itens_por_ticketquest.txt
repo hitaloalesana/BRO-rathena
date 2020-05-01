@@ -1,0 +1,39 @@
+prt_smart,1,1,5,21020	sshop	EquipCabTopo	111,24061:1,24131:1,23060:1,24048:1,23009:1,24134:1,24080:1,24064:1,24083:1,24063:1,24067:1,24084:1,24023:1,24025:1,24155:1,24128:1,24002:1,24133:1,23027:2
+prt_smart,1,1,5,21020	sshop	EquipCabMeio	111,25041:1,25082:1,23061:1,23034:1,23010:1,25050:1,25042:1,25047:1,25083:1,25097:1,25039:3,25038:3,24066:3,26043:3,25024:3
+prt_smart,1,1,5,21020	sshop	EquipCabBaixo	111,26010:1,26065:1,26075:1,26035:1,26056:1,23011:1,26067:1,26031:1,26009:1,26058:1,26030:1,26055:3,26064:1,26017:1,26070:1,26042:3,26081:3,26047:2,26059:1,23032:1,26022:1,26084:3,26073:3,26015:3,26018:3,26027:3
+prt_smart,1,1,5,21020	sshop	Equipskins	111,27610:2,27611:2,27612:2,27613:2,27614:2,27615:2,27616:2
+prt_smart,1,1,5,21020	sshop	Equipacess	111,27500:2,27501:2,27502:2,27503:2,27504:2,27505:2,27506:4,27507:3
+
+prt_smart,139,225,5	script	Loja do Ticket Quest	720,{
+	mes "[ ^b60536Loja do Ticket Quest^000000 ]";
+	mes "Oie, ^a50555"+strcharinfo(0)+"^000000!";
+	mes "Tenho diversos itens e equipamentos para vender por ^0000ffTicket Quest^000000!";
+	mes "^777777Escolha abaixo o que você deseja:^000000";
+	next;
+	switch( select("[^ff0000»^000000] Equipamentos para Cabeça ^008000(Topo)^000000.","[^ff0000»^000000] Equipamentos para Cabeça ^008000(Meio)^000000.","[^ff0000»^000000] Equipamentos para Cabeça ^008000(Baixo)^000000.","[^ff0000»^000000] Skins.","[^ff0000»^000000] Acessórios.","[^ff0000»^000000] Saír.") ){
+				case 1:
+					close2;
+					callshop "EquipCabTopo", 0;
+					end;
+				case 2:
+					close2;
+					callshop "EquipCabMeio", 0;
+					end;
+				case 3:
+					close2;
+					callshop "EquipCabBaixo", 0;
+					end;
+				case 4:
+					close2;
+					callshop "Equipskins", 0;
+					end;
+				case 5:
+					close2;
+					callshop "Equipacess", 0;
+					end;
+				case 6:
+					close;
+					}
+}
+
+ 

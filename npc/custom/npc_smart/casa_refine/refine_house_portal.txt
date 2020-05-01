@@ -1,0 +1,12 @@
+prt_smart,168,165,0	warp	refine_house#1	1,1,prt_in,128,40
+prt_in,128,44,0	warp	refine_house#2	1,1,prt_smart,164,165
+
+prt_in	mapflag	monster_noteleport
+prt_in	mapflag	nomemo
+prt_in	mapflag	nobranch
+prt_in	mapflag	novending
+prt_in	mapflag	nowarp
+prt_in	mapflag	nowarpto
+prt_in	mapflag	noreturn
+prt_in	mapflag	noloot
+prt_in	mapflag	nosave	SavePoint

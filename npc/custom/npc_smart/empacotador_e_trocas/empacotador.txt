@@ -1,0 +1,73 @@
+prt_smart,129,215,4	script	Empacotador	120,{
+
+set @np$,"[ ^a60536Empacotador^000000 ]";
+
+mes @np$;
+mes "Olá ^FFA500"+strcharinfo(0)+"^000000, eu posso empacotar alguns consumiveis em caixas de ^00B2EE100^000000 unidades.";
+next;
+mes @np$;
+mes "Selecione o consumivel que deseja empacotar.";
+switch(select("[^ff0000»^000000] Fruto de Yggdrasil.:[^ff0000»^000000] Box do Trovão.:[^ff0000»^000000] Aloe Vera.")){
+
+case 1:
+next;
+mes @np$;
+mes "Agora digite a quantidade de caixas de Ygg que você deseja obter.";
+input @quant;
+if(@quant < 1){ next; mes @np$; mes "Me desculpe mais você digitou uma quantidade inválida"; close; }
+if(@quant*100 > countitem(607)){ next; mes @np$; mes "Me desculpe mais você não tem Yggdrasil suficiente para empacotar nessa quantidade de caixas."; close; }
+next;
+mes @np$;
+mes "Tem certeza que deseja obter ^FFA500"+@quant+"^000000 caixas de Ygg?";
+
+if (select("[^ff0000»^000000] Sim:[^ff0000»^000000] Não") == 2) close;
+
+next;
+mes @np$;
+mes "Suas Yggdrasils foram empacotadas com sucesso.";
+delitem 607,@quant*100;
+getitem 21003,@quant;
+close;
+
+case 2:
+next;
+mes @np$;
+mes "Agora digite a quantidade de caixas de Caixa de Trovão que você deseja obter.";
+input @quant;
+if(@quant < 1){ next; mes @np$; mes "Me desculpe mais você digitou uma quantidade inválida"; close; }
+if(@quant*100 > countitem(12028)){ next; mes @np$; mes "Me desculpe mais você não tem uma quantidade de Caixas de Trovão suficiente para empacotar nessa quantidade de caixas."; close; }
+next;
+mes @np$;
+mes "Tem certeza que deseja empacotar ^FFA500"+@quant+"^000000 caixas de Box do Trovão ?";
+
+if (select("[^ff0000»^000000] Sim:[^ff0000»^000000] Não") == 2) close;
+
+next;
+mes @np$;
+mes "Suas Caixas de Trovão foram empacotadas com sucesso.";
+delitem 12028,@quant*100;
+getitem 21013,@quant;
+close;
+
+case 3:
+next;
+mes @np$;
+mes "Agora digite a quantidade de caixas de aloe vera que você deseja obter.";
+input @quant;
+if(@quant < 1){ next; mes @np$; mes "Me desculpe mais você digitou uma quantidade inválida"; close; }
+if(@quant*100 > countitem(606)){ next; mes @np$; mes "Me desculpe mais você não tem aloe vera suficiente para empacotar nessa quantidade de caixas."; close; }
+next;
+mes @np$;
+mes "Tem certeza que deseja obter ^FFA500"+@quant+"^000000 caixas de aloe vera?";
+
+if (select("[^ff0000»^000000] Sim:[^ff0000»^000000] Não") == 2) close;
+
+next;
+mes @np$;
+mes "Suas aloe veras foram empacotadas com sucesso.";
+delitem 606,@quant*100;
+getitem 21007,@quant;
+close;
+
+}
+}

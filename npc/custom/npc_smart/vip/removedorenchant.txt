@@ -1,0 +1,71 @@
+vip,68,65,5	script	Removedor de Encantos	536,{
+	mes "[ ^a60536Removedor de Encantos^000000 ]";
+	if((( Weight * 100) / MaxWeight ) > 49 ){
+		mes "Você está com peso excessivo..";
+        	mes "Guarde equipamentos e itens que você não deseja remover o encantamento!";
+        	close;
+    	}
+	mes "Posso remover os encantamentos dos seus equipamentos, como você é um Jogador VIP não cobro nenhuma taxa!";
+	mes "Diga-me deseja remover algum encanto?";
+	next;
+	if( select("[^ff0000»^000000] Sim.:[^ff0000»^000000] Não.") == 2 ){
+		mes "[ ^a60536Removedor de Encantos^000000 ]";
+		mes "Certo, volte quando precisar dos meus serviços.";
+		close;
+	}
+	mes "[ ^a60536Removedor de Encantos^000000 ]";
+	mes "Tudo bem, qual item quer que eu examine para você?";	
+	next;
+	setarray .@position$[1], "[^ff0000»^000000] Cabeça","[^ff0000»^000000] Corpo","[^ff0000»^000000] Mão Esquerda","[^ff0000»^000000] Mão Direita","[^ff0000»^000000] Manto","[^ff0000»^000000] Sapatos","[^ff0000»^000000] Acessório 1","[^ff0000»^000000] Acessório 2","[^ff0000»^000000] Cabeça Meio","[^ff0000»^000000] Cabeça Baixo";
+	set .@menu$, "";
+	for( set .@i, 1; .@i <= 10; set .@i,.@i + 1 ){
+		if( getequipisequiped(.@i) )
+			set .@menu$, .@menu$ + .@position$[.@i] + " - " + "^0000ff[" + getequipname(.@i) + "]^000000";
+			set .@menu$, .@menu$ + ":";
+	}
+	set @part, select(.@menu$);
+
+	mes "[ ^a60536Removedor de Encantos^000000 ]";
+	if( !getequipisequiped(@part) ){
+		mes "Ah meu jovem, você não está utilizando nada para que eu possa retirar o encantamento.";
+		close;
+	}
+	if( (getequipcardid(@part, 3) >= 4850) && (getequipcardid(@part, 3) <= 4914) ) goto L_Continue;
+		mes "Não existe nenhum encantamento que eu conheça neste item.";
+		close;
+	L_Continue:
+		mes "Certo, posso começar minha mágica?";
+		next;
+	if(select("[^ff0000»^000000] Sim.:[^ff0000»^000000] Não.") == 2 ){
+		mes "[ ^a60536Removedor de Encantos^000000 ]";
+		mes "Se decida logo, garot" + (Sex?"o":"a") + "!";
+		close;
+	}
+	set @enc_id, getequipid(@part);
+	set @enc_enc, getequipcardid(@part,3);
+	set @enc_refine, getequiprefinerycnt(@part);
+	set @enc_slot0, getequipcardid(@part,0);
+	set @enc_slot1, getequipcardid(@part,1);
+	set @enc_slot2, getequipcardid(@part,2);
+
+	set @cardcount,getequipcardcnt(@part);
+	mes "[ ^a60536Removedor de Encantos^000000 ]";
+	if( !checkweight(@enc_id,(@cardcount + 1)) ){
+		mes "Você está acima do peso, guarde itens que não deseja remover o encantamento!";
+		close;
+	}
+	getinventorylist;
+	for( set .@i, 0; .@i < @inventorylist_count; set .@i, .@i + 1 )
+	if( @inventorylist_expire[.@i] != 0 ){
+		mes "^777777Atenção: Você está com itens de aluguel em seu personagem, não removo encantos deste tipo de item.^000000";
+		emotion e_hmm;
+		close;
+	}
+	mes "Tudo certo!!! O seu encantamento está fora do item.";
+	misceffect 154;
+	failedrefitem @part;
+	getitem2 @enc_id, 1, 1, @enc_refine, 0, @enc_slot0, @enc_slot1, @enc_slot2, 0;
+	getitem @enc_enc, 1;
+	message strcharinfo(0), "[ Encantamento Removido ].";
+	close;	
+}

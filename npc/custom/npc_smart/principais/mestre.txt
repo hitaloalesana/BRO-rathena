@@ -1,0 +1,348 @@
+-	script	Classe	-1,{
+OnPCJobLvUpEvent:
+if(JobLevel >= 10 && Class == Job_Novice){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Gostaria de evoluir para qual classe?";
+	next;
+	switch(select("^00CC00•^000000 Espadachim.:^00CC00•^000000 Mago.:^00CC00•^000000 Arqueiro.:^00CC00•^000000 Noviço.:^00CC00•^000000 Mercador.:^00CC00•^000000 Gatuno:^00CC00•^000000 Justiceiro.:^00CC00•^000000 Ninja.:^00CC00•^000000 Taekwon.")){
+		case 1:
+			jobchange Job_Swordman;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FEspadachim^000000.";
+			close;
+		case 2:
+			jobchange Job_Mage;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FMago^000000.";
+			close;
+		case 3:
+			jobchange Job_Archer;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FArqueiro^000000.";
+			close;
+		case 4:
+			jobchange Job_Acolyte;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FNoviço^000000.";
+			close;
+		case 5:
+			jobchange Job_Merchant;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FMercador^000000.";
+			close;
+		case 6:
+			jobchange Job_Thief;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FGatuno^000000.";
+			close;
+		case 7:
+			jobchange Job_Gunslinger;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FJusticeiro^000000.";
+			close;
+		case 8:
+			jobchange Job_Ninja;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FNinja^000000.";
+			close;
+		case 9:
+			jobchange Job_Taekwon;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FTaekwon^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Swordman){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Cavaleiro.:^00CC00•^000000 Templário.")){
+	case 1:
+		jobchange Job_Knight;
+		mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FCavaleiro^000000.";
+		close;
+	case 2:
+		jobchange Job_Crusader;
+		mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FTemplário^000000.";
+		close;
+	}
+}
+if(JobLevel >= 40 && Class == Job_Mage){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Bruxo.:^00CC00•^000000 Sábio.")){
+		case 1:
+			jobchange Job_Wizard;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FBruxo^000000.";
+			close;
+		case 2:
+			jobchange Job_Sage;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FSábio^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Archer){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Caçador.:^00CC00•^000000 Bardo | Dançarina.")){
+		case 1:
+			jobchange Job_Hunter;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FCaçador^000000.";
+			close;
+		case 2:
+			jobchange Job_Bard;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FBardo/Dançarina^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Acolyte){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Monge.:^00CC00•^000000 Sacerdote.")){
+		case 1:
+			jobchange Job_Monk;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FMonge^000000.";
+			close;
+		case 2:
+			jobchange Job_Priest;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FSacerdote^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Merchant){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Ferreiro.:^00CC00•^000000 Alquimista.")){
+		case 1:
+			jobchange Job_Blacksmith;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FFerreiro^000000.";
+			close;
+		case 2:
+			jobchange Job_Alchemist;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FAlquimista^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Thief){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Mercenário.:^00CC00•^000000 Arruaceiro.")){
+		case 1:
+			jobchange Job_Assassin;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FMercenário^000000.";
+			close;
+		case 2:
+			jobchange Job_Rogue;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FArruaceiro^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Taekwon){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Mestre Taekwon.:^00CC00•^000000 Espiritualista.")){
+		case 1:
+			jobchange Job_Star_Gladiator;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FMestre Taewkon^000000.";
+			close;
+		case 2:
+			jobchange Job_Soul_Linker;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FEspiritualista^000000.";
+			close;
+			}
+}
+if(BaseLevel >= 99 && Class >= 7 && Class <= 20){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode renascer como um Aprendiz T.";
+	switch(select("^00CC00•^000000 Virar Aprendiz T.:^00CC00•^000000 Não virar Aprendiz T.")){
+		case 1:
+			jobchange Job_Novice_High;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FAprendiz T^000000.";
+			close;
+		case 2:
+			mes "Muito bem , ^ff0033"+strcharinfo(0)+"^000000, agora você ficará como preferir.";
+			close;
+			}
+}
+if(JobLevel >= 10 && Class == Job_Novice_High){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Gostaria de evoluir para qual classe?";
+	next;
+	switch(select("^00CC00•^000000 Espadachim T.:^00CC00•^000000 Mago T.:^00CC00•^000000 Arqueiro T.:^00CC00•^000000 Noviço T.:^00CC00•^000000 Mercador T.:^00CC00•^000000 Gatuno T.")){
+		case 1:
+			jobchange Job_Swordman_High;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FEspadachim T.^000000.";
+			close;
+		case 2:
+			jobchange Job_Mage_High;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FMago T.^000000.";
+			close;
+		case 3:
+			jobchange Job_Archer_High;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FArqueiro T.^000000.";
+			close;
+		case 4:
+			jobchange Job_Acolyte_High;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FNoviço T.^000000.";
+			close;
+		case 5:
+			jobchange Job_Merchant_High;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FMercador T.^000000.";
+			close;
+		case 6:
+			jobchange Job_Thief_High;
+			mes "^0033FF[ Classes BrasilRO ]^000000";
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, você se tornou um ^1E519FGatuno T.^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Swordman_High){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Lorde.:^00CC00•^000000 Paladino.")){
+		case 1:
+			jobchange Job_Lord_Knight;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FLorde^000000.";
+			close;
+		case 2:
+			jobchange Job_Paladin;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FPaladino^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Mage_High){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Arquimago.:^00CC00•^000000 Professor.")){
+		case 1:
+			jobchange Job_High_Wizard;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FArquimago^000000.";
+			close;
+		case 2:
+			jobchange Job_Professor;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FProfessor^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Archer_High){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Atirador de Elite.:^00CC00•^000000 Menestrel | Cigana.")){
+		case 1:
+			jobchange Job_Sniper;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FAtirador de Elite^000000.";
+			close;
+		case 2:
+			jobchange Job_Gypsy;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FMenestrel / Dançarina^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Acolyte_High){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Mestre.:^00CC00•^000000 Sumo Sacerdote.")){
+		case 1:
+			jobchange Job_Champion;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FMestre^000000.";
+			close;
+		case 2:
+			jobchange Job_High_Priest;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FSumo Sacerdote^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Merchant_High){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Mestre Ferreiro.:^00CC00•^000000 Criador.")){
+		case 1:
+			jobchange Job_Whitesmith;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FMestre Ferreiro^000000.";
+			close;
+		case 2:
+			jobchange Job_Creator;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FCriador^000000.";
+			close;
+			}
+}
+if(JobLevel >= 40 && Class == Job_Thief_High){
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000 ... Você chegou no último nível da sua classe.";
+	next;
+	mes "^0033FF[ Classes BrasilRO ]^000000";
+	mes "Agora você pode escolher sua próxima classe.";
+	mes "Qual sua escolha?";
+	switch(select("^00CC00•^000000 Algoz:^00CC00•^000000 Desordeiro.")){
+		case 1:
+			jobchange Job_Assassin_Cross;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FAlgoz^000000.";
+			close;
+		case 2:
+			jobchange Job_Stalker;
+			mes "Parabéns, ^ff0033"+strcharinfo(0)+"^000000, agora você é um ^1E519FDesordeiro^000000.";
+			close;
+			}
+	}
+	end;
+}

@@ -1,0 +1,27 @@
+-	script	announce_time	-1,{
+OnInit:
+	set .a_time, 10; // 10 Min.
+	setarray .a_list$[0],
+		"Ajude-nos votando diáriamente e ganhe pontos para trocar por itens.",
+		"Fique ligado nas modificações e atualizações, visite nosso fórum.",
+		"Ajude-nos doando, sua doação ajuda a manter o servidor online. Acesso o site e saíba como doar.",
+		"Visite nossa página no facebook, curta nossas postagens e mantenha-se informado.";
+		announce .a_list$[rand(getarraysize(.a_list$))],bc_all|bc_blue;
+		sleep(.a_time * 60000);
+}
+//-	script	fever_fields	-1,{
+//OnInit:
+//	monster "prontera", 157, 157, strmobinfo( 1, 1002 ), 1002, 3, strnpcinfo(0) +"::OnTestKill_1";
+//	end;
+//
+//OnTestKill_1:
+//	set .mob, .mob + 1;
+//	monster "prontera", 157, 157, strmobinfo( 1, 1002 ), 1002, 1, strnpcinfo(0) +"::OnTestKill_1";
+//
+//	if( .mob > 10 ){
+//		monster "prontera", 157, 157, strmobinfo( 1, 1005 ), 1005, 1, strnpcinfo(0) +"::OnTestKill_1";
+//		set .mob, 0;
+//		end;
+//	}
+//	end;
+//}

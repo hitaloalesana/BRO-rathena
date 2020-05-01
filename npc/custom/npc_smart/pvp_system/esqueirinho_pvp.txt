@@ -1,0 +1,37 @@
+prt_pvp,30,69,6	script	Esqueirinho	715,{
+	mes "[ ^a60536Esqueirinho^000000 ]";
+	mes "Tá afim de saír da Arena ou então chamar os bundões pra batalha?";
+	mes "Diga-me o que eu posso fazer por você.";
+	next;
+	if( select("[^EF8319»^000000] Saír da Arena.","[^EF8319»^000000] Chamar para Duelo.") == 1 ){
+			message strcharinfo(0), "Saíndo em 5 segundo(s).";
+			sleep2 1000;
+			message strcharinfo(0), "Saíndo em 4 segundo(s).";
+			sleep2 1000;
+			message strcharinfo(0), "Saíndo em 3 segundo(s).";
+			sleep2 1000;
+			message strcharinfo(0), "Saíndo em 2 segundo(s).";
+			sleep2 1000;
+			message strcharinfo(0), "Saíndo em 1 segundo.";
+			sleep2 1000;
+			warp getsavepoint(0), getsavepoint(1), getsavepoint(2);
+			end;
+	}
+	if ( dp > gettimetick(2) ){		
+		message strcharinfo(0), "Espere "+ (dp - gettimetick(2)) +" segundo(s) para enviar mais mensagens.";	
+		close2;
+		end;
+	}
+
+	set dp, gettimetick(2) + rand( 180,300 );
+	close2;
+	switch( rand(1,3) ){
+		message strcharinfo(0),"Mensagem enviada.";
+		case 1: announce "[Sistema PvP]: » "+ strcharinfo(0) +" « disse que ninguém é pareo para ele no x1.", bc_all, "0xFF6A6A"; end;
+		case 2: announce "[Sistema PvP]: » "+ strcharinfo(0) +" « está desafiando o servidor inteiro pra Porrada!", bc_all, "0xFF6A6A"; end;
+		case 3:	announce "[Sistema PvP]: » "+ strcharinfo(0) +" « convoca todo mundo para uma Treta!", bc_all, "0xFF6A6A"; end;
+	}
+	end;
+}
+force_1-1,89,110,6	duplicate(Esqueirinho)	Esqueirinho#1	715
+guild_vs6,40,70,6	duplicate(Esqueirinho)	Esqueirinho#2	715

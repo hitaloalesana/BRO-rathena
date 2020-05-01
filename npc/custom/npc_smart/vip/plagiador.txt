@@ -1,0 +1,54 @@
+vip,79,56,4	script	Plagiador	570,{
+
+set @npc$,"[ ^a60536Plagiador^000000 ]";
+set $menu$,"[^ff0000»^000000]";	// Menu
+
+if(BaseJob != Job_Rogue){
+mes "[ ^a60536Plagiador^000000 ]";
+mes "Olá ^EEAD2D"+strcharinfo(0)+"^000000, sua classe não pode utilizar esse npc."; close;
+}
+mes @npc$;
+mes "Olá ^EEAD2D"+strcharinfo(0)+"^000000,";
+mes "Tenho um sistema de plagiar todas habilidades do Jogo exclusivo do SmartRO. Muahahaha";
+next;
+mes @npc$;
+mes "Nosso sistema funciona assim:";
+mes "O senhor escolhe a Habilidade desejada e após isso você será relogado automaticamente pra conclusão do Plagio.";
+next;
+mes @npc$;
+mes "Vamos lá então ^EEAD2D"+strcharinfo(0)+"^000000,";
+mes "Escolha a sua Habilidade e se divirta!";
+
+next;
+set .@menu, select(.menu$) -1;
+if ( getskilllv(.skill$[.@menu * 3 +1]) ) {
+  mes "Você já copiou essa habilidade.";
+  close;
+}
+mes @npc$;
+mes "Você deseja copiar a Habilidade "+ .skill$[.@menu * 3] +"?";
+mes "Como foi falado anteriormente, você será relogado automaticamente pra conclusão.";
+mes "Tudo bem ^EEAD2D"+strcharinfo(0)+"^000000?";
+next;
+if ( select ( ""+$menu$+" Sim!", ""+$menu$+" Não, obrigado " ) == 2 ) close;
+set CLONE_SKILL, .skill$[.@menu * 3 +1];
+set CLONE_SKILL_LV, .skill$[.@menu * 3 +2];
+atcommand "@kick "+ strcharinfo(0);
+end;
+OnInit:
+setarray .skill$, "Trovão de Jupter", 84, 10,
+	"Brisa Cortante", 542, 5,
+	"Nevasca", 89, 10,
+	"Ira de Thor", 85, 10,
+	"Disparo Violento", 148, 10,
+	"Demonstração Ácida", 490, 10,
+	"Lança de Gelo", 537, 10,
+	"Lamina de Vento", 540, 10,
+	"Sacrificio de Matyr", 368, 5,
+	"Impacto de Tyr", 62, 10,
+	"Glória Domini", 367, 5;  
+set .@skillsize, getarraysize(.skill$);
+for ( set .@i,0; .@i < .@skillsize; set .@i, .@i +3 )
+  set .menu$, .menu$ + .skill$[.@i] +":";
+end;
+}

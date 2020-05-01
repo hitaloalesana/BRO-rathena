@@ -1,0 +1,143 @@
+function	script	PG#Function	{
+	setarray $@class[0], 
+	4008, 4009, 4010, 4011, 4012, 4013, 4015, 4016, 4017, 
+	4018, 4019, 4020, 4046, 4047, 4049, 24, 25, 23;
+	
+	set .@guild_id, getcharid(2);
+	mes "[ ^a60536Pack Guild SmartRO^000000 ]";
+	mes "Olá, ^0000FF"+ strcharinfo(0) +"^000000 da Guild ^0000FF"+ getguildname( .@guild_id ) +"^000000";
+	mes "Antes de receber seu Pack Guild você deve escolher sua classe.";
+	mes "Lembrando que este será o char que você irá usar seu Pack Guild, escolha com sabedoria.";
+	next;
+	for( set .@i, 0; .@i < getarraysize($@class); set .@i, .@i + 1){
+		set .@menu$, .@menu$ + "[^a60536»^000000] "+ jobname($@class[.@i]);
+		set .@menu$, .@menu$ +":";
+	}
+	set .@menu, select(.@menu$);
+	set .@menu, .@menu - 1;
+	mes "[ ^a60536Pack Guild SmartRO^000000 ]";
+	mes "Essa é realmente esta a classe que você deseja se tornar?";
+	mes "Atente-se pois você não terá uma nova oportunidade de escolhar a classe e receber o Pack Guild.";
+	mes "^777777Confirme abaixo se é esta mesmo:^000000";
+	next;
+	if(select("[^a60536»^000000] Transformar em ^777777["+jobname($@class[.@menu])+"]^000000:^FF0000Cancelar^000000") == 2) close;
+		close2;
+		mes "[ ^a60536Pack Guild SmartRO^000000 ]";
+		mes "Pronto! Você acaba de virar "+ (Sex? "um":"uma") +" ^B00400"+ jobname($@class[.@menu]) +"^000000.";
+		mes "Você também recebeu os itens seu Pack Guild, os stuffs foram direto para seu storage.";
+		mes "^ff0000* A duração do seu Pack Guild consiste em 43200 minutos, sendo 30 dias exatos.^000000";
+		jobchange $@class[.@menu];
+		set BaseLevel, BaseLevel + 300;
+		set JobLevel, JobLevel + 150;
+		atcommand "@allskill";
+		percentheal 100, 100;
+		message strcharinfo(0), "Todos as skills foram completadas.";
+		specialeffect2 338; 
+		specialeffect2 432;
+		set set_job, set_job + 1;
+		close2;
+		callsub Get_Platinum;
+		callsub Get_Item;
+		end;
+
+	Get_Platinum:
+	skill 142,1, 0;
+	switch( BaseClass ){
+		case 0: if( Class != 23 ) skill 143, 1, 0; break;
+		case 1: skill 144, 1, 0; skill 145, 1, 0; skill 146, 1, 0; break;
+		case 2: skill 157, 1, 0; break;
+		case 3: skill 147, 1, 0; skill 148, 1, 0; break;
+		case 4: skill 156, 1, 0; break;
+		case 5: skill 153, 1, 0; skill 154, 1, 0; skill 155, 1, 0; break;
+		case 6: skill 149, 1, 0; skill 150, 1, 0; skill 151, 1, 0; skill 152, 1, 0; break;
+		default: break;
+	}
+	switch( BaseJob ){
+		case 7: skill 1001, 1, 0; break;
+		case 8: skill 1014, 1, 0; break;
+		case 9: skill 1006, 1, 0; break;
+		case 10: skill 1012, 1, 0; skill 1013, 1, 0; break;
+		case 11: skill 1009, 1, 0; break;
+		case 12: skill 1003, 1, 0; skill 1004, 1, 0; break;
+		case 14: skill 1002, 1, 0; break;
+		case 15: skill 1015, 1, 0; skill 1016, 1, 0; break;
+		case 16: skill 1007, 1, 0; skill 1008, 1, 0; skill 1017, 1, 0; skill 1018, 1, 0; skill 1019, 1, 0; break;
+		case 17: skill 1005, 1, 0; break;
+		case 18: skill 238, 1, 0; break;
+		case 19: skill 1010, 1, 0; break;
+		case 20: skill 1011, 1, 0; break;
+		default: break;
+	}
+	Get_Item:
+		// Itens do Pack Guild.
+		setarray .@item_pack[0],23015,23016,23017,27008,27009,27010,27011,27012,27013,27014,27015,27016,27017,27018;
+
+		// Tempo de PG: 30 dias em segs.
+		set .@time, 2592000;
+
+		// Entrega dos equipamentos.
+		dispbottom "[Pack Guild]: Os itens recebidos são fixados em sua conta por tempo limitado.";
+		for( set .@i, 0; .@i < getarraysize( .@item_pack ); set .@i, .@i + 1 ){
+			rentitem .@item_pack[.@i], .@time;
+		}
+		// Acessórios 2x
+		rentitem 27027, .@time;
+		rentitem 27027, .@time;
+		// Entrega das armas conforme job.
+		if( BaseJob == Job_Knight ){
+			rentitem 20000, .@time;
+		} else if( BaseJob == Job_Priest ){
+			rentitem 1656, .@time;
+		} else if (BaseJob == Job_Wizard ){
+			rentitem 1655, .@time;
+		} else if( BaseJob == Job_Blacksmith ){
+			rentitem 1317, .@time;
+		} else if( BaseJob == Job_Hunter ){
+			rentitem 1700, .@time;
+		} else if( BaseJob == Job_Assassin ){
+			rentitem 1289, .@time;
+			storeitem 678, 500; // Veneno
+		} else if( BaseJob == Job_Crusader ){
+			rentitem 1435, .@time;
+			storeitem 27026, 2000; // +2k Ygg Paladino (Total 5k)
+		} else if( BaseJob == Job_Monk ){
+			rentitem 1831, .@time;
+		} else if( BaseJob == Job_Sage ){
+			rentitem 1655, .@time;
+		} else if( BaseJob == Job_Rogue ){
+			rentitem 1700, .@time;
+			rentitem 1200, .@time;
+		} else if( BaseJob == Job_Alchemist ){
+			rentitem 1316, .@time;
+			storeitem 7135, 3000; // Fogo Grego
+			storeitem 7136, 3000; // Acido
+			storeitem 7139, 3000; // Revestimento
+		} else if( BaseJob == Job_Bard ){
+			rentitem 1932, .@time;
+		} else if( BaseJob == Job_Dancer ){
+			rentitem 1987, .@time;
+		} else if( BaseJob == Job_Gunslinger ){
+			rentitem 13114, .@time;
+		} else if( BaseJob == Job_Ninja ){
+			rentitem 13310, .@time;
+		} else if( BaseJob == Job_Soul_Linker ){
+			rentitem 1655, .@time;
+		} else if( BaseJob == Job_Taekwon ){
+			rentitem 20006, .@time;
+		} else if( BaseJob == Job_SuperNovice ){
+			rentitem 1655, .@time;
+			rentitem 20005, .@time;
+		}
+		storeitem 27023, 1500; // Caixa do Trovão
+		storeitem 27024, 1500; // Aloe
+		storeitem 27025, 1500; // Ressentimento
+		storeitem 27026, 3000; // Fruto de Yggdrasil
+		storeitem 21020, 1; // ticketquest
+		storeitem 21039, 100; // GS
+		storeitem 21003, 10; // GS
+		storeitem 21058, 10; // GSS
+		storeitem 21019, 1; // GSS
+		delitem 21022, 1; // Deletando a Caixa do Pack Guild
+		dispbottom "[ Os itens Stuffs do Pack Guild foram diretos para seu armazém ].";
+		end;
+}

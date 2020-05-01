@@ -1,0 +1,36 @@
+function	script	Caixa_WoE#Smart	{
+	if((( Weight * 100) / MaxWeight ) > 49 ){
+        	message strcharinfo(0), "[ Você está acima peso para abrir sua caixa ].";
+        	end;
+    	}
+	mes "[ ^a60536Prêmio de Guerra^000000 ]";
+	mes "Abrir sua ^EF8319Caixa de Prêmiação WoE^000000 pode vir:";
+	mes " ^FF0000»^000000 2% ^0000FF"+ getitemname(21020) +"^000000";
+	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21019) +"^000000";
+	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21035) +"^000000";
+	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21036) +"^000000";
+	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21037) +"^000000";
+	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21038) +"^000000";
+	mes " ^FF0000»^000000 10% ^0000FF"+ getitemname(21038) +"^000000";
+	mes " ^FF0000»^000000 40% ^0000FF"+ getitemname(21039) +"^000000";
+	mes " ^FF0000»^000000 50% ^0000FF"+ getitemname(21000) +"^000000";
+	mes " ^FF0000»^000000 50% ^0000FF"+ getitemname(6266) +"^000000";
+	mes " ^FF0000»^000000 100% ^0000FF"+ getitemname(21046) +"^000000";
+	if(select("[^a60536»^000000] Receber Prêmios.:[^a60536»^000000] Saír.") == 2 ) close;
+		close2;
+		delitem 21053, 1;
+		if( rand(0,100) <= 2 ) getitem 21020, 1; 
+		if( rand(0,100) <= 2 ) getitem 21019, 1; 
+		if( rand(0,100) <= 3 ) getitem 21035, 1; 
+		if( rand(0,100) <= 3 ) getitem 21036, 1; 
+		if( rand(0,100) <= 3 ) getitem 21037, 1; 
+		if( rand(0,100) <= 3 ) getitem 21038, 1; 
+		if( rand(0,100) <= 10 ) getitem 21061, 1; 
+		if( rand(0,100) <= 40 ) getitem 21039, 3; 
+		if( rand(0,100) <= 20 ) getitem 21000, 1; 
+		if( rand(0,100) <= 50 ) getitem 6266, 1; 
+		if( rand(0,100) <= 100 ) getitem 21046, 1;
+		message strcharinfo(0), "[ Parabéns por sua vitória ].";
+		specialeffect2 885; specialeffect2 899;
+		end;
+}

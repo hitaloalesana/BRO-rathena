@@ -1,0 +1,214 @@
+-	script	Prizer#Evt	-1,{
+OnInit:
+	set .GMAccess, 60;
+	set .GMDelete, 99;
+	set .GMLogging, 99;
+	set .PackageCount, 3;
+	setarray .Package1[0], 21024, 10, 21039, 2, 21003, 5;
+	setarray .Package2[0], 21024, 15, 21039, 3, 6267, 1, 21003, 10, 21019, 1;
+	setarray .Package3[0], 21024, 30, 21039, 5, 6267, 1, 21003, 10, 21019, 1;
+	bindatcmd "premio", strnpcinfo(0) +"::OnPrizer", 0, 100;
+	end;
+
+OnPrizer:
+	if( getgmlevel() >= .GMAccess ) goto GM_Menu;
+	set .@i, 0;
+	while( .@i < getarraysize($itemreward$) ){
+		if( strcharinfo(0) == $itemreward$[.@i] ) goto GetReward;
+			set .@i, .@i + 2; 
+	}
+	message strcharinfo(0), "[ Não existe prêmio pendente em seu nome ].";
+	close;
+
+GetReward:
+	if((( Weight*100)/MaxWeight ) > 49 ){
+		message strcharinfo(0), "[ Você está acima do peso. ]"; 
+		close; 
+	}
+	if( !checkweight( 5055, getarraysize(getd(".Package"+ $itemreward$[.@i + 1] )))){
+		message strcharinfo(0), "[ Limpe seu inventário para pegar sua prêmiação ]."; 
+		close; 
+	}
+	set .@j, 0;
+	while( .@j < getarraysize(getd(".Package"+ $itemreward$[.@i + 1] ))){
+		getitem getd(".Package"+ $itemreward$[.@i + 1] +"["+ .@j +"]"), getd(".Package"+ $itemreward$[.@i + 1] +"["+ (.@j + 1) +"]");
+		set .@j, .@j + 2; 
+	}
+	specialeffect2 248;
+	deletearray $itemreward$[.@i], 2;
+	message strcharinfo(0), "[ Prêmio entregue com sucesso ].";
+	announce "[Prêmição de Evento]: » "+strcharinfo(0)+" « retirou sua prêmiação.", bc_all|bc_blue;
+	close;
+
+OnMinute00:
+OnMinute30:
+	if( !getarraysize( $itemreward$ )) end;
+	set .@i, 0;
+	while( .@i < getarraysize($itemreward$ )){
+		message $itemreward$[.@i], "[ Você tem uma prêmio pendente. Digite @premio para retirar ].";
+		sleep 10;
+		set .@i, .@i + 2; 
+	}
+	end;
+GM_Menu:
+	mes "[ ^a60536Prêmiação de Evento^000000 ]";
+	mes "Em que posso te ajudar hoje?";
+	next;
+	switch(select("[^EF8319»^000000] ^FF55FFPacotes de Prêmios.^000000:[^EF8319»^000000] ^FF55FFPrêmios Enviados.^000000:[^EF8319»^000000] ^00D900Enviar Prêmio.^000000:[^EF8319»^000000] "+ (( getgmlevel() < .GMDelete )?"^777777":"^DE0000") +"Deletar Prêmio.^000000:[^EF8319»^000000] "+ (( getgmlevel() <.GMDelete )?"^777777":"^DE0000") +"Deletar Prêmios Enviados.^000000:[^EF8319»^000000] "+ ((getgmlevel()<.GMLogging )?"^777777":"^55AAFF") +"Ver Logs.^000000:[^EF8319»^000000] Saír." )){
+		case 1:
+			mes "[ ^a60536Prêmiação de Evento^000000 ]";
+			set .@j, 1;
+			while( getd(".Package"+ .@j )){
+				mes "^660099Pacote " + .@j + ":^000000";
+				set .@i, 0;
+				while( .@i < getarraysize(getd(".Package"+ .@j ))){
+					mes " ~ " + getd(".Package"+ .@j +"["+ (.@i + 1) +"]") + "x " + getitemname( getd(".Package"+ .@j +"["+ (.@i) +"]" ));
+					set .@i, .@i + 2; 
+				}
+				set .@j, .@j + 1; 
+			}
+			next;
+			goto GM_Menu;
+		case 2:
+			mes "[ ^a60536Prêmiação de Evento^000000 ]";
+			mes "Espaço Utilizado: ^F52887"+ (getarraysize($itemreward$)/2) +"^000000/64";
+			mes "--------------------------------";
+			set .@i, 0;
+			while( .@i < getarraysize($itemreward$ )){
+				mes "^B041FF" + $itemreward$[.@i] + "^000000: Pacote #" + $itemreward$[.@i + 1];
+				set .@i, .@i+2; 
+			}
+			next;
+			goto GM_Menu;
+		case 3:
+			mes "[ ^a60536Prêmiação de Evento^000000 ]";
+			if( getarraysize($itemreward$) > 127 ){
+				mes "Nenhum outro nome pode ser utilizado, apague e limpe espaço para novos.";
+				next;
+				goto GM_Menu; 
+			}
+			mes "Digite o nome do jogador e o pacote de prêmios:";
+			input .@name$;
+			query_sql "SELECT `char_id` FROM `char` WHERE `name` = '"+ .@name$ +"'", .@charid;
+			if( !.@charid ){ 
+				mes "Nome invalido."; 
+				next; 
+				goto GM_Menu; 
+			} else 
+				set .@charid, 0;
+				input .@package, 1, .PackageCount;
+				next;
+				mes "[ ^a60536Prêmiação de Evento^000000 ]";
+				mes "Jogador: ^B041FF"+ .@name$ +"^000000";
+				mes "Pacote: ^B041FF#"+ .@package +"^000000";
+				mes " ";
+				mes "Você tem certeza?";
+				if (select("[^EF8319»^000000] Sim.:[^EF8319»^000000] Não.") == 2 ){
+					mes "[ ^a60536Prêmiação de Evento^000000 ]";
+					mes "Cancelado."; 
+					next; 
+					goto GM_Menu; 
+				}
+				setarray $itemreward$[getarraysize($itemreward$)], .@name$, .@package;
+				message .@name$,"[ Você tem uma prêmio pendente. Digite @premio para retirar ].";
+				if( $itemlog ){
+				if( getarraysize($itemlog1$) > 127 ){
+						deletearray $itemlog1$[0], 1;
+						deletearray $itemlog2$[0], 1; 
+					}
+					setarray $itemlog1$[getarraysize($itemlog1$)], strcharinfo(0);
+					setarray $itemlog2$[getarraysize($itemlog2$)], .@name$; 
+				}
+				mes "Prêmio adicionado.";
+				next;
+				goto GM_Menu;
+		case 4:
+			mes "[ ^a60536Prêmiação de Evento^000000 ]";
+			if( getgmlevel() < .GMDelete){
+				mes "Você não tem permissão para isso."; 
+				next; 
+				goto GM_Menu; 
+			}
+			mes "Coloque o nome que vai cancelar a recompensa:";
+			input .@name$;
+			set .@i, 0;
+			while( .@i < getarraysize($itemreward$) ){
+				if( $itemreward$[.@i] == .@name$ ){
+					deletearray $itemreward$[.@i], 2;
+					mes "Cancelado."; 
+					next; 
+					goto GM_Menu; 
+				}
+				set .@i, .@i + 2; 
+			}
+			mes "Nome invalido.";
+			next;
+			goto GM_Menu;
+		case 5:
+			mes "[ ^a60536Prêmiação de Evento^000000 ]";
+			if( getgmlevel() < .GMDelete ){
+				mes "Você não tem permissão para isso."; 
+				next; 
+				goto GM_Menu; 
+			}
+			mes "^FF0000* Esta ação não pode ser desfeita^000000";
+			mes "Você tem certeza?";
+			mes " ";
+			if( select("[^EF8319»^000000] Sim.:[^EF8319»^000000] Não.") == 2 ){ 
+				mes "[ ^a60536Prêmiação de Evento^000000 ]";
+				mes "Cancelado."; 
+				next; 
+				goto GM_Menu; 
+			}
+			deletearray $itemreward$[0], getarraysize($itemreward$);
+			next;
+			goto GM_Menu;
+		case 6:
+		Log_Menu:
+			mes "[ ^a60536Prêmiação de Evento^000000 ]";
+			if( getgmlevel() < .GMLogging ){
+				mes "Você não tem permissão para isso."; 
+				next; 
+				goto GM_Menu; 
+			}
+			mes "Logs estão "+(($itemlog)?"^00D900ativado^000000":"^FF0000desativo^000000")+".";
+			next;
+			switch(select("[^EF8319»^000000] ^55AAFFVer Logs.^000000:[^EF8319»^000000] "+((!$itemlog)?"^00D900Habilitar":"^777777Desabilitar")+" Logs.^000000:[^EF8319»^000000] ^DE0000Deletar Logs.^000000:[^EF8319»^000000] Voltar.")) {
+				case 1:
+					mes "[ ^a60536Prêmiação de Evento^000000 ]";
+					mes "Espaço Utilizado: ^F52887" + (getarraysize($itemlog1$)) + "^000000/128";
+					mes "--------------------------------";
+					set .@i, 0;
+					while( .@i < getarraysize($itemlog1$) ){
+						mes "^B041FF" + $itemlog1$[.@i] + "^000000: enviar para ^55AAFF" + $itemlog2$[.@i] + "^000000";
+						set .@i, .@i + 1; 
+					}
+					next;
+					goto Log_Menu;
+				case 2:
+					set $itemlog, ((!$itemlog)?1:0);
+					goto Log_Menu;
+				case 3:
+					mes "[ ^a60536Prêmiação de Evento^000000 ]";
+					mes "^FF000* Esta ação não pode ser desfeita.^000000";
+					mes "Você tem certeza?";
+					mes " ";
+					if( select("[^EF8319»^000000] Sim.:[^EF8319»^000000] Não.") == 2 ){
+						mes "[ ^a60536Prêmiação de Evento^000000 ]";
+						mes "Cancelado."; 
+						next; 
+						goto Log_Menu; 
+					}
+					deletearray $itemlog1$[0], getarraysize($itemlog1$);
+					deletearray $itemlog2$[0], getarraysize($itemlog2$);
+					mes "Logs limpos.";
+					next;
+					goto Log_Menu;
+				case 4:
+					next;
+					goto GM_Menu;
+			}
+		case 7:
+			close;
+		}
+}

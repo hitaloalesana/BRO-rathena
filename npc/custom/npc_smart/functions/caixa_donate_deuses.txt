@@ -1,0 +1,16 @@
+function	script	Caixa_Donate_Elmos#Smart	{
+	//21073 Elmos
+	setarray .@d1,24098,24045,22056,24159,24049,24077,24093,24157,24154,22063,24129,24176,24059;
+	set .@index, rand( getarraysize( .@d1 ));
+	getitem .@d1[.@index], 1;
+	announce "[Caixa de Elmos dos Deuses]: "+strcharinfo(0)+" você acaba de receber "+getitemname(.@d1[.@index])+"!", bc_all, 0xd8ff00;
+	end;
+}
+function	script	Caixa_Donate_Asas#Smart	{
+	//21074 Asas
+	setarray .@d2,22003,22002,23035,26045,23055,22067,23021,23022,22069,26033,23056,22006;
+	set .@indexx, rand( getarraysize( .@d2 ));
+	getitem .@d2[.@indexx], 1;	
+	announce "[Caixa de Asas dos Deuses]: "+strcharinfo(0)+" você acaba de receber "+getitemname(.@d2[.@indexx])+"!", bc_all, 0xd8ff00;
+	end;
+}

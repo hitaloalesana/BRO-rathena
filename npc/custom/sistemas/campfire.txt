@@ -1,0 +1,121 @@
+// Herc
+// http://herc.ws/board/topic/16037-campfire-to-regenerate-hpsp/
+// https://github.com/dastgirp/HPM-Plugins/blob/master/src/plugins/npc-duplicate.c
+
+// rA
+// https://pastebin.com/SWd3DWn1
+
+// item_db
+// ..........,{ callfunc("func_CreateCampFire", rand(2, 5), 60, rand(1,10)); }, {}, {}	// Matchstick
+// ..........,{ callfunc("func_UpdateCampFire", rand(3, 10), 60, rand(5,15)); }, {}, {} // Wooden_Block
+// ..........,{ callfunc("func_UpdateCampFire", rand(1, 5), 30, rand(1,8)); }, {}, {}	// Tree_Root
+
+
+
+function	script	func_CreateCampFire	{
+	
+	.@cid = getcharid(3);
+	
+	.@range = getarg(0, 3); 	// Heal Range
+	.@duration = getarg(1, 60); // Duration
+	.@rate = getarg(2, 1); 		// Heal Rate
+
+	getmapxy(.@map$, .@mapx, .@mapy, BL_PC);
+
+	if(getmapxy(.@npc_map$, .@x, .@y, BL_NPC, sprintf("Camp Fire#CF_%d",.@cid)) == 0)
+		donpcevent "Camp Fire#" + sprintf("CF_%d", .@cid) + "::OnCampFireEnd";
+
+	showscript "Starting a Camp Fire...";
+	specialeffect(EF_FIREWALL2, AREA, .@cid);
+	progressbar "0xFFFFFF", 1;
+	
+	duplicatenpc("cf_main", "Camp Fire", sprintf("CF_%d", .@cid), .@map$, .@mapx, (.@mapy - 1), DIR_SOUTH, 10252, .@range, .@range);
+	
+	set(getvariableofnpc(getd(sprintf(".CF_%d_range", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)), .@range);
+	set(getvariableofnpc(getd(sprintf(".CF_%d_duration", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)), .@duration);
+	set(getvariableofnpc(getd(sprintf(".CF_%d_healrate", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)), .@rate);
+	donpcevent "Camp Fire#" + sprintf("CF_%d", .@cid) + "::OnCampFireStart";
+	
+	return;
+}
+
+function	script	func_UpdateCampFire	{
+
+	.@cid = getcharid(3);
+	
+	.@range = getarg(0, 3); 	// Heal Range
+	.@duration = getarg(1, 60); // Duration
+	.@rate = getarg(2, 1); 		// Heal Rate
+
+	getmapxy(.@map$, .@mapx, .@mapy, BL_PC);
+
+	if(getmapxy(.@npc_map$, .@x, .@y, BL_NPC, sprintf("Camp Fire#CF_%d",.@cid)) == 0) {
+		if (.@npc_map$ != .@map$ || distance(.@mapx, .@mapy, .@x, .@y) > 5) {
+			dispbottom "<Camp Fire> You're too far away from the Campfire.";
+		}
+		else {
+			showscript "!!";
+			specialeffect(EF_FIREWALL2, AREA, "Camp Fire#" + sprintf("CF_%d", .@cid));
+			
+			.@range = min(8, getvariableofnpc(getd(sprintf(".CF_%d_range", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)) + .@range);
+			.@duration = min(300, getvariableofnpc(getd(sprintf(".CF_%d_duration", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)) + .@duration);
+			.@rate = min(15, getvariableofnpc(getd(sprintf(".CF_%d_healrate", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)) + .@rate);
+			
+			set(getvariableofnpc(getd(sprintf(".CF_%d_range", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)), .@range);
+			set(getvariableofnpc(getd(sprintf(".CF_%d_duration", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)), .@duration);
+			set(getvariableofnpc(getd(sprintf(".CF_%d_healrate", .@cid)), "Camp Fire#" + sprintf("CF_%d", .@cid)), .@rate);
+		}
+	}
+	else {
+		dispbottom "<Camp Fire> Start a Campfire...";
+	}
+	
+	return;
+}
+
+
+-	script	Camp Fire::cf_main	FAKE_NPC,{
+	end;
+	
+OnCampFireStart:
+	getmapxy(.@map$, .@x, .@y, BL_NPC);
+	
+	.@npcname$ = strnpcinfo(2);
+	
+	do {
+		.@range = getd(sprintf(".%s_range", .@npcname$));
+		.@healrate = getd(sprintf(".%s_healrate", .@npcname$));
+		
+		specialeffect EF_DRAGONSMOKE, AREA;
+		showscript "HEAL: "+.@healrate+"% | AREA:"+.@range+" | TIME: "+getd(sprintf(".%s_duration", .@npcname$));
+		
+		setd(sprintf(".%s_duration", .@npcname$)), getd(sprintf(".%s_duration", .@npcname$)) - 1;
+		
+		areapercentheal(.@map$, (.@x - .@range), (.@y - .@range), (.@x + .@range), (.@y + .@range), .@healrate, .@healrate);
+		sleep 1000;
+		
+		.@counter++;
+		if (.@counter > 0 && .@counter % 10 == 0 && .@healrate > 1) // every 10 seconds reduce heal rate
+			setd(sprintf(".%s_healrate", .@npcname$), getd(sprintf(".%s_healrate", .@npcname$)) - 1);
+		if (.@counter > 0 && .@counter % 30 == 0 && .@range > 1) // every 30 seconds reduce range
+			setd(sprintf(".%s_range", .@npcname$), getd(sprintf(".%s_range", .@npcname$)) - 1); 
+		
+	} while (getd(sprintf(".%s_duration", .@npcname$)) > 0);
+	
+	setd(sprintf(".%s_range", .@npcname$), 0);
+	setd(sprintf(".%s_duration", .@npcname$), 0);
+	setd(sprintf(".%s_healrate", .@npcname$), 0);
+	duplicateremove(strnpcinfo(3));
+	end;
+
+OnCampFireEnd:
+	.@npcname$ = strnpcinfo(2);
+	setd(sprintf(".%s_duration", .@npcname$), 0);
+	awake strnpcinfo(3);
+	end;
+
+OnTouch:
+	specialeffect(EF_HEAL, AREA, getcharid(3));
+	dispbottom("You are feeling warm and cozy.");
+	end;
+}

@@ -1,0 +1,111 @@
+prt_in,136,34,4	script	Ferreiro Ajudante#prt	457,{
+	disable_items;
+	mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+	mes "Meus serviços são mais baratos, porém, não tenho tanta experência quanto o Mestre aqui do lado.";
+	mes "O refinamento comigo tem ^ff0000chances de quebra^000000, então não me culpe caso dê errado!";
+	next;
+	setarray .@position$[1], "Cabeça Topo","Corpo","Mão Esquerda","Mão Direita","Capa","Sapatos","Acessório 1","Acessório 2","Cabeça Meio","Cabeça Baixo";
+	set .@menu$,"";
+	for( set .@i, 1; .@i <= 10; set .@i, .@i + 1 ){
+		if( getequipisequiped( .@i )) {
+			set .@menu$, .@menu$ + .@position$[.@i] + " -" + " ^2596C2[" + getequipname( .@i ) + "]^000000";
+			set .@equipped, 1;
+		}
+		set .@menu$, .@menu$ + ":";
+	}
+	if( .@equipped == 0 ){
+		mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+		mes "Eu acho que eu não posso refinar todos os itens que você tem...";
+
+		close;
+	}
+	set .@part, select( .@menu$ );
+	if ( !getequipisequiped( .@part )) close;
+	if( !getequipisenableref( .@part )) {
+		mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+		mes "Desculpe, mas esse item não pode ser refinado.";
+		close;
+	}
+	if( getequiprefinerycnt( .@part ) == 7 ){
+		mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+		mes "Ainda sou ajudante, só refino do ^ff0000mínimo +1 e até +7^000000. Porém, apartir do +4 os itens podem ser quebrados!";
+		close;
+	}
+	switch( getequipweaponlv( .@part )) {
+		case 1: callsub S_RefineValidate, 1, 1010, 50000,.@part; break;
+		case 2: callsub S_RefineValidate, 2, 1011, 20000,.@part; break;
+		case 3: callsub S_RefineValidate, 3, 984, 50000,.@part; break;
+		case 4: callsub S_RefineValidate, 4, 984, 80000,.@part; break;
+		default: callsub S_RefineValidate,0, 985, 80000,.@part; break;
+	}
+	mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+	mes "^EE30A7Clang! Clang! Clang!^000000";
+	if( ( getequippercentrefinery( .@part ) > rand( 100 ) || getequippercentrefinery( .@part ) > rand( 100 ) ) || getequiprefinerycnt( .@part ) <= 4 ){
+		successrefitem .@part;
+		emotion e_no1;
+		message strcharinfo(0), "[ Refinamento perfeito! ].";
+		specialeffect2 608;
+		close;
+	}
+	specialeffect2 609;
+	failedrefitem .@part;
+	message strcharinfo(0), "[ Refinamento falhou! ].";
+	emotion (!rand(5)) ? e_cash:e_omg;
+	close;
+
+S_RefineValidate:
+	mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+	mes "Para refinar isso, você precisa ter um ^2596C2"+ getitemname( getarg(1) ) +"^000000 e de ^ff0000"+ getarg(2) + "^000000 Zeny.";
+	mes "^777777Gostaria de continuar?^000000";
+	next;
+	if( select("[^ff0000»^000000] Sim.:[^ff0000»^000000] Não.") == 1 ){
+		if( getequippercentrefinery( getarg(3) ) < 100 ){
+			if( getarg(0) ){
+				mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+				mes "Wow!!";
+				mes "Esta arma, provavelmente, parece que já foi refinada... muitas vezes...";
+				mes "Pode quebrar se";
+				mes "você a refinar denovo.";
+				next;
+				mes "E se quebrar, você não pode a usar mais!";
+				mes "Todas as cartas e propriedades do item ^ff0000serão perdidas^000000!!";
+				mes "^ff0000 Além disso, o equipamento vai quebrar!^000000";
+				mes "Tem certeza que deseja continuar?";
+				next;
+				if( select("[^ff0000»^000000] Sim.:[^ff0000»^000000] Não.") == 2 ){
+					mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+					mes "Bem.";
+					mes "Por que, e se a arma quebrar por causa de refinaento insensato, eu ficarei de mau humor.";
+					close;
+				}
+			} else {
+				mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+				mes "Haha. Oh, você tem coragem, atrevendo-se a refinar isto.";
+				mes "Você sabe que é bem arriscado, não sabe?";
+				next;
+				mes "Se seu equipamento for quebrado, você não será capaz de usá-lo denovo.";
+				mes "Mesmo suas cartas e suas modificações vão ^ff0000desaparecer completamente^000000.";
+				mes "Você realmente deseja continuar?";
+				next;
+				if(select("[^ff0000»^000000] Sim.:[^ff0000»^000000] Não.") == 2 ){
+					mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+					mes "Que absurdo! Você gastou meu precioso tempo.";
+					mes "Desapareça.";
+					close;
+				}
+			}
+		}
+		if( countitem( getarg(1) ) > 0 && Zeny > getarg(2) ) {
+			delitem getarg(1), 1;
+			set Zeny, Zeny - getarg(2);
+			return;
+		}
+		mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+		mes "Isso é tudo o que tem?";
+		mes "Eu sinto muito, mas eu não posso fazer nada sem os materiais necessários. Além disso, eu mereço algum pagamento pelo meu trabalho, não?";
+		close;
+	}
+	mes "[ ^a60536" + strnpcinfo(1) + "^000000 ]";
+	mes "Eu não posso ajudá-l"+ (( Sex ) ? "o":"a") +", mesmo que você não esteja feliz com isso...";
+	close;
+}

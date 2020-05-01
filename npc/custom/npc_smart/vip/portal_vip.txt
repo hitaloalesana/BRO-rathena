@@ -1,0 +1,46 @@
+prt_smart,133,183,0	script	warp_vip#entrada	45,1,1,{
+	if( getgmlevel() < 1 ){
+		dispbottom "[ Só é permitido a entrada de jogador VIP ].";
+		dispbottom "[ Para mais informações veja o nosso fórum ].";
+		dispbottom "[ Fórum: http://http://smart-ro.com.br/forum ].";
+		end;	
+	}
+	dispbottom "[ Agradecemos pela sua doação ].";
+	warp "vip", 75, 56; 
+	end;
+}
+vip,76,51,0	script	warp_vip#saida	45,1,1,{
+	warp "prt_smart", 138, 188;
+	end;
+}
+-	script	Cmd_Event	-1,{
+OnInit:
+	bindatcmd("vip",strnpcinfo(0) +"::OnVIP");
+	end;
+OnVIP:
+	if( getgmlevel() < 1 ){
+		message strcharinfo(0), "[ Acesso negado. Você não é um Jogador VIP ].";
+		end;
+	}
+	if ( getmapflag( strcharinfo(3), mf_pvp ) || getmapflag( strcharinfo(3), mf_gvg ) || getmapflag( strcharinfo(3), mf_battleground ) || getmapflag( strcharinfo(3), mf_nowarpto ) ) {
+		dispbottom "[ Você deve saír deste local para entrar na Sala VIP ].";
+		end;
+	}
+	dispbottom "[ Teleportando... ]";
+	specialeffect2 EF_READYPORTAL;
+	specialeffect2 EF_TELEPORTATION;
+	specialeffect2 EF_PORTAL;
+	sleep2 1000;
+	warp "vip", 75, 56; 
+	end;
+}
+
+vip	mapflag	nowarp
+vip	mapflag	nowarpto
+vip	mapflag	noskill
+vip	mapflag	nobranch
+vip	mapflag	nosave
+vip	mapflag	novending
+vip	mapflag	nosave 
+vip	mapflag	noteleport 
+vip	mapflag	nomemo

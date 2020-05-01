@@ -1,0 +1,163 @@
+
+prontera,144,181,4	script	Raça do Dia	837,{
+	set .@gmlevel, getgmlevel();		
+	do{
+		set .@menu, select("^00CC00•^000000 ^8B1C62Infos.^000000 ^777777|^000000 ^FF34B3Ativar Bônus RD.^000000",
+				( .@gmlevel < .gm_level ) ? "":"^00CC00•^000000 ^FF0000[GM]^000000 Configurar Nova Raça.",
+				( .@gmlevel < .gm_level ) ? "":"^00CC00•^000000 ^FF0000[GM]^000000 Configurar EXP Bônus.",		
+				( .@gmlevel < .gm_level ) ? "":"^00CC00•^000000 ^FF0000[GM]^000000 Configurar Item | Zeny Bônus.",
+				"^00CC00•^000000 Saír.");
+	switch( .@menu ){
+		case 1:
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Todos os dias uma raça de monstro é seleciona de forma aleatória para bonificar os jogadores com EXP, dando aquela ajudinha no ^00CC00Level Up^000000!";
+			mes "^777777- Bonificação^000000: É aleatória podendo variar de ^EEAD0E1%^000000 até ^FF000030%^000000 de EXP.";
+			next;
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "^777777- Raça do Dia^000000: ^00CC00("+ .rotd$[.today_rotd] +").^000000";
+			if( .rotd_exp_bonus ) mes "^777777- Bônus^000000: ^EEAD0E"+ .rotd_exp_bonus +"% de EXP.^000000";
+			if(( .rotd_item_amount && .rotd_item_rate ) || .rotd_zeny || .rotd_exp_bonus ){
+				mes "^777777- Recompensa^000000: ^EEAD0E"+ (( .rotd_item_rate ) ? .rotd_item_rate +"%":"" ) +"Nenhum.^000000";
+				if( .rotd_item_amount && .rotd_item_rate ) mes "^EEAD0E"+ .rotd_item_amount +" x "+ getitemname( .rotd_item_id ) +".^000000";
+				if( .rotd_zeny ) mes "^EEAD0E"+ .rotd_zeny +" Zeny.^000000";
+			}
+			mes "^777777- Requerimento^000000: ^0000FF1x Ticket de RD.^000000";
+			mes "^777777- Duração^000000: ^FF000024 Horas de Bonificação.^000000";
+			next;
+			if( select("^00CC00•^000000 Ativar Raça do Dia "+ (( #race_on ) ? "^00BB22(Já Ativo)^000000":"^FF2200(Inativo)^000000") +":^00CC00•^000000 Saír.") ) == 2 close;
+				mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+				if( #race_on == 1 ){
+					mes "O bônus de ^00CC00Raça do Dia^000000 está ativo em sua conta.";
+					close;
+				}
+				mes "Para ativar o bônus de ^00CC00Raça do Dia^000000 traga ^FF00001x Ticket de RD^000000 até mim, pegarei seu ticket e trocar por um de aluguel, assim o bônus de raça ficará ativo em sua conta até o mesmo sumir.";
+				close2;
+				message strcharinfo(0), "Verificando...";
+				progressbar "0xFF0000", 2;
+				if( countitem( 607 ) < 1 ){
+					mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+					mes "É necessário ^FF00001x Ticket de RD^000000 para ativar o bonus em sua conta.";
+					close;
+				}
+				delitem 607, 1;
+				rentitem 607, 1000;
+				set #race_on, 1;
+				specialeffect2 800;
+				message strcharinfo(0), "Bônus de RD: Ativo.";
+				addtimer 3600000, strnpcinfo(1) +"::OnReset";
+				end;
+		case 2:
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Selecionar Nova Raça.";
+			set .today_rotd, select( .rotd_menu$ ) - 1;
+			if( .today_rotd >= .rotd_size ) set .today_rotd, rand( .rotd_size );
+			mes "Nova raça : ^777777"+ .rotd$[.today_rotd] +"^000000";
+			delwaitingroom;
+			waitingroom "("+ .rotd_exp_bonus +"%): "+ .rotd$[.today_rotd] +".", 0;
+			break;
+		case 3:
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Configurar Novo Bônus. (%)";
+			input .rotd_exp_bonus, 0, 100;
+			if(.rotd_exp_bonus) mes "ROTD EXP : "+ .rotd_exp_bonus +" %";
+			break;
+		case 4:
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Configurar Bônus RD.";
+			mes "Inserir Zeny Bônus";
+			input .@zeny;
+			mes "Inserir Item ID";
+			do{
+				input .@item, 0, 32767; 
+				if(!.@item) close;
+			} while( getitemname( .@item ) == "null" );
+			mes "Colocar Quantidade.";
+			input .@amount, 0, 30000;
+			mes "Colocar taxa a ganhar.";
+			input .@rate, 0,100;
+			if( .@amount && .@rate ){
+				next;
+				mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+				mes "Item Bônus Atualizado: ("+ .@rate +"%)";
+				mes "^777777"+ .@amount +" x "+ getitemname( .@item ) +"^000000";
+				mes "^777777"+ .@zeny +" Zeny^000000";
+				if( select("Confirmar.","Cancelar.") == 1 ){
+					set .rotd_item_id, .@item;	
+					set .rotd_item_amount, .@amount;
+					set .rotd_item_rate, .@rate;
+					set .rotd_zeny, .@zeny;
+					mes "Updated.";
+				}
+			}
+			default: close;
+		}
+		next;
+	} while( .@menu != 5 );
+	close;
+OnReset:
+	message strcharinfo(0), "Bônus de RD: Inativo.";
+	set #race_on, 0;
+	end;
+OnInit:
+	// min gm level
+	set .gm_level, 99;
+
+	// lista de raças
+	setarray .rotd$[0],
+		"Amorfo","Morto-Vivo","Bruto","Planta","Inseto",
+		"Peixe","Demônio","Humanoide","Anjo","Dragão";
+	
+	set .rotd_size, getarraysize( .rotd$ );
+	for(set .@i, 0; .@i < .rotd_size; set .@i, .@i + 1)
+		set .rotd_menu$, .rotd_menu$ + .rotd$[.@i] +":";
+	set .rotd_menu$, .rotd_menu$ + "^0055FFRaça Aleatória.^000000";
+
+	// level mínimo do integrante do grupo pra ganhar EXP
+	set .party_level_range, 10;
+
+// reset diário
+OnClock0000:
+	set .today_rotd,rand( .rotd_size );
+	set .rotd_exp_bonus, rand(1,30);
+	delwaitingroom;
+	waitingroom "("+ .rotd_exp_bonus +"%): "+ .rotd$[.today_rotd] +".", 0;
+	end;
+	
+OnNPCKillEvent:
+	if( #race_on == 0 ) end;
+if( getmonsterinfo( killedrid,MOB_RACE ) == .today_rotd ){
+	set .@partyid, getcharid(1);
+	set .@mob_base_exp, (( getmonsterinfo(killedrid,MOB_BASEEXP) / 100 ) * .rotd_exp_bonus );
+	set .@mob_job_exp, (( getmonsterinfo(killedrid,MOB_JOBEXP) / 100 ) * .rotd_exp_bonus );
+	if(.@partyid){
+		set .@aid, getcharid(3);
+		set .@baselevel, BaseLevel;
+		set .@map$, strcharinfo(3);
+		getpartymember .@partyid, 1;
+		getpartymember .@partyid, 2;
+		while( .@i < $@partymembercount ){
+			if( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ))
+				if( attachrid( $@partymemberaid[.@i] ))
+					if( strcharinfo(3) == .@map$ && ( BaseLevel - .@baselevel ) <= .party_level_range && ( BaseLevel - .@baselevel ) >= ~.party_level_range && Hp >= 1 ){	
+						set BaseExp, ( BaseExp + .@mob_base_exp / $@partymembercount);
+						set JobExp, ( JobExp + .@mob_job_exp / $@partymembercount);
+						dispbottom "[RD]: "+ .@mob_base_exp +" Pontos de EXP e "+ .@mob_job_exp +" Pontos de Job divididos para o grupo.", 0x00FFFF;
+			}
+			set .@i, .@i + 1;
+		}
+		attachrid( .@aid );
+	} else {
+		set BaseExp, ( BaseExp + .@mob_base_exp );
+		set JobExp, ( JobExp + .@mob_job_exp );
+		dispbottom "[RD]: "+ .@mob_base_exp +" EXP.", 0x00FFFF;
+	}
+	if( rand( 100 ) < .rotd_item_rate && .rotd_zeny ) 
+		set Zeny,Zeny + rand( .rotd_zeny );
+	if( rand( 100 ) < .rotd_item_rate && .rotd_item_amount ) 
+		getitem .rotd_item_id, rand( .rotd_item_amount );
+	}
+	end;
+OnPCLoginEvent:
+	announce "Rates: 1.000x Base | 1.000x Job - (Bônus RD: "+ .rotd_exp_bonus +"% "+ .rotd$[.today_rotd] +").                              Drops: 100% Itens Comuns | 1% Cartas Comuns | 0.01% Cartas MvPs.", bc_all;
+	end;  
+}

@@ -1,0 +1,8 @@
+vip,76,67,4	script	Mudança de Sexo#VIP	402,{
+	mes "[ ^a60536Mudança de Sexo^000000 ]";
+	mes "Que tal mudar de sexo? você pode transformar-se em um Homem ou Mulher, e vise-versa!";
+	mes "^777777Confirme se deseja transformar-se em "+(Sex ? "mulher":"homem")+":^000000";
+	next;
+	if(select("[^ff0000»^000000] Não.:^2596C2Mudar de Sexo^000000") == 2) changesex;
+		close;
+}

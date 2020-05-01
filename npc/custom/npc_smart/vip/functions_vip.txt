@@ -1,0 +1,92 @@
+//==========================================================================================================================
+//				          Função que adiciona 15 dias Vip ao usuário
+//==========================================================================================================================
+
+function	script	vip1	{
+	set $nivelVip, 1;
+	set $diasVip, 1;
+	set $verificaVip, 1;
+	if( getgmlevel() >= 10 ){
+		dispbottom "[VIP SmartRO]: Função desabilitada para membros da Staff Smart-RO.";
+		end;
+	}
+	if( getgmlevel() == 1 ){
+		dispbottom "[VIP SmartRO]: Você já é um jogador VIP, aguarde seus dias acabar e utilize novamente seu Ticket VIP!";
+		end;
+	}
+	query_sql "UPDATE `login` SET `level` = "+$nivelVip+", `dt_vip` = DATE_ADD(CURDATE(),INTERVAL "+$diasVip+" DAY) WHERE `level` = 0 AND `account_id` = "+getcharid(3);
+	dispbottom "[ Você acaba de ganhar 1 Dia de VIP. Relogue para que seja ativado ].";
+	delitem 21000, 1;
+	end;
+}
+function	script	vip15	{
+	set $nivelVip, 1;
+	set $diasVip, 15;
+	set $verificaVip, 1;
+	if( getgmlevel() >= 10 ){
+		dispbottom "[ Função desabilitada para membros da Staff Smart-RO ].";
+		end;
+	}
+	if( getgmlevel() == 1 ){
+		dispbottom "[ Você já é um jogador VIP, aguarde seus dias acabar e utilize novamente seu Ticket VIP ].";
+		end;
+	}
+	query_sql "UPDATE `login` SET `level` = "+$nivelVip+", `dt_vip` = DATE_ADD(CURDATE(),INTERVAL "+$diasVip+" DAY) WHERE `level` = 0 AND `account_id` = "+getcharid(3);
+	dispbottom "[VIP SmartRO]: Você acaba de ganhar 15 Dias de VIP. Relogue para que seja ativado";
+	delitem 21001, 1;
+	end;
+}
+
+//==========================================================================================================================
+//				          Função que adiciona 30 dias Vip ao usuário
+//==========================================================================================================================
+
+function	script	vip30	{
+	set $nivelVip, 1;
+	set $diasVip, 30;
+	set $verificaVip, 1;
+	if( getgmlevel() >= 10 ){
+		dispbottom "[ Função desabilitada para membros da Staff Smart-RO ].";
+		end;
+	}
+	if( getgmlevel() == 1 ){
+		dispbottom "[ Você já é um jogador VIP, aguarde seus dias acabar e utilize novamente seu Ticket VIP ].";
+		end;
+	}
+	query_sql "UPDATE `login` SET `level` = "+$nivelVip+", `dt_vip` = DATE_ADD(CURDATE(),INTERVAL "+$diasVip+" DAY) WHERE `level` = 0 AND `account_id` = "+getcharid(3);
+	dispbottom "[ Você acaba de ganhar 30 Dias de VIP. Relogue para que seja ativado ].";
+	delitem 21002, 1;
+	end;
+}
+
+//==========================================================================================================================
+//			    Função que controla a data de término da conta vip e anúncios ao logar
+//==========================================================================================================================
+
+-	script	GerenciadorVip	-1,{
+OnPCLoginEvent:	
+	set @site$, "www.smart-ro.com.br";
+	message strcharinfo(0), "[ Bem-vindo(a) ao SmartRO. Use @commands para saber os comandos disponíveis ].";
+	if( #lock ){ 
+		message strcharinfo(0), "[ @lock está Ativado. Seus itens estão protegidos ].";
+	} else {
+		message strcharinfo(0), "[ @lock está Desativado. Seus itens estão desprotegidos ].";
+	}
+
+	query_sql "UPDATE `login` SET `level`= 0 WHERE `level` = "+$nivelVip+" AND (`dt_vip` IS NULL OR `dt_vip` < CURDATE())";
+	query_sql "SELECT (`dt_vip` IS NULL OR `dt_vip` < CURDATE()) FROM `login` WHERE `account_id` = "+getcharid(3), @verificaVip;
+	if( @verificaVip ){
+		message strcharinfo(0), "[ Torne-se um jogador VIP. Acesse "+ @site$ +" e saiba mais ].";
+		end;
+
+	}
+	query_sql "SELECT DATE_FORMAT(`dt_vip`, '%d/%m/%Y') FROM `login` WHERE `account_id` = "+getcharid(3), @dataVencimento$;
+	message strcharinfo(0), "[ Sua conta VIP é válida até o dia "+ @dataVencimento$ +" ].";
+	if( #CASHPOINTS >= 1 ){
+		message strcharinfo(0), "[ Você tem "+ #CASHPOINTS +" Cash Points em sua conta ].";
+	} else {
+		message strcharinfo(0), "[ Seu saldo de Cash Points é zero. Acesse "+ @site$ +" e ajude-nos doando ].";
+	}
+	message strcharinfo(0), "[ Bom jogo! ]";
+	end;
+}

@@ -1,0 +1,14 @@
+prt_smart,1,1,5,7828	sshop	Bravura	111,12016:5,21062:5,21049:30,21045:30,21043:50,12214:50,7621:100,27622:100,27623:100,27624:100,27625:100,27626:100,27627:100
+prt_smart,192,189,4	script	Loja de Stuffs 1#bg1	673,{
+		callshop "Bravura", 0;
+		end;
+	OnInit:
+ 		waitingroom "", 0;
+	OnTimer2000:
+		setarray .@Display$, "[ Bravura ]", "» Stuffs & Itens";
+		set .@msg, rand( getarraysize( .@Display$) );
+		delwaitingroom;
+		waitingroom .@Display$[.@msg], 0;
+		initnpctimer;
+		end;
+}

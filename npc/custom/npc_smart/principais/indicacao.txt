@@ -1,0 +1,149 @@
+//Rodar no SQL: ALTER TABLE `char` ADD `refer_rewards` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0' AFTER `unban_time`;
+
+//Script de Freebies + "Fui indicado por"
+prontera, 151, 184, 4	script	Porteiro Connect RAG	105,{
+	//Configurações
+	set .nome$, "[ ^a60536Porteiro Connect RAG^000000 ]"; //Nome do NPC
+	
+	if (#recebeu != 0) {
+		mes .nome$;
+		mes "" + strcharinfo(0) + " você já pegou o seu presente!";
+		mes "Agora deixe os outros para seus amigos.";
+		warp "prontera", 156, 191;
+		savepoint "prontera", 156, 191;
+		close;
+	} else {
+		mes .nome$;
+		mes "Boas vindas " + strcharinfo(0) + "!";
+		mes "O ^FF0000Connect RAG^000000 tem um presente de boas vindas para você.";
+		mes "Mas antes disso preciso saber se você foi convidado por alguém?";
+		next;
+		if (Select("[^ff0000»^000000] Sim. : Não.") == 1) {
+			mes .nome$;
+			mes "Muito bem, qual é o nome do amigo que te indicou?";
+			mes "^FF0000Você deve digitar exatamente o nick utilizado pelo seu amigo para que ele receba o prêmio.^000000";
+			next;
+			input .@amigo$
+			query_sql "SELECT `account_id`, `refer_rewards` FROM `char` WHERE `name`='" + .@amigo$ + "'", .@idContaAmigo, .@referRewars;
+			if (.@idContaAmigo < 2000000 || .@idContaAmigo > 3000000) {
+				mes .nome$;
+				mes "Esse jogador não está cadastrado.";
+				next;
+			} else {
+				query_sql "SELECT `last_mac` FROM `login` WHERE `account_id`='" + .@idContaAmigo + "'", .@ultimoMacAmigo$;
+				query_sql "SELECT `account_id` FROM `char` WHERE `name`='" + strcharinfo(0) + "'", .@idMinhaConta;
+				query_sql "SELECT `last_mac` FROM `login` WHERE `account_id`='" + .@idMinhaConta + "'", .@ultimoMacMeu$;
+				if (.@ultimoMacAmigo$ != .@ultimoMacMeu$) {
+					mes .nome$;
+					mes "Seu amigo recebeu 1 ponto de indicação.";
+					set .@referRewars, .@referRewars + 1
+					query_sql "UPDATE `char` SET `refer_rewards`='" + .@referRewars + "' FROM  WHERE `name`='" + .@amigo$ + "'";
+					message .@amigo$,"[Você indicou um amigo, pegue sua reconpensa no NPC Prêmio Indicação em Prontera.]";
+					next;
+				} else {
+					mes .nome$;
+					mes "Não há premiação para jogadores que compartilham o computador.";
+					next;
+				}
+			}
+		}
+		mes .nome$;
+		mes "Aqui está o seu ^FF0000 Pack Iniciante ^000000!";
+		mes "Convide seus amigos.";
+		getitem 23018, 1;
+		getitem 23019, 1;
+		getitem 23020, 1;
+		getitem 21000, 1;
+		set #recebeu, 1;
+		warp "prontera", 156, 191;
+		savepoint "prontera", 156, 191;
+		end;
+	}
+}
+
+//Script para receber premiação
+-	shop	RAFSHOP1	-1,512:-1
+-	shop	RAFSHOP2	-1,512:-1
+prontera, 156, 195, 6	script	Prêmio Indicação	836,{
+	//Configurações
+	set .npc$, "[ ^a60536Premiador de Indicação Connect RAG^000000 ]"; //Nome do NPC
+	
+	//Recebe quantidade de pontos no início:
+	query_sql "SELECT `refer_rewards` FROM `char` WHERE `name`='" + strcharinfo(0) + "'", .@rewards;
+	
+	//NPC:
+	mes .npc$;
+	mes "Indique amigos e ganhe pontos";
+	mes "Temos ótimos itens aqui no npc";
+	mes "Deseja trocar seus Pontos de Indicação por itens?";
+	switch(select("[^ff0000»^000000] Sim. : [^ff0000»^000000] Não.")) {
+		case 1:
+			next;
+			mes .npc$;
+			mes "Escolha a categoria de itens que lhe interessa:";
+			set @s, select("[^ff0000»^000000] Tickets, Consumíveis e etc.:[^ff0000»^000000] Equipamentos");
+			message strcharinfo(0),"Esta loja só aceita Pontos de Indicação.";
+			dispbottom "Você tem " + .@rewards + " Pontos de Indicação.";
+			callshop "RAFSHOP"+@s, 1;
+			npcshopattach "RAFSHOP"+@s;
+			end;
+		case 2:
+			close;
+	}
+	
+	OnBuyItem:
+		mes .npc$;
+		if (.@rewards < 1) {
+			mes "Você não possui Pontos de Indicação";
+			close;
+		} else {
+			set .@i, 0;
+			while (.@i < getarraysize(@bought_nameid)) {
+				set .@j, 0;
+				while (.@j < getarraysize(getd(".Shop" + @s))) {
+					if(getd(".RAFStore" + @s + "[" + .@j + "]") == @bought_nameid[.@i]) {
+						set @itemcost, (getd(".RAFStore" + @s + "[" + (.@j + 1) + "]") * @bought_quantity[.@i]);
+						set @totalcost, @totalcost + @itemcost;
+						break;
+					}
+					set .@j, .@j + 2;
+				}
+				set .@i, .@i + 1;
+			}
+			if (@totalcost > .@rewards) {
+				dispbottom "Você não tem Pontos de Indicação o suficiente.";
+			} else {
+				set .@i,0;
+				while (.@i < getarraysize(@bought_nameid)) {
+					getitem @bought_nameid[.@i], @bought_quantity[.@i];
+					dispbottom "Você comprou " + @bought_quantity[.@i] + "x " + getitemname(@bought_nameid[.@i]) + ".";
+					set .@i, .@i + 1;
+				}
+				set .@rewards, .@rewards - @totalcost;
+				query_sql "UPDATE `char` SET `refer_rewards`='" + .@rewards + "' FROM  WHERE `name`='" + strcharinfo(0) + "'";
+				mes "Seu total de Pontos de Indicação agora é " + .@rewards + ".";
+			}
+			set @totalcost, 0;
+			deletearray @bought_nameid[0], 128;
+			deletearray @bought_quantity[0], 128;
+			close;
+			end;
+		}
+		
+	OnInit:
+		setarray .Currency[1], 507;
+		setarray .RAFStore1[0], 12210, 30, 12103, 10, 12214, 5;
+		setarray .RAFStore2[0], 23042, 200, 23043, 200, 23044, 200, 24094, 200, 25057, 250;
+		
+		set .@i, 1;
+		while (.@i <= getarraysize(.Currency)) {
+			set .@j, 0;
+			while (.@j < getarraysize(getd(".RAFStore" + .@i))) {
+				npcshopdelitem "RAFSHOP" + .@i, 512;
+				npcshopadditem "RAFSHOP" + .@i, getd(".RAFStore" + .@i + "[" + .@j + "]"), getd(".RAFStore" + .@i + "[" + (.@j + 1) + "]");
+				set .@j, .@j + 2;
+			}
+			set .@i, .@i + 1;
+		}
+		end;
+}

@@ -1,0 +1,31 @@
+vip,72,67,5	script	Anunciador::anunvip	888,{
+	set .@n$, "[ ^a60536Anunciador^000000 ]";
+	mes .@n$;
+	mes "Você deseja enviar um anúncio para todos do SmartRO?";
+	mes "É muito fácil, você só precisa pagar uma taxa de ^FF00005.000.000^000000 de zenys.";
+	next;
+	if( select("[^EF8319»^000000] Enviar.:[^EF8319»^000000] Desistir.") == 2 ) close;
+	if( #delay_torpedo > gettimetick(2) ){ 
+		
+		message strcharinfo(0), "O Serviço estará disponível novamente em "+ ((#delay_torpedo - gettimetick(2))/60) +" minuto(s).";	
+		close;
+	}
+
+	if( Zeny < 3000000 ){
+		message strcharinfo(0), "Você não tem 3.000.000 de zenys.";
+		close;
+	}
+	if( select("[^EF8319»^000000] Enviar.:[^EF8319»^000000] Desistir.") == 1 ){					
+		message strcharinfo(0), "Digite seu anúncio global.";				
+		input .@a_vip$;
+		if( .@a_vip$ == "null" ) end;
+		set Zeny, Zeny - 3000000;
+		announce "["+ strcharinfo(0) +" - VIP]: "+ .@a_vip$, bc_all, "0x8BE2E2";
+			
+		set #delay_torpedo, gettimetick(2) + 300;
+		
+		cutin "", 255;
+		close;
+	}
+	close;
+}

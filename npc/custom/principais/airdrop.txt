@@ -1,0 +1,304 @@
+-	script	AirdropSystem	-1,{
+
+OnEventAirdrop:
+	
+	if(.AirDropStart && .AirDropStart2)
+	{
+		mes "[ Air Drop Event ]";
+		mes "O evento está em andamento, tente da próxima vez!";
+		close;
+	}
+	
+	if(Class != 24)
+	{
+		mes "[ Air Drop Event ]";
+		mes "Somente Gunslinger são permitidos no evento!";
+		close;
+	}
+	
+	if(getcharid(1))
+	{
+		mes "[ Air Drop Event ]";
+		mes "Não é permitido participantes que façam parte de grupos!";
+		close;
+	}
+	
+	Retry_Chk:	
+	getinventorylist;
+	
+	if(@inventorylist_count || getarraysize(@inventorylist_equip))
+	{
+		if(!.@chkitem)
+		{
+			mes "[ Air Drop Event ]";
+			mes "Não permitimos itens equipados ou no seu inventário, gostaria que todos os itens sejam guardados no seu storage?";
+			if(select("Sim:Não")==2){ close; }
+			next;
+			set .@chkitem,1;
+		}
+
+		if(.@chkitem == 1)
+		{
+			atcommand "@storeall";
+			set .@chkitem,2;
+			goto Retry_Chk;
+		}		
+
+		mes "[ Air Drop Event ]";
+		mes "Algo deu errado, por favor mova os itens para o storage manualmente!";
+		close;
+	}
+	
+	warp .AirDropMap$,0,0;
+	if(getmapflag(.AirDropMap$,6)) removemapflag .AirDropMap$,6;
+	
+	for(set .@i,0; .@i<getarraysize(.AirDropAccID); set .@i,.@i+1)
+	{
+		if(.AirDropAccID[.@i] == getcharid(3))
+		{ set .@listed,1; }
+	}
+	
+	if(!.@listed)
+	{ setarray .AirDropAccID[(getarraysize(.AirDropAccID) < 2 ? 0:getarraysize(.AirDropAccID))],getcharid(3); }	
+	
+	set .AirDropStart,2;
+	end;
+	
+
+S_MAPMARK:
+
+	for(set .@i,0; .@i<getarraysize(.AirDropAccID); set .@i,.@i+1)
+	{
+		attachrid(.AirDropAccID[.@i]);
+		viewpoint 1,.@x,.@y,.@i,0xFF0000;
+		detachrid;
+	}
+return;
+	
+OnPCLoadMapEvent:
+
+	if(strcharinfo(3) != .AirDropMap$) end;
+	if(.AirDropStart2 || !.AirDropStart) end;
+	
+	if(.AirDropIntroPlayer)
+	{ announce "[ Air Drop Event ]: O jogador "+strcharinfo(0)+" acabou de entrar no evento.",bc_all; }
+
+	if(getmapusers(.AirDropMap$) < .MinPlayerStart)
+	{ sleep 1000; announce "[ Air Drop Event ]: Faltam "+(.MinPlayerStart-getmapusers(.AirDropMap$))+" Player(s) para o evento começar!",bc_all; end; }
+	else
+	{ set .AirDropStart2,1; sleep 1000; announce "[ Air Drop Event ]: Atingimos a quantidade de Players, se preparem que iremos da inicio ao evento!",bc_all; sleep 2000; }
+	
+AirDropGO:
+
+		mapannounce .AirDropMap$,"[ Air Drop Event ]: O evento vai começar em:",bc_map;
+		
+		for(set .@i,10; .@i>0; set .@i,.@i-1)
+		{ mapannounce .AirDropMap$,"[ Air Drop Event ]: [ "+.@i+" ]",bc_map; sleep 1000; }
+		
+		// Primeiras caixas de suprimentos
+		freeloop(1);
+		for(set .@i,1; .@i<=.AirDropMapCaixas; set .@i,.@i+1)
+		{
+			set .@x,rand(40,300);
+			set .@y,rand(40,300);
+			
+			if(checkcell(.AirDropMap$,.@x,.@y,cell_chkpass))
+			{
+				duplicatenpc("airdrop_fake","air",""+.@i+"",.AirDropMap$,.@x,.@y,DIR_SOUTH,MYSTCASE_EVENT);
+
+				for(set .@c,0; .@c<getarraysize(.AirDropAccID); set .@c,.@c+1)
+				{
+					attachrid(.AirDropAccID[.@c]);
+					viewpoint 1,.@x,.@y,.@i,0xFF0000;
+					detachrid;
+				}
+			}
+			else
+				set .@i,.@i-1;
+		}
+		freeloop(0);
+		
+		mapannounce .AirDropMap$,"Caixa de Suprimentos estão nas coordenadas do seu mini-mapa.",bc_map;
+		setmapflag .AirDropMap$,6;
+		
+		//Controlador das caixas por tempo para atualizar enquanto o evento estiver ativo.
+		while(.AirDropStart)
+		{
+		
+			if(.@time == .AirDropCaixaTemp)
+			{
+				//duplicatas remove
+				
+				for( set .@i,1; .@i<=.AirDropMapCaixas; set .@i,.@i+1)
+				{
+					set .@cd_nome$,"air#"+.@i;
+					if(getmapxy(.@map$,.@x,.@y, UNITTYPE_NPC, .@cd_nome$) != -1)
+					{
+						duplicateremove(.@cd_nome$);
+						
+						for(set .@c,0; .@c<getarraysize(.AirDropAccID); set .@c,.@c+1)
+						{
+							attachrid(.AirDropAccID[.@c]);
+							viewpoint 2,.@x,.@y,.@i,0xFF0000;
+							detachrid;
+						}
+					}
+				}
+				
+				//duplicatas summon
+				freeloop(1);
+				for(set .@i,1; .@i<=.AirDropMapCaixas; set .@i,.@i+1)
+				{
+					set .@cd_nome$,"air#"+.@i;
+					if(getmapxy(.@map$,.@x,.@y, UNITTYPE_NPC, .@cd_nome$) != 0)
+					{						
+						set .@x,rand(40,300);
+						set .@y,rand(40,300);
+						
+						if(checkcell(.AirDropMap$,.@x,.@y,cell_chkpass))
+						{
+							duplicatenpc("airdrop_fake","air",""+.@i+"",.AirDropMap$,.@x,.@y,DIR_SOUTH,MYSTCASE_EVENT);
+							
+							for(set .@c,0; .@c<getarraysize(.AirDropAccID); set .@c,.@c+1)
+							{
+								attachrid(.AirDropAccID[.@c]);
+								viewpoint 1,.@x,.@y,.@i,0xFF0000;
+								detachrid;
+							}							
+						}
+						else
+						 set .@i,.@i-1;
+					}					
+				}
+				freeloop(0);
+				
+				set .@time,0;				
+				mapannounce .AirDropMap$,"[ Air Drop Event ]: Suprimentos atualizados!",bc_map;
+			}
+			else if((.@time+10) == .AirDropCaixaTemp)
+			{ mapannounce .AirDropMap$,"[ Air Drop Event ]: Suprimentos será atualizado em 10 segundos!",bc_map; }
+			
+			set .@time,.@time+1;			
+			sleep 1000;
+		}
+		end;	
+
+OnPCLogoutEvent:
+OnPCDieEvent:
+
+		if(strcharinfo(3) != .AirDropMap$) end;
+		
+		for(set .@i,0; .@i<getarraysize(.AirDropAccID); set .@i,.@i+1)
+		{
+			if(.AirDropAccID[.@i] == getcharid(3))
+			{ deletearray .AirDropAccID[.@i],1; }
+		}
+		
+		if(getmapusers(.AirDropMap$) <= 2)
+		{
+			mapannounce .AirDropMap$,"[ Air Drop Event ]: Até a próxima pessoal!",bc_map;			
+			set .AirDropStart,0;
+			set .AirDropStart2,0;
+			deletearray .AirDropAccID[0],getarraysize(.AirDropAccID);
+			sleep 1000;
+			mapwarp .AirDropMap$,"prontera",155,175,0;
+		}
+
+		//duplicatas remove
+				
+		for( set .@i,1; .@i<=.AirDropMapCaixas; set .@i,.@i+1)
+		{
+			set .@cd_nome$,"air#"+.@i;
+			if(getmapxy(.@map$,.@x,.@y, UNITTYPE_NPC, .@cd_nome$) != -1)
+			{
+				duplicateremove(.@cd_nome$);
+				
+				for(set .@c,0; .@c<getarraysize(.AirDropAccID); set .@c,.@c+1)
+				{
+					attachrid(.AirDropAccID[.@c]);
+					viewpoint 2,.@x,.@y,.@i,0xFF0000;
+					detachrid;
+				}
+			}
+		}
+		
+		end;
+	
+
+OnInit:
+
+	bindatcmd "evento",strnpcinfo(3) + "::OnEventAirdrop";
+
+//============ CONFIGURAÇÕES ===============
+	
+	//Mapa do evento
+	set .AirDropMap$,"pvp_y_1-1";
+	
+	//Quantidade de suprimentos no mapa.
+	set .AirDropMapCaixas,20;
+	
+	//Tempo em segundos para atualizar local das caixas (120 = 2min)
+	set .AirDropCaixaTemp,30;
+	
+	//Quantidade mínima de players para o evento auto-iniciar.
+	set .MinPlayerStart,1;
+	
+	//Anunciar Player ao entrar no evento? (1 = Yes, 0 = No)
+	set .AirDropIntroPlayer,1;
+	
+	//MapFlags (númericos)
+	/*
+		1	=	noteleport
+		2	=	nosave
+		7	=	pvp_noparty
+		13	=	nowarp
+		14	=	partylock
+		33	=	noreturn
+		37	=	nocommand
+		42	=	loadevent (necessário)
+	*/
+	
+	setarray .AirDropMF[0],1,2,7,13,14,33,42;
+
+//===========================================	
+	
+	if(.AirDropMap$ != "")
+	{
+		for( set .@i,0; .@i < getarraysize(.AirDropMF); set .@i,.@i+1 )
+		{ setmapflag .AirDropMap$,.AirDropMF[.@i]; }	
+	}
+	
+	for( set .@i,1; .@i<=.AirDropMapCaixas; set .@i,.@i+1)
+	{
+		set .@cd_nome$,"air#"+.@i;
+		if(getmapxy(.@map$,.@x,.@y, UNITTYPE_NPC, .@cd_nome$) != -1)
+		{ duplicateremove(.@cd_nome$); }
+	}
+	
+	deletearray .AirDropAccID[0],getarraysize(.AirDropAccID);
+	
+	set .AirDropStart,0;
+	set .AirDropStart2,0;
+	end;
+}
+
+-	script	airdrop_fake	4_M_KR_BOY,{
+
+	showscript "Coletando recursos...";
+	progressbar "0xFFFFFF", 2;
+	
+	switch(rand(1,3))
+	{
+		case 1: getitem 501,10; break;
+		case 2: getitem 1201,1; break;
+		case 3: getitem 2301,1; break;
+	}
+	
+	getmapxy(.@map$,.@x,.@y, UNITTYPE_NPC, strnpcinfo(0));
+	set .ViwID,(getstrlen(strnpcinfo(2)) < 2 ? substr(strnpcinfo(2),0,0):substr(strnpcinfo(2),0,1));	
+	viewpoint 2,.@x,.@y,.ViwID,0xFF0000;
+	
+	duplicateremove(strnpcinfo(0));
+	end;
+	
+}

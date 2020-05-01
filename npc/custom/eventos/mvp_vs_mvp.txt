@@ -1,0 +1,259 @@
+-	script	mvpvsmvp	-1,{
+	OnWhisperGlobal:
+	
+		if ( getgmlevel() >= 60 ) {
+		
+			if (@whispervar0$ == "ativar")
+ donpcevent "mvpvsmvp::OnWatingRoom";
+	
+		}
+
+		end;
+
+
+	OnInit:
+	
+		set $@termino,2;
+
+		end;
+
+
+	OnClock1015:
+	OnClock1515:
+	OnClock1915:
+	OnClock2215:
+	OnClock0015:	
+		OnWatingRoom:
+	
+			setarray $@MOB__EVENTID[0],1087,1147,1190,1086,1038,1159,1389,1046,1150,1688,1039,1157,1112,1251,1373,1272,1885,1630,1252,1779,1708,1623,1492,1418,1583,1312,1785,1685,1719,1871,1768;
+	
+			killmonsterall "g_room1-2", 2;
+	
+		do {
+		
+			set $@RNDM__MOB,(rand(0,getarraysize($@MOB__EVENTID)));
+		
+			set $@RNDM_2MOB,(rand(0,getarraysize($@MOB__EVENTID)));
+		
+			set $@NAME__MOB1$, getmonsterinfo( $@MOB__EVENTID[$@RNDM__MOB] , MOB_NAME );
+		
+			set  $@HP__MOB1, getmonsterinfo ( $@MOB__EVENTID[$@RNDM__MOB] , MOB_MAXHP );
+		
+			set $@NAME__MOB2$, getmonsterinfo( $@MOB__EVENTID[$@RNDM_2MOB] , MOB_NAME );
+		
+			set  $@HP__MOB2, getmonsterinfo ( $@MOB__EVENTID[$@RNDM_2MOB] , MOB_MAXHP );
+		
+			if ( $@NAME__MOB1$ == "null" || $@NAME__MOB2$ == "null" || $@HP__MOB1 == 0 || $@HP__MOB2 == 0 || $@MOB__EVENTID[$@RNDM__MOB] == 0 || $@MOB__EVENTID[$@RNDM_2MOB] == 0 || $@MOB__EVENTID[$@RNDM__MOB] == $@MOB__EVENTID[$@RNDM_2MOB] )
+			
+				set .@error , 1;
+	
+			} while( .@error == 1 );
+		
+				set $@termino, 0;
+		
+				set $@entregado , 0;
+		
+				announce "[MvP vs MvP]: A batalha entre » "+$@NAME__MOB2$+" x "+$@NAME__MOB1$+" « vai começar, faça sua aposta!", bc_all|bc_blue;
+	
+				sleep 40000;
+		
+				announce "[MvP vs MvP]: O portal está aberto. Digite @evento e escolha sua aposta.", bc_all|bc_blue;
+		
+				sleep 14000;
+		
+				announce "[MvP vs MvP]: Em 1 minuto se encerram as apostas...", bc_all|bc_blue;
+			
+				sleep 60000;
+		
+				donpcevent "mvpvsmvp::OnStart";
+		
+				end;
+
+	OnStart:
+	
+		announce "[MvP vs MvP]: O portal para o evento foi fechado.", bc_all|bc_blue;
+	
+		set $@termino , 2;
+	
+		// mobevent <map>,<x>,<y>,<fakename>,<mobid>,<size>,<amount>,<teamid>,<showhp>,<increasehp>,<allied>,<noslaves>,<noexpnodrop>,<poringcoins>,<event>
+	
+		mobevent "g_room1-2",45,369,$@NAME__MOB1$,$@MOB__EVENTID[$@RNDM__MOB],0,1,0,0,( $@HP__MOB1 - ($@HP__MOB1/2) ), 1, 0, 1,0,0,0,0,0,"mvpvsmvp::OnMobEventDie1";
+	
+		mobevent "g_room1-2",34,369,$@NAME__MOB2$,$@MOB__EVENTID[$@RNDM_2MOB],0,1,0,0,( $@HP__MOB2 - ($@HP__MOB2/2) ), 2, 0, 1,0,0,0,0,0,"mvpvsmvp::OnMobEventDie2";
+	
+		end;
+
+	OnMobEventDie1: 
+	
+		if ( $@termino == 1 ) end;
+	
+		set $@termino ,1; 
+	
+		set $@gano , 2; 
+		sleep 5000;	
+		announce "[MvP vs MvP]: O MvP vencedor foi ["+$@NAME__MOB2$+"] as apostas vencedoras tem 1 minuto para retirar seu prêmio vá ao NPC.", bc_all|bc_blue;
+	
+		sleep 5000;
+		mapwarp "g_room1-2","prt_smart", 135, 122; 
+		
+		end;
+
+	OnMobEventDie2: 
+	
+		if ( $@termino == 1 ) end; 
+	
+		set $@termino, 1; 
+	
+		set $@gano, 1; 
+	
+		sleep 5000;
+		announce "[MvP vs MvP]: O MvP vencedor foi ["+$@NAME__MOB1$+"] as apostas vencedoras tem 1 minuto para retirar seu prêmio vá ao NPC.", bc_all|bc_blue;
+	
+		sleep 5000;
+		mapwarp "g_room1-2","prt_smart", 135, 122; 
+		
+		end;
+
+}
+
+//prontera,125,149,5	script	Portal MvP	45,2,2,{
+
+prontera,135,126,4	script	MvP vs MvP	493,{
+
+	set .@ID$, getcharid(3);
+
+	set .@valor, 15000000;
+	switch( $@termino ){
+		
+		case 0:
+			
+			set @EQUIPO1$, 0; 
+			
+			set @EQUIPO2$, 0;
+			
+			setd "entregado"+ getcharid(3), 0;
+						
+			mes "[ ^a60536MvP vs MvP^000000 ]";			
+			mes "Selecione abaixo o MvP que você deseja apostar.";
+			mes "^EF8319»^000000 Custo da Aposta:"; 
+			mes "^FF000015,000,000 Zenys^000000";
+			mes "^EF8319»^000000 Prêmio do Evento:";
+			mes "^0000FF30,000,000 Zenys^000000 e ^0000FF3x "+ getitemname(21024) +"^000000.";
+			next;
+			if( Zeny < 15000000 ){
+				mes "[ ^a60536MvP vs MvP^000000 ]";
+				mes "Desculpe, mais você não tem ^FF000015,000,000 Zenys^000000 para realizar sua apostar.";
+				close;
+			}		
+			if(select("[^EF8319»^000000] " + $@NAME__MOB1$ + ":[^EF8319»^000000] " + $@NAME__MOB2$ ) == 2 )
+{
+						set @EQUIPO1$ , getcharid(3);
+			
+					} else 
+{			
+						set @EQUIPO2$ , getcharid(3);
+
+					}			
+					close2;
+
+					set Zeny, Zeny - 15000000;
+					message strcharinfo(0), "Aposta realizada com sucesso!";
+					sleep2 2000;	
+					if ( @EQUIPO2$ == .@ID$ ){
+						announce "[MvP vs MvP]: » "+ strcharinfo(0) +" « realizou sua aposta.", bc_all|bc_blue;
+
+						dispbottom "[ Apostado em: "+ $@NAME__MOB1$ +" ]."; 
+					} else {
+						announce "[MvP vs MvP]: » "+ strcharinfo(0) +" « realizou sua aposta.", bc_all|bc_blue;
+
+						dispbottom "[ Apostado em: " + $@NAME__MOB2$ +" ].";
+					}
+					warp "g_room1-2", 40, 380;
+			
+					end;
+
+		
+				case 1:
+			
+					switch( getd("entregado"+getcharid(3) ) ) {
+				
+				case 0:
+					
+					setd "entregado"+getcharid(3), 1;
+					
+				switch( $@gano ) {
+						
+					case 1: 
+						if ( @EQUIPO2$ == .@ID$ ) { 
+							set Zeny, Zeny + 30000000;
+							getitem 21024, 3;
+							query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
+							dispbottom "[ Você recebeu 30,000,000z e 3x "+ getitemname(21024) +" como prêmio ]."; 
+						} else { 
+							dispbottom "[ Sua aposta não foi a vencedora do MvP vs MvP ]."; 
+						}
+						close;	
+						break; 
+						
+				case 2: 
+					if ( @EQUIPO1$ == .@ID$ ) {
+						set Zeny, Zeny + 30000000;
+						getitem 21024, 3;
+						query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
+						dispbottom "[ Você recebeu 30,000,000z e 3x "+ getitemname(21024) +" como prêmio ]."; 
+					} else { 
+						dispbottom "[ Sua aposta não foi a vencedora do MvP vs MvP ]."; 
+					}
+					close;	 
+					break;
+						
+					
+					default: 
+						dispbottom "» Sua aposta não foi a vencedora do MvP vs MvP."; break;
+					
+					}
+
+					close;				
+					break;
+				
+				case 1: 
+					message strcharinfo(0), "[ Prêmiação já entregue ].";
+					dispbottom "[ Seu prêmio já foi retirado ]."; 
+					break;
+			
+					}
+			
+				break;
+		
+			case 2: 
+				message strcharinfo(0), "O evento está desativado no momento.";
+
+				mes "[ ^a60536MvP vs MvP^000000 ]";	
+				mes "O evento ^B452CDMvP vs MvP^000000 é basicamente um jogo de apostas, você escolhe o MvP que acha mais forte e se ganhar leva o dobro da sua aposta!";	
+				mes "^777777Custo da Aposta:^000000"; 
+				mes " ^EF8319»^000000 ^FF000015,000,000 Zenys^000000";
+				mes "^777777Prêmio do Evento:^000000";
+				mes " ^EF8319»^000000 ^0000FF30,000,000 Zenys^000000 e ^0000FF3x "+ getitemname(21024) +"^000000.";
+			}
+
+	
+			close;
+
+}
+
+
+g_room1-2	mapflag	monster_noteleport
+
+g_room1-2	mapflag	noteleport
+
+g_room1-2	mapflag	nobranch
+
+g_room1-2	mapflag	nosave
+
+g_room1-2	mapflag	noloot
+
+g_room1-2	mapflag	novending
+
+g_room1-2	mapflag	nowarp
+
+g_room1-2	mapflag	noskill

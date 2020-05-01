@@ -1,0 +1,41 @@
+prt_smart,134,170,5	script	Rankings	711,{
+	mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+	mes "Oi, ^0000ff"+ strcharinfo(0)+"^000000!";
+	mes "Fique por dentro de quem são os melhores do ^8B008BSmartRO^000000!";
+	mes "Temos um rankeamento diário em diversas àreas do PvP aos Eventos.";
+	mes "^777777Selecione qual ranking deseja ver:^000000";
+	next;
+	switch( select("[^ff0000»^000000] Ranking PvP.","[^ff0000»^000000] Ranking Eventos.","[^ff0000»^000000] Ranking Torre sem Fim.","[^ff0000»^000000] Saír.")){
+		case 1:
+			callfunc("Rank_System");
+			end;
+		case 2:
+			mes "^EF8319[ Ranking de Eventos ]^000000";
+			query_sql( "SELECT `name`,`count` FROM `rank_evento` ORDER BY `count` DESC LIMIT 5", .@name$, .@count );
+			if( getarraysize( .@name$ ) ){
+			mes "^CDC9C9---------------------------------^000000";
+			mes "^2596C2Pos.^000000 ^CDC9C9|^000000 ^777777Nome^000000 ^CDC9C9|^000000 ^CD8500Points^000000";
+			mes "^CDC9C9---------------------------------^000000";
+			for( set .@i, 0; .@i < getarraysize( .@name$ ); set .@i, .@i + 1 )
+				mes "^2596C2("+ ( .@i + 1 ) +").^000000 ^777777"+ .@name$[.@i] +"^000000 - ^CD8500"+ .@count[.@i] +" Points.^000000";
+			} else {
+				mes "Nenhuma pontuação somada.";
+			}
+			close;
+		case 3: 
+			mes "^EF8319[ Ranking Torre sem Fim ]^000000";
+			query_sql( "SELECT `name`,`count` FROM `rank_torre` ORDER BY `count` DESC LIMIT 5", .@name$, .@count );
+			if( getarraysize( .@name$ ) ){
+			mes "^CDC9C9---------------------------------^000000";
+			mes "^2596C2Pos.^000000 ^CDC9C9|^000000 ^777777Nome^000000 ^CDC9C9|^000000 ^CD8500Points^000000";
+			mes "^CDC9C9---------------------------------^000000";
+			for( set .@i, 0; .@i < getarraysize( .@name$ ); set .@i, .@i + 1 )
+				mes "^2596C2("+ ( .@i + 1 ) +").^000000 ^777777"+ .@name$[.@i] +"^000000 - ^CD8500"+ .@count[.@i] +" Points.^000000";
+			} else {
+				mes "Nenhuma pontuação somada.";
+			}
+			close;
+		case 4: 
+			close;
+			}
+}

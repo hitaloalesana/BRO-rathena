@@ -1,0 +1,29 @@
+prontera,130,149,5	script	Evento Homem Macaco	1585,{
+
+
+mes "[^0000FFHomem Macaco^000000]";
+
+
+if (BaseLevel > 0) {
+	mes "Quer entrar no evento Homem Macaco?";
+	next;
+	switch(select("Sim:Não")) {
+			case 1:
+		mes "[^0000FFHomem Macaco^000000]";
+		mes "Aqui vamos nós";
+		close2;
+		sc_end SC_ALL;
+		percentheal 100,100;
+		atcommand "@storeall "+strcharinfo(0)+"";
+		warp "safari",49,47;
+		end;
+
+			case 2:
+		mes "[^0000FFHomem Macaco^000000]";
+		mes "Está bem, volte quando estiver interessado.";
+		close;
+		}
+	}
+}
+
+

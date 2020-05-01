@@ -1,0 +1,15 @@
+-	script	StoreAll#Cmd	-1,{
+OnInit:
+	bindatcmd("storeall", strnpcinfo(0) +"::OnStoreall", 1, 99);
+	end;
+OnStoreall:
+	mes "[ ^a60536StoreAll^000000 ]";
+	mes "Confirme abaixo para guardar todos os itens do seu personagem:";
+	next;
+	if(select("[^ff0000»^000000] Guardar Tudo.:[^ff0000»^000000] Saír.") == 2 ) close;
+		close2;
+		sleep2 1000;
+		atcommand "@storeall";
+		message strcharinfo(0), "[ Itens guardados com sucesso ].";
+		end;
+}

@@ -1,0 +1,30 @@
+-	script	pegaSafadaum	-1,{
+OnSafadaum:
+	atcommand "@battleignore";
+	sleep2 1000;
+	atcommand "@kick "+strcharinfo(0);
+	close2;
+	end;
+
+OnPCLoadMapEvent:
+	if( strcharinfo(3) == strnpcinfo(4) ){
+		set .@safadaum, 0;
+		set .@invokeid, getcharid(3);
+		query_sql("SELECT account_id FROM login where last_unique_id = (SELECT last_unique_id FROM login WHERE account_id = '"+getcharid(3)+"')",.@account_id);
+		detachrid;
+		for(set .@i, 0; .@i < getarraysize(.@account_id); set .@i, .@i + 1){
+			if( .@account_id[.@i] && attachrid(.@account_id[.@i] ) && .@account_id[.@i] != .@invokeid )
+				if( strcharinfo(3) == strnpcinfo(4) ){
+					set .@safadaum, 1;
+					detachrid;
+					break;
+				}
+		}
+		if( attachrid(.@invokeid) )
+			if( .@safadaum ){ 
+				attachrid( .@invokeid ); 
+				goto OnSafadaum; 
+				}
+		}
+		end;	
+}

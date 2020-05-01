@@ -1,0 +1,168 @@
+-	shop	Emistry_Shop	-1,512:100
+
+prt_smart,211,186,4	script	Itens KafraPoints	681,{
+function ShopSettings;
+function ValidateCost;
+function CurrencyInfo;
+function ClearData;
+function ValueConvert;
+function ErrorNotice;
+
+mes "[ ^a60536Kafra Points Itens^000000 ]";
+mes "Eu sou o encarregado por vender itens por Kafra Points.";
+mes "Então, em qual tipo de item você está interessado em comprar?";
+next;
+// Menu Selection
+select("[^ff0000»^000000] Itens Diversos.","[^ff0000»^000000] Encantamentos.","[^ff0000»^000000] Armas Custons.");
+
+ClearData();
+ShopSettings( @menu );
+npcshopitem "Emistry_Shop",512,100;
+npcshopdelitem "Emistry_Shop",512;
+for(set .@i,0; .@i < getarraysize( @ItemLists ); set .@i,.@i+1)
+	npcshopadditem "Emistry_Shop",@ItemLists[.@i],@ItemCost[.@i];
+CurrencyInfo( @Currency$ );
+callshop "Emistry_Shop",1;
+npcshopattach "Emistry_Shop";
+end;
+OnInit:
+ 		waitingroom "", 0;
+	OnTimer2000:
+		setarray .@Display$, "[ Kafra Points ]", "» Essências","» Encantamentos","» Armas Custons";
+		set .@msg, rand( getarraysize( .@Display$) );
+		delwaitingroom;
+		waitingroom .@Display$[.@msg], 0;
+		initnpctimer;
+		end;
+
+function	ShopSettings	{
+	switch( getarg(0) ){
+
+		Case 1:
+			// Currency [ Item ID / Variable Name ]
+			set @Currency$,"#KAFRAPOINTS";
+			// Item ID Lists
+			setarray @ItemLists[0],21035,21036,21037,21038,21033,21039;
+			// Item Price
+			setarray @ItemCost[0],7000,7000,7000,7000,6000,200;
+			break;
+
+		Case 2:
+			// Currency [ Item ID / Variable Name ]
+			set @Currency$,"#KAFRAPOINTS";
+			// Item ID Lists
+			setarray @ItemLists[0],4872,4863,4869,4864,4865,4866,4867,4868;
+			// Item Price
+			setarray @ItemCost[0],40000,20000,5500,2000,2000,2000,2000,2000;
+			break;
+
+		Case 3:
+			// Currency [ Item ID / Variable Name ]
+			set @Currency$,"#KAFRAPOINTS";
+			// Item ID Lists
+			setarray @ItemLists[0],20000,1831,1655,20005,1700,1435,1656,1150,1316,1317,1200,13310,13114,20006,1987,1932,1289;
+			// Item Price
+			setarray @ItemCost[0],20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000;
+			break;
+
+		// Case 4,5,6.....etc...
+		default:
+			ErrorNotice( "Invalid Menu Selection for Menu "+@menu+"." );
+			close;
+	}
+	
+	
+if( @Currency$ == "" )
+	ErrorNotice( "Invalid Currency Setting in Menu "+@menu+" ." );
+if( getarraysize( @ItemCost ) != getarraysize( @ItemLists ) || getarraysize( @ItemLists ) != getarraysize( @ItemCost ) )
+	ErrorNotice( "Missing or Extra Value of Item or Cost Settings in Menu "+@menu+" ." );
+return;
+}
+
+function	ErrorNotice	{
+	mes "^FF0000ERROR^000000 - "+getarg(0);
+	mes "^00FF00____________________________^000000";
+	mes "Inform this Message to ^0000FFGame Staffs^000000 immediately !";
+	close;
+}
+
+function	CurrencyInfo	{
+	if( getitemname( atoi( getarg(0) ) ) != "null" ){
+		mes "Item Currency : ^FF0000"+getitemname( atoi( getarg(0) ) )+"^000000";
+		mes "Available Amount : ^0000FF"+ValueConvert( countitem( atoi( getarg(0) ) ) )+"^000000";
+	}else if( getitemname( atoi( getarg(0) ) ) == "null" ){
+		dispbottom "Total de Pontos Kafra: "+ValueConvert( getd( getarg(0) ) )+"";
+	}
+return;
+}
+
+function	ValidateCost	{
+	if( getitemname( atoi( getarg(0) ) ) != "null" ){
+		if( countitem( atoi( getarg(0) ) ) < getarg(1) ) return 1;
+	}else{
+		if( getd( getarg(0) ) < getarg(1) ) return 1;
+	}
+return 0;
+}
+
+function ClearData	{
+	set @Currency$,"";
+	set @TotalCost,0;
+	deletearray @bought_nameid[0],getarraysize( @bought_nameid );
+	deletearray @bought_quantity[0],getarraysize( @bought_quantity );
+	deletearray @ItemLists[0],getarraysize( @ItemLists );
+	deletearray @ItemCost[0],getarraysize( @ItemCost );
+return;
+}
+
+function	ValueConvert	{
+	set .@num, atoi(""+getarg(0));
+	if ( .@num == 0 || .@num >= 2147483647 ) return getarg(0);
+	set .@l, getstrlen(""+.@num);
+	for ( set .@i,0; .@i < .@l; set .@i, .@i + 1 ) {
+		set .@num$, .@num % pow(10,.@i+1) / pow(10,.@i) + .@num$;
+			if ( (.@i+1) % 3 == 0 && .@i+1 != .@l ) set .@num$, ","+ .@num$;
+	}
+	return .@num$;
+}
+
+OnBuyItem:
+	ShopSettings( @menu );
+	for(set @i,0; @i < getarraysize( @bought_nameid ); set @i,@i+1)
+		for(set @j,0; @j < getarraysize( @ItemLists ); set @j,@j+1)
+			if( @ItemLists[@j] == @bought_nameid[@i] )
+			set @TotalCost,@TotalCost + ( @ItemCost[@j] * @bought_quantity[@i] );
+	mes "[ ^a60536Kafra Points Itens^000000 ]";
+	mes "Você escolheu:";
+	for( set @i,0; @i < getarraysize( @bought_nameid ); set @i,@i+1 )
+	mes "^FF0000"+@bought_quantity[@i]+" x ^0000FF"+getitemname( @bought_nameid[@i] )+"^000000";
+
+	if( getitemname( atoi( @Currency$ ) ) != "null" )
+		mes "Custo Total: ^0000FF"+ValueConvert( @TotalCost )+" x "+getitemname( atoi( @Currency$ ) )+"^000000";
+	else if( getitemname( atoi( @Currency$ ) ) == "null" ){
+		mes "Custo Total: ^0000FF"+ValueConvert( @TotalCost )+" "+@Currency$+"^000000";
+		mes "";
+	}
+	if( ValidateCost( @Currency$,@TotalCost ) ){
+		if( getitemname( atoi( @Currency$ ) ) != "null" )
+			mes "Você não possui Kafra Points necessários para este item.";
+		else{
+			mes "Você não possui Kafra Points necessários para este item.";
+		}
+	}else{
+		if( select( "[^008000»^000000] Comprar.:Cancelar." ) == 1 ){
+			if( getitemname( atoi( @Currency$ ) ) != "null" )
+				delitem atoi( @Currency$ ),@TotalCost;
+			else{
+				set getd( @Currency$ ),getd( @Currency$ ) - @TotalCost;
+			}
+			for(set @i,0; @i < getarraysize( @bought_nameid ); set @i,@i+1)
+				getitem @bought_nameid[@i],@bought_quantity[@i];
+			message strcharinfo(0),"Comprado "+getarraysize( @bought_nameid )+" itens.";
+			mes "Obrigado por comprar.";
+		}
+	}
+ClearData();
+close;
+
+}

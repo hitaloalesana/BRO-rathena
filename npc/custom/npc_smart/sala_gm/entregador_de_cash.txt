@@ -1,0 +1,124 @@
+sala_gm,261,258,5	script	Entregador de Cash	871,{
+
+set @npc$,"[ ^008000Entregador de Cash^000000 ]"; // Nome do npc
+set @lvl,99; // Level para administrar o npc
+
+if (getgmlevel() < @lvl){ 		
+		dispbottom "[ Uso restrito aos administradores ].";
+		end;
+}
+mes @npc$;
+mes "Olá "+strcharinfo(0)+" o que deseja administrar no sistema cash?";
+switch(select("[^008000»^000000] Adicionar Cash.:[^008000»^000000] Remover Cash.:[^008000»^000000] Ver Total de Cash.")){
+
+case 1:
+	next;
+	mes @npc$;
+	mes "Digite o login da conta que você deseja adicionar os cashs.";
+	input .@cash$;
+
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@cash$+"'",.@cont;
+		if(.@cont == 0)
+		{
+		next;
+		mes @npc$;
+		mes "Desculpe mais você não digitou o login da conta corretamente.";
+		close;
+	}
+	
+	next;
+	mes @npc$;
+	mes "Agora digite a quantidade de cash que deseja adicionar a conta ^ff0000"+.@cash$+"^000000.";
+	input .@valor;
+			if(.@valor == 0)
+			{
+			next;
+			mes @npc$;
+			mes "Desculpe mas você digitou uma quantidade invalida.";
+			close;
+			}
+	next;
+	mes @npc$;
+	mes "Tem certeza que deseja adicionar ^ff0000"+.@valor+"^000000 cash na conta ^ff0000"+.@cash$+"^000000?";
+	if (select("[^008000»^000000] Sim.:Não.") == 2) close;
+	
+	next;
+		mes @npc$;
+		mes "Os cashs da conta "+.@cash$+" foram adicionados com sucesso.";
+		query_sql "UPDATE `login` SET `cash` = `cash` +"+.@valor+" WHERE `userid`='"+.@cash$+"'";
+		close;
+
+case 2:
+	next;
+	mes @npc$;
+	mes "Digite o login da conta que deseja remover o cash.";
+	input .@cash$;
+
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@cash$+"'",.@cont;
+		if(.@cont == 0)
+		{
+		next;
+		mes @npc$;
+		mes "Desculpe mais você não digitou o login da conta corretamente.";
+		close;
+	}
+	
+	next;
+	mes @npc$;
+	mes "Agora digite a quantidade de CashPoints que deseja remover da conta "+.@cash$+".";
+	input .@valor;
+			if(.@valor == 0)
+			{
+			next;
+			mes @npc$;
+			mes "Desculpe mas você digitou uma quantidade invalida.";
+			close;
+			}
+	next;
+	mes @npc$;
+	mes "Tem certeza que deseja remover ^00BFFF"+.@valor+"^000000 CashPoitns da conta ^00BFFF"+.@cash$+"^000000?";
+	if (select("[^008000»^000000] Sim.:Não.") == 2) close;
+	
+		next;
+		mes @npc$;
+		mes "Os cashs da conta "+.@cash$+" foram removidos com sucesso.";
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@cash$+"'",.@id;
+		query_sql "UPDATE `global_reg_value` SET `value` = `value`-"+.@valor+" WHERE `account_id`='"+.@id+"'";
+		close;
+
+case 3:
+	next;
+	mes @npc$;
+	mes "Digite o login da conta que deseja ver a quantidade de CashPoints.";
+	input .@cash$;
+
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@cash$+"'",.@cont;
+		if(.@cont == 0)
+		{
+		next;
+		mes @npc$;
+		mes "Desculpe mais você não digitou o login da conta corretamente.";
+		close;
+	}
+	
+		next;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@cash$+"'",.@id;
+		query_sql "SELECT `value` FROM `global_reg_value` WHERE `account_id`='"+.@id+"'",.@saldo;
+		mes @npc$;
+		mes "A conta "+.@cash$+" possui ^00BFFF"+.@saldo+"^000000 CashPoints. ";
+		close;
+	}
+}
+
+-	script	Sistema Cash#02	-1,{
+
+OnPCLoginEvent:
+
+query_sql "SELECT `cash` FROM `login` WHERE `account_id` = '"+getcharid(3)+"'", .@cash;
+if(.@cash == 0){ end; }
+
+dispbottom "[Entregador de Cash] Olá, "+strcharinfo(0)+" você acaba de ganhar "+.@cash+" cashs.";
+set #CASHPOINTS,#CASHPOINTS+.@cash;
+query_sql "UPDATE `login` SET `cash` = `cash` =0 WHERE `account_id`='"+getcharid(3)+"'";
+end;
+}

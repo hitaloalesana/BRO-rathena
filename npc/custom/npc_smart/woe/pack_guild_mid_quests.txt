@@ -1,0 +1,74 @@
+ayothaya,147,173,4	script	Aluguel de Quests Meio	907,{
+
+	mes "[ ^a60536Aluguel de Quests Meio^000000 ]";
+	mes "Custo do aluguel: " + .rentitemamt + "x " +getitemname(.rentitemid)+ " por ^a605367 dias^000000.";
+	next;
+	mes "[ ^a60536Aluguel de Quests Meio^000000 ]";
+	mes "Qual quest você deseja alugar?";
+	switch ( select ( .menu$ )  ) { // items to rent menu
+
+	case 1:
+//		callsub OnDeclareDays; // call OnDeclareDays to input days.
+		callsub OnRentItems,25050,7; // 24042 is quest's Item ID. only change the item ID.
+
+	case 2:
+//		callsub OnDeclareDays;
+		callsub OnRentItems,25046,7;
+
+	case 3:
+//		callsub OnDeclareDays;
+		callsub OnRentItems,25044,7;
+
+	case 4:
+//		callsub OnDeclareDays;
+		callsub OnRentItems,25041,7;
+
+	case 5:
+//		callsub OnDeclareDays;
+		callsub OnRentItems,25047,7;
+
+	case 6:
+//		callsub OnDeclareDays;
+		callsub OnRentItems,25042,7;
+
+	case 7:
+		close;
+
+    // to add more items add more cases example
+    // case 3: callsub OnDeclareDays;
+    //            callsub OnRentItems,2220,.days; // rent hat
+    // and add its name on .menu$ part at the bottom.
+    // pretty simple huh. :)
+}
+//
+// Função com a opção de escolha de quantos dias vc quer pelo Item pedido (OBS: colocar .days ao invés de 14)
+//
+//OnDeclareDays:
+//	mes "Por quantos dias você quer alugar este item?";
+//	input .days; // input days
+//	if (.days == 0 ) { // 0 is not a valid value.
+//		mes "0 é um valor invalido.";
+//		close;
+//        }
+//        return .days;
+OnRentItems:
+//	if ( countitem ( .rentitemid ) < getarg(1) * .rentitemamt ) { // not enough items
+	if ( countitem ( .rentitemid ) < .rentitemamt ) { // not enough items
+		next;
+		mes "[ ^a60536Aluguel de Quests Meio^000000 ]";
+		mes "Você não possui em mãos o item necessário para alugar este item.";
+		next;
+		mes "[ ^a60536Aluguel de Quests Meio^000000 ]";
+		mes "É necessário de 1x Cartão de Aluguel de Itens";
+		mes "Volte quando tiver ele em mãos, estarei te aguardando.";
+            close;
+        }
+//	delitem .rentitemid, getarg(1) * .rentitemamt; // delete items
+	delitem .rentitemid, .rentitemamt; // delete items
+        rentitem getarg(0), getarg(1) * 86400; // rent an items. 86400 = 1 day in seconds
+        close;
+OnInit:
+    set .rentitemid, 21040; // item id of TCG change to your likings.
+    set .rentitemamt, 1; // item amount of TCG change to your likings.
+    set .menu$,"[^ff0000»^000000] Aura de Lighthalzen Verde Escuro:[^ff0000»^000000] Aura de Lighthalzen Marrom:[^ff0000»^000000] Aura de Lighthalzen Azul Escuro:[^ff0000»^000000] Aura de Lighthalzen:[^ff0000»^000000] Aura de Lighthalzen Preta:[^ff0000»^000000] Aura de Lighthalzen Amarela:Nenhuma dessas."; // to add an item separate the item with ":" without the quotes eg: "Sleip:Megs:HAT"
+}

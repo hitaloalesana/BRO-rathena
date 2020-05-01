@@ -1,0 +1,196 @@
+-	script	Flavius_MM	-1,{
+	end;
+OnTeam1Quit:
+	setquest 8506; // Deserter
+	if( $@BG_Status != 0 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "Flavius_MM" ) donpcevent "BG_Queue_Join::OnJoinEvent";
+OnTeam1Die:
+	if( $@BG_Status == 1 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "Flavius_MM" ){
+		set .Team1_Score, .Team1_Score - 1;
+		donpcevent "Flavius_MM::OnValidateScore";
+	}
+	end;
+OnTeam2Quit:
+	setquest 8506; // Deserter
+	if( $@BG_Status != 0 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "Flavius_MM" ) donpcevent "BG_Queue_Join::OnJoinEvent";
+OnTeam2Die:
+	if( $@BG_Status == 1 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "Flavius_MM" ){
+		set .Team2_Score, .Team2_Score - 1;
+		donpcevent "Flavius_MM::OnValidateScore";
+	}
+	end;
+OnBuildTeams:
+	set $@BG_Team1,bg_team_create("coliseum", 390, 10, 0, "Flavius_MM::OnTeam1Quit", "Flavius_MM::OnTeam1Die");
+	set $@BG_Team2,bg_team_create("coliseum", 10, 290, 1, "Flavius_MM::OnTeam2Quit", "Flavius_MM::OnTeam2Die");
+	end;
+OnReady:
+	if( getvariableofnpc(.BG_Arena$,"BG_Queue_Join") != "Flavius_MM" ) end;
+	initnpctimer;
+	set .Team1_Score, 20;
+	set .Team2_Score, 20;
+	bg_updatescore "coliseum", .Team1_Score, .Team2_Score;
+	sleep 2000;
+	bg_warp $@BG_Team1, "coliseum", 102, 51;
+	bg_warp $@BG_Team2, "coliseum", 101, 149;
+	sleep 2000;
+	bg_team_reveal $@BG_Team1;
+	bg_team_reveal $@BG_Team2;
+	donpcevent "#guitd_respawn2::OnBGStart1";
+	donpcevent "#crotd_respawn2::OnBGStart2";
+	end;
+OnValidateScore:
+	if( $@BG_Status != 1 || getvariableofnpc(.BG_Arena$,"BG_Queue_Join") != "Flavius_MM" ) end;
+	bg_updatescore "coliseum", .Team1_Score, .Team2_Score;
+	set .@Team1Count, bg_get_data($@BG_Team1, 0);
+	set .@Team2Count, bg_get_data($@BG_Team2, 0);
+	if( .Team2_Score <= 0 ){ // Team 1 Won
+		bg_reward $@BG_Team1,7773,40,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team2,7773,15,0,0,"BG_MM",1,4,2;
+		bg_reward $@BG_Team1,7828,100,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team2,7828,15,0,0,"BG_MM",1,4,2;
+		bg_reward $@BG_Team1,7829,100,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team2,7829,15,0,0,"BG_MM",1,4,2;
+		mapannounce "coliseum","» O exército " + bg_get_data($@BG_Team1,2) + " ganhou o Gladius Mata-Mata «",1,bg_get_data($@BG_Team1,4);
+	}else if( .Team1_Score <= 0 ){ // Team 2 Won
+		bg_reward $@BG_Team1,7773,15,0,0,"BG_MM",1,4,2;
+		bg_reward $@BG_Team2,7773,40,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team1,7828,15,0,0,"BG_MM",1,4,2;
+		bg_reward $@BG_Team2,7828,100,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team1,7829,15,0,0,"BG_MM",1,4,2;
+		bg_reward $@BG_Team2,7829,100,0,0,"BG_MM",1,4,0;
+		mapannounce "coliseum","» O exército " + bg_get_data($@BG_Team2,2) + " ganhou o Gladius Mata-Mata «",1,bg_get_data($@BG_Team2,4);
+	}else if( .@Team2Count == 0 ){ // All Team 2 Players quit
+		set .@Rate, 40 - .Team2_Score;
+		bg_reward $@BG_Team1,7773,40 * .@Rate / 40,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team1,7829,20 * .@Rate / 40,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team1,7828,20 * .@Rate / 40,0,0,"BG_MM",1,4,0;
+		mapannounce "coliseum","» O exército " + bg_get_data($@BG_Team1,2) + " ganhou o Gladius Mata-Mata «",1,bg_get_data($@BG_Team1,4);
+	}else if( .@Team1Count == 0 ){ // All Team 1 Players quit
+		set .@Rate, 40 - .Team1_Score;
+		bg_reward $@BG_Team2,7773,40 * .@Rate / 40,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team2,7829,20 * .@Rate / 40,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team2,7828,20 * .@Rate / 40,0,0,"BG_MM",1,4,0;
+		mapannounce "coliseum","» O exército " + bg_get_data($@BG_Team2,2) + " ganhou o Gladius Mata-Mata «",1,bg_get_data($@BG_Team2,4);
+	}
+	else end;
+	donpcevent "Flavius_MM::OnMatchEnd";
+	end;
+
+OnTimer400000:
+	mapannounce "coliseum","» A batalha vai terminar em 5 minutos «",1,0x00FF00;
+	end;
+
+OnTimer840000:
+	mapannounce "coliseum","» A batalha vai terminar em 1 minuto «",1,0x00FF00;
+	end;
+
+OnTimer900000:
+	if( .Team1_Score > .Team2_Score ){ // Team 1 Won
+		bg_reward $@BG_Team1,7773,40,0,0,"BG_MM",1,4,0;
+		bg_reward $@BG_Team2,7773,10,0,0,"BG_MM",1,4,2;
+		mapannounce "coliseum","» O exército " + bg_get_data($@BG_Team1,2) + " ganhou o Gladius Mata-Mata «",1,bg_get_data($@BG_Team1,4);
+	}else if( .Team1_Score < .Team2_Score ){ // Team 2 Won
+		bg_reward $@BG_Team1,7773,10,0,0,"BG_MM",1,4,2;
+		bg_reward $@BG_Team2,7773,40,0,0,"BG_MM",1,4,0;
+		mapannounce "coliseum","» O exército " + bg_get_data($@BG_Team2,2) + " ganhou o Gladius Mata-Mata «",1,bg_get_data($@BG_Team2,4);
+	}else{
+		bg_reward $@BG_Team1,7773,15,0,0,"BG_MM",1,4,1;
+		bg_reward $@BG_Team2,7773,15,0,0,"BG_MM",1,4,1;
+		mapannounce "coliseum","» A batalha terminou. Foi um empate «",1,0x00FF00;
+	}
+	donpcevent "Flavius_MM::OnMatchEnd";
+	end;
+
+OnMatchEnd:
+	stopnpctimer;
+	donpcevent "#guitd_respawn2::OnBGStop1";
+	donpcevent "#crotd_respawn2::OnBGStop2";
+	set $@BG_Status, 2;
+	set .Team1_Score, 20;
+	set .Team2_Score, 20;
+	sleep 5000;
+	donpcevent "BG_Queue_Join::OnRotate";
+	bg_updatescore "coliseum",0,0;
+	end;
+
+OnBGStop1:
+	specialeffect2 21;
+	percentheal 100,100;
+	switch( rand(6) ){
+		default: warp "coliseum", 85, 57; break;
+		case 1: warp "coliseum", 115, 59; break;
+		case 2: warp "coliseum", 120, 89; break;
+		case 3: warp "coliseum", 83, 102; break;
+		case 4: warp "coliseum", 118, 129; break;
+		case 5: warp "coliseum", 84, 135; break;
+		case 6: warp "coliseum", 100, 154; break;
+	}
+	end;
+OnBGStop2:
+	switch( rand(6) ){
+		default: warp "coliseum", 85, 57; break;
+		case 1: warp "coliseum", 115, 59; break;
+		case 2: warp "coliseum", 120, 89; break;
+		case 3: warp "coliseum", 83, 102; break;
+		case 4: warp "coliseum", 118, 129; break;
+		case 5: warp "coliseum", 84, 135; break;
+		case 6: warp "coliseum", 100, 154; break;
+	}
+	end;
+}
+
+coliseum,101,87,6	script	Healer	608,4,4,{
+	specialeffect2 14;
+	sc_start 32, 600000, 10;
+	sc_start 30, 600000, 10; 
+	sc_start 40, 600000, 5;
+	sc_start 39, 600000, 10; 
+	sc_start 41, 600000, 10;
+	sc_start 43, 600000, 5;
+	sc_start 44, 600000, 5;
+	specialeffect2 313;
+	specialeffect2 392;
+	message strcharinfo(0), "[ Buffs concedidos ].";
+	specialeffect 383, AREA, strnpcinfo(0);
+	end;
+OnInit:
+	while(1){
+		movenpc strnpcinfo(0), 101, 116;
+		sleep 10000;
+		movenpc strnpcinfo(0), 101, 87;
+		sleep 10000;
+		movenpc strnpcinfo(0), 101, 116;
+		sleep 10000;
+	}
+	end;
+}
+// Flags
+// *********************************************************************
+
+coliseum,101,80,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_1	973
+coliseum,102,124,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_2	973
+
+coliseum,102,165,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_3	973
+coliseum,106,165,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_4	973
+coliseum,97,165,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_5	973
+
+coliseum,106,38,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_6	973
+coliseum,101,38,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_7	973
+coliseum,97,38,1	duplicate(Base Flag#bg)	Gladius Mata-Mata#mm_8	973
+
+coliseum,124,118,1	duplicate(Base Flag#bg)	Gladior Aniquilado#mm_9	699
+coliseum,86,158,1	duplicate(Base Flag#bg)	Gladior Aniquilado#mm_10	694
+coliseum,75,132,1	duplicate(Base Flag#bg)	Gladior Aniquilado#mm_11	692
+coliseum,90,43,1	duplicate(Base Flag#bg)	Gladior Aniquilado#mm_12	699
+coliseum,122,158,1	duplicate(Base Flag#bg)	Gladior Aniquilado#mm_13	692
+// MapFlags
+// *********************************************************************
+
+coliseum	mapflag	battleground	2
+coliseum	mapflag	nomemo
+coliseum	mapflag	nosave	SavePoint
+coliseum	mapflag	noteleport
+coliseum	mapflag	nowarp
+coliseum	mapflag	nowarpto
+coliseum	mapflag	noreturn
+coliseum	mapflag	nobranch
+coliseum	mapflag	nopenalty

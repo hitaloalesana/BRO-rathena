@@ -1,0 +1,28 @@
+prontera,150,150,4 script Premio1 -1,{
+
+set @item1,24029; // Item do Premio 1
+set @qnt1,1; // Quantidade do Premio
+
+
+set .n$,"[ ^FF0000SmartRO^000000 ]"; // Nome do NPC
+OnPCLoginEvent:
+if(#foi == 1) { end; }
+mes .n$;
+mes "Bem Vindo ao Servidor";
+mes "Você acaba de ganhar...";
+
+mes "^00FF00"+@qnt1+"^000000x ^0000FF"+getitemname(@item1)+"^000000";
+
+next;
+show .n$;
+show "Lembrese: É apenas 1 Premio por Conta!";
+close2;
+additem @item1,@qn1;;
+
+set #foi,1;
+
+ 
+
+end;
+}
+ 

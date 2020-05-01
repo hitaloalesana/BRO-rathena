@@ -1,0 +1,105 @@
+prontera,133,172,5	script	Arrecadação Campal	790,{
+	set .@n$, "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+	mes .@n$;
+	if( agitcheck() || agitcheck2() ){
+		mes "Arrecadação Campal desabilitado durante a Guerra do Emperium.";
+		close;
+	}
+	if( $ac_active == 1 ){
+		mes "Arrecadação Campal está atualmente fora do horário de funcionamento!";
+		mes " ";
+		mes "^777777Horários de Funcionamento:^000000";
+		mes " ^0000FF» 22hs às 02hrs.^000000";
+		next;
+	if( select("[^ff0000»^000000] Informações.:[^ff0000»^000000] Saír.") == 2 ) close;
+		mes .@n$;
+		mes "Aqui você pode investir ^0000FF200x Pontos Kafra^000000 para ativar um Happy Hour por 2 horas.";
+		next;
+		mes .@n$;
+		mes "Todos os dias entre as 22h e 2h da manhã, eu estarei arrecadando ^0000FFKafra Points^000000 .";
+		mes "Cada pessoa pode doar ^0000FF200x Pontos Kafra^000000  e eu preciso de um total de ^FF00004.000 Pontos^000000 .";
+		mes "Quando a marca de 4.000 Pontos for atingida, eu ativo o Happy Hour 100% na Battleground por 2 horas!";
+		mes "^777777Atenção: Nosso sistema permite apenas 1 HH por dia.^000000";
+		close;
+	}
+	mes "Olá, "+strcharinfo(0)+"!";
+	mes "Bem-vindo(a) ao sistema de ^FF8C00Arrecadação Campal!^000000.";
+	mes " ^0000FF» Foram Arrecadados: "+ $ac_valor +" Kafra Points.^000000";
+	set $faltam, 4000 - $ac_valor;
+	mes " ^FF0000» Faltam: ^016B14"+ $faltam +" Kafra Points.^0000FF";
+	mes " ";
+	if( #ac_save_donation == 1){
+		mes " ^777777~ Já consta sua contribuição no sistema.^000000";
+		close;
+	}
+	mes "Deseja ajudar com ^0000FF200x Pontos Kafra^000000?";
+	next;
+	switch( select("[^ff0000»^000000] Contribuir:[^ff0000»^000000] Informações.:[^ff0000»^000000] Saír.") ){
+			mes "["+ strnpcinfo(1) +"]";
+		case 1:
+			mes "Vamos lá...";
+			next;
+			mes .@n$;
+			if( #KAFRAPOINTS < 200 ){
+				mes "Infelizmente você não possui ^0000FF200x Kafra Points^000000...";
+				close;
+			}
+			set #KAFRAPOINTS, #KAFRAPOINTS - 200;
+			set #ac_save_donation, 1;
+			set $ac_valor, $ac_valor + 200;
+			if( $ac_valor >= 4000 ){
+				mes "Parabéns, com sua doação atingimos ^0000FF"+ $ac_valor +"x Kafra Points^000000!";
+				mes "^FF0000Happy Hour será iniciado!^0000000";
+				callsub OnHappyHour;
+			}
+			mes "Prontinho, você investiu ^0000FF"+$ac_valor+"x Kafra Points^000000.";
+			set $faltam, 4000 - $ac_valor;
+			mes "Agora faltam "+ $faltam +" Pontos Kafra para o inicio do Evento";
+			announce "[Batalha Campal]: "+strcharinfo(0)+" acaba de realizar sua contribuição | Faltam "+ $faltam +"x Kafra Points para o Happy Hour 100%.", bc_all, 0x00FF00;
+			close;
+		case 2:
+			mes .@n$;
+			mes "Aqui você pode investir ^0000FF200x Pontos Kafra^000000 para ativar um Happy Hour de 2 horas.";
+			mes "Não entendeu? Deixe-me explicar detalhadamente...";
+			mes "Todos os dias entre as 22h e 2h da manhã, eu estarei arrecadando ^0000FFPontos Kafra^000000 .";
+			mes "Cada pessoa pode doar ^0000FF200 Pontos Kafra^000000 e eu preciso de um total de ^FF00004.000 Pontos^000000 .";
+			mes "Quando a marca de 4.000 Pontos for atingida, eu ativo o Happy Hour 100% na Battleground por 2 horas, não é incrível ??";
+			mes "^777777- Atenção: Nosso sistema permite apenas 1 HH por dia.^000000";
+			close;
+		case 3:
+			mes "Volte se mudar de ideia.";
+			close;
+}
+OnClock2323:
+	announce "[Batalha Campal]: Arrencadação Campal iniciada | Happy Hour: Drops 100%!", bc_all, 0x00FF00;
+	set $ac_active, 0;
+	end;	
+OnClock2324:
+	if( $ac_active == 1 ) end;
+	announce "[Batalha Campal]: Arrencadação Campal fechada | Infelizmente não foi antingido a cota diária.", bc_all, 0x00FF00;
+	set $ac_valor, 0;
+	set $ac_active, 1;
+	set #ac_save_donation, 0;
+	end;
+
+OnHappyHour:
+	set $ac_active, 1;
+	set $ac_valor, 0;
+	announce "[Batalha Campal]: Arrencadação Campal completa | Happy Hour iniciado.", bc_all, 0x00FF00;
+	setbattleflag "bg_reward_rates", 200;
+	setbattleflag "bg_ranked_mode", 1;
+	initnpctimer;
+	close;
+		
+OnTimer7200000:
+	announce "[Batalha Campal]: Happy Hour da Arrecadação Campal terminou!", bc_all, "0x00FF00";
+	setbattleflag "bg_reward_rates", 100;
+	setbattleflag "bg_ranked_mode", 0;
+	stopnpctimer;
+	end;
+OnInit:
+	if( gettime(3) >= 22 && gettime(3) < 02 ) end;
+	set $ac_active, 1;
+	set $ac_valor, 0;
+	end;
+}

@@ -1,0 +1,35 @@
+prt_smart,189,186,6	script	Emblemas por Kafra Points	858,{
+	mes "[ ^a60536Emblemas Por Kafra Points^000000 ]";
+	mes "Aqui você pode converter ^0000ffEmblemas^000000 por ^ff0000Kafra Points^000000!";
+	mes "^777777Selecione qual emblema deseja converter:^000000";
+	next;
+	set .@i, select(.Menu$) - 1;
+	mes "[ ^a60536Emblemas Por KafraPoints^000000 ]";
+	setarray .@j, .Items[.@i*2], .Items[.@i*2+1], countitem(.Items[.@i*2]);
+	if (.@j[2]) {
+        mes "Você possui "+.@j[2]+" "+getitemname(.@j[0])+".";
+        mes "Cada emblema vale ^0000ff"+.@j[1]+"^000000 Pontos Kafra.";
+        mes "Quantos emblemas você deseja trocar?";
+        next;
+        input .@k,0,.@j[2];
+	mes "[ ^a60536Emblemas Por Kafra Points^000000 ]";
+        if (.@k) {
+            delitem .@j[0],.@k;
+            set #KAFRAPOINTS, #KAFRAPOINTS+(.@k*.@j[1]);
+            mes "Pronto! "+.@k+"x "+getitemname(.@j[0])+".";
+            dispbottom "[ Total de Kafra Points: "+#KAFRAPOINTS+" ].";
+        }
+        else mes "Ok, volte quando quiser fazer a troca.";
+        close;
+    }
+    mes "Você não possui nenhum "+getitemname(.@j[0])+".";
+    close;
+
+OnInit:
+    // Format: ItemID,Points,ItemID2,Points2,...
+    setarray .Items[0], 7828, 1, 7829, 1, 7773, 2, 21046, 5;
+    set .Menu$, "";
+    for( set .@i, 0; .@i < getarraysize(.Items); set .@i, .@i + 2 )
+        set .Menu$, .Menu$ + "[^ff0000»^000000] "+ getitemname(.Items[.@i])+".:";
+    	end;
+}

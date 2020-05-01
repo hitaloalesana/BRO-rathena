@@ -1,0 +1,29 @@
+prt_smart,156,204,6	script	#Heal	111,8,8,{
+	sc_end SC_STONE; sc_end SC_FREEZE; sc_end SC_STUN; sc_end SC_SLEEP; 
+	sc_end SC_POISON; sc_end SC_CURSE; sc_end SC_SILENCE; sc_end SC_CONFUSION; 
+	sc_end SC_BLIND; sc_end SC_BLEEDING;
+	specialeffect2 14; specialeffect2 21; specialeffect2 223; specialeffect2 325;
+	percentheal 100, 100;
+	if( getgmlevel() < 1 ){
+		sc_start 32, 600000, 10;
+		sc_start 30, 600000, 10;
+		dispbottom "[ Você acaba de receber os buffs básicos. Seja um jogador VIP e tenha benefícios! ].";
+		message strcharinfo(0), "[ Vote no SmartRO diariamente ].";
+		end;
+	}
+	sc_start 32, 600000, 10;
+	sc_start 30, 600000, 10; 
+	sc_start 40, 600000, 5;
+	sc_start 39, 600000, 10; 
+	sc_start 41, 600000, 10;
+	sc_start 43, 600000, 5;
+	sc_start 44, 600000, 5;
+	sc_start SC_DEXFood, 1200000, 10;
+	sc_start SC_INTFood, 1200000, 10; 
+	sc_start SC_STRFood, 1200000, 10; 
+	sc_start SC_AGIFood, 1200000, 10; 
+	sc_start SC_VITFood, 1200000, 10;
+	sc_start SC_LUKFood, 1200000, 10;
+	sc_start SC_ASPDPOTION2, 1200000, 0;
+	end;
+} 

@@ -1,0 +1,415 @@
+-	script	Cash Control#main	-1,{
+	message strcharinfo(0), sprintf($@CC_MSGPOINTINFO$, #CASHPOINTS, #KAFRAPOINTS);
+	end;
+	
+OnInit:
+	// Configurações de nível de uso de comandos:
+	//	<admin @command>,<admin #command>,<player>
+	setarray .CC_Atcommand[0], 99, 99, 0;
+	
+	// Emulador que está sendo utilizado o sistema:
+	//	0: Base eAthena/rAthena.
+	//	1: Base Hecules.
+	//	2: rAthena++
+	set $@CC_EmulatorType, 2;
+	
+	// Máximo de Cash/Kafra Points que uma conta pode ter.
+	set $@CC_MaxPoints, 10000000;	// De acordo com o INT_MAX do Emualdor.
+	
+	// Mensagens de Exibições
+	set $@CC_MSGPOINTINFO$, "Você possuí (%d) pontos de Cash e (%d) pontos Kafra.";
+	set $@CC_MSGGETPOINT$, "Você recebeu (%d) %s.";
+	set $@CC_MSGDELPOINT$, "Foi removido (%d) %s.";
+	end;
+}
+
+-	script	Cash Control#manager	-1,{
+	set .@loop_1, 1;
+	while( .@loop_1 ){
+		mes "^0099FF[ Controlador de Pontos ]^000000";
+		mes "Bem-vindo a central de controle de Pontos de Cash e Kafra.";
+		mes "Em que posso ajudar?";
+		next;
+		switch( select("^00CC00•^000000 Inclusão de Pontos de Cash/Kafra.", "^00CC00•^000000 Remoções de Pontos de Cash/Kafra.", "^00CC00•^000000 Consulta.", "^00CC00•^000000 ^FF0000Cancelar.^000000") ){
+			case 1:
+				set .@loop_2, 1;
+				while( .@loop_2 ){
+					mes "^0099FF[ Controlador de Pontos ]^000000";
+					mes "Por favor, digite a ^FF0000ID da conta ou o usuário^000000 que deseja adicionar pontos na conta.";
+					next;
+					input .@UserID$;
+					deletearray .@AccountId, getarraysize(.@AccountId);
+					deletearray .@UID$, getarraysize(.@UID$);
+					query_sql "SELECT `account_id`, `userid` FROM `login` WHERE `account_id`='" + atoi(.@UserID$) + "' OR `userid`='" + .@UserID$ + "'", .@AccountId, .@UID$;
+
+					if( !getarraysize(.@AccountId) )
+					{
+						mes "^0099FF[ Controlador de Pontos ]^000000";
+						mes "Nenhuma conta foi encontrada com ^FF0000AID/UID '" + .@UserID$ + "'^000000.";
+						mes "Deseja tentar novamente?";
+						next;
+						if( select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não.") == 2 )
+							set .@loop_2, 0;
+					}
+					else {
+						set .@loop_3, 1;
+						while(.@loop_3)
+						{
+							mes "^0099FF[ Controlador de Pontos ]^000000";
+							set .@getcashpoints, callfunc("getCashInfo", $@CC_EmulatorType, 0, .@AccountId[0]);
+							set .@getkafpoints, callfunc("getCashInfo", $@CC_EmulatorType, 1, .@AccountId[0]);
+							mes sprintf("Este usuário possue %d pontos de Cash e %d pontos Kafra, o que deseja fazer?", .@getcashpoints, .@getkafpoints);
+							next;
+							set .@type, select("^00CC00•^000000 Adicionar Pontos de Cash.", "^00CC00•^000000 Adicionar Pontos Kafra.", "^00CC00•^000000 ^00008BDigitar outro usuário.^000000", "^00CC00•^000000 ^FF0000Cancelar.^000000")-1;
+							
+							switch( .@type )
+							{
+								case 2:
+									set .@loop_3, 0;
+									break;
+								case 3:
+									set .@loop_3, 0;
+									set .@loop_2, 0;
+									set .@loop_1, 0;
+									break;
+								default:
+									set .@loop_4, 1;
+									while( .@loop_4 )
+									{
+										if( !.@type )
+										{
+											set .@mask$, "Pontos de Cash";
+											set .@maxvalue, .@getcashpoints;
+										}
+										else
+										{
+											set .@mask$, "Pontos Kafra";
+											set .@maxvalue, .@getkafpoints;
+										}
+										
+										if( .@maxvalue >= $@CC_MaxPoints )
+										{
+											mes "^0099FF[ Controlador de Pontos ]^000000";
+											mes "Esta conta já está com o máximo de ^00008B" + .@mask$ + "^000000 permitido.";
+											next;
+											break;
+										}
+										
+										set .@maxvalue, $@CC_MaxPoints - .@maxvalue;
+										
+										mes "^0099FF[ Controlador de Pontos ]^000000";
+										mes "Digite a quantidade de ^00008B" + .@mask$ + "^000000 que deseja adicionar ao usuário ^00008B" + .@UID$[0] + "^000000.";
+										mes "^0000FFSendo o minimo 1 e o máximo " + .@maxvalue + ".^000000";
+										next;
+										input .@addPoint;
+										
+										if( .@addPoint < 1 || .@addPoint > .@maxvalue )
+										{
+											mes "^0099FF[ Controlador de Pontos ]^000000";
+											mes "Você deve digitar o minimo de 1 ou máximo de " + .@maxvalue + " " + .@mask$ + ".";
+											mes "Deseja tentar novamente?";
+											next;
+											if( select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não.") == 2 )
+											{
+												set .@loop_4, 0;
+												set .@loop_3, 0;
+												set .@loop_2, 0;
+											}
+										}
+										else {
+											mes "^0099FF[ Controlador de Pontos ]^000000";
+											mes "Tem certeza que deseja adicionar ^FF0000" + .@addPoint + " " + .@mask$ + "^000000 no usuário ^FF0000" + .@UID$[0] + "^000000?";
+											next;
+											switch( select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não, digitar outro usuário.", "^00CC00•^000000 Não, adicionar em ^FF0000'" + .@mask$ + "'^000000.", "^00CC00•^000000 Não desejo digitar novamente.", "^00CC00•^000000 ^FF0000Cancelar.^000000") )
+											{
+												case 1:
+													// Adicionar
+													set .@CharOnline$, callfunc("getcharonline", .@AccountId[0]);
+													if( .@CharOnline$ != "0" )
+													{
+														.@last_rid = getcharid(3);
+														detachrid;
+														if( attachrid(.@AccountId[0]) )
+														{
+															message strcharinfo(0), sprintf($@CC_MSGGETPOINT$,.@addPoint,.@mask$);
+															if( !.@type )
+																set #CASHPOINTS, #CASHPOINTS + .@addPoint;
+															else
+																set #KAFRAPOINTS, #KAFRAPOINTS + .@addPoint;
+															detachrid; 
+														}
+														
+														attachrid(.@last_rid);
+													}
+													else
+														callfunc "updateCashPoint", $@CC_EmulatorType, .@type, .@AccountId, 1, .@addPoint;
+															
+													mes "^0099FF[ Controlador de Pontos ]^000000";
+													mes "A quantidade de " + .@addPoint + " (" + .@mask$ + ") foi adicionada com sucesso!";
+													next;
+													set .@loop_4, 0;
+													set .@loop_3, 0;
+													set .@loop_2, 0;
+													break;
+												case 2:
+													set .@loop_4, 0;
+													set .@loop_3, 0;
+													break;
+												case 3:
+													set .@loop_4, 0;
+													break;
+												case 4:
+													break;
+												case 5:
+													set .@loop_4, 0;
+													set .@loop_2, 0;
+													set .@loop_3, 0;
+													break;
+											}
+										}
+									}
+									break;
+							}
+						}
+					}
+				}
+				break;
+			case 2:
+				set .@loop_2, 1;
+				while( .@loop_2 )
+				{
+					mes "^0099FF[ Controlador de Pontos ]^000000";
+					mes "Por favor, digite a ^FF0000ID da conta ou o usuário^000000 que deseja remover pontos na conta.";
+					next;
+					input .@UserID$;
+					deletearray .@AccountId, getarraysize(.@AccountId);
+					deletearray .@UID$, getarraysize(.@UID$);
+					query_sql "SELECT `account_id`, `userid` FROM `login` WHERE `account_id`='" + atoi(.@UserID$) + "' OR `userid`='" + .@UserID$ + "'", .@AccountId, .@UID$;
+
+					if( !getarraysize(.@AccountId) )
+					{
+						mes "^0099FF[ Controlador de Pontos ]^000000";
+						mes "Nenhuma conta foi encontrada com ^FF0000AID/UID '" + .@UserID$ + "'^000000.";
+						mes "Deseja tentar novamente?";
+						next;
+						if( select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não.") == 2 )
+							set .@loop_2, 0;
+					}
+					else {
+						set .@loop_3, 1;
+						while(.@loop_3)
+						{
+							mes "^0099FF[ Controlador de Pontos ]^000000";
+							set .@getcashpoints, callfunc("getCashInfo", $@CC_EmulatorType, 0, .@AccountId[0]);
+							set .@getkafpoints, callfunc("getCashInfo", $@CC_EmulatorType, 1, .@AccountId[0]);
+							mes sprintf("Este usuário possue %d pontos de Cash e %d pontos Kafra, o que deseja fazer?", .@getcashpoints, .@getkafpoints);
+							next;
+							set .@type, select("^00CC00•^000000 Remover Pontos de Cash.", "^00CC00•^000000 Remover Pontos Kafra.", "^00CC00•^000000 ^00008BDigitar outro usuário.^000000", "^00CC00•^000000 ^FF0000Cancelar.^000000")-1;
+							
+							switch( .@type )
+							{
+								case 2:
+									set .@loop_3, 0;
+									break;
+								case 3:
+									set .@loop_3, 0;
+									set .@loop_2, 0;
+									set .@loop_1, 0;
+									break;
+								default:
+									set .@loop_4, 1;
+									while( .@loop_4 )
+									{
+										if( !.@type )
+										{
+											set .@mask$, "Pontos de Cash";
+											set .@maxvalue, .@getcashpoints;
+										}
+										else
+										{
+											set .@mask$, "Pontos Kafra";
+											set .@maxvalue, .@getkafpoints;
+										}
+										
+										if( !.@maxvalue )
+										{
+											mes "^0099FF[ Controlador de Pontos ]^000000";
+											mes "Esta conta já não contém ^00008B" + .@mask$ + "^000000.";
+											next;
+											break;
+										}
+										
+										mes "^0099FF[ Controlador de Pontos ]^000000";
+										mes "Digite a quantidade de ^00008B" + .@mask$ + "^000000 que deseja remover ao usuário ^00008B" + .@UID$[0] + "^000000.";
+										mes "^0000FFSendo o minimo 1 e o máximo " + .@maxvalue + ".^000000";
+										next;
+										input .@delPoint;
+										
+										if( .@delPoint < 1 || .@delPoint > .@maxvalue )
+										{
+											mes "^0099FF[ Controlador de Pontos ]^000000";
+											mes "Você deve digitar o minimo de 1 ou máximo de " + .@maxvalue + " " + .@mask$ + ".";
+											mes "Deseja tentar novamente?";
+											next;
+											if( select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não.") == 2 )
+											{
+												set .@loop_4, 0;
+												set .@loop_3, 0;
+												set .@loop_2, 0;
+											}
+										}
+										else {
+											mes "^0099FF[ Controlador de Pontos ]^000000";
+											mes "Tem certeza que deseja remover ^FF0000" + .@delPoint + " " + .@mask$ + "^000000 no usuário ^FF0000" + .@UID$[0] + "^000000?";
+											next;
+											switch( select("- Sim, por favor.", "- Não, desejo digitar outro usuário.", "- Não, desejo remover em ^FF0000'" + .@mask$ + "'^000000.", "- Não desejo digitar novamente.", "^FF0000- Cancelar.^000000") )
+											{
+												case 1:
+													// remover
+													set .@CharOnline$, callfunc("getcharonline", .@AccountId[0]);
+													if( .@CharOnline$ != "0" )
+													{
+														.@last_rid = getcharid(3);
+														detachrid;
+														if( attachrid(.@AccountId[0]) )
+														{
+															callfunc "updateCashPoint", $@CC_EmulatorType, .@type, .@AccountId, 0, .@delPoint;
+															message strcharinfo(0), sprintf($@CC_MSGDELPOINT$,.@delPoint,.@mask$);
+															if( !.@type )
+																set #CASHPOINTS, #CASHPOINTS - .@delPoint;
+															else
+																set #KAFRAPOINTS, #KAFRAPOINTS - .@delPoint;
+															
+															detachrid; 
+														}
+														else
+															callfunc "updateCashPoint", $@CC_EmulatorType, .@type, .@AccountId, 0, .@delPoint;
+														
+														attachrid(.@last_rid);
+													}
+													else
+														callfunc "updateCashPoint", $@CC_EmulatorType, .@type, .@AccountId, 0, .@delPoint;
+															
+													mes "^0099FF[ Controlador de Pontos ]^000000";
+													mes "A quantidade de " + .@delPoint + " (" + .@mask$ + ") foi removida com sucesso!";
+													next;
+													set .@loop_4, 0;
+													set .@loop_3, 0;
+													set .@loop_2, 0;
+													break;
+												case 2:
+													set .@loop_4, 0;
+													set .@loop_3, 0;
+													break;
+												case 3:
+													set .@loop_4, 0;
+													break;
+												case 4:
+													break;
+												case 5:
+													set .@loop_4, 0;
+													set .@loop_2, 0;
+													set .@loop_3, 0;
+													break;
+											}
+										}
+									}
+									break;
+							}
+						}
+					}
+				}
+				break;
+			case 3:
+				set .@loop_2, 1;
+				while( .@loop_2 )
+				{
+					mes "^0099FF[ Controlador de Pontos ]^000000";
+					mes "Por favor, digite a ^FF0000ID da conta ou o usuário^000000 que deseja consultar pontos na conta.";
+					next;
+					input .@UserID$;
+					deletearray .@AccountId, getarraysize(.@AccountId);
+					deletearray .@UID$, getarraysize(.@UID$);
+					query_sql "SELECT `account_id`, `userid` FROM `login` WHERE `account_id`='" + atoi(.@UserID$) + "' OR `userid`='" + .@UserID$ + "'", .@AccountId, .@UID$;
+
+					if( !getarraysize(.@AccountId) )
+					{
+						mes "^0099FF[ Controlador de Pontos ]^000000";
+						mes "Nenhuma conta foi encontrada com ^FF0000AID/UID '" + .@UserID$ + "'^000000.";
+						mes "Deseja tentar novamente?";
+						next;
+						if( select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não.") == 2 )
+							set .@loop_2, 0;
+					}
+					else {
+						mes "^0099FF[ Controlador de Pontos ]^000000";
+						set .@getcashpoints, callfunc("getCashInfo", $@CC_EmulatorType, 0, .@AccountId[0]);
+						set .@getkafpoints, callfunc("getCashInfo", $@CC_EmulatorType, 1, .@AccountId[0]);
+						mes sprintf("Este usuário possue %d pontos de Cash e %d pontos Kafra.", .@getcashpoints, .@getkafpoints);
+						next;
+						set .@loop_2, 0;
+					}
+				}
+				break;
+			case 4:
+				set .@loop_1, 0;
+				break;
+		}
+	}
+
+	mes "^0099FF[ Controlador de Pontos ]^000000";
+	mes "Volte quando nescessitar de nosso sistema!";
+	close;
+}
+
+// getCashInfo(<emulator>,<0:cash/1:kafra>,<aid>);
+function	script	getCashInfo	{
+	set .@key$, (!getarg(1)?"#CASHPOINTS":"#KAFRAPOINTS");
+	if( getarg(0) == 0 )
+	{
+		query_sql "SELECT `account_id`, `value` FROM `global_reg_value` WHERE `str`='" + .@key$ + "' AND `account_id`='" + getarg(2) + "'", .@aid, .@value;
+		
+		if( !getarraysize(.@aid) )
+		{
+			query_sql "INSERT INTO `global_reg_value` (`account_id`, `str`, `type`, `value`) VALUES (" + getarg(2) + ", '" + .@key$ + "', 2, 0)";
+			return 0;
+		}
+	}
+	else if( getarg(0) == 1 )
+	{
+		query_sql "SELECT `account_id`, `value` FROM `acc_reg_num_db` WHERE `key`='" + .@key$ + "' AND `account_id`='" + getarg(2) + "'", .@aid, .@value;
+		
+		if( !getarraysize(.@aid) )
+		{
+			query_sql "INSERT INTO `acc_reg_num_db` (`account_id`, `key`, `value`) VALUES (" + getarg(2) + ", '" + .@key$ + "', 0)";
+			return 0;
+		}
+	}
+	else if( getarg(0) == 2 )
+	{
+		query_sql "SELECT `account_id`, `value` FROM `acc_reg_num` WHERE `key`='" + .@key$ + "' AND `account_id`='" + getarg(2) + "'", .@aid, .@value;
+		
+		if( !getarraysize(.@aid) )
+		{
+			query_sql "INSERT INTO `acc_reg_num` (`account_id`, `key`, `value`) VALUES (" + getarg(2) + ", '" + .@key$ + "', 0)";
+			return 0;
+		}
+	}
+	return .@value;
+}
+
+// updateCashPoint(<emulator>,<0:cash/1:kafra>,<aid>,<add/removeflag>,<points>);
+//
+//	add: 1
+//	remove: 0
+function	script	updateCashPoint	{
+	set .@key$, (!getarg(1)?"#CASHPOINTS":"#KAFRAPOINTS");
+	if( getarg(0) == 0 )
+		query_sql "UPDATE `global_reg_value` SET `value`=`value`" + (getarg(3)?"+":"-") + "'" + getarg(4) + "' WHERE `str`='" + .@key$ + "' AND `account_id`='" + getarg(2) + "'", .@aid, .@value;
+	else if( getarg(0) == 1 )
+		query_sql "UPDATE `acc_reg_num_db` SET `value`=`value`" + (getarg(3)?"+":"-") + "'" + getarg(4) + "' WHERE `key`='" + .@key$ + "' AND `account_id`='" + getarg(2) + "'", .@aid, .@value;
+	else if( getarg(0) == 2 )
+		query_sql "UPDATE `acc_reg_num` SET `value`=`value`" + (getarg(3)?"+":"-") + "'" + getarg(4) + "' WHERE `key`='" + .@key$ + "' AND `account_id`='" + getarg(2) + "'", .@aid, .@value;
+
+	return 1;
+}

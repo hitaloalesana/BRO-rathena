@@ -1,0 +1,36 @@
+-	script	save_prt#warp	-1,{
+OnPCLoginEvent:
+OnPCLoadMapEvent:
+	getmapxy .@map$, .@x, .@y, 0;
+	if( .@map$ == "novice" ){
+		sc_start 32, 3000000, 10;
+		sc_start 30, 3000000, 10;
+		sc_start SC_ASPDPOTION2, 3000000, 0;
+		end;
+	}
+	if( .@map$ == "new_1-1" ){
+		warp "novice", 52, 39;
+		end;
+	}
+	if( .@map$ == "prontera" ){
+		warp "prt_smart", .@x, .@y;
+		SavePoint "prt_smart", 156, 191;
+		end;
+	}
+	end;
+}
+prontera	mapflag	nowarp
+prontera	mapflag	nowarpto
+prontera	mapflag	noteleport
+prontera	mapflag	monster_noteleport
+prontera	mapflag	nosave	SavePoint
+prontera	mapflag	nomemo
+prontera	mapflag	nobranch
+prontera	mapflag	nopenalty
+prontera	mapflag	noicewall
+prontera	mapflag	nodrop
+prontera	mapflag	noloot
+prontera	mapflag	loadevent
+
+new_1-1	mapflag	loadevent
+novice	mapflag	loadevent

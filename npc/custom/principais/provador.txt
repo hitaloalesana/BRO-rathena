@@ -1,0 +1,113 @@
+prontera,172,183,1	script	Estilista#super_stylist	122,{
+	doevent "super_stylist_main::OnTalk";
+}
+-	script	super_stylist_main	-1,{
+	OnTalk:
+		.@eac = eaclass();
+		.@gm_level = getgmlevel();
+
+	mes "^0099FF[ Provador ]^000000";
+	mes "Olá, eu sou a Estilista.";
+	mes "^777777Que tal provar diversas cores e estilos diferentes?^000000";
+	next;
+	switch(select("^00CC00•^000000 Abrir Provador.","^00CC00•^000000 Cancelar.")){
+		case 1:
+			next;
+			opendressroom(0);
+
+			Lmain:
+				mes "^0099FF[ Provador ]^000000";
+				mes "Certo, use o provador para escolher um estilo.";
+				switch(select(
+					"^00CC00•^000000 Trocar Cabelo.",
+					"^00CC00•^000000 Trocar Cor do Cabelo.",
+					"^00CC00•^000000 Trocar Cor da Roupa.",
+					"^00CC00•^000000 Trocar Roupa.")){
+					case 1:
+						set .@hairstylemin,getBattleFlag("min_hair_style");
+						if(.@eac != EAJL_SUMMONER){
+							set .@hairstylemaxf,97;
+							set .@hairstylemaxm,82;
+						}else{
+							set .@hairstylemaxf,6;
+							set .@hairstylemaxm,6;
+						}
+						next;
+						mes "^0099FF[ Provador: Penteado ]^000000";
+						mes "Insira um número de Cabelo";
+						if(Sex){
+							mes "Cabelos: " +.@hairstylemin+ " to " +.@hairstylemaxm;
+						}else{
+							mes "Cabelos: " +.@hairstylemin+ " to " +.@hairstylemaxf;
+						}
+						input .@hairstyle;
+						if(Sex){
+							if(.@hairstyle < .@hairstylemin || .@hairstyle > .@hairstylemaxm){ 
+								set .@hairstyle,0; 
+							}
+						}else{
+							if(.@hairstyle < .@hairstylemin || .@hairstyle > .@hairstylemaxf){ 
+								set .@hairstyle,0; 
+							}
+						}
+						setlook LOOK_HAIR,.@hairstyle;
+						next;
+						break;
+					case 2:
+						next;
+						set .@hairdyemin,getBattleFlag("min_hair_color");
+						set .@hairdyemax,getBattleFlag("max_hair_color");
+						mes "[ ^0033FFProvador: Cor de Cabelo ^000000 ]";
+						mes "Insira uma Cor de Cabelo";
+						mes "Cor de Cabelo: " +.@hairdyemin+ " to " +.@hairdyemax;
+						input .@hairdye;
+						if (.@hairdye < .@hairdyemin || .@hairdye > .@hairdyemax){ 
+							set .@hairdye,0; 
+						}
+						setlook LOOK_HAIR_COLOR,.@hairdye;
+						next;
+						break;
+					case 3:
+						next;
+						set .@clothcolormin,getBattleFlag("min_cloth_color");
+						set .@clothcolormax,getBattleFlag("max_cloth_color");
+						mes "[ ^0033FFProvador: Cor da Roupa ^000000 ]";
+						mes "Insira uma Cor de Roupa";
+						mes "Cor de Roupa: " +.@clothcolormin+ " to " +.@clothcolormax;
+						input .@clothcolor;
+						if(.@clothcolor < .@clothcolormin || .@clothcolor > .@clothcolormax){ 
+							set .@clothcolor,0; 
+						}
+						setlook LOOK_CLOTHES_COLOR,.@clothcolor;
+						next;
+						break;
+					case 4:
+						next;
+						set .@blacklist,roclass(.@eac&EAJ_THIRDMASK) == 4054 || 
+								roclass(.@eac&EAJ_THIRDMASK) == 4067 || 
+								roclass(.@eac&EAJ_THIRDMASK) == 4070 || 
+								roclass(.@eac&EAJ_THIRDMASK) == 4072;
+						if(.@eac&EAJ_THIRD && !.@blacklist){
+							mes "^0099FF[ Provador: Roupa ]^000000";
+							mes "Insira um numero da Roupa";
+							mes "Roupa: 0 to 1";
+							input .@bodystyle;
+							if(.@bodystyle < 0 || .@bodystyle > 1){
+								set .@bodystyle,0;
+							}
+							setlook LOOK_BODY2,.@bodystyle;
+							next;
+							break;
+						}else{
+							mes "Este serviço não está disponível para a classe " +jobname(roclass(.@eac));
+							next;
+							break;
+						}
+				}
+				goto Lmain;
+		case 2:
+			break;
+	}
+	close2;
+	end;
+}

@@ -1,0 +1,6 @@
+-	script	Reset_Security	-1,{
+OnPCLoginEvent:
+if( #SECURITYCODE )
+		set #SECURITYCODE, 0;
+		setsecurity 0;
+}

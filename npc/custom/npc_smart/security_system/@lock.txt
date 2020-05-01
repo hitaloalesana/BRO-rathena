@@ -1,0 +1,30 @@
+-	script	lock_login	-1,{
+OnPCLoginEvent:
+	if( #lock == 1 ){ 
+		setsecurity 1;
+	}
+	end;
+}
+-	script	lock	-1,{
+	OnInit:
+		bindatcmd("lock", strnpcinfo(3) +"::OnLock");
+		end;
+	OnLock:
+		if( !#lock ){
+			set #lock, 1;
+			cutin "security_ativo", 4;
+			setsecurity 1;
+			message strcharinfo(0), "[ Seus itens foram trancados ].";
+			dispbottom "[ O comando @lock foi ativado em sua conta ].";
+			sleep2 2500;
+			cutin "", 255;
+		} else {
+			set #lock, 0;
+			cutin "security_desativado", 4;
+			setsecurity 0;
+			message strcharinfo(0), "[ Seus itens foram destrancados ].";
+			dispbottom "[ O comando @lock foi desativado em sua conta ].";
+			sleep2 2500;
+			cutin "", 255;
+		}
+}

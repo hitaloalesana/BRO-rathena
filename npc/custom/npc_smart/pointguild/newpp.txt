@@ -1,0 +1,35 @@
+que_temsky,100,98,5	script	Funcionário newpp	416,{
+
+	mes "[Funcionário newpp]";
+	mes "Point newpp";
+	next;
+	switch(select("Salvar","Descansar - 5,000 zeny","Cancelar")) {
+	case 1:
+		savepoint "que_temsky",100,94;
+		mes "[Funcionário newpp]";
+		mes "Seu ponto de retorno foi salvo!";
+		close;
+	case 2:
+		if(Zeny < 5000) {
+			mes "[Funcionário newpp]";
+			mes "Desculpe-me, mas você parece";
+			mes "não ter zeny o suficiente. Por favor";
+			mes "volte quando tiver!";
+			close;
+		}
+		set Zeny,Zeny - 5000;
+		mes "[Funcionário newpp]";
+		mes "Muito obrigado~";
+		close2;
+		warp "que_temsky",100,94;
+		percentheal 100,100;
+		sc_start SC_BLESSING,240000,10;
+		skilleffect AL_BLESSING,0;
+		end;
+	case 3:
+		mes "[Funcionário newpp]";
+		mes "Muito obrigado e";
+		mes "tenha um ótimo dia.";
+		close;
+	}
+}

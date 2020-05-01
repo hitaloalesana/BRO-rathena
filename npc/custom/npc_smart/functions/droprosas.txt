@@ -1,0 +1,15 @@
+-	script	addDrop	-1,{
+
+OnNPCKillEvent:
+
+set .@percent,20; //colque a porcentagem
+set .@equipid,5548; //coloque o ID do equip que vai dar esse bonus
+setarray .@itemid,748,1; //colque o id do item recompensa, qtde
+set .@mobid,2069; //colque o id do MOB
+
+if(killedrid!=.@mobid)end; 
+if(!isequipped(.@equipid))end;
+if(rand(1,100)<=.@percent)getitem .@itemid[0],.@itemid[1];
+end;
+
+}
