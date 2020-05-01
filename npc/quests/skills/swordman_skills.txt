@@ -302,7 +302,7 @@ OnTouch_:
 	close;
 }
 
-prt_in,282,139,3	script	Juan	85,4,4,{
+prt_in,94,57,3	script	Juan	85,4,4,{
 	if (BaseClass == Job_Swordman) {
 		if (getskilllv("SM_AUTOBERSERK") == 1) {
 			mes "[Juan]";
