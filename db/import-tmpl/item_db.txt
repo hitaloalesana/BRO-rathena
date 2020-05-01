@@ -101,9 +101,9 @@
 //====================================================================================================
 // BrasilRO - Cartões, Tickets, Caixas, Baús, Etc...
 //====================================================================================================
-//40000,Cartão_VIP_1_Dia,Cartão VIP 1 Dia,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//40001,Cartão_VIP_15_Dias,Cartão VIP 15 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//40002,Cartão_VIP_30_Dias,Cartão VIP 30 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40000,Cartão_VIP_1_Dia,Cartão VIP 1 Dia,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40001,Cartão_VIP_15_Dias,Cartão VIP 15 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40002,Cartão_VIP_30_Dias,Cartão VIP 30 Dias,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40003,Caixa_de_Frutos_de_Yggdrasil_100un.,Caixa de Frutos de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40004,Caixa_de_Garrafa_de_Veneno_100un.,Caixa de Garrafa de Veneno 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40005,Caixa_de_Bombas_e_Revestimentos_100un.,Caixa de Bombas e Revestimentos 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
