@@ -141,7 +141,7 @@ OnInit:
 	end;
 }	
 
-warzone,199,202,3	script	Yggdrasil Lookalike::alatdgyl	HIDDEN_NPC,{
+warzone,199,202,3	script	Yggdrasil Lookalike::alatdgyl	10005,{
 OnStart:
 	set .@party_id, getcharid(1);
 	set .@tdg_leader, ( getcharid(0) == getpartyleader(.@party_id,2) );
@@ -432,19 +432,19 @@ function	summon_normal	{
 		case 2:
 			//dolomedes
 			setarray .@monster,3088;
-			setarray .@amount,5;
+			setarray .@amount,25;
 			setarray .@coordinate,54,97,33,138;
 			break;
 		case 3:
 			//kasa
 			setarray .@monster,3089;
-			setarray .@amount,5;
+			setarray .@amount,25;
 			setarray .@coordinate,153,91,173,140;
 			break;
 		case 4:
 			//two satan morocc
 			setarray .@monster,3098,3099;
-			setarray .@amount,1,1;
+			setarray .@amount,5,5;
 			setarray .@coordinate,90,208,116,176;
 			break;
 		case 6:
@@ -457,7 +457,7 @@ function	summon_normal	{
 			{
 				setarray .@monster,3090;
 			}
-			setarray .@amount,5;
+			setarray .@amount,25;
 			setarray .@coordinate,90,208,116,176;
 			break;
 	}
