@@ -314,7 +314,7 @@ OnInit:
 	set .instance_zeny, 1000000;
 	set .instance_delay, 7200;
 	set $tdg_timer_delay, 3600; //1 hour to clean the instance
-	set .instance_name$, "Temple of the Demon God";
+	set .instance_name$, "Temple of Demon God";
 	end;
 }
 

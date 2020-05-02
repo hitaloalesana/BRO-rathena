@@ -229,13 +229,13 @@ Body:
       Map: 1@rev
       X: 26
       Y: 181
-#  - Id: 27
-#    Name: Temple of the Demon God
-#    Enter:
-#      Map: 1@eom
-#     X: 102
-#     Y: 16
- - Id: 28
+  - Id: 27
+    Name: Temple of the Demon God
+    Enter:
+      Map: 1@eom
+      X: 102
+      Y: 16
+  - Id: 28
     Name: Central Laboratory
     Enter:
       Map: 1@lab
