@@ -10960,17 +10960,23 @@
 2940,Evil Shadow@NPC_DARKSTRIKE,attack,340,1,3000,0,5000,yes,target,always,0,,,,,,,
 2941,Evil Shadow@NPC_CRITICALSLASH,chase,170,1,3000,0,5000,yes,target,always,0,,,,,,,
 2941,Evil Shadow@NPC_PETRIFYATTACK,attack,180,5,3500,0,5000,yes,target,always,0,,,,,,,
-2942,Evil Fanatics@NPC_INVINCIBLE,idle,685,1,10000,0,20000,yes,self,myhpltmaxrate,100,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,100,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,90,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,80,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,70,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,60,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,50,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,40,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,30,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,20,,,,,,,42
-2942,Evil Fanatics@NPC_INVINCIBLE,attack,685,1,10000,0,20000,yes,self,myhpltmaxrate,10,,,,,,,42
+2942,EvilFanatics@DRAGONFEAR,idle,659,5,10000,0,10000,no,target,always,0,,,,,,,
+2942,EvilFanatics@DRAGONFEAR,chase,659,5,10000,0,10000,no,target,always,0,,,,,,,
+2942,EvilFanatics@GC_DARKCROW,attack,5001,3,500,800,5000,yes,target,always,0,,,,,,,
+2942,EvilFanatics@NPC_SUMMONSLAVE,idle,196,2,10000,2000,60000,no,self,slavele,3,2941,,,,,,
+2942,EvilFanatics@RA_WUGBITE,attack,2244,5,10000,2000,60000,yes,target,always,0,,,,,,
+2942,EvilFanatics@EARTHQUACKE,attack,653,10,10000,2000,30000,yes,target,myhpltmaxrate,30,,,,,,
+2942,EvilFanatics@NPC_DARKBLESSING,attack,203,1,1000,2000,5000,no,target,always,0,,,,,,18,
+2942,EvilFanatics@NPC_DARKBLESSING,chase,203,1,1000,2000,5000,no,target,always,0,,,,,,18,
+2942,EvilFanatics@RG_INTIMIDATE,attack,219,5,1000,0,3000,yes,target,always,0,,,,,,,
+2942,EvilFanatics@AS_CLOAKING,chase,135,1,2000,200,5000,yes,self,always,0,,,,,,,
+2942,EvilFanatics@AS_CLOAKING,idle,135,1,2000,200,5000,yes,self,always,0,,,,,,,
+2942,EvilFanatics@NPC_DARKTHUNDER,attack,341,1,2000,200,5000,yes,target,always,0,,,,,,,
+2942,EvilFanatics@NPC_DARKSTRIKE,attack,340,10,2000,200,5000,yes,target,always,0,,,,,,,
+2942,EvilFanatics@NPC_DARKTHUNDER,attack,341,10,2000,200,5000,yes,target,always,0,,,,,,,
+2942,EvilFanatics@NPC_DARKCROSS,attack,338,10,2000,200,5000,yes,target,always,0,,,,,,,
+2942,EvilFanatics@NPC_DARKBREATH,attack,202,10,2000,200,5000,yes,target,always,0,,,,,,,
+2942,EvilFanatics@NPC_EVILLAND,attack,670,10,2000,200,5000,yes,target,always,0,,,,,,,
 // 2942,Evil Fanatics@NPC_DANCINGBLADE,attack,713,1,1000,0,15000,yes,self,always,0,,,,,,,
 // 2942,Evil Fanatics@NPC_PULSESTRIKE2,attack,712,1,800,0,15000,yes,self,always,0,,,,,,,
 // 2942,Evil Fanatics@NPC_DARKPIERCING,attack,715,1,2500,0,60000,yes,self,always,0,,,,,,,

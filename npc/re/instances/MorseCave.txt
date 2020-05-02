@@ -196,7 +196,7 @@ OnInit:
 	set .map_size, getarraysize( .map$ );
 	set .min_party_member, 1;
 	set .instance_zeny, 0;
-	set .instance_delay, 7200;
+	set .instance_delay, 0;
 	set $moc_timer_delay, 3600; //1 hour to clean the instance
 	set .instance_name$, "Morse's Cave";
 	set .questId, 61300;
@@ -530,6 +530,16 @@ OnNormalDied:
 	end;
 	
 OnGuardianDied:
+	switch(rand(1,6)) {
+		case 1: .@i = 16027; break;
+		case 2: .@i = 18120; break;
+		case 3: .@i = 28001; break;
+		case 4: .@i = 21010; break;
+		case 5: .@i = 13094; break;
+		case 6: .@i = 1671; break;
+	}
+	//set sarah_q1,1;
+	getitem2 .@i,1,0,rand(1,20),0,0,rand(4853,4858),rand(4853,4858),rand(4853,4858);
 	set .@map$, strnpcinfo(4);
 	set .@npc_name$, instance_npcname( strnpcinfo(0), instance_id() );
 	set .@mob_dead_num, mobcount(.@map$,.@npc_name$+"::OnGuardianDied" );
@@ -553,6 +563,16 @@ OnGuardianDied:
 			sleep 5000;
 			
 			instance_announce instance_id(), "[ Morse's Cave ] : Dimension will collapse in a few moments.", bc_map, 0x00FF00;
+	switch(rand(1,6)) {
+		case 1: .@i = 16027; break;
+		case 2: .@i = 18120; break;
+		case 3: .@i = 28001; break;
+		case 4: .@i = 21010; break;
+		case 5: .@i = 13094; break;
+		case 6: .@i = 1671; break;
+	}
+		//set sarah_q1,1;
+		getitem2 .@i,1,0,rand(1,20),0,0,rand(4853,4858),rand(4853,4858),rand(4853,4858);
 			
 			//enable portal
 			enablenpc instance_npcname( "alamocde", instance_id() );
