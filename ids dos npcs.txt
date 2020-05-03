@@ -1,0 +1,60 @@
+Ids:
+456
+10180
+900
+602
+430 (Removedor de Cartas)
+902 (Vitrine de Óculos)
+10187
+10295
+802
+431 (Utensílios)
+432 (Jobs / Classes)
+434 (Quests / Custons)
+10065 (Morcegos)
+10249 (Baú)
+10001 (Arqueira)
+10002
+10003 (Caldeirão)
+10004
+10005 (Baú do Tesouro)
+957 (Fornalha)
+423 Kafra
+422 Robo Conserto
+10296
+10039
+10209
+612
+10047
+10184
+116 (Kafra Especial)
+117 (Kafra Especial)
+769 (Kafra BRO)
+759 (Kafra BRO)
+758 (Kafra BRO)
+504
+502
+501
+604
+441 (Vitrine de Camisas)
+439 (Manequim Male)
+438 (Vitrine de Jaquetas)
+437 (Manequim Female)
+436 (Vitrine de Vestidos)
+10183 (Captan do Aeroplano)
+10185 (Vovó)
+10143
+408 (**)
+711 (Mural)
+10304
+10115
+10116
+10125
+10308 (ORB de Magia)
+10309 (Portão Negro)
+427 (Cassino)
+426 (Roleta)
+52
+803
+68
+46

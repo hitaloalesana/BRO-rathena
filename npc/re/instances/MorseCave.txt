@@ -563,19 +563,20 @@ OnGuardianDied:
 			sleep 5000;
 			
 			instance_announce instance_id(), "[ Morse's Cave ] : Dimension will collapse in a few moments.", bc_map, 0x00FF00;
-	switch(rand(1,6)) {
-		case 1: .@i = 16027; break;
-		case 2: .@i = 18120; break;
-		case 3: .@i = 28001; break;
-		case 4: .@i = 21010; break;
-		case 5: .@i = 13094; break;
-		case 6: .@i = 1671; break;
-	}
-		//set sarah_q1,1;
-		getitem2 .@i,1,0,rand(1,20),0,0,rand(4853,4858),rand(4853,4858),rand(4853,4858);
 			
 			//enable portal
 			enablenpc instance_npcname( "alamocde", instance_id() );
+			
+		switch(rand(1,6)) {
+			case 1: .@i = 16027; break;
+			case 2: .@i = 18120; break;
+			case 3: .@i = 28001; break;
+			case 4: .@i = 21010; break;
+			case 5: .@i = 13094; break;
+			case 6: .@i = 1671; break;
+	}
+			//set sarah_q1,1;
+			getitem2 .@i,1,0,rand(1,20),0,0,rand(4853,4858),rand(4853,4858),rand(4853,4858);
 		
 			sleep2 15000;
 			attachrid 'mocTalking;
@@ -601,6 +602,7 @@ OnTimer10000:
 	{
 		instance_announce instance_id(), "[ Morse's Cave ] The Dimension collapse! I have to get you out of there!", bc_map, 0x00FF00;
 		sleep 5000;
+		attachrid 'mocTalking;
 		getpartymember getcharid(1),2;
 		for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
 			if( attachrid( $@partymemberaid[.@i] ) && MOC_INSTANCE_ID > 0){
@@ -936,7 +938,7 @@ OnInit:
 }
 
 1@rev,111,57,4	script	Dimensional Device::alamocde	PORTAL,{
-	warp "moro_cav", 59, 66;
+	warp "warzone", 192, 217;
 	end;
 	
 OnInstanceInit:
