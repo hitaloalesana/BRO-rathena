@@ -351,9 +351,9 @@
 42040,gazewing,Asas Mágicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3040,{},{},{}
 42041,gear0897,Asas Dragônicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3041,{},{},{}
 //====================================================================================================
-42042,fallen_gladiator_crown,fallen_gladiator_crown,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3042,{},{},{}
-42043,fallen_gladiator_aura,fallen_gladiator_aura,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3043,{},{},{}
-42044,fallen_gladiator_wings,fallen_gladiator_wings,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3044,{},{},{}
+42042,fallen_gladiator_crown,Coroa do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3042,{},{},{}
+42043,fallen_gladiator_aura,Aura do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3043,{},{},{}
+42044,fallen_gladiator_wings,Asas do Gladiador,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3044,{},{},{}
 //=======================================================
 // SEASON II -  Custons Novos
 //=======================================================
@@ -1192,4 +1192,19 @@
 6713,Heart_of_Soul,Heart of Soul,3,0,,0,,,,,,,,,,,,,{},{},{}
 6714,Sheenas_Soul,Sheena's Soul,3,20,,0,,,,,,,,,,,,,{},{},{}
 22567,Expedition_Award_Box,Expedition Award Box,0,20,,100,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "IGF_SquadPrize"; },{},{}
+
+//=========== ILLUSION VAMPIRE ==================//
+1943,Erhu,Erhu,5,20,,700,50,,1,3,0x00080000,56,1,2,2,90,1,13,{},{},{}
+7321,Fragment_Of_Crystal,Fragment Of Crystal,3,,207,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+18968,Jinn_Marin_Balloon,Jinn Marin Balloon,4,0,,,,5,,0,0xFFFFFFFF,63,2,1,,1,0,1133,{ bonus bInt,1; bonus bDex,1; bonus bMaxHP,100; bonus bBaseAtk,5; bonus bMatk,5; },{},{}
+25261,Ripped_Paper_Sheet,Ripped Paper Sheet,3,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+25262,Well_Dried_Clover,Well Dried Clover,3,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+25263,Short_Bat_Fur,Short Bat Fur,3,650,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+25264,Clump_of_Nightmares,Clump of Nightmares,3,778,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+25265,Glowing_Spores,Glowing Spores,3,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+25266,Dried_Yggdrasil_Leaf,Dried Yggdrasil Leaf,3,620,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+25267,Suspicious_Magical_Circle,Suspicious Magical Circle,3,580,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
+25268,Sticky_Blood,Sticky Blood,3,36,,10,,,,,0xFFFFFFFF,,,,,,,,{},{},{}
+25269,Mushroom_Sap,Mushroom Sap,3,36,,10,,,,,0xFFFFFFFF,,,,,,,,{},{},{}
+25270,Wavy_Mane,Wavy Mane,3,973,,10,,,,,0xFFFFFFFF,63,2,,,,,,{},{},{}
 
