@@ -274,3 +274,11 @@ Body:
 #    AdditionalMaps:
 #      1@sthc: true
 #      1@sthd: true
+#  - Id: 34
+#    Name: Infinite Space
+#    TimeLimit: 7200
+#    IdleTimeOut: 300
+#   Enter:
+#      Map: 1@infi
+#     X: 29
+#     Y: 4
