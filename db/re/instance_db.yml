@@ -274,11 +274,24 @@ Body:
 #    AdditionalMaps:
 #      1@sthc: true
 #      1@sthd: true
-#  - Id: 34
-#    Name: Infinite Space
-#    TimeLimit: 7200
-#    IdleTimeOut: 300
-#   Enter:
-#      Map: 1@infi
-#     X: 29
-#     Y: 4
+  - Id: 34
+    Name: Infinite Space
+    TimeLimit: 7200
+    IdleTimeOut: 300
+    Enter:
+     Map: 1@infi
+     X: 29
+     Y: 4
+  - Id: 35
+    Name: Endless Cellar
+    TimeLimit: 14400
+    IdleTimeOut: 300
+    Enter:
+     Map: 1@cella
+     X: 12
+     Y: 50
+    AdditionalMaps:
+      2@cella: true
+      3@cella: true
+      4@cella: true
+      5@cella: true
