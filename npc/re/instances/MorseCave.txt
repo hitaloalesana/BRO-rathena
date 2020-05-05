@@ -16,7 +16,7 @@
 //
 //============================================================
 
-warzone,195,222,3	script	Senior Tracker::alamocst	4_M_CATMAN2,{
+warzone,195,222,3	script	Senior Tracker::alamocst	4_ep16_granz,{
 	set .@npcname$, "[Senior Tracker]";
 	//RATHENA
 	if(checkquest(.questId) == -1)
