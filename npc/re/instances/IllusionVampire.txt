@@ -23,7 +23,7 @@ gef_d01_i	mapflag	nopenalty
 gef_d01_i	mapflag	nomemo
 //gef_d01_i	mapflag	nosave	SavePoint
 
-warzone,195,174,5	script	Grimm#illuvamp	110,{
+warzone,195,174,5	script	Grimm#illuvamp	4_m_fairykid4,{
 	if(BaseLevel < 255){
 		mes "[Grimm]",
 			"This place is too dangerous for you. Please come back when you're stronger.";

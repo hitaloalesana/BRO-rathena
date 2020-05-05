@@ -16,7 +16,7 @@
 //
 //============================================================
 
-warzone,189,166,3	script	Reckless Explorer::alareex	4_M_ATEIL,{ //cmd_fild07,54,278
+warzone,189,166,3	script	Reckless Explorer::alareex	4_f_teleporter,{ //cmd_fild07,54,278
 
 OnStart:
 	set .@party_id, getcharid(1);
