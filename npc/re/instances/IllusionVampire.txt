@@ -917,7 +917,7 @@ gef_d01_i,112,228,5	script	Marina#illuvamp	746,{
 		mes "[Marina]",
 			"So, you're in a hurry to leave. Did something happen?";
 		close2;
-		warp "gef_dun01",133,219;
+		warp "warzone",195,168;
 		end;
 }
 
@@ -1061,7 +1061,7 @@ gef_d01_i,113,230,5	script	Gem#illuvamp	79,{
 		setpcblock PCBLOCK_ALL, 0;
 		close2;
 		//warp to enterace
-		warp "gef_dun01",133,219;
+		warp "warzone",195,168;
 		end;
 	}else if(illusion_vampire == 14){
 		.@q = checkquest(14667,HUNTING);
