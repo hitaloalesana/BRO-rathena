@@ -32,7 +32,6 @@ new_zone01,124,124,5	script	Ajudante de Iniciantes#n	828,{
 		mes "Prontinho, você já pode começar sua jornada. Entre no portal abaixo e bom jogo!";
 		dispbottom "Você recebeu 1x "+ getitemname(607) +". Dê um clique duplo para abrir.",0x00FFFF;
 		getitem 40064, 1;
-		savepoint "prontera", 156, 191;
 		viewpoint 1, 39, 32, 1, 0x2596C2;
 		set #check, 1;
 		announce "[Campo de Iniciantes]: Bem-vindo(a) "+ strcharinfo(0) +", sua jornada só está começando!", bc_all|bc_blue;
