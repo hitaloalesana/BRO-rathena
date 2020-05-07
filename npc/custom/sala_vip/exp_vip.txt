@@ -1,0 +1,25 @@
+prt_in,220,27,4	script	EXP em Dobro	108,{
+	//------------------------------------------
+	// Delay da EXP em Dobro.
+	set .@dexp, 10800;
+
+	//------------------------------------------
+	set(.@nome$,"^0099FF[ "+ strnpcinfo(1) +" ]^000000");
+
+	//------------------------------------------
+
+	mes .@nome$;
+	if( delay_exp > gettimetick(2) ){
+		mes "Você ainda deve aguardar: ^EEAD0E"+ callfunc("Time2Str", delay_exp) +"^000000.";
+		close;
+	}
+	mes "Este é um serviço de cortesia que lhe oferece ^FF000030 minutos de EXP em Dobro^000000, portanto não permitimos o uso muitos vezes ao dia, aproveite com sabedoria.";
+	mes "^777777- Duração do Bônus^000000: ^00CC0030 Minutos.^000000";
+	mes "^777777- Tempo de Reuso^000000: ^00CC003 Horas.^000000";
+	next;
+	if( select("^00CC00•^000000 Utilizar.:^00CC00•^000000 Saír.") == 2 ) close;
+		sc_start SC_EXPBOOST, 1800000, 100;
+		set delay_exp, gettimetick(2) + .@dexp;
+		dispbottom "Sua EXP foi dobrada por um período de 30 minutos.", 0x00FF00;
+		end;
+}

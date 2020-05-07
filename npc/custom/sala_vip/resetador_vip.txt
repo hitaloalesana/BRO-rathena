@@ -1,0 +1,33 @@
+prt_in,219,46,4	script	Resetadora VIP	46,{
+	//------------------------------------------
+	set(.@nome$,"^0099FF[ "+ strnpcinfo(1) +" ]^000000");
+
+	//------------------------------------------
+
+	mes .@nome$;
+	mes "Posso resetar suas skills ou status de forma ^00CC00Gratuíta e Ilimitada^000000.";
+	mes "^777777Selecione o que você quer resetar:^000000";
+	next;
+	switch(select("^00CC00•^000000 ^4876FFResetar Skills.^000000:^00CC00•^000000 ^3A5FCDResetar Status.^000000:^00CC00•^000000 ^27408BResetar Ambos.^000000:^00CC00•^000000 Cancelar.")) {
+	case 1:
+		sc_end SC_ALL;
+		resetskill;
+		mes .@nome$;
+		mes "Prontinho!";
+		close;
+	case 2:
+		resetstatus;
+		mes .@nome$;
+		mes "Prontinho!";
+		close;
+	case 3:
+		sc_end SC_ALL;
+		resetskill;
+		resetstatus;
+		mes .@nome$;
+		mes "Prontinho!";
+		close;
+	case 4:
+		close;
+		}
+}

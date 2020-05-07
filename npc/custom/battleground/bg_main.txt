@@ -1,0 +1,983 @@
+/*.-----------------------------------------------------------------.
+  .    ____                          __                             .
+  .   /\  _`\                       /\ \__  __                      .
+  .   \ \ \/\_\  _ __    __     __  \ \ ,_\/\_\  __  __     __      .
+  .    \ \ \/_/_/\`'__\/'__`\ /'__`\ \ \ \/\/\ \/\ \/\ \  /'__`\    .
+  .     \ \ \s\ \ \ \//\  __//\ \d\.\_\ \ \_\ \ \ \ \_/ |/\  __/    .
+  .      \ \____/\ \_\\ \____\ \__/.\_\\ \__\\ \_\ \___/ \ \____\   .
+  .       \/___/  \/_/ \/____/\/__/\/_/ \/__/ \/_/\/__/   \/____/   .
+  .                                                                 .
+  .          2014~2017 © Creative Services and Development          .
+  .                      www.creativesd.com.br                      .
+  .-----------------------------------------------------------------.
+  . Script:                                                         .
+  .    Arquivo principal das Batalhas Campais                       .
+  .-----------------------------------------------------------------.
+  . Autor: Romulo SM (sbk_)                            Versão: 1.0  .
+  .                                                                 .
+  . Compátivel:	eAthena e derivações.                    	        .
+  *-----------------------------------------------------------------*/
+-	script	BattleGround#queue_main	FAKE_NPC,{
+OnInit:
+OnCmdReload:
+	function bg_changearena;
+	function bg_checkarena;
+	
+	set $BG_ARENA, 0;
+	sleep 500;
+	stopnpctimer;
+	query_sql "SELECT `group_id`, `status` FROM `bg_groups`", .@groups, .@status;
+	if( !getarraysize(.@groups) ){
+		bg_console "As Batalhas Campais nao podem ser iniciada porque nenhum grupo esta ativado.";
+		end;
+	}
+	
+	set .@e_arena, 0;
+	set .@e_group, 0;
+	set .@d_arena, 0;
+	set .@d_group, 0;
+	for( set .@g,0; .@g < getarraysize(.@groups); set .@g,.@g+1 ){
+		deletearray .@bg_id, getarraysize(.@bg_id);
+		query_sql "SELECT `bg_id` FROM `bg_arena` WHERE `group_id`='" + .@groups[.@g] + "'", .@bg_id;
+			
+		if( !getarraysize(.@bg_id) )
+			continue;
+			
+		if( .@status[.@g] )
+			set .@e_group, .@e_group+1;
+		else
+			set .@d_group, .@d_group+1;
+		
+		for( set .@a,0; .@a < getarraysize(.@bg_id); set .@a,.@a+1 ){
+			if( .@status[.@g] )
+				set .@e_arena,.@e_arena+1;
+			else
+				set .@d_arena,.@d_arena+1;
+		}
+	}
+	
+	if( !.@e_arena && !.@d_arena ){
+		bg_console "As Batalhas Campais nao podem ser iniciada porque nenhuma arena foi carregada.";
+		end;
+	}
+	
+	bg_console "Carregado (" + .@e_group + ") grupos ativados.";
+	bg_console "Carregado (" + .@d_group + ") grupos desativados.";
+	bg_console "Carregado (" + .@e_arena + ") arenas ativadas.";
+	bg_console "Carregado (" + .@d_arena + ") arenas desativadas.";
+	
+	set $@BG_MODE, getbattleflag("bg_mode");
+	if( $@BG_MODE ){
+		bg_console "As Batalhas Campais esta iniciando em modo de tempo.";
+		if( !bg_checkarena($BG_ARENA) )
+			donpcevent "BattleGround#queue_main::OnReload";
+		else
+			initnpctimer;
+	}else{
+		bg_console "As Batalhas Campais esta iniciando em modo seletivo.";
+		stopnpctimer;
+	}
+	end;
+
+OnStartTimer:
+	initnpctimer;
+	end;
+	
+OnStopTimer:
+	set $BG_ATTACK_TIME, 0;
+	stopnpctimer;
+	end;
+	
+OnReload:
+	stopnpctimer;
+	set .@bg_last_arena, $BG_ARENA;
+	set $BG_ARENA, bg_changearena(.@bg_last_arena);
+	
+	//  -----------------------------------------------------------------
+	// | Caso as Batalhas Campais não consiga nomear uma nova arena      |
+	// | para batalha o sistema irá mudar automáticamente para seletivo. |
+	//  -----------------------------------------------------------------
+	if( !$BG_ARENA ){
+		bg_console "Nao foi possivel nomear uma nova arena de batalha, o sistema timer attack esta sendo desativado e esta ativando o modo seletivo.";
+		announce "[Batalhas Campais]: O sistema está em modo seletivo, vocês podem selecionar as batalhas disponíveis que desejam batalhar.", bc_all, "0xFFCE00";
+		set $@BG_MODE, 0;
+		end;
+	}
+	
+	set .@new_arena_name$, callfunc("bg_getarenainfo", $BG_ARENA, "arena_name");
+	set .@msg$, "As Batalhas Campais foi designada para acontecer em  '" + .@new_arena_name$ + "'.";
+	announce "[Batalhas Campais]: "+.@msg$, bc_all, "0xFFCE00";
+	bg_console .@msg$;
+	
+	if( .@bg_last_arena && .@bg_last_arena != $BG_ARENA ) {
+		set .@notify, getbattleflag("queue_notify");
+		set .@max_level, callfunc("bg_getarenainfo", $BG_ARENA, "base_level");
+		
+		if( .@max_level < 0 )
+			set .@max_level, 0;
+		
+		// Move Players to Queue
+		queue_get_players(.@bg_last_arena);
+		if( .@queue_count ) {
+			set .@count, queue_size($BG_ARENA);
+			for( set .@i, 0; .@i < .@queue_count; set .@i, .@i + 1 ){
+				set .@base_level, queue_char_info(4,.@queue_aid[.@i]);
+				set .@can_move, queue_char_info(5,.@queue_aid[.@i]);
+				queue_leave(0, .@queue_aid[.@i]);
+				
+				if( .@count >= getbattleflag("queue_max_players") )
+					queue_leave_notify(.@bg_last_arena, 8, .@queue_aid[.@i]);
+				else if( .@can_move || (.@notify >= 2 && .@base_level < .@max_level) )
+					queue_leave_notify(.@bg_last_arena, 5, .@queue_aid[.@i]);
+				else {
+					queue_leave_notify(.@bg_last_arena, 8, .@queue_aid[.@i]);
+					queue_join($BG_ARENA, 3, 0, .@queue_aid[.@i]);
+					set .@count, .@count + 1;
+				}
+			}
+		}
+	} else {
+		// Do not move and start events if there are players in the queue
+		set .@queue_size, queue_size($BG_ARENA);
+		set .@queue_event$, queue_get_data($BG_ARENA,1);
+		if( .@queue_size && getstrlen(.@queue_event$) )
+			donpcevent .@queue_event$;
+	}
+	set $BG_ATTACK_TIME, 0;
+	initnpctimer;
+	end;
+	
+OnTimer60000:
+	//  -----------------------------------------------------------------
+	// |      Caso o administrador altere as configurações de modo.     |
+	//  -----------------------------------------------------------------
+	if( !getbattleflag("bg_mode") ){
+		donpcevent "BattleGround#queue_main::OnStopTimer";
+		set $@BG_MODE, getbattleflag("bg_mode");
+		bg_console "As Batalhas Campais estava operando em modo tempo, as configurações foi definida pelo Administrador para seletiva.";
+		announce "[Batalhas Campais]: O sistema está em modo seletivo, vocês podem selecionar as batalhas disponíveis que desejam batalhar.", bc_all, "0xFFCE00";
+		end;
+	}
+	
+	set $BG_ATTACK_TIME, $BG_ATTACK_TIME+1;
+	if( $BG_ATTACK_TIME >= getbattleflag("bg_timer_attack") && callfunc("bg_checkchangearena") == true ){
+		donpcevent "BattleGround#queue_main::OnReload";
+		end;
+	}
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+	function	bg_changearena	{
+		set .@group, callfunc("bg_getarenainfo", getarg(0), "group_id");
+		query_sql "SELECT `group_id` FROM `bg_groups` WHERE `status`='1' ORDER BY `group_id`", .@tmp_groups_id;
+		
+		if( !getarraysize(.@tmp_groups_id) )
+			return false;
+		
+		deletearray .@groups_id[0], getarraysize(.@groups_id);
+		for( set .@i,0; .@i < getarraysize(.@tmp_groups_id); set .@i,.@i+1 ){
+			if( callfunc("bg_countarena", .@tmp_groups_id[.@i]) )
+				set .@groups_id[getarraysize(.@groups_id)], .@tmp_groups_id[.@i];
+		}
+		
+		if( !getarraysize(.@groups_id) )
+			return false;
+			
+		if( .@groups_id[(getarraysize(.@groups_id)-1)] == .@group )
+			set .@new_group, .@groups_id[0] ;
+		else{
+			for( set .@i,0; .@i < getarraysize(.@groups_id); set .@i,.@i+1 ){
+				if( .@groups_id[.@i] > .@group ){
+					set .@new_group, .@groups_id[.@i];
+					break;
+				}
+			}
+		}
+		
+		query_sql "SELECT `bg_id`, `npc_var_event` FROM `bg_arena` WHERE `group_id`='" + .@new_group + "'", .@bg_id, .@npc_var$;
+		
+		if( !getarraysize(.@bg_id) )
+			return false;
+		
+		deletearray .@bg_id_[0], getarraysize(.@bg_id_);
+		for( set .@i,0; .@i < getarraysize(.@bg_id); set .@i,.@i+1 ){
+			if( !getd(.@npc_var$[.@i]) )
+				set .@bg_id_[getarraysize(.@bg_id_)], .@bg_id[.@i];
+		}
+		
+		if( !getarraysize(.@bg_id_) )
+			return .@bg_id[rand(0,(getarraysize(.@bg_id)-1))];
+		else
+			return .@bg_id_[rand(0,(getarraysize(.@bg_id_)-1))];
+	}
+	
+	function	bg_checkarena	{
+		set .@group, callfunc("bg_getarenainfo", getarg(0), "group_id");
+		if( .@group <= 0 )
+			return false;
+		
+		set .@group_status, callfunc("bg_getgroupinfo", .@group, "status");
+		
+		return .@group_status <= 0 ? false : true;
+	}
+}
+
+// Registro rápido de Jogadores
+-	script	BattleGround#cmd_join	FAKE_NPC,{
+	// Remover da Fila de Espera
+	callfunc "bg_remove_queue";
+	
+	if( getcharid(4) ){
+		message strcharinfo(0), "Você está participando de uma Batalha, para sair desta Batalha utilize @bgleave";
+		end;
+	}		
+	if( !$@BG_MODE ){
+		query_sql "SELECT `group_id` FROM `bg_groups` WHERE `status`='1'", .@group_id;
+		
+		if( !getarraysize(.@group_id) ){
+			message strcharinfo(0), "Não há grupos ativados, impossível de utilizar o comando.";
+			end;
+		}
+		set .@bg_new_join, 0;
+		set .@bg_new_arena$, "";
+		set .@bg_new_start_event$, "";
+		
+		set .@bg_wait_join, 0;
+		set .@bg_wait_arena$, "";
+		set .@bg_wait_start_event$, "";
+		set .@bg_wait_count, 0;
+		
+		deletearray .@bg_others_id;
+		deletearray .@bg_others_arena$;
+		deletearray .@bg_others_start_event$;
+		for( set .@i,0; .@i < getarraysize(.@group_id); set .@i,.@i+1 ){
+			deletearray .@bg_id;
+			deletearray .@a_name$;
+			deletearray .@min_player;
+			deletearray .@max_player;
+			deletearray .@npc_start_event$;
+			deletearray .@npc_var_event$;
+			deletearray .@npc_var_event_lock;
+			deletearray .@team1_var$;
+			deletearray .@team2_var$;
+			query_sql "SELECT `bg_id`, `arena_name`, `min_player`, `max_player`, `npc_start_event`, `npc_var_event`, `npc_var_event_lock`, `team1_var`, `team2_var` FROM `bg_arena` WHERE `base_level`<='" + BaseLevel + "' AND `group_id`='" + .@group_id[.@i] + "'", .@bg_id, .@a_name$, .@min_player, .@max_player, .@npc_start_event$, .@npc_var_event$, .@npc_var_event_lock, .@team1_var$, .@team2_var$;
+
+			for( set .@a,0; .@a < getarraysize(.@bg_id); set .@a,.@a+1 ){
+				if( .@max_player[.@a] > MAX_BG_MEMBERS )
+					set .@max_player[.@a], MAX_BG_MEMBERS;
+					
+				set .@bg_team1_id, getd(.@team1_var$[.@a]);
+				set .@bg_team2_id, getd(.@team2_var$[.@a]);
+				
+				if( !.@bg_team1_id || !.@bg_team2_id )
+					continue;
+					
+				set .@team1_size, bg_team_size(.@bg_team1_id);
+				set .@team2_size, bg_team_size(.@bg_team2_id);
+				set .@queue_size, queue_size(.@bg_id[.@a]);
+				
+				set .@chk_npc_var_event, getd(.@npc_var_event$[.@a]);
+				set .@chk_npc_var_lock, .@npc_var_event_lock[.@a];
+				
+				// Checa se está acontecendo o evento e se algum Exército está com jogadores amenos.
+				if( .@queue_size < getbattleflag("queue_max_players") && .@chk_npc_var_event && .@chk_npc_var_event < .@chk_npc_var_lock && (.@team2_size < MAX_BG_MEMBERS && .@team2_size < .@team1_size || .@team1_size < MAX_BG_MEMBERS && .@team1_size < .@team2_size) ){
+					set .@bg_new_join, .@bg_id[.@a];
+					set .@bg_new_start_event$, .@npc_start_event$[.@a];
+					set .@bg_new_arena$, .@a_name$[.@a];
+					break;
+				}
+				// Checa se está acontecendo o evento e se tem jogadores no queue e falta um jogador para fazer o balanceamento.
+				else if( .@queue_size < getbattleflag("queue_max_players") && .@chk_npc_var_event && .@chk_npc_var_event < .@chk_npc_var_lock && .@team2_size < MAX_BG_MEMBERS && .@team1_size < MAX_BG_MEMBERS && (.@queue_size%2) ){
+					set .@bg_new_join, .@bg_id[.@a];
+					set .@bg_new_start_event$, .@npc_start_event$[.@a];
+					set .@bg_new_arena$, .@a_name$[.@a];
+					break;
+				}
+				// Checa se está faltando um jogador para começar o evento.
+				else if( .@queue_size < getbattleflag("queue_max_players") && .@chk_npc_var_event <= 0 && (.@queue_size+1) == (2*.@min_player[.@a]) ){
+					set .@bg_new_join, .@bg_id[.@a];
+					set .@bg_new_start_event$, .@npc_start_event$[.@a];
+					set .@bg_new_arena$, .@a_name$[.@a];
+					break;
+				}
+				// Checa se não está acontecendo o evento e se há jogadores no queue e se há vagas.
+				else if( .@queue_size < getbattleflag("queue_max_players") && .@chk_npc_var_event <= 0 && .@queue_size && .@queue_size < (2*.@min_player[.@a]) && .@queue_size > .@bg_wait_count ){
+					set .@bg_wait_join, .@bg_id[.@a];
+					set .@bg_wait_start_event$, .@npc_start_event$[.@a];
+					set .@bg_wait_arena$, .@a_name$[.@a];
+					set .@bg_wait_count, .@queue_size;
+				}
+				// Checa se não está acontecendo o evento e se há vagas no queue.
+				else if( .@queue_size < getbattleflag("queue_max_players") && .@chk_npc_var_event <= 0 && .@queue_size >= (2*.@min_player[.@a]) && .@queue_size > .@bg_wait_count ){
+					set .@bg_wait_join, .@bg_id[.@a];
+					set .@bg_wait_start_event$, .@npc_start_event$[.@a];
+					set .@bg_wait_arena$, .@a_name$[.@a];
+					set .@bg_wait_count, .@queue_size;
+				}else if( .@queue_size < getbattleflag("queue_max_players") ) {
+					set .@size, getarraysize(.@bg_others_id);
+					set .@bg_others_id[.@size], .@bg_id[.@a];
+					set .@bg_others_start_event$[.@size], .@npc_start_event$[.@a];
+					set .@bg_others_arena$[.@size], .@a_name$[.@a];
+				}
+			}
+		}
+		
+		if( .@bg_new_join ){
+			set .@bg_join_id, .@bg_new_join;
+			set .@bg_join_start$, .@bg_new_start_event$;
+			set .@bg_join_arena$, .@bg_new_arena$;
+		}else if( .@bg_wait_join ){
+			set .@bg_join_id, .@bg_wait_join;
+			set .@bg_join_start$, .@bg_wait_start_event$;
+			set .@bg_join_arena$, .@bg_wait_arena$;
+		}else if( getarraysize(.@bg_others_id) ){
+			set .@r, rand(0,getarraysize(.@bg_others_id)-1);
+			set .@bg_join_id, .@bg_others_id[.@r];
+			set .@bg_join_start$, .@bg_others_start_event$[.@r];
+			set .@bg_join_arena$, .@bg_others_arena$[.@r];
+		}			
+		if( !.@bg_join_id ) {
+			message strcharinfo(0), "Nenhuma batalha em que esteja dentro do requisito.";
+			message strcharinfo(0), "O @bgjoin tem a função de tentar encaixa-lo em uma batalha que esteja acontecendo ou em uma com existencia de uma fila de espera adequada de acordo com seu Nível de Base.";
+			message strcharinfo(0), "No caso tente @bgregister e selecione uma arena através deste comando.";
+		}else{
+			set .@join_flag, queue_join(.@bg_join_id);
+			switch(.@join_flag){
+				case -3:
+					message strcharinfo(0), "Não foi possível ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + ", você deve aguardar " + queue_char_info(3) + ".";
+					break;
+				case -2:
+					message strcharinfo(0), "Não foi possível ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + " por não estar em uma Cidade.";
+					break;
+				case -1:
+					message strcharinfo(0), "Não foi possível ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + " por não conseguir remove-lo da fila de espera anterior, tente o comando @bgunregister.";
+					break;
+				case 1:
+					if( getbattleflag("bg_player_announce") )
+						announce "[Batalhas Campais]: " + strcharinfo(0) + " se alistou | Batalha: " + .@bg_join_arena$ + ".", bc_all, "0xFFCE00";
+					
+					set BAT_VFLAG, 0;
+					set BAT_EV_FLAG, 0;
+					break;
+				default:
+					message strcharinfo(0), "Houve um erro ao ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + " tente novamente mais tarde.";
+					break;
+			}
+		}
+	} else {
+		// Checa se a arena está definida
+		if( $BG_ARENA <= 0 ){
+			message strcharinfo(0), "Nenhuma arena foi definida!";
+			message strcharinfo(0), "O Sistema irá nomear uma nova arena, aguarde...";
+			message strcharinfo(0), "Utilize o comando @bgjoin após o sistema nomear uma nova arena.";
+			donpcevent "BattleGround#queue_main::OnReload";
+			end;
+		}
+		
+		// Pegando informações da Arena
+		set .@bg_join_id, $BG_ARENA;
+		set .@bg_join_start$, callfunc("bg_getarenainfo", .@bg_join_id, "npc_start_event");
+		set .@bg_join_arena$, callfunc("bg_getarenainfo", .@bg_join_id, "arena_name");
+		set .@team1_var$, callfunc("bg_getarenainfo", .@bg_join_id, "team1_var");
+		set .@team2_var$, callfunc("bg_getarenainfo", .@bg_join_id, "team2_var");
+		set .@base_level, callfunc("bg_getarenainfo", .@bg_join_id, "base_level");
+		set .@team1_id, getd(.@team1_var$);
+		set .@team2_id, getd(.@team1_var$);
+		set .@queue_size, queue_size(.@bg_join_id);
+		
+		if( .@queue_size >= getbattleflag("queue_max_players") )
+			message strcharinfo(0), "A Fila de espera em " + .@bg_join_arena$ + " está cheia, tente novamente mais tarde.";
+		else if( BaseLevel < .@base_level )
+			message strcharinfo(0), "Você não tem nível de Base suficiente para entrar nas Batalhas em " + .@bg_join_arena$ + ".";
+		else if( !.@team1_id || !.@team2_id )
+			message strcharinfo(0), "Um ou mais Exército não foi definido na batalha em " + .@bg_join_arena$ + ", reporte ao GameMaster.";
+		else {
+			set .@join_flag, queue_join(.@bg_join_id);
+			switch(.@join_flag){
+				case -3:
+					message strcharinfo(0), "Não foi possível ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + ", você deve aguardar " + queue_char_info(3) + ".";
+					break;
+				case -2:
+					message strcharinfo(0), "Não foi possível ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + " por não estar em uma Cidade.";
+					break;
+				case -1:
+					message strcharinfo(0), "Não foi possível ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + " por não conseguir remove-lo da fila de espera anterior, tente o comando @bgunregister.";
+					break;
+				case 1:
+					if( getbattleflag("bg_player_announce") )
+						announce "[Batalhas Campais]: " + strcharinfo(0) + " se alistou | Batalha: " + .@bg_join_arena$ + " " + (.@min_player-.@queue_count) + ".", bc_all, "0xFFCE00";
+					
+					set BAT_VFLAG, 0;
+					set BAT_EV_FLAG, 0;
+					break;
+				default:
+					message strcharinfo(0), "Houve um erro ao ingressar na fila de espera das batalhas em " + .@bg_join_arena$ + " tente novamente mais tarde.";
+					break;
+			}
+		}
+	}
+	end;
+}
+
+//	Registro seletivo de jogadores nas Batalhas Campais.
+//
+-	script	BattleGround#cmd_register	FAKE_NPC,{
+	mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+	mes "Bem-vindo ao sistema de recrutamento das ^FF0000Batalhas Campais^000000, vou ajudar a escolher a batalha mais adequada a você.";
+	next;
+	set .@loop_1, 1;
+	if( !$@BG_MODE ){
+		while(.@loop_1){
+			mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+			mes "O primeiro passo é selecionar uma ^00B2EEBatalha^000000, então vamos lá!";
+			next;
+			if( getbattleflag("bg_group_filter") ){
+				set .@group_id, callsub(GroupList);
+				if( .@group_id <= 0 )
+					break;
+					
+				mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+				mes "Muito bem, agora selecione a arena em que deseja se alistar.";
+				next;
+			}
+			
+			set .@arena_id, callsub(ArenaList, (.@group_id?.@group_id:0), getbattleflag("bg_group_filter")?true:false);
+			if( .@arena_id == 0 )
+				break;
+			else if( .@arena_id < 0 )
+				continue;
+			
+			callfunc "bg_remove_queue";
+			
+			set .@loop_2, 1;
+			while(.@loop_2){
+				// -------------------------------------------------------------------------
+				// -                 Carregando informações necessárias.                   -
+				// -------------------------------------------------------------------------
+				set .@get_team1_var$, callfunc("bg_getarenainfo", .@arena_id, "team1_var");
+				set .@get_team2_var$, callfunc("bg_getarenainfo", .@arena_id, "team2_var");
+				set .@var_name_event$, callfunc("bg_getarenainfo", .@arena_id, "npc_var_event");
+				
+				set .@a_name$, callfunc("bg_getarenainfo", .@arena_id, "arena_name");
+				set .@base_level, callfunc("bg_getarenainfo", .@arena_id, "base_level");
+				set .@max_player, callfunc("bg_getarenainfo", .@arena_id, "max_player");
+				
+				set .@npc_start_event$, callfunc("bg_getarenainfo", .@arena_id, "npc_start_event");
+				
+				mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+				if( BaseLevel < .@base_level )
+					mes "Você não tem ^FF0000Nível de Base^000000 suficiente para se registrar nas batalhas em ^00B2EE" + .@a_name$ + "^000000.";
+				else if( queue_size(.@arena_id) >= getbattleflag("queue_max_players") )
+					mes "Muito bem, as fila de espera da batalha em ^00B2EE" + .@a_name$ + "^000000 estão lotada, gostaria de saber alguma informação?";
+				else if( queue_char_info(0) )
+					mes "No momento você não pode se alistar por estar alistado em outra batalha, gostaria de saber alguma informação da batalha em ^00B2EE" + .@a_name$ + "^000000?";
+				else
+					mes "Muito bem, deseja se alistar agora ou saber alguma informação da batalha em ^00B2EE" + .@a_name$ + "^000000?";
+				next;
+				set .@choose2, select( (!queue_char_info(0)&&BaseLevel>=.@base_level&&queue_size(.@arena_id)<getbattleflag("queue_max_players")?"^00CC00•^000000 ^777777Alistamento.^000000":""), "^00CC00•^000000 ^00B2EEInformações.^000000", "^00CC00•^000000 ^FF8C00Voltar.^000000", "^00CC00•^000000 ^FF0000Cancelar.^000000")-1;
+		
+				if( .@choose2 == 1 ){
+					callfunc "bg_info_npc", .@arena_id, "[ ^0033FFRecrutador das Batalhas^000000 ]";
+					continue;
+				}else if( .@choose2 == 2 ){
+					set .@loop_2, 0;
+					break;
+				}else if( .@choose2 == 3 ){
+					set .@loop_1, 0;
+					set .@loop_2, 0;
+					break;
+				}
+				
+				mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+				mes "Tem certeza que deseja se alistar na ^00B2EEFila de Espera em " + .@a_name$ + "^000000?";
+				next;
+				switch( select("^00CC00•^000000 ^777777Registrar.^000000", "^00CC00•^000000 ^FF8C00Voltar.^000000", "^00CC00•^000000 ^FF0000Cancelar.^000000") ){
+					case 1:
+						mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+						if( getcharid(4) )
+							mes "Você já está participando de uma batalha e não pode se alistar em outra batalha.";
+						else if( queue_size(.@arena_id) >= getbattleflag("queue_max_players") ){
+							mes "Não foi possível se alistar na batalha, você pode ter demorado e as fileiras já deve ter sido preenchida.";
+							mes "Tente novamente!";
+						}else {
+							set .@join_flag, queue_join(.@arena_id);
+							switch(.@join_flag){
+								case -3:
+									mes "Não foi possível ingressar na fila de espera das batalhas em " + .@a_name$ + ", você deve aguardar " + queue_char_info(3) + ".";
+									break;
+								case -2:
+									mes "Não foi possível ingressar na fila de espera das batalhas em " + .@a_name$ + " por não estar em uma Cidade.";
+									break;
+								case -1:
+									mes "Não foi possível ingressar na fila de espera das batalhas em " + .@a_name$ + " por não conseguir remove-lo da fila de espera anterior, tente o comando @bgunregister.";
+									break;
+								case 1:
+									if( getbattleflag("bg_player_announce") )
+										announce "[Batalhas Campais]: " + strcharinfo(0) + " se alistou | Batalha: " + .@a_name$ + ".", bc_all, "0xFFCE00";
+									
+									mes "Você se alistou nas Batalhas em " + .@a_name$ + ".";
+									set BAT_VFLAG, 0;
+									set BAT_EV_FLAG, 0;
+									close;
+								default:
+									mes "Houve um erro ao ingressar na fila de espera das batalhas em " + .@a_name$ + " tente novamente mais tarde.";
+									break;
+							}
+						}
+						next;
+						break;
+					case 2:
+						break;
+					case 3:
+						set .@loop_1, 0;
+						set .@loop_2, 0;
+						break;
+				}
+			}
+		}
+	}
+	else {
+		while(.@loop_1)
+		{
+			// Remover da Fila de Espera
+			callfunc "bg_remove_queue";
+			
+			// Checa se a arena está definida
+			if( $BG_ARENA <= 0 ){
+				donpcevent "BattleGround#queue_main::OnReload";
+				mes "^FF0000Nenhuma arena foi definida!";
+				mes "O Sistema irá nomear uma nova arena, aguarde...";
+				mes "Utilize o comando @bgregister ou @bgjoin após o sistema nomear uma nova arena.^000000";
+				close;
+			}
+			
+			// Pegando informações da Arena
+			set .@bg_id, $BG_ARENA;
+			set .@arena_name$, callfunc("bg_getarenainfo", .@bg_id, "arena_name");
+			set .@base_level, callfunc("bg_getarenainfo", .@bg_id, "base_level");
+			set .@max_player, callfunc("bg_getarenainfo", .@bg_id, "max_player");
+			set .@queue_size, queue_size(.@bg_id);
+		
+			mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+			if( BaseLevel < .@base_level )
+				mes "Você não tem ^FF0000Nível de Base^000000 suficiente para se registrar nesta batalha.";
+			else if( .@queue_size > getbattleflag("queue_max_players") )
+				mes "Muito bem, as fila de espera da batalha em ^00B2EE" + .@arena_name$ + "^000000 está lotada, gostaria de saber alguma informação?";
+			else if( queue_char_info(0) )
+				mes "No momento você não pode se alistar por estar alistado em outra batalha, gostaria de saber alguma informação da batalha em ^00B2EE" + .@arena_name$ + "^000000?";
+			else
+				mes "Muito bem, deseja se alistar agora ou saber alguma informação da batalha em ^00B2EE" + .@arena_name$ + "^000000?";
+			next;
+			set .@choose2, select( (!queue_char_info(0)&&BaseLevel>=.@base_level&&queue_size(.@bg_id)<getbattleflag("queue_max_players")?"^00CC00•^000000 ^777777Alistamento.^000000":""), "^00CC00•^000000 ^00B2EEInformações.^000000", "^00CC00•^000000 ^FF0000Cancelar.^000000")-1;
+		
+			if( .@choose2 == 1 ){
+				callfunc "bg_info_npc", .@bg_id, "[ ^0033FFRecrutador das Batalhas^000000 ]";
+				continue;
+			}else if( .@choose2 >= 2 ){
+				set .@loop_1, 0;
+				break;
+			}
+			
+			set .@loop_2, 1;
+			while(.@loop_2){	
+				mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+				mes "Você deseja se alistar na ^00B2EEFila de Espera em " + .@arena_name$ + "^000000?";
+				next;
+				switch( select("^00CC00•^000000 ^777777Registrar.^000000", "^00CC00•^000000 ^FF8C00Voltar.^000000", "^00CC00•^000000 ^FF0000Cancelar.^000000") ){
+					case 1:
+						mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+						if( getcharid(4) )
+							mes "Você já está participando de uma batalha e não pode se alistar em outra batalha.";
+						else if( queue_char_info(2) )
+							mes "Você deve aguardar " + queue_char_info(3) + " para utilizar o registro novamente!";
+						else {
+							set .@join_flag, queue_join(.@bg_id);
+							switch(.@join_flag){
+								case -3:
+									mes "Não foi possível ingressar na fila de espera das batalhas em " + .@arena_name$ + ", você deve aguardar " + queue_char_info(3) + ".";
+									break;
+								case -2:
+									mes "Não foi possível ingressar na fila de espera das batalhas em " + .@arena_name$ + " por não estar em uma Cidade.";
+									break;
+								case -1:
+									mes "Não foi possível ingressar na fila de espera das batalhas em " + .@arena_name$ + " por não conseguir remove-lo da fila de espera anterior, tente o comando @bgunregister.";
+									break;
+								case 1:
+									if( getbattleflag("bg_player_announce") )
+										announce "[Batalhas Campais]: " + strcharinfo(0) + " se alistou | Batalha: " + .@arena_name$[.@choose] + ".", bc_all, "0xFFCE00";
+									
+									mes "Você se alistou nas Batalhas em " + .@arena_name$ + ".";
+									set BAT_VFLAG, 0;
+									set BAT_EV_FLAG, 0;
+									close;
+								default:
+									mes "Houve um erro ao ingressar na fila de espera das batalhas em " + .@arena_name$[.@choose] + " tente novamente mais tarde.";
+									break;
+							}
+						}
+						next;
+						break;
+					case 2:
+						set .@loop_2, 0;
+						break;
+					case 3:
+						set .@loop_1, 0;
+						set .@loop_2, 0;
+						break;
+				}
+			}
+		}
+	}
+	mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+	mes "Volte quando desejar se alistar em uma Batalhar.";
+	close;
+	
+GroupList:
+	deletearray .@groups_id[0];
+	deletearray .@groups_name$[0];
+	query_sql "SELECT `group_id`, `name` FROM `bg_groups` WHERE `status`='1' ORDER BY `name` ASC", .@groups_id, .@groups_name$;
+	
+	if( !getarraysize(.@groups_id) )
+		return 0;
+		
+	set .@buildmenu$, "";
+	for( set .@i,0; .@i < getarraysize(.@groups_id); set .@i,.@i+1 ){
+		if( callfunc("bg_countarena", .@groups_id[.@i]) > 0 )
+			set .@buildmenu$, .@buildmenu$ + "^00CC00•^000000 " + .@groups_name$[.@i] + ".";
+		
+		set .@buildmenu$, .@buildmenu$ + ":";
+	}
+	
+	set .@choose, select(.@buildmenu$ + "^00CC00•^000000 ^FF0000Cancelar.^000000")-1;
+	if( .@choose == getarraysize(.@groups_id) )
+		return false;
+	else
+		return .@groups_id[.@choose];
+		
+ArenaList:
+	deletearray .@arenas_id[0];
+	deletearray .@arenas_name$[0];
+	
+	if( getarg(0) > 0 )
+		query_sql "SELECT `bg_id`, `arena_name` FROM `bg_arena` WHERE `group_id`='" + getarg(0) + "' ORDER BY `arena_name` ASC", .@arenas_id, .@arenas_name$;
+	else
+		query_sql "SELECT `bg_arena`.`bg_id`, `bg_arena`.`arena_name` FROM `bg_arena`, `bg_groups` WHERE `bg_arena`.`group_id`>'0' AND `bg_arena`.`group_id`=`bg_groups`.`group_id` AND `bg_groups`.`status`='1'", .@arenas_id, .@arenas_name$;
+	
+	set .@buildmenu$, "";
+	for( set .@i,0; .@i < getarraysize(.@arenas_id); set .@i,.@i+1 ){
+		set .@buildmenu$, .@buildmenu$ + "^00CC00•^000000 " + .@arenas_name$[.@i] + ".";
+		set .@buildmenu$, .@buildmenu$ + ":";
+	}
+	
+	if( getarg(1) )
+		set .@buildmenu$, .@buildmenu$ + "^00CC00•^000000 ^FFA500Voltar.^000000";
+		
+	set .@buildmenu$, .@buildmenu$ + ":";
+	
+	set .@choose, select(.@buildmenu$ + "^00CC00•^000000 ^FF0000Cancelar.^000000")-1;
+	
+	if( .@choose == getarraysize(.@arenas_id) )
+		return -1;
+	else if( .@choose > getarraysize(.@arenas_id) )
+		return 0;
+	else
+		return .@arenas_id[.@choose];
+		
+OnInit:
+	if( PACKETVER <= 20161228 && strnpcinfo(2) != "cmd_register" && strnpcinfo(2) != "bg_bat" )
+		waitingroom "Batalhas Campais", 0;
+	end;
+}
+
+function	script	bg_remove_queue	{
+	set .@queue_id, queue_char_info(0);
+	if( .@queue_id ){
+		set .@bg_id, callfunc("bg_exist",.@queue_id) ? .@queue_id : 0;
+		
+		if( .@bg_id )
+			set .@arena$, callfunc("bg_getarenainfo", .@bg_id, "arena_name");
+		else
+			set .@arena$, queue_get_data(.@queue_id, 0);
+			
+		mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+		mes "Você está alistado em ^00B2EE" + .@arena$ + "^000000, deseja remover seu alistamento?";		
+		next;
+		if( select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não.") == 1 ){
+			if( !queue_leave() ){
+				mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+				mes "Não foi possível te remover da fila de espera em ^00B2EE" + .@arena$ + "^000000.";
+				close;
+			}
+		}
+	}
+	return;
+}
+
+-	script	BattleGround#cmd_unregister	FAKE_NPC,{
+	set .@queue_id, queue_char_info(0);
+	if( !.@queue_id ){
+		message strcharinfo(0), "Você não está alistado em nenhuma batalha...";
+		end;
+	}
+	
+	set .@bg_id, callfunc("bg_exist", .@queue_id)?.@queue_id:0;
+	
+	if( !.@bg_id ){
+		if( queue_leave() )
+			message strcharinfo(0), "Você foi removido da fila de espera com sucesso.";
+		else
+			message strcharinfo(0), "Não foi possível remove-lo fila de espera...";
+		end;
+	}
+	mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+	mes "Tem certeza que deseja desertar da batalha em ^00B2EE" + callfunc("bg_getarenainfo", .@bg_id, "arena_name") + "^000000?";
+	next;
+	if(select("^00CC00•^000000 Sim.", "^00CC00•^000000 Não.") == 2){
+		mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+		mes "Utilize o comando ^00B2EE@bgunregister^000000 sair da fila de espera da batalha em ^00B2EE" + callfunc("bg_getarenainfo", .@bg_id, "arena_name") + "^000000.";
+		close;
+	}
+	mes "[ ^0033FFRecrutador das Batalhas^000000 ]";
+	if( queue_leave() )
+		mes "Muito bem, você foi removido da fila de espera da batalha em ^00B2EE" + callfunc("bg_getarenainfo", .@bg_id, "arena_name") + "^000000.";
+	else
+		mes "Sinto muito, não foi possível remove-lo da fila de espera da batalha em ^00B2EE" + callfunc("bg_getarenainfo", .@bg_id, "arena_name") + "^000000.";
+	close;
+}
+
+// Lista da Fila de Espera das Batalhas Campais
+//
+-	script	BattleGround#cmd_waiting	FAKE_NPC,{
+	set .@check, (!.@atcmd_numparameters || !.@atcmd_parameters[0]?0:callfunc("bg_getarenainfo",.@atcmd_parameters[0],"group_id"));
+	if( .@check <= 0 ){
+		query_sql "SELECT `bg_arena`.`bg_id`, `bg_arena`.`group_id`, `bg_arena`.`arena_name` FROM `bg_arena`, `bg_groups` WHERE `bg_arena`.`group_id`!='0' AND `bg_arena`.`group_id`=`bg_groups`.`group_id` AND `bg_groups`.`status`='1' ORDER BY `bg_arena`.`bg_id`", .@bg_id, .@group_id, .@arena_name$;
+		if( !getarraysize(.@bg_id) ){
+			message strcharinfo(0), "Não é possível utilizar este comando no momento.";
+			end;
+		}
+		
+		message strcharinfo(0), "Para visualizar a fila de espera utilize os seguinte comando:";
+		message strcharinfo(0), "  @bgwaiting <arena> <exército>";
+		message strcharinfo(0), "-----------------------------------------------------------------";
+		message strcharinfo(0), "Arena:";
+		for( set .@i,0; .@i < getarraysize(.@bg_id); set .@i,.@i+1 ){
+			message strcharinfo(0), "  " + .@bg_id[.@i] + " - " + .@arena_name$[.@i];
+		}
+		message strcharinfo(0), "-----------------------------------------------------------------";
+		message strcharinfo(0), "Exército:";
+		message strcharinfo(0), "  0 - Qualquer Exército.";
+		message strcharinfo(0), "  1 - Exército de Guillaume.";
+		message strcharinfo(0), "  2 - Exército de Croix.";
+	}
+	else {
+		deletearray .@queue_cid;
+		deletearray .@queue_aid;
+		deletearray .@queue_player$;
+		set .@queue_size, queue_get_players(.@atcmd_parameters[0]);
+		query_sql "SELECT `arena_name` FROM `bg_arena` WHERE `bg_id`='" + .@atcmd_parameters[0] + "' LIMIT 1", .@arena_name$;
+		message strcharinfo(0), .@arena_name$ + " - Fila de Espera de Jogadores";
+		if( .@atcmd_numparameters < 2 || !.@atcmd_parameters[1] || .@atcmd_parameters[1] == 1 ){
+			message strcharinfo(0), "-----------------------------------------------------------------";
+			message strcharinfo(0), "* Exército de Guillaume:";
+			
+			if( .@queue_size ){
+				for( set .@i, 0; .@i < .@queue_size; set .@i,.@i+2 ){
+					set .@class, callfunc("bg_getcharinfo", .@queue_cid[.@i], "class");
+					set .@blvl, callfunc("bg_getcharinfo", .@queue_cid[.@i], "base_level");
+					set .@jlvl, callfunc("bg_getcharinfo", .@queue_cid[.@i], "job_level");
+					message strcharinfo(0), "  " + .@queue_player$[.@i] + " | Classe: " + jobname(.@class) + " | Nível: " + .@blvl + "/" + .@jlvl;
+				}
+			}
+			else
+				message strcharinfo(0), "  Nenhum jogador na fila de espera do Exército de Guillaume.";
+		}
+		
+		if( .@atcmd_numparameters < 2 || !.@atcmd_parameters[1] || .@atcmd_parameters[1] == 2 ){
+			message strcharinfo(0), "-----------------------------------------------------------------";
+			message strcharinfo(0), "* Exército de Croix:";
+			
+			if( .@queue_size > 1 ){
+				for( set .@i,1; .@i < .@queue_size; set .@i,.@i+2 ){
+					set .@class, callfunc("bg_getcharinfo", .@queue_cid[.@i], "class");
+					set .@blvl, callfunc("bg_getcharinfo", .@queue_cid[.@i], "base_level");
+					set .@jlvl, callfunc("bg_getcharinfo", .@queue_cid[.@i], "job_level");
+					message strcharinfo(0), "  " + .@queue_player$[.@i] + " | Classe: " + jobname(.@class) + " | Nível: " + .@blvl + "/" + .@jlvl;
+				}
+			}else
+				message strcharinfo(0), "  Nenhum jogador na fila de espera do Exército de Croix.";
+		}
+	}
+	end;
+}
+
+// Lista de Jogadores das Batalhas Campais
+//
+-	script	BattleGround#cmd_playing	FAKE_NPC,{
+	if( !.@atcmd_numparameters || !.@atcmd_parameters[0] || !callfunc("bg_getarenainfo",.@atcmd_parameters[0],"group_id") ){
+		query_sql "SELECT `bg_arena`.`bg_id`, `bg_arena`.`group_id`, `bg_arena`.`arena_name`, `bg_arena`.`team1_var`, `bg_arena`.`team2_var` FROM `bg_arena`, `bg_groups` WHERE `bg_arena`.`group_id`!='0' AND `bg_arena`.`group_id`=`bg_groups`.`group_id` AND `bg_groups`.`status`='1' ORDER BY `bg_arena`.`bg_id`", .@bg_id, .@group_id, .@arena_name$, .@team1_var$, .@team2_var$;
+		if( !getarraysize(.@bg_id) ){
+			message strcharinfo(0), "Não é possível utilizar este comando no momento.";
+			end;
+		}
+		
+		message strcharinfo(0), "Para visualizar a lista de jogadores utilize os seguinte comando:";
+		message strcharinfo(0), "  @bgplaying <arena> <exército>";
+		message strcharinfo(0), "-----------------------------------------------------------------";
+		message strcharinfo(0), "Arena:";
+		for( set .@i,0; .@i < getarraysize(.@bg_id); set .@i,.@i+1 ){
+			message strcharinfo(0), "  " + .@bg_id[.@i] + " - " + .@arena_name$[.@i];
+		}
+		message strcharinfo(0), "-----------------------------------------------------------------";
+		message strcharinfo(0), "Exército:";
+		message strcharinfo(0), "  0 - Qualquer Exército.";
+		message strcharinfo(0), "  1 - Exército de Guillaume.";
+		message strcharinfo(0), "  2 - Exército de Croix.";
+	}
+	else {
+		query_sql "SELECT `bg_id`, `group_id`, `arena_name`, `team1_var`, `team2_var` FROM `bg_arena` WHERE `bg_id`='" + .@atcmd_parameters[0] + "' LIMIT 1", .@bg_id, .@group_id, .@arena_name$, .@team1_var$, .@team2_var$;
+		message strcharinfo(0), .@arena_name$ + " - Lista de Jogadores";
+		
+		if( .@atcmd_numparameters < 2 || !.@atcmd_parameters[1] || .@atcmd_parameters[1] == 1 ){
+			deletearray .@bg_members_cid;
+			deletearray .@bg_members_aid;
+			set .@team_size, bg_get_team(getd(.@team1_var$));
+			message strcharinfo(0), "-----------------------------------------------------------------";
+			message strcharinfo(0), "* Exército de Guillaume:";
+			
+			if( .@team_size ){
+				for( set .@i, 0; .@i < .@team_size; set .@i,.@i+1 ){
+					set .@name$, callfunc("bg_getcharinfo", .@bg_members_cid[.@i], "name");
+					set .@class, callfunc("bg_getcharinfo", .@bg_members_cid[.@i], "class");
+					set .@blvl, callfunc("bg_getcharinfo", .@bg_members_cid[.@i], "base_level");
+					set .@jlvl, callfunc("bg_getcharinfo", .@bg_members_cid[.@i], "job_level");
+					message strcharinfo(0), "  " + .@name$ + " | Classe: " + jobname(.@class) + " | Nível: " + .@blvl + "/" + .@jlvl;
+				}
+			}
+			else
+				message strcharinfo(0), "  Nenhum jogador no Exército de Guillaume.";
+		}
+		
+		if( .@atcmd_numparameters < 2 || !.@atcmd_parameters[1] || .@atcmd_parameters[1] == 2 ){
+			deletearray .@bg_members_cid;
+			deletearray .@bg_members_aid;
+			set .@queue_size, bg_get_team(getd(.@team2_var$));
+			message strcharinfo(0), "-----------------------------------------------------------------";
+			message strcharinfo(0), "* Exército de Croix:";
+			
+			if( .@team_size ){
+				for( set .@i, 0; .@i < .@team_size; set .@i,.@i+1 ){
+					set .@name$, callfunc("bg_getcharinfo", .@bg_team_cid[.@i], "name");
+					set .@class, callfunc("bg_getcharinfo", .@bg_team_cid[.@i], "class");
+					set .@blvl, callfunc("bg_getcharinfo", .@bg_team_cid[.@i], "base_level");
+					set .@jlvl, callfunc("bg_getcharinfo", .@bg_team_cid[.@i], "job_level");
+					message strcharinfo(0), "  " + .@name$ + " | Classe: " + jobname(.@class) + " | Nível: " + .@blvl + "/" + .@jlvl;
+				}
+			}
+			else
+				message strcharinfo(0), "  Nenhum jogador no Exército de Croix.";
+		}
+	}
+	end;
+}
+
+// Ranking das Batalhas Campais
+//
+-	script	BattleGround#cmd_ranking	FAKE_NPC,{
+	query_sql "SELECT `group_id` FROM `bg_groups` WHERE `status`='1'", .@groups;
+	
+	if( !getarraysize(.@groups) ){
+		message strcharinfo(0), "Não é possível utilizar este comando no momento.";
+		end;
+	}
+	
+	set .@bg_id, (.@atcmd_numparameters?.@atcmd_parameters[0]:0);
+	if( .@bg_id ){
+		set .@arena_group, callfunc("bg_getarenainfo", .@bg_id, "group_id");
+		set .@group_status, callfunc("bg_getgroupinfo", .@arena_group, "status");
+	}
+	else {
+		set .@arena_group, true;
+		set .@group_status, true;
+	}
+	
+	if( !.@arena_group || !.@group_status ){
+		message strcharinfo(0), "Id da arena inválida.";
+		set .@flag_error, 1;
+	}
+	else{
+		query_sql "SELECT COUNT(`bg_ranking`.`bg_id`) FROM `bg_ranking`, `char` WHERE `bg_ranking`.`bg_id`='" + .@bg_id + "' AND `char`.`char_id`=`bg_ranking`.`char_id`", .@count;
+		if( !.@count ){
+			message strcharinfo(0), "Nenhum resultado encontrado, tente outra pesquisa.";
+			set .@flag_error, 1;
+		}
+		else {
+			set .@total_page, (!(.@count/127)?1:(.@count/127));
+			
+			if( .@atcmd_numparameters > 2 && .@atcmd_parameters[2] > .@total_page ){
+				message strcharinfo(0), "O máximo de paginação é " + .@total_page + ".";
+				message strcharinfo(0), "Você pode utilizar @bgranking " + .@bg_id + " " + .@atcmd_parameters[1] + " <1~" + .@total_page + ">.";
+				end;
+			}
+			
+			if( .@atcmd_numparameters > 1 )
+			{
+				set .@f, .@atcmd_parameters[1];
+				set .@f, (.@f>2||.@f<0?0:.@f);
+				set .@filter$, (!.@f?"`bg_ranking`.`wins` DESC, `bg_ranking`.`loss` DESC, `bg_ranking`.`ration` DESC":(.@f==1?"`bg_ranking`.`loss` DESC, `bg_ranking`.`wins` DESC, `bg_ranking`.`ration` DESC":"`bg_ranking`.`ration` DESC, `bg_ranking`.`wins` DESC, `bg_ranking`.`loss` DESC"));
+			}
+			else {
+				set .@f, 0;
+				set .@filter$, "`bg_ranking`.`wins` DESC, `bg_ranking`.`loss` DESC, `bg_ranking`.`ration` DESC";
+			}
+			
+			
+			if( .@atcmd_numparameters < 3 || (.@atcmd_numparameters >= 3 && !.@atcmd_parameters[2]) )
+				set .@page, 0;
+			else
+				set .@page, .@atcmd_parameters[2]-1;
+			
+			set .@limit, getbattleflag("bg_ranking_rows");
+			query_sql "SELECT `bg_ranking`.`char_id`, `bg_ranking`.`wins`, `bg_ranking`.`loss`, `bg_ranking`.`ration` FROM `bg_ranking`, `char` WHERE `bg_ranking`.`bg_id`='" + .@bg_id + "' AND `char`.`char_id`=`bg_ranking`.`char_id` ORDER BY " + .@filter$ + " LIMIT " + (.@page*127) + "," + .@limit, .@char_id, .@wins, .@loss, .@ration;
+			
+			message strcharinfo(0), "Ranking: " + (!.@atcmd_parameters[0]?"Geral":callfunc("bg_getarenainfo", .@bg_id, "arena_name"));
+			message strcharinfo(0), "Filtragem: " + (!.@f?"Por Vitória":(.@f==1?"Por Derrota":"Proporcional"));
+			for( set .@i,0; .@i < getarraysize(.@char_id); set .@i,.@i+1 )
+			{
+				message strcharinfo(0), " ";
+				message strcharinfo(0), (.@page*127)+(.@i+1) + "º " + callfunc("bg_getcharname",.@char_id[.@i]);
+				message strcharinfo(0), "      Vitórias: " + .@wins[.@i];
+				message strcharinfo(0), "      Derrotas: " + .@loss[.@i];
+				message strcharinfo(0), "      Proporção: " + .@ration[.@i];
+			}
+			
+			message strcharinfo(0), " ";
+			message strcharinfo(0), "Total de Resultados: " + .@count;
+			message strcharinfo(0), "Total de Páginas: " + .@total_page;
+			message strcharinfo(0), "Total de Resultados por Página: " + .@limit;
+		}
+	}
+	
+	if( .@flag_error )
+	{
+		message strcharinfo(0), "Para utilizar o ranking digite @bgranking <id da arena> <filtro> <página>";
+		message strcharinfo(0), " ";
+		message strcharinfo(0), "  Ids das Arenas (Opcional):";
+		message strcharinfo(0), "        0 - Ranking Geral (Todas as arenas, Padrão)";
+		for( set .@i,0; .@i < getarraysize(.@groups); set .@i,.@i+1 )
+		{
+			deletearray .@bg_id, getarraysize(.@bg_id);
+			query_sql "SELECT `bg_id`, `arena_name` FROM `bg_arena` WHERE `group_id`='" + .@groups[.@i] + "' ORDER BY `bg_id`", .@bg_id, .@a_name$;
+			for( set .@a,0; .@a < getarraysize(.@bg_id); set .@a,.@a+1 )
+				message strcharinfo(0), "      " + (.@bg_id[.@a]<=9?"  ":"") + .@bg_id[.@a] + " - " + .@a_name$[.@a];
+		}
+		message strcharinfo(0), " ";
+		message strcharinfo(0), "  Filtros (Opcional):";
+		message strcharinfo(0), "      0: Filtrar por Vitória (Padrão)";
+		message strcharinfo(0), "      1: Filtrar por Derrota";
+		message strcharinfo(0), "      2: Filtrar Proporcionalmente";
+		message strcharinfo(0), " ";
+		message strcharinfo(0), " Página (Opcional): Padrão 1ª página de exibição.";
+	}
+	end;
+}

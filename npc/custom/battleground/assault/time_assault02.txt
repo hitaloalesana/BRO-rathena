@@ -1,0 +1,1363 @@
+/*.-----------------------------------------------------------------.
+  .    ____                          __                             .
+  .   /\  _`\                       /\ \__  __                      .
+  .   \ \ \/\_\  _ __    __     __  \ \ ,_\/\_\  __  __     __      .
+  .    \ \ \/_/_/\`'__\/'__`\ /'__`\ \ \ \/\/\ \/\ \/\ \  /'__`\    .
+  .     \ \ \s\ \ \ \//\  __//\ \d\.\_\ \ \_\ \ \ \ \_/ |/\  __/    .
+  .      \ \____/\ \_\\ \____\ \__/.\_\\ \__\\ \_\ \___/ \ \____\   .
+  .       \/___/  \/_/ \/____/\/__/\/_/ \/__/ \/_/\/__/   \/____/   .
+  .                                                                 .
+  .          2014~2017 © Creative Services and Development          .
+  .                      www.creativesd.com.br                      .
+  .-----------------------------------------------------------------.
+  . Script:                                                         .
+  .    Battleground Warfare (1ª Time Assault)                       .
+  .-----------------------------------------------------------------.
+  . Autor: Romulo SM (sbk_)                          Versão: 1.0    .
+  .                                                                 .
+  . Compatibilidade:                                                .
+  .    eAthena, rAthena, Hercules e derivações.                     .
+  .-----------------------------------------------------------------.
+  . Descrição:                                                      .
+  .    Batalha no qual os Exércitos devem destruir o Posto Avançado .
+  .  do  adversário.                                                .
+  .    O Objetivo principal é eliminar as barricadas chegar ao      .
+  .  Pavilhão comando e destruí-lo.                                 .
+  .    Há dois objetivos secundários para somar mais pontos:        .
+  .        - Eliminar os Sentinelas da Guarda.                      .
+  .        - Eliminar os Pavilhões, Corpo da Guarda e Arsenal.      .
+  *-----------------------------------------------------------------*/
+  
+// Engine das Batalhas Campais Time Assault
+// -----------------------------------------------------------------
+bat_t02,1,1,3	script	start#bat_t02	CLEAR_NPC,{
+OnInit:
+	// Removendo Jogadores da Arena
+	mapwarp "bat_t02","bat_room",154,150;
+	
+	// Criando Fila de Espera e Times especifico para Arena
+	queue_create(16, "2ª Time Assault", 0, 0, "start#bat_t02::OnReadyCheck");
+	set $@AssaultBG2_id1, bg_create_team(31, "bat_t02", 84, 316, 23, 189, 0, "start#bat_t02::OnGuillaumeQuit", "", "start#bat_t02::OnGuillWO");
+	set $@AssaultBG2_id2, bg_create_team(32, "bat_t02", 236, 316, 77, 90, 1, "start#bat_t02::OnCroixQuit", "", "start#bat_t02::OnCroixWO");
+	
+	// Expulsando Jogadores
+	bg_kick_team($@AssaultBG2_id1, 0);
+	bg_kick_team($@AssaultBG2_id2, 0);
+	
+	// Íniciando Eventos
+	set .global_announce, 0;
+	set .BlockStatus, 0;
+	donpcevent "start#bat_t02::OnReadyCheck";
+	
+	// Seta NPC's de Bandeiras com o Simbolo do Exército.
+	donpcevent "::OnBatT02Emblem";
+	end;
+	
+OnReadyCheck:
+	if( .BlockStatus )
+	{
+		sleep 5000;
+		donpcevent "start#bat_t02::OnReadyCheck";
+	}
+		
+	set .BlockStatus, 1;
+
+	set .@min_player, callfunc("bg_getarenainfo", 16, "min_player");
+	set .@max_player, callfunc("bg_getarenainfo", 16, "max_player");
+	set .@a_name$, callfunc("bg_getarenainfo", 16, "arena_name");
+	set .@min_player, (.@min_player*2);
+	
+	if( .@max_player > MAX_BG_MEMBERS )
+	{
+		bg_console "(BG_ID: 16) Maximo de jogadores em uma equipe ultrapassa o limite estabelecido, definindo o maximo de jogadores para " + MAX_BG_MEMBERS + ".";
+		set .@max_player, MAX_BG_MEMBERS;
+	}
+	
+	queue_get_players 16;
+	set .@playlist_team1, bg_team_size($@AssaultBG2_id1);
+	set .@playlist_team2, bg_team_size($@AssaultBG2_id2);
+	if( !.@queue_count )
+	{
+		set .BlockStatus, 0;
+		end;
+	}
+	else if( $@AssaultBG2 && $@AssaultBG2 < 2 && .@queue_count && (.@playlist_team1 < .@max_player || .@playlist_team2 < .@max_player) )
+	{
+		set .@guill, 0;
+		set .@croix, 0;
+		set .@count_g, 0;
+		set .@count_c, 0;
+		
+		// ---------------------------------------------------
+		// -             Igualando os Exércitos              -
+		// ---------------------------------------------------
+		if( .@playlist_team1 < .@playlist_team2 )
+		{
+			set .@guill, .@playlist_team2-.@playlist_team1;
+			for( set .@i,0; .@i < .@guill; set .@i, .@i + 1 )
+			{
+				bg_join_team $@AssaultBG2_id1, 1, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@count_g, .@count_g + 1;
+				message .@queue_player$[.@i], "Você ingressou no Exército de Guillaume em uma batalha em " + .@a_name$ + " que já está acontecendo, e será teleportado em 10 segundos.";
+			}
+			
+			deletearray .@queue_cid;
+			deletearray .@queue_aid;
+			deletearray .@queue_player$;
+			set .@queue_count, 0;
+			queue_get_players 16; // Reset
+			set .@playlist_team1, bg_team_size($@AssaultBG2_id1);
+		}
+		else if( .@playlist_team2 < .@playlist_team1 )
+		{
+			set .@croix, .@playlist_team1-.@playlist_team2;
+			for( set .@i,0; .@i < .@croix; set .@i, .@i + 1 )
+			{
+				bg_join_team $@AssaultBG2_id2, 1, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@count_c, .@count_c + 1;
+				message .@queue_player$[.@i], "Você ingressou no Exército de Croix em uma batalha em " + .@a_name$ + " que já está acontecendo, e será teleportado em 10 segundos.";
+			}
+			
+			deletearray .@queue_cid;
+			deletearray .@queue_aid;
+			deletearray .@queue_player$;
+			set .@queue_count, 0;
+			queue_get_players 16; // Reset
+			set .@playlist_team2, bg_team_size($@AssaultBG2_id2);
+		}
+		// ---------------------------------------------------
+		// -            Expandindo os Exércitos              -
+		// ---------------------------------------------------
+		if( .@queue_count && .@playlist_team1 == .@playlist_team2 && .@playlist_team1 < .@max_player && .@playlist_team2 < .@max_player )
+		{
+			set .@guill, .@max_player-.@playlist_team1;
+			set .@croix, .@max_player-.@playlist_team2;
+			
+			if( .@queue_count > (.@guill+.@croix) )
+				set .@queue_count, (.@guill+.@croix);
+				
+			if( .@queue_count%2 )
+				set .@queue_count, .@queue_count-1;
+			
+			set .@size, .@queue_count/2;
+			for( set .@i, 0; .@i < .@size; set .@i, .@i + 1 )
+			{
+				bg_join_team $@AssaultBG2_id1, 1, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@players_name_g$[.@count_g], .@queue_player$[.@i];
+				set .@count_g, .@count_g + 1;
+			}
+			
+			for( set .@i,.@size; .@i < .@queue_count; set .@i, .@i + 1 )
+			{
+				bg_join_team $@AssaultBG2_id2, 1, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@players_name_c$[.@count_c], .@queue_player$[.@i];
+				set .@count_c, .@count_c + 1;
+			}
+		}
+		
+		if( .@count_c || .@count_g )
+		{
+			announce "[Batalhas Campais]: " + (.@count_c+.@count_g) + " jogadores estão sendo enviados para uma batalha que está acontecendo em " + .@a_name$ + ", os Exércitos foram equilibrados e expandidos.", bc_all, "0xFFCE00";
+			sleep 3000;
+		}
+		
+		deletearray .@queue_cid;
+		deletearray .@queue_aid;
+		deletearray .@queue_player$;
+		set .@queue_count, 0;
+		queue_get_players 16; // Reset
+		
+		set .@queue_size, queue_size(16);
+		set .@team1_size, bg_team_size($@AssaultBG2_id1);
+		set .@team2_size, bg_team_size($@AssaultBG2_id2);
+		
+		if( .@team1_size < .@max_player || .@team2_size < .@max_player )
+		{
+			set .@size, (2*.@max_player)-(.@team1_size+.@team2_size)-.@queue_size;
+			announce "[Batalhas Campais]: Ainda há " + (.@size) + " vagas para uma batalha que está acontecendo em " + .@a_name$ + "!", bc_all, "0xFFCE00";
+		}
+	}
+	else if( $@AssaultBG2 && !.global_announce && .@queue_count >= .@min_player )
+	{
+		announce "[Batalhas Campais]: A batalha está completa, mas há uma batalha acontecendo em " + .@a_name$ + ", todos jogadores que estão na fila de espera devem aguardar.", bc_all, "0xFFCE00";
+		set .global_announce, 1;
+	}
+	else if( .@queue_count < .@min_player )
+		announce "[Batalhas Campais]: Falta " + (.@min_player-.@queue_count) + " jogadores na batalha em " + .@a_name$ + "!", bc_all, "0xFFCE00";
+	else
+	{
+		// ---------------------------------------------------
+		// -                  Balanceamento                  -
+		// ---------------------------------------------------
+		if( .@queue_count > (.@max_player*2) )
+			set .@queue_count, (.@max_player*2);
+			
+		if( .@queue_count%2 )
+			set .@queue_count, .@queue_count-1;
+			
+		if( .@queue_count >= .@min_player )
+		{
+			for( set .@i,0; .@i < .@queue_count; set .@i, .@i + 2 )
+			{
+				// Ingressando no Exército de Guillaume
+				bg_join_team $@AssaultBG2_id1, 1, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				message .@queue_player$[.@i], "Você ingressou no Exército de Guillaume, será teleportado em 10 segundos.";
+				
+				// Ingressando no Exército de Croix
+				bg_join_team $@AssaultBG2_id2, 1, .@queue_aid[.@i+1];
+				queue_leave 0, .@queue_aid[.@i+1];
+				message .@queue_player$[.@i+1], "Você ingressou no Exército de Croix, será teleportado em 10 segundos.";
+			}
+		}
+		
+		bg_refresh_patent($@AssaultBG2_id1);
+		bg_refresh_patent($@AssaultBG2_id2);
+		set .global_announce, 0;
+		announce "[Batalhas Campais]: Ambos os Exércitos, estão completo boa sorte nas batalhas em " + .@a_name$ + ".", bc_all, "0xFFCE00";
+		donpcevent "start#bat_t02::OnEnable";
+		donpcevent "BattleGround#queue_main::OnStopTimer";
+		sleep 3000;
+		initnpctimer;
+		
+		if( .@queue_count < (2*.@max_player) )
+		{
+			sleep 3000;
+			set .@count, (2*.@max_player)-.@queue_count;
+			announce "[Batalhas Campais]: Ainda há " + .@queue_count + " vagas nas batalhas em " + .@a_name$ + "!", bc_all, "0xFFCE00";
+		}
+	}
+	set .BlockStatus, 0;
+	end;
+	
+OnEnable:
+	// Resetando Eventos Gerais.
+	donpcevent "start#bat_t02::OnReset";
+
+	// Iniciando Cenário de Guillaume.
+	donpcevent "barricade#bat_t02_a_1::OnEnable";
+	donpcevent "barricade#bat_t02_a_2::OnEnable";
+	donpcevent "barricade#bat_t02_a_3::OnEnable";
+	donpcevent "guardian#bat_t02_a::OnEnable";
+	donpcevent "objectives#bat_t02_a::OnEnable";
+	donpcevent "time#bat_t02::OnEnable";
+	
+	// Sinalizando Variáveis.
+	set $@AssaultBG2, 1;
+	set $@AssaultBG2_GuillScore, 0;
+	set $@AssaultBG2_CroixScore, 0;
+	set $@AssaultBG2_GuillTimer, 0;
+	set $@AssaultBG2_CroixTimer, 0;
+	set $@AssaultBG2_TIMER, callfunc("bg_getarenainfo", 16, "event_timer");
+	bg_updatescore "bat_t02", 0, 0;
+	donpcevent "heating_time#bat_t02_a::OnEnable";
+	end;
+	
+OnReset:
+	set $@AssaultBG2, 0;
+	set $@AssaultBG2_GuillScore,0;
+	set $@AssaultBG2_CroixScore,0;
+	set $@AssaultBG2_GuillTimer, 0;
+	set $@AssaultBG2_CroixTimer, 0;
+	set $@AssaultBG2_Victory, 0;
+	bg_updatescore "bat_t02", 0, 0;
+	donpcevent "barricade#bat_t02_a_1::OnDisable";
+	donpcevent "barricade#bat_t02_a_2::OnDisable";
+	donpcevent "barricade#bat_t02_a_3::OnDisable";
+	donpcevent "barricade#bat_t02_b_1::OnDisable";
+	donpcevent "barricade#bat_t02_b_2::OnDisable";
+	donpcevent "barricade#bat_t02_b_3::OnDisable";
+	donpcevent "guardian#bat_t02_a::OnDisable";
+	donpcevent "guardian#bat_t02_b::OnDisable";
+	donpcevent "objectives#bat_t02_a::OnDisable";
+	donpcevent "objectives#bat_t02_b::OnDisable";
+	donpcevent "time#bat_t02::OnStop";
+	donpcevent "time_event#bat_t02_a::OnStop";
+	donpcevent "countdown#bat_t02_a::OnStop";
+	donpcevent "countdown#bat_t02_b::OnStop";
+	disablenpc "Tenente#t02_a";
+	disablenpc "Tenente#t02_b";
+	donpcevent "start#bat_t02_Out::OnStop";
+	end;
+	
+OnChange:
+	set $@AssaultBG2_CroixTimer, gettimetick(2) - $@AssaultBG2_CroixTimer;
+	
+	// Resetando Eventos do Cenário de Guillaume.
+	donpcevent "barricade#bat_t02_a_1::OnDisable";
+	donpcevent "barricade#bat_t02_a_2::OnDisable";
+	donpcevent "barricade#bat_t02_a_3::OnDisable";
+	donpcevent "guardian#bat_t02_a::OnDisable";
+	donpcevent "objectives#bat_t02_a::OnDisable";
+	donpcevent "countdown#bat_t02_a::OnStop";
+	donpcevent "countdown#bat_t02_b::OnStop";
+	donpcevent "time_event#bat_t02_a::OnStop";
+	
+	// Iniciando Cenário de Croix.
+	donpcevent "barricade#bat_t02_b_1::OnEnable";
+	donpcevent "barricade#bat_t02_b_2::OnEnable";
+	donpcevent "barricade#bat_t02_b_3::OnEnable";
+	donpcevent "guardian#bat_t02_b::OnEnable";
+	donpcevent "objectives#bat_t02_b::OnEnable";
+	donpcevent "heating_time#bat_t02_b::OnEnable";
+	
+	bg_digit_timer $@AssaultBG2_id1, 0;
+	bg_digit_timer $@AssaultBG2_id2, 0;
+	bg_warp $@AssaultBG2_id1, "bat_t02", 84, 316;
+	bg_warp $@AssaultBG2_id2, "bat_t02", 236, 316;
+	end;
+	
+OnFinish:
+	set $@AssaultBG2, 2;
+	set $@AssaultBG2_GuillTimer, gettimetick(2) - $@AssaultBG2_GuillTimer;
+	donpcevent "barricade#bat_t02_a_1::OnDisable";
+	donpcevent "barricade#bat_t02_a_2::OnDisable";
+	donpcevent "barricade#bat_t02_a_3::OnDisable";
+	donpcevent "barricade#bat_t02_b_1::OnDisable";
+	donpcevent "barricade#bat_t02_b_2::OnDisable";
+	donpcevent "barricade#bat_t02_b_3::OnDisable";
+	donpcevent "guardian#bat_t02_a::OnDisable";
+	donpcevent "guardian#bat_t02_b::OnDisable";
+	donpcevent "objectives#bat_t02_a::OnDisable";
+	donpcevent "objectives#bat_t02_b::OnDisable";
+	donpcevent "time_event#bat_t02_a::OnStop";
+	donpcevent "time_event#bat_t02_b::OnStop";
+	donpcevent "time#bat_t02::OnStop";
+	enablenpc "Tenente#t02_a";
+	enablenpc "Tenente#t02_b";
+	
+	if( $@AssaultBG2_GuillTimer < $@AssaultBG2_CroixTimer ) {
+		set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 2;
+		mapannounce "bat_t02", "O Exército de Guillaume ganhou dois pontos por destruir o Pavilhão de Comando de Croix em menor tempo.",bc_map,"0xFFCE00";
+		sleep 3000;
+	}
+	else if( $@AssaultBG2_CroixTimer < $@AssaultBG2_GuillTimer ) {
+		set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 2;
+		mapannounce "bat_t02", "O Exército de Croix ganhou dois pontos por destruir o Pavilhão de Comando de Guillaume em menor tempo.",bc_map,"0xFFCE00";
+		sleep 3000;
+	}
+	
+	bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+	
+	if( $@AssaultBG2_GuillScore < $@AssaultBG2_CroixScore ) {
+		mapannounce "bat_t02", "Marollo VII: O Exército de Croix é o vitorioso por seu desempenho no ataque!",bc_map,"0x99CC00";
+		set $@AssaultBG2_Victory, 2;
+	}
+	else if( $@AssaultBG2_CroixScore < $@AssaultBG2_GuillScore ) {
+		mapannounce "bat_t02", "Marollo VII: O Exército de Guillaume é o vitorioso por seu desempenho no ataque!",bc_map,"0x99CC00";
+		set $@AssaultBG2_Victory, 1;
+	}
+	else {
+		mapannounce "bat_t02", "Marollo VII: Ambos Exércitos não cumpriram o objetivo, isto é sinal de um empate!",bc_map,"0x99CC00";
+		set $@AssaultBG2_Victory, 3;
+	}
+	
+	// Computa Ranking e faz entrega de recompensas
+	callfunc "bg_finish", 16, $@AssaultBG2_id1, $@AssaultBG2_id2, $@AssaultBG2_Victory, $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+	
+	bg_digit_timer $@AssaultBG2_id1, 0;
+	bg_digit_timer $@AssaultBG2_id2, 0;
+	donpcevent "start#bat_t02_Out::OnBegin";
+	sleep 3000;
+	bg_warp $@AssaultBG2_id1, "bat_t02", 84, 316;
+	bg_warp $@AssaultBG2_id2, "bat_t02", 236, 316;
+	end;
+
+OnGuillaumeQuit:
+	callfunc "bg_clear_score", getcharid(0);
+	callfunc "bg_ranking", getcharid(0), 16, 0, 0, 1, 0, $@AssaultBG2_CroixScore;
+	donpcevent "start#bat_t02::OnReadyCheck";
+	end;
+
+OnCroixQuit:
+	callfunc "bg_clear_score", getcharid(0);
+	callfunc "bg_ranking", getcharid(0), 16, 0, 1, 1, $@AssaultBG2_GuillScore, 0;
+	donpcevent "start#bat_t02::OnReadyCheck";
+	end;
+	
+OnGuillWO:
+	if( queue_size(16) )
+		end;
+	
+	// Sinaliza a Vitória
+	set $@AssaultBG2, 2;
+	set $@AssaultBG2_Victory, 2;
+	
+	// Computa Ranking e faz entrega de recompensas
+	callfunc "bg_finish", 16, $@AssaultBG2_id1, $@AssaultBG2_id2, $@AssaultBG2_Victory, $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+	
+	// Inicia Eventos de Finalização
+	donpcevent "Terapeuta da Batalha#t02_a::OnStop";
+	donpcevent "Terapeuta da Batalha#t02_b::OnStop";
+	mapannounce "bat_t02", "Tenente Swandery: Os covardes de Guillaume fugiram. Nós vencemos esta! Wow!",bc_map,"0xFFCE00";
+	enablenpc "Tenente#t02_a";
+	enablenpc "Tenente#t02_b";
+	donpcevent "countdown#bat_t02_a::OnStop";
+	donpcevent "countdown#bat_t02_b::OnStop";
+	donpcevent "time_event#bat_t02_a::OnStop";
+	donpcevent "time_event#bat_t02_b::OnStop";
+	donpcevent "start#bat_t02_Out::OnBegin";
+	sleep 2000;
+	bg_warp $@AssaultBG2_id1, "bat_t02", 84, 316;
+	bg_warp $@AssaultBG2_id2, "bat_t02", 236, 316;
+	bg_digit_timer $@AssaultBG2_id1, 0;
+	bg_digit_timer $@AssaultBG2_id2, 0;
+	end;
+
+
+OnCroixWO:
+	if( queue_size(16) )
+		end;
+	
+	// Sinaliza a Vitória
+	set $@AssaultBG2, 2;
+	set $@AssaultBG2_Victory, 1;
+	
+	// Computa Ranking e faz entrega de recompensas
+	callfunc "bg_finish", 16, $@AssaultBG2_id1, $@AssaultBG2_id2, $@AssaultBG2_Victory, $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+	
+	// Inicia Eventos de Finalização
+	donpcevent "Terapeuta da Batalha#t02_a::OnStop";
+	donpcevent "Terapeuta da Batalha#t02_b::OnStop";
+	mapannounce "bat_t02", "Tenente Axl Rose: Os covardes de Croix fugiram. Nós vencemos esta! Wow!",bc_map,"0xFFCE00";
+	enablenpc "Tenente#t02_a";
+	enablenpc "Tenente#t02_b";
+	donpcevent "countdown#bat_t02_a::OnStop";
+	donpcevent "countdown#bat_t02_b::OnStop";
+	donpcevent "time_event#bat_t02_a::OnStop";
+	donpcevent "time_event#bat_t02_b::OnStop";
+	donpcevent "start#bat_t02_Out::OnBegin";
+	sleep 2000;
+	bg_warp $@AssaultBG2_id1, "bat_t02", 84, 316;
+	bg_warp $@AssaultBG2_id2, "bat_t02", 236, 316;
+	bg_digit_timer $@AssaultBG2_id1, 0;
+	bg_digit_timer $@AssaultBG2_id2, 0;
+	end;
+	
+// Checagem de Jogadores na Arena.
+// -------------------------------------------------------
+OnTimer60000:
+	stopnpctimer;
+	if( !getmapusers("bat_t02") )
+	{
+		set $@AssaultBG2, 0;
+		bg_kick_team $@AssaultBG2_id1;
+		bg_kick_team $@AssaultBG2_id2;
+		donpcevent "start#bat_t02_Out::OnStop";
+		
+		if( $@BG_MODE )
+			donpcevent "BattleGround#queue_main::OnReload";
+		else
+			donpcevent "start#bat_t02::OnReadyCheck";
+	}
+	else
+		initnpctimer;
+	end;
+}
+
+// Barricadas
+// -------------------------------------------------------
+bat_t02,1,2,3	script	barricade#bat_t02_main	CLEAR_NPC,{
+OnEnable:
+	if( strnpcinfo(2) == "bat_t02_a_1" ) {
+		enablenpc "#bat_t02_a_w_1";
+		enablenpc "#bat_t02_a_w_2";
+		setarray .@spawn[0], 76, 80, 116, $@AssaultBG2_id1;
+		setcell "bat_t02", 75, 117, 80, 117, cell_walkable, 0;
+	}
+	else if( strnpcinfo(2) == "bat_t02_a_2" ) {
+		enablenpc "#bat_t02_a_w_3";
+		enablenpc "#bat_t02_a_w_4";
+		setarray .@spawn[0], 72, 84, 157, $@AssaultBG2_id1;
+		setcell "bat_t02", 72, 158, 83, 158, cell_walkable, 0;
+		setcell "bat_t02", 72, 158, 83, 158, cell_shootable, 0;
+	}
+	else if( strnpcinfo(2) == "bat_t02_a_3" ) {
+		enablenpc "#bat_t02_a_w_5";
+		enablenpc "#bat_t02_a_w_6";
+		setarray .@spawn[0], 72, 84, 209, $@AssaultBG2_id1;
+		setcell "bat_t02", 72, 210, 83, 210, cell_walkable, 0;
+		setcell "bat_t02", 72, 210, 83, 210, cell_shootable, 0;
+	}
+	else if( strnpcinfo(2) == "bat_t02_b_1" ) {
+		enablenpc "#bat_t02_b_w_1";
+		enablenpc "#bat_t02_b_w_2";
+		setarray .@spawn[0], 248, 252, 115, $@AssaultBG2_id2;
+		setcell "bat_t02", 247, 116, 253, 116, cell_walkable, 0;
+	}
+	else if( strnpcinfo(2) == "bat_t02_b_2" ) {
+		enablenpc "#bat_t02_b_w_3";
+		enablenpc "#bat_t02_b_w_4";
+		setarray .@spawn[0], 244, 256, 157, $@AssaultBG2_id2;
+		setcell "bat_t02", 244, 158, 255, 158, cell_walkable, 0;
+		setcell "bat_t02", 244, 158, 255, 158, cell_shootable, 0;
+	}
+	else if( strnpcinfo(2) == "bat_t02_b_3" ) {
+		enablenpc "#bat_t02_b_w_5";
+		enablenpc "#bat_t02_b_w_6";
+		setarray .@spawn[0], 244, 256, 210, $@AssaultBG2_id2;
+		setcell "bat_t02", 244, 211, 255, 211, cell_walkable, 0;
+		setcell "bat_t02", 244, 211, 255, 211, cell_shootable, 0;
+	}
+	else {
+		// Sem mais barricadas.
+		end;
+	}
+	
+	for( set .@i,.@spawn[0]; .@i < .@spawn[1]; set .@i,.@i+1 )
+		bg_monster .@spawn[3], "bat_t02", .@i, .@spawn[2], " ", 1906, "", "barricade#" + strnpcinfo(2) + "::OnMobDead";
+	
+	end;
+	
+OnMobDead:
+	if( mobcount("bat_t02", "barricade#" + strnpcinfo(2) + "::OnMobDead") < 1 ) {
+		if( strnpcinfo(2) == "bat_t02_a_1" ) {
+			set .@army$, "Croix";
+			set .@display$, "Corpo da Guarda";
+			disablenpc "#bat_t02_a_w_1";
+			disablenpc "#bat_t02_a_w_2";
+			setcell "bat_t02", 75, 117, 80, 117, cell_walkable, 1;
+			set $@AssaultBG2_CroixScore, $@AssaultBG2_CroixScore + 1;
+		}
+		else if( strnpcinfo(2) == "bat_t02_a_2" ) {
+			set .@army$, "Croix";
+			set .@display$, "Campo de Treinamento";
+			disablenpc "#bat_t02_a_w_3";
+			disablenpc "#bat_t02_a_w_4";
+			setcell "bat_t02", 72, 158, 83, 158, cell_walkable, 1;
+			setcell "bat_t02", 72, 158, 83, 158, cell_shootable, 1;
+			set $@AssaultBG2_CroixScore, $@AssaultBG2_CroixScore + 1;
+		}
+		else if( strnpcinfo(2) == "bat_t02_a_3" ) {
+			set .@army$, "Croix";
+			set .@display$, "Pavilhão de Comando";
+			disablenpc "#bat_t02_a_w_5";
+			disablenpc "#bat_t02_a_w_6";
+			setcell "bat_t02", 72, 210, 83, 210, cell_walkable, 1;
+			setcell "bat_t02", 72, 210, 83, 210, cell_shootable, 1;
+			set $@AssaultBG2_CroixScore, $@AssaultBG2_CroixScore + 1;
+		}
+		else if( strnpcinfo(2) == "bat_t02_b_1" ) {
+			set .@army$, "Guillaume";
+			set .@display$, "Corpo da Guarda";
+			disablenpc "#bat_t02_b_w_1";
+			disablenpc "#bat_t02_b_w_2";
+			setcell "bat_t02", 247, 116, 253, 116, cell_walkable, 1;
+			set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 1;
+		}
+		else if( strnpcinfo(2) == "bat_t02_b_2" ) {
+			set .@army$, "Guillaume";
+			set .@display$, "Campo de Treinamento";
+			disablenpc "#bat_t02_b_w_3";
+			disablenpc "#bat_t02_b_w_4";
+			setcell "bat_t02", 244, 158, 255, 158, cell_walkable, 1;
+			setcell "bat_t02", 244, 158, 255, 158, cell_shootable, 1;
+			set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 1;
+		}
+		else if( strnpcinfo(2) == "bat_t02_b_3" ) {
+			set .@army$, "Guillaume";
+			set .@display$, "Pavilhão de Comando";
+			disablenpc "#bat_t02_b_w_5";
+			disablenpc "#bat_t02_b_w_6";
+			setcell "bat_t02", 244, 211, 255, 211, cell_walkable, 1;
+			setcell "bat_t02", 244, 211, 255, 211, cell_shootable, 1;
+			set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 1;
+		}
+		else {
+			// Não há eventos.
+			end;
+		}
+		
+		bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+		mapannounce "bat_t02", "A Barricada que impedia o avanço do Exército de " + .@army$ + " ao " + .@display$ + " foi destruída.",bc_map,"0xFFCE00";
+	}
+	end;
+
+OnDisable:
+	if( strnpcinfo(2) == "bat_t02_a_1" ) {
+		disablenpc "#bat_t02_a_w_1";
+		disablenpc "#bat_t02_a_w_2";
+		setcell "bat_t02", 75, 117, 80, 117, cell_walkable, 1;
+	}
+	else if( strnpcinfo(2) == "bat_t02_a_2" ) {
+		disablenpc "#bat_t02_a_w_3";
+		disablenpc "#bat_t02_a_w_4";
+		setcell "bat_t02", 72, 158, 83, 158, cell_walkable, 1;
+		setcell "bat_t02", 72, 158, 83, 158, cell_shootable, 1;
+	}
+	else if( strnpcinfo(2) == "bat_t02_a_3" ) {
+		disablenpc "#bat_t02_a_w_5";
+		disablenpc "#bat_t02_a_w_6";
+		setcell "bat_t02", 72, 210, 83, 210, cell_walkable, 1;
+		setcell "bat_t02", 72, 210, 83, 210, cell_shootable, 1;
+	}
+	else if( strnpcinfo(2) == "bat_t02_b_1" ) {
+		disablenpc "#bat_t02_b_w_1";
+		disablenpc "#bat_t02_b_w_2";
+		setcell "bat_t02", 247, 116, 253, 116, cell_walkable, 1;
+	}
+	else if( strnpcinfo(2) == "bat_t02_b_2" ) {
+		disablenpc "#bat_t02_b_w_3";
+		disablenpc "#bat_t02_b_w_4";
+		setcell "bat_t02", 244, 158, 255, 158, cell_walkable, 1;
+		setcell "bat_t02", 244, 158, 255, 158, cell_shootable, 1;
+	}
+	else if( strnpcinfo(2) == "bat_t02_b_3" ) {
+		disablenpc "#bat_t02_b_w_5";
+		disablenpc "#bat_t02_b_w_6";
+		setcell "bat_t02", 244, 211, 255, 211, cell_walkable, 1;
+		setcell "bat_t02", 244, 211, 255, 211, cell_shootable, 1;
+	}
+	else {
+		// Sem mais barricadas.
+		end;
+	}
+	
+	killmonster "bat_t02", "barricade#" + strnpcinfo(2) + "::OnMobDead";
+	end;
+}
+
+// Barricadas do Cenário de Guillaume
+// -------------------------------------------------------
+bat_t02,1,3,3	duplicate(barricade#bat_t02_main)	barricade#bat_t02_a_1	CLEAR_NPC
+bat_t02,1,4,3	duplicate(barricade#bat_t02_main)	barricade#bat_t02_a_2	CLEAR_NPC
+bat_t02,1,5,3	duplicate(barricade#bat_t02_main)	barricade#bat_t02_a_3	CLEAR_NPC
+
+// Barricadas do Cenário de Croix
+// -------------------------------------------------------
+bat_t02,1,6,3	duplicate(barricade#bat_t02_main)	barricade#bat_t02_b_1	CLEAR_NPC
+bat_t02,1,7,3	duplicate(barricade#bat_t02_main)	barricade#bat_t02_b_2	CLEAR_NPC
+bat_t02,1,8,3	duplicate(barricade#bat_t02_main)	barricade#bat_t02_b_3	CLEAR_NPC
+
+// Teleportes
+// -------------------------------------------------------
+bat_t02,1,9,3	script	warps#bat_t02_main	CLEAR_NPC,{
+	if( strnpcinfo(2) == "bat_t02_main")
+		end;
+	
+	set .@n, atoi(charat(strnpcinfo(2),12));
+	if( compare(strnpcinfo(2), "bat_t02_a_") ) {
+		if( getcharid(4) != $@AssaultBG2_id1 )
+			end;
+			
+		switch( .@n )
+		{
+			case 1:	warp "bat_t02", 71, 113; break;
+			case 2:	warp "bat_t02", 84, 113; break;
+			case 3:	warp "bat_t02", 66, 159; break;
+			case 4:	warp "bat_t02", 89, 159; break;
+			case 5:	warp "bat_t02", 74, 212; break;
+			case 6:	warp "bat_t02", 65, 210; break;
+			default: break;
+		}
+	}
+	else {
+		if( getcharid(4) != $@AssaultBG2_id2 )
+			end;
+			
+		switch( .@n )
+		{
+			case 1:	warp "bat_t02", 240, 113; break;
+			case 2:	warp "bat_t02", 259, 113; break;
+			case 3: warp "bat_t02", 238, 157; break;
+			case 4: warp "bat_t02", 261, 157; break;
+			case 5: warp "bat_t02", 238, 209; break;
+			case 6: warp "bat_t02", 245, 214; break;
+			default: break;
+		}
+	}
+	end;
+	
+OnInit:
+	if( strnpcinfo(2) != "bat_t02_a_main" )
+		disablenpc strnpcinfo(0);
+	end;
+}
+
+// Teleportes do Cenário de Guillaume
+// -------------------------------------------------------
+bat_t02,71,118,3	duplicate(warps#bat_t02_main)	#bat_t02_a_w_1	CLEAR_NPC
+bat_t02,84,118,3	duplicate(warps#bat_t02_main)	#bat_t02_a_w_2	CLEAR_NPC
+bat_t02,73,160,3	duplicate(warps#bat_t02_main)	#bat_t02_a_w_3	CLEAR_NPC
+bat_t02,82,160,3	duplicate(warps#bat_t02_main)	#bat_t02_a_w_4	CLEAR_NPC
+bat_t02,66,210,3	duplicate(warps#bat_t02_main)	#bat_t02_a_w_5	CLEAR_NPC
+bat_t02,73,212,3	duplicate(warps#bat_t02_main)	#bat_t02_a_w_6	CLEAR_NPC
+
+// Teleportes do Cenário de Croix
+// -------------------------------------------------------
+bat_t02,240,117,3	duplicate(warps#bat_t02_main)	#bat_t02_b_w_1	CLEAR_NPC
+bat_t02,259,117,3	duplicate(warps#bat_t02_main)	#bat_t02_b_w_2	CLEAR_NPC
+bat_t02,244,163,3	duplicate(warps#bat_t02_main)	#bat_t02_b_w_3	CLEAR_NPC
+bat_t02,255,163,3	duplicate(warps#bat_t02_main)	#bat_t02_b_w_4	CLEAR_NPC
+bat_t02,245,214,3	duplicate(warps#bat_t02_main)	#bat_t02_b_w_5	CLEAR_NPC
+bat_t02,238,209,3	duplicate(warps#bat_t02_main)	#bat_t02_b_w_6	CLEAR_NPC
+
+
+// Guardiões do Cenário de Guillaume
+// -------------------------------------------------------
+bat_t02,1,10,3	script	guardian#bat_t02_a	CLEAR_NPC,{
+OnEnable:
+	bg_monster $@AssaultBG2_id1, "bat_t02", 62, 150, "Sentinela", 1949, "Corpo da Guarda", "guardian#bat_t02_a::OnMobDead";
+	bg_monster $@AssaultBG2_id1, "bat_t02", 62, 150, "Sentinela", 1949, "Corpo da Guarda", "guardian#bat_t02_a::OnMobDead";
+	bg_monster $@AssaultBG2_id1, "bat_t02", 85, 201, "Sentinela", 1949, "Campo de Treinamento", "guardian#bat_t02_a::OnMobDead";
+	bg_monster $@AssaultBG2_id1, "bat_t02", 85, 201, "Sentinela", 1949, "Campo de Treinamento", "guardian#bat_t02_a::OnMobDead";
+	bg_monster $@AssaultBG2_id1, "bat_t02", 78, 223, "Sentinela", 1949, "Pavilhão de Comando", "guardian#bat_t02_a::OnMobDead";
+	bg_monster $@AssaultBG2_id1, "bat_t02", 78, 223, "Sentinela", 1949, "Pavilhão de Comando", "guardian#bat_t02_a::OnMobDead";
+	end;
+	
+OnDisable:
+	killmonster "bat_t02", "guardian#bat_t02_a::OnMobDead";
+	end;
+	
+OnMobDead:
+	if( mobcount("bat_t02", "guardian#bat_t02_a::OnMobDead") < 1 ) {
+		set $@AssaultBG2_CroixScore, $@AssaultBG2_CroixScore + 1;
+		bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+		mapannounce "bat_t02", "O Exército de Croix eliminou todos Sentinelas do Exército de Guillaume.",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+// Guardiões do Cenário de Croix
+// -------------------------------------------------------
+bat_t02,1,11,3	script	guardian#bat_t02_b	CLEAR_NPC,{
+OnEnable:
+	bg_monster $@AssaultBG2_id2, "bat_t02", 233, 148, "Sentinela", 1950, "Corpo da Guarda", "guardian#bat_t02_b::OnMobDead";
+	bg_monster $@AssaultBG2_id2, "bat_t02", 233, 148, "Sentinela", 1950, "Corpo da Guarda", "guardian#bat_t02_b::OnMobDead";
+	bg_monster $@AssaultBG2_id2, "bat_t02", 261, 201, "Sentinela", 1950, "Campo de Treinamento", "guardian#bat_t02_b::OnMobDead";
+	bg_monster $@AssaultBG2_id2, "bat_t02", 261, 201, "Sentinela", 1950, "Campo de Treinamento", "guardian#bat_t02_b::OnMobDead";
+	bg_monster $@AssaultBG2_id2, "bat_t02", 250, 221, "Sentinela", 1950, "Pavilhão de Comando", "guardian#bat_t02_b::OnMobDead";
+	bg_monster $@AssaultBG2_id2, "bat_t02", 250, 221, "Sentinela", 1950, "Pavilhão de Comando", "guardian#bat_t02_b::OnMobDead";
+	end;
+	
+OnDisable:
+	killmonster "bat_t02", "guardian#bat_t02_b::OnMobDead";
+	end;
+	
+OnMobDead:
+	if( mobcount("bat_t02", "guardian#bat_t02_b::OnMobDead") < 1 ) {
+		set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 1;
+		bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+		mapannounce "bat_t02", "O Exército de Guillaume eliminou todos Sentinelas do Exército de Croix.",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+// Objetivos do Cenário de Guillaume
+// -------------------------------------------------------
+bat_t02,1,12,3	script	objectives#bat_t02_a	CLEAR_NPC,{
+OnEnable:
+	bg_monster $@AssaultBG2_id1, "bat_t02", 61, 153, "Corpo da Guarda", 1909, "", "objectives#bat_t02_a::OnMobDead";
+	bg_monster $@AssaultBG2_id1, "bat_t02", 88, 202, "Arsenal", 1909, "", "objectives#bat_t02_a::OnMobDead";
+	bg_monster $@AssaultBG2_id1, "bat_t02", 77, 227, "Pavilhão de Comando", 1909, "", "objectives#bat_t02_a::OnFinish";
+	end;
+	
+OnDisable:
+	killmonster "bat_t02", "objectives#bat_t02_a::OnMobDead";
+	killmonster "bat_t02", "objectives#bat_t02_a::OnFinish";
+	end;
+	
+OnMobDead:
+	if( mobcount("bat_t02", "objectives#bat_t02_a::OnMobDead") < 1 ) {
+		set $@AssaultBG2_CroixScore, $@AssaultBG2_CroixScore + 1;
+		bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+		mapannounce "bat_t02", "O Exército de Croix eliminou os Pavilhões que compõem a Guarda do Posto Avançado.",bc_map,"0xFFCE00";
+	}
+	end;
+	
+OnFinish:
+	if( mobcount("bat_t02", "objectives#bat_t02_a::OnFinish") < 1 ) {
+		set $@AssaultBG2_CroixScore, $@AssaultBG2_CroixScore + 1;
+		bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+		donpcevent "start#bat_t02::OnChange";
+		sleep 3000;
+		mapannounce "bat_t02", "O Exército de Croix eliminou o Pavilhão de Comando do Exército de Guillaume, o cenário está sendo alterado!",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+// Objetivos do Cenário de Croix
+// -------------------------------------------------------
+bat_t02,1,13,3	script	objectives#bat_t02_b	CLEAR_NPC,{
+OnEnable:
+	bg_monster $@AssaultBG2_id2, "bat_t02", 233, 151, "Corpo da Guarda", 1909, "", "objectives#bat_t02_b::OnMobDead";
+	bg_monster $@AssaultBG2_id2, "bat_t02", 261, 201, "Arsenal", 1909, "", "objectives#bat_t02_b::OnMobDead";
+	bg_monster $@AssaultBG2_id2, "bat_t02", 249, 225, "Pavilhão de Comando", 1909, "", "objectives#bat_t02_b::OnFinish";
+	end;
+	
+OnDisable:
+	killmonster "bat_t02", "objectives#bat_t02_b::OnMobDead";
+	killmonster "bat_t02", "objectives#bat_t02_b::OnFinish";
+	end;
+	
+OnMobDead:
+	if( mobcount("bat_t02", "objectives#bat_t02_b::OnMobDead") < 1 ) {
+		set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 1;
+		bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+		mapannounce "bat_t02", "O Exército de Guillaume eliminou os Pavilhões que compõem a Guarda do Posto Avançado.",bc_map,"0xFFCE00";
+	}
+	end;
+	
+OnFinish:
+	if( mobcount("bat_t02", "objectives#bat_t02_b::OnFinish") < 1 ) {
+		set $@AssaultBG2_GuillScore, $@AssaultBG2_GuillScore + 1;
+		bg_updatescore "bat_t02", $@AssaultBG2_GuillScore, $@AssaultBG2_CroixScore;
+		donpcevent "start#bat_t02::OnFinish";
+		sleep 3000;
+		mapannounce "bat_t02", "O Exército de Guillaume eliminou o Pavilhão de Comando do Exército de Guillaume, o cenário está sendo alterado!",bc_map,"0xFFCE00";
+	}
+	end;
+}
+
+// Terapeutas
+// -------------------------------------------------------
+bat_t02,1,14,3	script	time#bat_t02	CLEAR_NPC,{
+OnEnable:
+	donpcevent "Terapeuta da Batalha#t02_a::OnEnable";
+	donpcevent "Terapeuta da Batalha#t02_b::OnEnable";
+	end;
+
+OnStop:
+	donpcevent "Terapeuta da Batalha#t02_a::OnStop";
+	donpcevent "Terapeuta da Batalha#t02_b::OnStop";
+	end;
+}
+
+bat_t02,87,319,3	script	Terapeuta da Batalha#t02_a	4_F_SISTER,{
+	specialeffect2 EF_HEAL;
+	mes "[Terapeuta da Batalha]";
+	mes "Apenas feche seus olhos";
+	mes "e respire fundo.";
+	mes "Você pode se libertar da dor.";
+	close;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	end;
+	
+OnTimer26500:
+	stopnpctimer;
+	donpcevent "Terapeuta da Batalha#t02_a::OnEnable";
+	end;
+
+OnEnable:
+	initnpctimer;
+	enablenpc "Terapeuta da Batalha#t02_a";
+	end;
+
+OnStop:
+	disablenpc "Terapeuta da Batalha#t02_a";
+	stopnpctimer;
+	end;
+}
+
+bat_t02,239,319,3	script	Terapeuta da Batalha#t02_b	4_F_SISTER,{
+	specialeffect2 EF_HEAL;
+	mes "[Terapeuta da Batalha]";
+	mes "Apenas feche seus olhos";
+	mes "e respire fundo.";
+	mes "Você pode se libertar da dor.";
+	close;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	end;
+
+OnTimer26500:
+	stopnpctimer;
+	donpcevent "Terapeuta da Batalha#t02_b::OnEnable";
+	end;
+
+OnEnable:
+	initnpctimer;
+	enablenpc "Terapeuta da Batalha#t02_b";
+	end;
+
+OnStop:
+	disablenpc "Terapeuta da Batalha#t02_b";
+	stopnpctimer;
+	end;
+}
+
+// Contagem Regressiva
+// NOTA: Configurado para 10 minutos.
+// -------------------------------------------------------
+bat_t02,1,15,3	script	countdown#bat_t02_a	CLEAR_NPC,{
+OnInit:
+	stopnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer7000:
+	mapannounce "bat_t02", "Tenente Axl Rose : O Inimigo está atacando, reforcem nossas paredes como fosse suas vidas!",bc_map,"0xFF9900";
+	end;
+
+OnTimer8000:
+	mapannounce "bat_t02", "Tenente Swandery : Vamos atacar!!! Vamos destruir o Posto Avançado antes que os reforços cheguem!",bc_map,"0xFF99CC";
+	end;
+
+OnTimer580000:
+	mapannounce "bat_t02", "Marollo VII : Guillaume Marollo, Croix Marollo! E seus seguidores!",bc_map,"0x99CC00";
+	end;
+
+OnTimer580300:
+	mapannounce "bat_t02", "Marollo VII : Ambos Exércitos são muito competitivos, por isso é difícil julgar qual grupamento é superior.",bc_map,"0x99CC00";
+	end;
+
+OnTimer580800:
+	mapannounce "bat_t02", "Marollo VII : Essa batalha Time Assault é um desperdício de tempo. Logo decidirei a vitória e a derrota pelo seu progresso.",bc_map,"0x99CC00";
+	end;
+
+OnTimer582200:
+	mapannounce "bat_t02", "Marollo VII : Se vocês não aceitarem esse resultado, tentem a sorte em outro vale de batalha!",bc_map,"0x99CC00";
+	end;
+
+OnTimer582500:
+	mapannounce "bat_t02", "Axl Rose, Swandery : Sim, senhor.",bc_map,"0x99CC00";
+	stopnpctimer;
+	end;
+}
+
+bat_t02,1,15,3	script	countdown#bat_t02_b	CLEAR_NPC,{
+OnInit:
+	stopnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer7000:
+	mapannounce "bat_t02", "Tenente Swandery : O Inimigo está atacando, reforcem nossas paredes como fosse suas vidas!",bc_map,"0xFF9900";
+	end;
+
+OnTimer8000:
+	mapannounce "bat_t02", "Tenente Axl Rose : Vamos atacar!!! Vamos destruir o Posto Avançado antes que os reforços cheguem!",bc_map,"0xFF99CC";
+	end;
+
+OnTimer580000:
+	mapannounce "bat_t02", "Marollo VII : Guillaume Marollo, Croix Marollo! E seus seguidores!",bc_map,"0x99CC00";
+	end;
+
+OnTimer580300:
+	mapannounce "bat_t02", "Marollo VII : Ambos Exércitos são muito competitivos, por isso é difícil julgar qual grupamento é superior.",bc_map,"0x99CC00";
+	end;
+
+OnTimer580800:
+	mapannounce "bat_t02", "Marollo VII : Essa batalha Time Assault é um desperdício de tempo. Logo decidirei a vitória e a derrota pelo seu progresso.",bc_map,"0x99CC00";
+	end;
+
+OnTimer582200:
+	mapannounce "bat_t02", "Marollo VII : Se vocês não aceitarem esse resultado, tentem a sorte em outro vale de batalha!",bc_map,"0x99CC00";
+	end;
+
+OnTimer582500:
+	mapannounce "bat_t02", "Axl Rose, Swandery : Sim, senhor.",bc_map,"0x99CC00";
+	stopnpctimer;
+	end;
+}
+
+// Controladores de Tempos
+// NOTA: Não é possível atualizar de imediato o tempo pelo
+//       BG AdminCP, somente na próxima batalha.
+// -------------------------------------------------------
+bat_t02,1,17,3	script	time_event#bat_t02_a	CLEAR_NPC,{
+OnInit:
+	stopnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	set .Assault_Timer, 0;
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+	
+OnTimer60000:
+	set .Assault_Timer, .Assault_Timer+1;
+	if( .Assault_Timer >= $@AssaultBG2_TIMER ) {
+		donpcevent "start#bat_t02::OnChange";
+		sleep 3000;
+		mapannounce "bat_t02", "O reforços chegaram, e o Exército de Croix falhou em destruir o Pavilhão de Comando do Posto Avançado de Guillaume!",bc_map,"0xFFCE00";
+	}
+	else {
+		stopnpctimer;
+		initnpctimer;
+	}
+	end;
+}
+
+bat_t02,1,18,3	script	heating_time#bat_t02_a	CLEAR_NPC,{
+OnInit:
+	stopnpctimer;
+	end;
+
+OnEnable:
+	initnpctimer;
+	bg_set_respawn $@AssaultBG2_id1, 84, 316;
+	bg_set_respawn $@AssaultBG2_id2, 236, 316;
+	bg_digit_timer $@AssaultBG2_id1, 0;
+	bg_digit_timer $@AssaultBG2_id2, 0;
+	end;
+	
+OnStop:
+	donpcevent "countdown#bat_t02_a::OnStop";
+	stopnpctimer;
+	end;
+	
+OnTimer10000:
+	mapannounce "bat_t02", "Aproveitem o tempo de aquecimento para se prepararem para a Batalha!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer20000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 10 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer25000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 5 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer26000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 4 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer27000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 3 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer28000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 2 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer29000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 1 segundo!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer30000:
+	set $@AssaultBG2_CroixTimer, gettimetick(2);
+	bg_set_respawn $@AssaultBG2_id1, 23, 189;
+	bg_set_respawn $@AssaultBG2_id2, 77, 90;
+	bg_warp $@AssaultBG2_id1, "bat_t02", 23, 189;
+	bg_warp $@AssaultBG2_id2, "bat_t02", 77, 90;
+	bg_digit_timer $@AssaultBG2_id1, (60*$@AssaultBG2_TIMER);
+	bg_digit_timer $@AssaultBG2_id2, (60*$@AssaultBG2_TIMER);
+	end;
+	
+OnTimer32000:
+	donpcevent "time_event#bat_t02_a::OnEnable";
+	donpcevent "countdown#bat_t02_a::OnEnable";
+	end;
+}
+
+bat_t02,1,19,3	script	time_event#bat_t02_b	CLEAR_NPC,{
+OnInit:
+	stopnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	set .Assault_Timer, 0;
+	initnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+	
+OnTimer60000:
+	set .Assault_Timer, .Assault_Timer+1;
+	if( .Assault_Timer >= $@AssaultBG2_TIMER ) {
+		donpcevent "start#bat_t02::OnFinish";
+		mapannounce "bat_t02", "O reforços chegaram, e o Exército de Guillaume falhou em destruir o Pavilhão de Comando do Posto Avançado de Croix!",bc_map,"0xFFCE00";
+	}
+	else {
+		stopnpctimer;
+		initnpctimer;
+	}
+	end;
+}
+
+bat_t02,1,20,3	script	heating_time#bat_t02_b	CLEAR_NPC,{
+OnInit:
+	stopnpctimer;
+	end;
+
+OnEnable:
+	initnpctimer;
+	bg_set_respawn $@AssaultBG2_id1, 84, 316;
+	bg_set_respawn $@AssaultBG2_id2, 236, 316;
+	end;
+	
+OnStop:
+	stopnpctimer;
+	donpcevent "countdown#bat_t02_b::OnStop";
+	end;
+	
+OnTimer10000:
+	mapannounce "bat_t02", "Aproveitem o tempo de aquecimento para se prepararem para a Batalha!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer20000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 10 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer25000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 5 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer26000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 4 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer27000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 3 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer28000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 2 segundos!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer29000:
+	mapannounce "bat_t02", "O tempo de aquecimento irá encerrar em 1 segundo!",bc_map,"0x00FF00";
+	end;
+	
+OnTimer30000:
+	set $@AssaultBG2_GuillTimer, gettimetick(2);
+	bg_set_respawn $@AssaultBG2_id1, 248, 87;
+	bg_set_respawn $@AssaultBG2_id2, 195, 188;
+	bg_warp $@AssaultBG2_id1, "bat_t02", 248, 87;
+	bg_warp $@AssaultBG2_id2, "bat_t02", 195, 188;
+	bg_digit_timer $@AssaultBG2_id1, (60*$@AssaultBG2_TIMER);
+	bg_digit_timer $@AssaultBG2_id2, (60*$@AssaultBG2_TIMER);
+	end;
+	
+OnTimer32000:
+	donpcevent "time_event#bat_t02_b::OnEnable";
+	donpcevent "countdown#bat_t02_b::OnEnable";
+	end;
+}
+
+-	script	start#bat_t02_Out	FAKE_NPC,{
+	end;
+
+OnBegin:
+	initnpctimer;
+	end;
+	
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "bat_t02", "Por favor fale com o Tenente para sair do campo de batalha.",bc_map,"0x00ff00";
+	end;
+
+OnTimer3000:
+	mapannounce "bat_t02", "Em 30 segundos, o Tenente irá dispersar o grupamento.",bc_map,"0x00ff00";
+	end;
+
+OnTimer5000:
+	mapannounce "bat_t02", "Fale com o Tenente para sair do campo de batalha imediatamente. Por favor, tenha cuidado.",bc_map,"0x00ff00";
+	end;
+
+OnTimer55000:
+	mapannounce "bat_t02", "Você será enviado de volta.",bc_map,"0x00ff00";
+	end;
+
+OnTimer60000:
+	stopnpctimer;
+	bg_kick_team $@AssaultBG2_id1;
+	bg_kick_team $@AssaultBG2_id2;
+	donpcevent "start#bat_t02::OnReset";
+	mapwarp "bat_t02","bat_room",154,150;
+	maprespawnguildid "bat_t02",0,3; // Just in case someone else
+	end;
+}
+
+// Bandeiras
+// -----------------------------------------------------------------
+bat_t02,53,193,2	script	Exército de Guillaume#t02_01	GUILD_FLAG,{
+	end;
+
+OnBatT02Emblem:
+	bg_set_npc $@AssaultBG2_id1;
+	end;
+}
+
+bat_t02,53,184,2	duplicate(Exército de Guillaume#t02_01)	Exército de Guillaume#t02_02	GUILD_FLAG
+bat_t02,89,196,3	duplicate(Exército de Guillaume#t02_01)	Exército de Guillaume#t02_03	GUILD_FLAG
+bat_t02,66,152,4	duplicate(Exército de Guillaume#t02_01)	Exército de Guillaume#t02_04	GUILD_FLAG
+bat_t02,65,112,4	duplicate(Exército de Guillaume#t02_01)	Exército de Guillaume#t02_05	GUILD_FLAG
+bat_t02,90,113,4	duplicate(Exército de Guillaume#t02_01)	Exército de Guillaume#t02_06	GUILD_FLAG
+bat_t02,67,236,4	duplicate(Exército de Guillaume#t02_01)	Exército de Guillaume#t02_07	GUILD_FLAG
+bat_t02,89,236,4	duplicate(Exército de Guillaume#t02_01)	Exército de Guillaume#t02_08	GUILD_FLAG
+
+bat_t02,224,192,2	script	Exército de Croix#t02_01	GUILD_FLAG,{
+	end;
+
+OnBatT02Emblem:
+	bg_set_npc $@AssaultBG2_id2;
+	end;
+}
+
+bat_t02,224,182,2	duplicate(Exército de Croix#t02_01)	Exército de Croix#t02_02	GUILD_FLAG
+bat_t02,265,196,3	duplicate(Exército de Croix#t02_01)	Exército de Croix#t02_03	GUILD_FLAG
+bat_t02,238,151,4	duplicate(Exército de Croix#t02_01)	Exército de Croix#t02_04	GUILD_FLAG
+bat_t02,240,111,4	duplicate(Exército de Croix#t02_01)	Exército de Croix#t02_05	GUILD_FLAG
+bat_t02,259,111,4	duplicate(Exército de Croix#t02_01)	Exército de Croix#t02_06	GUILD_FLAG
+bat_t02,239,235,4	duplicate(Exército de Croix#t02_01)	Exército de Croix#t02_07	GUILD_FLAG
+bat_t02,260,235,4	duplicate(Exército de Croix#t02_01)	Exército de Croix#t02_08	GUILD_FLAG
+
+
+// Remover Jogadores da Arena.
+// -------------------------------------------------------
+bat_t02,1,21,3	script	Liberar Todos#t02	4_DOG01,{
+	set .@i, callfunc("F_GM_NPC",1854,0);
+	if (.@i == -1) {
+		mes "Cancelado.";
+		close;
+	} else if (.@i == 0) {
+		end;
+	} else {
+		mes "Precisa de minha ajuda?";
+		next;
+		switch(select("Liberar todos.:Cancelar.")) {
+		case 1:
+			mes "Tchau.";
+			close2;
+			mapwarp "bat_t02","bat_room",154,150;
+			end;
+		case 2:
+			mes "Cancelado.";
+			close;
+		}
+	}
+}
+
+// Recompensas
+// -------------------------------------------------------
+bat_t02,87,319,3	script	Tenente#t02_a	4_M_KY_HEAD,{
+	mes "[Axl Rose]";
+	if( getcharid(4) == $@AssaultBG2_id2 )
+	{
+		mes "O que?? Uns dos soldados do Exército de Croix está fazendo no acampamento de Guillaume!!";
+		mes "Um soldado irá te conduzir ao seu grupamento.";
+		close2;
+		warp "bat_t02", 236, 316;
+		end;
+	}
+	else if( getcharid(4) == $@AssaultBG2_id1 )
+	{
+		if( $@AssaultBG2_Victory == 0 )
+		{
+			mes "A Batalha ainda não foi definida soldado, vá agora mesmo ao seu posto, o Exército de Guillaume precisa de você!";
+			close;
+		}
+		else if( $@AssaultBG2_Victory == 1 )
+		{
+			mes "Abençoado o Exército de Guillaume!";
+			mes strcharinfo(0) + ", vamos aproveitar nossa gloriosa vitória!";
+		}
+		else if( $@AssaultBG2_Victory == 2 ) {
+			mes "Você perdeu, mas se dedicou a esta batalha por Guillaume Marollo!";
+			mes "Considere esta derrota como uma lição, e na próxima vez você sairemos vitoriosos.";
+		}
+		else {
+			mes "Esta de fato foi uma grande Batalha!";
+			mes "Nem todos podem sair vitoriosos, considere este empate como uma lição e na próxima vez sairemos vitoriosos.";
+		}
+		close2;
+		bg_leave;
+	}
+	else {
+		mes "Um Cívil em nosso campo de batalha?";
+		mes "Iremos te conduzir a um local seguro!";
+		close2;
+	}
+	warp "prontera", 156, 176;
+	end;
+
+OnInit:
+	disablenpc "Tenente#t02_a";
+	end;
+}
+
+bat_t02,239,319,3	script	Tenente#t02_b	4_M_CRU_HEAD,{
+	mes "[Swandery]";
+	if( getcharid(4) == $@AssaultBG2_id1 )
+	{
+		mes "O que?? Uns dos soldados do Exército de Guillaume está fazendo no acampamento de Croix!!";
+		mes "Um soldado irá te conduzir ao seu grupamento.";
+		close2;
+		warp "bat_t02", 84, 316;
+		end;
+	}
+	else if( getcharid(4) == $@AssaultBG2_id2 )
+	{
+		if( $@AssaultBG2_Victory == 0 )
+		{
+			mes "A Batalha ainda não foi definida soldado, vá agora mesmo ao seu posto, o Exército de Croix precisa de você!";
+			close;
+		}
+		else if( $@AssaultBG2_Victory == 1 ) {
+			mes "Ah " + strcharinfo(0) + ", não fique triste.";
+			mes "Mesmo que não ganhamos, fizemos o nosso melhor.";
+			mes "Não esqueça desta batalha, ganharemos a próxima.";
+		}
+		else if( $@AssaultBG2_Victory == 2 )
+		{
+			mes "Abençoado o Exército de Croix!";
+			mes strcharinfo(0) + ", vamos aproveitar nossa gloriosa vitória!";
+		}
+		else {
+			mes "Esta de fato foi uma grande Batalha!";
+			mes "Nem todos podem sair vitoriosos, não se esqueça desta batalha!";
+			mes "Ganharemos a próxima.";
+		}
+		close2;
+		bg_leave;
+	}
+	else {
+		mes "Um Cívil em nosso campo de batalha?";
+		mes "Iremos te conduzir a um local seguro!";
+		close2;
+	}
+	warp "prontera", 156, 176;
+	end;
+
+OnInit:
+	disablenpc "Tenente#t02_b";
+	end;
+}
+
+// MapFlags
+// -----------------------------------------------------------------
+bat_t02	mapflag	nowarp
+bat_t02	mapflag	nowarpto
+bat_t02	mapflag	nomemo
+bat_t02	mapflag	noteleport
+bat_t02	mapflag	nosave
+bat_t02	mapflag	noreturn
+bat_t02	mapflag	nobranch
+bat_t02	mapflag	nopenalty
+bat_t02	mapflag	battleground	2

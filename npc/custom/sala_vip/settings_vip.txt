@@ -1,0 +1,25 @@
+-	script	vip_timer	-1,{
+OnPCLoginEvent:
+	if( vip_status(1) ){
+		dispbottom "Your VIP expires on : "+vip_status(2);
+		dispbottom "Time left : "+vip_status(3);
+		end;
+		}
+	}
+
+
+prontera,145,138,0	script	entrada_vip	45,1,1,{
+if( getgmlevel() < 1 ) {
+	dispbottom "Só é permitido a entrada para VIPs.";
+	dispbottom "Para mais informações veja o nosso fórum.";
+	dispbottom "Fórum: http://www.brasilro.com.br/doar";
+	end;	
+} else {
+	dispbottom "Obrigado por usar os serviços VIP da Coop. Kafra.";
+	warp "prt_in", 227, 19; end;
+	}
+}
+vip,76,51,0	script	saida_vip	45,1,1,{
+	warp "prontera", 167, 168;
+	end;
+}

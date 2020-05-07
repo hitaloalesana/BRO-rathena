@@ -1,0 +1,42 @@
+prt_in,226,48,4	script	Elemental VIP	10126,{
+	//------------------------------------------
+	set(.@nome$,"^0099FF[ "+ strnpcinfo(1) +" ]^000000");
+
+	//------------------------------------------
+
+	mes .@nome$;
+	mes "Que tal encantar sua arma com algum elemento?";
+	next;
+	switch(select("^00CC00•^000000 Fogo.","^00CC00•^000000 Água.","^00CC00•^000000 Vento.","^00CC00•^000000 Terra.","^00CC00•^000000 Saír.")){
+	case 1:
+		sc_start SC_FIREWEAPON, 1800000, 0;
+		sc_end SC_WATERWEAPON;
+		sc_end SC_WINDWEAPON;
+		sc_end SC_EARTHWEAPON;
+		specialeffect2 255;
+		close;
+	case 2:
+		sc_start SC_WATERWEAPON, 1800000, 0;
+		sc_end SC_FIREWEAPON;
+		sc_end SC_WINDWEAPON;
+		sc_end SC_EARTHWEAPON;
+		specialeffect2 256;
+		close;
+	case 3:
+		sc_start SC_WINDWEAPON, 1800000, 0;
+		sc_end SC_FIREWEAPON;
+		sc_end SC_WATERWEAPON;
+		sc_end SC_EARTHWEAPON;
+		specialeffect2 257;
+		break;
+	case 4:
+		sc_start SC_EARTHWEAPON, 1800000, 0;
+		sc_end SC_FIREWEAPON;
+		sc_end SC_WATERWEAPON;
+		sc_end SC_WINDWEAPON;
+		specialeffect2 258;
+		close;
+	case 5:
+		close;
+		}
+}

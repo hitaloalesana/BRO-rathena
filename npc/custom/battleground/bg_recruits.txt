@@ -1,0 +1,47 @@
+/*.-----------------------------------------------------------------.
+  .    ____                          __                             .
+  .   /\  _`\                       /\ \__  __                      .
+  .   \ \ \/\_\  _ __    __     __  \ \ ,_\/\_\  __  __     __      .
+  .    \ \ \/_/_/\`'__\/'__`\ /'__`\ \ \ \/\/\ \/\ \/\ \  /'__`\    .
+  .     \ \ \s\ \ \ \//\  __//\ \d\.\_\ \ \_\ \ \ \ \_/ |/\  __/    .
+  .      \ \____/\ \_\\ \____\ \__/.\_\\ \__\\ \_\ \___/ \ \____\   .
+  .       \/___/  \/_/ \/____/\/__/\/_/ \/__/ \/_/\/__/   \/____/   .
+  .                                                                 .
+  .          2014~2017 © Creative Services and Development          .
+  .                      www.creativesd.com.br                      .
+  .-----------------------------------------------------------------.
+  . Script:                                                         .
+  .    Duplicatas das Recrutadoras                                  .
+  .-----------------------------------------------------------------.
+  . Autor: Romulo SM (sbk_)                            Versão: 1.0  .
+  .                                                                 .
+  . Compátivel:	eAthena e derivações.                    	        .
+  *-----------------------------------------------------------------*/
+  
+// Cidades
+prontera,139,187,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_prt	4_F_JOB_KNIGHT
+morocc,155,82,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_moc	4_F_JOB_KNIGHT
+geffen,128,69,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_gef	4_F_JOB_KNIGHT
+payon,165,231,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_pay	4_F_JOB_KNIGHT
+alberta,184,143,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_alb	4_F_JOB_KNIGHT
+izlude,125,148,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_izl	4_F_JOB_KNIGHT
+aldebaran,137,119,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_ald	4_F_JOB_KNIGHT
+xmas,142,138,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_xms	4_F_JOB_KNIGHT
+comodo,217,148,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_cmd	4_F_JOB_KNIGHT
+yuno,162,47,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_yun	4_F_JOB_KNIGHT
+amatsu,200,79,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_ama	4_F_JOB_KNIGHT
+gonryun,168,118,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_gon	4_F_JOB_KNIGHT
+umbala,85,143,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_umb	4_F_JOB_KNIGHT
+niflheim,127,158,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_nif	4_F_JOB_KNIGHT
+louyang,231,100,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_lyg	4_F_JOB_KNIGHT
+jawaii,239,107,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_jaw	4_F_JOB_KNIGHT
+ayothaya,180,130,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_ayo	4_F_JOB_KNIGHT
+einbroch,52,203,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_ein1	4_F_JOB_KNIGHT
+lighthalzen,169,104,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_lhz	4_F_JOB_KNIGHT
+einbech,84,125,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_ein2	4_F_JOB_KNIGHT
+rachel,137,115,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_rac	4_F_JOB_KNIGHT
+veins,203,132,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_vei	4_F_JOB_KNIGHT
+moscovia,236,195,4	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_mos	4_F_JOB_KNIGHT
+
+// Sala de Espera do Campo de Batalhas
+bat_room,160,149,3	duplicate(BattleGround#cmd_register)	Recrutadora das Batalhas#bg_bat	4_F_JOB_KNIGHT

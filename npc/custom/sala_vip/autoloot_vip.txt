@@ -1,0 +1,82 @@
+prt_in,244,25,4	script	Autoloot VIP	803,{
+	function autoloot_setting;
+	function aloot_setid;
+
+	autoloot_setting();
+	end;
+
+function	autoloot_setting	{
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Está disponível até 10 slots para armazenar autoloots diferentes.";
+	next;
+	explode(.@alootid$,alootid$,":");
+	.@menu$ += "^00CC00•^000000 ^FF0000Fechar.^000000"+":";
+	for(.@i = 0; .@i < 10; .@i++){
+		if(atoi(.@alootid$[.@i]) == 0){
+			.@menu$ += "^00CC00•^000000 ^777777(^228B22"+(.@i+1)+"^000000^777777) Slot Vazio.^000000" + ":";
+		} else {
+			.@menu$ += "^00CC00•^000000 ^777777(^000000^00FF00"+atoi(.@alootid$[.@i])+"^777777)^000000 ^1E90FF"+getitemname(atoi(.@alootid$[.@i]))+".^000000" + ":";
+		}
+	}
+	.@s = select(.@menu$);
+	switch(.@s){
+		case 1: end;
+		default:
+			.@s = (.@s-2);
+			if(select("^00CC00•^000000 Selecionar Slot.",(atoi(.@alootid$[.@s]) > 0)?"Resetar Slot.":"") == 1){
+				.@item_id = aloot_setid(.@s);
+				.@alootid$[.@s] = .@item_id;
+				alootid$ = implode(.@alootid$,":");
+				mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+				mes "ID do item: "+.@item_id;
+				mes "Adicionado com sucesso ao slot: "+(.@s+1);
+				next;
+				autoloot_setting();
+			} else {
+				.@alootid$[.@s] = 0;
+				alootid$ = implode(.@alootid$,":");
+				mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+				mes "Slot "+(.@s+1)+" resetado.";
+				next;
+				autoloot_setting();
+			}
+	}
+	end;
+}
+
+function	aloot_setid	{
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Defina o ID do item do slot ^0000FFSlot "+(getarg(0)+1)+"^000000";
+	next;
+	input .@temporary_id;
+	.@item_name$ = getitemname(.@temporary_id);
+	if(.@temporary_id < 501 || .@item_name$ == "null"){
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+		mes "Defina um ID válido.";
+		next;
+		aloot_setid(getarg(0));
+	}
+	explode(.@alootid$,alootid$,":");
+	for(.@i = 0; .@i < 10; .@i++){
+		if(atoi(.@alootid$[.@i]) == .@temporary_id){
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Este item já está configurado em algum dos seus slots.";
+			next;
+			autoloot_setting();
+		}
+		continue;
+	}
+	return .@temporary_id;
+}
+OnPCLoginEvent:
+	explode(.@alootid$,alootid$,":");
+	for(.@i = 0; .@i < getarraysize(.@alootid$); .@i++){
+		if(atoi(.@alootid$[.@i]) == 0){
+			continue;
+		}else{
+			useatcmd "@alootid +"+atoi(.@alootid$[.@i]);
+		}
+	}
+	end;
+	}
+}

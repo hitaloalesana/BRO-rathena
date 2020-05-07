@@ -1,0 +1,25 @@
+prt_in,221,35,4	script	Aluguel VIP	50,{
+	//------------------------------------------
+	// Visuais Rentais
+	setarray .@rent_id[0], 607, 608, 512;
+
+	//------------------------------------------
+	set(.@nome$,"^0099FF[ "+ strnpcinfo(1) +" ]^000000");
+
+	//------------------------------------------
+
+	mes .@nome$;
+	if( #delay_rent > gettimetick(2) ){
+		mes "Você ainda deve aguardar: ^EEAD0E"+ callfunc("Time2Str", #delay_rent) +"^000000.";
+		close;
+	}
+	mes "Todo usuário VIP possuí disponível ^EEAD0E1x Visual Aleatório^000000 por dia com duração de ^FF000024 horas^000000 na sua conta.";
+	mes "^777777- Duração do Visual^000000: ^00CC0024 Horas.^000000";
+	next;
+	if( select("^00CC00•^000000 Pegar Visual.:^00CC00•^000000 Saír.") == 1 ) close;
+		setarray .@rent_id[0], 607, 608, 512;
+		rentitem .@rent_id[ rand( getarraysize(.@rent_id) ) ], 86400;
+		set #delay_rent, gettimetick(2) + 86400;
+		dispbottom "Visual entregue por um período 24 horas.", 0x00FF00;
+		end;
+}

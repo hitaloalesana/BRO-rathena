@@ -1,0 +1,310 @@
+/*.-----------------------------------------------------------------.
+  .    ____                          __                             .
+  .   /\  _`\                       /\ \__  __                      .
+  .   \ \ \/\_\  _ __    __     __  \ \ ,_\/\_\  __  __     __      .
+  .    \ \ \/_/_/\`'__\/'__`\ /'__`\ \ \ \/\/\ \/\ \/\ \  /'__`\    .
+  .     \ \ \s\ \ \ \//\  __//\ \d\.\_\ \ \_\ \ \ \ \_/ |/\  __/    .
+  .      \ \____/\ \_\\ \____\ \__/.\_\\ \__\\ \_\ \___/ \ \____\   .
+  .       \/___/  \/_/ \/____/\/__/\/_/ \/__/ \/_/\/__/   \/____/   .
+  .                                                                 .
+  .          2014~2017 © Creative Services and Development          .
+  .                      www.creativesd.com.br                      .
+  .-----------------------------------------------------------------.
+  . Script:                                                         .
+  .    Funções Globais                                              .
+  .-----------------------------------------------------------------.
+  . Autor: Romulo SM (sbk_)                            Versão: 1.0  .
+  .                                                                 .
+  . Compátivel:	eAthena e derivações.                    	        .
+  .-----------------------------------------------------------------.
+  . Descrição:                                                      .
+  .    Funções utilizadas pela Battleground Warfare para agilizar   .
+  .    processos ou obter informações.                              .
+  *-----------------------------------------------------------------*/
+// bg_getarenainfo(<bg_unique_id>,"<column_query")
+function	script	bg_getarenainfo	{
+	query_sql "SELECT `" + getarg(1) + "` FROM `bg_arena` WHERE `bg_id`='" + getarg(0) + "'", .@query$;
+	return !getarraysize(.@query$)?-1:.@query$[0];
+}
+
+// bg_getgroupinfo(<group_unique_id>,"<column_query>")
+function	script	bg_getgroupinfo	{
+	query_sql "SELECT `" + getarg(1) + "` FROM `bg_groups` WHERE `group_id`='" + getarg(0) + "'", .@query$;	
+	return !getarraysize(.@query$)?-1:.@query$[0];
+}
+
+// bg_countarena(<group_id>)
+function	script	bg_countarena	{
+	query_sql "SELECT `bg_id` FROM `bg_arena` WHERE `group_id`='" + getarg(0) + "'", .@bg_id;
+	return getarraysize(.@bg_id);
+}
+
+// bg_getcharname(<char_id|account_id>)
+//
+//	Pega o nome do jogador pelo id da conta ou do personagem.
+//
+function	script	bg_getcharname	{
+	query_sql "SELECT `name` FROM `char` WHERE `char_id`='" + getarg(0) + "' OR (`account_id`='" + getarg(0) + "' AND `online`='1')", .@name$;
+	return (getarraysize(.@name$)?.@name$[0]:0);
+}
+
+// bg_getcharinfo(<char_id>, "info")
+function	script	bg_getcharinfo	{
+	set .@query$, sprintf("SELECT %s FROM `char` WHERE `char_id`='%d'", getarg(1), getarg(0));
+	query_sql .@query$, .@value$;
+	return !getarraysize(.@query$) ? -1 : .@value$[0];
+}
+
+// bg_checkexistarena(<bg_unique_id>)
+function	script	bg_exist	{
+	query_sql "SELECT COUNT(bg_id) FROM `bg_arena` WHERE `bg_id`='" + getarg(0) + "'", .@exist;
+	return .@exist;
+}
+
+// bg_getarenaid(<bg_unique_id>);
+function	script	bg_getarenaid	{
+	query_sql "SELECT `bg_id`, `team1_var`, `team2_var` FROM `bg_arena`", .@bg_id, .@team1_var$, .@team2_var$;
+	
+	if( !getarraysize(.@bg_id) )
+		return false;
+	
+	for( set .@i,0; .@i < getarraysize(.@bg_id); set .@i,.@i+1 )
+	{
+		if( getd(.@team2_var$[.@i]) == getarg(0) || getd(.@team2_var$[.@i]) == getarg(0) )
+			return .@bg_id[.@i];
+	}
+	return false;
+}
+
+// bg_checkchangearena()
+function	script	bg_checkchangearena	{
+	if( !$BG_LAST_ARENA )
+		return true;
+		
+	set .@npc_var_event$, callfunc("bg_getarenainfo", $BG_LAST_ARENA, "npc_var_event");
+	
+	if( .@npc_var_event$ == "-1" )
+		return true;
+		
+	set .@var_lock, callfunc("bg_getarenainfo", $BG_LAST_ARENA, "npc_var_event_lock");
+	if( $BG_LAST_ARENA && .@var_event <= 0 )
+		return true;
+		
+	return false;
+}
+
+// Exibição de Informações da Arena.
+//
+//	* bg_info_npc(<bg_unique_id>, "DisplayName");
+//
+function	script	bg_info_npc	{
+	mes getarg(1);
+	mes "^0000FF- Min. de Jogadores:^000000 " + callfunc("bg_getarenainfo", getarg(0), "min_player");
+	mes "^0000FF- Max. de Jogadores:^000000 " + callfunc("bg_getarenainfo", getarg(0), "max_player");
+	mes "^0000FF- Nível Requerido:^000000 " + callfunc("bg_getarenainfo", getarg(0), "base_level");
+	if( .@score_round[.@choose2] )
+		mes "^0000FFRodadas:^000000 " + callfunc("bg_getarenainfo", getarg(0), "score_round");
+	mes "^0000FF- Tempo:^000000 " + callfunc("bg_getarenainfo", getarg(0), "event_timer") + " minutos";
+	next;
+	if( select("^00CC00•^000000 ^0000FFVer Recompensas.^000000", "^00CC00•^000000 ^FF0000Continuar.^000000") == 2 )
+		return;
+	
+	deletearray .@object_1$, getarraysize(.@object_1$);
+	deletearray .@object_2$, getarraysize(.@object_2$);
+	deletearray .@object_3$, getarraysize(.@object_3$);
+	query_sql "SELECT `object`, `value`, `type`, `rate`, `desc` FROM `bg_rewards` WHERE `bg_id`='" + getarg(0) + "' AND `for`='0' ORDER BY `type`", .@object_1$, .@obj_value_1, .@obj_type_1, .@obj_rate_1, .@obj_desc_1$;
+	query_sql "SELECT `object`, `value`, `type`, `rate`, `desc` FROM `bg_rewards` WHERE `bg_id`='" + getarg(0) + "' AND `for`='1' ORDER BY `type`", .@object_2$, .@obj_value_2, .@obj_type_2, .@obj_rate_2, .@obj_desc_2$;
+	query_sql "SELECT `object`, `value`, `type`, `rate`, `desc` FROM `bg_rewards` WHERE `bg_id`='" + getarg(0) + "' AND `for`='2' ORDER BY `type`", .@object_3$, .@obj_value_3, .@obj_type_3, .@obj_rate_3, .@obj_desc_3$;
+	mes getarg(1);
+	if( !getarraysize(.@object_1$) && !getarraysize(.@object_2$) && !getarraysize(.@object_3) ){
+		mes "Não há recompensas para ser exibida.";
+		next;
+		return;
+	}
+	mes "Selecione a recompensa que deseja visualizar.";
+	while(1){
+		next;
+		set .@c, select("^00CC00•^000000 ^FF0000Continuar.^000000", (getarraysize(.@object_1$)?"^00CC00•^000000 Recompensa por Vitória.":""), (getarraysize(.@object_2$)?"^00CC00•^000000 Recompensa por Derrota.":""), (getarraysize(.@object_3$)?"^00CC00•^000000 Recompensa por Empate.":""))-1;
+		if( !.@c )
+			return;
+
+		mes getarg(1);
+		for( set .@i,0; .@i < getarraysize(getd(".@object_"+.@c+"$")); set .@i,.@i+1 ){
+			set .@obj$, getd(".@object_"+.@c+"$[" + .@i + "]");
+			set .@type, getd(".@obj_type_"+.@c+"[" + .@i + "]");
+			set .@value, getd(".@obj_value_"+.@c+"[" + .@i + "]");
+			set .@desc$, getd(".@obj_desc_"+.@c+"$[" + .@i + "]");
+			set .@rate, getd(".@obj_rate_"+.@c+"[" + .@i + "]");
+			
+			switch(.@type){
+				case 0:
+					set .@name$, getitemname(atoi(.@obj$));
+					break;
+				case 1:
+					set .@name$, "Zeny";
+					break;
+				case 2:
+					set .@name$, "Pontos de Cash";
+					break;
+				case 3:
+					set .@name$, "Pontos Kafra";
+					break;
+				case 4:
+					set .@name$, "Experiência de Base";
+					break;
+				case 5:
+					set .@name$, "Experiência de Classe";
+					break;
+				case 6:
+					set .@name$, "Nível de Base";
+					break;
+				case 7:
+					set .@name$, "Nível de Classe";
+					break;
+				case 8:
+					set .@n, atoi(.@obj$);
+					switch(.@n){
+						case 0:
+							set .@name$, "Bônus de Força";
+							break;
+						case 1:
+							set .@name$, "Bônus de Agilidade";
+							break;
+						case 2:
+							set .@name$, "Bônus de Vitalidade";
+							break;
+						case 3:
+							set .@name$, "Bônus de Inteligência";
+							break;
+						case 4:
+							set .@name$, "Bônus de Destreza";
+							break;
+						case 5:
+							set .@name$, "Bônus de Sorte";
+							break;
+						case 6:
+							continue;
+							break;
+					}
+					break;
+				case 9:
+				case 10:
+					set .@name$, .@desc$;
+					break;
+			}
+			
+			if( .@name$ == "" ){
+				if( .@desc$ == "" )
+					continue;
+				else
+					set .@name$, .@desc;
+			}
+			
+			set .@rate, .@rate * getbattleflag("bg_reward_rate") / 10000;
+			mes "^0000FF" + .@value + "x " + .@name$ + " ^FF0000(" + .@rate + "%)^000000";
+		}
+	}
+	return;
+}
+
+// Entregua a recompensa aos membros e computa o ranking.
+//	* bg_finish(<bg_unique_id>,<team_id1>,<team_id2>,<flag_victory>,<team1_score>,<team2_score>)
+function	script	bg_finish	{
+	// Guillaume
+	deletearray .@bg_members_cid;
+	bg_get_team getarg(1);
+	for( set .@n,0; .@n < .@bg_members_count; set .@n, .@n + 1 ) {
+		bg_reward getarg(0), (getarg(3)==1?0:(getarg(3)==2?1:2)), .@bg_members_cid[.@n];
+		callfunc "bg_ranking", .@bg_members_cid[.@n], getarg(0), (getarg(3)==1?1:(getarg(3)==2?0:2)), 0, 1, getarg(4), getarg(5);
+	}
+	
+	// Croix
+	deletearray .@bg_members_cid;
+	bg_get_team getarg(2);
+	for( set .@n,0; .@n < .@bg_members_count; set .@n, .@n + 1 ) {
+		bg_reward getarg(0), (getarg(3)==2?0:(getarg(3)==1?1:2)), .@bg_members_cid[.@n];
+		callfunc "bg_ranking", .@bg_members_cid[.@n], getarg(0), (getarg(3)==2?1:(getarg(3)==1?0:2)), 1, 1, getarg(4), getarg(5);
+	}
+	
+	return;
+}
+
+// Faz a computa no Ranking
+//	* bg_ranking(<char_id>,<bg_unique_id>,<type>,<army>,<amount>,<guill_score>,<croix_score>);
+//
+//		- type
+//			0: loss
+//			1: wins
+//			2: wo
+//
+//		- army
+//			0: Guillaume
+//			1: Croix
+//
+function	script	bg_ranking	{
+	deletearray .@rnk_chk;
+	query_sql "SELECT COUNT(*) FROM `bg_ranking` WHERE `char_id`='" + getarg(0) + "' AND `bg_id`='" + getarg(1) + "'", .@rnk_chk;
+	
+	if( .@rnk_chk <= 0 )
+		query_sql "INSERT INTO `bg_ranking` (char_id, bg_id) VALUES (" + getarg(0) + ", " + getarg(1) + ")";
+	
+	// Guillaume Ranking
+	if( getarg(3) == 0 ) {
+		if( getarg(2) == 0 )
+			set .@query$, "`loss`=`loss`+'" + getarg(4) + "', `guill_loss`=`guill_loss`+'" + getarg(4) + "'";
+		else if( getarg(2) == 1 )
+			set .@query$, .@query$ + "`wins`=`wins`+'" + getarg(4) + "', `guill_wins`=`guill_wins`+'" + getarg(4) + "'";
+		else
+			set .@query$, .@query$ + "`wo`=`wo`+'" + getarg(4) + "', `guill_wo`=`guill_wo`+'" + getarg(4) + "', `score_wo`=`score_wo`+'" + getarg(5) + "'";
+
+		set .@query$, .@query$ + ", `ration`=`wins`-`loss`, `guill_ration`=`guill_wins`-`guill_loss`, `score_wins`=`score_wins`+'" + getarg(5) + "', `score_loss`=`score_loss`+'" + getarg(6) + "', `score_ration`=`score_wins`-`score_loss`, `guill_score_wins`=`guill_score_wins`+'" + getarg(5) + "', `guill_score_loss`=`guill_score_loss`+'" + getarg(6) + "', `guill_score_ration`=`guill_score_wins`-`guill_score_loss`";
+	}
+	// Croix Ranking
+	else {
+		if( getarg(2) == 0 )
+			set .@query$, "`loss`=`loss`+'" + getarg(4) + "', `croix_loss`=`croix_loss`+'" + getarg(4) + "'";
+		else if( getarg(2) == 1 )
+			set .@query$, .@query$ + "`wins`=`wins`+'" + getarg(4) + "', `croix_wins`=`croix_wins`+'" + getarg(4) + "'";
+		else
+			set .@query$, .@query$ + "`wo`=`wo`+'" + getarg(4) + "', `croix_wo`=`croix_wo`+'" + getarg(4) + "', `score_wo`=`score_wo`+'" + getarg(6) + "'";
+
+		set .@query$, .@query$ + ", `ration`=`wins`-`loss`, `croix_ration`=`croix_wins`-`croix_loss`, `score_wins`=`score_wins`+'" + getarg(6) + "', `score_loss`=`score_loss`+'" + getarg(5) + "', `score_ration`=`score_wins`-`score_loss`, `croix_score_wins`=`croix_score_wins`+'" + getarg(6) + "', `croix_score_loss`=`croix_score_loss`+'" + getarg(5) + "', `croix_score_ration`=`croix_score_wins`-`croix_score_loss`";
+	}
+	
+	setarray .@bindcolumns$[0],	"skill_support_success", "skill_support_fail", "heal_hp", "heal_sp", "item_heal_hp", "item_heal_sp", // 0~5
+								"item_heal", "ammos", "poision_bottle", "fire_bottle", "acid_bottle", "oridecon", // 6~11
+								"elunium", "steel", "emveretarcon", "wooden_block", "stone", // 12~16
+								"yellow_gemstone", "red_gemstone", "blue_gemstone", "kills", "deaths", //17~21
+								"damage_given", "damage_taken", "runestone_kills", "runestone_damage", "runestone_repair", "emperium_kills", //22~26
+								"emperium_damage", "barrier_kills", "barrier_damage", "barrier_repair", "objective_kills", "objective_damage", //27~32
+								"flag_kills", "flag_damage", "flag_capture", "flag_recapture", "cristal_kills", "cristal_damage", //33~38
+								"guard_kills", "guard_deaths", "guard_damage_given", "guard_damage_taken" //39~42
+	;
+	
+	for( set .@i,0; .@i < getarraysize(.@bindcolumns$); set .@i, .@i + 1 )
+	{
+		set .@score, bg_get_score(.@i,getarg(0));
+		if( .@score )
+			set .@query$, .@query$ + ", `" + .@bindcolumns$[.@i] + "`=`" + .@bindcolumns$[.@i] + "`+'" + .@score + "'";
+	}
+	
+	// Ration
+	set .@query$, .@query$ + ", `kd_ration`=`kills`-`deaths`";
+	set .@query$, .@query$ + ", `damage_ration`=`damage_given`-`damage_taken`";
+	set .@query$, .@query$ + ", `guard_ration`=`guard_damage_given`-`guard_damage_taken`";
+	
+	//debugmes "Teste: " + .@query$;
+	query_sql "UPDATE `bg_ranking` SET " + .@query$ + " WHERE `bg_id`='" + getarg(1) + "' AND `char_id`='" + getarg(0) + "'";
+	
+	if( getarg(1) != 0 )
+		return callfunc("bg_ranking", getarg(0), 0, getarg(2), getarg(3), getarg(4), getarg(5), getarg(6));
+
+	return 1;
+}
+
+function	script	bg_clear_score	{
+	for( set .@i,0; .@i <= 43; set .@i, .@i + 1 )
+		bg_set_score .@i, 0;
+
+	return 1;
+}

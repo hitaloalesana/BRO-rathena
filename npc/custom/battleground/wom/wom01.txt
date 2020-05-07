@@ -1,0 +1,797 @@
+/*.-----------------------------------------------------------------.
+  .    ____                          __                             .
+  .   /\  _`\                       /\ \__  __                      .
+  .   \ \ \/\_\  _ __    __     __  \ \ ,_\/\_\  __  __     __      .
+  .    \ \ \/_/_/\`'__\/'__`\ /'__`\ \ \ \/\/\ \/\ \/\ \  /'__`\    .
+  .     \ \ \s\ \ \ \//\  __//\ \d\.\_\ \ \_\ \ \ \ \_/ |/\  __/    .
+  .      \ \____/\ \_\\ \____\ \__/.\_\\ \__\\ \_\ \___/ \ \____\   .
+  .       \/___/  \/_/ \/____/\/__/\/_/ \/__/ \/_/\/__/   \/____/   .
+  .                                                                 .
+  .          2014~2017 © Creative Services and Development          .
+  .                      www.creativesd.com.br                      .
+  .-----------------------------------------------------------------.
+  . Script:                                                         .
+  .    Battleground Warfare (1ª Warrior of Midgard)                 .
+  .-----------------------------------------------------------------.
+  . Autor: Romulo SM (sbk_)                          Versão: 1.0    .
+  .                                                                 .
+  . Compatibilidade:                                                .
+  .    eAthena, rAthena, Hercules e derivações.                     .
+  .-----------------------------------------------------------------.
+  . Descrição:                                                      .
+  .    Arena no qual os Exércitos se confrontam diretamente e após  .
+  .    ser eliminado, em um determinado tempo retorna a batalha.    .                                                 .
+  *-----------------------------------------------------------------*/
+
+// Engine das Batalhas Campais de Warriors Of Midgard
+// -----------------------------------------------------------------
+-	script	start#bat_d01	FAKE_NPC,{
+OnInit:
+	// Removendo Jogadores da Arena
+	mapwarp "bat_d01","bat_room",154,150;
+	
+	// Criando Fila de Espera e Times especifico para Arena
+	queue_create(7, "1ª Warriors Of Midgard", 0, 0, "start#bat_d01::OnReadyCheck");
+	set $@WoM01BG_id1, bg_create_team(13, "bat_d01", 54, 127, 61, 120, 0, "start#bat_d01::OnGuillaumeQuit", "start#bat_d01::OnGuillaumeDie", "");
+	set $@WoM01BG_id2, bg_create_team(14, "bat_d01", 145, 56, 138, 63, 1, "start#bat_d01::OnCroixQuit", "start#bat_d01::OnCroixDie", "");
+	
+	// Expulsando Jogadores
+	bg_kick_team($@WoM01BG_id1, 0);
+	bg_kick_team($@WoM02BG_id2, 0);
+
+	// Íniciando Eventos
+	set .global_announce, 0;
+	set .BlockStatus, 0;
+	setwall "bat_d01",54,122,6,7,0,"batd01wall_a";
+	setwall "bat_d01",55,122,5,7,0,"batd01wall_b";
+	setwall "bat_d01",140,56,6,7,0,"batd01wall_c";
+	setwall "bat_d01",140,57,5,7,0,"batd01wall_d";
+	donpcevent "start#bat_d01::OnReadyCheck";
+	
+	// Seta NPC's de Bandeiras com o Simbolo do Exército.
+	donpcevent "::OnBatD01Emblem";
+	end;
+
+OnReadyCheck:
+	if( .BlockStatus )
+	{
+		sleep 5000;
+		donpcevent "start#bat_d01::OnReadyCheck";
+	}
+		
+	set .BlockStatus, 1;
+
+	set .@min_player, callfunc("bg_getarenainfo", 7, "min_player");
+	set .@max_player, callfunc("bg_getarenainfo", 7, "max_player");
+	set .@a_name$, callfunc("bg_getarenainfo", 7, "arena_name");
+	set .@min_player, (.@min_player*2);
+	
+	if( .@max_player > MAX_BG_MEMBERS )
+	{
+		bg_console "(BG_ID: 7) Maximo de jogadores em uma equipe ultrapassa o limite estabelecido, definindo o maximo de jogadores para " + MAX_BG_MEMBERS + ".";
+		set .@max_player, MAX_BG_MEMBERS;
+	}
+	
+	queue_get_players 7;
+	set .@playlist_team1, bg_team_size($@WoM01BG_id1);
+	set .@playlist_team2, bg_team_size($@WoM01BG_id2);
+	if( !.@queue_count )
+	{
+		set .BlockStatus, 0;
+		end;
+	}
+	else if( $@WoM01BG && $@WoM01BG < 3 && .@queue_count && (.@playlist_team1 < .@max_player || .@playlist_team2 < .@max_player) )
+	{
+		set .@guill, 0;
+		set .@croix, 0;
+		set .@count_g, 0;
+		set .@count_c, 0;
+		
+		// ---------------------------------------------------
+		// -             Igualando os Exércitos              -
+		// ---------------------------------------------------
+		if( .@playlist_team1 < .@playlist_team2 )
+		{
+			set .@guill, .@playlist_team2-.@playlist_team1;
+			for( set .@i,0; .@i < .@guill; set .@i, .@i + 1 )
+			{
+				bg_join_team $@WoM01BG_id1, 7, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@count_g, .@count_g + 1;
+				set $@WoM01_Guillaume_Count, $@WoM01_Guillaume_Count+1;
+				message .@queue_player$[.@i], "Você ingressou no Exército de Guillaume em uma batalha em " + .@a_name$ + " que já está acontecendo, e será teleportado em 10 segundos.";
+			}
+			
+			deletearray .@queue_cid;
+			deletearray .@queue_aid;
+			deletearray .@queue_player$;
+			set .@queue_count, 0;
+			queue_get_players 7; // Reset
+			set .@playlist_team1, bg_team_size($@WoM01BG_id1);
+		}
+		else if( .@playlist_team2 < .@playlist_team1 )
+		{
+			set .@croix, .@playlist_team1-.@playlist_team2;
+			for( set .@i,0; .@i < .@croix; set .@i, .@i + 1 )
+			{
+				bg_join_team $@WoM01BG_id1, 7, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@count_c, .@count_c + 1;
+				set $@WoM01_Croix_Count, $@WoM01_Croix_Count+1;
+				message .@queue_player$[.@i], "Você ingressou no Exército de Croix em uma batalha em " + .@a_name$ + " que já está acontecendo, e será teleportado em 10 segundos.";
+			}
+			
+			deletearray .@queue_cid;
+			deletearray .@queue_aid;
+			deletearray .@queue_player$;
+			set .@queue_count, 0;
+			queue_get_players 7; // Reset
+			set .@playlist_team2, bg_team_size($@WoM01BG_id2);
+		}
+		// ---------------------------------------------------
+		// -            Expandindo os Exércitos              -
+		// ---------------------------------------------------
+		if( .@queue_count && .@playlist_team1 == .@playlist_team2 && .@playlist_team1 < .@max_player && .@playlist_team2 < .@max_player )
+		{
+			set .@guill, .@max_player-.@playlist_team1;
+			set .@croix, .@max_player-.@playlist_team2;
+			
+			if( .@queue_count > (.@guill+.@croix) )
+				set .@queue_count, (.@guill+.@croix);
+				
+			if( .@queue_count%2 )
+				set .@queue_count, .@queue_count-1;
+			
+			set .@size, .@queue_count/2;
+			for( set .@i, 0; .@i < .@size; set .@i, .@i + 1 )
+			{
+				bg_join_team $@WoM01BG_id1, 7, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@players_name_g$[.@count_g], .@queue_player$[.@i];
+				set .@count_g, .@count_g + 1;
+				set $@WoM01_Guillaume_Count, $@WoM01_Guillaume_Count+1;
+			}
+			
+			for( set .@i,.@size; .@i < .@queue_count; set .@i, .@i + 1 )
+			{
+				bg_join_team $@WoM01BG_id2, 7, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				set .@players_name_c$[.@count_c], .@queue_player$[.@i];
+				set .@count_c, .@count_c + 1;
+				set $@WoM01_Croix_Count, $@WoM01_Croix_Count+1;
+			}
+		}
+		
+		if( .@count_c || .@count_g )
+		{
+			announce "[Batalhas Campais]: " + (.@count_c+.@count_g) + " jogadores estão sendo enviados para uma batalha que está acontecendo em " + .@a_name$ + ", os Exércitos foram equilibrados e expandidos.", bc_all, "0xFFCE00";
+			sleep 3000;
+		}
+		
+		deletearray .@queue_cid;
+		deletearray .@queue_aid;
+		deletearray .@queue_player$;
+		set .@queue_count, 0;
+		queue_get_players 7; // Reset
+		
+		set .@queue_size, queue_size(7);
+		set .@team1_size, bg_team_size($@WoM01BG_id1);
+		set .@team2_size, bg_team_size($@WoM01BG_id2);
+		
+		if( .@team1_size < .@max_player || .@team2_size < .@max_player )
+		{
+			set .@size, (2*.@max_player)-(.@team1_size+.@team2_size)-.@queue_size;
+			announce "[Batalhas Campais]: Ainda há " + (.@size) + " vagas para uma batalha que está acontecendo em " + .@a_name$ + "!", bc_all, "0xFFCE00";
+		}
+	}
+	else if( $@WoM01BG && !.global_announce && .@queue_count >= .@min_player )
+	{
+		announce "[Batalhas Campais]: A batalha está completa, mas há uma batalha acontecendo em " + .@a_name$ + ", todos jogadores que estão na fila de espera devem aguardar.", bc_all, "0xFFCE00";
+		set .global_announce, 1;
+	}
+	else if( .@queue_count < .@min_player )
+		announce "[Batalhas Campais]: Falta " + (.@min_player-.@queue_count) + " jogadores na batalha em " + .@a_name$ + "!", bc_all, "0xFFCE00";
+	else
+	{
+		// ---------------------------------------------------
+		// -                  Balanceamento                  -
+		// ---------------------------------------------------
+		if( .@queue_count > (.@max_player*2) )
+			set .@queue_count, (.@max_player*2);
+			
+		if( .@queue_count%2 )
+			set .@queue_count, .@queue_count-1;
+			
+		if( .@queue_count >= .@min_player )
+		{
+			set $@WoM01_Croix_Count, 0;
+			set $@WoM01_Guillaume_Count, 0;
+		
+			for( set .@i,0; .@i < .@queue_count; set .@i, .@i + 2 )
+			{
+				// Ingressando no Exército de Guillaume
+				bg_join_team $@WoM01BG_id1, 7, .@queue_aid[.@i];
+				queue_leave 0, .@queue_aid[.@i];
+				message .@queue_player$[.@i], "Você ingressou no Exército de Guillaume, será teleportado em 10 segundos.";
+				
+				// Ingressando no Exército de Croix
+				bg_join_team $@WoM01BG_id2, 7, .@queue_aid[.@i+1];
+				queue_leave 0, .@queue_aid[.@i+1];
+				message .@queue_player$[.@i+1], "Você ingressou no Exército de Croix, será teleportado em 10 segundos.";
+			}
+		}
+		
+		set $@WoM01_Guillaume_Count, 0;
+		set $@WoM01_Croix_Count, 0;
+		bg_set_respawn $@WoM01BG_id1, 52, 129;
+		bg_set_respawn $@WoM01BG_id2, 147, 55;
+		bg_refresh_patent($@WoM01BG_id1);
+		bg_refresh_patent($@WoM01BG_id2);
+		set .global_announce, 0;
+		set $@WoM01BG, 1;
+		announce "[Batalhas Campais]: Ambos os Exércitos, estão completo boa sorte nas batalhas em " + .@a_name$ + ".", bc_all, "0xFFCE00";
+		bg_updatescore "bat_d01",$@WoM01_Guillaume_Count,$@WoM01_Croix_Count;
+		initnpctimer;
+		disablenpc "Oficial WOM#WOM01A";
+		disablenpc "Oficial WOM#WOM01B";
+		donpcevent "BattleGround#queue_main::OnStopTimer";
+		sleep 3000;
+		donpcevent "check#bat_d01::OnStart";
+		
+		if( .@queue_count < (2*.@max_player) )
+		{
+			sleep 3000;
+			set .@count, (2*.@max_player)-.@queue_count;
+			announce "[Batalhas Campais]: Ainda há " + .@queue_count + " vagas nas batalhas em " + .@a_name$ + "!", bc_all, "0xFFCE00";
+		}
+	}
+	set .BlockStatus, 0;
+	end;
+
+OnGuillaumeQuit:
+	callfunc "bg_clear_score", getcharid(0);
+	callfunc "bg_ranking", getcharid(0), 7, 0, 0, 1, 0, 0;
+	if ($@WoM01BG == 2) {
+		set $@WoM01_Croix_Count, $@WoM01_Croix_Count+1;
+		bg_updatescore "bat_d01",$@WoM01_Guillaume_Count,$@WoM01_Croix_Count;
+		set .@score_round, callfunc("bg_getarenainfo", 7, "score_round");
+		if( .@score_round > 0 && $@WoM01_Croix_Count >= .@score_round )
+			donpcevent "start#bat_d01::OnCroixWin";
+	}
+	
+	if( bg_team_size($@WoM01BG_id1) <= 0 )
+		donpcevent "start#bat_d01::OnCroixWin";
+	else
+		donpcevent "start#bat_d01::OnReadyCheck";
+	end;
+	
+OnCroixQuit:
+	callfunc "bg_clear_score", getcharid(0);
+	callfunc "bg_ranking", getcharid(0), 7, 0, 1, 1, 0, 0;
+	if ($@WoM01BG == 2) {
+		set $@WoM01_Guillaume_Count, $@WoM01_Guillaume_Count+1;
+		bg_updatescore "bat_d01",$@WoM01_Guillaume_Count,$@WoM01_Croix_Count;
+		set .@score_round, callfunc("bg_getarenainfo", 7, "score_round");
+		if( .@score_round > 0 && $@WoM01_Guillaume_Count >= .@score_round )
+			donpcevent "start#bat_d01::OnGuillaumeWin";
+	}
+	
+	if( bg_team_size($@WoM01BG_id2) <= 0 )
+		donpcevent "start#bat_d01::OnGuillaumeWin";
+	else
+		donpcevent "start#bat_d01::OnReadyCheck";
+	end;
+	
+OnGuillaumeDie:
+	if ($@WoM01BG == 2) {
+		set $@WoM01_Croix_Count, $@WoM01_Croix_Count+1;
+		bg_updatescore "bat_d01",$@WoM01_Guillaume_Count,$@WoM01_Croix_Count;
+		set .@score_round, callfunc("bg_getarenainfo", 7, "score_round");
+		if( .@score_round > 0 && $@WoM01_Croix_Count >= .@score_round )
+			donpcevent "start#bat_d01::OnCroixWin";
+	}
+	end;
+	
+OnCroixDie:
+	if ($@WoM01BG == 2) {
+		set $@WoM01_Guillaume_Count, $@WoM01_Guillaume_Count+1;
+		bg_updatescore "bat_d01",$@WoM01_Guillaume_Count,$@WoM01_Croix_Count;
+		set .@score_round, callfunc("bg_getarenainfo", 7, "score_round");
+		if( .@score_round > 0 && $@WoM01_Guillaume_Count >= .@score_round )
+			donpcevent "start#bat_d01::OnGuillWin";
+	}
+	end;
+	
+OnGuillaumeWin:
+	set $@WoM01BG, 3;
+	set $@WoM01BG_Victory, 1;
+	
+	// Computa Ranking e faz entrega de recompensas
+	callfunc "bg_finish", 7, $@WoM01BG_id1, $@WoM01BG_id2, $@WoM01BG_Victory, $@WoM01_Guillaume_Count, $@WoM01_Croix_Count;
+	
+	mapannounce "bat_d01", "Guillaume venceu!",bc_map,"0x00ff00";
+	mapannounce "bat_d01", "Parabéns aos membros do Exército de Guillaume.",bc_map,"0x00ff00";
+	mapannounce "bat_d01", "Todos serão movidos para o ponto de início.",bc_map,"0x00ff00";
+	donpcevent "start#bat_d01::OnStop";
+	end;
+
+OnCroixWin:
+	set $@WoM01BG, 3;
+	set $@WoM01BG_Victory, 2;
+	
+	// Computa Ranking e faz entrega de recompensas
+	callfunc "bg_finish", 7, $@WoM01BG_id1, $@WoM01BG_id2, $@WoM01BG_Victory, $@WoM01_Guillaume_Count, $@WoM01_Croix_Count;
+	
+	mapannounce "bat_d01", "Croix venceu!",bc_map,"0x00ff00";
+	mapannounce "bat_d01", "Parabéns aos membros do Exército de Croix.",bc_map,"0x00ff00";
+	mapannounce "bat_d01", "Todos serão movidos para o ponto de início.",bc_map,"0x00ff00";
+	donpcevent "start#bat_d01::OnStop";
+	end;
+
+OnTimer1000:
+	donpcevent "Terapeuta da Batalha#d01_a::OnStop";
+	donpcevent "Terapeuta da Batalha#d01_b::OnStop";
+	mapannounce "bat_d01", "Em 1 minuto, o WOM irá começar.",bc_map,"0x00ff00";
+	end;
+
+OnTimer3000:
+	set .@event_timer, callfunc("bg_getarenainfo",7,"event_timer");
+	mapannounce "bat_d01", "O tempo máximo para uma batalha WOM é de " + .@event_timer + " minutos.",bc_map,"0x00ff00";
+	end;
+
+OnTimer6000:
+	mapannounce "bat_d01", "Por favor, prepare-se para a batalha WOM.",bc_map,"0x00ff00";
+	mapannounce "bat_d01", "Você pode usar encatamentos em seus aliados.",bc_map,"0x00ff00";
+	end;
+
+OnTimer30000:
+	mapannounce "bat_d01", "30 segundos restantes para começar a batalha WOM.",bc_map,"0x00ff00";
+	end;
+
+OnTimer45000:
+	mapannounce "bat_d01", "15 segundos restantes para começar a batalha WOM.",bc_map,"0x00ff00";
+	donpcevent "::OnWoM01One";
+	end;
+
+OnTimer50000:
+	mapannounce "bat_d01", "10 segundos reastantes para começar a batalha WOM.",bc_map,"0x00ff00";
+	donpcevent "::OnWoM01Two";
+	end;
+
+OnTimer55000:
+	mapannounce "bat_d01", "5 segundos restantes para começar a batalha WOM.",bc_map,"0x00ff00";
+	donpcevent "::OnWoM01One";
+	end;
+
+OnTimer59000:
+	mapannounce "bat_d01", "WOM está começando agora.",bc_map,"0x00ff00";
+	donpcevent "::OnWoM01Two";
+	end;
+
+OnTimer61000:
+	set $@WoM01BG, 2;
+	bg_warp $@WoM01BG_id1,"bat_d01",61,120;
+	bg_warp $@WoM01BG_id2,"bat_d01",138,63;
+	bg_set_respawn $@WoM01BG_id1,61,120;
+	bg_set_respawn $@WoM01BG_id2,138,63;
+	donpcevent "Terapeuta da Batalha#d01_a::OnEnable";
+	donpcevent "Terapeuta da Batalha#d01_b::OnEnable";
+	donpcevent "time_event#bat_d01::OnEnable";
+	end;
+
+OnStop:
+	stopnpctimer;
+	sleep 1000;
+	// Warp Teams
+	enablenpc "Oficial WOM#WOM01A";
+	enablenpc "Oficial WOM#WOM01B";
+	bg_warp $@WoM01BG_id1,"bat_d01",53,128;
+	bg_warp $@WoM01BG_id2,"bat_d01",146,55;
+	donpcevent "Terapeuta da Batalha#d01_a::OnStop";
+	donpcevent "Terapeuta da Batalha#d01_b::OnStop";
+	donpcevent "start#bat_d01_Out::OnBegin";
+	donpcevent "time_event#bat_d01::OnStop";
+	end;
+}
+
+bat_d01,56,130,3	script	Terapeuta da Batalha#d01_a	4_F_SISTER,{
+	specialeffect2 EF_HEAL;
+	mes "[Terapeuta da Batalha]";
+	mes "Apenas feche seus olhos";
+	mes "e respire fundo.";
+	mes "Você pode se libertar da dor.";
+	close;
+	end;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	enablenpc "Terapeuta da Batalha#d01_a";
+	end;
+
+OnStop:
+	disablenpc "Terapeuta da Batalha#d01_a";
+	stopnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	end;
+	
+OnTimer26500:
+	donpcevent "Terapeuta da Batalha#d01_a::OnEnable";
+	end;
+}
+
+bat_d01,143,53,7	script	Terapeuta da Batalha#d01_b	4_F_SISTER,{
+	specialeffect2 EF_HEAL;
+	mes "[Terapeuta da Batalha]";
+	mes "Apenas feche seus olhos";
+	mes "e respire fundo.";
+	mes "Você pode se libertar da dor.";
+	close;
+	end;
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnEnable:
+	stopnpctimer;
+	initnpctimer;
+	enablenpc "Terapeuta da Batalha#d01_b";
+	end;
+
+OnStop:
+	disablenpc "Terapeuta da Batalha#d01_b";
+	stopnpctimer;
+	end;
+
+OnTimer25000:
+	specialeffect EF_SANCTUARY;
+	end;
+
+OnTimer26500:
+	donpcevent "Terapeuta da Batalha#d01_b::OnEnable";
+	end;
+}
+
+// Linha de Largada
+//-------------------------------------------------------
+-	script	WOM01::CellEffect3	FAKE_NPC,{
+	end;
+
+OnWoM01One:
+	specialeffect EF_CHANGECOLD;
+	end;
+
+OnWoM01Two:
+	specialeffect EF_CHANGEPOISON;
+	end;
+}
+
+bat_d01,54,124,3	duplicate(CellEffect3)	#RedcellA1-3	HIDDEN_WARP_NPC
+bat_d01,55,124,3	duplicate(CellEffect3)	#RedcellA2-3	HIDDEN_WARP_NPC
+bat_d01,56,124,3	duplicate(CellEffect3)	#RedcellA3-3	HIDDEN_WARP_NPC
+bat_d01,57,124,3	duplicate(CellEffect3)	#RedcellA4-3	HIDDEN_WARP_NPC
+bat_d01,57,125,3	duplicate(CellEffect3)	#RedcellA5-3	HIDDEN_WARP_NPC
+bat_d01,57,126,3	duplicate(CellEffect3)	#RedcellA6-3	HIDDEN_WARP_NPC
+bat_d01,57,127,3	duplicate(CellEffect3)	#RedcellA7-3	HIDDEN_WARP_NPC
+
+bat_d01,145,59,3	duplicate(CellEffect3)	#RedcellB1-3	HIDDEN_WARP_NPC
+bat_d01,144,59,3	duplicate(CellEffect3)	#RedcellB2-3	HIDDEN_WARP_NPC
+bat_d01,143,59,3	duplicate(CellEffect3)	#RedcellB3-3	HIDDEN_WARP_NPC
+bat_d01,142,59,3	duplicate(CellEffect3)	#RedcellB4-3	HIDDEN_WARP_NPC
+bat_d01,142,56,3	duplicate(CellEffect3)	#RedcellB5-3	HIDDEN_WARP_NPC
+bat_d01,142,57,3	duplicate(CellEffect3)	#RedcellB6-3	HIDDEN_WARP_NPC
+bat_d01,142,58,3	duplicate(CellEffect3)	#RedcellB7-3	HIDDEN_WARP_NPC
+
+-	script	start#bat_d01_Out	FAKE_NPC,{
+	end;
+
+OnBegin:
+	initnpctimer;
+	end;
+	
+OnStop:
+	stopnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "bat_d01", "Por favor fale com o Oficial para sair do campo de batalha.",bc_map,"0x00ff00";
+	end;
+
+OnTimer3000:
+	mapannounce "bat_d01", "Em 30 segundos, o Oficial irá dispersar o grupamento.",bc_map,"0x00ff00";
+	end;
+
+OnTimer5000:
+	mapannounce "bat_d01", "Fale com o Oficial para sair do campo de batalha imediatamente.",bc_map,"0x00ff00";
+	end;
+
+OnTimer55000:
+	mapannounce "bat_d01", "Você será enviado de volta.",bc_map,"0x00ff00";
+	end;
+
+OnTimer60000:
+	stopnpctimer;
+	set $@WoM01_Croix_Count, 0;
+	set $@WoM01_Guillaume_Count, 0;
+	set $@WoM01BG_Victory, 0;
+	bg_kick_team $@WoM01BG_id1;
+	bg_kick_team $@WoM01BG_id2;
+	disablenpc "Oficial WOM#WOM01A";
+	disablenpc "Oficial WOM#WOM01B";
+	mapwarp "bat_d01","bat_room",154,150;
+	maprespawnguildid "bat_d01",0,3; // Just in case someone else
+	bg_updatescore "bat_d01",0,0;
+	end;
+}
+
+-	script	time_event#bat_d01	FAKE_NPC,{
+OnInit:
+	stopnpctimer;
+	end;
+
+OnEnable:
+	set .WoM_Timer, 0;
+	stopnpctimer;
+	initnpctimer;
+	end;
+	
+OnStop:
+	stopnpctimer;
+	end;
+	
+OnTimer60000:
+	set .WoM_Timer, .WoM_Timer+1;
+	set .@event_timer, callfunc("bg_getarenainfo",7,"event_timer");
+	set .@event_timer, .@event_timer-1;
+	if( .WoM_Timer >= .@event_timer )
+		mapannounce "bat_d01", "1 minuto restantes para terminar a batalha WOM.",bc_map,"0x00ff00";
+	else
+	{
+		stopnpctimer; // Reset timertick...
+		initnpctimer;
+	}
+	end;
+
+OnTimer63000:
+	mapannounce "bat_d01", "30 segundos restantes para terminar a batalha WOM.",bc_map,"0x00ff00";
+	end;
+
+OnTimer64500:
+	mapannounce "bat_d01", "15 segundos restantes para terminar a batalha WOM.",bc_map,"0x00ff00";
+	end;
+
+OnTimer65000:
+	mapannounce "bat_d01", "10 segundos restantes para terminar a batalha WOM.",bc_map,"0x00ff00";
+	end;
+
+OnTimer65500:
+	mapannounce "bat_d01", "5 segundos restantes para terminar a batalha WOM.",bc_map,"0x00ff00";
+	end;
+
+OnTimer70000:
+	mapannounce "bat_d01", "A batalha WOM terminou.",bc_map,"0x00ff00";
+	if( $@WoM01_Croix_Count > $@WoM01_Guillaume_Count )
+		donpcevent "start#bat_d01::OnCroixWin";
+	else if( $@WoM01_Croix_Count < $@WoM01_Guillaume_Count )
+		donpcevent "start#bat_d01::OnGuillaumeWin";
+	else
+	{ // Draw Game
+		set $@WoM01BG, 3;
+		set $@WoM01BG_Victory, 3;
+		
+		// Computa Ranking e faz entrega de recompensas
+		callfunc "bg_finish", 7, $@WoM01BG_id1, $@WoM01BG_id2, $@WoM01BG_Victory, 0, 0;
+		
+		mapannounce "bat_d01", "O número de Guillaume's é "+$@WoM01_Guillaume_Count+".",bc_map,"0x00ff00";
+		mapannounce "bat_d01", "O número de Croix's é "+$@WoM01_Croix_Count+".",bc_map,"0x00ff00";
+		mapannounce "bat_d01", "Esta batalha terminou em empate.",bc_map,"0x00ff00";
+		donpcevent "start#bat_d01::OnStop";
+	}
+	stopnpctimer;
+	end;
+}
+
+// Checagem de Jogadores na Arena.
+// -------------------------------------------------------
+-	script	check#bat_d01	FAKE_NPC,{
+OnStart:
+	initnpctimer;
+	end;
+	
+OnTimer60000:
+	stopnpctimer;
+	if( !getmapusers("bat_d01") )
+	{
+		set $@WoM01BG, 0;
+		bg_kick_team $@WoM01BG_id1;
+		bg_kick_team $@WoM01BG_id2;
+		donpcevent "start#bat_d01_Out::OnStop";
+		
+		if( $@BG_MODE )
+			donpcevent "BattleGround#queue_main::OnReload";
+		else
+			donpcevent "start#bat_d01::OnReadyCheck";
+	}
+	else
+		initnpctimer;
+	end;
+}
+
+// Bandeiras de Guillaume
+bat_d01,51,130,5	script	Exército de Guillaume#bat_d01_01	GUILD_FLAG,{
+	end;
+	
+OnBatD01Emblem:
+	bg_set_npc $@WoM01BG_id1;
+	end;
+}
+
+bat_d01,64,130,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_02	GUILD_FLAG
+bat_d01,72,130,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_03	GUILD_FLAG
+bat_d01,80,130,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_04	GUILD_FLAG
+bat_d01,88,130,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_05	GUILD_FLAG
+bat_d01,96,130,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_06	GUILD_FLAG
+bat_d01,104,130,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_07	GUILD_FLAG
+bat_d01,112,130,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_08	GUILD_FLAG
+bat_d01,51,119,6	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_09	GUILD_FLAG
+bat_d01,51,112,6	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_10	GUILD_FLAG
+bat_d01,51,104,6	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_11	GUILD_FLAG
+bat_d01,51,96,6	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_12	GUILD_FLAG
+bat_d01,51,88,6	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_13	GUILD_FLAG
+bat_d01,76,106,2	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_14	GUILD_FLAG
+bat_d01,82,113,0	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_15	GUILD_FLAG
+bat_d01,89,107,6	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_16	GUILD_FLAG
+bat_d01,82,100,4	duplicate(Exército de Guillaume#bat_d01_01)	Exército de Guillaume#bat_d01_17	GUILD_FLAG
+
+// Bandeiras de Croix
+bat_d01,148,53,1	script	Exército de Croix#bat_d01_01	GUILD_FLAG,{
+	end;
+	
+OnBatD01Emblem:
+	bg_set_npc $@WoM01BG_id2;
+	end;
+}
+
+bat_d01,135,53,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_02	GUILD_FLAG
+bat_d01,127,53,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_03	GUILD_FLAG
+bat_d01,119,53,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_04	GUILD_FLAG
+bat_d01,111,53,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_05	GUILD_FLAG
+bat_d01,103,53,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_06	GUILD_FLAG
+bat_d01,95,53,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_07	GUILD_FLAG
+bat_d01,87,53,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_08	GUILD_FLAG
+bat_d01,148,64,2	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_09	GUILD_FLAG
+bat_d01,148,72,2	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_10	GUILD_FLAG
+bat_d01,148,80,2	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_11	GUILD_FLAG
+bat_d01,148,88,2	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_12	GUILD_FLAG
+bat_d01,148,96,2	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_13	GUILD_FLAG
+bat_d01,110,77,2	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_14	GUILD_FLAG
+bat_d01,117,83,0	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_15	GUILD_FLAG
+bat_d01,123,77,6	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_16	GUILD_FLAG
+bat_d01,116,70,4	duplicate(Exército de Croix#bat_d01_01)	Exército de Croix#bat_d01_17	GUILD_FLAG
+
+// Tenentes
+// -----------------------------------------------------------------
+bat_d01,56,130,3	script	Oficial WOM#WOM01A	4_M_KY_HEAD,{
+	mes "[Axl Rose]";
+	if( getcharid(4) == $@WoM01BG_id2 )
+	{
+		mes "O que?? Uns dos soldados do Exército de Croix está fazendo no acampamento de Guillaume!!";
+		mes "Um soldado irá te conduzir ao seu grupamento.";
+		close2;
+		warp "bat_d01", 145, 56;
+		end;
+	}
+	else if( getcharid(4) == $@WoM01BG_id1 )
+	{
+		if( $@WoM01BG < 3 )
+		{
+			mes "Aguarde um momento, a batalha ainda está acontecendo.";
+			close;
+		}
+		else if( $@WoM01BG_Victory == 0 )
+		{
+			mes "A Batalha ainda não foi definida soldado, vá agora mesmo ao seu posto, o Exército de Guillaume precisa de você!";
+			close;
+		}
+		else if( $@WoM01BG_Victory == 1 )
+		{
+			mes "Abençoado o Exército de Guillaume!";
+			mes strcharinfo(0) + ", vamos aproveitar nossa gloriosa vitória!";
+		}
+		else if( $@WoM01BG_Victory == 2 ) {
+			mes "Você perdeu, mas se dedicou a esta batalha por Guillaume Marollo!";
+			mes "Considere esta derrota como uma lição, e na próxima vez você sairemos vitoriosos.";
+		}
+		else {
+			mes "Esta de fato foi uma grande Batalha!";
+			mes "Nem todos podem sair vitoriosos, considere este empate como uma lição e na próxima vez sairemos vitoriosos.";
+		}
+		close2;
+		bg_leave;
+	}
+	else {
+		mes "Um Cívil em nosso campo de batalha?";
+		mes "Iremos te conduzir a um local seguro!";
+		close2;
+	}
+	warp "prontera", 156, 176;
+	end;
+	
+OnInit:
+	disablenpc "Oficial WOM#WOM01A";
+	end;
+}
+
+bat_d01,143,53,7	script	Oficial WOM#WOM01B	4_M_CRU_HEAD,{
+	mes "[Swandery]";
+	if( getcharid(4) == $@WoM01BG_id1 )
+	{
+		mes "O que?? Uns dos soldados do Exército de Guillaume está fazendo no acampamento de Croix!!";
+		mes "Um soldado irá te conduzir ao seu grupamento.";
+		close2;
+		warp "bat_d01", 54, 127;
+		end;
+	}
+	else if( getcharid(4) == $@WoM01BG_id2 )
+	{
+		if( $@WoM01BG < 3 )
+		{
+			mes "Aguarde um momento, a batalha ainda está acontecendo.";
+			close;
+		}
+		if( $@WoM01BG_Victory == 0 )
+		{
+			mes "A Batalha ainda não foi definida soldado, vá agora mesmo ao seu posto, o Exército de Croix precisa de você!";
+			close;
+		}
+		else if( $@WoM01BG_Victory == 1 ) {
+			mes "Ah " + strcharinfo(0) + ", não fique triste.";
+			mes "Mesmo que não ganhamos, fizemos o nosso melhor.";
+			mes "Não esqueça desta batalha, ganharemos a próxima.";
+		}
+		else if( $@WoM01BG_Victory == 2 )
+		{
+			mes "Abençoado o Exército de Croix!";
+			mes strcharinfo(0) + ", vamos aproveitar nossa gloriosa vitória!";
+		}
+		else {
+			mes "Esta de fato foi uma grande Batalha!";
+			mes "Nem todos podem sair vitoriosos, não se esqueça desta batalha!";
+			mes "Ganharemos a próxima.";
+		}
+		close2;
+		bg_leave;
+	}
+	else {
+		mes "Um Cívil em nosso campo de batalha?";
+		mes "Iremos te conduzir a um local seguro!";
+		close2;
+	}
+	warp "prontera", 156, 176;
+	end;
+	
+OnInit:
+	disablenpc "Oficial WOM#WOM01B";
+	end;
+}
+
+// MapFlags
+// -----------------------------------------------------------------
+bat_d01	mapflag	nowarp
+bat_d01	mapflag	nowarpto
+bat_d01	mapflag	nomemo
+bat_d01	mapflag	noteleport
+bat_d01	mapflag	nosave
+bat_d01	mapflag	noreturn
+bat_d01	mapflag	nobranch
+bat_d01	mapflag	nopenalty
+bat_d01	mapflag	battleground	2
+bat_d01	mapflag	nobgskillcall

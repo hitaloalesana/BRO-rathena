@@ -1,0 +1,44 @@
+//===== rAthena Script =======================================
+//  Random Option Functions
+//      Example NPC
+//= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+// Date:
+//  18-10-2019
+// By:
+//  Easycore
+//
+// Contact:
+//    - Facebook: https://www.facebook.com/EasycoreRo/
+//    - rAthena:  https://rathena.org/board/profile/16425-easycore/
+//    - Discord:  Easycore#3412
+//= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+prontera,155,189,3	script	RDMOPT Example	90,{
+	
+	mes "[RDMOPT Example]";
+	if (@rdmopt_eg && getequipid(EQI_HEAD_TOP) != 2220) {
+		mes "Equip the hat I've given you and come back.";
+		close;
+	}
+	if (!getequiprandomoption(EQI_HEAD_TOP,0,ROA_ID)) {
+		mes "You aren't wearing the hat I've given you";
+		close;
+	} else if (@rdmopt_eg) {
+		.@roa_id = getequiprandomoption(EQI_HEAD_TOP,0,ROA_ID);
+		.@roa_value = getequiprandomoption(EQI_HEAD_TOP,0,ROA_VALUE);
+		mes "The first random option of your hat is:";
+		mes "^000ff- "+callfunc("F_GetRDMOPT_Name",.@roa_id)+" "+callfunc("F_GetRDMOPT_Value",.@roa_id,.@roa_value);
+		close;
+	}	
+	mes "Hey! I will give a powerful hat!";
+	next;
+	mes "[RDMOPT Example]";
+	mes "Equip it and come back!";
+	mes "I will tell you its stats.";
+	setarray .@OptID[0],rand(RDMOPT_VAR_MAXHPAMOUNT,RDMOPT_VAR_CRITICALSUCCESSVALUE);
+	setarray .@OptVal[0],rand(5,20);
+	setarray .@OptParam[0],0;
+	getitem3 2220,1,1,0,0,0,0,0,0,.@OptID,.@OptVal,.@OptParam;
+	@rdmopt_eg++;
+	close;
+}
