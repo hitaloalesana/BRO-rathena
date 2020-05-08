@@ -1186,19 +1186,67 @@
 47013,pikachu,Pikachu,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3531,{},{},{}
 47014,BrasilroFemale,BrasilRO Menina,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3532,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47015,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47016,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47017,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47018,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47019,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47020,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47021,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47022,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47023,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47024,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47025,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47026,BrasilroMale,BrasilRO Menino,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3533,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-
-
+// ============ COMPRADOS NA GRINGA ================ //
+47016,Dark_Lord_Helm,Elmo Dark Lord,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3534,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47017,Dragon_of_Eternity,Elmo Dragão da Eternidade,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3535,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47018,EmpHelmet,Elmo do Emperium,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3536,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47019,Golden_Dragon_Helm,Elmo Dragão Dourado,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3537,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47020,Dark_Feathers_Helm,Elmo Maldição das Valquírias,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3538,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47021,Valkyrie_Blessing,Elmo Benção das Valquirias,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3539,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47022,COTSEAS_BLK,Divino Orgulho Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3540,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47023,COTSEAS_BLU,Divino Orgulho Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3541,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47024,COTSEAS_GRN,Divino Orgulho Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3542,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47025,COTSEAS_GRY,Divino Orgulho Cinza,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3543,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47026,COTSEAS_ORG,Divino Orgulho Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3544,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47027,COTSEAS_PNK,Divino Orgulho Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3545,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47028,COTSEAS_PRP,Divino Orgulho Roxo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3546,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47029,COTSEAS_RED,Divino Orgulho Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3547,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47030,COTSEAS_WHT,Divino Orgulho Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3548,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47031,COTSEAS_YLW,Divino Orgulho Amarelo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3549,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+// ============== SET DIVERGENTE ================= //
+47032,DivergentGlassesblack,Óculos Divergente Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3550,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47033,DivergentGlassesblue,Óculos Divergente Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3551,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47034,DivergentGlassesgreen,Óculos Divergente Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3552,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47035,DivergentGlassesorange,Óculos Divergente Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3553,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47036,DivergentGlassesred,Óculos Divergente Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3554,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47037,DivergentGlasseswhite,Óculos Divergente Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3555,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47038,DivergentHelm,Elmo Divergente,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3556,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47039,DivergentHelmblack,Elmo Divergente Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3557,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47040,DivergentHelmblue,Elmo Divergente Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3558,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47041,DivergentHelmgreen,Elmo Divergente Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3559,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47042,DivergentHelmorange,Elmo Divergente Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3560,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47043,DivergentHelmred,Elmo Divergente Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3561,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47044,DivergentHelmwhite,Elmo Divergente Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3562,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47045,DivergentScarf,Cachecol Divergente,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3563,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47046,DivergentScarfblack,Cachecol Divergente Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3564,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47047,DivergentScarfblue,Cachecol Divergente Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3565,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47048,DivergentScarfgreen,Cachecol Divergente Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3566,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47049,DivergentScarforange,Cachecol Divergente Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3567,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47050,DivergentScarfred,Cachecol Divergente Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3568,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47051,DivergentScarfwhite,Cachecol Divergente Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3569,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47052,DragonSpecHelm,Elmo Espectro do Dragão,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3570,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47053,DragonSpecScarf,Cachecol Espectro do Dragão,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3571,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47054,OxSpecHelm,Elmo Espectro de Ox,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3572,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47055,OxSpecScarf,Cachecol Espectro de Ox,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3573,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47056,PhoenixSpecHelm,Elmo Espectro da Fenix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3574,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47057,PhoenixSpecScarf,Cachecol Espectro da Fenix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3575,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47058,SpectralHelm,Elmo Espectral,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3576,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47059,SpectralScarf,Cachecol Espectral,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3577,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47060,tigerdhelm,Elmo Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3578,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47061,tigerdscarf,Cachecol Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3579,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47062,TigerSpecHelm,Elmo Espectro de Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3580,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47063,TigerSpecScarf,Cachecol Espectro de Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3581,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47064,wolfdhelm,Elmo do Lobo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3582,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47065,wolfdscarf,Cachecol do Lobo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3583,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47066,DivergentScouter,Óculos Divergente,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3584,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47067,DragonSpecScouter,Óculos Espectro do Dragão,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3585,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47068,OxSpecScouter,Óculos Espectro de Ox,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3586,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47069,PhoenixSpecScouter,Óculos Espectro da Fenix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3587,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47070,SpectralScouter,Óculos Espectral,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3588,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47071,tigerdscouter,Óculos Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3589,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47072,TigerSpecScouter,Óculos Espectro de Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3590,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47073,wolfdscouter,Óculos Espectro do Lobo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3591,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+// ======================  FIM DO SET ================================ //
 
 
 
