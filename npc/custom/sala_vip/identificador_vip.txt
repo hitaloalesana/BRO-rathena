@@ -12,7 +12,7 @@ prt_in,235,25,4	script	Identificador VIP	68,{
 		set @count, @count + 1;	
 		}
 	}	
-	if(@count == 0){
+	if( @count == 0 ){
 		mes "Você não tem nenhum item ou equipamento para ser identificado em seu inventário!";
 		close;
 	}			

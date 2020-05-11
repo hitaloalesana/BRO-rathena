@@ -1,0 +1,37 @@
+-	script	check_bot#04	-1,{
+OnInit:
+	set .@total_mob, 10;
+	setmapflag "bra_dun01", mf_loadevent;
+	monster "bra_dun01", 0, 0, "Iara", 2069, .@total_mob, strnpcinfo(1) +"::OnBot_04";
+	end;
+OnBot_04:
+OnNPCKillEvent:
+	if( strcharinfo(3) == "bra_dun01" ){
+		if( killedrid != 2069 ) end;
+		if( rand(100) > 100 ) end;
+		if ( time_check > gettimetick(2) ){
+			message strcharinfo(0), "[Sistema Ant-Bot]: Rechagem em "+ (time_check - gettimetick(2)) +" segundo(s).";
+			cutin "", 255;
+			monster "bra_dun01", 0, 0, "Iara", 2069, 1, strnpcinfo(1) +"::OnBot_04";
+			close;
+		}
+		cutin "botcheck01", 4;
+		sc_start sc_berserk, 1000000000, 1;
+		set .@n, rand( 9999 );
+		dispbottom "[Sistema Anti-Bot]: Código: "+ .@n +".";
+		input @i;
+		if( @i != .@n ){
+			cutin "", 255;
+			monster "bra_dun01", 0, 0, "Iara", 2069, 1, strnpcinfo(1) +"::OnBot_04";
+			atcommand "@kick "+ strcharinfo(0);
+			end;
+		}
+		cutin "", 255;
+		set time_check, gettimetick(2) + rand( 300,600 );
+		monster "bra_dun01", 0, 0, "Iara", 2069, strnpcinfo(1) +"::OnBot_04";
+		message strcharinfo(0), "[Sistema Ant-Bot]: Você passou pelo com 100% de sucesso.";
+		percentheal 100, 100;
+		sc_end sc_berserk;
+		end;
+		}
+}

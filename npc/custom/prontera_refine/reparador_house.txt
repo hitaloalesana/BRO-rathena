@@ -1,0 +1,76 @@
+prt_in,64,68,3	script	Conversor de Perfeito#prt	851,{
+	//----------------------------------------------------
+	set .@zeny, 300000; 	// Valor em Zeny pago.
+	//----------------------------------------------------
+
+	mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+	mes "Converto ^00B2EE2x "+ getitemname( 7620 ) +"^000000 por ^7A378B1x "+ getitemname( 6226 ) +"^000000. Nenhuma taxa é cobrada por este serviço!";
+	mes "^2596C2- Valor pago "+ .@zeny +" Zenys.^000000";
+	mes "^777777Deseja realizar a conversão?^000000";
+	next;
+	if( select("[^ff0000»^000000] Realizar Conversão.:[^ff0000»^000000] Saír." ) == 2 ) close;
+		mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+		if( countitem( 7620 ) < 2 ){
+			mes "Você não tem o necessário para converter!";
+			close;
+		}
+		if( Zeny < .@zeny ){
+			mes "Você não tem uma das taxa em Zeny necessária!";
+			mes "^ff0000- "+ .@z +" Zeny.^000000";
+			close;
+		}
+		delitem 7620, 2;
+		getitem 6226, 1;
+		set Zeny, Zeny - .@zeny;
+		specialeffect2 608;
+		emotion e_no1;
+		mes "Conversão realizada com sucesso!";
+		message strcharinfo(0), "[ Conversão Perfeita! ].";
+		close;
+}
+prt_in,59,54,3	script	Máquina de Reparos#prt	422,{
+	//-------------------------------------------------------
+	set .@q, 1; 		// Quantia de Itens Requeridos.
+	set .@z, 1000000; 	// Valor em Zeny pago.
+	set .@item, 999; 	// ID do Item Requerido.
+	set .@nome$, "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+	//--------------------------------------------------------
+
+	mes .@nome$;
+	mes "Faço a reparação de itens danificados, deixe-me ver se você possuí algum...";
+	close2;
+	mes .@nome$;
+	getinventorylist;
+	if( getbrokenid(1) == 0 ){
+		mes "Não há equipamentos para reparo em seu inventário.";
+		close;
+	}
+	while( .@i < @inventorylist_count ){
+		if( @inventorylist_attribute[.@i] )
+			set .@broken, .@broken + 1;
+			set .@i, .@i + 1;
+	}
+	mes "Após checar, percebi que existe ^FF0000"+ .@broken +"^000000 equipamentos para reparar em seu inventário.";
+	mes "Para reparar você precisa pagar as seguintes taxas:";
+	mes "^2596C2- "+ .@q +"x "+ getitemname( .@item ) +".^000000";
+	mes "^2596C2- "+ .@z +" Zenys.^000000";
+	next;
+	if( select("[^ff0000»^000000] Confirmar.","[^ff0000»^000000] Saír.") == 1 ){
+		mes .@nome$;
+		if( countitem( .@item ) < .@q ){
+			mes "Você não tem o item necessárias para efetuar o reparo.";
+			mes "^ff0000- "+ ( .@q - countitem( .@item ) ) +"x "+ getitemname( .@item ) +".^000000";
+			close;
+		}
+		if( Zeny < .@z ){
+			mes "Você não tem uma das taxa em Zeny necessária para efetuar o reparo.";
+			mes "^ff0000- "+ .@z +" Zeny.^000000";
+			close;
+		}
+		delitem .@item, .@q;
+		set Zeny, Zeny - .@z;
+		while( getbrokenid(1) ) repair 1;
+		mes "Todos os itens foram reparados. Um total de ^2596C2"+ .@broken +"^000000 equipamentos!";
+	}
+	close;
+}

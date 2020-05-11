@@ -18,6 +18,7 @@ prt_in,220,27,4	script	EXP em Dobro	108,{
 	mes "^777777- Tempo de Reuso^000000: ^00CC003 Horas.^000000";
 	next;
 	if( select("^00CC00•^000000 Utilizar.:^00CC00•^000000 Saír.") == 2 ) close;
+		close2;
 		sc_start SC_EXPBOOST, 1800000, 100;
 		set delay_exp, gettimetick(2) + .@dexp;
 		dispbottom "Sua EXP foi dobrada por um período de 30 minutos.", 0x00FF00;

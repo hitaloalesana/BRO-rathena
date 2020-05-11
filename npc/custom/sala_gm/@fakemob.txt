@@ -1,0 +1,113 @@
+-	script	@fakemob#Cmd	-1,{
+OnInit:
+	bindatcmd("fakemob", strnpcinfo(0) +"::OnFakeMob", 60, 100);
+	end;
+OnFakeMob:
+	getmapxy( .@local$, .@x, .@y, 0, strcharinfo(0) );
+	if( .@local$ == "z_agit" || .@local$ == "bossnia_01" || .@local$ == "force_3-3" ){
+	set .@mob_name$, getmonsterinfo( atoi( .@atcmd_parameters$[0] ),0 );
+	if ( .@mob_name$ == "null" ){
+		message strcharinfo(0), "[ Mob ID inválido ].";
+		end;
+	} else {
+		set .mob_id, atoi( .@atcmd_parameters$[0] );
+		set .mob_qnt, atoi( .@atcmd_parameters$[1] );
+		message strcharinfo(0), "[ Monstros invocados ].";
+		dispbottom "[ @fakemob <id> <quantidade> | "+ .@mob_name$ +" (ID: "+ .mob_id +" / Quantidade: "+ .mob_qnt +") ].";
+		monster .@local$, -1, -1, getmonsterinfo(.mob_id, 0), .mob_id, .mob_qnt, strnpcinfo(0) +"::OnFakeMobDead";
+		end;
+	}
+	dispbottom "[ Falha no comando. Digite @fakemob <id> <quantidade> ].";
+	end;
+}else{
+	message strcharinfo(0), "[ Mapa não permitido ].";
+	dispbottom "[ Locais permitidos: a_git | bossnia_01 | force_3-3 ].";
+	end;
+}
+OnFakeMobDead:
+	specialeffect2 100;
+	end;
+}
+bossnia_01	mapflag	nomobloot
+bossnia_01	mapflag	nomvploot
+bossnia_01	mapflag	monster_noteleport
+
+bossnia_01	mapflag	noteleport
+
+bossnia_01	mapflag	nobranch
+
+bossnia_01	mapflag	nosave
+
+bossnia_01	mapflag	noloot
+
+bossnia_01	mapflag	novending
+
+bossnia_01	mapflag	nowarp
+
+bossnia_01	mapflag	nostorage
+
+bossnia_01	mapflag	noguildstorage
+bossnia_01	mapflag	nobaseexp
+bossnia_01	mapflag	nojobexp
+bossnia_01	mapflag	nochat
+
+bossnia_02	mapflag	nomobloot
+bossnia_02	mapflag	nomvploot
+bossnia_02	mapflag	monster_noteleport
+
+bossnia_02	mapflag	nobranch
+
+bossnia_02	mapflag	nosave
+
+bossnia_02	mapflag	noloot
+
+bossnia_02	mapflag	novending
+bossnia_02	mapflag	nobaseexp
+bossnia_02	mapflag	nojobexp
+bossnia_02	mapflag	nochat
+
+z_agit	mapflag	nomobloot
+z_agit	mapflag	nomvploot
+z_agit	mapflag	monster_noteleport
+
+z_agit	mapflag	noteleport
+
+z_agit	mapflag	nobranch
+
+z_agit	mapflag	nosave
+
+z_agit	mapflag	noloot
+
+z_agit	mapflag	novending
+
+z_agit	mapflag	nowarp
+
+z_agit	mapflag	nostorage
+
+z_agit	mapflag	noguildstorage
+z_agit	mapflag	nobaseexp
+z_agit	mapflag	nojobexp
+z_agit	mapflag	nochat
+
+force_3-3	mapflag	nomobloot
+force_3-3	mapflag	nomvploot
+force_3-3	mapflag	monster_noteleport
+
+force_3-3	mapflag	noteleport
+
+force_3-3	mapflag	nobranch
+
+force_3-3	mapflag	nosave
+
+force_3-3	mapflag	noloot
+
+force_3-3	mapflag	novending
+
+force_3-3	mapflag	nowarp
+
+force_3-3	mapflag	nostorage
+
+force_3-3	mapflag	noguildstorage
+force_3-3	mapflag	nobaseexp
+force_3-3	mapflag	nojobexp
+force_3-3	mapflag	nochat

@@ -1,7 +1,7 @@
 -	shop	dog_shop	-1,501:50
 new_zone01,69,146,5	script	Cão	81,{
 		announce "Loja de Aluguel | Moeda: '"+ getitemname( .dog_requerid ) +"'", bc_blue|bc_self;
-		dispbottom "Atenção: Os itens desta loja são de Aluguel (3 dias).",0x00FF00;
+		dispbottom "Atenção: Os itens desta loja são de Aluguel e duram 30 dias.",0x00FF00;
 		callshop "dog_shop", 1;
 		npcshopattach "dog_shop";
 		end;
@@ -15,7 +15,7 @@ new_zone01,69,146,5	script	Cão	81,{
 			close;				   
 		} else {					   
 			delitem .dog_requerid, .items[ .@j + 1 ] * @bought_quantity[ .@k ];		
-			rentitem @bought_nameid[ .@k ], 259200;
+			rentitem @bought_nameid[ .@k ], 2592000;
 			dispbottom "Compra realizada com sucesso.", 0x00FF00;
 			end;				    
 			}			    
@@ -30,7 +30,7 @@ new_zone01,69,146,5	script	Cão	81,{
 	end;
 OnInit:    
 	set .dog_requerid, 7539;
-	setarray .items, 41051, 100; // Usage : <item id>,<price>    
+	setarray .items, 41051, 200,	41053,	200,	41052,	200; // Usage : <item id>,<price>    
 	npcshopitem "dog_shop", 0, 0; 
 	for( set .@i, 0; .@i < getarraysize( .items ); set .@i, .@i + 2 )      
 		npcshopadditem "dog_shop", .items[.@i], .items[.@i + 1]; 

@@ -1,0 +1,11 @@
+prt_in,63,59,3	script	Refinadora#br	850,{
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "Deseja refinar seus equipamentos? Eu sou a pessoa certa para ajudá-lo!";
+	mes "^777777É requerído alguns itens e zeny para realizar o refinamento de seus itens.^000000";
+	next;
+	if(select("^00CC00•^000000 Refinar.:^00CC00•^000000 Saír.") == 2) close;
+		close2;
+		useatcmd "@refineui";
+		end;
+}
+

@@ -1,6 +1,10 @@
--	cashshop	quests#hide	-1,41032:0,41033:0,41035:0,41039:0,41040:0,41041:0,43118:0,44048:0,44043:0,44045:0,44070:0,44078:0,44100:0,44071:0,43067:0,45019:0
-new_zone01,138,77,6	script	Quests Especiais	71,{
+-	cashshop	quests#hide	-1,41032:0,41033:0,41035:0,41039:0,41040:0,41041:0,43118:0,44048:0,44043:0,44045:0,44100:0,44078:0,44100:0,19587:0,44071:0,43067:0,45019:0
+new_zone01,138,77,1	script	Quest de Visuais	502,{
 	mes set(.@n$, "^0099FF[ "+strnpcinfo(1)+" ]^000000");
+	if( #check == 0 ){ 
+		mes "Antes de dar inicio a alguma quest é necessário que fale com a ^EEAD0EAjudante de Iniciantes^000000, caso contrário não posso te ajudar! ";
+		close;
+	}
 	mes "Que tal realizar uma quest diferente? Esta requer habilidades especiaís, terá que ser apto a derrotar muitos monstros.";
 	mes "Estarei lhe mostrando o premio e a quantidade de monstros necessários.";
 	next;
@@ -25,13 +29,13 @@ new_zone01,138,77,6	script	Quests Especiais	71,{
 	mes "        ^EEAD0E»^000000 "+ (( #item_i) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
 	mes "^777777- "+ getitemname(44045) +"^000000:"; 
 	mes "        ^EEAD0E»^000000 "+ (( #item_j ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44070) +"^000000:"; 
+	mes "^777777- "+ getitemname(44100) +"^000000:"; 
 	mes "        ^EEAD0E»^000000 "+ (( #item_k ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
 	mes "^777777- "+ getitemname(44078) +"^000000:"; 
 	mes "        ^EEAD0E»^000000 "+ (( #item_l ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
 	mes "^777777- "+ getitemname(44100) +"^000000:"; 
 	mes "        ^EEAD0E»^000000 "+ (( #item_m ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(43123)+"^000000:"; 
+	mes "^777777- "+ getitemname(19587)+"^000000:"; 
 	mes "        ^EEAD0E»^000000 "+ (( #item_n ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
 	mes "^777777- "+ getitemname(44071) +"^000000:";
 	mes "        ^EEAD0E»^000000 "+ (( #item_o ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
@@ -63,10 +67,10 @@ new_zone01,138,77,6	script	Quests Especiais	71,{
 				"^00CC00•^000000 ^777777"+ getitemname(44048) +"^000000 "+ (( #item_h ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
 				"^00CC00•^000000 ^777777"+ getitemname(44043) +"^000000 "+ (( #item_i ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
 				"^00CC00•^000000 ^777777"+ getitemname(44045) +"^000000 "+ (( #item_j ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
-				"^00CC00•^000000 ^777777"+ getitemname(44070) +"^000000 "+ (( #item_k ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
+				"^00CC00•^000000 ^777777"+ getitemname(44100) +"^000000 "+ (( #item_k ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
 				"^00CC00•^000000 ^777777"+ getitemname(44078) +"^000000 "+ (( #item_l ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
 				"^00CC00•^000000 ^777777"+ getitemname(44100) +"^000000 "+ (( #item_m ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
-				"^00CC00•^000000 ^777777"+ getitemname(43123) +"^000000 "+ (( #item_n ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
+				"^00CC00•^000000 ^777777"+ getitemname(19587) +"^000000 "+ (( #item_n ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
 				"^00CC00•^000000 ^777777"+ getitemname(44071) +"^000000 "+ (( #item_o ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
 				"^00CC00•^000000 ^777777"+ getitemname(45019) +"^000000 "+ (( #item_p ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
 				"^00CC00•^000000 ^777777"+ getitemname(43067) +"^000000 "+ (( #item_q ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000") +"",
@@ -289,7 +293,7 @@ new_zone01,138,77,6	script	Quests Especiais	71,{
 							close; 
 						}
 						mes "Quest realizada com sucesso, parabéns!";
-						getitem 44070, 1;
+						getitem 44100, 1;
 						set #item_k, 1;
 						close;
 				case 12:
@@ -350,7 +354,7 @@ new_zone01,138,77,6	script	Quests Especiais	71,{
 							close; 
 						}
 						mes "Quest realizada com sucesso, parabéns!";
-						getitem 43123, 1;
+						getitem 19587, 1;
 						set #item_n, 1;
 						close;
 				case 15:

@@ -1,0 +1,21 @@
+sala_gm,264,245,6	script	Dashboard de Cash#GM	837,{
+	mes "[ ^008000Dashboard de Cash^000000 ]";
+	if( getgmlevel() < 60 ){
+		mes "Acesso exclusivo aos ^ff0000Administradores^000000.";
+		close;
+	}
+	mes "Tenha acesso a uma lista de jogadores com maior acumulo de Cash e Ticket Cash.";
+	next;
+	if( select( "[^008000»^000000] Cash.","[^008000»^000000] Ticket Cash." ) == 2 ){
+		set .@nbe,query_sql( "select name, amount from inventory left join `char` on inventory.char_id = `char`.char_id left join login on `char`.account_id = login.account_id where nameid = 21025 order by amount desc limit 100", .@name$, .@amount );
+		for ( set .@i, 0; .@i < .@nbe; set .@i, .@i + 1 ){
+			dispbottom .@name$[.@i] +" | "+ .@amount[.@i] +" Ticket Cash.";
+		}
+		close;
+	}
+	set .@nb,query_sql( "select name, value from `char` left join global_reg_value on `char`.account_id = global_reg_value.account_id left join login on `char`.account_id = login.account_id where global_reg_value.str = '#CASHPOINTS' and `char`.account_id order by cast( value as signed ) desc limit 100;", .@name$, .@cash );
+	for ( set .@i, 0; .@i < .@nb; set .@i, .@i + 1){
+		dispbottom ""+ (.@i + 1) +" | "+ .@name$[.@i] +" | "+ .@cash[.@i] +" Cash.";
+	}
+	close;
+}

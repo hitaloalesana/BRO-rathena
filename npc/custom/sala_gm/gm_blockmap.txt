@@ -1,0 +1,18 @@
+-	script	GM_Block#Smart	-1,{
+OnInit:
+	setarray .map_list$[0], "1@tower", "2@tower", "3@tower", "4@tower", "5@tower", "6@tower";
+	for( set .i, 0; .i < getarraysize( .map_list$ ); set .i,.i + 1 )
+		setmapflag .map_list$[.i], mf_loadevent;
+		end;
+
+OnPCLoginEvent:
+OnPCLoadMapEvent:
+	for( set .@i, 0; .@i < getarraysize( .map_list$ ); set .@i, .@i + 1 )
+	if( strcharinfo(3) == .map_list$[.@i] && getgmlevel() >= 10 && getgmlevel() <= 80 ){
+		message strcharinfo(0), "[ Local Restrito ].";
+		dispbottom "[ Por medidas de segurança, GMs níveis baixo não podem acessar este mapa ]."; 
+		warp "prontera", 156, 191;
+		break;
+	}
+	end;
+}

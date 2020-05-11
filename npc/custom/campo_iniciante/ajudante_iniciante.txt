@@ -1,4 +1,4 @@
-new_zone01,124,124,5	script	Ajudante de Iniciantes#n	828,{
+new_zone01,124,124,5	script	Ajudante de Iniciantes#n	642,{
 	specialeffect2 100;
 	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
 	if( #check == 1 ){ 

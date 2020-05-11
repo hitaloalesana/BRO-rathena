@@ -7,14 +7,18 @@
 
 -	pointshop	mvp_shop	-1,#MvP_Points,501:1,502:2
 prontera,149,175,3	script	MvP Ranking	923,{
-	if( #MvP_Points >= 1 ){ 
-		dispbottom "Você possui um total de "+#MvP_Points+"x MvP Points.",0x00FF00; 
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "A cada MvP morto soma 1 ponto no rank e 1 MvP Point que acumulado pode ser trocado por diversos produtos em minha loja.";
+	if( #MvP_Points >= 1 ){
+		mes "^777777- Seu saldo atual é de^000000: ^00CC00"+#MvP_Points+"x MvP Points.^000000"; 
 	} else {
-		dispbottom "Você não contabilizou nenhum MvP Point até o momento.",0x00FF00;
+		mes "^FF6A6A5Você ainda não contabilizou nenhum MvP Point até o momento.^000000",0x00FF00;
 	}
+	next;
 	switch(select("^00CC00•^000000 Ver MvP Ranking.","^00CC00•^000000 Lojinha MvP.","^00CC00•^000000 Cancelar.")){
 		case 3: close;
 		case 2:
+			close2;
 			callshop "mvp_shop", 1;
 			end;
 		case 1:
@@ -41,8 +45,8 @@ OnNPCKillEvent:
 		query_sql("INSERT INTO `mvp_ranking` SET `char_id`='"+getcharid(0)+"',`name`='"+strcharinfo(0)+"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1");
 		query_sql("SELECT `name`,`count` FROM `mvp_ranking` ORDER BY `count` DESC LIMIT 5",.@name$,.@count);
 		set #MvP_Points, #MvP_Points + .@r;
-		dispbottom "MvP Derrotado: "+ .@r +" MvP Point Totais | "+ .@count[.@i] +"x Total Pontos no Ranking.",0x00FF00;
-		getitem 607,1;
+		dispbottom "MvP Derrotado: "+ .@r +" MvP Points Totais | "+ .@count[.@i] +"x Total Pontos no Ranking.",0x00FF00;
+		getitem 607, 1;
 		end;
 	}
 	end;

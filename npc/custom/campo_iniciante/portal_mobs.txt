@@ -2,7 +2,7 @@ prontera,155,155,5	script	Informações#n	758,{
 	warp "new_zone01",156,191;
 	end;
 }
-	
+
 new_zone01,66,118,6	script	#A	111,{
 	sc_start SC_SpeedUp1, 50000, 0;
 	npctalk .m$[rand( getarraysize( .m$ ) )];
@@ -11,24 +11,43 @@ Oninit:
 	setarray .m$[0],":)","=)",";)",":D",";)","=D","=P","=3",":3";
 	end;
 }
+
+//------------------------------------------
+
 new_zone01,66,114,6	script	Quadro Informativo#B	111,{
-	mes "^0099FFBrasil Ragnarök Online^000000 ";
-	mes "Servidor baseado em Quests. ";
-	mes "Level 300/150 e Rates: 1.000x | 1.000x ";
-	mes "Rates: 1.000x | 1.000x";
+	mes "^0099FF[ Brasil Ragnarök Online ]^000000";
+	mes "Servidor Baseado em Quests.";
+	mes "^777777- Nível Máximo^000000: 300/150";
+	mes "^777777- Rates^000000: 1.000x | 1.000x";
+	mes "^777777- Drops^000000: 1%";
+	mes "^777777- Aspd^000000: 195";
+	mes "^777777- Sem Cast^000000: 150 Dex";
+	mes "^00CC00Hospedagem Brasileira 24/7^000000";
+	mes "^00C2FFGepard 2.0^000000";
+	mes "^0099FFTransclasses e Doram.^000000";
 	close;
 }
+
+//------------------------------------------
+
 new_zone01,146,112,0	script	prt_warp#n	45,1,1,{
+	mes "^0099FF[ Campo de Iniciantes ]^000000";
 	if( !#check ){
-		mes "^0099FF[ Campo de Iniciantes ]^000000";
 		mes "Antes de dar continuidade a sua jornada é necessário que você derrote todos os ^0099FFPorings^000000 da quest.";
 		mes "Fale com a ^00CC00Ajudante de Iniciantes^000000 para saber quais monstros ainda faltam ser derrotados.";
 		close;
 	}
-	warp "prontera", 156, 191;
-	end;
+	mes "Deseja saír do Campo de Iniciantes e ir para nossa capital ou prefere continuar e finalizar suas quests?";
+	next;
+	if( select("^00CC00•^000000 Ficar no Campo de Iniciantes.:^00CC00•^000000 Saír do Campo de Iniciantes.") == 2 ) close;
+		close2;
+		warp "prontera", 156, 191;
+		end;
 }
-new_zone01,47,88,5	script	Funcionária Kafra#n	758,{
+
+//------------------------------------------
+
+new_zone01,47,88,5	script	Funcionária Kafra#n	769,{
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000"; 
 	mes "Oi, "+strcharinfo(0)+"! Eu sou ^00CC00Kafra Leila^000000, prazer em conhece-lo.";
 	mes "Tenho um contrato com o ^0099FFBrasil Ragnarök Online^000000 e estou aqui para te ajudar!";
@@ -55,6 +74,9 @@ new_zone01,47,88,5	script	Funcionária Kafra#n	758,{
 	warp "prontera", 156, 191;
 	end;
 }
+
+//------------------------------------------
+
 new_zone01,133,111,6	script	#Heal	111,8,8,{
 	sc_end SC_STONE; sc_end SC_FREEZE; sc_end SC_STUN; sc_end SC_SLEEP; 
 	sc_end SC_POISON; sc_end SC_CURSE; sc_end SC_SILENCE; sc_end SC_CONFUSION; 
@@ -66,6 +88,9 @@ new_zone01,133,111,6	script	#Heal	111,8,8,{
 	dispbottom "HP/SP foram recuperados com sucesso.", 0x00FFFF;
 	end;
 }
+
+//------------------------------------------
+
 new_zone01,144,117,3	script	Guarda Corp. Kafra	653,{
 	mes "^0099FF[ Guarda Corp. Kafra ]^000000";
 	mes "Estou aqui para segurar que nenhum monstro violento acesso o ^00CC00Campo de Iniciantes^000000.";
@@ -73,27 +98,34 @@ new_zone01,144,117,3	script	Guarda Corp. Kafra	653,{
 	mes "^777777- Acesse^000000: ^0099FFbrasilro.com.br/forum/^000000";
 	close;
 }
-new_zone01,43,84,5	shop	Comerciante#new	808,569:5,1243:100,2112:100,2352:100,2414:100,2510:100,5055:100
-new_zone01,127,85,5	shop	Maria dos Doces#new1	701,539:-1,5415:100000
-new_zone01,129,140,5	shop	Comerciante de Frutas#new2	968,512:-1,619:-1,513:-1,578:-1,514:-1,5116:100000,5307:100000,18589:100000
+
+//------------------------------------------
+
+new_zone01,43,84,5	shop	Comerciante#n	808,569:5,1243:100,2112:100,2352:100,2414:100,2510:100,5055:100
+new_zone01,127,85,1	shop	Maria dos Doces#n1	668,539:-1,5415:100000
+new_zone01,129,140,5	shop	Comerciante de Frutas#n2	968,512:-1,619:-1,513:-1,578:-1,514:-1,5116:100000,5307:100000,18589:100000
 new_zone01,153,95,0	duplicate(Fonte dos Desejos)	Fonte dos Desejos#2	111
 new_zone01,144,107,2	duplicate(Guarda Corp. Kafra)	Guarda Corp. Kafra#2	653
 
-new_zone01,0,0,0,0	monster	Poring D'Agua	22183,50,5000,0,0
-new_zone01,0,0,0,0	monster	Nekoring Negro	22184,50,5000,0,0
-new_zone01,0,0,0,0	monster	Poring de Sangue	22185,50,5000,0,0
-new_zone01,0,0,0,0	monster	Nekoring Azul	22186,50,5000,0,0
-new_zone01,0,0,0,0	monster	Poring Vaquinha	22187,50,5000,0,0
-new_zone01,0,0,0,0	monster	Poring Creme	22188,50,5000,0,0
-new_zone01,0,0,0,0	monster	Nekoring Cinzento	22194,50,5000,0,0
-new_zone01,0,0,0,0	monster	Poring Orc	22198,50,5000,0,0
-new_zone01,0,0,0,0	monster	Nekoring Verde	22193,50,5000,0,0
-new_zone01,0,0,0,0	monster	Poring do Amor	22196,50,5000,0,0
-new_zone01,0,0,0,0	monster	Nekoring	22197,50,5000,0,0
-new_zone01,0,0,0,0	monster	Nekoring Roxo	22203,50,5000,0,0
-new_zone01,0,0,0,0	monster	Poring Branco	22207,50,5000,0,0
-new_zone01,0,0,0,0	monster	Príncipe Poring	22201,40,5000,0,0
-new_zone01,0,0,0,0	monster	Poring Demônio	22189,40,5000,0,0
+//------------------------------------------
+
+new_zone01,0,0,0,0	monster	Poring D'Agua	22183,40,2000,0,0
+new_zone01,0,0,0,0	monster	Nekoring Negro	22184,40,2000,0,0
+new_zone01,0,0,0,0	monster	Poring de Sangue	22185,40,2000,0,0
+new_zone01,0,0,0,0	monster	Nekoring Azul	22186,40,2000,0,0
+new_zone01,0,0,0,0	monster	Poring Vaquinha	22187,40,2000,0,0
+new_zone01,0,0,0,0	monster	Poring Creme	22188,40,2000,0,0
+new_zone01,0,0,0,0	monster	Nekoring Cinzento	22194,40,2000,0,0
+new_zone01,0,0,0,0	monster	Poring Orc	22198,40,2000,0,0
+new_zone01,0,0,0,0	monster	Nekoring Verde	22193,40,2000,0,0
+new_zone01,0,0,0,0	monster	Poring do Amor	22196,40,2000,0,0
+new_zone01,0,0,0,0	monster	Nekoring	22197,40,2000,0,0
+new_zone01,0,0,0,0	monster	Nekoring Roxo	22203,40,2000,0,0
+new_zone01,0,0,0,0	monster	Poring Branco	22207,40,2000,0,0
+new_zone01,0,0,0,0	monster	Príncipe Poring	22201,40,2000,0,0
+new_zone01,0,0,0,0	monster	Poring Demônio	22189,40,2000,0,0
+
+//------------------------------------------
 
 new_zone01	mapflag	nowarp
 new_zone01	mapflag	nowarpto

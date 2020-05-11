@@ -1,0 +1,12 @@
+-	script	@kickmap#Cmd	-1,{
+OnInit:
+	bindatcmd "kickmap", strnpcinfo(0) +"::OnKickMapping", 60, 100;
+	end;
+OnKickMapping:
+	message strcharinfo(0), "[ Nick do Jogador ].";
+	input .@char$;
+	sleep2 500;
+	warpchar "SavePoint", 0, 0, getcharid( 0,.@char$ );
+	dispbottom "[ "+ .@char$ +" foi enviado pra seu SavePoint ].";
+	end;
+}

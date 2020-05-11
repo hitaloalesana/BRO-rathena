@@ -1,0 +1,91 @@
+new_zone01,84,111,3	script	Poring Protetor	508,10,10,{
+	emotion 51;
+	if( #delay_h >= gettimetick(2) ) end;
+	sc_start 39, 10000, 1; specialeffect2 112; // Kyrie
+	set #delay_h, gettimetick(2) + 5;
+OnInit:
+	setarray .coorx[0], 69, 81, 91, 151, 156, 91, 99, 112, 98, 87, 81, 76;
+	setarray .coory[0], 111, 114, 110, 197, 114, 110, 114, 114, 109, 113, 109, 112;
+	setarray .msg$[0],
+		"Bem vindo!",
+		"Desvende o Campo Iniciante, muitas quests espalhadas pelo mapa",
+		"Ad",
+	startnpctimer;
+	end;
+	
+OnTimer3000:
+	set .@a, rand(1,6);
+	emotion 3;
+	npctalk .msg$[ rand( getarraysize(.msg$) )];
+	npcwalkto .coorx[.@a], .coory[.@a];
+	misceffect 20;
+	end; 
+		
+OnTimer6000:
+	set .@b, rand(1,6);
+	emotion 3;
+	//npcwalkto .coorx[.@b], .coory[.@b];
+	end;
+			
+OnTimer9000:
+	set .@c, rand(1,6);
+	emotion 3;
+	npcwalkto .coorx[.@c], .coory[.@c];
+	end;
+			
+OnTimer12000:
+	set .@d, rand(1,6);
+	emotion 3;
+	//npcwalkto .coorx[.@d], .coory[.@d];
+	end;
+			
+OnTimer13000:
+	stopnpctimer;
+	initnpctimer;
+	end;
+} 
+new_zone01,48,64,3	script	Ghostring Protetor	950,10,10,{
+	emotion 51;
+	if( #delay_h >= gettimetick(2) ) end;
+	sc_start 39, 10000, 1; specialeffect2 112; // Kyrie
+	set #delay_h, gettimetick(2) + 5;
+OnInit:
+	setarray .coorx[0], 48, 45, 50, 49, 47, 47, 35, 47, 61, 52, 39, 46;
+	setarray .coory[0], 77, 70, 63, 71, 76, 64, 55, 51, 57, 61, 59, 58;
+	setarray .msg$[0],
+		"Bem vindo!",
+		"Boa sorte em sua jornada!",
+	startnpctimer;
+	end;
+	
+OnTimer3000:
+	set .@a, rand(1,6);
+	emotion 3;
+	npctalk .msg$[ rand( getarraysize(.msg$) )];
+	npcwalkto .coorx[.@a], .coory[.@a];
+	misceffect 20;
+	end; 
+		
+OnTimer6000:
+	set .@b, rand(1,6);
+	emotion 3;
+	//npcwalkto .coorx[.@b], .coory[.@b];
+	end;
+			
+OnTimer9000:
+	set .@c, rand(1,6);
+	emotion 3;
+	npcwalkto .coorx[.@c], .coory[.@c];
+	end;
+			
+OnTimer12000:
+	set .@d, rand(1,6);
+	emotion 3;
+	//npcwalkto .coorx[.@d], .coory[.@d];
+	end;
+			
+OnTimer13000:
+	stopnpctimer;
+	initnpctimer;
+	end;
+} 

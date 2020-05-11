@@ -1,4 +1,4 @@
-prt_in,229,27,4	script	Anúnciador VIP	47,{
+prt_in,229,27,4	script	Anúnciador VIP	647,{
 	//------------------------------------------
 	// Valor Pago para anunciar.
 	set .@valor, 1000000;
@@ -10,7 +10,7 @@ prt_in,229,27,4	script	Anúnciador VIP	47,{
 
 	mes .@nome$;
 	if( delay_anc > gettimetick(2) ){
-		mes "Você ainda deve aguardar: ^EEAD0E"+ callfunc("Time2Str",delay_anc) +"^000000.";
+		mes "Você ainda deve aguardar: ^EEAD0E"+ callfunc("Time2Str", delay_anc) +"^000000.";
 		close;
 	}
 	mes "Todo usuário VIP tem o serviço de anúncio global, porém, é cobrada uma taxa pelo serviço e também um delay de reuso do sistema além de algumas regras.";
@@ -22,7 +22,7 @@ prt_in,229,27,4	script	Anúnciador VIP	47,{
 	mes "^777777Deseja enviar um anúncio global?^000000";
 	dispbottom "Punição por descumprimento da regra: Bloqueio permamente da conta.",0xFF0000;
 	next;
-	if( select("^00CC00•^000000 Enviar Anúncio.:^00CC00•^000000 ^777777Cancelar.^000000") == 2 ) close;
+	if( select("^00CC00•^000000 Enviar Anúncio.:^00CC00•^000000 Cancelar.") == 2 ) close;
 		mes .@nome$;
 		mes "Digite abaixo a mensagem que será enviada:";
 		next;
@@ -31,7 +31,7 @@ prt_in,229,27,4	script	Anúnciador VIP	47,{
 		mes "^777777- Mensagem Enviada^000000: ^00CC00"+ @msg$ +"^000000";
 		mes "^777777Confirme o envio:^000000";
 		next;
-		if( select("^00CC00•^000000 Confirmar.:^00CC00•^000000 ^777777Cancelar.^000000") == 1 ){
+		if( select("^00CC00•^000000 Confirmar.:^00CC00•^000000 Cancelar.") == 1 ){
 			if( Zeny < .@valor ){
 				mes .@nome$;
 				mes "Você não tem o valor de ^FF0000("+ .@valor +")^000000 Zeny para enviar o torpedo.";
@@ -39,7 +39,7 @@ prt_in,229,27,4	script	Anúnciador VIP	47,{
 			}
 			set Zeny, Zeny - .@valor;
 			set delay_anc, gettimetick(2) + 300;
-			announce "["+ strcharinfo(0) +"]: "+ @msg$ +".", bc_all,0xFFFFFF;
+			announce "["+ strcharinfo(0) +"]: "+ @msg$ +".", bc_all, 0xFFFFFF;
 			end;
 	}
 	close;

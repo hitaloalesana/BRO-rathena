@@ -1,4 +1,4 @@
-prt_in,221,35,4	script	Aluguel VIP	50,{
+prt_in,221,35,4	script	Aluguel VIP	643,{
 	//------------------------------------------
 	// Visuais Rentais
 	setarray .@rent_id[0], 607, 608, 512;

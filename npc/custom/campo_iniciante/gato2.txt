@@ -1,0 +1,39 @@
+﻿-	shop	gato_shop	-1,501:50
+new_zone01,55,109,5	script	Gato	81,{
+		announce "Loja de Aluguel | Moeda: '"+ getitemname( .gato_requerid ) +"'", bc_blue|bc_self;
+		dispbottom "Atenção: Os itens desta loja são de Aluguel e duram 30 dias.",0x00FF00;
+		callshop "gato_shop", 1;
+		npcshopattach "gato_shop";
+		end;
+	OnBuyItem:
+		for( set .@j, 0; .@j < getarraysize( .items ); set .@j, .@j + 2 ){	   
+		for( set .@k, 0; .@k < getarraysize( @bought_nameid ); set .@k, .@k + 1 ){		   
+		if( @bought_nameid[.@k] == .items[.@j] ){			   
+		if( checkweight( @bought_nameid[ .@k ], @bought_quantity[ .@k ] )){		  
+		if( countitem( .gato_requerid ) < .items[ .@j + 1 ] ){				  
+			dispbottom "Você precisa de "+ getitemname( .gato_requerid ) +" para trocar.", 0x00FF00;  
+			close;				   
+		} else {					   
+			delitem .gato_requerid, .items[ .@j + 1 ] * @bought_quantity[ .@k ];		
+			rentitem @bought_nameid[ .@k ], 2592000;
+			dispbottom "Compra realizada com sucesso.", 0x00FF00;
+			end;				    
+			}			    
+		} else                  
+			dispbottom "Você não consegue realizar esta negociação ].", 0x00FF00;         
+			end;		   
+			}	    
+		}    
+	}    
+	deletearray @bought_quantity, getarraysize( @bought_quantity );
+	deletearray @bought_nameid, getarraysize( @bought_nameid );    
+	end;
+OnInit:    
+	set .gato_requerid, 7539;
+	setarray .items, 42025, 200,	42026,	200,	42039,	200; // Usage : <item id>,<price>    
+	npcshopitem "gato_shop", 0, 0; 
+	for( set .@i, 0; .@i < getarraysize( .items ); set .@i, .@i + 2 )      
+		npcshopadditem "gato_shop", .items[.@i], .items[.@i + 1]; 
+		end;
+		}
+}

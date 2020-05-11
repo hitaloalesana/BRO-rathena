@@ -1,6 +1,6 @@
-prontera,161,221,5	script	Quests	408,{
+prontera,161,221,5	script	Quests Oficiais	408,{
 function Add; function Chk; function Slot; function A_An;
-	mes "[ ^0099FFQuests Brasil Ragnarök Online^000000 ]";
+	mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";
 	mes "Oi, ^EEAD0E"+ strcharinfo(0)+"^000000!"; 
 	mes "Aqui no ^00CC00Brasil Ragnarök Online^000000 temos uma gama repleta de quests para serem realizadas."; 
 	mes "^777777Selecione o equipamento e colete os itens necessários!^000000";
@@ -11,8 +11,9 @@ function Add; function Chk; function Slot; function A_An;
 		set .@menu$,"";
 		for(set .@i,1; .@i<=getarraysize(.Shops$); set .@i,.@i+1)
 			set .@menu$, .@menu$+.Shops$[.@i]+":";
-		set .@i, select(.@menu$); }
-	dispbottom "[ Selecione um item de cada vez ].";
+		set .@i, select(.@menu$); 
+	}
+	dispbottom "Selecione um item de cada vez.",0x00FF00;
 	callshop "qqshop"+.@i,1;
 	npcshopattach "qqshop"+.@i;
 	end;
@@ -48,7 +49,7 @@ OnBuyItem:
 	set .@q[0],@bought_nameid;
 	copyarray .@q[1],getd(".q_"+@bought_nameid+"[0]"),getarraysize(getd(".q_"+@bought_nameid+"[0]"));
 	if (!.@q[1]) { message strcharinfo(0),"An error has occurred."; end; }
-	mes "[ [ ^0099FFQuests Brasil Ragnarök Online ^000000] ]";
+	mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";
 	mes "Recompensa: ^0055FF"+((.@q[1]>1)?.@q[1]+"x ":"")+Slot(.@q[0])+"^000000";
 	mes "Requerimentos:";
 	if (.@q[2]) mes "- "+Chk(Zeny,.@q[2])+.@q[2]+" Zeny^000000";
@@ -62,11 +63,11 @@ OnBuyItem:
 		switch(select("^00CC00•^000000 Fazer ^0055FF"+getitemname(.@q[0])+"^000000:"+((((@qe1&1) || (@qe1&256) || (@qe1&512)) && @qe2>0 && !@qe6)?"^00CC00•^000000 Experimentar Item.":"")+": ^777777Cancelar.^000000")) {
 			case 1:
 				if (@qe0) { 
-					mes "[ ^0099FFQuests Brasil Ragnarök Online ^000000]";
+					mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";
 					mes "Você está esquecendo um ou mais requisitos da quest.";
 					close; }
 				if (!checkweight(.@q[0],.@q[1])) {
-					mes "[ ^0099FFQuests Brasil Ragnarök Online ^000000]";
+					mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";
 					mes "^FF0000You need "+(((.@q[1]*getiteminfo(.@q[0],6))+Weight-MaxWeight)/10)+" additional weight capacity to complete this trade.^000000";
 					close; }
 				if (.@q[2]) set Zeny, Zeny-.@q[2];
@@ -114,7 +115,7 @@ OnInit:
 // Duplicate dummy data for any additional shops (bottom of script).
 // If no categories, use the second line instead (remove //).
 
-	setarray .Shops$[1],"^00CC00•^000000 Equipamentos para Cabeça ^00CC00(Topo).^000000.","^00CC00•^000000 Equipamentos para Cabeça ^00CC00(Meio).^000000.","^00CC00•^000000 Equipamentos para Cabeça ^00CC00(Baixo).^000000.","^00CC00•^000000 Acessórios.";
+	setarray .Shops$[1],"^00CC00•^000000 Equipamentos para Cabeça ^00CC00(Topo).^000000","^00CC00•^000000 Equipamentos para Cabeça ^00CC00(Meio).^000000","^00CC00•^000000 Equipamentos para Cabeça ^00CC00(Baixo).^000000","^00CC00•^000000 Acessórios.";
 
 	// set .Shops$,"n/a";
 

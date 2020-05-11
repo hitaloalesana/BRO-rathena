@@ -1,8 +1,8 @@
 prontera,156,222,5	script	Quests ROPs	408,{
 function Add; function Chk; function Slot; function A_An;
 	mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";
-	mes "Oi, ^EEAD0E"+ strcharinfo(0)+"^000000!"; 
-	mes "Aqui no ^00CC00Brasil Ragnarök Online^000000 temos uma gama repleta de quests para serem realizadas."; 
+	mes "Olá, ^EEAD0E"+ strcharinfo(0)+"^000000!"; 
+	mes "Que tal dar aquele tapa no visual usando alguns ROPs? Temos muitas quests aqui no ^00CC00Brasil Ragnarök Online^000000!"; 
 	mes "^777777Selecione o equipamento e colete os itens necessários!^000000";
 	next;
 
