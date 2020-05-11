@@ -1357,295 +1357,295 @@
 //							FIM DO SET IMORTAL													//
 //																				//
 // ========================================================================= //
-47203,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3722,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47204,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3723,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47205,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3724,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47206,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3725,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47207,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3726,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47208,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3727,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47209,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3728,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47210,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3729,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47211,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3730,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47212,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3731,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47213,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3732,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47214,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3733,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47215,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3734,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47216,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3735,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47217,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3736,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47218,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3737,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47219,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3738,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47220,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3739,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47221,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3740,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47222,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3741,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47223,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3742,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47224,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3743,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47225,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3744,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47226,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3745,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47227,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3746,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47228,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3747,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47229,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3748,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47230,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3749,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47231,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3750,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47232,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3751,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47233,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3752,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47234,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3753,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47235,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3754,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47236,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3755,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47237,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3756,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47238,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3757,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47239,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3758,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47240,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3759,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47241,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3760,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47242,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3761,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47243,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3762,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47244,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3763,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47245,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3764,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47246,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3765,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47247,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3766,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47248,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3767,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47249,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3768,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47250,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3769,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47251,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3770,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47252,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3771,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47253,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3772,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47254,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3773,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47255,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3774,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47256,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3775,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47257,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3776,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47258,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3777,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47259,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3778,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47260,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3779,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47261,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3780,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47262,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3781,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47263,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3782,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47264,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3783,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47265,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3784,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47266,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3785,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47267,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3786,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47268,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3787,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47269,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3788,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47270,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3789,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47271,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3790,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47272,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3791,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47273,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3792,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47274,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3793,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47275,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3794,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47276,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3795,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47277,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3796,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47278,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3797,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47279,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3798,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47280,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3799,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47281,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3800,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47282,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3801,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47283,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3802,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47284,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3803,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47285,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3804,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47286,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3805,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47287,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3806,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47288,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3807,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47289,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3808,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47290,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3809,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47291,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3810,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47292,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3811,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47293,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3812,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47294,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3813,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47295,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3814,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47296,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3815,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47297,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3816,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47298,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3817,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47299,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3818,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47300,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3819,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47301,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3820,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47302,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3821,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47303,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3822,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47304,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3823,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47305,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3824,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47306,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3825,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47307,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3826,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47308,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3827,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47309,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3828,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47310,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3829,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47311,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3830,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47312,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3831,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47313,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3832,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47314,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3833,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47315,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3834,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47316,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3835,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47317,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3836,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47318,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3837,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47319,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3838,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47320,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3839,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47321,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3840,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47322,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3841,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47323,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3842,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47324,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3843,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47325,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3844,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47326,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3845,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47327,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3846,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47328,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3847,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47329,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3848,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47330,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3849,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47331,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3850,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47332,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3851,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47333,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3852,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47334,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3853,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47335,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3854,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47336,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3855,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47337,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3856,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47338,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3857,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47339,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3858,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47340,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3859,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47341,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3860,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47342,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3861,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47343,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3862,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47344,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3863,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47345,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3864,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47346,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3865,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47347,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3866,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47348,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3867,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47349,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3868,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47350,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3869,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47351,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3870,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47352,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3871,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47353,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3872,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47354,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3873,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47355,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3874,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47356,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3875,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47357,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3876,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47358,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3877,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47359,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3878,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47360,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3879,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47361,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3880,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47362,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3881,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47363,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3882,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47364,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3883,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47365,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3884,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47366,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3885,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47367,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3886,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47368,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3887,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47369,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3888,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47370,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3889,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47371,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3890,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47372,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3891,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47373,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3892,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47374,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3893,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47375,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3894,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47376,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3895,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47377,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3896,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47378,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3897,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47379,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3898,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47380,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3899,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47381,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3900,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47382,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3901,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47383,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3902,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47384,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3903,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47385,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3904,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47386,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3905,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47387,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3906,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47388,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3907,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47389,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3908,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47390,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3909,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47391,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3910,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47392,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3911,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47393,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3912,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47394,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3913,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47395,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3914,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47396,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3915,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47397,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3916,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47398,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3917,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47399,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3918,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47400,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3919,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47401,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3920,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47402,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3921,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47403,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3922,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47404,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3923,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47405,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3924,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47406,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3925,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47407,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3926,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47408,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3927,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47409,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3928,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47410,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3929,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47411,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3930,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47412,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3931,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47413,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3932,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47414,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3933,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47415,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3934,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47416,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3935,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47417,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3936,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47418,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3937,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47419,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3938,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47420,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3939,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47421,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3930,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47422,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3931,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47423,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3932,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47424,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3933,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47425,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3934,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47426,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3935,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47427,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3936,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47428,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3937,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47429,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3938,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47430,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3939,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47431,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3930,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47432,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3941,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47433,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3942,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47434,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3943,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47435,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3944,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47436,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3945,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47437,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3946,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47438,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3947,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47439,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3948,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47440,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3949,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47441,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3950,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47442,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3951,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47443,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3952,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47444,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3953,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47445,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3954,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47446,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3955,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47447,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3956,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47448,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3957,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47449,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3958,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47450,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3959,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47204,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3722,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47205,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3723,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47206,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3724,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47207,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3725,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47208,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3726,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47209,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3727,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47210,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3728,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47211,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3729,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47212,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3730,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47213,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3731,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47214,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3732,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47215,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3733,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47216,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3734,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47217,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3735,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47218,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3736,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47219,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3737,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47220,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3738,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47221,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3739,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47222,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3740,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47223,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3741,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47224,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3742,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47225,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3743,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47226,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3744,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47227,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3745,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47228,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3746,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47229,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3747,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47230,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3748,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47231,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3749,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47232,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3750,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47233,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3751,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47234,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3752,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47235,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3753,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47236,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3754,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47237,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3755,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47238,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3756,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47239,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3757,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47240,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3758,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47241,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3759,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47242,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3760,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47243,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3761,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47244,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3762,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47245,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3763,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47246,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3764,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47247,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3765,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47248,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3766,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47249,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3767,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47250,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3768,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47251,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3769,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47252,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3770,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47253,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3771,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47254,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3772,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47255,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3773,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47256,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3774,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47257,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3775,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47258,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3776,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47259,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3777,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47260,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3778,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47261,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3779,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47262,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3780,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47263,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3781,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47264,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3782,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47265,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3783,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47266,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3784,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47267,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3785,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47268,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3786,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47269,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3787,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47270,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3788,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47271,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3789,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47272,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3790,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47273,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3791,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47274,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3792,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47275,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3793,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47276,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3794,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47277,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3795,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47278,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3796,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47279,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3797,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47280,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3798,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47281,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3799,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47282,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3800,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47283,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3801,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47284,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3802,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47285,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3803,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47286,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3804,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47287,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3805,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47288,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3806,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47289,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3807,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47290,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3808,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47291,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3809,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47292,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3810,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47293,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3811,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47294,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3812,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47295,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3813,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47296,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3814,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47297,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3815,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47298,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3816,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47299,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3817,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47300,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3818,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47301,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3819,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47302,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3820,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47303,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3821,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47304,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3822,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47305,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3823,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47306,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3824,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47307,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3825,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47308,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3826,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47309,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3827,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47310,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3828,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47311,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3829,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47312,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3830,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47313,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3831,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47314,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3832,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47315,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3833,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47316,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3834,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47317,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3835,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47318,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3836,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47319,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3837,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47320,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3838,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47321,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3839,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47322,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3840,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47323,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3841,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47324,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3842,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47325,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3843,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47326,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3844,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47327,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3845,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47328,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3846,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47329,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3847,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47330,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3848,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47331,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3849,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47332,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3850,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47333,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3851,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47334,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3852,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47335,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3853,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47336,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3854,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47337,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3855,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47338,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3856,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47339,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3857,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47340,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3858,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47341,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3859,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47342,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3860,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47343,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3861,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47344,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3862,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47345,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3863,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47346,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3864,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47347,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3865,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47348,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3866,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47349,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3867,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47350,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3868,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47351,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3869,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47352,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3870,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47353,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3871,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47354,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3872,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47355,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3873,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47356,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3874,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47357,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3875,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47358,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3876,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47359,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3877,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47360,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3878,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47361,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3879,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47362,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3880,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47363,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3881,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47364,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3882,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47365,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3883,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47366,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3884,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47367,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3885,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47368,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3886,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47369,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3887,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47370,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3888,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47371,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3889,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47372,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3890,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47373,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3891,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47374,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3892,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47375,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3893,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47376,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3894,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47377,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3895,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47378,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3896,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47379,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3897,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47380,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3898,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47381,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3899,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47382,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3900,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47383,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3901,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47384,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3902,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47385,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3903,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47386,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3904,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47387,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3905,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47388,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3906,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47389,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3907,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47390,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3908,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47391,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3909,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47392,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3910,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47393,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3911,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47394,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3912,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47395,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3913,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47396,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3914,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47397,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3915,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47398,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3916,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47399,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3917,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47400,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3918,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47401,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3919,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47402,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3920,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47403,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3921,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47404,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3922,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47405,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3923,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47406,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3924,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47407,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3925,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47408,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3926,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47409,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3927,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47410,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3928,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47411,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3929,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47412,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3930,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47413,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3931,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47414,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3932,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47415,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3933,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47416,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3934,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47417,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3935,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47418,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3936,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47419,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3937,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47420,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3938,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47421,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3939,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47422,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3930,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47423,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3931,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47424,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3932,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47425,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3933,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47426,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3934,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47427,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3935,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47428,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3936,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47429,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3937,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47430,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3938,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47431,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3939,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47432,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3930,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47433,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3941,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47434,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3942,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47435,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3943,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47436,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3944,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47437,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3945,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47438,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3946,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47439,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3947,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47440,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3948,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47441,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3949,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47442,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3950,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47443,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3951,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47444,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3952,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47445,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3953,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47446,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3954,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47447,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3955,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47448,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3956,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47449,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3957,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47450,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3958,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47451,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3959,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47451,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3960,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47452,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3961,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47453,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3962,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47454,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3963,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47455,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3964,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47456,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3965,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47457,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3966,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47458,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3967,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47459,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3968,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47460,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3969,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47461,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3970,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47462,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3971,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47463,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3972,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47464,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3973,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47465,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3974,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47466,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3975,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47467,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3976,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47468,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3977,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47469,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3978,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47470,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3979,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47471,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3980,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47472,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3981,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47473,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3982,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47474,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3983,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47475,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3984,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47476,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3985,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47477,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3986,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47478,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3987,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47479,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3988,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47480,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3989,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47481,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3990,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47482,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3991,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47483,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3992,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47484,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3993,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47485,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3994,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47486,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3995,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47487,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3996,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47488,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3997,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47489,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3998,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47490,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3999,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47491,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,4000,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47453,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3961,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47454,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3962,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47455,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3963,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47456,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3964,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47457,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3965,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47458,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3966,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47459,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3967,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47460,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3968,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47461,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3969,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47462,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3970,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47463,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3971,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47464,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3972,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47465,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3973,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47466,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3974,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47467,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3975,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47468,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3976,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47469,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3977,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47470,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3978,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47471,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3979,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47472,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3980,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47473,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3981,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47474,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3982,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47475,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3983,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47476,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3984,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47477,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3985,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47478,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3986,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47479,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3987,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47480,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3988,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47481,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3989,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47482,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3990,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47483,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3991,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47484,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3992,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47485,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3993,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47486,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3994,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47487,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3995,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47488,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3996,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47489,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3997,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47490,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3998,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47491,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3999,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47492,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,4000,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 
 
 
