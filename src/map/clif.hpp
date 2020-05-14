@@ -752,7 +752,8 @@ void clif_item_repaireffect(struct map_session_data *sd, int idx, int flag);
 void clif_item_damaged(struct map_session_data* sd, unsigned short position);
 void clif_item_refine_list(struct map_session_data *sd);
 void clif_hat_effects( struct map_session_data* sd, struct block_list* bl, enum send_target target );
-void clif_hat_effect_single( struct map_session_data* sd, uint16 effectId, bool enable );
+void clif_hat_effect_single(struct block_list* bl, uint16 effectId, bool enable);
+void clif_hat_effect_single2(struct block_list* bl, uint16 effectId, bool enable);
 
 void clif_item_skill(struct map_session_data *sd,uint16 skill_id,uint16 skill_lv);
 
@@ -1057,7 +1058,7 @@ void clif_elemental_updatestatus(struct map_session_data *sd, int type);
 void clif_spiritcharm(struct map_session_data *sd);
 
 void clif_snap( struct block_list *bl, short x, short y );
-void clif_monster_hp_bar( struct mob_data* md, int fd );
+void clif_monster_hp_bar(struct mob_data* md, struct map_session_data *sd);
 
 // Clan System
 void clif_clan_basicinfo( struct map_session_data *sd );
