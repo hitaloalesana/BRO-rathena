@@ -22950,61 +22950,52 @@ BUILDIN_FUNC(recalculatestat) {
 	return SCRIPT_CMD_SUCCESS;
 }
 
-BUILDIN_FUNC(hateffect) {
+BUILDIN_FUNC(hateffect){
 #if PACKETVER >= 20150513
 	struct map_session_data* sd;
-	struct block_list* bl;
 	bool enable;
 	int i, effectID;
 
-	if (script_hasdata(st, 4))
-	{
-		sd = map_id2sd(script_getnum(st, 4));
-
-		if (!sd)
-			return SCRIPT_CMD_FAILURE;
-	}
-	else if (!script_rid2sd(sd))
+	if( !script_rid2sd(sd) )
 		return SCRIPT_CMD_FAILURE;
 
-	effectID = script_getnum(st, 2);
-	enable = script_getnum(st, 3) ? true : false;
+	effectID = script_getnum(st,2);
+	enable = script_getnum(st,3) ? true : false;
 
-	if (effectID <= HAT_EF_MIN || effectID >= HAT_EF_MAX) {
-		ShowError("buildin_hateffect: unsupported hat effect id %d\n", effectID);
+	if( effectID <= HAT_EF_MIN || effectID >= HAT_EF_MAX ){
+		ShowError( "buildin_hateffect: unsupported hat effect id %d\n", effectID );
 		return SCRIPT_CMD_FAILURE;
 	}
 
-	ARR_FIND(0, sd->hatEffectCount, i, sd->hatEffectIDs[i] == effectID);
+	ARR_FIND( 0, sd->hatEffectCount, i, sd->hatEffectIDs[i] == effectID );
 
-	if (enable) {
-		if (i < sd->hatEffectCount) {
+	if( enable ){
+		if( i < sd->hatEffectCount ){
 			return SCRIPT_CMD_SUCCESS;
 		}
 
-		RECREATE(sd->hatEffectIDs, uint32, sd->hatEffectCount + 1);
+		RECREATE(sd->hatEffectIDs,uint32,sd->hatEffectCount+1);
 		sd->hatEffectIDs[sd->hatEffectCount] = effectID;
 		sd->hatEffectCount++;
-	}
-	else {
-		if (i == sd->hatEffectCount) {
+	}else{
+		if( i == sd->hatEffectCount ){
 			return SCRIPT_CMD_SUCCESS;
 		}
 
-		for (; i < sd->hatEffectCount - 1; i++) {
-			sd->hatEffectIDs[i] = sd->hatEffectIDs[i + 1];
+		for( ; i < sd->hatEffectCount - 1; i++ ){
+			sd->hatEffectIDs[i] = sd->hatEffectIDs[i+1];
 		}
 
 		sd->hatEffectCount--;
 
-		if (!sd->hatEffectCount) {
+		if( !sd->hatEffectCount ){
 			aFree(sd->hatEffectIDs);
 			sd->hatEffectIDs = NULL;
 		}
 	}
 
-	if (!sd->state.connect_new) {
-		clif_hat_effect_single(&sd->bl, effectID, enable);
+	if( !sd->state.connect_new ){
+		clif_hat_effect_single( sd, effectID, enable );
 	}
 
 #endif
@@ -25272,7 +25263,7 @@ struct script_function buildin_func[] = {
 	BUILDIN_DEF(adopt,"vv"),
 	BUILDIN_DEF(getexp2,"ii?"),
 	BUILDIN_DEF(recalculatestat,""),
-	BUILDIN_DEF(hateffect,"ii?"),
+	BUILDIN_DEF(hateffect,"ii"),
 	BUILDIN_DEF(getrandomoptinfo, "i"),
 	BUILDIN_DEF(getequiprandomoption, "iii?"),
 	BUILDIN_DEF(setrandomoption,"iiiii?"),

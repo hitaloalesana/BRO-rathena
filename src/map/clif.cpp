@@ -1158,13 +1158,13 @@ static int clif_set_unit_idle(struct block_list* bl, unsigned char* buffer, bool
 	WBUFW(buf,53) = (sd ? sd->status.font : 0);
 #endif
 #if PACKETVER >= 20120221
-//	if ( battle_config.monster_hp_bars_info && bl->type == BL_MOB && !map_getmapflag(bl->m, MF_HIDEMOBHPBAR) && (status_get_hp(bl) < status_get_max_hp(bl)) ) {
-//		WBUFL(buf,55) = status_get_max_hp(bl);		// maxHP
-//		WBUFL(buf,59) = status_get_hp(bl);		// HP
-//	} else {
+	if ( battle_config.monster_hp_bars_info && bl->type == BL_MOB && !map_getmapflag(bl->m, MF_HIDEMOBHPBAR) && (status_get_hp(bl) < status_get_max_hp(bl)) ) {
+		WBUFL(buf,55) = status_get_max_hp(bl);		// maxHP
+		WBUFL(buf,59) = status_get_hp(bl);		// HP
+	} else {
 		WBUFL(buf,55) = -1;		// maxHP
 		WBUFL(buf,59) = -1;		// HP
-//	}
+	}
 
 	WBUFB(buf,63) = ( bl->type == BL_MOB && (((TBL_MOB*)bl)->db->mexp > 0) ) ? 1 : 0;		// isBoss
 #endif
@@ -1301,13 +1301,13 @@ static int clif_set_unit_walking(struct block_list* bl, struct unit_data* ud, un
 	WBUFW(buf,60) = (sd ? sd->status.font : 0);
 #endif
 #if PACKETVER >= 20120221
-	//if ( battle_config.monster_hp_bars_info && !map_getmapflag(bl->m, MF_HIDEMOBHPBAR) && bl->type == BL_MOB && (status_get_hp(bl) < status_get_max_hp(bl)) ) {
-	//	WBUFL(buf,62) = status_get_max_hp(bl);		// maxHP
-	//	WBUFL(buf,66) = status_get_hp(bl);		// HP
-	//} else {
+	if ( battle_config.monster_hp_bars_info && !map_getmapflag(bl->m, MF_HIDEMOBHPBAR) && bl->type == BL_MOB && (status_get_hp(bl) < status_get_max_hp(bl)) ) {
+		WBUFL(buf,62) = status_get_max_hp(bl);		// maxHP
+		WBUFL(buf,66) = status_get_hp(bl);		// HP
+	} else {
 		WBUFL(buf,62) = -1;		// maxHP
 		WBUFL(buf,66) = -1;		// HP
-	//}
+	}
 
 	WBUFB(buf,70) = ( bl->type == BL_MOB && (((TBL_MOB*)bl)->db->mexp > 0) ) ? 1 : 0;		// isBoss
 #endif
@@ -3466,51 +3466,17 @@ void clif_updatestatus(struct map_session_data *sd,int type)
 				}
 			}
 			break;
-			
 		case SP_HP:
-		{
-
-			struct map_data *mapdata = map_getmapdata(sd->bl.id);
-			int fd;
-			int percent_hp = sd->battle_status.hp * 100 / sd->battle_status.max_hp;
-			int HP_effects[] = { 20,20,20,20,20,19,19,19,19,19,18,18,18,18,18,17,17,17,17,17,16,16,16,16,16,15,15,15,15,15,14,14,14,14,14,13,13,13,13,13,12,12,12,12,12,11,11,11,11,11,10,10,10,10,10,9,9,9,9,9,8,8,8,8,8,7,7,7,7,7,6,6,6,6,6,5,5,5,5,5,4,4,4,4,4,3,3,3,3,3,2,2,2,2,2,1,1,1,1,1 };
-
-			if (sd->lastEffectID > 0) {
-				clif_hat_effect_single2(&sd->bl, sd->lastEffectID, false);
-			}
-			clif_hat_effect_single2(&sd->bl, HP_effects[max(0, min(percent_hp, 99))], true);
-			sd->lastEffectID = HP_effects[max(0, min(percent_hp, 99))];
-			fd = sd->fd;
-
-			if (map_getmapdata(sd->bl.m)->hpmeter_visible) {
+			if( map_getmapdata(sd->bl.m)->hpmeter_visible ){
 				clif_hpmeter(sd);
 			}
-			if (!battle_config.party_hp_mode && sd->status.party_id) {
+			if( !battle_config.party_hp_mode && sd->status.party_id ){
 				clif_party_hp(sd);
 			}
-			if (sd->bg_id) {
+			if( sd->bg_id ){
 				clif_bg_hp(sd);
 			}
-
-		}
-		break;
-
-		case SP_SP:
-		{
-			struct map_data *mapdata = map_getmapdata(sd->bl.id);
-			int percent_sp = sd->battle_status.sp * 100 / sd->battle_status.max_sp;
-			int fd;
-			int SP_effects[] = { 63,63,63,63,63,64,64,64,64,64,64,64,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,67,68,68,68,68,68,68,68,68,68,68,69,69,69,69,69,69,69,69,69,69,70,70,70,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73 };
-
-			if (sd->lastEffectID2 > 0) {
-				clif_hat_effect_single2(&sd->bl, sd->lastEffectID2, false);
-			}
-			clif_hat_effect_single2(&sd->bl, SP_effects[max(0, min(percent_sp, 99))], true);
-			sd->lastEffectID2 = SP_effects[max(0, min(percent_sp,99))];
-			fd = sd->fd;
-			
-		}
-		break;
+			break;
 	}
 }
 
@@ -4825,7 +4791,7 @@ void clif_getareachar_unit(struct map_session_data* sd,struct block_list *bl)
 				int i;
 				for(i = 0; i < DAMAGELOG_SIZE; i++)// must show hp bar to all char who already hit the mob.
 					if( md->dmglog[i].id == sd->status.char_id )
-						clif_monster_hp_bar(md, sd);
+						clif_monster_hp_bar(md, sd->fd);
 			}
 #endif
 		}
@@ -18994,44 +18960,17 @@ void clif_snap( struct block_list *bl, short x, short y ) {
 		clif_send(buf,packet_len(0x8d2),bl, AREA);
 }
 
-#define status_has_mode(status,md) (((status)->mode&(md)) == (md))
-void clif_monster_hp_bar(struct mob_data* md, struct map_session_data *sd) {
-	
-	int percent_hp = md->status.hp * 100 / md->status.max_hp;
-	int fd;
-    bool is_mvp = status_has_mode(&md->db->status, MD_MVP);
-    bool is_boss = (md->status.class_ == CLASS_BOSS);
-	//mob
-	int effects[] = { 41,41,41,40,40,40,40,40,40,40,39,39,39,39,39,38,38,38,38,38,37,37,37,37,37,36,36,36,36,36,35,35,35,35,35,34,34,34,34,34,33,33,33,33,33,32,32,32,32,32,31,31,31,31,31,30,30,30,30,30,29,29,29,29,29,28,28,28,28,28,27,27,27,27,27,26,26,26,26,26,25,25,25,25,25,24,24,24,24,24,23,23,23,23,23,22,22,22,22,21 };// hateffects_ids para cada %
-	int effects2[] = { 62,62,62,60,60,60,60,60,60,60,59,59,59,59,59,58,58,58,58,58,57,57,57,57,57,56,56,56,56,56,55,55,55,55,55,54,54,54,54,54,53,53,53,53,53,52,52,52,52,52,51,51,51,51,51,50,50,50,50,50,49,49,49,49,49,48,48,48,48,48,47,47,47,47,47,46,46,46,46,46,45,45,45,45,45,44,44,44,44,44,43,43,43,43,43,43,43,42,42,42 };// hateffects_ids para cada %
-	
-
-	if (md->lastEffectID > 0){
-		clif_hat_effect_single(&md->bl, md->lastEffectID, false);
-	}
-
-	if (is_mvp || is_boss) {
-
-		clif_hat_effect_single(&md->bl, effects2[max(0, min(percent_hp, 99))], true);
-		md->lastEffectID = effects2[max(0, min(percent_hp, 99))];
-
-	}
-	else {
-
-		clif_hat_effect_single(&md->bl, effects[max(0, min(percent_hp, 99))], true);
-		md->lastEffectID = effects[max(0, min(percent_hp, 99))];
-	}
-	fd = sd->fd;
-	
+/// 0977 <id>.L <HP>.L <maxHP>.L (ZC_HP_INFO).
+void clif_monster_hp_bar( struct mob_data* md, int fd ) {
 #if PACKETVER >= 20120404
-	//WFIFOHEAD(fd, packet_len(0x977));
+	WFIFOHEAD(fd,packet_len(0x977));
 
-	//WFIFOW(fd, 0) = 0x977;
-	//WFIFOL(fd, 2) = md->bl.id;
-	//WFIFOL(fd, 6) = md->status.hp;
-	//WFIFOL(fd, 10) = md->status.max_hp;
+	WFIFOW(fd,0)  = 0x977;
+	WFIFOL(fd,2)  = md->bl.id;
+	WFIFOL(fd,6)  = md->status.hp;
+	WFIFOL(fd,10) = md->status.max_hp;
 
-	//WFIFOSET(fd, packet_len(0x977));
+	WFIFOSET(fd,packet_len(0x977));
 #endif
 }
 
@@ -20395,31 +20334,17 @@ void clif_hat_effects( struct map_session_data* sd, struct block_list* bl, enum 
 #endif
 }
 
-void clif_hat_effect_single(struct block_list* bl, uint16 effectId, bool enable) {
+void clif_hat_effect_single( struct map_session_data* sd, uint16 effectId, bool enable ){
 #if PACKETVER >= 20150513
 	unsigned char buf[13];
 
 	WBUFW(buf,0) = 0xa3b;
 	WBUFW(buf,2) = 13;
-	WBUFL(buf,4) = bl->id;
+	WBUFL(buf,4) = sd->bl.id;
 	WBUFB(buf,8) = enable;
 	WBUFL(buf,9) = effectId;
 
-	clif_send(buf,13,bl,AREA);
-#endif
-}
-
-void clif_hat_effect_single2(struct block_list* bl, uint16 effectId, bool enable) {
-#if PACKETVER >= 20150513
-	unsigned char buf[13];
-
-	WBUFW(buf, 0) = 0xa3b;
-	WBUFW(buf, 2) = 13;
-	WBUFL(buf, 4) = bl->id;
-	WBUFB(buf, 8) = enable;
-	WBUFL(buf, 9) = effectId;
-
-	clif_send(buf, 13, bl, SELF);
+	clif_send(buf,13,&sd->bl,AREA);
 #endif
 }
 
