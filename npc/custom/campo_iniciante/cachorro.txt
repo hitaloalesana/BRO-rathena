@@ -35,5 +35,4 @@ OnInit:
 	for( set .@i, 0; .@i < getarraysize( .items ); set .@i, .@i + 2 )      
 		npcshopadditem "dog_shop", .items[.@i], .items[.@i + 1]; 
 		end;
-		}
 }

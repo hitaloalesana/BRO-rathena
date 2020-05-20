@@ -1,4 +1,4 @@
-prontera,172,183,1	script	Estilista#super_stylist	122,{
+prontera,139,226,4	script	Estilista#super_stylist	122,{
 	doevent "super_stylist_main::OnTalk";
 }
 -	script	super_stylist_main	-1,{

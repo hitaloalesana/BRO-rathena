@@ -78,5 +78,4 @@ OnPCLoginEvent:
 		}
 	}
 	end;
-	}
 }

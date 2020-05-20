@@ -104,20 +104,20 @@
 40000,Cartão_VIP_1_Dia,Cartão VIP 1 Dia,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{vip_time(60*24*1);},{},{}
 40001,Cartão_VIP_15_Dias,Cartão VIP 15 Dias,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{vip_time(60*24*15);},{},{}
 40002,Cartão_VIP_30_Dias,Cartão VIP 30 Dias,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{vip_time(60*24*30);},{},{}
-40003,Caixa_de_Frutos_de_Yggdrasil_100un.,Caixa de Frutos de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40004,Caixa_de_Garrafa_de_Veneno_100un.,Caixa de Garrafa de Veneno 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40005,Caixa_de_Bombas_e_Revestimentos_100un.,Caixa de Bombas e Revestimentos 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40006,Caixa_de_Teia_de_Aranha_100un.,Caixa de Teia de Aranha 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40007,Caixa_de_Aloe_Vera_100un.,Caixa de Aloe Vera 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40008,Caixa_de_Conversor_Elemental_Terra_100un.,Caixa de Conversor Elemental Terra 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40009,Caixa_de_Conversor_Elemental_Vento_100un.,Caixa de Conversor Elemental Vento 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40010,Caixa_de_Conversor_Elemental_Água_100un.,Caixa de Conversor Elemental Água 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40011,Caixa_de_Conversor_Elemental_Fogo_100un.,Caixa de Conversor Elemental Fogo 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40012,Caixa_de_Água_Amaldiçoada_100un.,Caixa de Água Amaldiçoada 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40013,Caixa_de_Caixa_do_Trovão_100un.,Caixa de Caixa do Trovão 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40014,Caixa_de_Caixa_do_Ressentimento_100un.,Caixa de Caixa do Ressentimento 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40015,Caixa_de_Comida_+10_100un.,Caixa de Comida +10 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40016,Ticket_300_150,Ticket 300/150,0,5000,,300,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40003,Caixa_de_Frutos_de_Yggdrasil_100un.,Caixa de Frutos de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 607, 100; dispbottom "[Brasil RAG] Você acabou de receber 100 Yggdrasil."; },{},{}
+40004,Caixa_de_Garrafa_de_Veneno_100un.,Caixa de Garrafa de Veneno 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 678,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Garrafas de Veneno em seu armazém."; },{},{}
+40005,Caixa_de_Bombas_e_Revestimentos_100un.,Caixa de Bombas e Revestimentos 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 7135,100; storeitem 7136,100; storeitem 7139,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Frascos de Fogo Grego, 100 Frascos de Ácido e 100 Frascos de Revestimento em seu armazém."; },{},{}
+40006,Caixa_de_Teia_de_Aranha_100un.,Caixa de Teia de Aranha 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 1025,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Teias de Aranha em seu armazém."; },{},{}
+40007,Caixa_de_Aloe_Vera_100un.,Caixa de Aloe Vera 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 606,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Aloes Vera em seu armazém."; },{},{}
+40008,Caixa_de_Conversor_Elemental_Terra_100un.,Caixa de Conversor Elemental Terra 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12116,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Conversores Elementais de Terra em seu armazém."; },{},{}
+40009,Caixa_de_Conversor_Elemental_Vento_100un.,Caixa de Conversor Elemental Vento 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12117,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Conversores Elementais de Vento em seu armazém."; },{},{}
+40010,Caixa_de_Conversor_Elemental_Água_100un.,Caixa de Conversor Elemental Água 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12115,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Conversores Elementais de Água em seu armazém."; },{},{}
+40011,Caixa_de_Conversor_Elemental_Fogo_100un.,Caixa de Conversor Elemental Fogo 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12114,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Conversores Elementais de Fogo em seu armazém."; },{},{}
+40012,Caixa_de_Água_Amaldiçoada_100un.,Caixa de Água Amaldiçoada 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12020,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Águas Amaldiçoadas em seu armazém."; },{},{}
+40013,Caixa_de_Caixa_do_Trovão_100un.,Caixa de Caixa do Trovão 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12028,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Caixas do Trovão em seu armazém."; },{},{}
+40014,Caixa_de_Caixa_do_Ressentimento_100un.,Caixa de Caixa do Ressentimento 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12030,100; dispbottom "[Brasil RAG]: Você acaba de receber 100 Caixas do Ressentimento em seu armazém."; },{},{}
+40015,Caixa_de_Comida_+10_100un.,Caixa de Comida +10 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 12202,10; storeitem 12203,10; storeitem 12204,10; storeitem 12205,10; storeitem 12206,10; storeitem 12207,10; dispbottom "[Brasil RAG]: Você acaba de receber 10 Línguas no Vapor, 10 Escorpiões no Vapor, 10 Sopas da Imortalidade, 10 Coquetéis Sopro do Dragão, 10 Tônicos de Hwergelmir e 10 Nove Caudas Cozidas em seu armazém."; },{},{}
+40016,Ticket_300_150,Ticket 300/150,0,5000,,300,,,,,0xFFFFFFFF,7,2,,,,,,{ warp "sro_job",264,257; },{},{}
 40017,Moeda_de_Ouro_BrasilRO,Moeda de Ouro BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40018,Moeda_de_Prata_BrasilRO,Moeda de Prata BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40019,Moeda_de_Bronze_BrasilRO,Moeda de Bronze BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -126,7 +126,7 @@
 40022,Pack_Guild_Membro_BrasilRO,Pack Guild Membro BrasilRO,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40023,Caixa_BrasilRO,Caixa BrasilRO,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40024,Cupom_Evento_BrasilRO2,Cupom Evento BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40025,Cash_BrasilRO,Cash BrasilRO,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40025,Rops_BrasilRO,Rops BrasilRO,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set #CASHPOINTS,#CASHPOINTS+1000; dispbottom "[Brasil RAG]: Você acaba de receber 1.000 ROPs."; dispbottom "[Brasil RAG]: Agora você tem "+#CASHPOINTS+" ROPs."; },{},{}
 //40026,Stat_Boost1,Stat Boost 1,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //40027,Stat_Boost2,Stat Boost 2,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //40028,Stat_Boost3,Stat Boost 3,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -134,23 +134,23 @@
 //40030,Stat_Boost5,Stat Boost 5,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //40031,Stat_Boost6,Stat Boost 6,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //40032,Stat_Boost7,Stat Boost 7,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40033,Caixa_de_Enriquecidos,Caixa de Enriquecidos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40033,Caixa_de_Enriquecidos,Caixa de Enriquecidos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 7619,3; getitem 7620,3; },{},{}
 40034,ticket_disguise,Ticket Disguise,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40035,baú_dos_deuses_1,Baú dos Deuses 1,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40036,baú_dos_deuses_2,Baú dos Deuses 2,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40037,baú_dos_deuses_3,Baú dos Deuses 3,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40038,baú_dos_deuses_4,Baú dos Deuses 4,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//40039,Caixa_de_Galhos_Sangrentos,Caixa de Galhos Sangrentos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40035,baú_dos_deuses_1,Baú dos Deuses 1,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias1"; },{},{}
+40036,baú_dos_deuses_2,Baú dos Deuses 2,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias2"; },{},{}
+40037,baú_dos_deuses_3,Baú dos Deuses 3,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias3"; },{},{}
+40038,baú_dos_deuses_4,Baú dos Deuses 4,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias4"; },{},{}
+//40039,Caixa_de_Galhos_Sangrentos,Caixa de Galhos Sangrentos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 12103,5; },{},{}
 40040,Cartão_de_Aluguel_de_Itens,Cartão de Aluguel de Itens,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40041,Cartão_de_Troca_de_Nome,Cartão de Troca de Nome,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40042,Cartão_Eletrônico,Cartão Eletrônico,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40043,Pergaminho_de_Espíritos,Pergaminho de Espíritos,2,2,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40044,Caixa_de_SFrutos_de_Yggdrasil_100un.,Caixa de Sementes de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40045,Poção_Mágica,Poção Mágica,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40042,Cartão_Eletrônico,Cartão Eletrônico,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set @cash,rand(1,10); set #CASHPOINTS,#CASHPOINTS + @cash; dispbottom "[Brasil RAG]: Você acaba de receber "+@cash+" ROPs."; dispbottom "[Brasil RAG]: Agora você tem "+#CASHPOINTS+" ROPs."; },{},{}
+40043,Pergaminho_de_Espíritos,Pergaminho de Espíritos,2,2,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "PergaminhoDeEspiritos"; },{},{}
+40044,Caixa_de_SFrutos_de_Yggdrasil_100un.,Caixa de Sementes de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ storeitem 608,100; dispbottom "[Brasil RAG] Você acabou de receber 100 Sementes de Yggdrasil em seu Armazém."; },{},{}
+40045,Poção_Mágica,Poção Mágica,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ setlook 3,0; setlook 4,0; setlook 5,0; },{},{}
 40046,Emblema_da_Vitória,Emblema da Vitória,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40047,Album_de_Cartas,Album de Cartas,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40048,caixa_do_pesadelo,Caixa do Pesadelo,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40049,maçãencantanda,Maçã Encantada,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40048,caixa_do_pesadelo,Caixa do Pesadelo,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixadopesadelo"; },{},{}
+40049,maçãencantanda,Maçã Encantada,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_BLESSING,360000,10; sc_start SC_INCREASEAGI,360000,10; sc_start SC_ANGELUS,360000,10; percentheal 100,100; sc_start SC_ASSUMPTIO,760000,5; sc_start SC_ENDURE,760000,10; sc_start SC_GLORIA,360000,5; callfunc "GroupBuffs",getcharid(1),strcharinfo(3),strcharinfo(0); },{},{}
 40050,Yggdrasilberry2,Fruto de Yggdrasil Iniciante,0,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 100,100; },{},{}
 40051,Ticket_Rops,Ticket Rops,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40052,Caixa_de_Poções_Compacta_200un.,Caixa de Poções Compacta 200un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -163,15 +163,15 @@
 40059,Caixa_de_Galhos_Sangrentos2,Caixa de Galhos Sangrentos Supremos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40060,Caixa_de_Premiação_PvP,Caixa de Premiação PvP,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40061,Cupom_Evento_BrasilRO,Ticket de Acesso BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//40062,Martelo_de_Conserto,Martelo de Conserto,0,5,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40062,Martelo_de_Conserto,Martelo de Conserto,0,5,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ specialeffect2 101; atcommand "@repairall"; message strcharinfo(0),"[ Itens consertados com sucesso ]."; },{},{}
 40063,caixa_de_encantamentos,Caixa de Encantamentos,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40064,Pack_Iniciante,Pack Iniciante,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Caixa#Brasil"; },{},{}
-40065,Caixa_de_Enriquecidos_Avancados,Caixa de Enriquecidos Avaçados,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40065,Caixa_de_Enriquecidos_Avancados,Caixa de Enriquecidos Avaçados,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 6225,3; getitem 6226,3; },{},{}
 40066,Moeda_dos_desejos_BrasilRO,Moeda dos desejos,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40067,Poringdrasil_Berry,Poringdrasil Berry,0,5000,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40068,Caixa_de_Poringdrasil_berry_100un.,Caixa de Poringdrasil berry 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40069,sacola_de_cash,Sacola de Cash,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40070,Martelo_de_Conserto2,Caixa_de_Martelo_de_Conserto,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40069,sacola_de_cash,Sacola de Cash,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set @cash,rand(1,2); set #CASHPOINTS,#CASHPOINTS + @cash; dispbottom "[Brasil RAG]: Você acaba de receber "+@cash+" ROPs"; dispbottom "[Brasil RAG]: Agora você tem "+#CASHPOINTS+" ROPs."; },{},{}
+40070,Martelo_de_Conserto2,Caixa_de_Martelo_de_Conserto,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 21062,100; },{},{}
 40071,Ovos_Especiais,Ovos Especiais,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 // ================================ Licença para criar loja em prontera BrasilRO ================================ //
 40072,Buy_Market_PermitBRO,Licença de Mercado,3,20,,10,,,,,,,,,,,,,{},{},{}
@@ -351,9 +351,9 @@
 42040,gazewing,Asas Mágicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3040,{},{},{}
 42041,gear0897,Asas Dragônicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3041,{},{},{}
 //====================================================================================================
-42042,fallen_gladiator_crown,Coroa do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3042,{},{},{}
-42043,fallen_gladiator_aura,Aura do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3043,{},{},{}
-42044,fallen_gladiator_wings,Asas do Gladiador,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3044,{},{},{}
+42042,fallen_gladiator_crown,Coroa do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,256,,1,0,3042,{ bonus bAllStats,10; if( isequipped(23043,23044) ) { bonus2 bSubRace,RC_Boss,40; bonus2 bAddRace,RC_Boss,20; bonus bAllStats,15; },{},{}
+42043,fallen_gladiator_aura,Aura do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,512,,1,0,3043,{ bonus bAllStats,3; bonus bSpeedRate,30; if( isequipped(23043,23044) ) { bonus2 bResEff,Eff_Freeze,10000; } },{},{}
+42044,fallen_gladiator_wings,Asas do Gladiador,4,20,,0,,0,,0,0xFFFFFFFF,63,2,1,,0,0,3044,{ bonus bAllStats,-10; bonus2 bResEff,Eff_Stone,10000; },{},{}
 //=======================================================
 // SEASON II -  Custons Novos
 //=======================================================

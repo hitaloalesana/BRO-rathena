@@ -11,10 +11,36 @@ prontera,153,196,5	script	Corporação Kafra	758,{
 	mes "^777777- Calendário^000000: ^0099FF("+gettimestr("%I:%M%p ",10) + gettime(5) + gettimestr(" %B ",15) + gettime(7)+")^000000.";
 	mes "^777777Diga-me em que posso te ajudar:^000000";
 	next;
-	switch(select("^00CC00•^000000 Abrir Armazém ^EEAD0E(500 Zenys).^000000","^00CC00•^000000 Salvar Ponto de Retorno.","^00CC00•^000000 Classes ^8B0A50Transcendentais^000000 ^777777|^000000 ^CD1076Expandidas.^000000","^00CC00•^000000 Classes ^8B008BBebê.^000000","^00CC00•^000000 Carrinho ^777777|^000000 Falcão ^777777|^000000 Peco.","^00CC00•^000000 Resetar Habilidades ^777777|^000000 Skills.","^00CC00•^000000 Remover Habilidades.","^00CC00•^000000 Habilidades de Platina.","^00CC00•^000000 Saír.")){
+	switch(select("^00CC00•^000000 Abrir Armazém ^EEAD0E(500 Zenys).^000000","^00CC00•^000000 Salvar Ponto de Retorno.","^00CC00•^000000 Classes ^8B0A50Transcendentais^000000 ^777777|^000000 ^CD1076Expandidas.^000000","^00CC00•^000000 Classes ^8B008BBebê.^000000","^00CC00•^000000 Carrinho ^777777|^000000 Falcão ^777777|^000000 Peco.","^00CC00•^000000 Resetar Habilidades ^777777|^000000 Skills.","^00CC00•^000000 Remover Habilidades.","^00CC00•^000000 Habilidades de Platina.","^00CC00•^000000 Quest Kafra ^1E90FFB^EE9A00R^000000^008B45O.^000000","^00CC00•^000000 Saír.")){
+		case 9:
+			mes .n$;			
+			if( #q_kafra ){
+				mes "Parece que você já realizou nossa Quest!";
+				close;
+			}
+			mes "Separamos uma quest exclusiva pra você! O equipamento disponível é ^EEAD0E"+ getitemname(607) +"^000000 e para recebe-lo você deverá matar ^00CC00600x "+ getmonsterinfo( 1002,MOB_NAME ) +"^000000.";
+			next;
+			if( select("^00CC00•^000000 Finalizar Quest.:^00CC00•^000000 Saír.") == 1 ){
+				mes .n$;
+				mes "Foram derrotados ^00CC00"+ q_kafra +"x^000000 monstros!"; 
+				if( q_kafra < 10 ){ 
+					mes "^2596C2Você precisa matar mais monstros para concluír a Quest.^000000"; 
+					close; 
+				}
+				if( #q_kafra ) close;
+				announce "[Coorp. Kafra]: "+ strcharinfo(0) +" acabou de fazer sua Quest Kafra!", bc_all|bc_blue;
+				next;
+				mes .n$;
+				mes "Parabéns, aqui está sua Quest!";
+				set #q_kafra, 1;
+				getitem 607, 1;
+				close;
+			}
+			close;
+			
 		case 1: // Abrir Storage
 			mes .n$;
-			if(Zeny < 500){
+			if( Zeny < 500 ){
 				mes "Você não tem dinheiro suficiente.";
 				mes "^777777- Taxa do Armazém^000000: ^0099FF500 Zenys.^000000";
 				close;
@@ -29,7 +55,7 @@ prontera,153,196,5	script	Corporação Kafra	758,{
 			mes .n$;
 			mes "Seu ponto de retorno foi atualizado.";
 			close2;
-			SavePoint "prontera",156,191;
+			SavePoint "prontera", 156, 191;
 			end;
 
 		case 3: // Mestre das Classes
@@ -505,8 +531,20 @@ prontera,153,196,5	script	Corporação Kafra	758,{
 			mes "Aqui está!";
 			close;
 			end;
-		case 9:
+		case 10:
 			close;
+	}
+	OnNPCKillEvent:
+	if( killedrid == 1002 ){ 
+		if( q_kafra < 10 ){
+			set q_kafra, q_kafra + 1; 
+			dispbottom "[Quest Kafra]: Derrote ("+ q_kafra +"/10) "+ getmonsterinfo( 1002,MOB_NAME ) +".",0x00FFFF;
+			end;
+		} else {
+			dispbottom "[Quest Kafra]: Você já matou 10x "+ getmonsterinfo( 1002,MOB_NAME ) +" necessários. Quest concluída!",0x00FFFF;
+			end;
+		}
+		end;
 	}
 	OnInit:
 		while(1){ emotion 1; sleep 5000; }

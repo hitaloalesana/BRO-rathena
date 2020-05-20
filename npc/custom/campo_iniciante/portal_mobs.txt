@@ -23,7 +23,7 @@ new_zone01,66,114,6	script	Quadro Informativo#B	111,{
 	mes "^777777- Aspd^000000: 195";
 	mes "^777777- Sem Cast^000000: 150 Dex";
 	mes "^00CC00Hospedagem Brasileira 24/7^000000";
-	mes "^00C2FFGepard 2.0^000000";
+	mes "^00C2FFGepard 3.0^000000";
 	mes "^0099FFTransclasses e Doram.^000000";
 	close;
 }
@@ -42,18 +42,19 @@ new_zone01,146,112,0	script	prt_warp#n	45,1,1,{
 	if( select("^00CC00•^000000 Ficar no Campo de Iniciantes.:^00CC00•^000000 Saír do Campo de Iniciantes.") == 2 ) close;
 		close2;
 		warp "prontera", 156, 191;
+		savepoint "prontera", 156, 191;
 		end;
 }
 
 //------------------------------------------
 
-new_zone01,47,88,5	script	Funcionária Kafra#n	769,{
+new_zone01,47,88,5	script	Corporação KafraBR#n	759,{
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000"; 
-	mes "Oi, "+strcharinfo(0)+"! Eu sou ^00CC00Kafra Leila^000000, prazer em conhece-lo.";
-	mes "Tenho um contrato com o ^0099FFBrasil Ragnarök Online^000000 e estou aqui para te ajudar!";
+	mes "Oi, "+strcharinfo(0)+"! Eu sou ^00CC00Kafra Neila^000000, prazer em conhece-lo.";
+	mes "Prestos serviços para comunidade ^0099FFBrasil Ragnarök Online^000000 e estou aqui para te ajudar!";
 	next;
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-	mes "Caso queira adquírir sua ^EEAD0ECaixa de Iniciante^000000 é necessário que faça uma quest, flae com o Ajudante de Iniciantes";
+	mes "Caso queira adquírir sua ^EEAD0ECaixa de Iniciante^000000 é necessário que faça uma quest, fale com o Ajudante de Iniciantes";
 	mes "^777777Deseja realizar a quest iniciante?^000000";
 	next;
 	if(select("^00CC00•^000000 Fazer ^EEAD0EQuest Iniciante^000000.:^00CC00•^000000 Ir para Prontera.") == 1){ 
@@ -72,12 +73,13 @@ new_zone01,47,88,5	script	Funcionária Kafra#n	769,{
 		close;
 	}
 	warp "prontera", 156, 191;
+	savepoint "prontera", 156, 191;
 	end;
 }
 
 //------------------------------------------
 
-new_zone01,133,111,6	script	#Heal	111,8,8,{
+new_zone01,133,111,6	script	Fonte da Cura	111,8,8,{
 	sc_end SC_STONE; sc_end SC_FREEZE; sc_end SC_STUN; sc_end SC_SLEEP; 
 	sc_end SC_POISON; sc_end SC_CURSE; sc_end SC_SILENCE; sc_end SC_CONFUSION; 
 	sc_end SC_BLIND; sc_end SC_BLEEDING;
@@ -91,7 +93,7 @@ new_zone01,133,111,6	script	#Heal	111,8,8,{
 
 //------------------------------------------
 
-new_zone01,144,117,3	script	Guarda Corp. Kafra	653,{
+new_zone01,144,117,3	script	Guarda Corp. KafraBR	653,{
 	mes "^0099FF[ Guarda Corp. Kafra ]^000000";
 	mes "Estou aqui para segurar que nenhum monstro violento acesso o ^00CC00Campo de Iniciantes^000000.";
 	mes "Se precisar de ajuda, acesse nosso fórum!";
@@ -105,7 +107,7 @@ new_zone01,43,84,5	shop	Comerciante#n	808,569:5,1243:100,2112:100,2352:100,2414:
 new_zone01,127,85,1	shop	Maria dos Doces#n1	668,539:-1,5415:100000
 new_zone01,129,140,5	shop	Comerciante de Frutas#n2	968,512:-1,619:-1,513:-1,578:-1,514:-1,5116:100000,5307:100000,18589:100000
 new_zone01,153,95,0	duplicate(Fonte dos Desejos)	Fonte dos Desejos#2	111
-new_zone01,144,107,2	duplicate(Guarda Corp. Kafra)	Guarda Corp. Kafra#2	653
+new_zone01,144,107,2	duplicate(Guarda Corp. KafraBR)	Guarda Corp. KafraBR#2	653
 
 //------------------------------------------
 

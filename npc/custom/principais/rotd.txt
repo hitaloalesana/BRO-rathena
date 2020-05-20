@@ -157,7 +157,8 @@ if( getmonsterinfo( killedrid,MOB_RACE ) == .today_rotd ){
 		getitem .rotd_item_id, rand( .rotd_item_amount );
 	}
 	end;
-OnPCLoginEvent:
-	announce "Rates: 1.000x Base | 1.000x Job - (Bônus RD: "+ .rotd_exp_bonus +"% "+ .rotd$[.today_rotd] +").                              Drops: 100% Itens Comuns | 1% Cartas Comuns | 0.01% Cartas MvPs.", bc_all;
+//OnPCLoginEvent:
+	//announce "Rates: 1.000x Base | 1.000x Job - (Bônus RD: "+ .rotd_exp_bonus +"% "+ .rotd$[.today_rotd] +").                              
+	//Drops: 100% Itens Comuns | 1% Cartas Comuns | 0.01% Cartas MvPs.", bc_all;
 	end;  
 }

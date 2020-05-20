@@ -11,7 +11,7 @@ prt_in,49,66,4	script	Removedor de Cartas#prt	430,{
 	mes "^2596C2- "+ .@q +"x "+ getitemname( .@item ) +" para jogadores não VIP.^000000";
 	mes "^2596C2- "+ .@z +" Zenys.^000000";
 	next;
-	if( select("[^ff0000»^000000] Remover Carta.:[^ff0000»^000000] Saír.") == 2 ) close;
+	if( select("^00CC00•^000000 Remover Carta.:^00CC00•^000000 Saír.") == 2 ) close;
 		mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
 		mes "Selecione qual item deseja remover uma carta:";
 		setarray .@pos$[1], "Cabeça Topo", "Armadura", "Mão Esquerda", "Mão Direita", "Capa", "Sapatos", "Acessório 1", "Acessório 2", "Cabeça Meio", "Cabeça Baixo";
@@ -40,12 +40,11 @@ prt_in,49,66,4	script	Removedor de Cartas#prt	430,{
 		for( set .@i, 0; .@i < @inventorylist_count; set .@i, .@i + 1 )
 		if( @inventorylist_expire[.@i] != 0 ){
 			mes "^777777Atenção: Você está com itens de aluguel em seu personagem, guarde-os para que possa usar o Removedor de Cartas.^000000";
-			emotion e_hmm;
 			close;
 		}
 		mes "O item escolhido possui ^2596C2"+ getequipcardcnt( .@menu ) +"^000000 carta(s) equipada(s).";
 		next;
-		if(select("[^ff0000»^000000] Confirmar Remoção.:[^ff0000»^000000] Desistir.") == 2 ) close;
+		if(select("^00CC00•^000000 Confirmar Remoção.:^00CC00•^000000 Desistir.") == 2 ) close;
 			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
 			if( getgmlevel() < 1 ){
 				if( countitem( .@item ) < .@q ){

@@ -8,6 +8,7 @@ OnPCLoginEvent:
 		dispbottom "Expire Date : "+ vip_status(2);
 			
 		dispbottom "Time left : "+ vip_status(3);
+		dispbottom "Time left : "+ callfunc("Time2Str",.@timer);
 		dispbottom "==================================";
 		end;
 		}

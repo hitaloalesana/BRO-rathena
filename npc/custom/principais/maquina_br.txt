@@ -55,7 +55,7 @@ prontera,162,171,6	script	Máquina de Visuais	862,{
 			cutin "", 255;
 			mes .@n$;
 			mes "É possível customizar itens que vão na cabeça, boca e orelha. Porém, as cartas, atributos dos equipamentos e refinamentos no item serão perdidos.";
-			mes "^2596C2- Custo do Processo: 5x "+ getitemname( 21034 ) +".^000000";
+			mes "^2596C2- Custo do Processo: 5x "+ getitemname( 40034 ) +".^000000";
 			mes "^777777Selecione o item que deseja transformar em visual:^000000";
 			next;
 			setarray .@Position$[ 1 ], "Topo", "Meio", "Baixo";
@@ -72,7 +72,7 @@ prontera,162,171,6	script	Máquina de Visuais	862,{
 				mes "Nenhum item equipado neste slot.";
 				close;
 			}
-			if(countitem( 21034 ) < 5){
+			if(countitem( 40034 ) < 5){
 				mes "Para realizar esta ação é necessário "+ .@price +"x "+ getitemname( .@id_price ) +".";
 				close;
 			}

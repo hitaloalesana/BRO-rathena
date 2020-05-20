@@ -1,7 +1,7 @@
 -	shop	aprendiz_shop	-1,501:50
-new_zone01,157,81,2	script	Aprendiz	567,{
+new_zone01,157,81,2	script	Aprendiz#n	567,{
 		announce "Loja de Aluguel | Moeda: '"+ getitemname( .aprendiz_requerid ) +"'", bc_blue|bc_self;
-		dispbottom "Atenção: Os itens desta loja são de Aluguel e duram 30 dias.",0x00FF00;
+		dispbottom "Atenção: Os itens desta loja são de Aluguel e duram 30 dias.", 0x00FF00;
 		callshop "aprendiz_shop", 1;
 		npcshopattach "aprendiz_shop";
 		end;
@@ -20,7 +20,7 @@ new_zone01,157,81,2	script	Aprendiz	567,{
 			end;				    
 			}			    
 		} else                  
-			dispbottom "Você não consegue realizar esta negociação ].", 0x00FF00;         
+			dispbottom "Você não consegue realizar esta negociação.", 0x00FF00;         
 			end;		   
 			}	    
 		}    
@@ -35,5 +35,4 @@ OnInit:
 	for( set .@i, 0; .@i < getarraysize( .items ); set .@i, .@i + 2 )      
 		npcshopadditem "aprendiz_shop", .items[.@i], .items[.@i + 1]; 
 		end;
-		}
 }

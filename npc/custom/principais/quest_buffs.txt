@@ -1,4 +1,4 @@
-prontera,156,204,4	script	#Buffs	111,8,8,{
+prontera,156,204,6	script	Fonte Milagrosa	111,8,8,{
 	if( #blessing ){ skilleffect 34, 0; sc_start SC_BLESSING, 360000, 10; }
 	if( #agi_up ){ skilleffect 29, 0; sc_start SC_INCREASEAGI, 360000, 10; }
 	if( #impositio ){ skilleffect 66, 0; sc_start SC_IMPOSITIO, 360000, 5; }
@@ -19,7 +19,8 @@ prontera,156,204,4	script	#Buffs	111,8,8,{
 	dispbottom "HP/SP recuperados. Status negativos removidos.",0x00FFFF;
 	end;
 }
-prontera,156,204,6	script	Quest	de	Buffs	111,{
+
+prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 
 	//-------------------------------------------
 	// ID dos Monstros.
@@ -39,9 +40,8 @@ prontera,156,204,6	script	Quest	de	Buffs	111,{
 	//-------------------------------------------
 
 	mes set(.@n$,"^0099FF[ "+strnpcinfo(1)+" ]^000000");
-	mes "Deixe me contar para você sobre nosso exclusivo de ^EEAD0ESistema de Quest de Buffs^000000.";
-	mes "Nosso sistema permite à você selecionar e realizar a liberação do buff que mais te interessa, dessa forma você montará o quartel desejado de auxílios vindo desses buffs.";
-	mes "É só ver qual buff deseja, a quantidade de monstros necessário para liberação e ao caçar a quantidade necessário vir até mim e o buff será liberado de forma eterna em sua conta, ou seja, não precisará nunca mais realizar a quest já liberada.";
+	mes "Em parceria com a Coorp. Kafra fui contratada para ajudar o senhor com seus buffs."; 
+	mes "Estou disponibilizando ^EEAD0Emais de 10 Quests de Buffs^000000 exclusivas, basta derrotar alguns monstros a meu pedido.";
 	mes "^777777Lembrando que caso crie uma nova conta terá que realizar as quests de caça novamente.^000000";
 	next;
 	mes .@n$;

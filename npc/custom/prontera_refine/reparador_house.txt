@@ -8,7 +8,7 @@ prt_in,64,68,3	script	Conversor de Perfeito#prt	851,{
 	mes "^2596C2- Valor pago "+ .@zeny +" Zenys.^000000";
 	mes "^777777Deseja realizar a conversão?^000000";
 	next;
-	if( select("[^ff0000»^000000] Realizar Conversão.:[^ff0000»^000000] Saír." ) == 2 ) close;
+	if( select("^00CC00•^000000 Realizar Conversão.:^00CC00•^000000 Saír." ) == 2 ) close;
 		mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
 		if( countitem( 7620 ) < 2 ){
 			mes "Você não tem o necessário para converter!";
@@ -23,7 +23,6 @@ prt_in,64,68,3	script	Conversor de Perfeito#prt	851,{
 		getitem 6226, 1;
 		set Zeny, Zeny - .@zeny;
 		specialeffect2 608;
-		emotion e_no1;
 		mes "Conversão realizada com sucesso!";
 		message strcharinfo(0), "[ Conversão Perfeita! ].";
 		close;
@@ -55,7 +54,7 @@ prt_in,59,54,3	script	Máquina de Reparos#prt	422,{
 	mes "^2596C2- "+ .@q +"x "+ getitemname( .@item ) +".^000000";
 	mes "^2596C2- "+ .@z +" Zenys.^000000";
 	next;
-	if( select("[^ff0000»^000000] Confirmar.","[^ff0000»^000000] Saír.") == 1 ){
+	if( select("^00CC00•^000000 Confirmar.","^00CC00•^000000 Saír.") == 1 ){
 		mes .@nome$;
 		if( countitem( .@item ) < .@q ){
 			mes "Você não tem o item necessárias para efetuar o reparo.";

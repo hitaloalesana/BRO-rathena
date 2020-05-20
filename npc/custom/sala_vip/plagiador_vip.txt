@@ -48,5 +48,4 @@ OnInit:
 	for( set .@i,0; .@i < .@skillsize; set .@i, .@i + 3 )
 		set .menu$, .menu$ + .skill$[.@i] +":";
 		end;
-		}
 }
