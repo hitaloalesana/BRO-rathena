@@ -1426,6 +1426,9 @@
 47245,AURASPARKLYFLAKES_PRP,Flocos Angelicais,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3763,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47246,AURASPARKLYFLAKES_RED,Flocos de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3764,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47247,AURASPARKLYFLAKES_WHT,Flocos do Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3765,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+// ========================================================================= //
+//                               LIMITE DE FEITIÇO                            //
+// ================================================================== //
 47248,AURASPELLBOUND_ALL,Limite de Feitiço,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3766,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47249,AURASPELLBOUND_BLU,Limite de Feitiço Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3767,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47250,AURASPELLBOUND_GRN,Limite de Feitiço Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3768,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
