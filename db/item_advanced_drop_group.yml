@@ -1,0 +1,13 @@
+# (c) Cydh
+
+Header:
+  Type: ITEM_ADVANCED_DROP_GROUP
+  Version: 1
+
+Footer:
+  Imports:
+  - Path: db/pre-re/item_advanced_drop_group.yml
+    Mode: Prerenewal
+  - Path: db/re/item_advanced_drop_group.yml
+    Mode: Renewal
+  - Path: db/import/item_advanced_drop_group.yml

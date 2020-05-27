@@ -1,0 +1,33 @@
+###########################################################################
+# Advanced Item Drop Database
+###########################################################################
+# Dropped item from monster that set on db/[pre-]re/mob_drop.txt with
+# 'randopt_groupid' from this DB will be dropped with various & random
+# advanced parameters just like using getitem3 to the player
+###########################################################################
+# Body:
+# ...
+#   - GroupId:              # (string) Group Identifier, must be exists as constants (db/const.txt)
+#     Cards:                # LIST of granted card for dropped item
+#     - Slot:               # (int) Card slot at slot n. Value: 1 to 4
+#       PossibleCards:      ## LIST of possible cards
+#         - Item:           # (int) Any item ID as card that will be coumpounded into the item, 0 means no card
+#           Rates:          # (int) Probability for this card appear
+#     RandomOptions:        # LIST of granted random option for dropped item
+#     - Slot:               # (int) Option at slot n. Value: 1 to 5
+#       PossibleOptions:    ## LIST of possible options
+#         - OptionId:       # (string) Option ID see db/[pre-]re/item_randomopt_db.txt
+#           Rates:          # (int) Probability for this option to appear. Default to 1
+#           Value:          # (int) Explicit value for this option. Default to 0. DO NOT set the number here if range values are wanted
+#             Min:          # (optional, int) To set minimum value range
+#             Max:          # (optional, int) To set maxmimum value range
+#           Param:          # (int) Explicit param for this option. Default to 0. DO NOT set the number here if range values are wanted
+#             Min:          # (optional, int) To set minimum param range
+#             Max:          # (optional, int) To set maxmimum param range
+###########################################################################
+# (c) Cydh
+###########################################################################
+
+Header:
+  Type: ITEM_ADVANCED_DROP_GROUP
+  Version: 1
