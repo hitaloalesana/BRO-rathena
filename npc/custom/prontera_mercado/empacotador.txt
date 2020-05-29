@@ -1,0 +1,139 @@
+prontera,130,217,4	script	Empacotador	10298,{
+
+	set .@n$, "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+
+	// Yggdrasil 100un.
+	set .@a_id, 607;	// ID do item que será compactado/descompactado. v2
+	set .@a_qnt, 100;	// Quantidade de itens que necessário.
+	set .@a_box, 40003;	// ID do ticket compactado.
+
+	// Caixa_de_Garrafa_de_Veneno_100un.
+	set .@b_id, 678;	// ID do item que será compactado/descompactado. v2
+	set .@b_qnt, 100;	// Quantidade de itens que necessário.
+	set .@b_box, 40004;	// ID do ticket compactado.
+
+	// Caixa_de_Teia_de_Aranha_100un.
+	set .@b_id, 1025;	// ID do item que será compactado/descompactado. v2
+	set .@b_qnt, 100;	// Quantidade de itens que necessário.
+	set .@b_box, 40006;	// ID do ticket compactado.
+
+	// ,Caixa_de_Água_Amaldiçoada_100un.
+	set .@c_id, 12020;	// ID do item que será compactado/descompactado. v2
+	set .@c_qnt, 100;	// Quantidade de itens que necessário.
+	set .@c_box, 40012;	// ID do ticket compactado.
+
+	// ,Caixa_de_Caixa_do_Ressentimento_100un.
+	set .@d_id, 12030;	// ID do item que será compactado/descompactado. v2
+	set .@d_qnt, 100;	// Quantidade de itens que necessário.
+	set .@d_box, 40014;	// ID do ticket compactado.
+
+	// Caixa de Aloe Vera 100un.
+	set .@e_id, 606;	// ID do item que será compactado/descompactado. v2
+	set .@e_qnt, 100;	// Quantidade de itens que necessário.
+	set .@e_box, 40007;	// ID do ticket compactado.
+
+	// Caixa Trovao 100un.
+	set .@f_id, 12028;	// ID do item que será compactado/descompactado. v2
+	set .@f_qnt, 100;	// Quantidade de itens que necessário.
+	set .@f_box, 40013;	// ID do ticket compactado.
+
+	// Caixa_de_Conversor_Elemental_Terra_100un.
+	set .@g_id, 12116;	// ID do item que será compactado/descompactado. v2
+	set .@g_qnt, 100;	// Quantidade de itens que necessário.
+	set .@g_box, 40008;	// ID do ticket compactado.
+
+	// Caixa_de_Conversor_Elemental_Vento_100un.
+	set .@h_id, 12117;	// ID do item que será compactado/descompactado. v2
+	set .@h_qnt, 100;	// Quantidade de itens que necessário.
+	set .@h_box, 40009;	// ID do ticket compactado.
+
+	// Caixa_de_Conversor_Elemental_Agua_100un.
+	set .@i_id, 12115;	// ID do item que será compactado/descompactado. v2
+	set .@i_qnt, 100;	// Quantidade de itens que necessário.
+	set .@i_box, 40010;	// ID do ticket compactado.
+
+	// Caixa_de_Conversor_Elemental_Fogo_100un.
+	set .@j_id, 12114;	// ID do item que será compactado/descompactado. v2
+	set .@j_qnt, 100;	// Quantidade de itens que necessário.
+	set .@j_box, 40011;	// ID do ticket compactado.
+
+	mes .@n$;
+	mes "Para realizar o empacotamento de seus itens é necessário que traga no minímo ^00B2EE100 Unidades^000000 de cada item que deseja empacotar.";
+	
+mes "^777777Selecione abaixo por favor:^000000";
+	next;
+	switch( select("^00CC00•^000000 "+getitemname(.@a_id)+".",
+		"^00CC00•^000000 "+getitemname(.@b_id)+".",
+		"^00CC00•^000000 "+getitemname(.@c_id)+".",
+		"^00CC00•^000000 "+getitemname(.@d_id)+".",
+		"^00CC00•^000000 "+getitemname(.@e_id)+".",
+		"^00CC00•^000000 "+getitemname(.@f_id)+".",
+		"^00CC00•^000000 "+getitemname(.@g_id)+".",
+		"^00CC00•^000000 "+getitemname(.@h_id)+".",
+		"^00CC00•^000000 "+getitemname(.@i_id)+".",
+		"^00CC00•^000000 "+getitemname(.@j_id)+".",
+		"^00CC00•^000000 Saír.") ){
+		case 1:
+			close2;
+			while( countitem( .@a_id ) >= .@a_qnt ){ delitem .@a_id, .@a_qnt; getitem .@a_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 2:
+			close2;
+			while( countitem( .@b_id ) >= .@b_qnt ){ delitem .@b_id, .@b_qnt; getitem .@b_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 3:
+			close2;
+			while( countitem( .@c_id ) >= .@c_qnt ){ delitem .@c_id, .@c_qnt; getitem .@c_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 4:
+			close2;
+			while( countitem( .@d_id ) >= .@d_qnt ){ delitem .@d_id, .@d_qnt; getitem .@d_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 5:
+			close2;
+			while( countitem( .@e_id ) >= .@e_qnt ){ delitem .@e_id, .@e_qnt; getitem .@e_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 6:
+			close2;
+			while( countitem( .@f_id ) >= .@f_qnt ){ delitem .@f_id, .@f_qnt; getitem .@f_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 7:
+			close2;
+			while( countitem( .@g_id ) >= .@g_qnt ){ delitem .@g_id, .@g_qnt; getitem .@g_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 8:
+			close2;
+			while( countitem( .@h_id ) >= .@h_qnt ){ delitem .@h_id, .@h_qnt; getitem .@h_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 9:
+			close2;
+			while( countitem( .@i_id ) >= .@i_qnt ){ delitem .@i_id, .@i_qnt; getitem .@i_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 10:
+			close2;
+			while( countitem( .@j_id ) >= .@j_qnt ){ delitem .@j_id, .@j_qnt; getitem .@j_box, 1; mes .@n$; mes "O empacotamento foi realizada com sucesso!"; close; }
+			mes .@n$;
+			mes "O empacotamento não foi finalizada, você não tem a quantidade suficiente!";
+			close;
+		case 11:
+			close;
+			}
+}

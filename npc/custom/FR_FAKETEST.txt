@@ -1,0 +1,25 @@
+function	script	rank_expo	{
+
+}
+
+-	script	rankExpo_Config	-1,{
+
+OnInit:
+
+	//Configurar mapa,x,y local da exposição
+	
+	setarray $rWhere$[0],
+		"prontera","150","184",		//Rank 1
+		"prontera","153","184",		//Rank 2
+		"prontera","156","184";		//Rank 3
+		
+	//summon fakeplayer na posição
+	
+	query_sql "SELECT * FROM `rank_expo`",.@id,.@map$,.@x,.@y,.@name$,.@job_id,.@sex,.@hair_style,.@hair_color,.@weapon,.@shield,.@head_top,.@head_mid,.@head_bottom,.@option,.@cloth_color,.@mobid,.@dir;
+	
+	for(set .@i,0; .@i<getarraysize(.@id); set .@i,.@i+1)
+	{ fakeplayer(.@map$[.@i],.@x[.@i],.@y[.@i],.@name$[.@i],.@job_id[.@i],.@sex[.@i],.@hair_style[.@i],.@hair_color[.@i],.@weapon[.@i],.@shield[.@i],.@head_top[.@i],.@head_mid[.@i],.@head_bottom[.@i],.@option[.@i],.@cloth_color[.@i],.@mobid[.@i],.@dir[.@i]); }
+		
+end;
+
+}

@@ -1,0 +1,74 @@
+prt_in,49,66,4	script	Removedor de Cartas#prt	430,{
+	//---------------------------------------------------------
+	set .@q, 5; 		// Quantia de Itens Requeridos.
+	set .@z, 1000000; 	// Valor em Zeny pago.
+	set .@item, 1000; 	// ID do Item Requerido.
+	//---------------------------------------------------------
+
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "Veio remover aquela carta que não está mais te ajudando? Eu sou o cara certo!";
+	mes "Para remover você precisa pagar as seguintes taxas de serviço:";
+	mes "^777777- 1. Requisito^000000: ^00CC00"+ .@q +"x "+ getitemname( .@item ) +" para não VIP.^000000";
+	mes "^777777- 2. Requisito^000000: ^EEAD0E"+ .@z +" Zenys.^000000";
+	next;
+	if( select("^00CC00•^000000 Remover Carta.:^00CC00•^000000 Saír.") == 2 ) close;
+		mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+		mes "Selecione qual item deseja remover uma carta:";
+		setarray .@pos$[1], 
+			"^00CC00•^000000", 
+			"^00CC00•^000000",  
+			"^00CC00•^000000", 
+			"^00CC00•^000000", 
+			"^00CC00•^000000", 
+			"^00CC00•^000000", 
+			"^00CC00•^000000", 
+			"^00CC00•^000000", 
+			"^00CC00•^000000",  
+			"^00CC00•^000000";
+		set .@menu$, "";
+		for( set .@i, 1; .@i <= 10; set .@i, .@i + 1 ){
+			if( getequipisequiped( .@i ))
+				set .@menu$, .@menu$ + .@pos$[.@i] +" Remover ^2596C2("+ getequipname( .@i ) +").^000000";
+				set .@menu$, .@menu$ +":";	
+		}
+		next;
+		set .@menu, select( .@menu$ );
+		mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+		if( !getequipisequiped( .@menu )){
+			mes "Não há nada equipado aí.";
+			close;
+		}
+		if( !getequipcardcnt( .@menu )){ 
+			mes "Não há nenhuma carta nesse equipamento.";
+			close;
+		}
+		if( !checkweight( 1202,( getequipcardcnt( .@menu ) + 1 ))){
+			mes "Você está com peso de mais. Vá até o armazém e guarde algumas coisas.";
+			close;
+		}
+		getinventorylist;
+		for( set .@i, 0; .@i < @inventorylist_count; set .@i, .@i + 1 )
+		if( @inventorylist_expire[.@i] != 0 ){
+			mes "^777777Atenção: Você está com itens de aluguel em seu personagem, guarde-os para que possa usar o Removedor de Cartas.^000000";
+			close;
+		}
+		mes "O item escolhido possui ^2596C2"+ getequipcardcnt( .@menu ) +"^000000 carta(s) equipada(s).";
+		next;
+		if(select("^00CC00•^000000 Confirmar Remoção.:^00CC00•^000000 Desistir.") == 2 ) close;
+			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+			if( getgmlevel() < 1 ){
+				if( countitem( .@item ) < .@q ){
+					mes "Você não tem o item necessárias para efetuar o reparo.";
+					close;
+					}
+			}
+			if( Zeny < .@z ){
+				mes "Você não tem uma das taxa em Zeny necessária para efetuar o reparo.";
+				close;
+			}
+			if( getgmlevel() < 1 ){ delitem .@item, .@q; }
+			set Zeny, Zeny - .@z;
+			successremovecards .@menu;
+			mes "O processo foi um grande sucesso, tudo ocorreu nos conformes.";
+			close;
+}

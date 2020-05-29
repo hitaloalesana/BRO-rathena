@@ -1,0 +1,126 @@
+//======================================================================================
+// Map Index
+//======================================================================================
+//Contains the list of maps with their respective IDs for inter-server use.
+//IDs must never change, therefore any new maps need to be added at the end,
+//and old ones must not be removed, but may be replaced.
+//Format:
+//mapname<tab>index <- specifies index for this map
+//mapname <- map will use index of previous map +1
+//Note that map index 0 is special and reserved for "error" status. 
+//
+//======================================================================================
+//Place your custom maps with a starting ID here.
+//======================================================================================
+//Example:
+//
+//mymap	1250
+//mymap-2
+//
+// ----------- MAPAS CUSTONS - BRASIL RAGNAROK ONLINE -------------------------- //
+arena_pvp	1250
+paradise
+event_01
+yinyang
+ars_dun05
+ars_dun17
+ars_fild46
+tantale_ile
+ars_dun40
+ars_in15
+ars_in16
+ars_fild30
+chess01
+maze
+aquarius
+pvp_2v2
+dungeonrev
+parque
+revolution
+rro_arena01
+rro_arena02
+rro_arena03
+rro_arena04
+coliseum
+Desk
+gh_map
+help_lobby
+help_room1
+Nereus
+revencia
+sl_mall01
+soul
+training
+winter_pvp
+zibidiel
+royal_room3
+lava_pvp
+r_road
+vip_lounge
+gardenia
+gar_in01
+gar_fild00
+gar_fild01
+gar_fild02
+gar_dun01
+gar_dun02
+sm_pri
+Skape
+aerallynn
+ars_phare
+coppa
+de_village
+help_room2
+help_room3
+ha_garden
+newground
+que_dance
+ds_dungeon
+help_ent
+lhz_dun_n
+lhz_dun05
+lhz_dun06
+novice
+bif_fild02
+2007rwc_r
+2009rwc_01
+2009rwc_03
+aev_fild01
+aev_fild
+atlantis
+prt_pvp
+guild_vs6
+arena_01
+arena_02
+arena_03
+arena_04
+arena_05
+arena_06
+arena_07
+arena_08
+arena_09
+arena_10
+arena_11
+arena_azul
+arena_verde
+arena_red
+cell_game
+pantano
+martialarts
+pvp
+tatami
+pvpespacio
+salavip
+Hyrule
+lun_in01
+moc_gld
+mocg_cas01
+nov_02
+vmorocc
+warzone
+prtbrasilro
+1@cella
+2@cella
+3@cella
+4@cella
+5@cella

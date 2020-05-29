@@ -1,0 +1,232 @@
+prt_in,136,115,3	script	MvP vs MvP	603,{
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "O evento ^B452CDMvP vs MvP^000000 é basicamente um jogo de apostas, você escolhe o MvP que acha mais forte e se ganhar a treta, você leva o dobro da sua aposta!";	
+	mes "^777777- Custo da Aposta^000000: ^00CC0015,000,000 Zenys.^000000";
+	mes "^777777- Prêmio do Evento^000000: ^0099FF30,000,000 Zenys^000000 e ^1874CD1x "+ getitemname(607) +".^000000";
+	next;
+	switch( select("^00CC00•^000000 Participar.",(getgroupid() >= 80 ? "^00CC00•^000000 ^FF0000[GM]^000000 Ativar Evento.":""),"^00CC00•^000000 Saír.")){
+		case 1:
+			if( !$mvm_active ){
+				mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+				mes "O evento não teve inicio, volte outro momento.";
+				close;
+			}
+			announce "[MvP vs MvP]: "+ strcharinfo(0) +" acaba de entrar no evento!", bc_blue|bc_all; 
+			warp "g_room1-2", 40, 380;
+
+			end;
+		case 2:
+			if( $mvm_active ){
+				mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+				mes "Evento já está ligado!"; 
+				close; 
+			}
+			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+			mes "O evento irá ser iniciado!";
+			close2;
+			donpcevent $mvm_gmstart$ +"::OnStartMvM";
+			end;
+		case 3: 
+			close;
+			}
+			
+}
+g_room1-2,38,381,4	script	Apostador#mvm	573,{
+
+	if( !$mvm_active ){
+		mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+		mes "Evento já terminou, volte nos horários de funcionamento!";
+		close;
+	}
+	if( mvm_aposta != .mob1 && mvm_aposta != .mob2 ) set mvm_aposta, 0;
+	if( .aposta ){
+		if( mvm_aposta ){
+			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+			mes "^777777- Aposta realizada com sucesso.^000000";
+			if( #save_mvm >= 1 ){
+				mes "Voce já acertou ^B452CD"+ #save_mvm +"^000000 vezes suas apostas, vamos ver se acerta mais uma..."; 
+			}
+			mes "Aguarde até que saia o resultado da batalha!";
+			mes " ";
+			close; 
+		}
+		mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+		mes "Em quem vai apostar hoje ?";
+		next;
+		if( select("^00CC001º)^000000 ^777777"+ strmobinfo(1,.mob1) +".^000000:^00CC002º)^000000 ^777777"+ strmobinfo(1,.mob2) +".^000000") == 1 ){
+			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+			mes "Pague a taxa de aposta e confirme abaixo para continuar...";
+			mes "^777777- Custo da Aposta^000000: ^B452CD"+ .valor +" "+ (.type ? "ROPs":"Zenys") +" Zenys.^000000";
+			next;
+			if( select("^00CC00•^000000 Realizar Aposta.:^00CC00•^000000 Saír.") == 2 ){ close; }
+				if(( .type ? #CASHPOINTS:Zeny ) < .valor ){
+					mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+					mes "Você não tem "+(.type ? "cash":"zeny")+" suficiente!"; 
+					close; 
+				}
+				set (.type ? #CASHPOINTS:Zeny), (.type ? #CASHPOINTS:Zeny) - .valor;
+				set mvm_aposta, .mob1;
+			} else {
+				mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+				mes "Pague a taxa de aposta e confirme abaixo para continuar...";
+				mes "^777777- Custo da Aposta^000000: ^B452CD"+ .valor +" "+ (.type ? "ROPs":"Zenys") +".^000000";
+				next;
+				if( select("^00CC00•^000000 Realizar Aposta.:^00CC00•^000000 Saír.") == 2 ){ close; }
+					if(( .type ? #CASHPOINTS:Zeny ) < .valor ){
+						mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+						mes "Você não tem "+(.type ? "cash":"zeny")+" suficiente!"; 
+						close; 
+					}
+					set (.type ? #CASHPOINTS:Zeny), (.type ? #CASHPOINTS:Zeny) - .valor;
+					set mvm_aposta, .mob2;
+		}
+		npctalk ""+strcharinfo(0)+" Fez sua apostou!";
+		dispbottom "Aposta realizada e registrada em nosso sistema.", 0x00FF00;
+		set .total_aposta, .total_aposta + 1;
+		close;
+	}
+	if( .mobwin && mvm_aposta ){
+		if(.mobwin == mvm_aposta ){
+			specialeffect 68;
+			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+			mes "Aqui está o seu prêmio!";
+			set Zeny, Zeny + 30000000;
+			getitem .winID, .winQT;
+			dispbottom "Você recebeu o dobro da sua aposta e 1x "+getitemname(40024)+".", 0x00FF00;
+			set mvm_aposta, 0;
+			set #save_mvm, #save_mvm + 1;
+		} else { 
+			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+			mes "Que pena não foi dessa vez!"; 
+			set mvm_aposta, 0; 
+		}		
+		close;
+	}
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "A batalha já "+(.mobwin ? "acabou":"começou")+".";
+	if( mvm_aposta == .mob1 || mvm_aposta == .mob2 ){ 
+		mes "^777777- Você apostou em^000000: ^B452CD"+ strmobinfo(1,mvm_aposta) +".^000000"; 
+	}
+	close;
+		
+	
+OnMinute00:
+	if( $mvm_active ) end;
+		
+	for(set .@i,0; .@i<getarraysize(.timer); set .@i,.@i+1){ 
+		if(gettime(DT_HOUR) == .timer[.@i]) set .@start,1; 
+	}
+	if( !.@start ) end;
+OnStartMvM:
+	if( $mvm_active ) end;
+
+	set .mob1, .mvp_id[rand( 0, (getarraysize(.mvp_id) - 1 ))];
+	set .mob2, .mvp_id[rand( 0, (getarraysize(.mvp_id) - 1 ))];
+	
+	if( .mob1 == .mob2 ) goto StartMvM;
+
+	announce "[MvP vs MvP]: Vamos começar a batalha: "+strmobinfo(1,.mob1)+" vs "+strmobinfo(1,.mob2)+".", bc_all|bc_blue;
+	sleep 2000;
+	announce "[MvP vs MvP]: As apostas foram liberadas, você tem 2 minutos ralizar sua aposta!", bc_all|bc_blue;
+	set $mvm_active, 1;
+	set .aposta, 1;
+	initnpctimer;
+	end;	
+	
+OnTimer120000:
+
+	if(.total_aposta){ 
+		announce "[MvP vs MvP]: Apostas encerradas, iniciaremos a batalha.", bc_all|bc_blue;
+	} else { 
+		announce "[MvP vs MvP]: Não houve apostas, o evento será encerrado.", bc_all|bc_blue;
+		goto MvMEnd; 
+	}
+	set .aposta, 0;
+	stopnpctimer;
+	sleep 2000;
+	
+	set .@t,10;
+	while( .@t > 0 ){ 
+		mapannounce "g_room1-2", "~ "+.@t+" ~",bc_map|bc_blue;
+		set .@t, .@t - 1; 
+		sleep 1000; 
+	}
+	monster "g_room1-2", 45, 369, ""+ strmobinfo(1,.mob1) +"", .mob1, 1, strnpcinfo(0) +"::OnMvMDie1", 0, 1;
+	monster "g_room1-2", 34, 369, ""+ strmobinfo(1,.mob2) +"", .mob2, 1, strnpcinfo(0) +"::OnMvMDie2", 0, 0;
+	end;
+
+OnMvMDie1:
+	if( $mvm_active ) end;
+	mapannounce "g_room1-2", "[MvP vs MvP]: O ganhador foi: "+ strmobinfo(1,.mob2) +"!", bc_all|bc_blue;
+	set .mobwin,.mob2;
+	sleep 2000;
+	mapannounce "g_room1-2", "[MvP vs MvP]: Em 1 minuto todos vão ser removido do mapa, ganhadores recolher o prêmio da aposta.", bc_map|bc_blue;
+	sleep 60000;
+	goto MvMEnd;
+
+OnMvMDie2:
+	if( $mvm_active ) end;
+	mapannounce "g_room1-2", "[MvP vs MvP]: E o ganhador foi: "+ strmobinfo(1,.mob1) +".", bc_all|bc_blue;
+	set .mobwin,.mob1;
+	sleep 2000;
+	mapannounce "g_room1-2", "[MvP vs MvP]: Em 1 minuto todos vão ser removido do mapa, ganhadores recolher o prêmio da aposta.", bc_map|bc_blue;
+	sleep 60000;
+	goto MvMEnd;
+
+MvMEnd:
+	stopnpctimer;
+	set .aposta, 0;
+	set .mobwin, 0;
+	set $mvm_active, 0;
+	set .total_aposta, 0;
+	killmonsterall "g_room1-2", 1;
+	mapwarp "g_room1-2", "prontera", 156, 178;
+	end;
+OnInit:
+
+	//IDs dos mobs (atenção!! os mobs não podem possuir a skill que invoca outros mobs ou teleport!)
+	//Os mobs abaixo foram clonados e removido tais skill e drop de itens!
+	setarray .mvp_id[0],1087,1147,1190,1086,1115,1038,1159,1389,1046,1059,1150,1688,1039,1157,1112,1251,1373,1272,1885,1630,1252,1779,1708,1623,1492,1418,1583,1312,1785,1685,1719,1871,1768;
+
+
+	//Horários do evento começar (informar hora no formato 24h sendo 00 = meia-noite, 12 = meio-dia, e deve seguir a ordem progressiva)
+	setarray .timer[0],00,01,08,13,16,19;
+	
+	//Como será cobrado as apostas ? (0 = Zeny, 1 = Cash)
+	set .type, 0;
+	set .valor, 15000000;
+	
+	//ID e QUANTIDADE do item dado como prêmio
+	set .winID, 40024;
+	set .winQT, 1;
+	
+	
+	// Não alterar!! \\
+	set $mvm_active, 0;
+	set .mobwin, 0;
+	set .aposta, 0;
+	set .total_aposta, 0;
+	set $mvm_gmstart$, strnpcinfo(0);
+	set $mvm_info$, "";
+	
+	for( set .@, 0; .@i < getarraysize(.timer); set .@i, .@i + 1 ){ 
+		set $mvm_info$,$mvm_info$+""+(.timer[.@i] < 10 ? "0"+.timer[.@i]+"":.timer[.@i])+"h"+((.@i+1) < getarraysize(.timer) ? ":":"")+""; 
+	}
+	end;
+}
+g_room1-2,45,381,3	script	Saída#mvm	858,{
+	if( select("^00CC00•^000000 Saír da Arena.:^00CC00•^000000 Permancer na Arena.") == 1 ){
+		warp "prontera", 159, 187; 
+		end;
+	}
+	close;
+}
+-	script	#mvm5	-1,{ OnPCLoadMapEvent: specialeffect2 233; dispbottom "Sua aposta deve ser realizada em menos de 1 minuto.", 0x00FF00; end; }
+
+g_room1-2	mapflag	monster_noteleport
+g_room1-2	mapflag	noteleport
+g_room1-2	mapflag	nosave	SavePoint
+g_room1-2	mapflag	noreturn
+g_room1-2	mapflag	loadevent
+g_room1-2	mapflag	noloot
+g_room1-2	mapflag	nodrop

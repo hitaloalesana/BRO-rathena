@@ -1,0 +1,7 @@
+function	script	essencias2	{
+	setarray .BoxItems[0],7085,7092,7832,7837,7830,7831,7081,7077,7079;
+	
+	set .Random, getarraysize( .BoxItems );
+	getitem .BoxItems[ rand( .Random ) ], 1;
+	end;
+}

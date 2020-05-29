@@ -20,7 +20,7 @@ prontera,156,204,6	script	Fonte Milagrosa	111,8,8,{
 	end;
 }
 
-prontera,149,190,6	script	Sra. Quest de Buffs	769,{
+prontera,149,190,6	script	Quests de Buffs	769,{
 
 	//-------------------------------------------
 	// ID dos Monstros.
@@ -40,26 +40,26 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 	//-------------------------------------------
 
 	mes set(.@n$,"^0099FF[ "+strnpcinfo(1)+" ]^000000");
-	mes "Em parceria com a Coorp. Kafra fui contratada para ajudar o senhor com seus buffs."; 
-	mes "Estou disponibilizando ^EEAD0Emais de 10 Quests de Buffs^000000 exclusivas, basta derrotar alguns monstros a meu pedido.";
+	mes "Oi, ^EEAD0E"+ strcharinfo(0)+"^000000!";
+	mes "Estou disponibilizando ^00CC00mais de 10 Quests de Buffs^000000 exclusivas, basta derrotar alguns monstros a meu pedido.";
 	mes "^777777Lembrando que caso crie uma nova conta terá que realizar as quests de caça novamente.^000000";
 	next;
 	mes .@n$;
 	mes "Lista de buffs realizado e não realizado:";
-	mes "^777777- Benção^000000: "+ ((#blessing) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Agi Up^000000: "+ ((#agi_up) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Impositio^000000: "+ ((#impositio) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Magnificat^000000: "+ ((#magnificat) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Suffragium^000000: "+ ((#suffragium) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Grito de Guerra^000000: "+ ((#grito_guerra) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Força^000000: "+ ((#for) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Agilidade^000000: "+ ((#agi) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Vitalidade^000000: "+ ((#vit) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Inteligência^000000: "+ ((#int) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Destreza^000000: "+ ((#dex) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Sorte^000000: "+ ((#sor) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Benção^000000: "+ ((#blessing) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Agi Up^000000: "+ ((#agi_up) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Impositio^000000: "+ ((#impositio) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Magnificat^000000: "+ ((#magnificat) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Suffragium^000000: "+ ((#suffragium) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Grito de Guerra^000000: "+ ((#grito_guerra) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Força^000000: "+ ((#for) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Agilidade^000000: "+ ((#agi) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Vitalidade^000000: "+ ((#vit) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Inteligência^000000: "+ ((#int) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Destreza^000000: "+ ((#dex) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^777777- Sorte^000000: "+ ((#sor) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
 	next;
-	switch(select("^00CC00•^000000 Receber Buffs.:^00CC00•^000000 Quest de Buffs.:^00CC00•^000000 Cancelar.")){
+	switch(select("^00CC00•^000000 Receber Buffs.:^00CC00•^000000 Quests de Buffs.:^00CC00•^000000 Cancelar.")){
 		case 1:
 			if(#blessing){ skilleffect 34, 0; sc_start SC_BLESSING, 360000, 10; }
 			if(#agi_up){ skilleffect 29, 0; sc_start SC_INCREASEAGI, 360000, 10; }
@@ -85,18 +85,18 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 			mes "Escolha na lista abaixo o buff que deseja liberar:";
 			next;
 			switch(select(
-				"^00CC00•^000000 Benção ^FFA500Nv. 10^000000 "+ ((#blessing) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Agi Up ^FFA500Nv. 10^000000 "+ ((#agi_up) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Impositio ^FFA500Nv. 5^000000 "+ ((#impositio) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Magnificat ^FFA500Nv. 5^000000 "+ ((#magnificat) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Suffragium ^FFA500Nv. 4^000000 "+ ((#suffragium) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Grito de Guerra ^FFA500Nv. 1^000000 "+ ((#grito_guerra) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Força ^FFA500+10^000000 "+ ((#for) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Agilidade ^FFA500+10^000000 "+ ((#agi) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Vitalidade ^FFA500+10^000000 "+ ((#vit) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Inteligencia ^FFA500+10^000000 "+ ((#int) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Destreza ^FFA500+10^000000 "+ ((#dex) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
-				"^00CC00•^000000 Sorte ^FFA500+10^000000 "+ ((#sor) ? "^00BB22(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Benção ^FFA500Nv. 10^000000 "+ ((#blessing) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Agi Up ^FFA500Nv. 10^000000 "+ ((#agi_up) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Impositio ^FFA500Nv. 5^000000 "+ ((#impositio) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Magnificat ^FFA500Nv. 5^000000 "+ ((#magnificat) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Suffragium ^FFA500Nv. 4^000000 "+ ((#suffragium) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Grito de Guerra ^FFA500Nv. 1^000000 "+ ((#grito_guerra) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Força ^FFA500+10^000000 "+ ((#for) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Agilidade ^FFA500+10^000000 "+ ((#agi) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Vitalidade ^FFA500+10^000000 "+ ((#vit) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Inteligencia ^FFA500+10^000000 "+ ((#int) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Destreza ^FFA500+10^000000 "+ ((#dex) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
+				"^00CC00•^000000 Sorte ^FFA500+10^000000 "+ ((#sor) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"",
 				"^00CC00•^000000 Cancelar.")){
 				case 1:
 					mes .@n$;
@@ -107,7 +107,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_blessing,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF0000200x monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_bless +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_bless +"^000000"; 
 					if( check_bless < 200 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -126,7 +126,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_agi_up,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF0000200x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_agi_up +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_agi_up +"^000000"; 
 					if( check_agi_up < 200 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -145,7 +145,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_impositio,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF00002.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_impositio +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_impositio +"^000000"; 
 					if( check_impositio < 2000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -164,7 +164,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_magnificat,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF00003.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_magnificat +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_magnificat +"^000000"; 
 					if( check_magnificat < 3000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -183,7 +183,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_suffragium,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF00003.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_suffragium +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_suffragium +"^000000"; 
 					if( check_suffragium < 3000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -202,7 +202,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_grito_guerra,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF00005.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_grito_guerra +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_grito_guerra +"^000000"; 
 					if( check_grito_guerra < 3000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -221,7 +221,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^2596C2"+getmonsterinfo(.mob_for,MOB_NAME)+"^000000"; 
 					mes "^777777- Derrote^000000: ^FF000010.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+check_for +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+check_for +"^000000"; 
 					if( check_for < 10000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -240,7 +240,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_agi,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF000010.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_agi +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_agi +"^000000"; 
 					if( check_agi < 10000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -259,7 +259,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_vit,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF000010.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_vit +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_vit +"^000000"; 
 					if( check_vit < 10000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -278,7 +278,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_int,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF000010.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_int +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_int +"^000000"; 
 					if( check_int < 10000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -297,7 +297,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_dex,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF000010.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+check_dex+"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+check_dex+"^000000"; 
 					if( check_dex < 10000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 
@@ -316,7 +316,7 @@ prontera,149,190,6	script	Sra. Quest de Buffs	769,{
 					}
 					mes "^777777- Monstro a ser Derrotado^000000: ^EEAD0E"+ getmonsterinfo(.mob_sor,MOB_NAME) +"^000000"; 
 					mes "^777777- Derrote^000000: ^FF000010.000x Monstros^000000";
-					mes "^777777- Derrotados^000000: ^00BB22"+ check_sor +"^000000"; 
+					mes "^777777- Derrotados^000000: ^00CC00"+ check_sor +"^000000"; 
 					if( check_sor < 10000 ){ 
 						mes "^EEAD0EVocê precisa matar mais monstros para concluír a Quest.^000000";
 						close; 

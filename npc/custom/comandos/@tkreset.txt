@@ -1,0 +1,16 @@
+-	script	tkreset#smart	-1,{
+OnInit:
+	bindatcmd("tkreset", strnpcinfo(0) +"::OnTK");
+	end;
+OnTK:
+	if(select("^00CC00•^000000 Resetar Feeling ^777777(Mapa).^000000:^00CC00•^000000 Resetar Hatred ^777777(Oposição).^000000") == 1 ){
+		message strcharinfo(0), "Mapa resetado. Relogue!.";
+		atcommand "@feelreset";
+		end;
+	}
+	set PC_HATE_MOB_MOON, 0;
+	set PC_HATE_MOB_STAR, 0;
+	set PC_HATE_MOB_SUN, 0;
+	message strcharinfo(0), "Oposição resetado. Relogue!.";
+	end;
+}

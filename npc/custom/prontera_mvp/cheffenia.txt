@@ -1,0 +1,877 @@
+prt_in,126,121,5	script	Cheffênia	10181,{
+	//------------------------------------------------------------------------------
+	set .@nome$, "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	//------------------------------------------------------------------------------
+
+	mes .@nome$;
+	mes "Bem-vindo ao portal para ^00CC00Cheffênia!^000000";
+	mes "Temos 4 mapas recheados de MvPs prontos para serem desafiados e derrotados por bravos guerreiros.";
+	mes "^777777- Requerimento^000000: ^0099FF1x "+getitemname(7227)+".^000000";
+	next;
+	mes .@nome$;
+	if( agitcheck() || agitcheck2() ){
+		mes "O acesso aos mapas de Cheffênia não estão disponíveis durante a ^2596C2Guerra do Emperium^000000.";
+		close;
+	}
+	mes "- O acesso é ^FF4040bloqueado durante as Guerras do Emperium.^000000"; 
+	mes "- Denuncias de ^FF4040KS^000000 não resulta em punição.";
+	mes "- Os MvPs de qualquer sala ^FF4040não computam MvP Points.^000000";
+	mes "- Habilidades ou itens de ^FF4040teleporte^000000 não funcionam.";
+   	mes "^777777Tudo entendido? Agora escolha seu destino:^000000";
+	next;
+	set .@i, select("^00CC00•^000000 1º Sala ^00C5CD(Modo Normal).^000000","^00CC00•^000000 2º Sala ^8B008B(Modo Pesadelo).^000000","^00CC00•^000000 3º Sala ^2E8B57(Modo Tormento).^000000","^00CC00•^000000 4º Sala ^CD3333(Modo Inferno).^000000");
+		if( countitem(7227) < 1 ){
+			mes "Desculpe, é necessário ^0099FF1x "+getitemname(7227)+"^000000 para entrar.";
+			close;
+		}
+		delitem 7227, 1;
+		close2;
+		warp "bossnia_0"+ .@i, rand(202,204), rand(202,204);
+		end;
+}
+
+//-------------------------------------------------------------
+// Drop dos MvPs de Cheffênia.
+//-------------------------------------------------------------
+-	script	Drop_Cheffenia	-1,{
+function DropCheffenia;
+
+OnNPCKillEvent:
+	//if( strcharinfo(3) != "bossnia_01" || strcharinfo(3) != "bossnia_02" || strcharinfo(3) != "bossnia_03" || strcharinfo(3) != "bossnia_04" ) end; 
+
+	// DropCheffenia( <MobID>,<CardID>,<Rate> );
+	// Rate : 1 = 0.01%  /  1000 = 10%  /  10000 = 100%
+	//abelha rainha
+	DropCheffenia( 1059, 28379, 20  );
+	DropCheffenia( 1059, 28411, 20 );
+	DropCheffenia( 1059, 28492, 20 );
+	DropCheffenia( 1059, 2936, 20  );
+	DropCheffenia( 1059, 28410, 20 );
+	DropCheffenia( 1059, 28503, 20 );
+	DropCheffenia( 1059, 28521, 20 );
+	DropCheffenia( 1059, 32227, 20 );
+	DropCheffenia( 1059, 28551, 20 );
+	DropCheffenia( 1059, 28434, 20 );
+	DropCheffenia( 1059, 28598, 20 );
+	DropCheffenia( 1059, 32205, 20 );
+	DropCheffenia( 1059, 28438, 20 );
+	DropCheffenia( 1059, 40042, 20 );
+	DropCheffenia( 1059, 40049, 20 );
+	DropCheffenia( 1059, 6438, 20 );
+	DropCheffenia( 1059, 6439, 20 );
+	DropCheffenia( 1059, 6226, 20 );
+	DropCheffenia( 1059, 6225, 20 );
+	DropCheffenia( 1059, 6241, 20 );
+
+	//ATROCE
+	DropCheffenia( 1785, 28379, 20 );
+	DropCheffenia( 1785, 28411, 20 );
+	DropCheffenia( 1785, 28492, 20 );
+	DropCheffenia( 1785, 2936, 20 );
+	DropCheffenia( 1785, 28410, 20 );
+	DropCheffenia( 1785, 28503, 20 );
+	DropCheffenia( 1785, 28521, 20 );
+	DropCheffenia( 1785, 32227, 20 );
+	DropCheffenia( 1785, 28551, 20 );
+	DropCheffenia( 1785, 28434, 20 );
+	DropCheffenia( 1785, 28598, 20 );
+	DropCheffenia( 1785, 32205, 20 );
+	DropCheffenia( 1785, 28438, 20 );
+	DropCheffenia( 1785, 40042, 20 );
+	DropCheffenia( 1785, 40049, 20 );
+	DropCheffenia( 1785, 6438, 20 );
+	DropCheffenia( 1785, 6439, 20 );
+	DropCheffenia( 1785, 6226, 20 );
+	DropCheffenia( 1785, 6225, 20 );
+	DropCheffenia( 1785, 6241, 20 );
+
+	//belzebu
+	DropCheffenia( 1874, 28379, 20 );
+	DropCheffenia( 1874, 28411, 20 );
+	DropCheffenia( 1874, 28492, 20 );
+	DropCheffenia( 1874, 2936, 20 );
+	DropCheffenia( 1874, 28410, 20 );
+	DropCheffenia( 1874, 28503, 20 );
+	DropCheffenia( 1874, 28521, 20 );
+	DropCheffenia( 1874, 32227, 20 );
+	DropCheffenia( 1874, 28551, 20 );
+	DropCheffenia( 1874, 28434, 20 );
+	DropCheffenia( 1874, 28598, 20 );
+	DropCheffenia( 1874, 32205, 20 );
+	DropCheffenia( 1874, 28438, 20  );
+	DropCheffenia( 1874, 40042, 20 );
+	DropCheffenia( 1874, 40049, 20 );
+	DropCheffenia( 1874, 6438, 20 );
+	DropCheffenia( 1874, 6439, 20 );
+	DropCheffenia( 1874, 6226, 20  );
+	DropCheffenia( 1874, 6225, 20 );
+	DropCheffenia( 1874, 6241, 20 );
+
+	//Bispo
+	DropCheffenia( 1871, 28379, 20  );
+	DropCheffenia( 1871, 28411, 20 );
+	DropCheffenia( 1871, 28492, 20 );
+	DropCheffenia( 1871, 2936, 20  );
+	DropCheffenia( 1871, 28410, 20 );
+	DropCheffenia( 1871, 28503, 20 );
+	DropCheffenia( 1871, 28521, 20  );
+	DropCheffenia( 1871, 32227, 20 );
+	DropCheffenia( 1871, 28551, 20 );
+	DropCheffenia( 1871, 28434, 20  );
+	DropCheffenia( 1871, 28598, 20 );
+	DropCheffenia( 1871, 32205, 20 );
+	DropCheffenia( 1871, 28438, 20  );
+	DropCheffenia( 1871, 40042, 20 );
+	DropCheffenia( 1871, 40049, 20 );
+	DropCheffenia( 1871, 6438, 20 );
+	DropCheffenia( 1871, 6439, 20 );
+	DropCheffenia( 1871, 6226, 20  );
+	DropCheffenia( 1871, 6225, 20 );
+	DropCheffenia( 1871, 6241, 20 );
+	
+	//Boitata
+	DropCheffenia( 2068, 28379, 20  );
+	DropCheffenia( 2068, 28411, 20 );
+	DropCheffenia( 2068, 28492, 20 );
+	DropCheffenia( 2068, 2936, 20  );
+	DropCheffenia( 2068, 28410, 20 );
+	DropCheffenia( 2068, 28503, 20 );
+	DropCheffenia( 2068, 28521, 20  );
+	DropCheffenia( 2068, 32227, 20 );
+	DropCheffenia( 2068, 28551, 20 );
+	DropCheffenia( 2068, 28434, 20  );
+	DropCheffenia( 2068, 28598, 20 );
+	DropCheffenia( 2068, 32205, 20 );
+	DropCheffenia( 2068, 28438, 20  );
+	DropCheffenia( 2068, 40042, 20 );
+	DropCheffenia( 2068, 40049, 20 );
+	DropCheffenia( 2068, 6438, 20 );
+	DropCheffenia( 2068, 6439, 20 );
+	DropCheffenia( 2068, 6226, 20  );
+	DropCheffenia( 2068, 6225, 20 );
+	DropCheffenia( 2068, 6241, 20 );
+
+	//Cavaleiro da Tempestade
+	DropCheffenia( 1251, 28379, 20  );
+	DropCheffenia( 1251, 28411, 20 );
+	DropCheffenia( 1251, 28492, 20 );
+	DropCheffenia( 1251, 2936, 20  );
+	DropCheffenia( 1251, 28410, 20 );
+	DropCheffenia( 1251, 28503, 20 );
+	DropCheffenia( 1251, 28521, 20  );
+	DropCheffenia( 1251, 32227, 20 );
+	DropCheffenia( 1251, 28551, 20 );
+	DropCheffenia( 1251, 28434, 20  );
+	DropCheffenia( 1251, 28598, 20 );
+	DropCheffenia( 1251, 32205, 20 );
+	DropCheffenia( 1251, 28438, 20  );
+	DropCheffenia( 1251, 40042, 20 );
+	DropCheffenia( 1251, 40049, 20 );
+	DropCheffenia( 1251, 6438, 20 );
+	DropCheffenia( 1251, 6439, 20 );
+	DropCheffenia( 1251, 6226, 20  );
+	DropCheffenia( 1251, 6225, 20 );
+	DropCheffenia( 1251, 6241, 20 );
+
+	//Detarderus
+	DropCheffenia( 1719, 28379, 20  );
+	DropCheffenia( 1719, 28411, 20 );
+	DropCheffenia( 1719, 28492, 20 );
+	DropCheffenia( 1719, 2936, 20  );
+	DropCheffenia( 1719, 28410, 20 );
+	DropCheffenia( 1719, 28503, 20 );
+	DropCheffenia( 1719, 28521, 20  );
+	DropCheffenia( 1719, 32227, 20 );
+	DropCheffenia( 1719, 28551, 20 );
+	DropCheffenia( 1719, 28434, 20  );
+	DropCheffenia( 1719, 28598, 20 );
+	DropCheffenia( 1719, 32205, 20 );
+	DropCheffenia( 1719, 28438, 20  );
+	DropCheffenia( 1719, 40042, 20 );
+	DropCheffenia( 1719, 40049, 20 );
+	DropCheffenia( 1719, 6438, 20 );
+	DropCheffenia( 1719, 6439, 20 );
+	DropCheffenia( 1719, 6226, 20  );
+	DropCheffenia( 1719, 6225, 20 );
+	DropCheffenia( 1719, 6241, 20 );
+	
+	//Drácula
+	DropCheffenia( 1389, 28379, 20  );
+	DropCheffenia( 1389, 28411, 20 );
+	DropCheffenia( 1389, 28492, 20 );
+	DropCheffenia( 1389, 2936, 20  );
+	DropCheffenia( 1389, 28410, 20 );
+	DropCheffenia( 1389, 28503, 20 );
+	DropCheffenia( 1389, 28521, 20  );
+	DropCheffenia( 1389, 32227, 20 );
+	DropCheffenia( 1389, 28551, 20 );
+	DropCheffenia( 1389, 28434, 20  );
+	DropCheffenia( 1389, 28598, 20 );
+	DropCheffenia( 1389, 32205, 20 );
+	DropCheffenia( 1389, 28438, 20  );
+	DropCheffenia( 1389, 40042, 20 );
+	DropCheffenia( 1389, 40049, 20 );
+	DropCheffenia( 1389, 6438, 20 );
+	DropCheffenia( 1389, 6439, 20 );
+	DropCheffenia( 1389, 6226, 20  );
+	DropCheffenia( 1389, 6225, 20 );
+	DropCheffenia( 1389, 6241, 20 );
+
+	//Drake
+	DropCheffenia( 1112, 28379, 20  );
+	DropCheffenia( 1112, 28411, 20 );
+	DropCheffenia( 1112, 28492, 20 );
+	DropCheffenia( 1112, 2936, 20  );
+	DropCheffenia( 1112, 28410, 20 );
+	DropCheffenia( 1112, 28503, 20 );
+	DropCheffenia( 1112, 28521, 20  );
+	DropCheffenia( 1112, 32227, 20 );
+	DropCheffenia( 1112, 28551, 20 );
+	DropCheffenia( 1112, 28434, 20  );
+	DropCheffenia( 1112, 28598, 20 );
+	DropCheffenia( 1112, 32205, 20 );
+	DropCheffenia( 1112, 28438, 20  );
+	DropCheffenia( 1112, 40042, 20 );
+	DropCheffenia( 1112, 40049, 20 );
+	DropCheffenia( 1112, 6438, 20 );
+	DropCheffenia( 1112, 6439, 20 );
+	DropCheffenia( 1112, 6226, 20  );
+	DropCheffenia( 1112, 6225, 20 );
+	DropCheffenia( 1112, 6241, 20 );
+
+	//Eddga
+	DropCheffenia( 1115, 28379, 20  );
+	DropCheffenia( 1115, 28411, 20 );
+	DropCheffenia( 1115, 28492, 20 );
+	DropCheffenia( 1115, 2936, 20  );
+	DropCheffenia( 1115, 28410, 20 );
+	DropCheffenia( 1115, 28503, 20 );
+	DropCheffenia( 1115, 28521, 20  );
+	DropCheffenia( 1115, 32227, 20 );
+	DropCheffenia( 1115, 28551, 20 );
+	DropCheffenia( 1115, 28434, 20  );
+	DropCheffenia( 1115, 28598, 20 );
+	DropCheffenia( 1115, 32205, 20 );
+	DropCheffenia( 1115, 28438, 20  );
+	DropCheffenia( 1115, 40042, 20 );
+	DropCheffenia( 1115, 40049, 20 );
+	DropCheffenia( 1115, 6438, 20 );
+	DropCheffenia( 1115, 6439, 20 );
+	DropCheffenia( 1115, 6226, 20  );
+	DropCheffenia( 1115, 6225, 20 );
+	DropCheffenia( 1115, 6241, 20 );
+
+	//Egnigem Cenia
+	DropCheffenia( 1658, 28379, 20  );
+	DropCheffenia( 1658, 28411, 20 );
+	DropCheffenia( 1658, 28492, 20 );
+	DropCheffenia( 1658, 2936, 20  );
+	DropCheffenia( 1658, 28410, 20 );
+	DropCheffenia( 1658, 28503, 20 );
+	DropCheffenia( 1658, 28521, 20  );
+	DropCheffenia( 1658, 32227, 20 );
+	DropCheffenia( 1658, 28551, 20 );
+	DropCheffenia( 1658, 28434, 20  );
+	DropCheffenia( 1658, 28598, 20 );
+	DropCheffenia( 1658, 32205, 20 );
+	DropCheffenia( 1658, 28438, 20  );
+	DropCheffenia( 1658, 40042, 20 );
+	DropCheffenia( 1658, 40049, 20 );
+	DropCheffenia( 1658, 6438, 20 );
+	DropCheffenia( 1658, 6439, 20 );
+	DropCheffenia( 1658, 6226, 20  );
+	DropCheffenia( 1658, 6225, 20 );
+	DropCheffenia( 1658, 6241, 20 );
+
+	//Entweihen Crothen
+	DropCheffenia( 1957, 28379, 20  );
+	DropCheffenia( 1957, 28411, 20 );
+	DropCheffenia( 1957, 28492, 20 );
+	DropCheffenia( 1957, 2936, 20  );
+	DropCheffenia( 1957, 28410, 20 );
+	DropCheffenia( 1957, 28503, 20 );
+	DropCheffenia( 1957, 28521, 20  );
+	DropCheffenia( 1957, 32227, 20 );
+	DropCheffenia( 1957, 28551, 20 );
+	DropCheffenia( 1957, 28434, 20  );
+	DropCheffenia( 1957, 28598, 20 );
+	DropCheffenia( 1957, 32205, 20 );
+	DropCheffenia( 1957, 28438, 20  );
+	DropCheffenia( 1957, 40042, 20 );
+	DropCheffenia( 1957, 40049, 20 );
+	DropCheffenia( 1957, 6438, 20 );
+	DropCheffenia( 1957, 6439, 20 );
+	DropCheffenia( 1957, 6226, 20  );
+	DropCheffenia( 1957, 6225, 20 );
+	DropCheffenia( 1957, 6241, 20 );
+
+	//farao
+	DropCheffenia( 1157, 28379, 20  );
+	DropCheffenia( 1157, 28411, 20 );
+	DropCheffenia( 1157, 28492, 20 );
+	DropCheffenia( 1157, 2936, 20  );
+	DropCheffenia( 1157, 28410, 20 );
+	DropCheffenia( 1157, 28503, 20 );
+	DropCheffenia( 1157, 28521, 20  );
+	DropCheffenia( 1157, 32227, 20 );
+	DropCheffenia( 1157, 28551, 20 );
+	DropCheffenia( 1157, 28434, 20  );
+	DropCheffenia( 1157, 28598, 20 );
+	DropCheffenia( 1157, 32205, 20 );
+	DropCheffenia( 1157, 28438, 20  );
+	DropCheffenia( 1157, 40042, 20 );
+	DropCheffenia( 1157, 40049, 20 );
+	DropCheffenia( 1157, 6438, 20 );
+	DropCheffenia( 1157, 6439, 20 );
+	DropCheffenia( 1157, 6226, 20  );
+	DropCheffenia( 1157, 6225, 20 );
+	DropCheffenia( 1157, 6241, 20 );
+
+	//Flor do Luar
+	DropCheffenia( 1150, 28379, 20  );
+	DropCheffenia( 1150, 28411, 20 );
+	DropCheffenia( 1150, 28492, 20 );
+	DropCheffenia( 1150, 2936, 20  );
+	DropCheffenia( 1150, 28410, 20 );
+	DropCheffenia( 1150, 28503, 20 );
+	DropCheffenia( 1150, 28521, 20  );
+	DropCheffenia( 1150, 32227, 20 );
+	DropCheffenia( 1150, 28551, 20 );
+	DropCheffenia( 1150, 28434, 20  );
+	DropCheffenia( 1150, 28598, 20 );
+	DropCheffenia( 1150, 32205, 20 );
+	DropCheffenia( 1150, 28438, 20  );
+	DropCheffenia( 1150, 40042, 20 );
+	DropCheffenia( 1150, 40049, 20 );
+	DropCheffenia( 1150, 6438, 20 );
+	DropCheffenia( 1150, 6439, 20 );
+	DropCheffenia( 1150, 6226, 20  );
+	DropCheffenia( 1150, 6225, 20 );
+	DropCheffenia( 1150, 6241, 20 );
+
+	//Freeoni
+	DropCheffenia( 1159, 28379, 20  );
+	DropCheffenia( 1159, 28411, 20 );
+	DropCheffenia( 1159, 28492, 20 );
+	DropCheffenia( 1159, 2936, 20  );
+	DropCheffenia( 1159, 28410, 20 );
+	DropCheffenia( 1159, 28503, 20 );
+	DropCheffenia( 1159, 28521, 20  );
+	DropCheffenia( 1159, 32227, 20 );
+	DropCheffenia( 1159, 28551, 20 );
+	DropCheffenia( 1159, 28434, 20  );
+	DropCheffenia( 1159, 28598, 20 );
+	DropCheffenia( 1159, 32205, 20 );
+	DropCheffenia( 1159, 28438, 20  );
+	DropCheffenia( 1159, 40042, 20 );
+	DropCheffenia( 1159, 40049, 20 );
+	DropCheffenia( 1159, 6438, 20 );
+	DropCheffenia( 1159, 6439, 20 );
+	DropCheffenia( 1159, 6226, 20  );
+	DropCheffenia( 1159, 6225, 20 );
+	DropCheffenia( 1159, 6241, 20 );
+
+	//General Tartaruga
+	DropCheffenia( 1312, 28379, 20  );
+	DropCheffenia( 1312, 28411, 20 );
+	DropCheffenia( 1312, 28492, 20 );
+	DropCheffenia( 1312, 2936, 20  );
+	DropCheffenia( 1312, 28410, 20 );
+	DropCheffenia( 1312, 28503, 20 );
+	DropCheffenia( 1312, 28521, 20  );
+	DropCheffenia( 1312, 32227, 20 );
+	DropCheffenia( 1312, 28551, 20 );
+	DropCheffenia( 1312, 28434, 20  );
+	DropCheffenia( 1312, 28598, 20 );
+	DropCheffenia( 1312, 32205, 20 );
+	DropCheffenia( 1312, 28438, 20  );
+	DropCheffenia( 1312, 40042, 20 );
+	DropCheffenia( 1312, 40049, 20 );
+	DropCheffenia( 1312, 6438, 20 );
+	DropCheffenia( 1312, 6439, 20 );
+	DropCheffenia( 1312, 6226, 20  );
+	DropCheffenia( 1312, 6225, 20 );
+	DropCheffenia( 1312, 6241, 20 );
+
+	//Gorynych
+	DropCheffenia( 1885, 28379, 20  );
+	DropCheffenia( 1885, 28411, 20 );
+	DropCheffenia( 1885, 28492, 20 );
+	DropCheffenia( 1885, 2936, 20  );
+	DropCheffenia( 1885, 28410, 20 );
+	DropCheffenia( 1885, 28503, 20 );
+	DropCheffenia( 1885, 28521, 20  );
+	DropCheffenia( 1885, 32227, 20 );
+	DropCheffenia( 1885, 28551, 20 );
+	DropCheffenia( 1885, 28434, 20  );
+	DropCheffenia( 1885, 28598, 20 );
+	DropCheffenia( 1885, 32205, 20 );
+	DropCheffenia( 1885, 28438, 20  );
+	DropCheffenia( 1885, 40042, 20 );
+	DropCheffenia( 1885, 40049, 20 );
+	DropCheffenia( 1885, 6438, 20 );
+	DropCheffenia( 1885, 6439, 20 );
+	DropCheffenia( 1885, 6226, 20  );
+	DropCheffenia( 1885, 6225, 20 );
+	DropCheffenia( 1885, 6241, 20 );
+
+	//Hatii
+	DropCheffenia( 1252, 28379, 20  );
+	DropCheffenia( 1252, 28411, 20 );
+	DropCheffenia( 1252, 28492, 20 );
+	DropCheffenia( 1252, 2936, 20  );
+	DropCheffenia( 1252, 28410, 20 );
+	DropCheffenia( 1252, 28503, 20 );
+	DropCheffenia( 1252, 28521, 20  );
+	DropCheffenia( 1252, 32227, 20 );
+	DropCheffenia( 1252, 28551, 20 );
+	DropCheffenia( 1252, 28434, 20  );
+	DropCheffenia( 1252, 28598, 20 );
+	DropCheffenia( 1252, 32205, 20 );
+	DropCheffenia( 1252, 28438, 20  );
+	DropCheffenia( 1252, 40042, 20 );
+	DropCheffenia( 1252, 40049, 20 );
+	DropCheffenia( 1252, 6438, 20 );
+	DropCheffenia( 1252, 6439, 20 );
+	DropCheffenia( 1252, 6226, 20  );
+	DropCheffenia( 1252, 6225, 20 );
+	DropCheffenia( 1252, 6241, 20 );
+
+	//Ifrit
+	DropCheffenia( 1832, 28379, 20  );
+	DropCheffenia( 1832, 28411, 20 );
+	DropCheffenia( 1832, 28492, 20 );
+	DropCheffenia( 1832, 2936, 20  );
+	DropCheffenia( 1832, 28410, 20 );
+	DropCheffenia( 1832, 28503, 20 );
+	DropCheffenia( 1832, 28521, 20  );
+	DropCheffenia( 1832, 32227, 20 );
+	DropCheffenia( 1832, 28551, 20 );
+	DropCheffenia( 1832, 28434, 20  );
+	DropCheffenia( 1832, 28598, 20 );
+	DropCheffenia( 1832, 32205, 20 );
+	DropCheffenia( 1832, 28438, 20  );
+	DropCheffenia( 1832, 40042, 20 );
+	DropCheffenia( 1832, 40049, 20 );
+	DropCheffenia( 1832, 6438, 20 );
+	DropCheffenia( 1832, 6439, 20 );
+	DropCheffenia( 1832, 6226, 20  );
+	DropCheffenia( 1832, 6225, 20 );
+	DropCheffenia( 1832, 6241, 20 );
+
+	//Kiel-D-01
+	DropCheffenia( 1734, 28379, 20 );
+	DropCheffenia( 1734, 28411, 20 );
+	DropCheffenia( 1734, 28492, 20 );
+	DropCheffenia( 1734, 2936, 20 );
+	DropCheffenia( 1734, 28410, 20 );
+	DropCheffenia( 1734, 28503, 20 );
+	DropCheffenia( 1734, 28521, 20 );
+	DropCheffenia( 1734, 32227, 20 );
+	DropCheffenia( 1734, 28551, 20 );
+	DropCheffenia( 1734, 28434, 20 );
+	DropCheffenia( 1734, 28598, 20 );
+	DropCheffenia( 1734, 32205, 20 );
+	DropCheffenia( 1734, 28438, 20 );
+	DropCheffenia( 1734, 40042, 20 );
+	DropCheffenia( 1734, 40049, 20 );
+	DropCheffenia( 1734, 6438, 20 );
+	DropCheffenia( 1734, 6439, 20 );
+	DropCheffenia( 1734, 6226, 20 );
+	DropCheffenia( 1734, 6225, 20 );
+	DropCheffenia( 1734, 6241, 20 );
+
+	//Kraken
+	DropCheffenia( 2202, 28379, 20 );
+	DropCheffenia( 2202, 28411, 20 );
+	DropCheffenia( 2202, 28492, 20 );
+	DropCheffenia( 2202, 2936, 20 );
+	DropCheffenia( 2202, 28410, 20 );
+	DropCheffenia( 2202, 28503, 20 );
+	DropCheffenia( 2202, 28521, 20 );
+	DropCheffenia( 2202, 32227, 20 );
+	DropCheffenia( 2202, 28551, 20 );
+	DropCheffenia( 2202, 28434, 20 );
+	DropCheffenia( 2202, 28598, 20 );
+	DropCheffenia( 2202, 32205, 20 );
+	DropCheffenia( 2202, 28438, 20 );
+	DropCheffenia( 2202, 40042, 20 );
+	DropCheffenia( 2202, 40049, 20 );
+	DropCheffenia( 2202, 6438, 20 );
+	DropCheffenia( 2202, 6439, 20 );
+	DropCheffenia( 2202, 6226, 20 );
+	DropCheffenia( 2202, 6225, 20 );
+	DropCheffenia( 2202, 6241, 20 );
+
+	//Ktullanux
+	DropCheffenia( 1779, 28379, 20 );
+	DropCheffenia( 1779, 28411, 20 );
+	DropCheffenia( 1779, 28492, 20 );
+	DropCheffenia( 1779, 2936, 20 );
+	DropCheffenia( 1779, 28410, 20 );
+	DropCheffenia( 1779, 28503, 20 );
+	DropCheffenia( 1779, 28521, 20 );
+	DropCheffenia( 1779, 32227, 20 );
+	DropCheffenia( 1779, 28551, 20 );
+	DropCheffenia( 1779, 28434, 20 );
+	DropCheffenia( 1779, 28598, 20 );
+	DropCheffenia( 1779, 32205, 20 );
+	DropCheffenia( 1779, 28438, 20 );
+	DropCheffenia( 1779, 40042, 20 );
+	DropCheffenia( 1779, 40049, 20 );
+	DropCheffenia( 1779, 6438, 20 );
+	DropCheffenia( 1779, 6439, 20 );
+	DropCheffenia( 1779, 6226, 20 );
+	DropCheffenia( 1779, 6225, 20 );
+	DropCheffenia( 1779, 6241, 20 );
+
+	//Lady Branca
+	DropCheffenia( 1630, 28379, 20 );
+	DropCheffenia( 1630, 28411, 20 );
+	DropCheffenia( 1630, 28492, 20 );
+	DropCheffenia( 1630, 2936, 20 );
+	DropCheffenia( 1630, 28410, 20 );
+	DropCheffenia( 1630, 28503, 20 );
+	DropCheffenia( 1630, 28521, 20 );
+	DropCheffenia( 1630, 32227, 20 );
+	DropCheffenia( 1630, 28551, 20 );
+	DropCheffenia( 1630, 28434, 20 );
+	DropCheffenia( 1630, 28598, 20 );
+	DropCheffenia( 1630, 32205, 20 );
+	DropCheffenia( 1630, 28438, 20 );
+	DropCheffenia( 1630, 40042, 20 );
+	DropCheffenia( 1630, 40049, 20 );
+	DropCheffenia( 1630, 6438, 20 );
+	DropCheffenia( 1630, 6439, 20 );
+	DropCheffenia( 1630, 6226, 20 );
+	DropCheffenia( 1630, 6225, 20 );
+	DropCheffenia( 1630, 6241, 20 );
+
+	//Lady Branca
+	DropCheffenia( 1688, 28379, 20 );
+	DropCheffenia( 1688, 28411, 20 );
+	DropCheffenia( 1688, 28492, 20 );
+	DropCheffenia( 1688, 2936, 20 );
+	DropCheffenia( 1688, 28410, 20 );
+	DropCheffenia( 1688, 28503, 20 );
+	DropCheffenia( 1688, 28521, 20 );
+	DropCheffenia( 1688, 32227, 20 );
+	DropCheffenia( 1688, 28551, 20 );
+	DropCheffenia( 1688, 28434, 20 );
+	DropCheffenia( 1688, 28598, 20 );
+	DropCheffenia( 1688, 32205, 20 );
+	DropCheffenia( 1688, 28438, 20 );
+	DropCheffenia( 1688, 40042, 20 );
+	DropCheffenia( 1688, 40049, 20 );
+	DropCheffenia( 1688, 6438, 20 );
+	DropCheffenia( 1688, 6439, 20 );
+	DropCheffenia( 1688, 6226, 20 );
+	DropCheffenia( 1688, 6225, 20 );
+	DropCheffenia( 1688, 6241, 20 );
+
+	//Maya
+	DropCheffenia( 2156, 28379, 20 );
+	DropCheffenia( 2156, 28411, 20 );
+	DropCheffenia( 2156, 28492, 20 );
+	DropCheffenia( 2156, 2936, 20 );
+	DropCheffenia( 2156, 28410, 20 );
+	DropCheffenia( 2156, 28503, 20 );
+	DropCheffenia( 2156, 28521, 20 );
+	DropCheffenia( 2156, 32227, 20 );
+	DropCheffenia( 2156, 28551, 20 );
+	DropCheffenia( 2156, 28434, 20 );
+	DropCheffenia( 2156, 28598, 20 );
+	DropCheffenia( 2156, 32205, 20 );
+	DropCheffenia( 2156, 28438, 20 );
+	DropCheffenia( 2156, 40042, 20 );
+	DropCheffenia( 2156, 40049, 20 );
+	DropCheffenia( 2156, 6438, 20 );
+	DropCheffenia( 2156, 6439, 20 );
+	DropCheffenia( 2156, 6226, 20 );
+	DropCheffenia( 2156, 6225, 20 );
+	DropCheffenia( 2156, 6241, 20 );
+
+	//Memória de Thanatos
+	DropCheffenia( 1708, 28379, 20 );
+	DropCheffenia( 1708, 28411, 20 );
+	DropCheffenia( 1708, 28492, 20 );
+	DropCheffenia( 1708, 2936, 20 );
+	DropCheffenia( 1708, 28410, 20 );
+	DropCheffenia( 1708, 28503, 20 );
+	DropCheffenia( 1708, 28521, 20 );
+	DropCheffenia( 1708, 32227, 20 );
+	DropCheffenia( 1708, 28551, 20 );
+	DropCheffenia( 1708, 28434, 20 );
+	DropCheffenia( 1708, 28598, 20 );
+	DropCheffenia( 1708, 32205, 20 );
+	DropCheffenia( 1708, 28438, 20 );
+	DropCheffenia( 1708, 40042, 20 );
+	DropCheffenia( 1708, 40049, 20 );
+	DropCheffenia( 1708, 6438, 20 );
+	DropCheffenia( 1708, 6439, 20 );
+	DropCheffenia( 1708, 6226, 20 );
+	DropCheffenia( 1708, 6225, 20 );
+	DropCheffenia( 1708, 6241, 20 );
+
+	//Night Sieger
+	DropCheffenia( 1956, 28379, 20 );
+	DropCheffenia( 1956, 28411, 20 );
+	DropCheffenia( 1956, 28492, 20 );
+	DropCheffenia( 1956, 2936, 20 );
+	DropCheffenia( 1956, 28410, 20 );
+	DropCheffenia( 1956, 28503, 20 );
+	DropCheffenia( 1956, 28521, 20 );
+	DropCheffenia( 1956, 32227, 20 );
+	DropCheffenia( 1956, 28551, 20 );
+	DropCheffenia( 1956, 28434, 20 );
+	DropCheffenia( 1956, 28598, 20 );
+	DropCheffenia( 1956, 32205, 20 );
+	DropCheffenia( 1956, 28438, 20 );
+	DropCheffenia( 1956, 40042, 20 );
+	DropCheffenia( 1956, 40049, 20 );
+	DropCheffenia( 1956, 6438, 20 );
+	DropCheffenia( 1956, 6439, 20 );
+	DropCheffenia( 1956, 6226, 20 );
+	DropCheffenia( 1956, 6225, 20 );
+	DropCheffenia( 1956, 6241, 20 );
+
+	
+	end;
+
+function	DropCheffenia	{
+	if( killedrid == getarg(0) && rand( 10000 ) <= getarg(2) ){
+			getitem getarg(1), 1;
+	}
+	return;
+	}
+}
+
+//-------------------------------------------------------------
+// Respawn dos MvPs de Cheffênia.
+//-------------------------------------------------------------
+	bossnia_01,0,0	monster	Abelha Rainha		1059,2,60000,60000,1
+	bossnia_01,0,0	monster	Atroce			1785,2,60000,60000,1
+	bossnia_01,0,0	monster	Belzebu	1874,2,60000,60000,1
+	bossnia_01,0,0	monster	Bispo Decadente		1871,2,60000,60000,1
+	bossnia_01,0,0	monster	Boitata			2068,2,60000,60000,1
+	bossnia_01,0,0	monster	Cavaleiro da Tempestade	1251,2,60000,60000,1
+	bossnia_01,0,0	monster	Detarderus	1719,2,60000,60000,1
+	bossnia_01,0,0	monster	Doppelganger		1046,2,60000,60000,1
+	bossnia_01,0,0	monster	Drácula			1389,2,60000,60000,1
+	bossnia_01,0,0	monster	Drake			1112,2,60000,60000,1
+	bossnia_01,0,0	monster	Eddga			1115,2,60000,60000,1
+	bossnia_01,0,0	monster	Egnigem Cenia		1658,2,60000,60000,1
+	bossnia_01,0,0	monster	Entweihen Crothen	1957,2,60000,60000,1
+	bossnia_01,0,0	monster	Faraó			1157,2,60000,60000,1
+	bossnia_01,0,0	monster	Flor do Luar		1150,2,60000,60000,1
+	bossnia_01,0,0	monster	Freeoni			1159,2,60000,60000,1
+	bossnia_01,0,0	monster	General Tartaruga	1312,2,60000,60000,1
+	bossnia_01,0,0	monster	Gorynych		1885,2,60000,60000,1
+	bossnia_01,0,0	monster	Hatii			1885,2,60000,60000,1
+	bossnia_01,0,0	monster	Ifrit			1252,2,60000,60000,1
+	bossnia_01,0,0	monster	Kiel-D-01		1734,2,60000,60000,1
+	bossnia_01,0,0	monster	Kraken			2202,2,60000,60000,1
+	bossnia_01,0,0	monster	Ktullanux		1779,2,60000,60000,1
+	bossnia_01,0,0	monster	Lady Branca		1630,2,60000,60000,1
+	bossnia_01,0,0	monster	Lady Tanee		1688,2,60000,60000,1
+	bossnia_01,0,0	monster	Memória de Thanatos	1708,2,60000,60000,1
+	bossnia_01,0,0	monster	Night Sieger		1956,2,60000,60000,1
+	bossnia_01,0,0	monster	Orc Herói		1087,2,60000,60000,1
+	bossnia_01,0,0	monster	Osíris			1038,2,60000,60000,1
+	bossnia_01,0,0	monster	Pesar Noturno		1768,2,60000,60000,1
+	bossnia_01,0,0	monster	Rainha Scaraba		2087,2,60000,60000,1
+	bossnia_01,0,0	monster	RSX-0806		1623,2,60000,60000,1
+	bossnia_01,0,0	monster	Samurai Encarnado	1272,2,60000,60000,1
+	bossnia_01,0,0	monster	Senhor das Trevas	1373,2,60000,60000,1
+	bossnia_01,0,0	monster	Senhor dos Mortos	1418,2,60000,60000,1
+	bossnia_01,0,0	monster	Sombra de Nidhogg	2022,2,60000,60000,1
+	bossnia_01,0,0	monster	Tao Gunka		1583,2,60000,60000,1
+	bossnia_01,0,0	monster	Valquíria Randgris	1751,2,60000,60000,1
+	bossnia_01,0,0	monster	Vesper			1685,2,60000,60000,1
+	bossnia_01,0,0	monster	Vigia do Tempo		3074,2,60000,60000,1
+
+
+	// bossnia_02 - Bossnia
+	bossnia_02,0,0	monster	Abelha Rainha		1059,3,60000,60000,1
+	bossnia_02,0,0	monster	Atroce			1785,3,60000,60000,1
+	bossnia_02,0,0	monster	Belzebu			1874,3,60000,60000,1
+	bossnia_02,0,0	monster	Bispo Decadente		1871,3,60000,60000,1
+	bossnia_02,0,0	monster	Boitata			2068,3,60000,60000,1
+	bossnia_02,0,0	monster	Cavaleiro da Tempestade	1251,3,60000,60000,1
+	bossnia_02,0,0	monster	Detarderus		1719,3,60000,60000,1
+	bossnia_02,0,0	monster	Doppelganger		1046,3,60000,60000,1
+	bossnia_02,0,0	monster	Drácula			1389,3,60000,60000,1
+	bossnia_02,0,0	monster	Drake			1112,3,60000,60000,1
+	bossnia_02,0,0	monster	Eddga			1115,3,60000,60000,1
+	bossnia_02,0,0	monster	Egnigem Cenia		1658,3,60000,60000,1
+	bossnia_02,0,0	monster	Entweihen Crothen	1957,3,60000,60000,1
+	bossnia_02,0,0	monster	Faraó			1157,3,60000,60000,1
+	bossnia_02,0,0	monster	Flor do Luar		1150,3,60000,60000,1
+	bossnia_02,0,0	monster	Freeoni			1159,3,60000,60000,1
+	bossnia_02,0,0	monster	General Tartaruga	1312,3,60000,60000,1
+	bossnia_02,0,0	monster	Gorynych		1885,3,60000,60000,1
+	bossnia_02,0,0	monster	Hatii			1885,3,60000,60000,1
+	bossnia_02,0,0	monster	Ifrit			1252,3,60000,60000,1
+	bossnia_02,0,0	monster	Kiel-D-01		1734,3,60000,60000,1
+	bossnia_02,0,0	monster	Kraken			2202,3,60000,60000,1
+	bossnia_02,0,0	monster	Ktullanux		1779,3,60000,60000,1
+	bossnia_02,0,0	monster	Lady Branca		1630,3,60000,60000,1
+	bossnia_02,0,0	monster	Lady Tanee		1688,3,60000,60000,1
+	bossnia_02,0,0	monster	Memória de Thanatos	1708,3,60000,60000,1
+	bossnia_02,0,0	monster	Night Sieger		1956,3,60000,60000,1
+	bossnia_02,0,0	monster	Orc Herói		1087,3,60000,60000,1
+	bossnia_02,0,0	monster	Osíris			1038,3,60000,60000,1
+	bossnia_02,0,0	monster	Pesar Noturno		1768,3,60000,60000,1
+	bossnia_02,0,0	monster	Rainha Scaraba		2087,3,60000,60000,1
+	bossnia_02,0,0	monster	RSX-0806		1623,3,60000,60000,1
+	bossnia_02,0,0	monster	Samurai Encarnado	1272,3,60000,60000,1
+	bossnia_02,0,0	monster	Senhor das Trevas	1373,3,60000,60000,1
+	bossnia_02,0,0	monster	Senhor dos Mortos	1418,3,60000,60000,1
+	bossnia_02,0,0	monster	Sombra de Nidhogg	2022,3,60000,60000,1
+	bossnia_02,0,0	monster	Tao Gunka		1583,3,60000,60000,1
+	bossnia_02,0,0	monster	Valquíria Randgris	1751,3,60000,60000,1
+	bossnia_02,0,0	monster	Vesper			1685,3,60000,60000,1
+	bossnia_02,0,0	monster	Vigia do Tempo		3074,3,60000,60000,1
+
+	// bossnia_03 - Bossnia
+	bossnia_03,0,0	monster	Abelha Rainha		1059,4,60000,60000,1
+	bossnia_03,0,0	monster	Atroce			1785,4,60000,60000,1
+	bossnia_03,0,0	monster	Belzebu			1874,4,60000,60000,1
+	bossnia_03,0,0	monster	Bispo Decadente		1871,4,60000,60000,1
+	bossnia_03,0,0	monster	Boitata			2068,4,60000,60000,1
+	bossnia_03,0,0	monster	Cavaleiro da Tempestade	1251,4,60000,60000,1
+	bossnia_03,0,0	monster	Detarderus		1719,4,60000,60000,1
+	bossnia_03,0,0	monster	Doppelganger		1046,4,60000,60000,1
+	bossnia_03,0,0	monster	Drácula			1389,4,60000,60000,1
+	bossnia_03,0,0	monster	Drake			1112,4,60000,60000,1
+	bossnia_03,0,0	monster	Eddga			1115,4,60000,60000,1
+	bossnia_03,0,0	monster	Egnigem Cenia		1658,4,60000,60000,1
+	bossnia_03,0,0	monster	Entweihen Crothen	1957,4,60000,60000,1
+	bossnia_03,0,0	monster	Faraó			1157,4,60000,60000,1
+	bossnia_03,0,0	monster	Flor do Luar		1150,4,60000,60000,1
+	bossnia_03,0,0	monster	Freeoni			1159,4,60000,60000,1
+	bossnia_03,0,0	monster	General Tartaruga	1312,4,60000,60000,1
+	bossnia_03,0,0	monster	Gorynych		1885,4,60000,60000,1
+	bossnia_03,0,0	monster	Hatii			1885,4,60000,60000,1
+	bossnia_03,0,0	monster	Ifrit			1252,4,60000,60000,1
+	bossnia_03,0,0	monster	Kiel-D-01		1734,4,60000,60000,1
+	bossnia_03,0,0	monster	Kraken			2202,4,60000,60000,1
+	bossnia_03,0,0	monster	Ktullanux		1779,4,60000,60000,1
+	bossnia_03,0,0	monster	Lady Branca		1630,4,60000,60000,1
+	bossnia_03,0,0	monster	Lady Tanee		1688,4,60000,60000,1
+	bossnia_03,0,0	monster	Memória de Thanatos	1708,4,60000,60000,1
+	bossnia_03,0,0	monster	Night Sieger		1956,4,60000,60000,1
+	bossnia_03,0,0	monster	Orc Herói		1087,4,60000,60000,1
+	bossnia_03,0,0	monster	Osíris			1038,4,60000,60000,1
+	bossnia_03,0,0	monster	Pesar Noturno		1768,4,60000,60000,1
+	bossnia_03,0,0	monster	Rainha Scaraba		2087,4,60000,60000,1
+	bossnia_03,0,0	monster	RSX-0806		1623,4,60000,60000,1
+	bossnia_03,0,0	monster	Samurai Encarnado	1272,4,60000,60000,1
+	bossnia_03,0,0	monster	Senhor das Trevas	1373,4,60000,60000,1
+	bossnia_03,0,0	monster	Senhor dos Mortos	1418,4,60000,60000,1
+	bossnia_03,0,0	monster	Sombra de Nidhogg	2022,4,60000,60000,1
+	bossnia_03,0,0	monster	Tao Gunka		1583,4,60000,60000,1
+	bossnia_03,0,0	monster	Valquíria Randgris	1751,4,60000,60000,1
+	bossnia_03,0,0	monster	Vesper			1685,4,60000,60000,1
+	bossnia_03,0,0	monster	Vigia do Tempo		3074,4,60000,60000,1
+
+	bossnia_03,0,0	monster	Algoz Eremes		1647,2,60000,60000,1
+	bossnia_03,0,0	monster	Atiradora de Elite Cecil	1650,2,60000,60000,1
+
+	// bossnia_04 - Bossnia
+	bossnia_04,0,0	monster	Abelha Rainha		1059,5,60000,60000,1
+	bossnia_04,0,0	monster	Atroce			1785,5,60000,60000,1
+	bossnia_04,0,0	monster	Belzebu			1874,5,60000,60000,1
+	bossnia_04,0,0	monster	Bispo Decadente		1871,5,60000,60000,1
+	bossnia_04,0,0	monster	Boitata			2068,5,60000,60000,1
+	bossnia_04,0,0	monster	Cavaleiro da Tempestade	1251,5,60000,60000,1
+	bossnia_04,0,0	monster	Detarderus		1719,5,60000,60000,1
+	bossnia_04,0,0	monster	Doppelganger		1046,5,60000,60000,1
+	bossnia_04,0,0	monster	Drácula			1389,5,60000,60000,1
+	bossnia_04,0,0	monster	Drake			1112,5,60000,60000,1
+	bossnia_04,0,0	monster	Eddga			1115,5,60000,60000,1
+	bossnia_04,0,0	monster	Egnigem Cenia		1658,5,60000,60000,1
+	bossnia_04,0,0	monster	Entweihen Crothen	1957,5,60000,60000,1
+	bossnia_04,0,0	monster	Faraó			1157,5,60000,60000,1
+	bossnia_04,0,0	monster	Flor do Luar		1150,5,60000,60000,1
+	bossnia_04,0,0	monster	Freeoni			1159,5,60000,60000,1
+	bossnia_04,0,0	monster	General Tartaruga	1312,5,60000,60000,1
+	bossnia_04,0,0	monster	Gorynych		1885,5,60000,60000,1
+	bossnia_04,0,0	monster	Hatii			1885,5,60000,60000,1
+	bossnia_04,0,0	monster	Ifrit			1252,5,60000,60000,1
+	bossnia_04,0,0	monster	Kiel-D-01		1734,5,60000,60000,1
+	bossnia_04,0,0	monster	Kraken			2202,5,60000,60000,1
+	bossnia_04,0,0	monster	Ktullanux		1779,5,60000,60000,1
+	bossnia_04,0,0	monster	Lady Branca		1630,5,60000,60000,1
+	bossnia_04,0,0	monster	Lady Tanee		1688,5,60000,60000,1
+	bossnia_04,0,0	monster	Memória de Thanatos	1708,5,60000,60000,1
+	bossnia_04,0,0	monster	Night Sieger		1956,5,60000,60000,1
+	bossnia_04,0,0	monster	Orc Herói		1087,5,60000,60000,1
+	bossnia_04,0,0	monster	Osíris			1038,5,60000,60000,1
+	bossnia_04,0,0	monster	Pesar Noturno		1768,5,60000,60000,1
+	bossnia_04,0,0	monster	Rainha Scaraba		2087,5,60000,60000,1
+	bossnia_04,0,0	monster	RSX-0806		1623,5,60000,60000,1
+	bossnia_04,0,0	monster	Samurai Encarnado	1272,5,60000,60000,1
+	bossnia_04,0,0	monster	Senhor das Trevas	1373,5,60000,60000,1
+	bossnia_04,0,0	monster	Senhor dos Mortos	1418,5,60000,60000,1
+	bossnia_04,0,0	monster	Sombra de Nidhogg	2022,5,60000,60000,1
+	bossnia_04,0,0	monster	Tao Gunka		1583,5,60000,60000,1
+	bossnia_04,0,0	monster	Valquíria Randgris	1751,5,60000,60000,1
+	bossnia_04,0,0	monster	Vesper			1685,5,60000,60000,1
+	bossnia_04,0,0	monster	Vigia do Tempo		3074,5,60000,60000,1
+
+	bossnia_04,0,0	monster	Ifrit			1647,2,60000,60000,1
+	bossnia_04,0,0	monster	Naght Sieger		1685,2,60000,60000,1
+	//bossnia_04,0,0	monster	Gioia		1685,2,60000,60000,1
+
+bossnia_01	mapflag	nowarp
+bossnia_01	mapflag	nowarpto
+bossnia_01	mapflag	noteleport
+bossnia_01	mapflag	monster_noteleport
+bossnia_01	mapflag	nosave	SavePoint
+bossnia_01	mapflag	nomemo
+bossnia_01	mapflag	nobranch
+bossnia_01	mapflag	nopenalty
+bossnia_01	mapflag	noicewall
+bossnia_01	mapflag	nodrop
+bossnia_01	mapflag	noloot
+bossnia_01	mapflag	noexp
+
+bossnia_02	mapflag	nowarp
+bossnia_02	mapflag	nowarpto
+bossnia_02	mapflag	noteleport
+bossnia_02	mapflag	monster_noteleport
+bossnia_02	mapflag	nosave	SavePoint
+bossnia_02	mapflag	nomemo
+bossnia_02	mapflag	nobranch
+bossnia_02	mapflag	nopenalty
+bossnia_02	mapflag	noicewall
+bossnia_02	mapflag	nodrop
+bossnia_02	mapflag	noloot
+bossnia_02	mapflag	noexp
+
+bossnia_03	mapflag	nowarp
+bossnia_03	mapflag	nowarpto
+bossnia_03	mapflag	noteleport
+bossnia_03	mapflag	monster_noteleport
+bossnia_03	mapflag	nosave	SavePoint
+bossnia_03	mapflag	nomemo
+bossnia_03	mapflag	nobranch
+bossnia_03	mapflag	nopenalty
+bossnia_03	mapflag	noicewall
+bossnia_03	mapflag	nodrop
+bossnia_03	mapflag	noloot
+bossnia_03	mapflag	noexp
+
+bossnia_04	mapflag	nowarp
+bossnia_04	mapflag	nowarpto
+bossnia_04	mapflag	noteleport
+bossnia_04	mapflag	monster_noteleport
+bossnia_04	mapflag	nosave	SavePoint
+bossnia_04	mapflag	nomemo
+bossnia_04	mapflag	nobranch
+bossnia_04	mapflag	nopenalty
+bossnia_04	mapflag	noicewall
+bossnia_04	mapflag	nodrop
+bossnia_04	mapflag	noloot
+bossnia_04	mapflag	noexp

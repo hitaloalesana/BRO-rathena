@@ -1,0 +1,7 @@
+function	script	caixadopesadelo	{
+	setarray .BoxItems[0],7428,7426,7429,7427;
+	
+	set .Random, getarraysize( .BoxItems );
+	getitem .BoxItems[ rand( .Random ) ], 1;
+	end;
+}
