@@ -620,7 +620,7 @@ bool mob_ksprotected (struct block_list *src, struct block_list *target)
 	return false;
 }
 
-struct mob_data *mob_once_spawn_sub(struct block_list *bl, int16 m, int16 x, int16 y, const char *mobname, int mob_id, const char *event, unsigned int size, enum mob_ai ai)
+struct mob_data *mob_once_spawn_sub(struct block_list *bl, int16 m, int16 x, int16 y, const char *mobname, int mob_id, const char *event, unsigned int size, enum mob_ai ai, uint8 dir)
 {
 	struct spawn_data data;
 
@@ -663,7 +663,7 @@ struct mob_data *mob_once_spawn_sub(struct block_list *bl, int16 m, int16 x, int
 /*==========================================
  * Spawn a single mob on the specified coordinates.
  *------------------------------------------*/
-int mob_once_spawn(struct map_session_data* sd, int16 m, int16 x, int16 y, const char* mobname, int mob_id, int amount, const char* event, unsigned int size, enum mob_ai ai)
+int mob_once_spawn(struct map_session_data* sd, int16 m, int16 x, int16 y, const char* mobname, int mob_id, int amount, const char* event, unsigned int size, enum mob_ai ai, uint8 dir)
 {
 	struct mob_data* md = nullptr;
 	int count, lv;
@@ -702,6 +702,9 @@ int mob_once_spawn(struct map_session_data* sd, int16 m, int16 x, int16 y, const
 		}	// end addition [Valaris]
 
 		mob_spawn(md);
+
+		if (dir != 0)
+			unit_setdir(&md->bl, dir);
 
 		if (mob_id < 0 && battle_config.dead_branch_active)
 			//Behold Aegis's masterful decisions yet again...
@@ -2097,16 +2100,11 @@ static TIMER_FUNC(mob_ai_hard){
  * @author [Cydh]
  **/
 void mob_setdropitem_option(struct item *itm, struct s_mob_drop *mobdrop) {
-	struct s_random_opt_group *g = NULL;
+
 	if (!itm || !mobdrop || mobdrop->randomopt_group == RDMOPTG_None)
 		return;
-	if ((g = itemdb_randomopt_group_exists(mobdrop->randomopt_group)) && g->total) {
-		int r = rnd()%g->total;
-		if (&g->entries[r]) {
-			memcpy(&itm->option, &g->entries[r], sizeof(itm->option));
-			return;
-		}
-	}
+
+	itemdb_advance_drop_groups.setItem(mobdrop->randomopt_group, itm);
 }
 
 /*==========================================
@@ -2408,6 +2406,7 @@ void mob_damage(struct mob_data *md, struct block_list *src, int damage)
 	}
 
 	if (battle_config.show_mob_info&3)
+
 		clif_name_area(&md->bl);
 
 #if PACKETVER >= 20120404
@@ -5240,7 +5239,7 @@ static bool mob_readdb_drop(char* str[], int columns, int current) {
 			randomopt_group = static_cast<int>(randomopt_group_tmp);
 			if (randomopt_group == RDMOPTG_None)
 				return true;
-			if (!itemdb_randomopt_group_exists(randomopt_group)) {
+			if (!itemdb_advance_drop_groups.exists(randomopt_group)) {
 				ShowError("mob_readdb_drop: 'randopt_groupid' '%s' cannot be found in DB for monster '%hu'.\n", str[3], mobid);
 				return false;
 			}

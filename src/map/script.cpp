@@ -10476,6 +10476,7 @@ BUILDIN_FUNC(monster)
 	const char* event	= "";
 	unsigned int size	= SZ_SMALL;
 	enum mob_ai ai		= AI_NONE;
+	uint8 dir = 0;
 
 	struct map_session_data* sd;
 	int16 m;
@@ -10502,6 +10503,9 @@ BUILDIN_FUNC(monster)
 		}
 	}
 
+	if (script_hasdata(st, 11))
+		dir = script_getnum(st, 11) % DIR_MAX;
+
 	if (class_ >= 0 && !mobdb_checkid(class_)) {
 		ShowWarning("buildin_monster: Attempted to spawn non-existing monster class %d\n", class_);
 		return SCRIPT_CMD_FAILURE;
@@ -10515,7 +10519,7 @@ BUILDIN_FUNC(monster)
 		m = map_mapname2mapid(mapn);
 
 	for(i = 0; i < amount; i++) { //not optimised
-		int mobid = mob_once_spawn(sd, m, x, y, str, class_, 1, event, size, ai);
+		int mobid = mob_once_spawn(sd, m, x, y, str, class_, 1, event, size, ai, dir);
 
 		if (mobid)
 			mapreg_setreg(reference_uid(add_str("$@mobid"), i), mobid);
@@ -10557,6 +10561,67 @@ BUILDIN_FUNC(getmobdrops)
 	mapreg_setreg(add_str("$@MobDrop_count"), j);
 	script_pushint(st, 1);
 
+	return SCRIPT_CMD_SUCCESS;
+}
+
+//frost
+BUILDIN_FUNC(fakeplayer)
+{
+	const char* mapn = script_getstr(st, 2);
+	int x = script_getnum(st, 3);
+	int y = script_getnum(st, 4);
+
+	const char* name = script_getstr(st, 5);
+	int sprite = script_getnum(st, 6);
+	int sex = script_getnum(st, 7);
+	int hair_style = script_getnum(st, 8);
+	int hair_color = script_getnum(st, 9);
+	int weapon = script_getnum(st, 10);
+	int shield = script_getnum(st, 11);
+	int head_top = script_getnum(st, 12);
+	int head_mid = script_getnum(st, 13);
+	int head_bottom = script_getnum(st, 14);
+	int option = script_getnum(st, 15);
+	int cloth_color = script_getnum(st, 16);
+	int mobid = script_getnum(st, 17);
+	int dir = script_getnum(st, 18);
+
+	int16 m;
+
+	struct mob_data* md = nullptr;
+
+	m = map_mapname2mapid(mapn);
+
+	// usa id do monstro para pegar a AI
+	md = mob_once_spawn_sub(NULL, m, x, y, name, mobid, "", SZ_SMALL, AI_NONE, dir);
+
+	if (!md)
+		return SCRIPT_CMD_FAILURE;
+
+	md->FakePlayer = true;
+	//md->ud.immune_attack = 0;
+
+	//diz ao emulador que se tiver mapflag pvpon fica ativo a morte dos fakeplayers caso contrario, fica desativado.
+	md->ud.immune_attack = map_getmapflag(m, MF_PVP) ? 0 : 1;
+
+	md->vd->class_ = sprite;
+
+	md->vd->sex = sex;
+	md->vd->hair_style = hair_style;
+	md->vd->hair_color = hair_color;
+	md->vd->weapon = weapon;
+	md->vd->shield = shield;
+	md->vd->head_top = head_top;
+	md->vd->head_mid = head_mid;
+	md->vd->head_bottom = head_bottom;
+	md->vd->cloth_color = cloth_color;
+
+	mob_spawn(md);
+
+	if (dir != 0)
+		unit_setdir(&md->bl, dir);
+
+	script_pushint(st, md->bl.id);
 	return SCRIPT_CMD_SUCCESS;
 }
 
@@ -24757,6 +24822,11 @@ BUILDIN_FUNC(preg_match) {
 /// script command definitions
 /// for an explanation on args, see add_buildin_func
 struct script_function buildin_func[] = {
+
+	// ======= Frost scrips
+	BUILDIN_DEF(fakeplayer, "siisiiiiiiiiiiii?"),
+
+	//
 	// NPC interaction
 	BUILDIN_DEF(mes,"s*"),
 	BUILDIN_DEF(next,""),
@@ -24893,7 +24963,7 @@ struct script_function buildin_func[] = {
 	BUILDIN_DEF(itemskill,"vi?"),
 	BUILDIN_DEF(produce,"i"),
 	BUILDIN_DEF(cooking,"i"),
-	BUILDIN_DEF(monster,"siisii???"),
+	BUILDIN_DEF(monster,"siisii????"),
 	BUILDIN_DEF(getmobdrops,"i"),
 	BUILDIN_DEF(areamonster,"siiiisii???"),
 	BUILDIN_DEF(killmonster,"ss?"),

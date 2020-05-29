@@ -9743,6 +9743,7 @@ void clif_name( struct block_list* src, struct block_list *bl, send_target targe
 			nullpo_retv(md);
 
 			safestrncpy(WBUFCP(buf,6), md->name, NAME_LENGTH);
+			if (md->FakePlayer) { break; }
 			if( md->guardian_data && md->guardian_data->guild_id )
 			{
 #if PACKETVER >= 20150513
@@ -9762,12 +9763,13 @@ void clif_name( struct block_list* src, struct block_list *bl, send_target targe
 #else
 				WBUFW(buf, 0) = cmd = 0x195;
 #endif
-				if( battle_config.show_mob_info&4 )
-					str_p += sprintf(str_p, "Lv. %d | ", md->level);
-				if( battle_config.show_mob_info&1 )
-					str_p += sprintf(str_p, "HP: %u/%u | ", md->status.hp, md->status.max_hp);
-				if( battle_config.show_mob_info&2 )
-					str_p += sprintf(str_p, "HP: %u%% | ", get_percentage(md->status.hp, md->status.max_hp));
+					if (battle_config.show_mob_info & 4)
+						str_p += sprintf(str_p, "Lv. %d | ", md->level);
+					if (battle_config.show_mob_info & 1)
+						str_p += sprintf(str_p, "HP: %u/%u | ", md->status.hp, md->status.max_hp);
+					if (battle_config.show_mob_info & 2)
+						str_p += sprintf(str_p, "HP: %u%% | ", get_percentage(md->status.hp, md->status.max_hp));
+				
 				//Even thought mobhp ain't a name, we send it as one so the client
 				//can parse it. [Skotlex]
 				if( str_p != mobhp )
@@ -11287,12 +11289,21 @@ void clif_parse_Emotion(int fd, struct map_session_data *sd)
 /// 00c2 <count>.L
 void clif_user_count(struct map_session_data* sd, int count)
 {
+	struct s_mapiterator* iter;
+	struct mob_data *md;
+
 	int fd = sd->fd;
 
-	WFIFOHEAD(fd,packet_len(0xc2));
-	WFIFOW(fd,0) = 0xc2;
-	WFIFOL(fd,2) = count;
-	WFIFOSET(fd,packet_len(0xc2));
+	iter = mapit_geteachmob();
+	for (md = (TBL_MOB*)mapit_first(iter); mapit_exists(iter); md = (TBL_MOB*)mapit_next(iter)) {
+		if (md && md->FakePlayer)
+			count++;
+	}
+
+	WFIFOHEAD(fd, packet_len(0xc2));
+	WFIFOW(fd, 0) = 0xc2;
+	WFIFOL(fd, 2) = count;
+	WFIFOSET(fd, packet_len(0xc2));
 }
 
 

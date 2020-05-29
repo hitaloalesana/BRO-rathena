@@ -8000,6 +8000,24 @@ int battle_check_target( struct block_list *src, struct block_list *target,int f
 		}
 	}
 
+		// se o Mapflag PVP não tiver ativo no mapa os "bots" não atacam, caso contrário atacarão players também
+	if (!map_getmapflag(m, MF_PVP))
+		if (src->type == BL_MOB && (BL_CAST(BL_MOB, src)->FakePlayer) && target->type == BL_PC)
+			return 0;
+
+	//Habilita para atacar todos até do mesmo id
+	//if (src->type == BL_MOB && BL_CAST(BL_MOB, src)->mob_id == 1001 && target->type == BL_MOB && src->id != target->id)
+	//return 1;
+
+	// verifica se o mob é do id 1001, se nao for ele é atacado pelos inimigos.
+	if (src->type == BL_MOB && target->type == BL_MOB && (BL_CAST(BL_MOB, target)->FakePlayer) && !(BL_CAST(BL_MOB, src)->FakePlayer))
+		return 1;
+
+	//Habilita para atacar todos (player + mobs do mapa e nao ataca amigos do mesmo id 1001)
+	if (src->type == BL_MOB && (BL_CAST(BL_MOB, src)->FakePlayer) && target->type == BL_MOB && !(BL_CAST(BL_MOB, target)->FakePlayer) && src->id != target->id)
+		return 1;
+
+
 	struct map_data *mapdata = map_getmapdata(m);
 
 	switch( target->type ) { // Checks on actual target

@@ -25,7 +25,7 @@ static DBMap *itemdb; /// Item DB
 static DBMap *itemdb_combo; /// Item Combo DB
 static DBMap *itemdb_group; /// Item Group DB
 static DBMap *itemdb_randomopt; /// Random option DB
-static DBMap *itemdb_randomopt_group; /// Random option group DB
+ItemAdvanceDropGroup itemdb_advance_drop_groups;
 
 struct item_data *dummy_item; /// This is the default dummy item used for non-existant items. [Skotlex]
 
@@ -1763,84 +1763,362 @@ static bool itemdb_read_randomopt(const char* basedir, bool silent) {
 	return true;
 }
 
+void ItemAdvanceDropGroup::clear() {
+	TypesafeYamlDatabase::clear();
+}
+
+
+const std::string ItemAdvanceDropGroup::getDefaultLocation() {
+	return std::string(db_path) + "/item_advanced_drop_group.yml";
+}
+
 /**
- * Clear Item Random Option Group from memory
- * @author [Cydh]
- **/
-static int itemdb_randomopt_group_free(DBKey key, DBData *data, va_list ap) {
-	struct s_random_opt_group *g = (struct s_random_opt_group *)db_data2ptr(data);
-	if (!g)
+ * Reads and parses an entry from the item_advanced_drop_group.yml.
+* @param node: YAML node containing the entry.
+* @return count of successfully parsed rows
+*/
+uint64 ItemAdvanceDropGroup::parseBodyNode(const YAML::Node &node) {
+	std::string group_name;
+
+	if (!this->asString(node, "GroupId", group_name)) {
 		return 0;
-	if (g->entries)
-		aFree(g->entries);
-	g->entries = NULL;
-	aFree(g);
+	}
+
+	//id = static_cast<int>(id_tmp);
+
+	int64 id;
+
+	if (!script_get_constant(group_name.c_str(), &id)) {
+		this->invalidWarning(node, "Group with name '%s' is not exists.\n", group_name.c_str());
+		return 0;
+	}
+
+	std::shared_ptr<s_itemdb_advance_drop_group> group = this->find(id);
+	bool exists = group != nullptr;
+
+	if (!exists) {
+		if (!this->nodeExists(node, "Cards") && !this->nodeExists(node, "RandomOptions"))
+			return 0;
+
+		group = std::make_shared<s_itemdb_advance_drop_group>();
+		group->id = id;
+	}
+	else {
+		group->cards.clear();
+		group->random_options.clear();
+	}
+
+	if (this->nodeExists(node, "Cards")) {
+		const YAML::Node& slot_group = node["Cards"];
+
+		for (const YAML::Node &slot : slot_group) {
+			if (!this->nodesExist(slot, { "Slot", "PossibleCards" }))
+				continue;
+
+			uint16 slot_num;
+
+			if (!this->asUInt16(slot, "Slot", slot_num))
+				continue;
+
+			if (!slot_num || slot_num > MAX_SLOTS)
+				continue;
+
+			--slot_num;
+
+			if (group->cards.empty())
+				group->cards.reserve(MAX_SLOTS);
+
+			auto &sub_group = group->cards[(uint8)slot_num];
+
+			if (!slot["PossibleCards"].IsSequence()) {
+				this->invalidWarning(slot, "Invalid format for 'PossibleCards'.\n");
+				continue;
+			}
+
+			if (this->nodeExists(slot, "FitToLeft"))
+				this->asBool(slot, "FitToLeft", sub_group.align);
+			else
+				sub_group.align = true;
+
+			uint32 nameid;
+			uint16 rates;
+
+			for (const YAML::Node &card : slot["PossibleCards"]) {
+				if (!this->asUInt32(card, "Item", nameid))
+					continue;
+
+				if (nameid != 0 && !itemdb_exists(nameid)) {
+					this->invalidWarning(slot, "Invalid item id '%u'.\n", nameid);
+					continue;
+				}
+
+				if (this->nodeExists(card, "Rates"))
+					this->asUInt16(card, "Rates", rates);
+				else
+					rates = 1;
+
+				if (sub_group.nameid.empty())
+					sub_group.nameid.reserve(rates);
+
+				sub_group.nameid.insert(sub_group.nameid.end(), rates, nameid);
+			}
+		}
+	}
+
+	if (this->nodeExists(node, "RandomOptions")) {
+		const YAML::Node& slot_group = node["RandomOptions"];
+
+		for (const YAML::Node &slot : slot_group) {
+			if (!this->nodesExist(slot, { "Slot", "PossibleOptions" }))
+				continue;
+			uint16 slot_num;
+
+			if (!this->asUInt16(slot, "Slot", slot_num))
+				continue;
+
+			if (!slot_num || slot_num > MAX_ITEM_RDM_OPT)
+				continue;
+
+			--slot_num;
+
+			if (group->random_options.empty())
+				group->random_options.reserve(MAX_ITEM_RDM_OPT);
+
+			auto &sub_option = group->random_options[slot_num];
+
+			if (this->nodeExists(slot, "FitToLow"))
+				this->asBool(slot, "FitToLow", sub_option.align);
+			else
+				sub_option.align = true;
+
+			uint16 rates;
+			s_itemdb_advance_drop_group_option_entry entry;
+
+			for (const YAML::Node &option : slot["PossibleOptions"]) {
+				std::string option_id_str;
+
+				if (!this->asString(option, "OptionId", option_id_str))
+					continue;
+
+				int64 option_id;
+
+				if (!script_get_constant(option_id_str.c_str(), &option_id)) {
+					this->invalidWarning(slot, "Invalid random option id '%u'.\n", option_id);
+					continue;
+				}
+
+				entry = {};
+				entry.option_id = option_id;
+
+				if (!itemdb_randomopt_exists(entry.option_id)) {
+					this->invalidWarning(slot, "Random option id '%u' declared but not defined. Skipping...\n", entry.option_id);
+					continue;
+				}
+
+				if (this->nodeExists(option, "Value")) {
+					if (option["Value"].IsScalar()) {
+						this->asInt32(option, "Value", entry.value_min);
+						entry.value_max = entry.value_min;
+					}
+					else {
+						this->asInt32(option["Value"], "Min", entry.value_min);
+						this->asInt32(option["Value"], "Max", entry.value_max);
+					}
+				}
+				else
+					entry.value_min = entry.value_max = 0;
+
+				if (this->nodeExists(option, "Param")) {
+					if (option["Param"].IsScalar()) {
+						this->asInt16(option, "Param", entry.param_min);
+						entry.param_max = entry.param_min;
+					}
+					else {
+						this->asInt16(option["Param"], "Min", entry.param_min);
+						this->asInt16(option["Param"], "Max", entry.param_max);
+					}
+				}
+				else
+					entry.param_min = entry.param_max = 0;
+
+				if (this->nodeExists(option, "Rates"))
+					this->asUInt16(option, "Rates", rates);
+				else
+					rates = 1;
+
+				if (sub_option.option.empty())
+					sub_option.option.reserve(rates);
+
+				sub_option.option.insert(sub_option.option.end(), rates, entry);
+			}
+		}
+
+	}
+
+	if (!exists)
+		this->put(id, group);
+
 	return 1;
 }
 
-/**
- * Get Item Random Option Group from itemdb_randomopt_group MapDB
- * @param id Random Option Group
- * @return Random Option Group data or NULL if not found
- * @author [Cydh]
- **/
-struct s_random_opt_group *itemdb_randomopt_group_exists(int id) {
-	return (struct s_random_opt_group *)uidb_get(itemdb_randomopt_group, id);
-}
+/* Set an item with advanced item param from itemdb_advance_drop_groups
+* @param id Group ID
+* @param item Item pointer will be modified
+*/
+void ItemAdvanceDropGroup::setItem(uint32 id, item * item)
+{
+	std::shared_ptr<s_itemdb_advance_drop_group> group = this->find(id);
 
-/**
- * Read Item Random Option Group from db file
- * @author [Cydh]
- **/
-static bool itemdb_read_randomopt_group(char* str[], int columns, int current) {
-	int64 id_tmp;
-	int id = 0;
-	int i;
-	unsigned short rate = (unsigned short)strtoul(str[1], NULL, 10);
-	struct s_random_opt_group *g = NULL;
+	if (group == nullptr)
+		return;
 
-	if (!script_get_constant(str[0], &id_tmp)) {
-		ShowError("itemdb_read_randomopt_group: Invalid ID for Random Option Group '%s'.\n", str[0]);
-		return false;
-	}
+	if (!group->cards.empty()) {
+		int r, pos, c = 0;
 
-	id = static_cast<int>(id_tmp);
-
-	if ((columns-2)%3 != 0) {
-		ShowError("itemdb_read_randomopt_group: Invalid column entries '%d'.\n", columns);
-		return false;
-	}
-
-	if (!(g = (struct s_random_opt_group *)uidb_get(itemdb_randomopt_group, id))) {
-		CREATE(g, struct s_random_opt_group, 1);
-		g->id = id;
-		g->total = 0;
-		g->entries = NULL;
-		uidb_put(itemdb_randomopt_group, g->id, g);
-	}
-
-	RECREATE(g->entries, struct s_random_opt_group_entry, g->total + rate);
-
-	for (i = g->total; i < (g->total + rate); i++) {
-		int j, k;
-		memset(&g->entries[i].option, 0, sizeof(g->entries[i].option));
-		for (j = 0, k = 2; k < columns && j < MAX_ITEM_RDM_OPT; k+=3) {
-			int64 randid_tmp;
-			int randid = 0;
-
-			if (!script_get_constant(str[k], &randid_tmp) || ((randid = static_cast<int>(randid_tmp)) && !itemdb_randomopt_exists(randid))) {
-				ShowError("itemdb_read_randomopt_group: Invalid random group id '%s' in column %d!\n", str[k], k+1);
-				continue;
+		for (auto &it : group->cards) {
+			if (!it.second.nameid.empty()) {
+				pos = (it.second.align && it.first != c) ? c : it.first;
+				r = rnd() % it.second.nameid.size();
+				if (!it.second.nameid[r])
+					continue;
+				item->card[pos] = it.second.nameid[r];
+				c++;
 			}
-			g->entries[i].option[j].id = randid;
-			g->entries[i].option[j].value = (short)strtoul(str[k+1], NULL, 10);
-			g->entries[i].option[j].param = (char)strtoul(str[k+2], NULL, 10);
-			j++;
 		}
 	}
-	g->total += rate;
+
+	if (!group->random_options.empty()) {
+		int r, pos, c = 0;
+
+		for (auto &it : group->random_options) {
+			if (!it.second.option.empty()) {
+				pos = (it.second.align && it.first != c) ? c : it.first;
+				r = rnd() % it.second.option.size();
+				if (!it.second.option[r].option_id)
+					continue;
+				item->option[pos].id = it.second.option[r].option_id;
+				c++;
+
+				if (it.second.option[r].value_min == it.second.option[r].value_max)
+					item->option[pos].value = it.second.option[r].value_min;
+				else {
+					int32 min = it.second.option[r].value_min;
+					int32 max = it.second.option[r].value_max;
+					if (max < min)
+						SWAP(min, max);
+					int32 range = max - min + 1;
+					item->option[pos].value = rnd() % range + min;
+				}
+
+				if (it.second.option[r].param_min == it.second.option[r].param_max)
+					item->option[pos].param = (char)it.second.option[r].param_min;
+				else {
+					int32 min = it.second.option[r].param_min;
+					int32 max = it.second.option[r].param_max;
+					if (max < min)
+						SWAP(min, max);
+					int32 range = max - min + 1;
+					item->option[pos].param = (char)(rnd() % range + min);
+				}
+
+
+			}
+		}
+	}
+}
+/* Get a value from possible item (card/enchant) list
+* @param id Group ID
+* @param slot Which card slot
+*/
+int ItemAdvanceDropGroup::getRandomCard(uint32 id, uint8 slot)
+{
+	std::shared_ptr<s_itemdb_advance_drop_group> group = this->find(id);
+
+	if (group == nullptr)
+		return 0;
+
+	if (slot >= MAX_SLOTS || group->cards.empty())
+		return 0;
+
+	if (group->cards[slot].nameid.empty())
+		return 0;
+
+	int r = rnd() % group->cards[slot].nameid.size();
+	return group->cards[slot].nameid[r];
+}
+
+/* Get a value from possible option (card/enchant) list
+* @param id Group ID
+* @param slot Option slot
+*/
+bool ItemAdvanceDropGroup::getRandomOption(uint32 id, uint8 slot, uint32 *option_id, int32 *option_value, int16 *option_param)
+{
+	std::shared_ptr<s_itemdb_advance_drop_group> group = this->find(id);
+
+	if (group == nullptr)
+		return false;
+
+	if (slot >= MAX_ITEM_RDM_OPT || group->random_options.empty())
+		return false;
+
+	if (group->random_options[slot].option.empty())
+		return false;
+
+	const auto &option = group->random_options[slot].option;
+	int r = rnd() % option.size();
+
+	(*option_id) = option[r].option_id;
+
+	if (option[r].value_min == option[r].value_max)
+		(*option_value) = option[r].value_min;
+	else {
+		int32 min = option[r].value_min;
+		int32 max = option[r].value_max;
+		if (max < min)
+			SWAP(min, max);
+		int32 range = max - min + 1;
+		(*option_value) = rnd() % range + min;
+	}
+
+	if (option[r].param_min == option[r].param_max)
+		(*option_param) = option[r].param_min;
+	else {
+		int32 min = option[r].param_min;
+		int32 max = option[r].param_max;
+		if (max < min)
+			SWAP(min, max);
+		int32 range = max - min + 1;
+		(*option_param) = rnd() % range + min;
+	}
+
 	return true;
 }
+
+void itemdb_advance_drop_groups_read(void) {
+	itemdb_advance_drop_groups.load();
+}
+
+void itemdb_advance_drop_groups_reload(void) {
+	itemdb_advance_drop_groups.clear();
+	itemdb_advance_drop_groups_read();
+}
+
+/**
+* ItemAdvanceDropGroup entry constructor
+*/
+s_itemdb_advance_drop_group::s_itemdb_advance_drop_group()
+	: id(0)
+	, cards()
+	, random_options()
+{}
+
+/**
+* ItemAdvanceDropGroup entry destructor
+*/
+s_itemdb_advance_drop_group::~s_itemdb_advance_drop_group()
+{
+}
+
 
 /**
 * Read all item-related databases
@@ -1893,7 +2171,6 @@ static void itemdb_read(void) {
 		sv_readdb(dbsubpath2, "item_delay.txt",         ',', 2, 3, -1, &itemdb_read_itemdelay, i > 0);
 		sv_readdb(dbsubpath2, "item_buyingstore.txt",   ',', 1, 1, -1, &itemdb_read_buyingstore, i > 0);
 		sv_readdb(dbsubpath2, "item_flag.txt",          ',', 2, 2, -1, &itemdb_read_flag, i > 0);
-		sv_readdb(dbsubpath2, "item_randomopt_group.txt", ',', 5, 2+5*MAX_ITEM_RDM_OPT, -1, &itemdb_read_randomopt_group, i > 0);
 		aFree(dbsubpath1);
 		aFree(dbsubpath2);
 	}
@@ -2015,7 +2292,6 @@ void itemdb_reload(void) {
 
 	itemdb_group->clear(itemdb_group, itemdb_group_free);
 	itemdb_randomopt->clear(itemdb_randomopt, itemdb_randomopt_free);
-	itemdb_randomopt_group->clear(itemdb_randomopt_group, itemdb_randomopt_group_free);
 	itemdb->clear(itemdb, itemdb_final_sub);
 	db_clear(itemdb_combo);
 	if (battle_config.feature_roulette)
@@ -2023,6 +2299,7 @@ void itemdb_reload(void) {
 
 	// read new data
 	itemdb_read();
+	itemdb_advance_drop_groups_reload();
 	cashshop_reloaddb();
 
 	if (battle_config.feature_roulette)
@@ -2059,12 +2336,11 @@ void itemdb_reload(void) {
 void do_final_itemdb(void) {
 	db_destroy(itemdb_combo);
 	itemdb_group->destroy(itemdb_group, itemdb_group_free);
-	itemdb_randomopt->destroy(itemdb_randomopt, itemdb_randomopt_free);
-	itemdb_randomopt_group->destroy(itemdb_randomopt_group, itemdb_randomopt_group_free);
 	itemdb->destroy(itemdb, itemdb_final_sub);
 	destroy_item_data(dummy_item);
 	if (battle_config.feature_roulette)
 		itemdb_roulette_free();
+	itemdb_advance_drop_groups.clear();
 }
 
 /**
@@ -2075,9 +2351,9 @@ void do_init_itemdb(void) {
 	itemdb_combo = uidb_alloc(DB_OPT_BASE);
 	itemdb_group = uidb_alloc(DB_OPT_BASE);
 	itemdb_randomopt = uidb_alloc(DB_OPT_BASE);
-	itemdb_randomopt_group = uidb_alloc(DB_OPT_BASE);
 	itemdb_create_dummy();
 	itemdb_read();
+	itemdb_advance_drop_groups_read();
 
 	if (battle_config.feature_roulette)
 		itemdb_parse_roulette_db();

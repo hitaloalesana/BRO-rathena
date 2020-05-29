@@ -4,7 +4,11 @@
 #ifndef ITEMDB_HPP
 #define ITEMDB_HPP
 
+#include <unordered_map>
+#include <vector>
+
 #include "../common/db.hpp"
+#include "../common/database.hpp"
 #include "../common/mmo.hpp" // ITEM_NAME_LENGTH
 
 ///Maximum allowed Item ID (range: 1 ~ 65,534)
@@ -875,12 +879,48 @@ struct s_random_opt_group_entry {
 	struct s_item_randomoption option[MAX_ITEM_RDM_OPT];
 };
 
-/// Struct for Random Option Group
-struct s_random_opt_group {
-	uint8 id;
-	struct s_random_opt_group_entry *entries;
-	uint16 total;
+struct s_itemdb_advance_drop_group_card {
+	std::vector<uint32> nameid;
+	bool align;
 };
+
+struct s_itemdb_advance_drop_group_option_entry {
+	uint32 option_id;
+	int32 value_min;
+	int32 value_max;
+	int16 param_min;
+	int16 param_max;
+};
+
+struct s_itemdb_advance_drop_group_option {
+	std::vector<s_itemdb_advance_drop_group_option_entry> option;
+	bool align;
+};
+
+struct s_itemdb_advance_drop_group {
+	uint32 id; // Group ID
+	std::unordered_map<uint8, s_itemdb_advance_drop_group_card> cards; // cards[slot] = [ info, info, ... ]
+	std::unordered_map<uint16, s_itemdb_advance_drop_group_option> random_options; // random_options[slot] = [ info, info, ... ]
+
+	s_itemdb_advance_drop_group();
+	~s_itemdb_advance_drop_group();
+};
+
+class ItemAdvanceDropGroup : public TypesafeYamlDatabase<uint32, s_itemdb_advance_drop_group> {
+public:
+	ItemAdvanceDropGroup() : TypesafeYamlDatabase("ITEM_ADVANCED_DROP_GROUP", 1) {
+	}
+
+	void clear();
+	const std::string getDefaultLocation();
+	uint64 parseBodyNode(const YAML::Node& node);
+
+	void setItem(uint32 id, struct item *item);
+	int getRandomCard(uint32 id, uint8 slot);
+	bool getRandomOption(uint32 id, uint8 slot, uint32 *option_id, int32 *option_value, int16 *option_param);
+};
+
+extern ItemAdvanceDropGroup itemdb_advance_drop_groups;
 
 struct item_data* itemdb_searchname(const char *name);
 struct item_data* itemdb_search_aegisname( const char *str );
@@ -953,7 +993,6 @@ char itemdb_pc_get_itemgroup(uint16 group_id, bool identify, struct map_session_
 bool itemdb_parse_roulette_db(void);
 
 struct s_random_opt_data *itemdb_randomopt_exists(short id);
-struct s_random_opt_group *itemdb_randomopt_group_exists(int id);
 
 void itemdb_reload(void);
 
