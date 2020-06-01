@@ -176,6 +176,24 @@
 // ================================ Licença para criar loja em prontera BrasilRO ================================ //
 40072,Buy_Market_PermitBRO,Licença de Mercado,3,20,,10,,,,,,,,,,,,,{},{},{}
 //====================================================================================================
+// ================================ Caixas de Level BrasilRO ================================ //
+40073,Caixa_level_12,Caixa do Level 12,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40074,Caixa_level_26,Caixa do Level 26,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40075,Caixa_level_40,Caixa do Level 40,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40076,Caixa_level_60,Caixa do Level 60,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40077,Caixa_level_80,Caixa do Level 80,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40078,Caixa_level_100,Caixa do Level 100,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40079,Caixa_level_120,Caixa do Level 120,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40080,Caixa_level_140,Caixa do Level 140,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40081,Caixa_level_160,Caixa do Level 160,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40082,Caixa_level_180,Caixa do Level 180,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40083,Caixa_level_200,Caixa do Level 200,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40084,Caixa_level_220,Caixa do Level 220,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40085,Caixa_level_240,Caixa do Level 240,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40086,Caixa_level_260,Caixa do Level 260,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40087,Caixa_level_280,Caixa do Level 280,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40088,Caixa_level_300,Caixa do Level 300,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//====================================================================================================
 // BrasilRO - Armas
 //====================================================================================================
 //20000,Super Espada,Super Espada,4,3450,,20000,60,,3,4,0x00004082,7,2,2,1,4,1,4,{},{},{}
