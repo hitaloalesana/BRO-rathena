@@ -72,31 +72,31 @@
 // [BRASILRO]: Custom Items
 //=============================================================
 //patentes itens status
-25751,Patente_01,Patente_01,13,100,0,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,1000; },{},{}
-25752,Patente_02,Patente_02,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,1000; bonus bMaxSP,100; },{},{}
-25753,Patente_03,Patente_03,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,2000; bonus bMaxSP,200; },{},{}
-25754,Patente_04,Patente_04,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,3000; bonus bMaxSP,300; },{},{}
-25755,Patente_05,Patente_05,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; },{},{}
-25756,Patente_06,Patente_06,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; },{},{}
-25757,Patente_07,Patente_07,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; },{},{}
-25758,Patente_08,Patente_08,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; },{},{}
-25759,Patente_09,Patente_09,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; },{},{}
-25760,Patente_10,Patente_10,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; },{},{}
-25761,Patente_11,Patente_11,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; },{},{}
-25762,Patente_12,Patente_12,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; },{},{}
-25763,Patente_13,Patente_13,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; },{},{}
-25764,Patente_14,Patente_14,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; },{},{}
-25765,Patente_15,Patente_15,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2;  },{},{}
-25766,Patente_16,Patente_16,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; },{},{}
-25767,Patente_17,Patente_17,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2;},{},{}
-25768,Patente_18,Patente_18,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; },{},{}
-25769,Patente_19,Patente_19,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; },{},{}
-25770,Patente_20,Patente_20,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,1; bonus2 bSubRace,RC_DemiHuman,1;},{},{}
-25771,Patente_21,Patente_21,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bSubRace,RC_DemiHuman,2;},{},{}
-25772,Patente_22,Patente_22,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,3; bonus2 bSubRace,RC_DemiHuman,3;},{},{}
-25773,Patente_23,Patente_23,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,4; bonus2 bSubRace,RC_DemiHuman,4;},{},{}
-25774,Patente_24,Patente_24,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
-25775,Patente_25,Patente_25,13,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,10000; bonus bMaxSP,1000; bonus bStr,5; bonus bAgi,5; bonus bVit,5; bonus bInt,5; bonus bDex,5; bonus bLuk,5; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
+25751,Patente_01,Patente_01,2,100,0,0,,,,,0xFFFFFFFF,63,2,,,,,,{ autobonus2 "{ bonus bSpeedAddRate,100; sc_start SC_ENDURE,6000,1; }",20,5000,BF_WEAPON|BF_SHORT,"{ active_transform 1063,5000; specialeffect2 EF_POTION_BERSERK; showscript \"Salve-se Quem Puder ! !\"; }"; },{},{}
+25752,Patente_02,Patente_02,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,1000; bonus bMaxSP,100; },{},{}
+25753,Patente_03,Patente_03,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,2000; bonus bMaxSP,200; },{},{}
+25754,Patente_04,Patente_04,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,3000; bonus bMaxSP,300; },{},{}
+25755,Patente_05,Patente_05,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; },{},{}
+25756,Patente_06,Patente_06,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; },{},{}
+25757,Patente_07,Patente_07,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; },{},{}
+25758,Patente_08,Patente_08,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; },{},{}
+25759,Patente_09,Patente_09,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; },{},{}
+25760,Patente_10,Patente_10,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; },{},{}
+25761,Patente_11,Patente_11,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; },{},{}
+25762,Patente_12,Patente_12,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; },{},{}
+25763,Patente_13,Patente_13,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; },{},{}
+25764,Patente_14,Patente_14,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; },{},{}
+25765,Patente_15,Patente_15,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2;  },{},{}
+25766,Patente_16,Patente_16,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; },{},{}
+25767,Patente_17,Patente_17,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2;},{},{}
+25768,Patente_18,Patente_18,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; },{},{}
+25769,Patente_19,Patente_19,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; },{},{}
+25770,Patente_20,Patente_20,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,1; bonus2 bSubRace,RC_DemiHuman,1;},{},{}
+25771,Patente_21,Patente_21,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bSubRace,RC_DemiHuman,2;},{},{}
+25772,Patente_22,Patente_22,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,3; bonus2 bSubRace,RC_DemiHuman,3;},{},{}
+25773,Patente_23,Patente_23,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,4; bonus2 bSubRace,RC_DemiHuman,4;},{},{}
+25774,Patente_24,Patente_24,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
+25775,Patente_25,Patente_25,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,10000; bonus bMaxSP,1000; bonus bStr,5; bonus bAgi,5; bonus bVit,5; bonus bInt,5; bonus bDex,5; bonus bLuk,5; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
 
 //====================================================================================================
 // BrasilRO - Cartões, Tickets, Caixas, Baús, Etc...
@@ -177,22 +177,22 @@
 40072,Buy_Market_PermitBRO,Licença de Mercado,3,20,,10,,,,,,,,,,,,,{},{},{}
 //====================================================================================================
 // ================================ Caixas de Level BrasilRO ================================ //
-40073,Caixa_level_12,Caixa do Level 12,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40074,Caixa_level_26,Caixa do Level 26,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40075,Caixa_level_40,Caixa do Level 40,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40076,Caixa_level_60,Caixa do Level 60,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40077,Caixa_level_80,Caixa do Level 80,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40078,Caixa_level_100,Caixa do Level 100,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40079,Caixa_level_120,Caixa do Level 120,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40080,Caixa_level_140,Caixa do Level 140,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40081,Caixa_level_160,Caixa do Level 160,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40082,Caixa_level_180,Caixa do Level 180,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40083,Caixa_level_200,Caixa do Level 200,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40084,Caixa_level_220,Caixa do Level 220,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40085,Caixa_level_240,Caixa do Level 240,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40086,Caixa_level_260,Caixa do Level 260,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40087,Caixa_level_280,Caixa do Level 280,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40088,Caixa_level_300,Caixa do Level 300,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40073,Caixa_level_12,Caixa do Level 12,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_12");},{},{}
+40074,Caixa_level_26,Caixa do Level 26,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_26");},{},{}
+40075,Caixa_level_40,Caixa do Level 40,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_40");},{},{}
+40076,Caixa_level_60,Caixa do Level 60,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_60");},{},{}
+40077,Caixa_level_80,Caixa do Level 80,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_80");},{},{}
+40078,Caixa_level_100,Caixa do Level 100,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_100");},{},{}
+40079,Caixa_level_120,Caixa do Level 120,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_120");},{},{}
+40080,Caixa_level_140,Caixa do Level 140,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_140");},{},{}
+40081,Caixa_level_160,Caixa do Level 160,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_160");},{},{}
+40082,Caixa_level_180,Caixa do Level 180,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_180");},{},{}
+40083,Caixa_level_200,Caixa do Level 200,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_200");},{},{}
+40084,Caixa_level_220,Caixa do Level 220,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_220");},{},{}
+40085,Caixa_level_240,Caixa do Level 240,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_240");},{},{}
+40086,Caixa_level_260,Caixa do Level 260,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_260");},{},{}
+40087,Caixa_level_280,Caixa do Level 280,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_280");},{},{}
+40088,Caixa_level_300,Caixa do Level 300,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_300");},{},{}
 //====================================================================================================
 // BrasilRO - Armas
 //====================================================================================================
@@ -1567,23 +1567,23 @@
 //							CAPA/MANTO - ASAS DA GRINGA							//
 //																				//
 // ========================================================================= //
-47493,BLADEWINGS,Asas de Lâminas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,40,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47494,BUTTERFLYWING_BLU,Asas de Borboleta Azul,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,41,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47495,CROWNWINGS,Asas do Rei,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,42,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47496,DIVINEWINGS,Asas Divinas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,43,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47497,DREADLORDWINGS,Asas do Pavor,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,44,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47498,FALLEN,Anjo Caído,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,45,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47499,FIREFLYWINGS,Asas de Fogo,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,46,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47500,GAEAWINGS,Asas do Gae,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,47,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47501,GENESISWINGS,Asas Genesis,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,48,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47502,GORGOYLEWINGS,Asas do Gargola,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,49,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47503,HOLYWINGS,Asas Sagradas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,50,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47504,IMPWINGS,Asas Imperiais,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,51,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47505,NIGHTWINGS,Asas da Noite,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,52,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47506,PHOENIXWINGS,Asas da Fênix,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,53,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47507,PROFANEWINGS,Asas Profanas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,54,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47508,RAVENWINGS,Asas de Corvo,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,55,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47509,SUCCUBUSWINGS,Asas de Succubus,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,56,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47493,ROBE_BLADEWINGS,Asas de Lâminas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,40,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47494,ROBE_BUTTERFLYWING_BLU,Asas de Borboleta Azul,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,41,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47495,ROBE_CROWNWINGS,Asas do Rei,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,42,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47496,ROBE_DIVINEWINGS,Asas Divinas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,43,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47497,ROBE_DREADLORDWINGS,Asas do Pavor,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,44,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47498,ROBE_FALLEN,Anjo Caído,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,45,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47499,ROBE_FIREFLYWINGS,Asas de Fogo,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,46,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47500,ROBE_GAEAWINGS,Asas do Gae,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,47,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47501,ROBE_GENESISWINGS,Asas Genesis,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,48,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47502,ROBE_GORGOYLEWINGS,Asas do Gargola,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,49,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47503,ROBE_HOLYWINGS,Asas Sagradas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,50,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47504,ROBE_IMPWINGS,Asas Imperiais,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,51,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47505,ROBE_NIGHTWINGS,Asas da Noite,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,52,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47506,ROBE_PHOENIXWINGS,Asas da Fênix,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,53,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47507,ROBE_PROFANEWINGS,Asas Profanas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,54,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47508,ROBE_RAVENWINGS,Asas de Corvo,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,55,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47509,ROBE_SUCCUBUSWINGS,Asas de Succubus,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,56,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ============================================================================ //
 //							FIM DOS MANTOS										//
 //																				//
