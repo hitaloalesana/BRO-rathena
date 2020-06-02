@@ -2999,6 +2999,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 					clif_mission_info(sd, temp, 0);
 				}
 				pc_setglobalreg(sd, add_str(TKMISSIONCOUNT_VAR), sd->mission_count);
+				clif_mission_info(sd, sd->mission_mobid, sd->mission_count);
 			}
 
 			if (sd->status.party_id)
