@@ -28,6 +28,8 @@ function	script	Caixa#Brasil	{
 		getitem 12206, 5;
 		getitem 12207, 5;
 		getitem 14533, 2;
+		getitem 40073, 1;
+		getitem 16420, 1;
 		message strcharinfo(0), "Ótima jornada!";
 		specialeffect2 885; specialeffect2 899;
 		end;
