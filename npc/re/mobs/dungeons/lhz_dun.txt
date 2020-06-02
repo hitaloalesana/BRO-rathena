@@ -109,20 +109,20 @@ OnMy99Dead:
 //========================================================================================
 // lhz_dun04 - Bio-life Labs 4F
 //========================================================================================
-lhz_dun04,0,0	monster	Randel	2221,42,5000
-lhz_dun04,0,0	monster	Flamel	2222,42,5000
-lhz_dun04,0,0	monster	Celia	2223,81,5000
-lhz_dun04,0,0	monster	Chen	2224,42,5000
-lhz_dun04,0,0	monster	Gertie	2225,57,5000
-lhz_dun04,0,0	monster	Alphoccio	2226,42,5000
-lhz_dun04,0,0	monster	Trentini	2227,42,5000
-lhz_dun04,0,0	monster	Paladin Randel	2228,1,3300000,3000000
-lhz_dun04,0,0	monster	Creator Flamel	2229,1,3300000,3000000
-lhz_dun04,0,0	monster	Professor Celia	2230,1,3300000,3000000
-lhz_dun04,0,0	monster	Champion Chen	2231,1,3300000,3000000
-lhz_dun04,0,0	monster	Stalker Gertie	2232,1,3300000,3000000
-lhz_dun04,0,0	monster	Clown Alphoccio	2233,1,3300000,3000000
-lhz_dun04,0,0	monster	Gypsy Trentini	2234,1,3300000,3000000
+lhz_dun04,0,0	monster	Randel	27000,42,5000
+lhz_dun04,0,0	monster	Flamel	27001,42,5000
+lhz_dun04,0,0	monster	Celia	27002,81,5000
+lhz_dun04,0,0	monster	Chen	27003,42,5000
+lhz_dun04,0,0	monster	Gertie	27004,57,5000
+lhz_dun04,0,0	monster	Alphoccio	27005,42,5000
+lhz_dun04,0,0	monster	Trentini	27006,42,5000
+lhz_dun04,0,0	monster	Paladin Randel	27007,1,3300000,3000000
+lhz_dun04,0,0	monster	Creator Flamel	27008,1,3300000,3000000
+lhz_dun04,0,0	monster	Professor Celia	27009,1,3300000,3000000
+lhz_dun04,0,0	monster	Champion Chen	27010,1,3300000,3000000
+lhz_dun04,0,0	monster	Stalker Gertie	27011,1,3300000,3000000
+lhz_dun04,0,0	monster	Clown Alphoccio	27012,1,3300000,3000000
+lhz_dun04,0,0	monster	Gypsy Trentini	27013,1,3300000,3000000
 
 lhz_dun04,0,0,0	script	mvp_lhz_dun04	-1,{
 OnTimer6000000: // delay1 = 6000000 ms (100 min)
@@ -139,7 +139,7 @@ OnInit:
 		case 6:  set .@x,53;   set .@y,109;  break;
 		case 7:  set .@x,149;  set .@y,151;  break;
 	}
-	set .@mob,rand(2235,2241);
+	set .@mob,rand(27014,27020);
 	monster "lhz_dun04",.@x,.@y,strmobinfo(1,.@mob),.@mob,1,strnpcinfo(3)+"::OnLhzMvPDead";
 
 	// Select Coordinates to summon a random 99 on
@@ -152,7 +152,7 @@ OnInit:
 		case 6:  set .@x2,53;   set .@y2,109;  break;
 		case 7:  set .@x2,149;  set .@y2,151;  break;
 	}
-	set .@mob2,rand(2228,2234);
+	set .@mob2,rand(27007,27013);
 	monster "lhz_dun04",.@x2,.@y2,strmobinfo(1,.@mob2),.@mob2,1,strnpcinfo(3)+"::OnMy99Dead";
 	end;
 
