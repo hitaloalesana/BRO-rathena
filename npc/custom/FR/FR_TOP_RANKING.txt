@@ -35,7 +35,7 @@ OnMinute00:
 	{
 		query_sql "SELECT `class`,`sex`,`hair`,`hair_color`,`clothes_color`,`head_top`,`head_mid`,`head_bottom` FROM `char` WHERE `char_id`="+.@cID+"",.@jid,.@sex$,.@hair,.@hcolor,.@cColor,.@hTop,.@hMid,.@hBottom;
 		announce "O jogador "+.@cName$+" conquistou o top 1 mais rico.",bc_all;
-		query_sql "UPDATE `rank_expo` SET `name`='[ 1º lugar ] "+.@cName$+"', `char_id`="+.@cID+", `job_id`="+.@jid+",`sex`="+(.@sex$ == "M" ? 1:0)+", `hair_style`="+.@hair+", `hair_color`="+.@hcolor+", `cloth_color`="+.@cColor+", `head_top`="+.@hTop+", `head_mid`="+.@hMid+", `head_bottom`="+.@hBottom+"  WHERE `mob_id`="+$fakeid[2]+"";
+		query_sql "UPDATE `rank_expo` SET `name`='[ 1º Zeny ] "+.@cName$+"', `char_id`="+.@cID+", `job_id`="+.@jid+",`sex`="+(.@sex$ == "M" ? 1:0)+", `hair_style`="+.@hair+", `hair_color`="+.@hcolor+", `cloth_color`="+.@cColor+", `head_top`="+.@hTop+", `head_mid`="+.@hMid+", `head_bottom`="+.@hBottom+"  WHERE `mob_id`="+$fakeid[2]+"";
 		callfunc "rank_expo",1,3;
 	}
 	
@@ -115,7 +115,7 @@ function	script	rank_expo	{
 					{
 						announce "O jogador "+getarg(3)+" conquistou o top 1 PvP Patente!",bc_all;
 						query_sql "SELECT `class`,`sex`,`hair`,`hair_color`,`clothes_color`,`head_top`,`head_mid`,`head_bottom` FROM `char` WHERE `char_id`="+getarg(2)+"",.@jid,.@sex$,.@hair,.@hcolor,.@cColor,.@hTop,.@hMid,.@hBottom;
-						query_sql "UPDATE `rank_expo` SET `name`='[ 1º lugar ] "+getarg(3)+"', `char_id`="+getarg(2)+", `job_id`="+.@jid+",`sex`="+(.@sex$ == "M" ? 1:0)+", `hair_style`="+.@hair+", `hair_color`="+.@hcolor+", `cloth_color`="+.@cColor+", `head_top`="+.@hTop+", `head_mid`="+.@hMid+", `head_bottom`="+.@hBottom+" WHERE `mob_id`="+$fakeid[1]+"";
+						query_sql "UPDATE `rank_expo` SET `name`='[ 1º Patente ] "+getarg(3)+"', `char_id`="+getarg(2)+", `job_id`="+.@jid+",`sex`="+(.@sex$ == "M" ? 1:0)+", `hair_style`="+.@hair+", `hair_color`="+.@hcolor+", `cloth_color`="+.@cColor+", `head_top`="+.@hTop+", `head_mid`="+.@hMid+", `head_bottom`="+.@hBottom+" WHERE `mob_id`="+$fakeid[1]+"";
 						callfunc "rank_expo",1,2;
 					}
 				}
@@ -127,7 +127,7 @@ function	script	rank_expo	{
 					{
 						announce "O jogador "+getarg(3)+" conquistou o top 1 PvP!",bc_all;
 						query_sql "SELECT `class`,`sex`,`hair`,`hair_color`,`clothes_color`,`head_top`,`head_mid`,`head_bottom` FROM `char` WHERE `char_id`="+getarg(2)+"",.@jid,.@sex$,.@hair,.@hcolor,.@cColor,.@hTop,.@hMid,.@hBottom;
-						query_sql "UPDATE `rank_expo` SET `name`='[ 1º lugar ] "+getarg(3)+"', `char_id`="+getarg(2)+", `job_id`="+.@jid+",`sex`="+(.@sex$ == "M" ? 1:0)+", `hair_style`="+.@hair+", `hair_color`="+.@hcolor+", `cloth_color`="+.@cColor+", `head_top`="+.@hTop+", `head_mid`="+.@hMid+", `head_bottom`="+.@hBottom+" WHERE `mob_id`="+$fakeid[0]+"";
+						query_sql "UPDATE `rank_expo` SET `name`='[ 1º PvP ] "+getarg(3)+"', `char_id`="+getarg(2)+", `job_id`="+.@jid+",`sex`="+(.@sex$ == "M" ? 1:0)+", `hair_style`="+.@hair+", `hair_color`="+.@hcolor+", `cloth_color`="+.@cColor+", `head_top`="+.@hTop+", `head_mid`="+.@hMid+", `head_bottom`="+.@hBottom+" WHERE `mob_id`="+$fakeid[0]+"";
 						callfunc "rank_expo",1,1;
 					}
 				}
