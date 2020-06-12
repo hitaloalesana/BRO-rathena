@@ -36,9 +36,9 @@
 1184,499,100	// BF_Two_Handed_Sword2
 1187,499,100	// Krieger_Twohand_Sword1
 1190,507,100	// Claymore_C
-1192,499,100	// P_Slayer1
-1193,499,100	// P_Slayer2
-1197,499,100	// P_Slayer3
+1192,467,100	// P_Slayer1
+1193,467,100	// P_Slayer2
+1197,467,100	// P_Slayer3
 1198,507,100	// Hairtail
 1243,499,100	// Novice_Knife
 1267,507,100	// Infiltrator_C
@@ -52,7 +52,7 @@
 1283,507,100	// Katar_Of_Speed
 1286,507,100	// Jamadhar_C
 1288,507,100	// Bloody_Fear_C
-1289,499,100	// P_Katar1
+1289,467,100	// P_Katar1
 1292,1,100	// Upg_Katar
 1296,499,100	// Metal_Katar
 1299,499,100	// TE_Woe_Katar
@@ -69,7 +69,7 @@
 1382,499,100	// Krieger_Twohand_Axe1
 1386,507,100	// Doom_Slayer_I
 1388,507,100	// Two_Handed_Axe_C
-1391,499,100	// P_Two_Handed_Axe1
+1391,467,100	// P_Two_Handed_Axe1
 1394,1,100	// Upg_Two_Handed_Axe
 1398,499,100	// Metal_Two_Handed_Axe
 1399,499,100	// TE_Woe_Two_Handed_Axe
@@ -82,7 +82,7 @@
 1428,475,100	// Long_Horn_M
 1429,475,100	// Hunting_Spear_M
 1430,507,100	// Pike_C
-1434,499,100	// P_Sphere1
+1434,467,100	// P_Sphere1
 1437,499,100	// TE_Woe_Pike
 1482,499,100	// BF_Lance1
 1486,499,100	// Krieger_Twohand_Spear1
@@ -128,11 +128,11 @@
 1642,507,100	// Staff_Of_Darkness
 1644,475,100	// Piercing_Staff_M
 1645,475,100	// Lich_Bone_Wand_M
-1650,499,100	// P_Staff1
-1651,499,100	// P_Staff2
+1650,467,100	// P_Staff1
+1651,467,100	// P_Staff2
 1652,499,100	// Tourist_Staff
 1653,507,100	// Staff_Of_Healing_C
-1658,499,100	// P_Staff3
+1658,467,100	// P_Staff3
 1667,499,100	// TE_Woe_Staff
 1670,1,100	// RWC_Memory_Staff
 1681,467,100	// Short_Foxtail_Staff
@@ -146,8 +146,8 @@
 1739,499,100	// BF_Bow2
 1743,499,100	// Krieger_Bow1
 1744,507,100	// Bow_Of_Evil
-1747,499,100	// P_Bow1
-1748,499,100	// P_Bow2
+1747,467,100	// P_Bow1
+1748,467,100	// P_Bow2
 1749,499,100	// Tourist_Bow
 1817,507,100	// Kaiser_Knuckle_C
 1823,499,100	// BF_Knuckle1
@@ -156,7 +156,7 @@
 1827,499,100	// Krieger_Knuckle2
 1828,507,100	// Monk_Knuckle
 1829,507,100	// Fist_C
-1831,499,100	// P_Knuckle1
+1831,467,100	// P_Knuckle1
 1834,499,100	// TE_Woe_Fist
 //1845,499,100	//
 //1848,499,100	//
@@ -167,7 +167,7 @@
 1927,499,100	// Krieger_Instrument1
 1928,507,100	// Berserk_Guitar_I
 1929,507,100	// Guitar_C
-1931,499,100	// P_String_Inst1
+1931,467,100	// P_String_Inst1
 1932,499,100	// TE_Woe_Guitar
 1938,467,100	// Infinity_Violin
 1941,467,100	// Unity_Violin
@@ -177,7 +177,7 @@
 1981,499,100	// Krieger_Whip1
 1982,507,100	// Phenomena_Whip
 1983,507,100	// Rante_C
-1986,499,100	// P_Tail1
+1986,467,100	// P_Tail1
 1987,499,100	// TE_Woe_Rope
 1994,467,100	// Infinity_Whip
 1997,467,100	// Unity_Whip
@@ -245,14 +245,14 @@
 2446,499,100	// Krieger_Shoes3
 2449,475,100	// Variant_Shoes_M
 2455,467,100	// Time_Keepr_Boots
-2456,499,100	// Para_Team_Boots1
-2457,499,100	// Para_Team_Boots2
-2458,499,100	// Para_Team_Boots3
+2456,467,100	// Para_Team_Boots1
+2457,467,100	// Para_Team_Boots2
+2458,467,100	// Para_Team_Boots3
 2459,1,100	// Upg_Shoes
 2460,1,100	// Upg_Boots
 2461,1,100	// Upg_Greave
 2463,499,100	// Feral_Boots
-2473,499,100	// Para_Team_Boots4
+2473,467,100	// Para_Team_Boots4
 2496,499,100	// TE_Woe_Shoes
 2497,499,100	// TE_Woe_Boots
 2498,499,100	// TE_Woe_Magic_Sandal
@@ -270,14 +270,14 @@
 2551,475,100	// Rider_Insignia_M
 2552,475,100	// Mithril_Magic_Cape_M
 2559,467,100	// Time_Keepr_Manteau
-2560,499,100	// Para_Team_Manteau
+2560,467,100	// Para_Team_Manteau
 2561,1,100	// Upg_Hood
 2562,1,100	// Upg_Muffler
 2563,1,100	// Upg_Manteau
 2564,499,100	// Feral_Tail
 2566,499,100	// Half_Asprika
 2568,467,100	// Muffler_Of_Roki
-2571,499,100	// Para_Team_Manteau2
+2571,467,100	// Para_Team_Manteau2
 2573,1,100	// Archangel_Wing
 2576,1,100	// Bravery_Bag
 2589,1,100	// Fallen_Angel_Wing
@@ -315,6 +315,7 @@
 2710,507,100	// Bloody_Iron_Ball_C
 2711,507,100	// Spiritual_Ring_C
 2713,507,100	// Certificate_TW
+2715,471,100	// Skul_Ring_
 2720,499,100	// Medal_Swordman
 2721,499,100	// Medal_Thief
 2722,499,100	// Medal_Acolyte
@@ -569,7 +570,7 @@
 5572,1,100	// Savage_Baby_Hat
 5573,1,100	// Bogy_Horn
 5577,1,100	// Dark_Knight_MaskB
-5583,499,100	// Para_Team_Hat
+5583,467,100	// Para_Team_Hat
 5584,1,100	// Majestic_Evil_Horn
 5585,1,100	// Rune_Hairband
 5587,499,100	// Mosquito_Coil_1Use
@@ -1771,10 +1772,10 @@
 13045,507,100	// Kamaitachi_I
 13048,507,100	// Damascus_C
 13049,1,100	// Lacma
-13050,499,100	// P_Dagger1
-13051,499,100	// P_Dagger2
+13050,467,100	// P_Dagger1
+13051,467,100	// P_Dagger2
 13052,499,100	// Tourist_Dagger
-13066,499,100	// P_Dagger3
+13066,467,100	// P_Dagger3
 13068,507,100	// Saurel
 13071,1,100	// Upg_Dagger
 13074,507,100	// Ninja_Cutter
@@ -2981,9 +2982,9 @@
 15002,507,100	// Rune_Plate
 15007,467,100	// Time_Keepr_Robe
 15008,1,100	// Flame_Sprits_Armor__
-15009,499,100	// Para_Team_Uniform1
-15010,499,100	// Para_Team_Uniform2
-15011,499,100	// Para_Team_Uniform3
+15009,467,100	// Para_Team_Uniform1
+15010,467,100	// Para_Team_Uniform2
+15011,467,100	// Para_Team_Uniform3
 15015,1,100	// Upg_Adv_Suit
 15016,1,100	// Upg_Coat
 15017,1,100	// Upg_Saint_Robe
@@ -2992,7 +2993,7 @@
 15020,1,100	// Upg_Mail
 15021,1,100	// Upg_Formal_Dress
 15023,499,100	// Half_Brynhild
-15031,499,100	// Para_Team_Armor
+15031,467,100	// Para_Team_Armor
 15033,507,100	// Tutorial_Mattle
 15034,507,100	// Tutorial_Mattle_
 15062,499,100	// TE_Woe_Coat
@@ -3006,7 +3007,7 @@
 15154,467,100	// Unity_Suit
 15155,467,100	// Unity_Robe
 //15167,467,100	//
-15181,467,100	// Para_Team_Uniform100
+15181,471,100	// Para_Team_Uniform100
 15182,467,100	// Para_Team_Uniform115
 15183,467,100	// Para_Team_Uniform130
 15184,467,100	// Para_Team_Uniform145
@@ -3016,10 +3017,10 @@
 //15250,499,100	//
 //15383,499,100	//
 16002,507,100	// Stunner_C
-16004,499,100	// P_Mace1
-16005,499,100	// P_Mace2
+16004,467,100	// P_Mace1
+16005,467,100	// P_Mace2
 16006,499,100	// Tourist_Mace
-16014,499,100	// P_Mace3
+16014,467,100	// P_Mace3
 16016,507,100	// Tuna
 16019,1,100	// Upg_Mace
 16023,499,100	// Metal_Mace
@@ -3934,7 +3935,7 @@
 //17985,475,100	//
 //17986,475,100	//
 18100,507,100	// Shooting_Star_C
-18106,499,100	// P_Bow3
+18106,467,100	// P_Bow3
 18107,507,100	// Malang_Snow_Crab
 18108,507,100	// Brindle_Eel
 18112,1,100	// Upg_Bow
@@ -3955,7 +3956,7 @@
 18505,507,100	// Umbala_Spirit
 18506,1,100	// Hattah_Black
 18508,1,100	// Garuda_Hat
-18514,499,100	// Para_Team_Hat2
+18514,467,100	// Para_Team_Hat2
 18520,475,100	// Jaty_C
 18526,507,100	// Yummy_Lollipop
 18528,1,100	// Tare_Neko_Cru
@@ -4013,7 +4014,7 @@
 19053,475,100	// Fighter_Moon_Cat
 19084,467,100	// Parfaille_Vigilante_Hat
 //19119,467,100	//
-19164,467,100	// Para_Team_Hat100
+19164,471,100	// Para_Team_Hat100
 19165,467,100	// Para_Team_Hat160
 //19169,1,100	//
 19189,475,100	// Racing_Cap_MC
@@ -4040,6 +4041,7 @@
 //19284,1,100	//
 //19310,499,100	//
 //19389,507,100	//
+19272,471,100	// Garden_of_Eden
 19396,475,100	// Racing_Cap_SG
 19397,475,100	// Racing_Cap_SL
 //19404,499,100	//
@@ -4092,7 +4094,7 @@
 19598,1,100	// C_Wondering_Wolf_Helm
 19599,1,100	// C_Imp_Hat
 19650,1,100	// C_Rainbow_Feather_Deco
-19710,1,100	// C_Wings_Of_Victory
+19710,471,100	// C_Wings_Of_Victory
 19764,475,100	// C_Monster_Card
 19765,475,100	// C_Wing_Angels_Ears
 19853,507,100	// C_Filir_Wing_Ears
