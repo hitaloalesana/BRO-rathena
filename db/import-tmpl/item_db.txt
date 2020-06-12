@@ -70,40 +70,40 @@
 
 
 // [BRASILRO]: Custom Items
-//=============================================================
-//patentes itens status
-25751,Patente_01,Patente_01,2,100,0,0,,,,,0xFFFFFFFF,63,2,,,,,,{ autobonus2 "{ bonus bSpeedAddRate,100; sc_start SC_ENDURE,6000,1; }",20,5000,BF_WEAPON|BF_SHORT,"{ active_transform 1063,5000; specialeffect2 EF_POTION_BERSERK; showscript \"Salve-se Quem Puder ! !\"; }"; },{},{}
-25752,Patente_02,Patente_02,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,1000; bonus bMaxSP,100; },{},{}
-25753,Patente_03,Patente_03,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,2000; bonus bMaxSP,200; },{},{}
-25754,Patente_04,Patente_04,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,3000; bonus bMaxSP,300; },{},{}
-25755,Patente_05,Patente_05,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; },{},{}
-25756,Patente_06,Patente_06,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; },{},{}
-25757,Patente_07,Patente_07,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; },{},{}
-25758,Patente_08,Patente_08,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; },{},{}
-25759,Patente_09,Patente_09,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; },{},{}
-25760,Patente_10,Patente_10,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; },{},{}
-25761,Patente_11,Patente_11,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; },{},{}
-25762,Patente_12,Patente_12,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; },{},{}
-25763,Patente_13,Patente_13,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; },{},{}
-25764,Patente_14,Patente_14,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; },{},{}
-25765,Patente_15,Patente_15,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2;  },{},{}
-25766,Patente_16,Patente_16,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; },{},{}
-25767,Patente_17,Patente_17,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2;},{},{}
-25768,Patente_18,Patente_18,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; },{},{}
-25769,Patente_19,Patente_19,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; },{},{}
-25770,Patente_20,Patente_20,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,1; bonus2 bSubRace,RC_DemiHuman,1;},{},{}
-25771,Patente_21,Patente_21,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bSubRace,RC_DemiHuman,2;},{},{}
-25772,Patente_22,Patente_22,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,3; bonus2 bSubRace,RC_DemiHuman,3;},{},{}
-25773,Patente_23,Patente_23,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,4; bonus2 bSubRace,RC_DemiHuman,4;},{},{}
-25774,Patente_24,Patente_24,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
-25775,Patente_25,Patente_25,2,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,10000; bonus bMaxSP,1000; bonus bStr,5; bonus bAgi,5; bonus bVit,5; bonus bInt,5; bonus bDex,5; bonus bLuk,5; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
 
+// ======================  PATENTES - BRASILRO ====================== //
+25751,Patente_01,Bronze V,3,100,0,0,,,,,0xFFFFFFFF,63,2,,,,,,{ autobonus "{ bonus bSpeedAddRate,100; sc_start SC_ENDURE,6000,1; }",20,5000,BF_WEAPON|BF_SHORT,"{ active_transform 1063,5000; specialeffect2 EF_POTION_BERSERK; showscript \"Salve-se Quem Puder ! !\"; }"; },{},{}
+25752,Patente_02,Bronze IV,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,1000; bonus bMaxSP,100; },{},{}
+25753,Patente_03,Bronze III,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,2000; bonus bMaxSP,200; },{},{}
+25754,Patente_04,Bronze II,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,3000; bonus bMaxSP,300; },{},{}
+25755,Patente_05,Bronze I,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; },{},{}
+25756,Patente_06,Prata V,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; },{},{}
+25757,Patente_07,Prata IV,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; },{},{}
+25758,Patente_08,Prata III,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; },{},{}
+25759,Patente_09,Prata II,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; },{},{}
+25760,Patente_10,Prata I,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; },{},{}
+25761,Patente_11,Ouro V,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; },{},{}
+25762,Patente_12,Ouro IV,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; },{},{}
+25763,Patente_13,Ouro III,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; },{},{}
+25764,Patente_14,Ouro II,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; },{},{}
+25765,Patente_15,Ouro I,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2;  },{},{}
+25766,Patente_16,Platina V,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; },{},{}
+25767,Patente_17,Platina IV,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2;},{},{}
+25768,Patente_18,Platina III,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; },{},{}
+25769,Patente_19,Platina II,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; },{},{}
+25770,Patente_20,Platina I,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,1; bonus2 bSubRace,RC_DemiHuman,1;},{},{}
+25771,Patente_21,Diamante IV,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,2; bonus2 bSubRace,RC_DemiHuman,2;},{},{}
+25772,Patente_22,Diamante III,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,3; bonus2 bSubRace,RC_DemiHuman,3;},{},{}
+25773,Patente_23,Diamante II,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,4; bonus2 bSubRace,RC_DemiHuman,4;},{},{}
+25774,Patente_24,Diamante I,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,5000; bonus bMaxSP,500; bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
+25775,Patente_25,Mestre,3,100,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ bonus bMaxHP,10000; bonus bMaxSP,1000; bonus bStr,5; bonus bAgi,5; bonus bVit,5; bonus bInt,5; bonus bDex,5; bonus bLuk,5; bonus bHit,25; bonus bAspd,2; bonus bFlee,10; bonus bFlee2,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Neutral,2; bonus2 bAddRace,RC_DemiHuman,5; bonus2 bSubRace,RC_DemiHuman,5;},{},{}
+// ==================================================================== //
 //====================================================================================================
-// BrasilRO - Cartões, Tickets, Caixas, Baús, Etc...
+// BrasilRO - Cartï¿½es, Tickets, Caixas, Baï¿½s, Etc...
 //====================================================================================================
-40000,Cartão_VIP_1_Dia,Cartão VIP 1 Dia,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{ vip_time(60*24*1); dispbottom "1 Dia de VIP foi ativado em sua conta.",0x00FF00; },{},{}
-40001,Cartão_VIP_15_Dias,Cartão VIP 15 Dias,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{ vip_time(60*24*15); dispbottom "15 Dia de VIP foi ativado em sua conta.",0x00FF00; },{},{}
-40002,Cartão_VIP_30_Dias,Cartão VIP 30 Dias,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{ vip_time(60*24*30); dispbottom "30 Dia de VIP foi ativado em sua conta.",0x00FF00; },{},{}
+40000,Cartï¿½o_VIP_1_Dia,Cartï¿½o VIP 1 Dia,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{ vip_time(60*24*1); dispbottom "1 Dia de VIP foi ativado em sua conta.",0x00FF00; },{},{}
+40001,Cartï¿½o_VIP_15_Dias,Cartï¿½o VIP 15 Dias,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{ vip_time(60*24*15); dispbottom "15 Dia de VIP foi ativado em sua conta.",0x00FF00; },{},{}
+40002,Cartï¿½o_VIP_30_Dias,Cartï¿½o VIP 30 Dias,0,0,0,1,,,,,0x03EFDFFF,63,,,,,,,{ vip_time(60*24*30); dispbottom "30 Dia de VIP foi ativado em sua conta.",0x00FF00; },{},{}
 40003,Caixa_de_Frutos_de_Yggdrasil_100un.,Caixa de Frutos de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_1"; },{},{}
 40004,Caixa_de_Garrafa_de_Veneno_100un.,Caixa de Garrafa de Veneno 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_2"; },{},{}
 40005,Caixa_de_Bombas_e_Revestimentos_100un.,Caixa de Bombas e Revestimentos 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_3"; },{},{}
@@ -111,10 +111,10 @@
 40007,Caixa_de_Aloe_Vera_100un.,Caixa de Aloe Vera 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("caixa_bro_5"); },{},{}
 40008,Caixa_de_Conversor_Elemental_Terra_100un.,Caixa de Conversor Elemental Terra 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_6"; },{},{}
 40009,Caixa_de_Conversor_Elemental_Vento_100un.,Caixa de Conversor Elemental Vento 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_7"; },{},{}
-40010,Caixa_de_Conversor_Elemental_Água_100un.,Caixa de Conversor Elemental Água 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_8"; },{},{}
+40010,Caixa_de_Conversor_Elemental_ï¿½gua_100un.,Caixa de Conversor Elemental ï¿½gua 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_8"; },{},{}
 40011,Caixa_de_Conversor_Elemental_Fogo_100un.,Caixa de Conversor Elemental Fogo 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_9"; },{},{}
-40012,Caixa_de_Água_Amaldiçoada_100un.,Caixa de Água Amaldiçoada 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_10"); },{},{}
-40013,Caixa_de_Caixa_do_Trovão_100un.,Caixa de Caixa do Trovão 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_11"); },{},{}
+40012,Caixa_de_ï¿½gua_Amaldiï¿½oada_100un.,Caixa de ï¿½gua Amaldiï¿½oada 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_10"); },{},{}
+40013,Caixa_de_Caixa_do_Trovï¿½o_100un.,Caixa de Caixa do Trovï¿½o 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_11"); },{},{}
 40014,Caixa_de_Caixa_do_Ressentimento_100un.,Caixa de Caixa do Ressentimento 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_12"; },{},{}
 40015,Caixa_de_Comida_+10_100un.,Caixa de Comida +10 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_13" ; },{},{}
 40016,Ticket_300_150,Ticket 300/150,0,5000,,300,,,,,0xFFFFFFFF,7,2,,,,,,{ warp "sro_job",264,257; },{},{}
@@ -122,11 +122,11 @@
 40018,Moeda_de_Prata_BrasilRO,Moeda de Prata BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40019,Moeda_de_Bronze_BrasilRO,Moeda de Bronze BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40020,Ticket_Quest,Ticket Quest,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40021,Pack_Guild_Líder_BrasilRO,Pack Guild Líder BrasilRO,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40021,Pack_Guild_Lï¿½der_BrasilRO,Pack Guild Lï¿½der BrasilRO,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40022,Pack_Guild_Membro_BrasilRO,Pack Guild Membro BrasilRO,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40023,Caixa_BrasilRO,Caixa BrasilRO,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40024,Cupom_Evento_BrasilRO2,Cupom Evento BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40025,Rops_BrasilRO,Rops BrasilRO,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set #CASHPOINTS,#CASHPOINTS+1000; dispbottom "Você acaba de receber 1.000 ROPs.",0x00FF00; dispbottom "Agora você possui "+#CASHPOINTS+" ROPs.",0x00FF00; },{},{}
+40025,Rops_BrasilRO,Rops BrasilRO,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set #CASHPOINTS,#CASHPOINTS+1000; dispbottom "Vocï¿½ acaba de receber 1.000 ROPs.",0x00FF00; dispbottom "Agora vocï¿½ possui "+#CASHPOINTS+" ROPs.",0x00FF00; },{},{}
 //40026,Stat_Boost1,Stat Boost 1,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //40027,Stat_Boost2,Stat Boost 2,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //40028,Stat_Boost3,Stat Boost 3,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -136,73 +136,73 @@
 //40032,Stat_Boost7,Stat Boost 7,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40033,Caixa_de_Enriquecidos,Caixa de Enriquecidos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_14"; },{},{}
 40034,ticket_disguise,Ticket Disguise,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40035,baú_dos_deuses_1,Baú dos Deuses 1,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias1"; },{},{}
-40036,baú_dos_deuses_2,Baú dos Deuses 2,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias2"; },{},{}
-40037,baú_dos_deuses_3,Baú dos Deuses 3,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias3"; },{},{}
-40038,baú_dos_deuses_4,Baú dos Deuses 4,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias4"; },{},{}
+40035,baï¿½_dos_deuses_1,Baï¿½ dos Deuses 1,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias1"; },{},{}
+40036,baï¿½_dos_deuses_2,Baï¿½ dos Deuses 2,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias2"; },{},{}
+40037,baï¿½_dos_deuses_3,Baï¿½ dos Deuses 3,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias3"; },{},{}
+40038,baï¿½_dos_deuses_4,Baï¿½ dos Deuses 4,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "essencias4"; },{},{}
 //40039,Caixa_de_Galhos_Sangrentos,Caixa de Galhos Sangrentos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 12103,5; },{},{}
-40040,Cartão_de_Aluguel_de_Itens,Cartão de Aluguel de Itens,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40041,Cartão_de_Troca_de_Nome,Cartão de Troca de Nome,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40042,Cartão_Eletrônico,Cartão Eletrônico,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set @cash,rand(1,10); set #CASHPOINTS,#CASHPOINTS + @cash; dispbottom "Você acaba de receber "+@cash+" ROPs.",0x00FF00; dispbottom "Agora você tem "+#CASHPOINTS+" ROPs.",0x00FF00; },{},{}
-40043,Pergaminho_de_Espíritos,Pergaminho de Espíritos,2,2,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "PergaminhoDeEspiritos"; },{},{}
+40040,Cartï¿½o_de_Aluguel_de_Itens,Cartï¿½o de Aluguel de Itens,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40041,Cartï¿½o_de_Troca_de_Nome,Cartï¿½o de Troca de Nome,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40042,Cartï¿½o_Eletrï¿½nico,Cartï¿½o Eletrï¿½nico,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set @cash,rand(1,10); set #CASHPOINTS,#CASHPOINTS + @cash; dispbottom "Vocï¿½ acaba de receber "+@cash+" ROPs.",0x00FF00; dispbottom "Agora vocï¿½ tem "+#CASHPOINTS+" ROPs.",0x00FF00; },{},{}
+40043,Pergaminho_de_Espï¿½ritos,Pergaminho de Espï¿½ritos,2,2,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "PergaminhoDeEspiritos"; },{},{}
 40044,Caixa_de_SFrutos_de_Yggdrasil_100un.,Caixa de Sementes de Yggdrasil 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_16"; },{},{}
-40045,Poção_Mágica,Poção Mágica,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ setlook 3,0; setlook 4,0; setlook 5,0; },{},{}
-40046,Emblema_da_Vitória,Emblema da Vitória,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40045,Poï¿½ï¿½o_Mï¿½gica,Poï¿½ï¿½o Mï¿½gica,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ setlook 3,0; setlook 4,0; setlook 5,0; },{},{}
+40046,Emblema_da_Vitï¿½ria,Emblema da Vitï¿½ria,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40047,Album_de_Cartas,Album de Cartas,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40048,caixa_do_pesadelo,Caixa do Pesadelo,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixadopesadelo"; },{},{}
-40049,maçãencantanda,Maçã Encantada,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_BLESSING,360000,10; sc_start SC_INCREASEAGI,360000,10; sc_start SC_ANGELUS,360000,10; percentheal 100,100; sc_start SC_ASSUMPTIO,760000,5; sc_start SC_ENDURE,760000,10; sc_start SC_GLORIA,360000,5; callfunc "GroupBuffs",getcharid(1),strcharinfo(3),strcharinfo(0); },{},{}
+40049,maï¿½ï¿½encantanda,Maï¿½ï¿½ Encantada,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ sc_start SC_BLESSING,360000,10; sc_start SC_INCREASEAGI,360000,10; sc_start SC_ANGELUS,360000,10; percentheal 100,100; sc_start SC_ASSUMPTIO,760000,5; sc_start SC_ENDURE,760000,10; sc_start SC_GLORIA,360000,5; callfunc "GroupBuffs",getcharid(1),strcharinfo(3),strcharinfo(0); },{},{}
 40050,Yggdrasilberry2,Fruto de Yggdrasil Iniciante,0,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 100,100; },{},{}
 40051,Ticket_Rops,Ticket Rops,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40052,Caixa_de_Poções_Compacta_200un.,Caixa de Poções Compacta 200un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40053,Caixa_de_Premiação_WoE,Caixa de Frutos de Premiação WoE,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40052,Caixa_de_Poï¿½ï¿½es_Compacta_200un.,Caixa de Poï¿½ï¿½es Compacta 200un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40053,Caixa_de_Premiaï¿½ï¿½o_WoE,Caixa de Frutos de Premiaï¿½ï¿½o WoE,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40054,PvP_Frutos_de_Yggdrasil,[PvP] Frutos de Yggdrasil,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40055,PvP_Caixa_de_Fruto_de_Yggdrasil,[PvP] Caixa de Fruto de Yggdrasil,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40056,PvP_Caiveira,[PVP] Caveira,3,0,,0,,,,,,,,,,,,,{},{},{}
 40057,Central_Smart_VIP,Central Brasil VIP,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40058,Bloody_Dead_Branch_supreme,Galho Sangrento Supremo,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40059,Caixa_de_Galhos_Sangrentos2,Caixa de Galhos Sangrentos Supremos,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40060,Caixa_de_Premiação_PvP,Caixa de Premiação PvP,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+40060,Caixa_de_Premiaï¿½ï¿½o_PvP,Caixa de Premiaï¿½ï¿½o PvP,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40061,Cupom_Evento_BrasilRO,Ticket de Acesso BrasilRO,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40062,Martelo_de_Conserto,Martelo de Conserto,0,5,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ specialeffect2 101; atcommand "@repairall"; message strcharinfo(0),"Itens consertados com sucesso."; },{},{}
 40063,caixa_de_encantamentos,Caixa de Encantamentos,2,10000,,1,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40064,Pack_Iniciante,Pack Iniciante,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Caixa#Brasil"; },{},{}
-40065,Caixa_de_Enriquecidos_Avancados,Caixa de Enriquecidos Avaçados,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_15"; },{},{}
+40065,Caixa_de_Enriquecidos_Avancados,Caixa de Enriquecidos Avaï¿½ados,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "caixa_bro_15"; },{},{}
 40066,Moeda_dos_desejos_BrasilRO,Moeda dos desejos,3,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40067,Poringdrasil_Berry,Poringdrasil Berry,0,5000,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 40068,Caixa_de_Poringdrasil_berry_100un.,Caixa de Poringdrasil berry 100un.,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-40069,sacola_de_cash,Sacola de Cash,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set @cash,rand(1,2); set #CASHPOINTS,#CASHPOINTS + @cash; dispbottom "Você acaba de receber "+@cash+" ROPs.",0x00FF00; dispbottom "Agora você possui "+#CASHPOINTS+" ROPs.",0x00FF00; },{},{}
+40069,sacola_de_cash,Sacola de Cash,0,10000,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ set @cash,rand(1,2); set #CASHPOINTS,#CASHPOINTS + @cash; dispbottom "Vocï¿½ acaba de receber "+@cash+" ROPs.",0x00FF00; dispbottom "Agora vocï¿½ possui "+#CASHPOINTS+" ROPs.",0x00FF00; },{},{}
 40070,Martelo_de_Conserto2,Caixa_de_Martelo_de_Conserto,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ getitem 21062,100; },{},{}
 40071,Ovos_Especiais,Ovos Especiais,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-// ================================ Licença para criar loja em prontera BrasilRO ================================ //
-40072,Buy_Market_PermitBRO,Licença de Mercado,3,20,,10,,,,,,,,,,,,,{},{},{}
+// ================================ Licenï¿½a para criar loja em prontera BrasilRO ================================ //
+40072,Buy_Market_PermitBRO,Licenï¿½a de Mercado,3,20,,10,,,,,,,,,,,,,{},{},{}
 //====================================================================================================
 // ================================ Caixas de Level BrasilRO ================================ //
-40073,Caixa_level_12,Caixa do Level 12,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_12");},{},{}
-40074,Caixa_level_26,Caixa do Level 26,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_26");},{},{}
-40075,Caixa_level_40,Caixa do Level 40,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_40");},{},{}
-40076,Caixa_level_60,Caixa do Level 60,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_60");},{},{}
-40077,Caixa_level_80,Caixa do Level 80,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_80");},{},{}
-40078,Caixa_level_100,Caixa do Level 100,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_100");},{},{}
-40079,Caixa_level_120,Caixa do Level 120,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_120");},{},{}
-40080,Caixa_level_140,Caixa do Level 140,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_140");},{},{}
-40081,Caixa_level_160,Caixa do Level 160,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_160");},{},{}
-40082,Caixa_level_180,Caixa do Level 180,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_180");},{},{}
-40083,Caixa_level_200,Caixa do Level 200,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_200");},{},{}
-40084,Caixa_level_220,Caixa do Level 220,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_220");},{},{}
-40085,Caixa_level_240,Caixa do Level 240,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_240");},{},{}
-40086,Caixa_level_260,Caixa do Level 260,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_260");},{},{}
-40087,Caixa_level_280,Caixa do Level 280,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_280");},{},{}
-40088,Caixa_level_300,Caixa do Level 300,2,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_300");},{},{}
+40073,Caixa_level_12,Caixa do Level 12,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_12");},{},{}
+40074,Caixa_level_26,Caixa do Level 26,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_26");},{},{}
+40075,Caixa_level_40,Caixa do Level 40,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_40");},{},{}
+40076,Caixa_level_60,Caixa do Level 60,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_60");},{},{}
+40077,Caixa_level_80,Caixa do Level 80,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_80");},{},{}
+40078,Caixa_level_100,Caixa do Level 100,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_100");},{},{}
+40079,Caixa_level_120,Caixa do Level 120,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_120");},{},{}
+40080,Caixa_level_140,Caixa do Level 140,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_140");},{},{}
+40081,Caixa_level_160,Caixa do Level 160,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_160");},{},{}
+40082,Caixa_level_180,Caixa do Level 180,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_180");},{},{}
+40083,Caixa_level_200,Caixa do Level 200,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_200");},{},{}
+40084,Caixa_level_220,Caixa do Level 220,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_220");},{},{}
+40085,Caixa_level_240,Caixa do Level 240,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_240");},{},{}
+40086,Caixa_level_260,Caixa do Level 260,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_260");},{},{}
+40087,Caixa_level_280,Caixa do Level 280,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_280");},{},{}
+40088,Caixa_level_300,Caixa do Level 300,11,20,,200,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc("level_300");},{},{}
 //====================================================================================================
 // BrasilRO - Armas
 //====================================================================================================
 //20000,Super Espada,Super Espada,4,3450,,20000,60,,3,4,0x00004082,7,2,2,1,4,1,4,{},{},{}
 //1831,dorcus,Punho de Dorcus,4,8000,,1000,150,,1,4,0x00008100,7,2,2,3,1,1,12,{},{},{}
-//1655,highness_staff,Cajado da Excelência,4,50,,1000,150,,1,4,0x00818215,7,2,2,3,1,1,10,{},{},{}
-//20005,rabitts,Coelho de Pelúcia,4,500,,1000,150,,1,4,0x00000001,7,2,2,3,1,1,6,{},{},{}
-//1700,Soaring_Bird,Arco de Pássaro,4,1000,,1000,300,,5,4,0x000A0848,7,2,2,3,1,1,11,{},{},{}
+//1655,highness_staff,Cajado da Excelï¿½ncia,4,50,,1000,150,,1,4,0x00818215,7,2,2,3,1,1,10,{},{},{}
+//20005,rabitts,Coelho de Pelï¿½cia,4,500,,1000,150,,1,4,0x00000001,7,2,2,3,1,1,6,{},{},{}
+//1700,Soaring_Bird,Arco de Pï¿½ssaro,4,1000,,1000,300,,5,4,0x000A0848,7,2,2,3,1,1,11,{},{},{}
 //1435,Alabarda_Preta,Alabarda Preta,4,20,,1000,150,,3,4,0x00004082,7,2,2,3,1,1,4,{},{},{}
-//1656,Cajado_de_Águia,Cajado de Águia,4,50,,1000,150,,1,4,0x00000100,7,2,2,3,1,1,10,{},{},{}
+//1656,Cajado_de_ï¿½guia,Cajado de ï¿½guia,4,50,,1000,150,,1,4,0x00000100,7,2,2,3,1,1,10,{},{},{}
 //1150,Espada_Suprema,Espada Suprema,4,,10,1000,150,,1,4,0x00001000,7,2,2,3,1,1,2,{},{},{}
 //1316,Machado_Supremo,Machado Supremo,4,20,,1200,150,,1,4,0x00040000,7,2,2,3,1,1,6,{},{},{}
 //1317,Machado_de_Grisworld,Machado de Grisworld,4,20,,1200,105,,1,4,0x00000400,2,2,2,4,70,1,2,{},{},{}
@@ -216,7 +216,7 @@
 //1289,katar_draconiana,Katar_Draconiana,4,1,,1000,150,,1,4,0x00001000,7,2,34,3,1,1,16,{},{},{}
 
 //========================================================
-// BrasilRO - Armas Dragão
+// BrasilRO - Armas Dragï¿½o
 //========================================================
 //1173,espada_draconiano,Espada_Draconiana,4,0,,700,53,,1,4,0x000654E3,7,2,2,1,2,1,2,{},{},{}
 //1699,arco_draconiano,Arco_Draconiano,4,1000,,1000,300,,5,4,0x000A0848,7,2,2,3,1,1,11,{},{},{}
@@ -233,12 +233,12 @@
 41003,Archdemonwing,Archdemonwing,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3103,{},{},{}
 41004,Asa_de_Dragao,Asa de Dragao,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3104,{},{},{}
 41005,asas_de_elfo,Asas de Elfo,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3105,{},{},{}
-41006,asasdaretribuicaocolorida,Asas da Retribuição Colorida,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3106,{},{},{}
+41006,asasdaretribuicaocolorida,Asas da Retribuiï¿½ï¿½o Colorida,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3106,{},{},{}
 41007,AURA33,Aura das Trevas,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3107,{},{},{}
 41008,AURA41,Circulo de Defesa,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3108,{},{},{}
 41009,AURA70,Aura Flamejante,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3109,{},{},{}
 41010,AURORA,Aurora,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3110,{},{},{}
-41011,Blue_Flame_Spirit,Espírito da Chama Azul,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3111,{},{},{}
+41011,Blue_Flame_Spirit,Espï¿½rito da Chama Azul,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3111,{},{},{}
 41012,bolsa_natalina,Bolsa Natalina,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3112,{},{},{}
 
 //=================================================================//
@@ -250,14 +250,14 @@
 41016,bonecadabarbeirademoniaca,Boneca da Barbeira Demoniaca,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3116,{},{},{}
 41017,bonecadabruxinha,Boneca da Bruxinha,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3117,{},{},{}
 41018,bonecadaclara,Boneca da Clara,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3118,{},{},{}
-41019,bonecadamedica,Boneca Médica,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3119,{},{},{}
+41019,bonecadamedica,Boneca Mï¿½dica,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3119,{},{},{}
 41020,bonecadaprincesaloira,Boneca da Princesa Loira,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3120,{},{},{}
 41021,bonecadasandra,Boneca da Sandra,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3121,{},{},{}
 41022,bonecadealquimista,Boneca de Alquimista,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3122,{},{},{}
 41023,bonecodaflordoluar,Boneco da Flor do Luar,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3123,{},{},{}
 41024,bonecodamaya,Boneco da Maya,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3124,{},{},{}
-41025,bonecodavalquira,Boneco da Valquíria,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3125,{},{},{}
-41026,bonecodebafome,Boneco de Bafomé,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3126,{},{},{}
+41025,bonecodavalquira,Boneco da Valquï¿½ria,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3125,{},{},{}
+41026,bonecodebafome,Boneco de Bafomï¿½,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3126,{},{},{}
 41027,bonecodedeviruchi,Boneco de Deviruchi,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3127,{},{},{}
 41028,bonecodeeddga,Boneco de Eddga,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3128,{},{},{}
 41029,bonecodegarotoloiro,Boneco de Garoto Loiro,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3129,{},{},{}
@@ -267,7 +267,7 @@
 41033,bonecodemetaling,Boneco de Metaling,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3133,{},{},{}
 41034,bonecodemokona,Boneco de Mokona,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3134,{},{},{}
 41035,bonecodepoporing,Boneco de Poporing,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3135,{},{},{}
-41036,bonecodeprincipe,Boneco de Príncipe,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3136,{},{},{}
+41036,bonecodeprincipe,Boneco de Prï¿½ncipe,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3136,{},{},{}
 41037,bonecodesantaporing,Boneco de Poring Noel,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3137,{},{},{}
 41038,bonecodezealotus,Boneco de Zealotus,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3138,{},{},{}
 41039,bonecodoangeling,Boneco do Angeling,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3139,{},{},{}
@@ -294,14 +294,14 @@
 41057,Chaos_Death_Wings,Chaos Death Wings,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3157,{},{},{}
 41058,Chapeu_de_Requiem,Chapeu de Requiem,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3158,{},{},{}
 41059,Chapeu_Executor,Chapeu Executor,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3159,{},{},{}
-41060,CHOQUE,Pássaro de Choque,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3160,{},{},{}
+41060,CHOQUE,Pï¿½ssaro de Choque,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3160,{},{},{}
 41061,Coroa_de_Marduk,Coroa de Marduk,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3161,{},{},{}
 41062,CRIA,Hat de Aprendiz,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3162,{},{},{}
 41063,Coroa_BRO,Coroa,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3163,{},{},{}
 41064,CRUXX,Crux,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3164,{ },{},{}
 41065,CS_199,Susanoo Inicial,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3165,{},{},{}
 41066,CS_200,Susanoo Endo-Madara,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3166,{},{},{}
-41067,Demon_Wings,Asas de Demônio,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3167,{},{},{}
+41067,Demon_Wings,Asas de Demï¿½nio,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3167,{},{},{}
 41068,Desfarce_Supremo,Desfarce Supremo,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3168,{},{},{}
 41069,DiabloWings,Asas do Diablo,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3169,{},{},{}
 41070,cabelo_do_Inuyasha,Cabelo do Inuyasha,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3170,{},{},{}
@@ -327,13 +327,13 @@
 42010,iris_maize_aura,Aura de Zeus,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3010,{},{},{}
 42011,iris_maize_wing,Asas de Zeus,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3011,{},{},{}
 //====================================================================================================
-42012,iris_periwinkle_helm,Elmo_de_Ìris,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3012,{},{},{}
-42013,iris_periwinkle_aura,Aura_de_Íris,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3013,{},{},{}
-42014,iris_periwinkle_wing,Asas_de_Íris,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3014,{},{},{}
+42012,iris_periwinkle_helm,Elmo_de_ï¿½ris,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3012,{},{},{}
+42013,iris_periwinkle_aura,Aura_de_ï¿½ris,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3013,{},{},{}
+42014,iris_periwinkle_wing,Asas_de_ï¿½ris,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3014,{},{},{}
 //====================================================================================================
 //====================================================================================================
-42018,humble_bee_helm,Chapéu_de_Abelha,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3018,{},{},{}
-42019,humble_bee_mask,Máscara_de_Abelha,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3019,{},{},{}
+42018,humble_bee_helm,Chapï¿½u_de_Abelha,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3018,{},{},{}
+42019,humble_bee_mask,Mï¿½scara_de_Abelha,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3019,{},{},{}
 42020,humble_bee_wings,Asas_de_Abelha,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3020,{},{},{}
 //=======================================================
 // SEASON II - Custons Novos
@@ -341,7 +341,7 @@
 42021,Fenix,Asas da Fenix,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3021,{},{},{}
 42022,FENIXBLACK,Asas da Fenix Negra,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3022,{},{},{}
 42023,FIREAURA12,Aura Flamejante,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3023,{},{},{}
-42024,FOICE,Foice Demôniaca,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3024,{},{},{}
+42024,FOICE,Foice Demï¿½niaca,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3024,{},{},{}
 42025,GATO,Gato,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3025,{},{},{}
 42026,GATOBRANCO,Gato Branco,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3026,{},{},{}
 //====================================================================================================
@@ -349,13 +349,13 @@
 //=================================================
 // SEASON II - Custons Novos
 //=================================================
-42028,ItemVisual203,Asas Explêndidas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3028,{},{},{}
-42029,ItemVisual234,Espírito Dourado da Valquíria,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3029,{},{},{}
-42030,ItemVisual235,Espírito Azul da Valquíria,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3030,{},{},{}
+42028,ItemVisual203,Asas Explï¿½ndidas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3028,{},{},{}
+42029,ItemVisual234,Espï¿½rito Dourado da Valquï¿½ria,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3029,{},{},{}
+42030,ItemVisual235,Espï¿½rito Azul da Valquï¿½ria,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3030,{},{},{}
 42031,ItemVisual242,Foice do Hidan,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3031,{},{},{}
-42032,guardian_black_wing,Asas do Guardião,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3032,{},{},{}
+42032,guardian_black_wing,Asas do Guardiï¿½o,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3032,{},{},{}
 //====================================================================================================
-42033,ItemVisual247,Espírito do Samurai Encarnado,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3033,{},{},{}
+42033,ItemVisual247,Espï¿½rito do Samurai Encarnado,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3033,{},{},{}
 42034,guardian_blue_aura,Aura de Lighthalzen Preta e Branca,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3034,{},{},{}
 42035,ItemVisual243,Asas Perfeitas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3035,{},{},{}
 //====================================================================================================
@@ -366,8 +366,8 @@
 // SEASON II - Custons Novos
 //=======================================================
 42039,GATOROSA,Gato Rosa,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3039,{},{},{}
-42040,gazewing,Asas Mágicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3040,{},{},{}
-42041,gear0897,Asas Dragônicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3041,{},{},{}
+42040,gazewing,Asas Mï¿½gicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3040,{},{},{}
+42041,gear0897,Asas Dragï¿½nicas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3041,{},{},{}
 //====================================================================================================
 42042,fallen_gladiator_crown,Coroa do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,256,,1,0,3042,{ bonus bAllStats,10; if( isequipped(23043,23044) ) { bonus2 bSubRace,RC_Boss,40; bonus2 bAddRace,RC_Boss,20; bonus bAllStats,15; },{},{}
 42043,fallen_gladiator_aura,Aura do Gladiador,4,0,,0,,,,0,0xFFFFFFFF,63,2,512,,1,0,3043,{ bonus bAllStats,3; bonus bSpeedRate,30; if( isequipped(23043,23044) ) { bonus2 bResEff,Eff_Freeze,10000; } },{},{}
@@ -376,43 +376,43 @@
 // SEASON II -  Custons Novos
 //=======================================================
 42045,hachibi_soul,Chakra do Hachibi,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3045,{},{},{}
-42046,halcyonspirit,Espírito do Clãn,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3046,{},{},{}
+42046,halcyonspirit,Espï¿½rito do Clï¿½n,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3046,{},{},{}
 42047,happyfwing,Asas da Felicidade,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3047,{},{},{}
 42048,IGNUS,Aura Ignus,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3048,{},{},{}
-42049,ItemVisual21,Capa Confortável Branca e Rosa,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3049,{},{},{}
-42050,ItemVisual26,Capa Confortável Branca e Preta,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3050,{},{},{}
+42049,ItemVisual21,Capa Confortï¿½vel Branca e Rosa,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3049,{},{},{}
+42050,ItemVisual26,Capa Confortï¿½vel Branca e Preta,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3050,{},{},{}
 42051,ItemVisual29,Asas Poderosas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3051,{},{},{}
-42052,ItemVisual30,Capa Confortável Rosa,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3052,{},{},{}
-42053,ItemVisual33,Capa Confortável Azul,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3053,{},{},{}
-42054,ItemVisual35,Capa Confortável Vermelha,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3054,{},{},{}
+42052,ItemVisual30,Capa Confortï¿½vel Rosa,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3052,{},{},{}
+42053,ItemVisual33,Capa Confortï¿½vel Azul,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3053,{},{},{}
+42054,ItemVisual35,Capa Confortï¿½vel Vermelha,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3054,{},{},{}
 42055,ItemVisual39,Asas de Baile,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3055,{},{},{}
 42056,ItemVisual79,Asas Penosas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3056,{},{},{}
 42057,ItemVisual177,Capa Branca,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3057,{},{},{}
 42058,ItemVisual180,Capa Branca de Arruaceiro,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3058,{},{},{}
-42059,ItemVisual201,Asas da Escuridão,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3059,{},{},{}
+42059,ItemVisual201,Asas da Escuridï¿½o,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3059,{},{},{}
 //====================================================================================================
-42060,elmo_do_dragao,Elmo de Dragão,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3060,{},{},{}
-42061,visor_do_dragao,Venda de Dragão,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3061,{},{},{}
-42062,espada_do_dragao,Espada_de_Dragão,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3062,{},{},{}
-//42063,armadura_do_dragao,Armadura_de_Dragão,5,10,,10,,1,,1,0xFFFFFFFF,7,2,16,,0,1,0,{},{},{}
-//42064,escudo_do_dragao,Escudo_de_Dragão,5,500,,10,,3,,1,0xFFFFFFFF,7,2,32,,0,1,1,{},{},{}
-//42065,manto_do_dragao,Manteau_de_Dragão,5,32000,,10,,4,,1,0xFFFFFFFF,7,2,4,,0,1,0,{},{},{}
-//42066,botas_do_dragao,Botas_de_Dragão,5,3500,,10,,2,,1,0xFFFFFFFF,7,2,64,,0,1,0,{},{},{}
-//42067,anel_do_dragao,Anel_de_Dragão,5,30000,,100,,0,,1,0xFFFFFFFE,7,2,136f,,20,0,0,{},{},{}
+42060,elmo_do_dragao,Elmo de Dragï¿½o,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3060,{},{},{}
+42061,visor_do_dragao,Venda de Dragï¿½o,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3061,{},{},{}
+42062,espada_do_dragao,Espada_de_Dragï¿½o,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3062,{},{},{}
+//42063,armadura_do_dragao,Armadura_de_Dragï¿½o,5,10,,10,,1,,1,0xFFFFFFFF,7,2,16,,0,1,0,{},{},{}
+//42064,escudo_do_dragao,Escudo_de_Dragï¿½o,5,500,,10,,3,,1,0xFFFFFFFF,7,2,32,,0,1,1,{},{},{}
+//42065,manto_do_dragao,Manteau_de_Dragï¿½o,5,32000,,10,,4,,1,0xFFFFFFFF,7,2,4,,0,1,0,{},{},{}
+//42066,botas_do_dragao,Botas_de_Dragï¿½o,5,3500,,10,,2,,1,0xFFFFFFFF,7,2,64,,0,1,0,{},{},{}
+//42067,anel_do_dragao,Anel_de_Dragï¿½o,5,30000,,100,,0,,1,0xFFFFFFFE,7,2,136f,,20,0,0,{},{},{}
 //====================================================================================================
 // BrasilRO - Customs
 //====================================================================================================
-// Equipamentos Para a Cabeça [Topo]
+// Equipamentos Para a Cabeï¿½a [Topo]
 //====================================================================================================
-//43000,Chifres_Místicos_de_Bafomé,Chifres_Místicos_de_Bafomé,5,20,,800,,5,,4,0xFFFFFFFF,7,2,256,,1,1,513,{},{},{}
-//43001,Marcher_Hat2,Chapéu de Parada,5,20,,200,,2,,4,0xFFFFFFFF,7,2,256,,1,1,269,{},{},{}
+//43000,Chifres_Mï¿½sticos_de_Bafomï¿½,Chifres_Mï¿½sticos_de_Bafomï¿½,5,20,,800,,5,,4,0xFFFFFFFF,7,2,256,,1,1,513,{},{},{}
+//43001,Marcher_Hat2,Chapï¿½u de Parada,5,20,,200,,2,,4,0xFFFFFFFF,7,2,256,,1,1,269,{},{},{}
 //43002,Jasper_Crest2,Coroa de Jaspe,5,20,,700,,2,,4,0xFFFFFFFF,7,2,256,,0,1,399,{},{},{}
 //43003,Elmo_Draconiano,Elmo Draconiano,5,20,,2000,,5,,4,0xFFFFFFFF,7,2,256,,1,1,464,{ },{},{}
-//43004,Boné_de_Carteiro,Boné de Carteiro,5,20,,100,,2,,3,0xFFFFFFFF,7,2,256,,1,1,463,{},{},{}
+//43004,Bonï¿½_de_Carteiro,Bonï¿½ de Carteiro,5,20,,100,,2,,3,0xFFFFFFFF,7,2,256,,1,1,463,{},{},{}
 //43005,Dragonhelm_Gold2,RWC 2008 Dragon Helm Gold,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,0,452,{},{},{}
 //43006,Dragonhelm_Silver2,RWC 2008 Dragon Helm Silver,5,20,,2500,,5,,3,0xFFFFFFFF,7,2,256,,1,0,453,{},{},{}
 //43007,Dragonhelm_Copper2,RWC 2008 Dragon Helm Copper,5,20,,2500,,0,,3,0xFFFFFFFF,7,2,256,,1,0,454,{},{},{}
-//43008,Benção_de_Asgard,Benção de Asgard,5,20,,2500,,0,,4,0xFFFFFFFF,7,2,256,,1,0,724,{},{},{}
+//43008,Benï¿½ï¿½o_de_Asgard,Benï¿½ï¿½o de Asgard,5,20,,2500,,0,,4,0xFFFFFFFF,7,2,256,,1,0,724,{},{},{}
 //43009,Chifres_Majestosos_Gigantes,Chifres Majestosos Gigantes,5,20,,800,,5,,4,0xFFFFFFFF,7,2,256,,1,1,380,{},{},{}
 //43010,Love_Dad_Bandana,Love Dad Bandana,5,20,,200,,3,,3,0xFFFFFFFF,7,2,256,,1,1,374,{},{},{}
 //43011,Lovecap_China2,I Love China,5,20,,250,,5,,3,0x00880100,7,2,256,,1,0,424,{},{},{}
@@ -424,141 +424,141 @@
 //43017,Binit_Doll_Hat2,Boneca de Bianca,5,0,,500,,0,,3,0xFFFFFFFF,7,2,256,,1,0,358,{},{},{}
 //43018,Debril_Doll_Hat2,Boneca de Deborah,5,0,,500,,0,,3,0xFFFFFFFF,7,2,256,,1,0,359,{},{},{}
 //43019,Chifre_de_Lord_Kaho,Chifre de Lord Kaho,5,20,,100,,5,,3,0xFFFFFFFF,7,2,256,,1,1,99,{},{},{}
-//43020,Ribbon_Of_Bride2,Laço de Noiva,5,20,,100,,5,,3,0xFFFFFFFF,7,2,256,,1,1,167,{},{},{}
-//43021,Yellow_Bandana2,Bandana de Mecânico,5,20,,100,,1,,3,0xFFFFFFFF,7,2,256,,1,1,309,{},{},{}
+//43020,Ribbon_Of_Bride2,Laï¿½o de Noiva,5,20,,100,,5,,3,0xFFFFFFFF,7,2,256,,1,1,167,{},{},{}
+//43021,Yellow_Bandana2,Bandana de Mecï¿½nico,5,20,,100,,1,,3,0xFFFFFFFF,7,2,256,,1,1,309,{},{},{}
 //43022,Yellow_Ribbon2,Yellow Ribbon,5,20,,100,,1,,3,0xFFFFFFFF,7,2,256,,1,1,310,{},{},{}
-//43023,Dark_Snake_Lord_Hat2,Chapéu da Serpente Suprema,5,20,,500,,2,,4,0xFFFFFFFF,7,2,256,,1,1,372,{},{},{}
-//43024,Red_Wing_Hat2,Chapéu Alado Vermelho,5,20,,600,,2,,3,0xFFFFFFFF,7,2,256,,50,1,613,{},{},{}
-//43025,Headband_Of_Power2,Faixa de Caratê,5,20,,100,,1,,4,0xFFFFFFFF,7,2,256,,0,1,154,{},{},{}
+//43023,Dark_Snake_Lord_Hat2,Chapï¿½u da Serpente Suprema,5,20,,500,,2,,4,0xFFFFFFFF,7,2,256,,1,1,372,{},{},{}
+//43024,Red_Wing_Hat2,Chapï¿½u Alado Vermelho,5,20,,600,,2,,3,0xFFFFFFFF,7,2,256,,50,1,613,{},{},{}
+//43025,Headband_Of_Power2,Faixa de Caratï¿½,5,20,,100,,1,,4,0xFFFFFFFF,7,2,256,,0,1,154,{},{},{}
 //43026,Rabbit_Ear_Hat2,Cartola de Coelho,5,20,,300,,0,,3,0xFFFFFFFF,7,2,256,,0,1,384,{},{},{}
-//43027,Hat_Of_Outlaw2,Chapéu de Cangaceiro,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,486,{},{},{}
+//43027,Hat_Of_Outlaw2,Chapï¿½u de Cangaceiro,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,486,{},{},{}
 //43028,Saiyan_Hair,Cabelo de Sayajin,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3444,{},{},{}
-43029,chapeu_do_facebook,Chapéu do Facebook,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3175,{},{},{}
-43030,green_deadmou5_hat,Chapéu do Deadmau5 Verde,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3176,{},{},{}
-43031,pink_deadmou5_hat,Chapéu do Deadmau5 Rosa,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3177,{},{},{}
-43032,blue_deadmou5_hat,Chapéu do Deadmau5 Azul,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3178,{},{},{}
-43033,deadmou5_hat,Chapéu do Deadmau5,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3179,{},{},{}
-43034,red_deadmou5_hat,Chapéu do Deadmau5 Vermelho,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3180,{},{},{}
-43035,orange_deadmou5_hat,Chapéu do Deadmau5 Laranja,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3181,{},{},{}
-43036,black_deadmou5_hat,Chapéu do Deadmau5 Preto,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3182,{},{},{}
-43037,pilipinascap,Boné_de_Filipinas,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3183,{},{},{}
-43038,kencap,Boné Ken,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3184,{},{},{}
-43039,papi,Boné Papi,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3185,{},{},{}
-43040,yuki,Boné Yuki,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3186,{},{},{}
-43041,animated_luigi_cap,Chapéu Animado do Luigi,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3187,{},{},{}
-43042,animated_mario_cap,Chapéu Animado do Mario,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3188,{},{},{}
-43043,tigger_head,Cabeça do Tigrão,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3189,{},{},{}
-43044,pooh_head,Cabeça do Pooh,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3190,{},{},{}
+43029,chapeu_do_facebook,Chapï¿½u do Facebook,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3175,{},{},{}
+43030,green_deadmou5_hat,Chapï¿½u do Deadmau5 Verde,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3176,{},{},{}
+43031,pink_deadmou5_hat,Chapï¿½u do Deadmau5 Rosa,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3177,{},{},{}
+43032,blue_deadmou5_hat,Chapï¿½u do Deadmau5 Azul,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3178,{},{},{}
+43033,deadmou5_hat,Chapï¿½u do Deadmau5,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3179,{},{},{}
+43034,red_deadmou5_hat,Chapï¿½u do Deadmau5 Vermelho,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3180,{},{},{}
+43035,orange_deadmou5_hat,Chapï¿½u do Deadmau5 Laranja,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3181,{},{},{}
+43036,black_deadmou5_hat,Chapï¿½u do Deadmau5 Preto,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3182,{},{},{}
+43037,pilipinascap,Bonï¿½_de_Filipinas,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3183,{},{},{}
+43038,kencap,Bonï¿½ Ken,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3184,{},{},{}
+43039,papi,Bonï¿½ Papi,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3185,{},{},{}
+43040,yuki,Bonï¿½ Yuki,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3186,{},{},{}
+43041,animated_luigi_cap,Chapï¿½u Animado do Luigi,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3187,{},{},{}
+43042,animated_mario_cap,Chapï¿½u Animado do Mario,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3188,{},{},{}
+43043,tigger_head,Cabeï¿½a do Tigrï¿½o,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3189,{},{},{}
+43044,pooh_head,Cabeï¿½a do Pooh,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3190,{},{},{}
 43045,cavaleiro_dourado,Elmo do Cavaleiro Dourado,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3191,{},{},{}
 43046,ItemVisual423,Mascara do Tobi,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,3192,{},{},{}
-43047,ItemVisual427,Asas Magníficas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3193,{},{},{}
+43047,ItemVisual427,Asas Magnï¿½ficas,4,20,,0,,0,,0,0xFFFFFFFF,63,2,2048,,0,0,3193,{},{},{}
 43048,cavaleiro_branco,Elmo do Cavaleiro Branco,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3194,{},{},{}
-43049,_Black_Valkyrie_Helm,Elmo das Valquírias Preto,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3195,{},{},{}
+43049,_Black_Valkyrie_Helm,Elmo das Valquï¿½rias Preto,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,3195,{},{},{}
 43050,LIVROS,Livros de Magia,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3196,{},{},{}
-43051,mascara_assustadora,Máscara Assustadora,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3197,{},{},{}
-43052,mascaradezealotusbranca,Máscara de Zealotus Branca,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3198,{},{},{}
-43053,mascaradohomemdeferro,Máscara do Ferreiro,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3199,{},{},{}
-43054,mascaradosenhordastrevasvermelho2,Máscara do Senhor das Trevas,5,20,,800,,3,,3,0xFFFFFFFF,7,2,1024,,0,1,3200,{},{},{}
-43055,mascarasextafeira13,Máscara Sexta-Feira 13,5,20,,800,,3,,3,0xFFFFFFFF,7,2,1024,,0,1,3201,{},{},{}
+43051,mascara_assustadora,Mï¿½scara Assustadora,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3197,{},{},{}
+43052,mascaradezealotusbranca,Mï¿½scara de Zealotus Branca,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3198,{},{},{}
+43053,mascaradohomemdeferro,Mï¿½scara do Ferreiro,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3199,{},{},{}
+43054,mascaradosenhordastrevasvermelho2,Mï¿½scara do Senhor das Trevas,5,20,,800,,3,,3,0xFFFFFFFF,7,2,1024,,0,1,3200,{},{},{}
+43055,mascarasextafeira13,Mï¿½scara Sexta-Feira 13,5,20,,800,,3,,3,0xFFFFFFFF,7,2,1024,,0,1,3201,{},{},{}
 43056,MORTE22,Morte,5,20,,100,,0,,3,0xFFFFFFFF,7,2,2048,,70,0,3202,{},{},{}
 43057,MUSIC1,Aura Musical,5,20,,100,,0,,3,0xFFFFFFFF,7,2,2048,,70,0,3203,{},{},{}
-43058,Mystical_Dragon,Dragão Místico,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3204,{},{},{}
-43059,_Silver_Valkyrie_Helm,Elmo das Valquírias Prateado,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3205,{},{},{}
-43060,_White_Valkyrie_Helm,Elmo das Valquírias Branco,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3206,{},{},{}
-43061,valkyriehelmdual,Elmo das Valquírias Ying Yang,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3207,{},{},{}
-43062,chapeu_magico,Chapéu Mágico,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3208,{},{},{}
-43063,coroa_do_farao,Coroa do Faraó,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3209,{},{},{}
+43058,Mystical_Dragon,Dragï¿½o Mï¿½stico,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3204,{},{},{}
+43059,_Silver_Valkyrie_Helm,Elmo das Valquï¿½rias Prateado,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3205,{},{},{}
+43060,_White_Valkyrie_Helm,Elmo das Valquï¿½rias Branco,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3206,{},{},{}
+43061,valkyriehelmdual,Elmo das Valquï¿½rias Ying Yang,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3207,{},{},{}
+43062,chapeu_magico,Chapï¿½u Mï¿½gico,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3208,{},{},{}
+43063,coroa_do_farao,Coroa do Faraï¿½,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3209,{},{},{}
 43064,boina_preta,Boina do BOPE,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3210,{},{},{}
-43065,K_Archer_Cap,Chapéu de Cobold Arqueiro,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3211,{},{},{}
+43065,K_Archer_Cap,Chapï¿½u de Cobold Arqueiro,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3211,{},{},{}
 43067,Elmo_de_Deviling,Elmo de Deviling,5,20,,800,,3,,4,0x00880100,7,2,256,,0,1,3213,{},{},{}
-43068,Garm_Hat,Chapéu de Hatii,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3214,{},{},{}
-43069,skeggioldhat,Chapéu de Skeggiold,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3215,{},{},{}
-43070,toad_hat,Chapéu de Toad,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3216,{},{},{}
-43071,nature_dragon_flame,Chamas do Dragão,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3217,{},{},{}
-43072,nature_dragon_mask,Máscara do Dragão,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3218,{},{},{}
-43073,nature_dragon_wings,Asas do Dragão,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3219,{},{},{}
+43068,Garm_Hat,Chapï¿½u de Hatii,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3214,{},{},{}
+43069,skeggioldhat,Chapï¿½u de Skeggiold,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3215,{},{},{}
+43070,toad_hat,Chapï¿½u de Toad,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3216,{},{},{}
+43071,nature_dragon_flame,Chamas do Dragï¿½o,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3217,{},{},{}
+43072,nature_dragon_mask,Mï¿½scara do Dragï¿½o,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3218,{},{},{}
+43073,nature_dragon_wings,Asas do Dragï¿½o,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3219,{},{},{}
 43074,elmo_de_orc_negro,Elmo de Orc Negro,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3220,{},{},{}
-43075,Darth_Vader_Hat,Chapéu de Darth Vader,5,20,,800,,3,,3,0xFFFFFFFF,7,2,7168,,0,1,3221,{},{},{}
-43076,elmo_do_dragao_roxo,Elmo do Dragão Roxo,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3222,{},{},{}
-43077,MYSTICHOODIE,Capuz Místico,5,20,,800,,3,,3,0xFFFFFFFF,7,2,1024,,0,1,3223,{},{},{}
-43078,elmo_dragao_branco,Elmo do Dragão Prateado,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3224,{},{},{}
+43075,Darth_Vader_Hat,Chapï¿½u de Darth Vader,5,20,,800,,3,,3,0xFFFFFFFF,7,2,7168,,0,1,3221,{},{},{}
+43076,elmo_do_dragao_roxo,Elmo do Dragï¿½o Roxo,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3222,{},{},{}
+43077,MYSTICHOODIE,Capuz Mï¿½stico,5,20,,800,,3,,3,0xFFFFFFFF,7,2,1024,,0,1,3223,{},{},{}
+43078,elmo_dragao_branco,Elmo do Dragï¿½o Prateado,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3224,{},{},{}
 43079,papai_noel,Papai Noel,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3225,{},{},{}
-43080,elmo_dragao_dourado,Elmo do Dragão Dourado,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3226,{},{},{}
-43081,elmo_dragao_rosado,Elmo do Dragão Rosa,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3227,{},{},{}
+43080,elmo_dragao_dourado,Elmo do Dragï¿½o Dourado,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3226,{},{},{}
+43081,elmo_dragao_rosado,Elmo do Dragï¿½o Rosa,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,3227,{},{},{}
 43082,incubusdoll,Incubus Dorminhoco,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,1,1,3228,{},{},{}
 43083,coroa_de_valk,Coroa de Randgris,5,20,,800,,3,,4,0x02000000,7,2,256,,1,1,3229,{},{},{}
-43084,Black_Wandering_Minstrel_Hat,Chapéu de Menestrel,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,1,1,3230,{},{},{}
-43085,cabeca_de_cavalo,Cabeça de Cavalo,5,20,,800,,3,,3,0xFFFFFFFF,7,2,7168,,0,1,3231,{},{},{}
+43084,Black_Wandering_Minstrel_Hat,Chapï¿½u de Menestrel,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,1,1,3230,{},{},{}
+43085,cabeca_de_cavalo,Cabeï¿½a de Cavalo,5,20,,800,,3,,3,0xFFFFFFFF,7,2,7168,,0,1,3231,{},{},{}
 43086,saiyan_branco,Cabelo de Sayajin Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3232,{},{},{}
 43087,saiyan_preto,Cabelo de Sayajin Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3233,{},{},{}
 43088,saiyan_vermelho,Cabelo de Sayajin Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3234,{},{},{}
-43089,fire_spirit_b,Espírito de Fogo Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3235,{},{},{}
-43090,fire_spirit_blu,Espírito de Fogo Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3236,{},{},{}
-43091,fire_spirit_p,Espírito de Fogo Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3237,{},{},{}
-43092,fire_spirit_w,Espírito de Fogo Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3238,{},{},{}
-//43093,Witchs_Hat,Chapéu de Bruxa,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,717,{},{},{}
-//43094,Holy_Marching_Hat_J,Chapéu da Banda Celestial,5,20,,200,,2,,4,0xFFFFFFFF,7,2,256,,10,1,587,{},{},{}
+43089,fire_spirit_b,Espï¿½rito de Fogo Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3235,{},{},{}
+43090,fire_spirit_blu,Espï¿½rito de Fogo Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3236,{},{},{}
+43091,fire_spirit_p,Espï¿½rito de Fogo Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3237,{},{},{}
+43092,fire_spirit_w,Espï¿½rito de Fogo Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3238,{},{},{}
+//43093,Witchs_Hat,Chapï¿½u de Bruxa,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,717,{},{},{}
+//43094,Holy_Marching_Hat_J,Chapï¿½u da Banda Celestial,5,20,,200,,2,,4,0xFFFFFFFF,7,2,256,,10,1,587,{},{},{}
 43095,Capacete_do_Kamen Rider,Capacete do Kamen Rider,5,20,,800,,3,,3,0xFFFFFFFF,7,2,7168,,0,1,3239,{},{},{}
 43096,Capacete_do_Homem_de_Ferro,Capacete do Homem de Ferro,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3240,{},{},{}
-43097,0315_cellhead,Cabeça do Cell,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3241,{},{},{}
+43097,0315_cellhead,Cabeï¿½a do Cell,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3241,{},{},{}
 43098,War_Dragon_Helm,Elmo de Eldrax,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3242,{},{},{}
 43099,elmo_de_gundam,Elmo de Gundam,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3243,{},{},{}
-43100,fred_chapeudepochi,Chapéu Minimizu Rosa,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3244,{},{},{}
-43101,hat_minimizu,Chapéu Minimizu Azul,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3245,{},{},{}
+43100,fred_chapeudepochi,Chapï¿½u Minimizu Rosa,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3244,{},{},{}
+43101,hat_minimizu,Chapï¿½u Minimizu Azul,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3245,{},{},{}
 43102,fs_poopoohat,Popo Hat,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3246,{},{},{}
-43103,urahara_hat,Chapéu Listrado,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3247,{},{},{}
-43104,Krusty_Krab_Hat,Chapéu_do Ciriguejo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3248,{},{},{}
+43103,urahara_hat,Chapï¿½u Listrado,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3247,{},{},{}
+43104,Krusty_Krab_Hat,Chapï¿½u_do Ciriguejo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3248,{},{},{}
 43105,pink_panda_hood,Capuz de Panda Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3249,{},{},{}
-43106,OwlHat,Chapéu de Owl,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,1024,,1,1,3250,{},{},{}
-43107,omg_bubble,Chapéu OMG,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3251,{},{},{}
-43108,Fluffy_Plushie,Chapéu de Fluffy,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3252,{},{},{}
-43109,chapeu_do_urso_especial,Chapéu de Urso Especial,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3253,{},{},{}
-43110,Chapeu_do_Templario_Perfeito,Chapéu do Templário Perfeito,5,20,,2500,,7,,0,0xFFFFFFFF,7,2,1024,,0,1,3254,{},{},{}
-43111,chapeu_do_sacerdote_perfeito,Chapéu do Sacerdote Perfeito,5,20,,2500,,7,,0,0xFFFFFFFF,7,2,1024,,0,1,3255,{},{},{}
-43112,chapeu_do_ninja_perfeito,Chapéu do Ninja Perfeito,5,20,,2500,,7,,0,0xFFFFFFFF,7,2,1024,,0,1,3256,{},{},{}
-43113,chapeu_do_cavaleiro_perfeito,Chapéu do Cavaleiro Perfeito,5,20,,2500,,7,,4,0xFFFFFFFF,7,2,256,,1,1,3257,{},{},{}
-43114,bobsponja,Máscara do Bob Esponja,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3258,{},{},{}
-43115,Akatsuki,Chapéu de Akatsuki,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3259,{},{},{}
+43106,OwlHat,Chapï¿½u de Owl,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,1024,,1,1,3250,{},{},{}
+43107,omg_bubble,Chapï¿½u OMG,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3251,{},{},{}
+43108,Fluffy_Plushie,Chapï¿½u de Fluffy,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3252,{},{},{}
+43109,chapeu_do_urso_especial,Chapï¿½u de Urso Especial,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3253,{},{},{}
+43110,Chapeu_do_Templario_Perfeito,Chapï¿½u do Templï¿½rio Perfeito,5,20,,2500,,7,,0,0xFFFFFFFF,7,2,1024,,0,1,3254,{},{},{}
+43111,chapeu_do_sacerdote_perfeito,Chapï¿½u do Sacerdote Perfeito,5,20,,2500,,7,,0,0xFFFFFFFF,7,2,1024,,0,1,3255,{},{},{}
+43112,chapeu_do_ninja_perfeito,Chapï¿½u do Ninja Perfeito,5,20,,2500,,7,,0,0xFFFFFFFF,7,2,1024,,0,1,3256,{},{},{}
+43113,chapeu_do_cavaleiro_perfeito,Chapï¿½u do Cavaleiro Perfeito,5,20,,2500,,7,,4,0xFFFFFFFF,7,2,256,,1,1,3257,{},{},{}
+43114,bobsponja,Mï¿½scara do Bob Esponja,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3258,{},{},{}
+43115,Akatsuki,Chapï¿½u de Akatsuki,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3259,{},{},{}
 43116,light_up_santa_hat,Gorro de Papai Noel Iluminado,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3260,{},{},{}
-43117,ninetails,Chapéu de Nove Caudas,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3261,{},{},{}
+43117,ninetails,Chapï¿½u de Nove Caudas,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3261,{},{},{}
 43118,poring_topper,Cartola de Poring,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3262,{},{},{}
-43119,Scrat_Hat,Chapéu de Esquilo,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3263,{},{},{}
-43120,seracillas_ribbon,Laço Chinês Gigante,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3264,{},{},{}
-43121,snowwolfhat,Chapéu de Lobo Ártico,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3265,{},{},{}
+43119,Scrat_Hat,Chapï¿½u de Esquilo,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3263,{},{},{}
+43120,seracillas_ribbon,Laï¿½o Chinï¿½s Gigante,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3264,{},{},{}
+43121,snowwolfhat,Chapï¿½u de Lobo ï¿½rtico,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3265,{},{},{}
 43122,whisper_tallhat,Cartola Fantasma,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3266,{},{},{}
-//43123,KINGPORING,Chapéu de King Poring,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,905,{},{},{}
+//43123,KINGPORING,Chapï¿½u de King Poring,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,905,{},{},{}
 43124,saiyan_god_hair,Cabelo de Sayajin Azul,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3267,{},{},{}
-43125,hylozoisthat,Chapéu de Poltergeist,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3268,{},{},{}
-43126,fs_shark,Chapéu de Tubarão,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3269,{},{},{}
-43127,chapeu_fashion,Chapéu Fashion,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3270,{},{},{}
+43125,hylozoisthat,Chapï¿½u de Poltergeist,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3268,{},{},{}
+43126,fs_shark,Chapï¿½u de Tubarï¿½o,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3269,{},{},{}
+43127,chapeu_fashion,Chapï¿½u Fashion,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3270,{},{},{}
 43128,hat_oriental,Elmo Oriental,5,20,,2500,,7,,4,0xFFFFFFFF,7,2,256,,1,1,3271,{},{},{}
 43131,Coroa_de_Freya,Coroa de Freya,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3272,{},{},{}
 43132,Sparrow_Hat,Coroa_do_Rei_Pardal,5,20,,2500,,7,,4,0xFFFFFFFF,7,2,256,,1,1,3273,{},{},{}
 43133,littledevilhorns,Chifres do Diabinho,5,20,,800,,3,,4,0x00000001,7,2,256,,0,1,3274,{},{},{}
 43134,Illyria_Headdress,Elmo Elegante,5,20,,800,,3,,4,0xFFFFFFFF,7,2,256,,0,1,3275,{},{},{}
 43135,protetordourado,Vinhas_Eternas,5,20,,2500,,7,,4,0xFFFFFFFF,7,2,256,,1,1,3276,{},{},{}
-43136,Chapeu_do_Link,Chapéu do Link,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3277,{},{},{}
-43129,HELMET_OF_SIEGFRIED2,Dragão_da_Independência,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3278,{},{},{}
+43136,Chapeu_do_Link,Chapï¿½u do Link,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3277,{},{},{}
+43129,HELMET_OF_SIEGFRIED2,Dragï¿½o_da_Independï¿½ncia,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3278,{},{},{}
 43130,Sigruns_Wing_2,Adorno_de_Magnir,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1024,,70,0,568,{},{},{}
 43137,Konoha_Head_Protector,Bandana de Konoha,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3279,{},{},{}
-43138,WinRAR_Hat,Chapéu de WinRAR,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3280,{},{},{}
-43139,gengarhat,Chapéu do Gengar,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3281,{},{},{}
-43140,pikahat,Chapéu do Pikachu,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3282,{},{},{}
-43141,bulbahat,Chapéu do Bulbasaur,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3283,{},{},{}
-43142,evehat,Chapéu do Eevee,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3284,{},{},{}
+43138,WinRAR_Hat,Chapï¿½u de WinRAR,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3280,{},{},{}
+43139,gengarhat,Chapï¿½u do Gengar,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3281,{},{},{}
+43140,pikahat,Chapï¿½u do Pikachu,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3282,{},{},{}
+43141,bulbahat,Chapï¿½u do Bulbasaur,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3283,{},{},{}
+43142,evehat,Chapï¿½u do Eevee,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3284,{},{},{}
 43143,jiggly,Capuz do Jigglypuff,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3285,{},{},{}
-43144,bone_do_ash,Boné do Ash,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3286,{},{},{}
+43144,bone_do_ash,Bonï¿½ do Ash,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3286,{},{},{}
 //43145,Touca_de_Pijama Azul,Touca de Pijama Azul,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,1698,{},{},{}
-//43146,Olhos_Biônicos,Olhos Biônicos,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,1821,{},{},{}
-//43147,Chapéu_Goma_de_Mascar,Chapéu Goma de Mascar,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,1966,{},{},{}
-//43148,chifres_Místicos_de_Bafomé,chifres Místicos de Bafomé,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,1620,{},{},{}
+//43146,Olhos_Biï¿½nicos,Olhos Biï¿½nicos,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,1821,{},{},{}
+//43147,Chapï¿½u_Goma_de_Mascar,Chapï¿½u Goma de Mascar,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,1966,{},{},{}
+//43148,chifres_Mï¿½sticos_de_Bafomï¿½,chifres Mï¿½sticos de Bafomï¿½,5,20,,800,,3,,3,0xFFFFFFFF,7,2,256,,0,1,1620,{},{},{}
 //43149,Asas_de_Reginleif,Asas de Reginleif,5,20,,700,,2,,3,0xFFFFFFFF,7,2,256,,0,1,1060,{},{},{}
 //43150,Asas_de_Filir,Asas de Filir,5,20,,10,,0,,3,0xFFFFFFFF,7,2,512,,0,0,1010,{},{},{}
-//43151,Flor_Romântica_Branca,Flor Romântica Branca,5,20,,10,,0,,3,0xFFFFFFFF,7,2,1,,0,0,1011,{},{},{}
+//43151,Flor_Romï¿½ntica_Branca,Flor Romï¿½ntica Branca,5,20,,10,,0,,3,0xFFFFFFFF,7,2,1,,0,0,1011,{},{},{}
 //43152,Rastreador_GZ,Rastreador GZ,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,1,0,1789,{},{},{}
 //43153,Cara_de_Assustado,Cara de Assustado,5,20,,10,,0,,3,0xFFFFFFFF,7,2,512,,0,1,1061,{},{},{}
 43154,Hephaestus_Crown,Coroa de Hefesto,5,20,,2500,,7,,3,0xFFFFFFFF,7,2,256,,1,1,3287,{},{},{}
-43155,evila_helm,Elmo Demoníaco,5,20,,2500,,7,,4,0xFFFFFFFF,7,2,256,,1,1,3288,{},{},{}
+43155,evila_helm,Elmo Demonï¿½aco,5,20,,2500,,7,,4,0xFFFFFFFF,7,2,256,,1,1,3288,{},{},{}
 //18580,Yggdrasil_Crown,Yggdrasil Crown,4,20,,200,,3,,1,0xFFFFFFFF,63,2,256,,1,1,746,{},{},{}
 //18613,Black_Musang_Hat,Black Musang Hat,4,40,,400,,3,,1,0xFFFFFFFF,63,2,256,,0,1,771,{},{},{}
 //18707,Maneater_Flower_Hat,Maneater Flower Hat,4,20,,500,,3,,0,0xFFFFFFFE,63,2,256,,20,1,852,{},{},{}
@@ -566,53 +566,53 @@
 //18503,Majestic_Devil,Small Devil Horns,4,20,,100,,2,,0,0xFFFFFFFF,63,2,512,,1,0,562,{},{},{}
 //18637,Elmo_Espartano,Elmo Espartano,4,20,,700,,4,,1,0xFFFFFFFF,63,2,7168,,0,1,660,{},{},{}
 43156,Hanging_Dolls,Boneca Enforcada,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3289,{},{},{}
-43157,¸ÅµåÇØÅÍ,Cartola Republicana,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3290,{},{},{}
+43157,ï¿½Åµï¿½ï¿½ï¿½ï¿½ï¿½,Cartola Republicana,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3290,{},{},{}
 43158,gorro_de_flamel,Gorro de Flamel,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3291,{},{},{}
-43159,32356,Guardião de Gladsheim,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3292,{},{},{}
-43160,Togepi_Hat,Chapéu de Togepi,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3293,{},{},{}
+43159,32356,Guardiï¿½o de Gladsheim,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3292,{},{},{}
+43160,Togepi_Hat,Chapï¿½u de Togepi,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3293,{},{},{}
 43161,Deviruchi_Headphones,Fones de Deviruchi,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3294,{},{},{}
 43162,Dragonvan,Sinistro Baphomet,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3295,{},{},{}
-43163,Ghostring_Hat,Chapéu de Ghostring,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3296,{},{},{}
+43163,Ghostring_Hat,Chapï¿½u de Ghostring,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3296,{},{},{}
 //43164,Lightning_Speed,Luz de Gerd,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,1199,{},{},{}
-43165,dark_hat,Chapéu do Mago Esquecido,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3297,{},{},{}
+43165,dark_hat,Chapï¿½u do Mago Esquecido,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3297,{},{},{}
 43166,Hood_of_Shadows,Capuz das Sombras,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3298,{},{},{}
 43167,capuz_de_carontes,Capuz de Carontes,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3299,{},{},{}
 43168,Bat_Hat,Cartola Charmosa de Morcego,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3300,{},{},{}
 43169,Jumping_Bunny,Coelho Saltador,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3301,{},{},{}
 43170,Floppy_Bunny,Coelho Dorminhoco,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3302,{},{},{}
 //43171,Snow_Rabbit_Knit_Hat,Gorro de Coelho de Inverno,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,1157,{},{},{}
-43172,Imp_Hat2,Chapéu de Imp,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3303,{},{},{}
-43173,BlackSheriffHat,Chapéu de Xerife Preto,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3304,{},{},{}
-43174,PinkSheriffHat,Chapéu de Xerife Rosa,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3305,{},{},{}
-//43175,Banshee_Master_Kiss,Chapéu_de_Banshea,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,959,{},{},{}
-//43176,SILK_HAT_OF_EARTH,Chapéu de Seda Intangível,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,1078,{},{},{}
-43177,roast_memory,Chapéu do Galo Confuso,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3306,{},{},{}
-43178,Freezahat,Chapéu do Freeza,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3307,{},{},{}
-43179,piccolohat,Chapéu do Piccolo,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3308,{},{},{}
-43180,saitamaangry,Cabeça do Saitama Raivoso,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3309,{},{},{}
-43181,saitamahappy,Cabeça do Saitama Feliz,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3310,{},{},{}
+43172,Imp_Hat2,Chapï¿½u de Imp,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3303,{},{},{}
+43173,BlackSheriffHat,Chapï¿½u de Xerife Preto,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3304,{},{},{}
+43174,PinkSheriffHat,Chapï¿½u de Xerife Rosa,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3305,{},{},{}
+//43175,Banshee_Master_Kiss,Chapï¿½u_de_Banshea,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,959,{},{},{}
+//43176,SILK_HAT_OF_EARTH,Chapï¿½u de Seda Intangï¿½vel,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,1078,{},{},{}
+43177,roast_memory,Chapï¿½u do Galo Confuso,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3306,{},{},{}
+43178,Freezahat,Chapï¿½u do Freeza,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3307,{},{},{}
+43179,piccolohat,Chapï¿½u do Piccolo,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3308,{},{},{}
+43180,saitamaangry,Cabeï¿½a do Saitama Raivoso,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3309,{},{},{}
+43181,saitamahappy,Cabeï¿½a do Saitama Feliz,5,20,,800,,3,,0,0xFFFFFFFF,7,2,7168,,0,1,3310,{},{},{}
 43182,saiyan3,Cabelo de Sayajin 3,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3311,{},{},{}
 43183,songokuhair,Cabelo do Goku,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3312,{},{},{}
 43184,pikachuhood,Capuz do Pikachu,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3313,{},{},{}
-43185,save_the_queen,Chapéu_Salve_a_Rainha,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3314,{},{},{}
+43185,save_the_queen,Chapï¿½u_Salve_a_Rainha,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3314,{},{},{}
 43186,mad_hatter,Chapeleiro_Louco,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3315,{},{},{}
-43187,Halloween_Wizard_Hat,Chapéu_de_Bruxo_de_Halloween,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3316,{},{},{}
-43188,Mononoke_Mask,Máscara_Mononoke,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3317,{},{},{}
-43189,airman_hat,Chapéu_de_Aviador,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3318,{},{},{}
-43190,black_vesper_mask,Máscara_de_Vesper_Preta,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3319,{},{},{}
-43191,dark_lord,Chapéu_do_Senhor_dos_Mortos,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3320,{},{},{}
-43192,ash_hat,Chapéu_de_Ash,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3321,{},{},{}
+43187,Halloween_Wizard_Hat,Chapï¿½u_de_Bruxo_de_Halloween,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3316,{},{},{}
+43188,Mononoke_Mask,Mï¿½scara_Mononoke,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3317,{},{},{}
+43189,airman_hat,Chapï¿½u_de_Aviador,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3318,{},{},{}
+43190,black_vesper_mask,Mï¿½scara_de_Vesper_Preta,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3319,{},{},{}
+43191,dark_lord,Chapï¿½u_do_Senhor_dos_Mortos,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3320,{},{},{}
+43192,ash_hat,Chapï¿½u_de_Ash,5,20,,800,,3,,0,0xFFFFFFFF,7,2,1024,,0,1,3321,{},{},{}
 //====================================================================================================
-// Equipamentos Para a Cabeça [Meio]
+// Equipamentos Para a Cabeï¿½a [Meio]
 //====================================================================================================
-//44000,Sunglasses_,Óculos Escuros,5,5000,,100,,0,,3,0xFFFFFFFF,7,2,512,,0,0,12,{},{},{}
-//44001,Angel_Spirit,Espírito Olímpico,5,20,,200,,0,,3,0xFFFFFFFF,7,2,512,,30,0,394,{},{},{}
+//44000,Sunglasses_,ï¿½culos Escuros,5,5000,,100,,0,,3,0xFFFFFFFF,7,2,512,,0,0,12,{},{},{}
+//44001,Angel_Spirit,Espï¿½rito Olï¿½mpico,5,20,,200,,0,,3,0xFFFFFFFF,7,2,512,,30,0,394,{},{},{}
 //44002,Eyes_Of_Darkness,Olho de Mimir,5,20,,100,,1,,3,0xFFFFFFFF,7,2,512,,50,0,467,{},{},{}
 //44003,Blush_Of_Groom,Rubor de Batalha,5,20,,50,,0,,3,0xFFFFFFFF,7,2,512,,0,0,125,{},{},{}
 //44004,Odin_Mask,Odin Mask,5,20,,100,,1,,3,0xFFFFFFFF,7,2,512,,50,0,480,{},{},{}
-//44005,Hockey_Mask,Máscara do Mason,5,20,,100,,1,,3,0xFFFFFFFF,7,2,513,,50,0,336,{},{},{}
+//44005,Hockey_Mask,Mï¿½scara do Mason,5,20,,100,,1,,3,0xFFFFFFFF,7,2,513,,50,0,336,{},{},{}
 //44006,Observer,Rastreador GZ,5,20,,100,,1,,3,0xFFFFFFFF,7,2,512,,35,0,337,{},{},{}
-//44007,Robo_Eye,Olhos Biônicos,5,20,,200,,2,,3,0xFFFFFFFF,7,2,512,,10,0,345,{},{},{}
+//44007,Robo_Eye,Olhos Biï¿½nicos,5,20,,200,,2,,3,0xFFFFFFFF,7,2,512,,10,0,345,{},{},{}
 //44008,Ear_Of_Angel's_Wing,Orelhas de Anjo,5,20,,100,,1,,3,0xFFFFFFFF,7,2,512,,70,0,158,{},{},{}
 //44009,Ear_Of_Devil's_Wing,Asas Malignas,5,20,,100,,1,,3,0xFFFFFFFF,7,2,512,,70,0,152,{},{},{}
 //44010,Elven_Ears,Orelhas de Elfo,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,73,{},{},{}
@@ -634,7 +634,7 @@
 44026,aura_de_flor,Aura de Flores,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3337,{},{},{}
 44027,aura_de_frutos,Aura de Frutos,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3338,{},{},{}
 44028,aura_de_marin,Aura de Marin,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3339,{},{},{}
-44029,aura_de_musica,Aura de Música,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3340,{},{},{}
+44029,aura_de_musica,Aura de Mï¿½sica,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3340,{},{},{}
 44030,aura_de_neve,Aura de Neve,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3341,{},{},{}
 44031,scarf_2,Cachecol de Natal,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3342,{},{},{}
 44032,scarf_3,Cachecol Vermelho,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3343,{},{},{}
@@ -644,93 +644,93 @@
 44036,scarf_7,Cachecol Azul,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3347,{},{},{}
 44037,scarf_8,Cachecol Preto,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3348,{},{},{}
 44038,cavalo_marinho_azul,Cavalo Marinho Azul,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3349,{},{},{}
-44039,cavalo_marinho_do_arco_iris,Cavalo Marinho do Arco Íris,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3350,{},{},{}
+44039,cavalo_marinho_do_arco_iris,Cavalo Marinho do Arco ï¿½ris,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3350,{},{},{}
 44040,spell_aura,Aura Sagrada,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3351,{},{},{}
 44041,Smoke_Screen,Aura de Lighthalzen,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3352,{},{},{}
 44042,smoke_screen_amarela,Aura de Lighthalzen Amarela,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3353,{},{},{}
 44043,PIPEPORING,Pipe Poring,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3354,{},{},{}
 44044,smoke_screen_azul_escura,Aura de Lighthalzen Azul Escuro,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3355,{},{},{}
-44045,PORING,Família Poring,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3356,{},{},{}
+44045,PORING,Famï¿½lia Poring,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3356,{},{},{}
 44046,smoke_screen_marrom,Aura de Lighthalzen Marrom,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3357,{},{},{}
 44047,Smoke_Screen_preta,Aura de Lighthalzen Preta,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3358,{},{},{}
-44048,PORING000,Balão Poring,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3359,{},{},{}
+44048,PORING000,Balï¿½o Poring,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3359,{},{},{}
 44049,PUNHOX,Escudo Smart,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3360,{},{},{}
 44050,smoke_screen_verde_escura,Aura de Lighthalzen Verde Escuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,1,1,3361,{},{},{}
-44051,RAIO,Relâmpago,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3362,{},{},{}
-44052,RAIOMON,Trovões,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3363,{},{},{}
+44051,RAIO,Relï¿½mpago,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3362,{},{},{}
+44052,RAIOMON,Trovï¿½es,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3363,{},{},{}
 44053,Rabo_De_Gato,Rabo de Gato,5,20,,100,,0,,3,0xFFFFFFFF,7,2,2048,,70,0,3364,{},{},{}
 44054,rabo_de_sayajin,Rabo de Sayajin,5,20,,100,,0,,3,0xFFFFFFFF,7,2,2048,,70,0,3365,{},{},{}
-44055,rabo_malefico,Rabo Maléfico,5,20,,100,,0,,3,0xFFFFFFFF,7,2,2048,,70,0,3366,{},{},{}
+44055,rabo_malefico,Rabo Malï¿½fico,5,20,,100,,0,,3,0xFFFFFFFF,7,2,2048,,70,0,3366,{},{},{}
 44056,rabo_negro,Rabo Negro,5,20,,100,,0,,3,0xFFFFFFFF,7,2,2048,,70,0,3367,{},{},{}
-44057,garden_keeper_rucksack,Mochila do Guardião,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,0,3368,{},{},{}
+44057,garden_keeper_rucksack,Mochila do Guardiï¿½o,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,0,3368,{},{},{}
 44058,asas_da_fantasia,Asas da Fantasia,5,20,,100,,0,,0,0xFFFFFFFF,7,2,512,,70,0,3369,{},{},{}
-44059,Scream_Mask,Máscara do Pânico,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3370,{},{},{}
+44059,Scream_Mask,Mï¿½scara do Pï¿½nico,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3370,{},{},{}
 44060,saiyan_aura3,Aura de Sayajin,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3371,{},{},{}
 44061,saiyan_aura_blue,Aura de Sayajin Azul,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3372,{},{},{}
 44062,saiyan_aura_white,Aura de Sayajin Branco,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3373,{},{},{}
 44063,saiyan_aura_black,Aura de Sayajin Preto,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3374,{},{},{}
 44064,saiyan_aura_vermelho,Aura de Sayajin Vermelho,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3375,{},{},{}
 44065,0315_celltail,Rabo do Cell,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3376,{},{},{}
-44066,fs_hallowmask,Máscara do VAIZARD,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3377,{},{},{}
+44066,fs_hallowmask,Mï¿½scara do VAIZARD,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3377,{},{},{}
 44067,bat_ring,Aura de Morcegos,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3378,{},{},{}
-44068,auradecoracoes_preta,Aura de Corações Pretos,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3379,{},{},{}
+44068,auradecoracoes_preta,Aura de Coraï¿½ï¿½es Pretos,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3379,{},{},{}
 44069,aura_de_peixes,Aura de Peixes,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3380,{},{},{}
-44070,aop,Aura da Família Poring,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3381,{},{},{}
-44071,goblin_leader_coat,Capa do Goblin Líder,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3382,{},{},{}
+44070,aop,Aura da Famï¿½lia Poring,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3381,{},{},{}
+44071,goblin_leader_coat,Capa do Goblin Lï¿½der,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3382,{},{},{}
 44072,Black_Rogue_Cape,Capa Preta de Arruaceiro,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3383,{},{},{}
-44073,floating_balloons,Balões Flutuantes,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3384,{},{},{}
+44073,floating_balloons,Balï¿½es Flutuantes,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3384,{},{},{}
 44074,Furry_Black_Coat,Capa Peluda,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3385,{},{},{}
 44075,ghost_claw,Aura de Garras Fantasmas,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3386,{},{},{}
-44076,kaura,Espírito de Kiel,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3387,{},{},{}
-44077,pink_simsimi_balloon,Balão Rosa de Simsimi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3388,{},{},{}
+44076,kaura,Espï¿½rito de Kiel,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3387,{},{},{}
+44077,pink_simsimi_balloon,Balï¿½o Rosa de Simsimi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3388,{},{},{}
 44078,Poring_Bag,Mochila de Poring,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3389,{},{},{}
 44079,Red_Rogue_Cape,Capa Vermelha de Arruaceiro,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3390,{},{},{}
 44080,Rose_Ring,Aura de Rosas,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3391,{},{},{}
-44081,simsimi_balloon,Balão de Simsimi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3392,{},{},{}
-44082,Water_Goddess_Aura,Aura da Deusa da Água,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3393,{},{},{}
-44083,Akira_And_Niki_Moving_Ninja,Espírito de Akira,5,20,,100,,0,,4,0x02000000,7,2,512,,70,1,3394,{},{},{}
+44081,simsimi_balloon,Balï¿½o de Simsimi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3392,{},{},{}
+44082,Water_Goddess_Aura,Aura da Deusa da ï¿½gua,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3393,{},{},{}
+44083,Akira_And_Niki_Moving_Ninja,Espï¿½rito de Akira,5,20,,100,,0,,4,0x02000000,7,2,512,,70,1,3394,{},{},{}
 44084,fred_aureoladosabio,Adorno_dos_Deuses,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3395,{},{},{}
 44085,supremoornamentododeusdourado,Ornamento_do_Deus_Dourado,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3396,{},{},{}
 44086,monitor_de_dados,Monitor de Dados,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3397,{},{},{}
 44087,Hephaestus_Aura,Aura_de_Hefesto,5,20,,100,,0,,3,0xFFFFFFFF,7,2,512,,70,0,3398,{},{},{}
 //44066,kakashi,Bandana do Kakashi,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,0,1,3212,{},{},{}
 44088,Piamette_Doll,Boneca_de_Piamette,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3399,{},{},{}
-44089,Quve_Spirit,Espírito de Quve,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3400,{},{},{}
-44090,guy_fawkes_mask,Máscara Anonymous,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3401,{},{},{}
-44091,mascara_anbu,Máscara ANBU,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3402,{},{},{}
+44089,Quve_Spirit,Espï¿½rito de Quve,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3400,{},{},{}
+44090,guy_fawkes_mask,Mï¿½scara Anonymous,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3401,{},{},{}
+44091,mascara_anbu,Mï¿½scara ANBU,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3402,{},{},{}
 44092,falling_money,Dinheiro Caindo,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3403,{},{},{}
-44093,abbadon_lightning,Aura Relâmpago de Abbadon,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3404,{},{},{}
+44093,abbadon_lightning,Aura Relï¿½mpago de Abbadon,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3404,{},{},{}
 44094,aqua_crystal_ring,Aura de Cristais Azuis,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3405,{},{},{}
 44095,297,Esferas do Poder 2.0,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3406,{},{},{}
 44096,nyancat,Nyancat,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3407,{},{},{}
 44097,littledeviltail,Cauda do Diabinho,5,20,,100,,0,,4,0x00000001,7,2,512,,70,1,3408,{},{},{}
 44098,wizring_blue,Aura_do_Caos_Azul,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3409,{},{},{}
 44099,zabuza_sword,Espada_Zabuza,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3410,{},{},{}
-44100,angeling_balloon,Balão_do_Angeling,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3411,{},{},{}
-44101,boo_balloon,Balão_do_Boo,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3412,{},{},{}
-44102,celebi_balloon,Balão_do_Celebi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3413,{},{},{}
-44103,osiris_balloons,Balão_do_Osíris,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3414,{},{},{}
-44104,poring_balloon2,Balão_do_Poring,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3415,{},{},{}
+44100,angeling_balloon,Balï¿½o_do_Angeling,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3411,{},{},{}
+44101,boo_balloon,Balï¿½o_do_Boo,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3412,{},{},{}
+44102,celebi_balloon,Balï¿½o_do_Celebi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3413,{},{},{}
+44103,osiris_balloons,Balï¿½o_do_Osï¿½ris,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3414,{},{},{}
+44104,poring_balloon2,Balï¿½o_do_Poring,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3415,{},{},{}
 44105,ominous_skulls,Caveiras_Ominous,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3416,{},{},{}
-44106,bear_balloons,Balão_de_Urso,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3417,{},{},{}
-44107,deviruchi_balloon,Balão_de_Deviruchi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3418,{},{},{}
-44108,espirito_maldito_negro,Espírito_Maldito_Negro,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3419,{},{},{}
-44109,dark_spirit_of_thanatos,Espírito_Negro_de_Thanatos,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3420,{},{},{}
-44110,devils_spirit,Espíritos_Demoníacos,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3421,{},{},{}
+44106,bear_balloons,Balï¿½o_de_Urso,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3417,{},{},{}
+44107,deviruchi_balloon,Balï¿½o_de_Deviruchi,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3418,{},{},{}
+44108,espirito_maldito_negro,Espï¿½rito_Maldito_Negro,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3419,{},{},{}
+44109,dark_spirit_of_thanatos,Espï¿½rito_Negro_de_Thanatos,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3420,{},{},{}
+44110,devils_spirit,Espï¿½ritos_Demonï¿½acos,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3421,{},{},{}
 44111,blue_shield,Escudo_Azul,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3422,{},{},{}
 44112,blades_of_sparda,Espadas_de_Sparda,5,20,,100,,0,,0,0xFFFFFFFF,7,2,2048,,70,0,3423,{},{},{}
 //====================================================================================================
-// Equipamentos Para a Cabeça [Baixo]
+// Equipamentos Para a Cabeï¿½a [Baixo]
 //====================================================================================================
 //45000,4Leaf_Clover_In_Mouth,4Leaf Clover In Mouth,5,20,,0,,2,,3,0xFFFFFFFF,7,2,1,,1,0,571,{},{},{}
 //45001,Bubble_Gum_In_Mouth,Bubble Gum In Mouth,5,20,,0,,2,,3,0xFFFFFFFF,7,2,1,,1,0,572,{},{},{}
 //45002,Donut_In_Mouth,Rosquinha,5,20,,50,,1,,3,0xFFFFFFFF,7,2,1,,1,0,569,{},{},{}
 //45003,Antique_Pipe,Antique Pipe,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,383,{},{},{}
 //45004,Well_Baked_Toast,Torrada Crocante,5,20,,50,,0,,3,0xFFFFFFFF,7,2,1,,0,0,188,{},{},{}
-//45005,Gang_Scarf,Máscara de Fugitivo,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,60,0,369,{},{},{}
+//45005,Gang_Scarf,Mï¿½scara de Fugitivo,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,60,0,369,{},{},{}
 //45006,Ninja_Scroll,Pergaminho de Ninpou,5,20,,200,,0,,3,0xFFFFFFFF,7,2,1,,60,0,370,{},{},{}
-//45007,Centimental_Flower,Flor Romântica,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,56,{},{},{}
-//45008,Centimental_Leaf,Folha Romântica,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,57,{},{},{}
+//45007,Centimental_Flower,Flor Romï¿½ntica,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,56,{},{},{}
+//45008,Centimental_Leaf,Folha Romï¿½ntica,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,57,{},{},{}
 45009,butterflywingsblack,Asas de Borboleta Preta,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3424,{},{},{}
 45010,butterflywingsblue,Asas de Borboleta Azul,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3425,{},{},{}
 45011,butterflywingsgreen,Asas de Borboleta Verde,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3426,{},{},{}
@@ -739,20 +739,20 @@
 45014,butterflywingsyellow,Asas de Borboleta Amarela,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3429,{},{},{}
 45015,Asa_Azul,Asas de Seda Azul,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3430,{},{},{}
 45016,RAPOSA,Chakra da Raposa,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3431,{},{},{}
-45017,asas_da_vinganca,Asas da Vingança,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3432,{},{},{}
+45017,asas_da_vinganca,Asas da Vinganï¿½a,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3432,{},{},{}
 45018,asas_dos_ares,Asas dos Ares,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3433,{},{},{}
 45019,deviling_rucksack,Mochila do Deviling,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3434,{ },{},{}
 45020,fairy,Asas de Fada,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3435,{},{},{}
 45021,Rastafari_Fairy_Wings,Asas de Rastafari,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3436,{},{},{}
 45022,pequenas_asas_maleficas,Asas do Diabinho,5,20,,100,,0,,4,0x00000001,7,2,1,,0,1,3437,{},{},{}
 45023,polar_bear_rucksack,Mochila do Urso Polar,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3438,{},{},{}
-45024,diamond_wing,Asas Gélidas de Safira,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3439,{},{},{}
+45024,diamond_wing,Asas Gï¿½lidas de Safira,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3439,{},{},{}
 45025,IncubusWings,Asas de Incubus,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3440,{},{},{}
-45026,gloria_da_fenix,Glória da Fênix,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,0,0,3441,{},{},{}
+45026,gloria_da_fenix,Glï¿½ria da Fï¿½nix,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,0,0,3441,{},{},{}
 45027,faixa_azul,Faixa Azul,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3442,{},{},{}
-45028,saiyan_god_rose_air_pressure,Pressão Sayajin,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3443,{},{},{}
+45028,saiyan_god_rose_air_pressure,Pressï¿½o Sayajin,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3443,{},{},{}
 45029,Saiyan_Hair2,Cabelo SSJ4,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3444,{},{},{}
-45030,asas_de_reptil,Asas de Réptil,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3445,{},{},{}
+45030,asas_de_reptil,Asas de Rï¿½ptil,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3445,{},{},{}
 45031,asas_elegantes,Asas Elegantes,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3446,{},{},{}
 45032,chama_branca,Chama Branca,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3447,{},{},{}
 45033,SC345,Asas da Fortuna,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3448,{},{},{}
@@ -764,19 +764,19 @@
 45039,Asas_de_Fogo,Asas de Fogo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3454,{},{},{}
 45040,Asas_de_Gelo,Asas de Gelo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3455,{},{},{}
 45041,Asas_de_Fogo_Suprema,Asas de Fogo Suprema,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3456,{},{},{}
-45042,Asas_da_retribuição,Asas_da_retribuição,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3457,{},{},{}
-45043,Fantasmagórico,Fantasmagórico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,0,1,3458,{},{},{}
-45044,Asas_do_Espírito,Asas_do_Espírito,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3459,{},{},{}
-45045,Asas_do_Paraíso,Asas do Paraíso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3460,{},{},{}
+45042,Asas_da_retribuiï¿½ï¿½o,Asas_da_retribuiï¿½ï¿½o,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3457,{},{},{}
+45043,Fantasmagï¿½rico,Fantasmagï¿½rico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,0,1,3458,{},{},{}
+45044,Asas_do_Espï¿½rito,Asas_do_Espï¿½rito,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3459,{},{},{}
+45045,Asas_do_Paraï¿½so,Asas do Paraï¿½so,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3460,{},{},{}
 45046,Asas_da_Espiritualidade,Asas_da_Espiritualidade,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3461,{},{},{}
 45047,Asas_da_Luz,Asas da Luz,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3462,{},{},{}
 45048,Asas_do_Sol_Nascente,Asas_do_Sol_Nascente,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3463,{},{},{}
 45049,SHOCK33,Choque das Trevas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3464,{},{},{}
-45050,Malevolent_Wings,Asas Malévolas,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3465,{},{},{}
-45051,fs_butterfly,Asas de Borboleta Púrpura,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3466,{},{},{}
+45050,Malevolent_Wings,Asas Malï¿½volas,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3465,{},{},{}
+45051,fs_butterfly,Asas de Borboleta Pï¿½rpura,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3466,{},{},{}
 45052,SHOCKZY,Choque Divino,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3467,{},{},{}
 45053,0315_cellwing,Asas do Cell,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3468,{},{},{}
-45054,fred_asastyrel,Asas_Árticas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3469,{},{},{}
+45054,fred_asastyrel,Asas_ï¿½rticas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3469,{},{},{}
 45055,30120,Asas_de_Arachnia,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3470,{},{},{}
 45056,asas_de_mihael,Asas de Mihael,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3471,{},{},{}
 45057,Truth_Seeking_Orb,Truth Seeking Orb,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3472,{},{},{}
@@ -788,38 +788,38 @@
 45063,garras_de_siri,Garras de Siri,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3478,{},{},{}
 45064,asas_sangrentas,Asas Sangrentas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3479,{},{},{}
 45065,Gear0900,Asas de Muninn,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3480,{},{},{}
-45066,Vindicated_Wing,Asas_da_Tentação,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3481,{},{},{}
+45066,Vindicated_Wing,Asas_da_Tentaï¿½ï¿½o,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3481,{},{},{}
 45067,asas_de_anjo_brilhante,Asas de Anjo Brilhante,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3482,{},{},{}
 45068,fred_asademetal,Asas de Metal,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3483,{},{},{}
 45069,asas_de_teia_de_aranha,Asas de Teia de Aranha,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3484,{},{},{}
-45070,asas_de_valkiria,Asas de Valquíria,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3485,{},{},{}
+45070,asas_de_valkiria,Asas de Valquï¿½ria,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3485,{},{},{}
 45071,fred_asasdeshaira,Asas_de_Fada_Colorida,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3486,{},{},{}
 45072,fred_asasdaluacrescente,Asas_da_Lua_Crescente,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3487,{},{},{}
 45073,Vulture_Wings,Asas_do_Abutre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3488,{},{},{}
-45074,purple_butterfly_wings,Asas_de_Fada_Púrpura,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3489,{},{},{}
-45075,Sharumans_Staff,Cajado Sharumã,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3490,{},{},{}
+45074,purple_butterfly_wings,Asas_de_Fada_Pï¿½rpura,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3489,{},{},{}
+45075,Sharumans_Staff,Cajado Sharumï¿½,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3490,{},{},{}
 45076,Zoro_Swords,Espadas_de_Zoro,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3491,{},{},{}
 45077,Guitar2,Guitarra,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3492,{},{},{}
-45078,lamina_mithril,Lâmina_de_Mithril,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3493,{},{},{}
+45078,lamina_mithril,Lï¿½mina_de_Mithril,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3493,{},{},{}
 45079,War_Axe2,Machado_de_Guerra,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3494,{},{},{}
 45080,Jarro_Gaara,Jarro_do_Gaara,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3495,{},{},{}
-45081,Twin_Naght_Sieger_Sword,Lâminas Gêmeas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3496,{},{},{}
+45081,Twin_Naght_Sieger_Sword,Lï¿½minas Gï¿½meas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,1,3496,{},{},{}
 45082,baby_angel_wings,Asas_Menores,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3497,{},{},{}
 45083,WINGPRO,Asas Profissionais,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3498,{},{},{}
 45084,Gear0898,Asas_Cintilantes,5,20,,100,,0,,4,0xFFFFFFFF,7,2,1,,0,0,3499,{},{},{}
 45085,Asas_de_Hraesvelg,Asas_de_Hraesvelg,5,20,,100,,0,,3,0xFFFFFFFF,7,2,1,,0,0,3500,{},{},{}
-45086,zombie_hands,Mãos Zumbis,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3501,{},{},{}
+45086,zombie_hands,Mï¿½os Zumbis,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3501,{},{},{}
 45087,Cursed_Sword_of_Abbadon,Espada de Abbadon,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3502,{},{},{}
 45088,Thana_Sword,Espada de Thanatos,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3503,{},{},{}
 45089,unknownsword,Espada Desconhecida,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3504,{},{},{}
 45090,bomba,Bomba,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3505,{},{},{}
 45091,bottledmilk,Garrafa de Leite,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3506,{},{},{}
-45092,crusadershield,Escudo do Templário,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3507,{},{},{}
+45092,crusadershield,Escudo do Templï¿½rio,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3507,{},{},{}
 45093,espada,Espada,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3508,{},{},{}
-45094,huntersbow,Arco do Caçador,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3509,{},{},{}
+45094,huntersbow,Arco do Caï¿½ador,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3509,{},{},{}
 45095,modernjar,Jarra Moderna,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3510,{},{},{}
 45096,plunger,Desentupidor,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3511,{},{},{}
-45097,redpotion,Poção Vermelha,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3512,{},{},{}
+45097,redpotion,Poï¿½ï¿½o Vermelha,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3512,{},{},{}
 45098,shuriken2,Shuriken,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3513,{},{},{}
 45099,thorshammer,Martelo de Thor,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3514,{},{},{}
 45100,black_sparkly_xmas_cloak,Capa Brilhante Preta,5,20,,100,,0,,0,0xFFFFFFFF,7,2,4096,,70,0,3515,{},{},{}
@@ -828,10 +828,10 @@
 //====================================================================================================
 // Sets
 //====================================================================================================
-//46000,phoenix_armor,Armadura da Fênix,5,20,,0,,0,,1,0xFFFFFFFF,7,2,16,,1,1,0,{},{},{}
-//46001,phoenix_manteau,Manteau da Fênix,5,20,,0,,0,,1,0xFFFFFFFF,7,2,4,,65,1,0,{},{},{}
-//46002,phoenix_shield,Escudo da Fênix,5,30000,,500,,3,,1,0xFFFFFFFF,7,2,32,,65,1,4,{},{},{}
-//46003,phoenix_shoes,Sapatos da Fênix,5,20,,0,,0,,1,0xFFFFFFFF,7,2,64,,85,1,0,{},{},{}
+//46000,phoenix_armor,Armadura da Fï¿½nix,5,20,,0,,0,,1,0xFFFFFFFF,7,2,16,,1,1,0,{},{},{}
+//46001,phoenix_manteau,Manteau da Fï¿½nix,5,20,,0,,0,,1,0xFFFFFFFF,7,2,4,,65,1,0,{},{},{}
+//46002,phoenix_shield,Escudo da Fï¿½nix,5,30000,,500,,3,,1,0xFFFFFFFF,7,2,32,,65,1,4,{},{},{}
+//46003,phoenix_shoes,Sapatos da Fï¿½nix,5,20,,0,,0,,1,0xFFFFFFFF,7,2,64,,85,1,0,{},{},{}
 //46004,Godlike_Armor,Armadura de Ouro,5,20,,0,,0,,1,0xFFFFFFFF,7,2,16,,1,1,0,{},{},{}
 //46005,Godlike_Manteal,Manteau de Ouro,5,20,,0,,0,,1,0xFFFFFFFF,7,2,4,,65,1,0,{},{},{}
 //46006,Godlike_Shield,Escudo de Ouro,5,30000,,500,,3,,1,0xFFFFFFFF,7,2,32,,65,1,4,{},{},{}
@@ -842,10 +842,10 @@
 //====================================================================================================
 //46500,Amuleto_da_destreza,Amuleto da destreza,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46501,Amuleto_da_vitalidade,Amuleto da vitalidade,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
-//46502,Amuleto_da_força,Amuleto da força,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
+//46502,Amuleto_da_forï¿½a,Amuleto da forï¿½a,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46503,Amuleto_da_agilidade,Amuleto da agilidade,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46504,Amuleto_da_sorte,Amuleto da sorte,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
-//46505,Amuleto_da_inteligência,Amuleto da inteligencia,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
+//46505,Amuleto_da_inteligï¿½ncia,Amuleto da inteligencia,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46506,Amuleto_Vermelho,Anel do Infinito,5,0,,10,,0,,2,0xFFFFFFFF,7,2,008,,1,0,0,{},{},{}
 //46507,Amuleto_Vermelho,Anel Revigorante,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 
@@ -855,10 +855,10 @@
 //46600,Brynhild,Armadura de Brynhildr,5,20,,400,,10,,1,0xFFFFFFFF,7,2,16,,94,0,0,{},{},{}
 //46601,Sleipnir,Sleipnir,5,20,,3500,,5,,1,0xFFFFFFFF,7,2,64,,94,0,0,{},{},{}
 //46602,Mjolnir,Mjollnir,4,20,,6000,350,,1,4,0x00048580,7,2,2,4,95,0,8,{},{},{}
-//46603,Megingjard_da_Força,Megingjard da Força,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
+//46603,Megingjard_da_Forï¿½a,Megingjard da Forï¿½a,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46604,Megingjard_da_Agilidade,Megingjard da Agilidade,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46605,Megingjard_da_Sorte,Megingjard da Sorte,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
-//46606,Megingjard_da_Inteligência,Megingjard da Inteligência,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
+//46606,Megingjard_da_Inteligï¿½ncia,Megingjard da Inteligï¿½ncia,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46607,Megingjard_da_Destreza,Megingjard da Destreza,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46608,Megingjard_da_Vitalidade,Megingjard da Vitalidade,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //====================================================================================================
@@ -868,9 +868,9 @@
 //46629,Brynhild,Armadura de Brynhildr,5,20,,400,,10,,1,0xFFFFFFFF,7,2,16,,94,0,0,{},{},{}
 //46630,Sleipnir,Sleipnir,5,20,,3500,,5,,1,0xFFFFFFFF,7,2,64,,94,0,0,{},{},{}
 //46631,Sleipnir,Sleipnir,5,20,,3500,,5,,1,0xFFFFFFFF,7,2,64,,94,0,0,{},{},{}
-//46632,Megingjard_da_Força,Megingjard da Força,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
+//46632,Megingjard_da_Forï¿½a,Megingjard da Forï¿½a,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46633,Megingjard_da_Sorte,Megingjard da Sorte,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
-//46634,Megingjard_da_Inteligência,Megingjard da Inteligência,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
+//46634,Megingjard_da_Inteligï¿½ncia,Megingjard da Inteligï¿½ncia,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46635,Megingjard_da_Destreza,Megingjard da Destreza,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 //46636,Megingjard_da_Vitalidade,Megingjard da Vitalidade,5,0,,10,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{},{},{}
 
@@ -891,36 +891,36 @@
 //46923,Perfurar_em_Esperial_+20,Perfurar em Esperial +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46924,Chuva_de_Meteoros_+20,Chuva de Meteoros +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46925,Nevasca_+20,Nevasca +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46926,Trovão_de_Jupter_+20,Trovão de Jupter +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46927,Lanças_de_Fogo_+20,Lanças de Fogo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46928,Lanças_de_Gelo_+20,Lanças de Gelo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46926,Trovï¿½o_de_Jupter_+20,Trovï¿½o de Jupter +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46927,Lanï¿½as_de_Fogo_+20,Lanï¿½as de Fogo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46928,Lanï¿½as_de_Gelo_+20,Lanï¿½as de Gelo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46929,Rajada_de_Flechas_+20,Rajada de Flechas +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46930,Tiro_Preciso_+20,Tiro Preciso +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46931,Sacrifício_de_Mártir_+20,Sacrifício de Mártir +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46931,Sacrifï¿½cio_de_Mï¿½rtir_+20,Sacrifï¿½cio de Mï¿½rtir +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46932,Luz_Divina_+20,Luz Divina +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46933,Lâminas_Destruidoras_+20,Lâminas Destruidoras +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46933,Lï¿½minas_Destruidoras_+20,Lï¿½minas Destruidoras +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46934,Tocaia_+20,Tocaia +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46935,Choque_de_Carrinho_+20,Choque de Carrinho +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46936,Ataque Mortal_+20,Ataque Mortal +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46937,Rajada_Certeira_+20,Rajada Certeira +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46938,Desperado_+20,Desperado +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46939,Vulcão_de_Flechas_+20,Vulcão de Flechas +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46939,Vulcï¿½o_de_Flechas_+20,Vulcï¿½o de Flechas +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 
 //4850,DemiHuman_+2%,DemiHuman +2%,6,20,,10,,,,,,,,769,,,,,{},{},{}
 //4851,ATQM_+2%,ATQM +2%,6,20,,10,,,,,,,,769,,,,,{},{},{}
-//4852,Máx_HP/SP_+4%,Máx HP/SP +4%,6,20,,10,,,,,,,,769,,,,,{},{},{}
+//4852,Mï¿½x_HP/SP_+4%,Mï¿½x HP/SP +4%,6,20,,10,,,,,,,,769,,,,,{},{},{}
 //4874,DemiHuman_-2%,DemiHuman -2%,6,20,,10,,,,,,,,769,,,,,{ },{},{}
 //4875,DEFM_+15,DEFM +20,6,20,,10,,,,,,,,32,,,,,{},{},{}
 
 //4860,DemiHuman_+1%,DemiHuman +1%,6,20,,10,,,,,,,,769,,,,,{},{},{}
 //4861,ATQM_+1%,ATQM +1%,6,20,,10,,,,,,,,769,,,,,{},{},{}
-//4862,Máx_HP/SP_+2%,Máx HP/SP +2%,6,20,,10,,,,,,,,769,,,,,{},{},{}
+//4862,Mï¿½x_HP/SP_+2%,Mï¿½x HP/SP +2%,6,20,,10,,,,,,,,769,,,,,{},{},{}
 //4864,Fogo_-2%,Fogo -2%,6,20,,10,,,,,,,,32,,,,,{},{},{}
-//4865,Água_-2%,Água -2%,6,20,,10,,,,,,,,32,,,,,{},{},{}
+//4865,ï¿½gua_-2%,ï¿½gua -2%,6,20,,10,,,,,,,,32,,,,,{},{},{}
 //4866,Terra_-2%,Terra -2%,6,20,,10,,,,,,,,32,,,,,{},{},{}
 //4867,Vento_-2%,Vento -2%,6,20,,10,,,,,,,,32,,,,,{},{},{}
 //4868,Neutro_-2%,Neutro -2%,6,20,,10,,,,,,,,32,,,,,{},{},{}
-//4869,Máx_Peso_+800,Máx Peso +800,6,20,,10,,,,,,,,136,,,,,{},{},{}
+//4869,Mï¿½x_Peso_+800,Mï¿½x Peso +800,6,20,,10,,,,,,,,136,,,,,{},{},{}
 //4871
 
 //4876,AD_+30,AD +30,6,20,,10,,,,,,,,4,,,,,{},{},{}
@@ -933,19 +933,19 @@
 //4882,defall_+15,defall +15,6,20,,10,,,,,,,,4,,,,,{},{},{}
 //4883,DemiHuman_+2%_(Vento),DemiHuman +2% (Vento),6,20,,10,,,,,,,,769,,,,,{},{},{}
 
-//4884,Máx_HP/SP_+4%_(Fogo),Máx HP/SP +4% (Fogo),6,20,,10,,,,,,,,769,,,,,{},{},{}
-//4885,Máx_HP/SP_+4%_(Água),Máx HP/SP +4% (Água),6,20,,10,,,,,,,,769,,,,,{},{},{}
-//4886,Máx_HP/SP_+4%_(Terra),Máx HP/SP +4% (Terra),6,20,,10,,,,,,,,769,,,,,{},{},{}
-//4887,Máx_HP/SP_+4%_(Vento),Máx HP/SP +4% (Vento),6,20,,10,,,,,,,,769,,,,,{},{},{}
+//4884,Mï¿½x_HP/SP_+4%_(Fogo),Mï¿½x HP/SP +4% (Fogo),6,20,,10,,,,,,,,769,,,,,{},{},{}
+//4885,Mï¿½x_HP/SP_+4%_(ï¿½gua),Mï¿½x HP/SP +4% (ï¿½gua),6,20,,10,,,,,,,,769,,,,,{},{},{}
+//4886,Mï¿½x_HP/SP_+4%_(Terra),Mï¿½x HP/SP +4% (Terra),6,20,,10,,,,,,,,769,,,,,{},{},{}
+//4887,Mï¿½x_HP/SP_+4%_(Vento),Mï¿½x HP/SP +4% (Vento),6,20,,10,,,,,,,,769,,,,,{},{},{}
 
 //4888,ATQM_+2%_(Fogo),ATQM +2% (Fogo),6,20,,10,,,,,,,,769,,,,,{},{},{}
-//4889,ATQM_+2%_(Água),ATQM +2% (Água),6,20,,10,,,,,,,,769,,,,,{},{},{}
+//4889,ATQM_+2%_(ï¿½gua),ATQM +2% (ï¿½gua),6,20,,10,,,,,,,,769,,,,,{},{},{}
 //4890,ATQM_+2%_(Terra),ATQM +2% (Terra),6,20,,10,,,,,,,,769,,,,,{},{},{}
 //4891,ATQM_+2%_(Vento),ATQM +2% (Vento),6,20,,10,,,,,,,,769,,,,,{},{},{}
 
-//4892,Máx_Peso_+2000,Máx Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
-//4893,Máx_Peso_+2000,Máx Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
-//4894,Máx_Peso_+2000,Máx Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
+//4892,Mï¿½x_Peso_+2000,Mï¿½x Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
+//4893,Mï¿½x_Peso_+2000,Mï¿½x Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
+//4894,Mï¿½x_Peso_+2000,Mï¿½x Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
 
 //4895,Punho_Supremo_de_Asura_+10%,Punho Supremo de Asura +10%,6,20,,10,,,,,,,,4,,,,,{},{},{}
 //4896,Esferas_Esperituais_+20,Esferas Esperituais +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -953,46 +953,46 @@
 //4898,Perfurar_em_Esperial_+20,Perfurar em Esperial +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4899,Chuva_de_Meteoros_+20,Chuva de Meteoros +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4900,Nevasca_+20,Nevasca +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//4901,Trovão_de_Jupter_+20,Trovão de Jupter +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//4902,Lanças_de_Fogo_+20,Lanças de Fogo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//4903,Lanças_de_Gelo_+20,Lanças de Gelo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//4901,Trovï¿½o_de_Jupter_+20,Trovï¿½o de Jupter +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//4902,Lanï¿½as_de_Fogo_+20,Lanï¿½as de Fogo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//4903,Lanï¿½as_de_Gelo_+20,Lanï¿½as de Gelo +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4904,Rajada_de_Flechas_+20,Rajada de Flechas +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4905,Tiro_Preciso_+20,Tiro Preciso +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//4906,Sacrifício_de_Mártir_+20,Sacrifício de Mártir +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//4906,Sacrifï¿½cio_de_Mï¿½rtir_+20,Sacrifï¿½cio de Mï¿½rtir +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4907,Luz_Divina_+20,Luz Divina +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//4908,Lâminas_Destruidoras_+20,Lâminas Destruidoras +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//4908,Lï¿½minas_Destruidoras_+20,Lï¿½minas Destruidoras +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4909,Tocaia_+20,Tocaia +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4910,Choque_de_Carrinho_+20,Choque de Carrinho +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4911,Ataque Mortal_+20,Ataque Mortal +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4912,Rajada_Certeira_+20,Rajada Certeira +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //4913,Desperado_+20,Desperado +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ },{},{}
-//4914,Vulcão_de_Flechas_+20,Vulcão de Flechas +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//4914,Vulcï¿½o_de_Flechas_+20,Vulcï¿½o de Flechas +20,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 
 //====================================================================================================
 // Enchant CASH e BG
 //====================================================================================================
 //4863,Todos_atributos+5,Todos Atributos+5,6,20,,10,,,,,,,,20,,,,,{},{},{}
-//4853,Resistência_a_congelamento,Resistência a Congelamento,6,20,,10,,,,,,,,20,,,,,{},{},{}
+//4853,Resistï¿½ncia_a_congelamento,Resistï¿½ncia a Congelamento,6,20,,10,,,,,,,,20,,,,,{},{},{}
 //4854,Fogo_-5%,Fogo -5%,6,20,,10,,,,,,,,32,,,,,{},{},{}
-//4855,Água_-5%,Água -5%,6,20,,10,,,,,,,,32,,,,,{},{},{}
+//4855,ï¿½gua_-5%,ï¿½gua -5%,6,20,,10,,,,,,,,32,,,,,{},{},{}
 //4856,Terra_-5%,Terra -5%,6,20,,10,,,,,,,,32,,,,,{},{},{}
 //4857,Vento_-5%,Vento -5%,6,20,,10,,,,,,,,32,,,,,{},{},{}
 //4858,Neutro_-5%,Neutro -5%,6,20,,10,,,,,,,,32,,,,,{},{},{}
-//4859,Máx_Peso_+2000,Máx Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
+//4859,Mï¿½x_Peso_+2000,Mï¿½x Peso +2000,6,20,,10,,,,,,,,136,,,,,{},{},{}
 //4872,Indestrutivel,Indestrutivel,6,20,,10,,,,,,,,16,,,,,{},{},{}
 //4873,Velocidade,velocidade,6,20,,10,,,,,,,,64,,,,,{},{},{}
 
 
 //====================================================================================================
-// Pílulas
+// Pï¿½lulas
 //=================
 
-//46622,Pílula_Demon,Pílula Demon,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46623,Pílula_Demon,Pílula Dakota,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46624,Pílula_Demon,Pílula Elf,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46625,Pílula_Demon,Pílula Polaris,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46626,Pílula_Demon,Pílula Ghost,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
-//46627,Pílula_Demon,Pílula Orc,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46622,Pï¿½lula_Demon,Pï¿½lula Demon,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46623,Pï¿½lula_Demon,Pï¿½lula Dakota,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46624,Pï¿½lula_Demon,Pï¿½lula Elf,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46625,Pï¿½lula_Demon,Pï¿½lula Polaris,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46626,Pï¿½lula_Demon,Pï¿½lula Ghost,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46627,Pï¿½lula_Demon,Pï¿½lula Orc,11,0,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 
 //====================================================================================================
 // Skins
@@ -1041,9 +1041,9 @@
 //46018,Godlike_Shoes,Sapatos de Ouro,5,20,,500,,3,,,0xFFFFFFFF,7,2,64,,85,1,0,{},{},{}
 //46019,Poison_Bottle,Garrafa de Veneno,2,5000,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46020,Fire_Bottle,Frasco de Fogo Grego,3,200,,10,,,,,,,,,,,,,{},{},{}
-//46021,Acid_Bottle,Frasco de Ácido,3,200,,10,,,,,,,,,,,,,{},{},{}
+//46021,Acid_Bottle,Frasco de ï¿½cido,3,200,,10,,,,,,,,,,,,,{},{},{}
 //46022,Coating_Bottle,Frasco de Revestimento,3,200,,10,,,,,,,,,,,,,{},{},{}
-//46023,Box_Of_Thunder,Caixa do Trovão,2,1000,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+//46023,Box_Of_Thunder,Caixa do Trovï¿½o,2,1000,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46024,Aloebera,Aloe Vera,11,1500,,100,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46025,Box_Of_Grudge,Caixa do Ressentimento,2,1000,,200,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 //46026,Yggdrasilberry,Fruto de Yggdrasil,0,5000,,300,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -1072,7 +1072,7 @@
 //9074,Ovo_do_Fantasma_Maiden,Ovo do Fantasma Maiden,7,20,,0,,,,,,,,,,,,,{},{},{}
 //9150,Ovo_Familiar,Ovo de Familiar,7,20,,0,,,,,,,,,,,,,{},{},{}
 //9151,Ovo_Drainliar,Ovo de Drainliar,7,20,,0,,,,,,,,,,,,,{},{},{}
-//9152,Ovo_Familiar_Mistico,Ovo de Familiar Místico,7,20,,0,,,,,,,,,,,,,{},{},{}
+//9152,Ovo_Familiar_Mistico,Ovo de Familiar Mï¿½stico,7,20,,0,,,,,,,,,,,,,{},{},{}
 
 // =============== BrasilRO CARTAS LHZ FALSAS ===================== //
 //48008,Carta_Randel,Carta Randel,6,10,,10,,,,,,,,4,,,,,{},{},{}
@@ -1098,9 +1098,9 @@
 47003,EM,EM,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3521,{},{},{}
 47004,290,Espadas Divinas,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3522,{},{},{}
 47005,angelbrasilro,Angel BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3523,{},{},{}
-47006,balaobrasilrovip,Balão VIP,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3524,{},{},{}
+47006,balaobrasilrovip,Balï¿½o VIP,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3524,{},{},{}
 47007,Balaoszbrasilro,Eu Amo BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3525,{},{},{}
-47008,baloesbrasilro,Balões BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3526,{},{},{}
+47008,baloesbrasilro,Balï¿½es BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3526,{},{},{}
 47009,boinabrasilro,Boina BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3527,{},{},{}
 47010,borboletabrasilro,Asas de Borboleta BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3528,{},{},{}
 47011,cartolabrasilro,Cartola BrasilRO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3529,{},{},{}
@@ -1117,11 +1117,11 @@
 //																				//
 // ========================================================================= //
 47016,Dark_Lord_Helm,Elmo Dark Lord,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3534,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47017,Dragon_of_Eternity,Elmo Dragão da Eternidade,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3535,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47017,Dragon_of_Eternity,Elmo Dragï¿½o da Eternidade,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3535,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47018,EmpHelmet,Elmo do Emperium,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3536,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47019,Golden_Dragon_Helm,Elmo Dragão Dourado,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3537,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47020,Dark_Feathers_Helm,Elmo Maldição das Valquírias,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3538,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47021,Valkyrie_Blessing,Elmo Benção das Valquirias,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3539,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47019,Golden_Dragon_Helm,Elmo Dragï¿½o Dourado,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3537,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47020,Dark_Feathers_Helm,Elmo Maldiï¿½ï¿½o das Valquï¿½rias,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3538,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47021,Valkyrie_Blessing,Elmo Benï¿½ï¿½o das Valquirias,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3539,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47022,COTSEAS_BLK,Divino Orgulho Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3540,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47023,COTSEAS_BLU,Divino Orgulho Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3541,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47024,COTSEAS_GRN,Divino Orgulho Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3542,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
@@ -1136,12 +1136,12 @@
 //								 SET DIVERGENTE									   //
 //																				//
 // ========================================================================= //
-47032,DivergentGlassesblack,Óculos Divergente Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3550,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47033,DivergentGlassesblue,Óculos Divergente Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3551,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47034,DivergentGlassesgreen,Óculos Divergente Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3552,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47035,DivergentGlassesorange,Óculos Divergente Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3553,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47036,DivergentGlassesred,Óculos Divergente Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3554,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47037,DivergentGlasseswhite,Óculos Divergente Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3555,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47032,DivergentGlassesblack,ï¿½culos Divergente Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3550,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47033,DivergentGlassesblue,ï¿½culos Divergente Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3551,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47034,DivergentGlassesgreen,ï¿½culos Divergente Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3552,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47035,DivergentGlassesorange,ï¿½culos Divergente Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3553,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47036,DivergentGlassesred,ï¿½culos Divergente Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3554,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47037,DivergentGlasseswhite,ï¿½culos Divergente Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3555,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47038,DivergentHelm,Elmo Divergente,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3556,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47039,DivergentHelmblack,Elmo Divergente Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3557,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47040,DivergentHelmblue,Elmo Divergente Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3558,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
@@ -1156,8 +1156,8 @@
 47049,DivergentScarforange,Cachecol Divergente Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3567,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47050,DivergentScarfred,Cachecol Divergente Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3568,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47051,DivergentScarfwhite,Cachecol Divergente Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3569,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47052,DragonSpecHelm,Elmo Espectro do Dragão,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3570,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47053,DragonSpecScarf,Cachecol Espectro do Dragão,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3571,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47052,DragonSpecHelm,Elmo Espectro do Dragï¿½o,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3570,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47053,DragonSpecScarf,Cachecol Espectro do Dragï¿½o,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3571,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47054,OxSpecHelm,Elmo Espectro de Ox,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3572,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47055,OxSpecScarf,Cachecol Espectro de Ox,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3573,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47056,PhoenixSpecHelm,Elmo Espectro da Fenix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3574,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
@@ -1170,14 +1170,14 @@
 47063,TigerSpecScarf,Cachecol Espectro de Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3581,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47064,wolfdhelm,Elmo do Lobo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3582,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47065,wolfdscarf,Cachecol do Lobo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3583,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47066,DivergentScouter,Óculos Divergente,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3584,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47067,DragonSpecScouter,Óculos Espectro do Dragão,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3585,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47068,OxSpecScouter,Óculos Espectro de Ox,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3586,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47069,PhoenixSpecScouter,Óculos Espectro da Fenix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3587,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47070,SpectralScouter,Óculos Espectral,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3588,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47071,tigerdscouter,Óculos Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3589,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47072,TigerSpecScouter,Óculos Espectro de Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3590,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47073,wolfdscouter,Óculos Espectro do Lobo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3591,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47066,DivergentScouter,ï¿½culos Divergente,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3584,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47067,DragonSpecScouter,ï¿½culos Espectro do Dragï¿½o,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3585,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47068,OxSpecScouter,ï¿½culos Espectro de Ox,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3586,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47069,PhoenixSpecScouter,ï¿½culos Espectro da Fenix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3587,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47070,SpectralScouter,ï¿½culos Espectral,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3588,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47071,tigerdscouter,ï¿½culos Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3589,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47072,TigerSpecScouter,ï¿½culos Espectro de Tigre,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3590,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47073,wolfdscouter,ï¿½culos Espectro do Lobo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3591,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ============================================================================ //
 //							FIM DO SET DIVERGENTE								//
 //																				//
@@ -1187,81 +1187,81 @@
 //								 SET DIVINO										//
 //																				//
 // ========================================================================= //
-// ======================  Elmo da Fúria ================================ //
-47074,FURY,Elmo da Fúria,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3592,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47075,FURY_BLK,Elmo da Fúria Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3593,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47076,FURY_BLU,Elmo da Fúria Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3594,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47077,FURY_GRN,Elmo da Fúria Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3595,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47078,FURY_GRY,Elmo da Fúria Cinza,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3596,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47079,FURY_ORG,Elmo da Fúria Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3597,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47080,FURY_PNK,Elmo da Fúria Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3598,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47081,FURY_PRP,Elmo da Fúria Roxo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3599,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47082,FURY_RED,Elmo da Fúria Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3600,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47083,FURY_WHT,Elmo da Fúria Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3601,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47084,FURY_YLW,Elmo da Fúria Amarelo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3602,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+// ======================  Elmo da Fï¿½ria ================================ //
+47074,FURY,Elmo da Fï¿½ria,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3592,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47075,FURY_BLK,Elmo da Fï¿½ria Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3593,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47076,FURY_BLU,Elmo da Fï¿½ria Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3594,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47077,FURY_GRN,Elmo da Fï¿½ria Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3595,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47078,FURY_GRY,Elmo da Fï¿½ria Cinza,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3596,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47079,FURY_ORG,Elmo da Fï¿½ria Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3597,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47080,FURY_PNK,Elmo da Fï¿½ria Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3598,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47081,FURY_PRP,Elmo da Fï¿½ria Roxo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3599,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47082,FURY_RED,Elmo da Fï¿½ria Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3600,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47083,FURY_WHT,Elmo da Fï¿½ria Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3601,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47084,FURY_YLW,Elmo da Fï¿½ria Amarelo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3602,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // =================================================================== //
 // ================================================================== //
-// ======================  Elmo da Graça ================================ //
-47085,GRACE_BLK,Elmo da Graça Obscura,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3603,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47086,GRACE_BLU,Elmo da Graça Arcana,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3604,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47087,GRACE_GRN,Elmo da Graça Élfica,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3605,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47088,GRACE_GRY,Elmo da Graça do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3606,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47089,GRACE_ORG,Elmo da Graça do Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3607,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47090,GRACE_PNK,Elmo da Graça Venenosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3608,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47091,GRACE_PRP,Elmo da Graça Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3609,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47092,GRACE_RED,Elmo da Graça de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3610,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47093,GRACE_WHT,Elmo da Graça Pacífica,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3611,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47094,GRACE_YLW,Elmo da Graça do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3612,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+// ======================  Elmo da Graï¿½a ================================ //
+47085,GRACE_BLK,Elmo da Graï¿½a Obscura,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3603,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47086,GRACE_BLU,Elmo da Graï¿½a Arcana,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3604,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47087,GRACE_GRN,Elmo da Graï¿½a ï¿½lfica,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3605,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47088,GRACE_GRY,Elmo da Graï¿½a do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3606,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47089,GRACE_ORG,Elmo da Graï¿½a do Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3607,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47090,GRACE_PNK,Elmo da Graï¿½a Venenosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3608,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47091,GRACE_PRP,Elmo da Graï¿½a Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3609,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47092,GRACE_RED,Elmo da Graï¿½a de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3610,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47093,GRACE_WHT,Elmo da Graï¿½a Pacï¿½fica,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3611,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47094,GRACE_YLW,Elmo da Graï¿½a do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3612,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // =================================================================== //
 // ================================================================== //
 // ======================  Elmo do Instinto ================================ //
 47095,INSTINCT_BLK,Elmo do Instinto Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3613,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47096,INSTINCT_BLU,Elmo do Instinto Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3614,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47097,INSTINCT_GRN,Elmo do Instinto Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3615,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47097,INSTINCT_GRN,Elmo do Instinto ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3615,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47098,INSTINCT_GRY,Elmo do Instinto do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3616,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47099,INSTINCT_ORG,Elmo do Instinto do Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3617,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47100,INSTINCT_PNK,Elmo do Instinto Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3618,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47101,INSTINCT_PRP,Elmo do Instinto Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3619,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47102,INSTINCT_RED,Elmo do Instinto de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3620,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47103,INSTINCT_WHT,Elmo do Instinto Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3621,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47103,INSTINCT_WHT,Elmo do Instinto Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3621,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47104,INSTINCT_YLW,Elmo do Instinto do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3622,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // =================================================================== //
 // ================================================================== //
 // ======================  Elmo do Poder ================================ //
 47105,MIGHT_BLK,Elmo do Poder Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3623,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47106,MIGHT_BLU,Elmo do Poder Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3624,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47107,MIGHT_GRN,Elmo do Poder Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3625,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47107,MIGHT_GRN,Elmo do Poder ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3625,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47108,MIGHT_ORG,Elmo do Poder do Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3626,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47109,MIGHT_PNK,Elmo do Poder Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3627,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47110,MIGHT_PRP,Elmo do Poder Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3628,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47111,MIGHT_RED,Elmo do Poder de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3629,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47112,MIGHT_WHT,Elmo do Poder Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3630,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47112,MIGHT_WHT,Elmo do Poder Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3630,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47113,MIGHT_YLW,Elmo do Poder do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3631,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // =================================================================== //
 // ================================================================== //
 // ======================  Elmo do Esquecimento ================================ //
 47114,OBLIVION_BLK,Elmo do Esquecimento Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3632,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47115,OBLIVION_BLU,Elmo do Esquecimento Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3633,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47116,OBLIVION_GRN,Elmo do Esquecimento Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3634,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47116,OBLIVION_GRN,Elmo do Esquecimento ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3634,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47117,OBLIVION_GRY,Elmo do Esquecimento do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3635,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47118,OBLIVION_ORG,Elmo do Esquecimento do Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3636,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47119,OBLIVION_PNK,Elmo do Esquecimento Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3637,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47120,OBLIVION_PRP,Elmo do Esquecimento Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3638,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47121,OBLIVION_RED,Elmo do Esquecimento de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3639,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47122,OBLIVION_WHT,Elmo do Esquecimento Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3640,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47122,OBLIVION_WHT,Elmo do Esquecimento Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3640,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47123,OBLIVION_YLW,Elmo do Esquecimento do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3641,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // =================================================================== //
 // ================================================================== //
 // ======================  Elmo do Orgulho ================================ //
 47124,PRIDE_BLK,Elmo do Orgulho Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3642,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47125,PRIDE_BLU,Elmo do Orgulho Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3643,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47126,PRIDE_GRN,Elmo do Orgulho Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3644,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47126,PRIDE_GRN,Elmo do Orgulho ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3644,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47127,PRIDE_GRY,Elmo do Orgulho do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3645,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47128,PRIDE_ORG,Elmo do Orgulho do Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3646,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47129,PRIDE_PNK,Elmo do Orgulho Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3647,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47130,PRIDE_PRP,Elmo do Orgulho Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3648,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47131,PRIDE_RED,Elmo do Orgulho de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3649,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47132,PRIDE_WHT,Elmo do Orgulho Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3650,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47132,PRIDE_WHT,Elmo do Orgulho Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3650,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47133,PRIDE_YLW,Elmo do Orgulho do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3651,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ============================================================================ //
 //							FIM DO SET DIVINO													//
@@ -1270,89 +1270,89 @@
 // =================================================================== //
 // ================================================================== //
 // ================================================================================== //
-//								 SET DO DRAGÃO									//
+//								 SET DO DRAGï¿½O									//
 //																				//
 // ========================================================================= //
 // ========================================================================= //
-//                               DRAGÃO ARCANO                              //
+//                               DRAGï¿½O ARCANO                              //
 // ================================================================== //
-47134,DRAGONARCANE_BLK,Dragão Arcano Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3652,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47135,DRAGONARCANE_BLU,Dragão Arcano Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3653,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47136,DRAGONARCANE_GRN,Dragão Arcano Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3654,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47137,DRAGONARCANE_GRY,Dragão Arcano Cinza,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3655,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47138,DRAGONARCANE_ORG,Dragão Arcano Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3656,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47139,DRAGONARCANE_PNK,Dragão Arcano Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3657,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47140,DRAGONARCANE_PRP,Dragão Arcano Roxo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3658,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47141,DRAGONARCANE_RED,Dragão Arcano Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3659,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47142,DRAGONARCANE_WHT,Dragão Arcano Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3660,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47143,DRAGONARCANE_YLW,Dragão Arcano Amarelo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3661,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47134,DRAGONARCANE_BLK,Dragï¿½o Arcano Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3652,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47135,DRAGONARCANE_BLU,Dragï¿½o Arcano Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3653,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47136,DRAGONARCANE_GRN,Dragï¿½o Arcano Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3654,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47137,DRAGONARCANE_GRY,Dragï¿½o Arcano Cinza,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3655,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47138,DRAGONARCANE_ORG,Dragï¿½o Arcano Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3656,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47139,DRAGONARCANE_PNK,Dragï¿½o Arcano Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3657,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47140,DRAGONARCANE_PRP,Dragï¿½o Arcano Roxo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3658,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47141,DRAGONARCANE_RED,Dragï¿½o Arcano Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3659,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47142,DRAGONARCANE_WHT,Dragï¿½o Arcano Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3660,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47143,DRAGONARCANE_YLW,Dragï¿½o Arcano Amarelo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3661,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               DRAGÃO MÍSTICO                             //
+//                               DRAGï¿½O Mï¿½STICO                             //
 // ================================================================== //
-47144,DRAGONMYSTIC_BLK,Dragão Místico Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3662,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47145,DRAGONMYSTIC_BLU,Dragão Místico Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3663,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47146,DRAGONMYSTIC_GRN,Dragão Místico Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3664,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47147,DRAGONMYSTIC_GRY,Dragão Místico Cinza,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3665,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47148,DRAGONMYSTIC_ORG,Dragão Místico Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3666,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47149,DRAGONMYSTIC_PNK,Dragão Místico Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3667,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47150,DRAGONMYSTIC_PRP,Dragão Místico Roxo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3668,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47151,DRAGONMYSTIC_RED,Dragão Místico Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3669,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47152,DRAGONMYSTIC_WHT,Dragão Místico Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3670,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47153,DRAGONMYSTIC_YLW,Dragão Místico Amarelo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3671,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47144,DRAGONMYSTIC_BLK,Dragï¿½o Mï¿½stico Preto,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3662,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47145,DRAGONMYSTIC_BLU,Dragï¿½o Mï¿½stico Azul,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3663,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47146,DRAGONMYSTIC_GRN,Dragï¿½o Mï¿½stico Verde,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3664,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47147,DRAGONMYSTIC_GRY,Dragï¿½o Mï¿½stico Cinza,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3665,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47148,DRAGONMYSTIC_ORG,Dragï¿½o Mï¿½stico Laranja,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3666,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47149,DRAGONMYSTIC_PNK,Dragï¿½o Mï¿½stico Rosa,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3667,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47150,DRAGONMYSTIC_PRP,Dragï¿½o Mï¿½stico Roxo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3668,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47151,DRAGONMYSTIC_RED,Dragï¿½o Mï¿½stico Vermelho,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3669,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47152,DRAGONMYSTIC_WHT,Dragï¿½o Mï¿½stico Branco,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3670,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47153,DRAGONMYSTIC_YLW,Dragï¿½o Mï¿½stico Amarelo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3671,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               PLACA DE DRAGÃO                             //
+//                               PLACA DE DRAGï¿½O                             //
 // ================================================================== //
-47154,DRAGONPLATE_BLK,Placa de Dragão Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3672,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47155,DRAGONPLATE_BLU,Placa de Dragão Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3673,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47156,DRAGONPLATE_GRN,Placa de Dragão Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3674,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47157,DRAGONPLATE_GRY,Placa de Dragão do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3675,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47158,DRAGONPLATE_ORG,Placa de Dragão Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3676,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47159,DRAGONPLATE_PNK,Placa de Dragão Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3677,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47160,DRAGONPLATE_PRP,Placa de Dragão Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3678,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47161,DRAGONPLATE_RED,Placa de Dragão de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3679,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47162,DRAGONPLATE_WHT,Placa de Dragão Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3680,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47163,DRAGONPLATE_YLW,Placa de Dragão do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3681,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47154,DRAGONPLATE_BLK,Placa de Dragï¿½o Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3672,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47155,DRAGONPLATE_BLU,Placa de Dragï¿½o Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3673,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47156,DRAGONPLATE_GRN,Placa de Dragï¿½o ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3674,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47157,DRAGONPLATE_GRY,Placa de Dragï¿½o do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3675,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47158,DRAGONPLATE_ORG,Placa de Dragï¿½o Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3676,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47159,DRAGONPLATE_PNK,Placa de Dragï¿½o Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3677,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47160,DRAGONPLATE_PRP,Placa de Dragï¿½o Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3678,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47161,DRAGONPLATE_RED,Placa de Dragï¿½o de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3679,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47162,DRAGONPLATE_WHT,Placa de Dragï¿½o Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3680,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47163,DRAGONPLATE_YLW,Placa de Dragï¿½o do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3681,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               ESCAMA DE DRAGÃO                             //
+//                               ESCAMA DE DRAGï¿½O                             //
 // ================================================================== //
-47164,DRAGONSCALE_BLK,Escama de Dragão Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3682,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47165,DRAGONSCALE_BLU,Escama de Dragão Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3683,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47166,DRAGONSCALE_GRN,Escama de Dragão Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3684,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47167,DRAGONSCALE_GRY,Escama de Dragão do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3685,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47168,DRAGONSCALE_ORG,Escama de Dragão Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3686,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47169,DRAGONSCALE_PNK,Escama de Dragão Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3687,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47170,DRAGONSCALE_PRP,Escama de Dragão Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3688,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47171,DRAGONSCALE_RED,Escama de Dragão de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3689,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47172,DRAGONSCALE_WHT,Escama de Dragão Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3690,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47173,DRAGONSCALE_YLW,Escama de Dragão do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3691,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47164,DRAGONSCALE_BLK,Escama de Dragï¿½o Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3682,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47165,DRAGONSCALE_BLU,Escama de Dragï¿½o Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3683,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47166,DRAGONSCALE_GRN,Escama de Dragï¿½o ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3684,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47167,DRAGONSCALE_GRY,Escama de Dragï¿½o do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3685,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47168,DRAGONSCALE_ORG,Escama de Dragï¿½o Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3686,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47169,DRAGONSCALE_PNK,Escama de Dragï¿½o Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3687,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47170,DRAGONSCALE_PRP,Escama de Dragï¿½o Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3688,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47171,DRAGONSCALE_RED,Escama de Dragï¿½o de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3689,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47172,DRAGONSCALE_WHT,Escama de Dragï¿½o Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3690,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47173,DRAGONSCALE_YLW,Escama de Dragï¿½o do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3691,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               SEDA DE DRAGÃO                             //
+//                               SEDA DE DRAGï¿½O                             //
 // ================================================================== //
-47174,DRAGONSILK_BLK,Seda de Dragão Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3692,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47175,DRAGONSILK_BLU,Seda de Dragão Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3693,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47176,DRAGONSILK_GRN,Seda de Dragão Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3694,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47177,DRAGONSILK_GRY,Seda de Dragão do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3695,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47178,DRAGONSILK_ORG,Seda de Dragão Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3696,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47179,DRAGONSILK_PNK,Seda de Dragão Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3697,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47180,DRAGONSILK_PRP,Seda de Dragão Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3698,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47181,DRAGONSILK_RED,Seda de Dragão de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3699,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47182,DRAGONSILK_WHT,Seda de Dragão Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3700,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47183,DRAGONSILK_YLW,Seda de Dragão do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3701,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47174,DRAGONSILK_BLK,Seda de Dragï¿½o Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3692,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47175,DRAGONSILK_BLU,Seda de Dragï¿½o Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3693,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47176,DRAGONSILK_GRN,Seda de Dragï¿½o ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3694,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47177,DRAGONSILK_GRY,Seda de Dragï¿½o do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3695,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47178,DRAGONSILK_ORG,Seda de Dragï¿½o Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3696,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47179,DRAGONSILK_PNK,Seda de Dragï¿½o Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3697,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47180,DRAGONSILK_PRP,Seda de Dragï¿½o Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3698,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47181,DRAGONSILK_RED,Seda de Dragï¿½o de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3699,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47182,DRAGONSILK_WHT,Seda de Dragï¿½o Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3700,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47183,DRAGONSILK_YLW,Seda de Dragï¿½o do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3701,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               CAVEIRA DE DRAGÃO                             //
+//                               CAVEIRA DE DRAGï¿½O                             //
 // ================================================================== //
-47184,DRAGONSKULL_BLK,Crânio do Dragão Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3702,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47185,DRAGONSKULL_BLU,Crânio do Dragão Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3703,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47186,DRAGONSKULL_GRN,Crânio do Dragão Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3704,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47187,DRAGONSKULL_GRY,Crânio do Dragão do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3705,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47188,DRAGONSKULL_ORG,Crânio do Dragão Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3706,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47189,DRAGONSKULL_PNK,Crânio do Dragão Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3707,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47190,DRAGONSKULL_PRP,Crânio do Dragão Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3708,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47191,DRAGONSKULL_RED,Crânio do Dragão de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3709,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47192,DRAGONSKULL_WHT,Crânio do Dragão Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3710,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47193,DRAGONSKULL_YLW,Crânio do Dragão do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3711,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47184,DRAGONSKULL_BLK,Crï¿½nio do Dragï¿½o Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3702,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47185,DRAGONSKULL_BLU,Crï¿½nio do Dragï¿½o Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3703,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47186,DRAGONSKULL_GRN,Crï¿½nio do Dragï¿½o ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3704,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47187,DRAGONSKULL_GRY,Crï¿½nio do Dragï¿½o do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3705,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47188,DRAGONSKULL_ORG,Crï¿½nio do Dragï¿½o Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3706,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47189,DRAGONSKULL_PNK,Crï¿½nio do Dragï¿½o Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3707,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47190,DRAGONSKULL_PRP,Crï¿½nio do Dragï¿½o Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3708,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47191,DRAGONSKULL_RED,Crï¿½nio do Dragï¿½o de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3709,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47192,DRAGONSKULL_WHT,Crï¿½nio do Dragï¿½o Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3710,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47193,DRAGONSKULL_YLW,Crï¿½nio do Dragï¿½o do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3711,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ============================================================================ //
-//							FIM DO SET DRAGÃO													//
+//							FIM DO SET DRAGï¿½O													//
 //																				//
 // ========================================================================= //
 // =================================================================== //
@@ -1363,13 +1363,13 @@
 // ========================================================================= //
 47194,IMMORTAL_BLK,Imortal Obscuro,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3712,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47195,IMMORTAL_BLU,Imortal Arcano,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3713,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47196,IMMORTAL_GRN,Imortal Élfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3714,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47196,IMMORTAL_GRN,Imortal ï¿½lfico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3714,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47197,IMMORTAL_GRY,Imortal do Submundo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3715,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47198,IMMORTAL_ORG,Imortal Chastifo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3716,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47199,IMMORTAL_PNK,Imortal Venenoso,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3717,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47200,IMMORTAL_PRP,Imortal Angelical,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3718,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47201,IMMORTAL_RED,Imortal de Sangue,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3719,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47202,IMMORTAL_WHT,Imortal Pacífico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3720,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47202,IMMORTAL_WHT,Imortal Pacï¿½fico,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3720,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47203,IMMORTAL_YLW,Imortal do Sol,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3721,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ============================================================================ //
 //							FIM DO SET IMORTAL									//
@@ -1385,7 +1385,7 @@
 47205,CROWNWINGS,Asas do Rei,5,20,,800,,3,,1,0xFFFFFFFF,7,2,4096,,0,1,3723,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47206,DIVINEWINGS,Asas Divinas,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3724,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47207,DREADLORDWINGS,Asas do Pavor,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3725,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47208,FALLEN,Anjo Caído,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3726,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47208,FALLEN,Anjo Caï¿½do,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3726,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47209,FIREFLYWINGS,Asas de Fogo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3727,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47210,GAEAWINGS,Asas do Gae,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3728,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47211,GENESISWINGS,Asas Genesis,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3729,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
@@ -1393,7 +1393,7 @@
 47213,HOLYWINGS,Asas Sagradas,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3731,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47214,IMPWINGS,Asas Imperiais,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3732,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47215,NIGHTWINGS,Asas da Noite,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3733,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47216,PHOENIXWINGS,Asas da Fênix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3734,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47216,PHOENIXWINGS,Asas da Fï¿½nix,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3734,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47217,PROFANEWINGS,Asas Profanas,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3735,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47218,RAVENWINGS,Asas de Corvo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3736,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47219,SUCCUBUSWINGS,Asas de Succubus,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3737,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
@@ -1407,75 +1407,76 @@
 //							AURAS DA GRINGA										//
 //																				//
 // ========================================================================= //
+// ======================  AURA DA CAPITA AMERICA  ============================= //
 47220,AuraFire,Aura de Fogo,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3738,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               ENERGIA ATÔMICA                             //
+//                               ENERGIA ATï¿½MICA                             //
 // ================================================================== //
-47221,ATOMICENERGY_BLK,Energia Atômica Obscura,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3739,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47222,ATOMICENERGY_BLU,Energia Atômica Arcana,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3740,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47223,ATOMICENERGY_GRN,Energia Atômica Élfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3741,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47224,ATOMICENERGY_GRY,Energia Atômica do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3742,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47225,ATOMICENERGY_ORG,Energia Atômica do Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3743,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47226,ATOMICENERGY_PNK,Energia Atômica Venenosa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3744,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47227,ATOMICENERGY_PRP,Energia Atômica Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3745,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47228,ATOMICENERGY_RED,Energia Atômica de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3746,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47229,ATOMICENERGY_WHT,Energia Atômica Pacífica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3747,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47230,ATOMICENERGY_YLW,Energia Atômica do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3748,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47221,ATOMICENERGY_BLK,Energia Atï¿½mica Obscura,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3739,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47222,ATOMICENERGY_BLU,Energia Atï¿½mica Arcana,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3740,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47223,ATOMICENERGY_GRN,Energia Atï¿½mica ï¿½lfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3741,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47224,ATOMICENERGY_GRY,Energia Atï¿½mica do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3742,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47225,ATOMICENERGY_ORG,Energia Atï¿½mica do Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3743,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47226,ATOMICENERGY_PNK,Energia Atï¿½mica Venenosa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3744,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47227,ATOMICENERGY_PRP,Energia Atï¿½mica Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3745,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47228,ATOMICENERGY_RED,Energia Atï¿½mica de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3746,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47229,ATOMICENERGY_WHT,Energia Atï¿½mica Pacï¿½fica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3747,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47230,ATOMICENERGY_YLW,Energia Atï¿½mica do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3748,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               BRILHO DA AURA                            //
 // ================================================================== //
 47231,AURASHEEN_BLK,Brilho da Aura Obscura,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3749,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47232,AURASHEEN_BLU,Brilho da Aura Arcana,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3750,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47233,AURASHEEN_CYN,Brilho da Aura Fúnebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3751,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47234,AURASHEEN_GRN,Brilho da Aura Élfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3752,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47233,AURASHEEN_CYN,Brilho da Aura Fï¿½nebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3751,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47234,AURASHEEN_GRN,Brilho da Aura ï¿½lfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3752,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47235,AURASHEEN_ORG,Brilho da Aura Chastifa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3753,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47236,AURASHEEN_PNK,Brilho da Aura Venenosa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3754,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47237,AURASHEEN_PRP,Brilho da Aura Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3755,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47238,AURASHEEN_RED,Brilho da Aura de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3756,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47239,AURASHEEN_WHT,Brilho da Aura Pacífica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3757,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47239,AURASHEEN_WHT,Brilho da Aura Pacï¿½fica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3757,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47240,AURASHEEN_YLW,Brilho da Aura do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3758,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               FLOCOS                            //
 // ================================================================== //
 47241,AURASPARKLYFLAKES_BLU,Flocos Arcanos,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3759,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47242,AURASPARKLYFLAKES_GRN,Flocos Élficos,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3760,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47242,AURASPARKLYFLAKES_GRN,Flocos ï¿½lficos,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3760,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47243,AURASPARKLYFLAKES_ORG,Flocos Chastifos,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3761,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47244,AURASPARKLYFLAKES_PNK,Flocos Venenosos,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3762,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47245,AURASPARKLYFLAKES_PRP,Flocos Angelicais,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3763,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47246,AURASPARKLYFLAKES_RED,Flocos de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3764,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47247,AURASPARKLYFLAKES_WHT,Flocos do Pacífico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3765,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47248,AURASPELLBOUND_ALL,Limite de Feitiço,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3766,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47249,AURASPELLBOUND_BLU,Limite de Feitiço Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3767,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47250,AURASPELLBOUND_GRN,Limite de Feitiço Élfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3768,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47251,AURASPELLBOUND_PNK,Limite de Feitiço Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3769,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47252,AURASPELLBOUND_WHT,Limite de Feitiço Pacífico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3770,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47253,AURASPELLBOUND_YLW,Limite de Feitiço do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3771,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47247,AURASPARKLYFLAKES_WHT,Flocos do Pacï¿½fico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3765,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47248,AURASPELLBOUND_ALL,Limite de Feitiï¿½o,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3766,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47249,AURASPELLBOUND_BLU,Limite de Feitiï¿½o Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3767,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47250,AURASPELLBOUND_GRN,Limite de Feitiï¿½o ï¿½lfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3768,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47251,AURASPELLBOUND_PNK,Limite de Feitiï¿½o Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3769,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47252,AURASPELLBOUND_WHT,Limite de Feitiï¿½o Pacï¿½fico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3770,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47253,AURASPELLBOUND_YLW,Limite de Feitiï¿½o do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3771,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               DECÊNCIAS                             //
+//                               DECï¿½NCIAS                             //
 // ================================================================== //
-47254,DESSENCE_BLK,Decência Obscura,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3772,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47255,DESSENCE_BLU,Decência Arcana,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3773,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47256,DESSENCE_GRN,Decência Élfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3774,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47257,DESSENCE_GRY,Decência do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3775,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47258,DESSENCE_ORG,Decência do Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3776,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47259,DESSENCE_PNK,Decência Venenosa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3777,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47260,DESSENCE_PRP,Decência Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3778,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47261,DESSENCE_RED,Decência de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3779,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47262,DESSENCE_WHT,Decência Pacífica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3780,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47263,DESSENCE_YLW,Decência do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3781,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47254,DESSENCE_BLK,Decï¿½ncia Obscura,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3772,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47255,DESSENCE_BLU,Decï¿½ncia Arcana,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3773,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47256,DESSENCE_GRN,Decï¿½ncia ï¿½lfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3774,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47257,DESSENCE_GRY,Decï¿½ncia do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3775,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47258,DESSENCE_ORG,Decï¿½ncia do Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3776,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47259,DESSENCE_PNK,Decï¿½ncia Venenosa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3777,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47260,DESSENCE_PRP,Decï¿½ncia Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3778,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47261,DESSENCE_RED,Decï¿½ncia de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3779,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47262,DESSENCE_WHT,Decï¿½ncia Pacï¿½fica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3780,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47263,DESSENCE_YLW,Decï¿½ncia do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3781,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               AURAS DIVINAS                            //
 // ================================================================== //
 47264,DIVINEAURA_BLK,Aura Divino Obscuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3782,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47265,DIVINEAURA_BLU,Aura Divino Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3783,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47266,DIVINEAURA_CYN,Aura Divino Fúnebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3784,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47267,DIVINEAURA_GRN,Aura Divina Élfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3785,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47266,DIVINEAURA_CYN,Aura Divino Fï¿½nebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3784,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47267,DIVINEAURA_GRN,Aura Divina ï¿½lfica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3785,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47268,DIVINEAURA_GRY,Aura Divina do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3786,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47269,DIVINEAURA_ORG,Aura Divina Chastifa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3787,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47270,DIVINEAURA_PNK,Aura Divina Venenosa,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3788,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47271,DIVINEAURA_PRP,Aura Divina Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3789,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47272,DIVINEAURA_RED,Aura Divina de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3790,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47273,DIVINEAURA_WHT,Aura Divina Pacífica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3791,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47273,DIVINEAURA_WHT,Aura Divina Pacï¿½fica,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3791,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47274,DIVINEAURA_YLW,Aura Divina do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3792,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 
 //47275,VAGO,VAGO,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3793,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
@@ -1484,41 +1485,41 @@
 // ================================================================== //
 47276,OVERFLOWING_BLK,Transborda Poder Obscuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3794,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47277,OVERFLOWING_BLU,Transborda Poder Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3795,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47278,OVERFLOWING_CYN,Transborda Poder Fúnebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3796,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47279,OVERFLOWING_GRN,Transborda Poder Élfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3797,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47278,OVERFLOWING_CYN,Transborda Poder Fï¿½nebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3796,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47279,OVERFLOWING_GRN,Transborda Poder ï¿½lfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3797,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47280,OVERFLOWING_GRY,Transborda Poder do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3798,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47281,OVERFLOWING_ORG,Transborda Poder Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3799,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47282,OVERFLOWING_PNK,Transborda Poder Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3800,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47283,OVERFLOWING_PRP,Transborda Poder Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3801,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47284,OVERFLOWING_RED,Transborda Poder de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3802,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47285,OVERFLOWING_WHT,Transborda Poder Pacífico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3803,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47285,OVERFLOWING_WHT,Transborda Poder Pacï¿½fico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3803,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47286,OVERFLOWING_YLW,Transborda Poder do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3804,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
-//                               ESPÍRITOS                            //
+//                               ESPï¿½RITOS                            //
 // ================================================================== //
-47287,SPIRITAURA_BLK,Espírito Obscuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3805,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47288,SPIRITAURA_BLU,Espírito Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3806,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47289,SPIRITAURA_GRN,Espírito Élfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3807,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47290,SPIRITAURA_GRY,Espírito do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3808,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47291,SPIRITAURA_ORG,Espírito Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3809,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47292,SPIRITAURA_PNK,Espírito Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3810,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47293,SPIRITAURA_PRP,Espírito Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3811,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47294,SPIRITAURA_RED,Espírito de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3812,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47295,SPIRITAURA_WHT,Espírito Pacífico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3813,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47296,SPIRITAURA_YLW,Espírito do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3814,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47287,SPIRITAURA_BLK,Espï¿½rito Obscuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3805,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47288,SPIRITAURA_BLU,Espï¿½rito Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3806,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47289,SPIRITAURA_GRN,Espï¿½rito ï¿½lfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3807,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47290,SPIRITAURA_GRY,Espï¿½rito do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3808,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47291,SPIRITAURA_ORG,Espï¿½rito Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3809,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47292,SPIRITAURA_PNK,Espï¿½rito Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3810,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47293,SPIRITAURA_PRP,Espï¿½rito Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3811,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47294,SPIRITAURA_RED,Espï¿½rito de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3812,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47295,SPIRITAURA_WHT,Espï¿½rito Pacï¿½fico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3813,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47296,SPIRITAURA_YLW,Espï¿½rito do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3814,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               ULTRA INSTINTO                             //
 // ================================================================== //
 47297,ULTRAINSTINCT_BLK,Ultra Instinto Obscuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3815,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47298,ULTRAINSTINCT_BLU,Ultra Instinto Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3816,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47299,ULTRAINSTINCT_CYN,Ultra Instinto Fúnebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3817,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47300,ULTRAINSTINCT_GRN,Ultra Instinto Élfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3818,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47299,ULTRAINSTINCT_CYN,Ultra Instinto Fï¿½nebre,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3817,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47300,ULTRAINSTINCT_GRN,Ultra Instinto ï¿½lfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3818,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47301,ULTRAINSTINCT_GRY,Ultra Instinto do Submundo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3819,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47302,ULTRAINSTINCT_ORG,Ultra Instinto Chastifo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3820,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47303,ULTRAINSTINCT_PNK,Ultra Instinto Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3821,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47304,ULTRAINSTINCT_PRP,Ultra Instinto Angelical,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3822,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47305,ULTRAINSTINCT_RED,Ultra Instinto de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3823,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47306,ULTRAINSTINCT_WHT,Ultra Instinto Pacífico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3824,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47306,ULTRAINSTINCT_WHT,Ultra Instinto Pacï¿½fico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3824,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47307,ULTRAINSTINCT_YLW,Ultra Instinto do Sol,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3825,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               AMATERASU                            //
@@ -1526,40 +1527,40 @@
 47308,Amaterasu_Aura_Black,Amaterasu Obscuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3826,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47309,Amaterasu_Aura_Blue,Amaterasu Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3827,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47310,Amaterasu_Aura_Gold,Amaterasu Dourado,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3828,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47311,Amaterasu_Aura_Green,Amaterasu Élfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3829,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47311,Amaterasu_Aura_Green,Amaterasu ï¿½lfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3829,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47312,Amaterasu_Aura_Navy_Blue,Amaterasu Arcano Plus,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3830,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47313,Amaterasu_Aura_Pink,Amaterasu Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3831,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47314,Amaterasu_Aura_Red,Amaterasu de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3832,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47315,Amaterasu_Aura_White,Amaterasu Pacífico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3833,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47315,Amaterasu_Aura_White,Amaterasu Pacï¿½fico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3833,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               AURA DOS DEUSES                             //
 // ================================================================== //
 47316,God_Aura_Black,Aura do Deus Obscuro,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3834,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47317,God_Aura_Blue,Aura do Deus Arcano,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3835,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47318,God_Aura_Gold,Aura do Deus Dourado,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3836,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47319,God_Aura_Green,Aura do Deus Élfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3837,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47319,God_Aura_Green,Aura do Deus ï¿½lfico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3837,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47320,God_Aura_Navy_Blue,Aura Deus Arcano Plus,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3838,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47321,God_Aura_Pink,Aura do Deus Venenoso,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3839,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47322,God_Aura_Red,Aura Deus de Sangue,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3840,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47323,God_Aura_White,Aura do Deus Pacífico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3841,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47323,God_Aura_White,Aura do Deus Pacï¿½fico,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3841,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               AURAS - MASCOTES                            //
 // ================================================================== //
-47324,aqualing,Espírito da Água,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3842,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47325,breezeling,Espírito do Tornado,55,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3843,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47326,earthling,Espírito da Terra,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3844,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47327,flameling,Espírito em Chamas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3845,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47324,aqualing,Espï¿½rito da ï¿½gua,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3842,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47325,breezeling,Espï¿½rito do Tornado,55,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3843,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47326,earthling,Espï¿½rito da Terra,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3844,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47327,flameling,Espï¿½rito em Chamas,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3845,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47328,shardearth,Fragmento da Morte,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3846,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47329,shardfire,Fragmento do Fogo,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3847,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47330,shardwater,Fragmento de Água,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3848,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47330,shardwater,Fragmento de ï¿½gua,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3848,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47331,shardwind,Fragmento do Vento,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3849,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47332,sparkling,Faísca do Espírito,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3850,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47332,sparkling,Faï¿½sca do Espï¿½rito,5,20,,100,,0,,4,0xFFFFFFFF,7,2,512,,70,1,3850,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ========================================================================= //
 //                               VINGADORES                             //
 // ================================================================== //
-47333,AsasCapAmerica,Capitão América,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3851,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47334,CapMarvel,Capitã Marvel,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3852,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47335,ShieldCapAmerica,Escudo Cap. América,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,57,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47333,AsasCapAmerica,Capitï¿½o Amï¿½rica,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3851,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47334,CapMarvel,Capitï¿½ Marvel,5,20,,800,,3,,1,0xFFFFFFFF,7,2,1024,,0,1,3852,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47335,ShieldCapAmerica,Escudo Cap. Amï¿½rica,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,57,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47336,ShieldCapMarvel,Escudo Cap. Marvel,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,58,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ============================================================================= //
 // ============================================================================ //
@@ -1567,12 +1568,12 @@
 //							CAPA/MANTO - ASAS DA GRINGA							//
 //																				//
 // ========================================================================= //
-47493,ROBE_BLADEWINGS,Asas de Lâminas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,40,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47493,ROBE_BLADEWINGS,Asas de Lï¿½minas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,40,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47494,ROBE_BUTTERFLYWING_BLU,Asas de Borboleta Azul,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,41,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47495,ROBE_CROWNWINGS,Asas do Rei,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,42,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47496,ROBE_DIVINEWINGS,Asas Divinas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,43,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47497,ROBE_DREADLORDWINGS,Asas do Pavor,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,44,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47498,ROBE_FALLEN,Anjo Caído,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,45,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47498,ROBE_FALLEN,Anjo Caï¿½do,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,45,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47499,ROBE_FIREFLYWINGS,Asas de Fogo,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,46,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47500,ROBE_GAEAWINGS,Asas do Gae,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,47,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47501,ROBE_GENESISWINGS,Asas Genesis,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,48,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
@@ -1580,10 +1581,11 @@
 47503,ROBE_HOLYWINGS,Asas Sagradas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,50,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47504,ROBE_IMPWINGS,Asas Imperiais,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,51,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47505,ROBE_NIGHTWINGS,Asas da Noite,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,52,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
-47506,ROBE_PHOENIXWINGS,Asas da Fênix,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,53,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47506,ROBE_PHOENIXWINGS,Asas da Fï¿½nix,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,53,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47507,ROBE_PROFANEWINGS,Asas Profanas,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,54,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47508,ROBE_RAVENWINGS,Asas de Corvo,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,55,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 47509,ROBE_SUCCUBUSWINGS,Asas de Succubus,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,56,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
+47510,AsasBrasilRO,Asas BrasilRO,4,0,,0,,0,,0,0xFFFFFFFF,63,2,8192,,1,0,59,{ bonus bAllStats,10; bonus bSpeedAddRate,20; },{},{}
 // ============================================================================ //
 //							FIM DOS MANTOS										//
 //																				//
@@ -1591,7 +1593,7 @@
 
 
 
-//INSTÂNCIAS ADICIONADAS A PARTE
+//INSTï¿½NCIAS ADICIONADAS A PARTE
 //=========== TEMPLE OF DEMON GOD ==================//
 6713,Heart_of_Soul,Heart of Soul,3,0,,0,,,,,,,,,,,,,{},{},{}
 6714,Sheenas_Soul,Sheena's Soul,3,20,,0,,,,,,,,,,,,,{},{},{}
