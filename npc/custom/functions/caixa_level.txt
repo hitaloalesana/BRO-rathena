@@ -2,8 +2,10 @@ function	script	level_12	{
 	//if( #level_12 == 1 ) end;
 	if( BaseLevel >= 12 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
+		getitem 12325, 10;
 		getitem 2456, 1;
 		getitem 5583, 1;
+		getitem 2715, 1;
 		getitem 15009, 1;
 		getitem 2560, 1;
 		getitem 12107, 1;
@@ -20,6 +22,7 @@ function	script	level_26	{
 	if( BaseLevel >= 26 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
 		getitem 13050, 1;
+		getitem 12779, 1;
 		getitem 1650, 1;
 		getitem 1192, 1;
 		getitem 16004, 1;
@@ -60,6 +63,7 @@ function	script	level_60	{
 	if( BaseLevel >= 60 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
 		getitem 13066, 1;
+		getitem 18514, 1;
 		getitem 18106, 1;
 		getitem 1658, 1;
 		getitem 1986, 1;
@@ -74,6 +78,8 @@ function	script	level_60	{
 		getitem 15031, 1;
 		getitem 2571, 1;
 		getitem 2473, 1;
+		getitem 2164, 1;
+		getitem 12627, 1;
 		getitem 12107, 1;
 		getitem 40077, 1;
 		delitem 40076, 1;	
@@ -87,9 +93,10 @@ function	script	level_80	{
 	//if( #level_80 == 1 ) end;
 	if( BaseLevel >= 80 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 19315, 1;
+		getitem 12325, 10;
+		getitem 12630, 1;
+		getitem 12629, 1;
 		getitem 19710, 1;
-		getitem 2743, 1;
 		getitem 12107, 1;
 		getitem 40078, 1;
 		delitem 40077, 1;
@@ -103,17 +110,22 @@ function	script	level_100	{
 	//if( #level_100 == 1 ) end;
 	if( BaseLevel >= 100 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 15181, 1;
-		getitem 19164, 1;
-		getitem 20823, 1;
-		getitem 22122, 1;
-		getitem 28443, 1;
-		getitem 28444, 1;
-		getitem 28453, 1;
-		getitem 28454, 1;
-		getitem 28463, 1;
-		getitem 28464, 1;
-		getitem 28453, 1;
+		getitem 19165, 1;
+		getitem 20825, 1;
+		getitem 22126, 1;
+		getitem 28451, 1;
+		getitem 28452, 1;
+		getitem 28461, 1;
+		getitem 28462, 1;
+		getitem 28471, 1;
+		getitem 28472, 1;
+		getitem 15185, 1;
+		getitem 13871, 1;
+		getitem 13872, 1;
+		getitem 13873, 1;
+		getitem 13874, 1;
+		getitem 13875, 1;
+		getitem 13876, 1;
 		getitem 12107, 1;
 		getitem 40079, 1;
 		delitem 40078, 1;
@@ -127,11 +139,8 @@ function	script	level_120	{
 	//if( #level_120 == 1 ) end;
 	if( BaseLevel >= 120 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -148,11 +157,8 @@ function	script	level_140	{
 	//if( #level_140 == 1 ) end;
 	if( BaseLevel >= 140 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -169,17 +175,11 @@ function	script	level_160	{
 	//if( #level_160 == 1 ) end;
 	if( BaseLevel >= 160 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 19165, 1;
-		getitem 20825, 1;
-		getitem 22126, 1;
-		getitem 28451, 1;
-		getitem 28452, 1;
-		getitem 28461, 1;
-		getitem 28462, 1;
-		getitem 28471, 1;
-		getitem 28472, 1;
-		getitem 15185, 1;
-		getitem 19710, 1;
+		getitem 12209, 1;
+		getitem 12211, 1;
+		getitem 7621, 3;
+		getitem 12464, 1;
+		getitem 14544, 1;
 		getitem 12107, 1;
 		getitem 40082, 1;
 		delitem 40081, 1;
@@ -193,11 +193,8 @@ function	script	level_180	{
 	//if( #level_180 == 1 ) end;
 	if( BaseLevel >= 180 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -215,11 +212,8 @@ function	script	level_200	{
 	//if( #level_200 == 1 ) end;
 	if( BaseLevel >= 200 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -237,11 +231,8 @@ function	script	level_220	{
 	//if( #level_220 == 1 ) end;
 	if( BaseLevel >= 220 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -259,11 +250,8 @@ function	script	level_240	{
 	//if( #level_240 == 1 ) end;
 	if( BaseLevel >= 240 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -281,11 +269,8 @@ function	script	level_260	{
 	//if( #level_260 == 1 ) end;
 	if( BaseLevel >= 260 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -304,11 +289,8 @@ function	script	level_280	{
 	//if( #level_280 == 1 ) end;
 	if( BaseLevel >= 280 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
-		getitem 12209, 3;
-		getitem 12911, 1;
-		getitem 12913, 1;
-		getitem 12914, 1;
-		getitem 12211, 2;
+		getitem 12209, 1;
+		getitem 12211, 1;
 		getitem 7621, 3;
 		getitem 12464, 1;
 		getitem 14544, 1;
@@ -328,7 +310,7 @@ function	script	level_300	{
 	if( BaseLevel >= 300 ){
 	if((( Weight * 100) / MaxWeight ) > 49 ){  dispbottom "Você está acima peso, aguarde alguns objetivos.", 0xFF0000; end; }
 		getitem 7227, 1;
-		getitem 20062, 1;
+		getitem 12911, 1;
 		getitem 12107, 1;
 		delitem 40088, 1;
 		set #level_300, 1;
