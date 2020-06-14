@@ -3468,20 +3468,6 @@ void clif_updatestatus(struct map_session_data *sd,int type)
 			break;
 			
 		case SP_HP:
-		{
-
-			struct map_data *mapdata = map_getmapdata(sd->bl.id);
-			int fd;
-			int percent_hp = sd->battle_status.hp * 100 / sd->battle_status.max_hp;
-			int HP_effects[] = { 20,20,20,20,20,19,19,19,19,19,18,18,18,18,18,17,17,17,17,17,16,16,16,16,16,15,15,15,15,15,14,14,14,14,14,13,13,13,13,13,12,12,12,12,12,11,11,11,11,11,10,10,10,10,10,9,9,9,9,9,8,8,8,8,8,7,7,7,7,7,6,6,6,6,6,5,5,5,5,5,4,4,4,4,4,3,3,3,3,3,2,2,2,2,2,1,1,1,1,1 };
-
-			if (sd->lastEffectID > 0) {
-				clif_hat_effect_single2(&sd->bl, sd->lastEffectID, false);
-			}
-			clif_hat_effect_single2(&sd->bl, HP_effects[max(0, min(percent_hp, 99))], true);
-			sd->lastEffectID = HP_effects[max(0, min(percent_hp, 99))];
-			fd = sd->fd;
-
 			if (map_getmapdata(sd->bl.m)->hpmeter_visible) {
 				clif_hpmeter(sd);
 			}
@@ -3492,24 +3478,6 @@ void clif_updatestatus(struct map_session_data *sd,int type)
 				clif_bg_hp(sd);
 			}
 
-		}
-		break;
-
-		case SP_SP:
-		{
-			struct map_data *mapdata = map_getmapdata(sd->bl.id);
-			int percent_sp = sd->battle_status.sp * 100 / sd->battle_status.max_sp;
-			int fd;
-			int SP_effects[] = { 63,63,63,63,63,64,64,64,64,64,64,64,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,67,68,68,68,68,68,68,68,68,68,68,69,69,69,69,69,69,69,69,69,69,70,70,70,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73 };
-
-			if (sd->lastEffectID2 > 0) {
-				clif_hat_effect_single2(&sd->bl, sd->lastEffectID2, false);
-			}
-			clif_hat_effect_single2(&sd->bl, SP_effects[max(0, min(percent_sp, 99))], true);
-			sd->lastEffectID2 = SP_effects[max(0, min(percent_sp,99))];
-			fd = sd->fd;
-			
-		}
 		break;
 	}
 }
