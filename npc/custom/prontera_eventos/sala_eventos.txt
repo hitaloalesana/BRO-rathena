@@ -1,0 +1,91 @@
+prontera,143,195,4	script	Sala de Eventos	10192,{
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "Temos uma sala com diversos eventos para você participar, se divertir e principalmente receber premios!";
+	mes "Você também pode entrar direto na sala usando o comando ^00CC00@evento.^000000";
+	mes "^777777Deseja entrar na sala de eventos?^000000";
+	next;
+	if( select("^00CC00•^000000 Entrar.:^00CC00•^000000 Saír.") == 2 ){ close; }
+		close2;	
+		warp "prt_in", 46, 106;
+		end;
+OnInit:
+	bindatcmd("evento", strnpcinfo(0) +"::OnEventos");
+	end;
+OnEventos:
+	if ( getmapflag( strcharinfo(3), mf_pvp ) || getmapflag( strcharinfo(3), mf_gvg ) || getmapflag( strcharinfo(3), mf_battleground ) || getmapflag( strcharinfo(3), mf_nowarpto ) ) {
+		message strcharinfo(0), "Este comando não pode ser usado nesse mapa.";
+		end;
+	}
+	specialeffect2 EF_READYPORTAL;
+	specialeffect2 EF_TELEPORTATION;
+	specialeffect2 EF_PORTAL;
+	sleep2 1000;
+	warp "prt_in", 47, 106;
+	end;
+}
+prt_in,51,106,0	script	saida_evt	45,1,1,{
+	warp "prontera", 167, 168;
+	end;
+}
+prt_in,41,108,2	script	Lista de Horários#evt	111,{
+	specialeffect 258;
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "Horários atuais de eventos:";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Baú Perdido^000000:"; 
+	mes "  ^00CC0040 em 40 min.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Ache o Porquinho^000000:";
+	mes "  ^00CC0040 em 40 min.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Sortudo^000000:"; 
+	mes "  ^00CC0011:00, 15:00 e 19:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- MvP vs MvP^000000:"; 
+	mes "  ^00CC0010:15, 15:15, 19:15, 22:15 e 00:15h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Vago^000000:"; 
+	mes "  ^00CC0017:00, 21:00, 01:00 e 07:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Corrida dos Porings^000000:"; 
+	mes "  ^00CC0009:00, 20:00, 02:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Poring Prêmiado^000000:"; 
+	mes "  ^00CC0010:00, 03:00, 05:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Tarot^000000:"; 
+	mes "  ^00CC0008:00 e 16:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Monster Wiki^000000:"; 
+	mes "  ^00CC0014:00, 22:00 e 04:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Devil Square^000000:"; 
+	mes "  ^00CC0012:00, 18:30, 00:00 e 06:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Guerra do Tesouro^000000:"; 
+	mes "  ^00CC0013:00 e 23:00h.^000000";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Aprendiz vs Zumbi^000000:";
+	mes "  ^00CC00Ativo pelo GM.^000000";
+	if( getgmlevel() >= 40 ){
+		dispbottom "--------------------------------------------------";
+		dispbottom "[Aviso Staff].";
+		dispbottom "npc:Tarot#Evt";
+		dispbottom "npc:Porquinho#Evt";
+		dispbottom "npc:PP#Evt";
+		dispbottom "npc:Monkey#Evt";
+		dispbottom "npc:Avz#Evt";
+		dispbottom "npc:Bau#Evt";
+		dispbottom "npc:mvpvsmvp";
+		dispbottom "Para ativar-los é só mandar PM (Exemplo: npc:Porquinho#Evt e digitar ativar).";
+		dispbottom "--------------------------------------------------";
+		dispbottom "[Comandos]";
+		dispbottom "Happy Hour: @happy on (ligar) e off (desligar).";
+		dispbottom "Descubra Senha: @descubrasenha on (ligar).";
+		dispbottom "Descubra Senha Portais: @descubrasenhaportal on (abre) e off (fecha).";
+		dispbottom "Super Poring Prêmiado: @superporing on (abre portal pro evento) e off (fecha portal).";
+		dispbottom "Prêmiando Players: @premio (São 3 tipos de Pacotes 1-2-3. Digite o nick e pack number).";
+		dispbottom "--------------------------------------------------";
+	}
+	close;
+}

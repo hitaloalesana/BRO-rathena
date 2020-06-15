@@ -1,0 +1,72 @@
+-	script	Evento_Aprendiz#Evt	-1,{
+OnInit:
+	bindatcmd "portalaprendiz", strnpcinfo(0) +"::OnPortalAprendiz", 60, 100;
+	disablenpc "Portal Aprendiz#Evt";
+	end;
+
+OnPortalAprendiz:
+	dispbottom "---------------------------------------------------------" ,0x00FF00;
+	dispbottom " Digite '@portalaprendiz on' para ligar." ,0x00FF00;
+	dispbottom " Digite '@portalaprendiz off' para desligar." ,0x00FF00;
+	dispbottom "---------------------------------------------------------" ,0x00FF00;
+	if( compare( .@atcmd_parameters$, "on" ) ){
+		set $@evt_aprendiz, 1;
+		enablenpc "Portal Aprendiz#Evt";
+		announce "[Evento Aprendiz]: "+ strcharinfo(0) +" abriu o portal em Prontera. Somente Aprendiz 1/1 podem participar!", bc_all|bc_blue;
+		end;
+	}
+	if( compare( .@atcmd_parameters$, "off" ) ){
+		set $@evt_aprendiz, 0;
+		announce "[Evento Aprendiz]: O portal para o evento foi fechado!", bc_all|bc_blue;
+		disablenpc "Portal Aprendiz#Evt";
+		end;
+	}
+	end;
+}
+prontera,125,149,6	script	Portal Aprendiz#Evt	723,{
+	specialeffect2 805;
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Este é um evento realizado pela ^EF8319Staff BrasilRO^000000.";
+	mes "^777777- Necessário para Participar:^000000";
+	mes "  ^00CC00- Ser um Aprendiz 1/1 sem nenhum item equipado ou no inventário!^000000";
+	mes "  ^00CC00- Todos seus itens e equipamentos serão enviados para o storage.^000000";
+	if( !$@evt_aprendiz ){
+		close2;
+		dispbottom "Evento desativado no momento.";
+		end;
+	}
+	next;
+	if( select("^00CC00•^000000 Participar.:^00CC00•^000000 Saír.") == 2 ){ close; }
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+		if( BaseLevel != 1 || Class != 0 ){
+			mes "Reservado apenas para Aprendiz 1/1.";
+			close;
+		}
+		if( Weight > 0 ){
+			mes "Guarde todos os seus itens e equipamentos no storage.";
+			mes "Para participar você não deve ter exatamente nada em seu char!";
+			close;
+		}
+		sc_end SC_ALL;
+		sc_start SC_DECREASEAGI, 1200000, 10;
+		percentheal 100, 100;
+		sc_start SC_STRIPSHIELD, 1200000, 5;
+		sc_start SC_STRIPWEAPON, 1200000, 5;
+		sc_start SC_STRIPARMOR, 1200000, 5;
+		sc_start SC_STRIPHELM, 1200000, 5;
+		//statusup2 bStr, -999;
+		//statusup2 bAgi, -999;
+		//statusup2 bVit, -999;
+		//statusup2 bInt, -999;
+		//statusup2 bDex, -999;
+		//statusup2 bLuk, -999;
+		atcommand "@storeall";
+		mes "Boa sorte!!!";
+		close2;
+		announce "[Evento Aprendiz]: O jogador "+strcharinfo(0)+" entrou no evento!", bc_all|bc_blue;
+		query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
+		warp "force_3-3", 100, 138;
+		end;
+}
+force_3-3	mapflag	nostorage
+force_3-3	mapflag	noskill

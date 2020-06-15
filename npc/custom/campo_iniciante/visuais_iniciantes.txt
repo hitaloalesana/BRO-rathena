@@ -1,5 +1,5 @@
 -	shop	hats_shop	-1,501:50
-new_zone01,151,144,4	script	Lojinha de Chapéus#n	55,{
+new_zone01,151,144,4	script	Vendedora de Balões#n	55,{
 		announce "Loja de Aluguel | Moeda: '"+ getitemname( .hats_requerid ) +"'", bc_blue|bc_self;
 		dispbottom "Atenção: Os itens desta loja são de Aluguel e duram 7 dias.", 0x00FF00;
 		callshop "hats_shop", 1;
@@ -30,7 +30,7 @@ new_zone01,151,144,4	script	Lojinha de Chapéus#n	55,{
 	end;
 OnInit:    
 	set .hats_requerid, 7539;
-	setarray .hatslist, 43118, 1, 18892, 10, 43067, 10, 44045, 10, 44048, 10, 44104, 10, 44100, 10, 44107, 10, 44070, 10, 44078, 10, 44043, 10, 26010, 10;
+	setarray .hatslist, 19154, 20, 19153, 20, 19152, 20, 19151, 20, 19150, 20, 19149, 20, 19148, 20, 19147, 20, 19146, 20, 19143, 20, 19095, 40;
 	npcshopitem "hats_shop", 0, 0; 
 	for( set .@i, 0; .@i < getarraysize( .hatslist ); set .@i, .@i + 2 )      
 		npcshopadditem "hats_shop", .hatslist[.@i], .hatslist[.@i + 1]; 

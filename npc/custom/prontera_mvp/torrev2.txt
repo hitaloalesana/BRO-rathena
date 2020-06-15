@@ -3,7 +3,7 @@ prt_in,131,121,0	script	Torre Sem Fim	406,{
 	set .@party_id, getcharid(1);
 	set .@md_name$, "Endless Tower";
 
-	//set .@etower_timer,checkquest(60200,PLAYTIME); // 1 dia
+	set .@etower_timer,checkquest(60200,PLAYTIME); // 1 dia
 	set .@etower_timer2,checkquest(60201,PLAYTIME); // 4 hours
 
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
@@ -16,70 +16,100 @@ prt_in,131,121,0	script	Torre Sem Fim	406,{
 		mes "^777777- Lembrete^000000: ^CD2990Seu grupo precisa ter mais de 1 membro para registrar e iniciar a "+.@md_name$+".^000000";
 		close;
 	}
-	switch(.@etower_timer) {
-	case -1:
-		if (is_party_leader() == true) {
-			if( Zeny < 400000000 ){
-				mes "É necessário um montante de ^8B008B40,000,000 Zenys^000000 para entrar na Torre Sem Fim.";
-				close;
-			}
-			mes "Gostaria de autorizar a entrada do seu grupo na ^8B008B"+.@md_name$+"^000000?";
+	if (!.@etower_timer) {
+		if (getcharid(0) == getpartyleader(.@party_id,2)) {
+			mes "Confirmado, o grupo foi feito. Você gostaria de reservar a entrada para a Torre Sem Fim?";
 			next;
-			switch(select("^00CC00•^000000 Gerar Entrada para "+.@md_name$+".:^00CC00•^000000 Entrar na  "+.@md_name$+".:^00CC00•^000000 Saír.")) {
-			case 1:
-				mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-				if (instance_create(.@md_name$) < 0 ) {
-					mes "Nome do Grupo: "+ getpartyname(.@party_id);
-					mes "Responsável pelo Grupo: "+strcharinfo(0);
-					mes "- Não conseguimos autorizar seu grupo, volte com todos os requisitos.";
-					close;
-				}
-				mes "^0000ff"+.@md_name$+"^000000 - Try to reserve";
-				mes "After making a reservation, you have to talk to NPC behind and select the menu 'Enter the Dungeon' to enter the dungeon.";
+			switch(select("Gerar Calabouço da "+.@md_name$+":Entrar no Calabouço:Retornar para Alberta:Cancelar")){
+            case 1:
+                mes "Para criar o calabouço você precisa de 100.000.000 zeny";
+                next;
+                if(select("no:yes") == 1){close;}
+                if (Zeny > 99999999){
+                    set Zeny,Zeny - 100000000;
+                    mes "Muito Bem, podem prosseguir e boa sorte!";
+                        //close2;
+                    .@instance = instance_create(.@md_name$,.@party_id);
+                    if (.@instance < 0) {
+                        mes "Nome do grupo: "+.@p_name$;
+                        mes "Líder do grupo: "+strcharinfo(0);
+                        mes "^0000ff"+.@md_name$+" ^000000- A reserva falhou!";
+                        close;
+                    }
+                    mes "^0000ff"+.@md_name$+"^000000 - Tentar reservar";
+                    mes "Depois de fazer uma reserva, você tem que falar com o NPC logo atrás e selecionar o menu 'Entrar no Calabouço' para entrar no calabouço.";
+                    for (.@i = 1; .@i <= 6; ++.@i) {
+                        if( instance_attachmap(.@i + "@tower", .@instance) == "" ) {
+                            mes "^0000ff"+.@md_name$+" ^000000- A reserva falhou!";
+                            instance_destroy(.@instance);
+                            close;
+                        }
+                    }
+                }else{
+                    mes "Sinto muito mas você não tem 100.000.000 de zeny!";
+                    close;
+                }
+				instance_set_timeout 14400,300,.@instance;
+				instance_init(.@instance);
 				close;
 			case 2:
-				callsub L_Enter,0,1;
+				callsub L_Enter,0,1,.@md_name$,.@p_name$;
 			case 3:
+				mes "Vou te levar pra Alberta";
+				close2;
+				warp "alberta",223,36;
+				end;
+			case 4:
 				close;
 			}
 		}
-		switch(select("^00CC00•^000000 Entrar na "+.@md_name$+".:^00CC00•^000000 Saír.")) {
+		switch(select("Entrar na "+.@md_name$+":Retornar para Alberta:Cancelar")) {
 		case 1:
-			callsub L_Enter,1,1;
+			callsub L_Enter,1,1,.@md_name$,.@p_name$;
 		case 2:
+			mes "Vou te levar pra Alberta.";
+			close2;
+			warp "alberta",223,36;
+			end;
+		case 3:
 			end;
 		}
-	case 0:
-	case 1:
-		if (.@etower_timer2 < 2 && getcharid(1) == etower_partyid) {
-			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-			mes "Gostaria de entrar agora?.";
-			next;
-			switch(select("^00CC00•^000000 Entrar na "+.@md_name$+".:^00CC00•^000000 Saír.")) {
-			case 1:
-				callsub L_Enter,0,0;
-			case 2:
-				close;
-			}
-		} else {
-			//set .@dun_lim_time,etower_timer+86400; // 1 week
-			 set .@dun_lim_time2,etower_timer+14400; // 4 hours
-			set .@dun_lim_time,etower_timer+3; // 1 week
-			set .@dun_cur_time,gettimetick(2);
-			set .@dun_ent_t,(.@dun_lim_time - .@dun_cur_time);
-			set .@dun_h,(.@dun_ent_t / 3600);
-			set .@dun_m,(.@dun_ent_t - (.@dun_h * 3600)) / 60;
-			set .@dun_s,.@dun_ent_t - ((.@dun_h * 3600) + (.@dun_m * 60));
-			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-			mes "Você deve aguardar " + .@dun_h + " Horas " + .@dun_m + " Minutos " + .@dun_s + "Segundos para subir a ^8B008B"+.@md_name$+"^000000. novamente.";
-			close;
+	} else if (.@etower_timer == 1 && .@etower_timer2 == 2) {
+
+		.@dun_lim_time = etower_timer+7200; // 1 Semana
+		.@dun_lim_time2 = etower_timer+7201; // 4 horas
+		.@dun_cur_time = gettimetick(2);
+		.@dun_ent_t = (.@dun_lim_time - .@dun_cur_time);
+		.@dun_h = (.@dun_ent_t / 3600);
+		.@dun_m = (.@dun_ent_t - (.@dun_h * 3600)) / 60;
+		.@dun_s = .@dun_ent_t - ((.@dun_h * 3600) + (.@dun_m * 60));
+
+		mes "Devido os efeitos na torre, você não pode entrar no calabouço agora, " + .@dun_h + "horas " + .@dun_m + "minutos " + .@dun_s + "segundos restantes para entrar no próximo calabouço.";
+		next;
+		mes "É perigoso aqui. Deixe-me levá-lo para Alberta.";
+		close2;
+		warp "alberta",223,36;
+		end;
+	} else if (.@etower_timer == 1) {
+		mes "Se você já tiver gerado o calabouço, você pode entrar. ";
+		next;
+		switch(select("Entrar na "+.@md_name$+":Retornar para Alberta:Cancelar")) {
+		case 1:
+			callsub L_Enter,0,0,.@md_name$,.@p_name$;
+		case 2:
+			mes "Vou te levar pra Alberta.";
+			close2;
+			warp "alberta",223,36;
+			end;
+		case 3:
+			break;
 		}
-	case 2:
-		set etower_timer,0;
+		close;
+	} else {
+		etower_timer = 0;
 		erasequest 60200;
 		erasequest 60201;
-		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-		mes "^0000ffThe records and after effects related to the Endless Tower have been removed. You can generate and enter the Endless Tower again.^000000";
+		mes "^0000ffOs registros e efeitos relacionados com a Torre Sem Fim foram removidos. Você pode gerar e entrar no calabouço da Torre Sem Fim novamente.^000000";
 		close;
 	}
 

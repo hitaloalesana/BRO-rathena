@@ -29,11 +29,11 @@
 -	shop	Humúnculos#6	-1,7419:55000,7142:100000,12040:100000,910:500,912:500,911:500
 -	shop	Vender#0	-1,513:-1
 
-prt_in,174,136,4	script	Comprador de Tralhas#1	60,{
-	callshop "Vender#0", 2; 
+prt_in,172,131,3	script	Comprador de Tralhas#1	534,{
+	callshop "Vender#0", 2;
 	end;
 }
-prt_in,172,141,4	script	Loja de Armamentos#1	68,{
+prt_in,172,141,4	script	Loja de Armamentos#1	634,{
 	switch( select("^00CC00•^000000 Adagas.:^00CC00•^000000 Espadas.:^00CC00•^000000 Lanças.:^00CC00•^000000 Machados.:^00CC00•^000000 Clavas.:^00CC00•^000000 Cajados.:^00CC00•^000000 Arcos.:^00CC00•^000000 Punhos.:^00CC00•^000000 Violinos.:^00CC00•^000000 Chichotes.:^00CC00•^000000 Livros.:^00CC00•^000000 Katars.:^00CC00•^000000 Shurikens.:^00CC00•^000000 Saír.") ){
 		case 1: callshop "Adagas#1", 1; end;
 		case 2: callshop "Espadas#2", 1; end;
@@ -52,7 +52,7 @@ prt_in,172,141,4	script	Loja de Armamentos#1	68,{
 		}
 }
 // Equipamentos
-prt_in,168,141,4	script	Loja de Equipamentos#1	68,{
+prt_in,168,141,4	script	Loja de Equipamentos#1	641,{
 	switch( select("^00CC00•^000000 Armaduras.:^00CC00•^000000 Escudos.:^00CC00•^000000 Capuz.:^00CC00•^000000 Sapatos.:^00CC00•^000000 Elmos.:^00CC00•^000000 Saír." )){
 		case 1: callshop "Armaduras#1", 1; end;
 		case 2: callshop "Escudos#2", 1; end;
@@ -63,7 +63,7 @@ prt_in,168,141,4	script	Loja de Equipamentos#1	68,{
 		}
 }
 // Utensilhos
-prt_in,164,141,4	script	Loja de Utensilhos#1	68,{
+prt_in,164,141,4	script	Loja de Utensilhos#1	642,{
 	switch( select("^00CC00•^000000 Projétil.:^00CC00•^000000 Flechas.:^00CC00•^000000 Poções & Stuffs.:^00CC00•^000000 Frascos & Gemas.:^00CC00•^000000 Comidas para Pets.:^00CC00•^000000 Humúnculos.:^00CC00•^000000 Saír." )){
 		case 1: callshop "Projétil#1", 1; end;
 		case 2: callshop "Flechas#2", 1; end;

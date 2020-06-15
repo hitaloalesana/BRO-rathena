@@ -1,0 +1,58 @@
+prt_in,37,95,4	script	Baú Perdido	623,{
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "O evento ^EE1289Baú Perdido^000000 resume-se em encontra-lo, ele cai em locais aleatórios e dentro dele existe um prêmio.";
+	mes "^777777- Prêmio do Evento^000000:";
+	mes "  ^00CC00"+ getitemname(40024) +".^000000";
+	close;
+}
+-	script	Bau#Evt	-1,{
+OnInit:
+	set $evt_a, 0;
+	end;
+
+OnWhisperGlobal:
+	if( getgmlevel() >= 60 ){
+	if( @whispervar0$ == "ativar" )
+		donpcevent strnpcinfo(0) +"::OnStartEvt"; 
+	}
+	end;
+
+OnClock0940: OnClock1140:OnClock1340:OnClock1540: 
+OnClock1740: OnClock1940: OnClock2140: OnClock2340: 
+OnClock0140: OnClock0340: OnClock0640:
+OnStartEvt:
+	set .prize_a, 21024; // ID do Prêmio
+	set .qnt_a, 5; // Quantia de Prêmios
+	set .spawn_a, 5; // Quantia de Mobs
+
+	set $evt_a, 1;
+	set $@ran, rand( 1,4 );
+	if ($@ran == 4) set .map$,"hugel";
+	if ($@ran == 3) set .map$,"alberta";
+	if ($@ran == 2) set .map$,"lighthalzen";
+	if ($@ran == 1) set .map$,"payon";
+	killmonster "prontera","All";
+	killmonster "geffen","All";
+	killmonster "morocc","All";
+	killmonster "izlude","All";
+	killmonster .map$,"All";
+	monster .map$, 0, 0, "Baú Perdido", 3175, .spawn_a, strnpcinfo(0) +"::OnMobKilled";
+	announce "[Baú Perdido]: "+ .spawn_a +" Baú Perdido acabou de cair em "+ .map$ +".", bc_all| bc_blue;
+	sleep 10000;
+	announce "[Baú Perdido]: Participe, você pode ganhar "+ getitemname(.prize_a) +" encontrando o baú!", bc_all| bc_blue;
+	end;
+
+OnMobKilled:
+	set .spawn_a, .spawn_a - 1;
+	getitem .prize_a, .qnt_a;
+	set #CASHPOINTS, #CASHPOINTS + 5;
+	query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
+	dispbottom "Você recebeu 5 ROPs por participar do evento.";
+	if( .spawn_a )
+		announce "[Baú Perdido]:  "+ strcharinfo(0) +" encontrou o Baú Perdido!", bc_all| bc_blue;
+	else {
+		announce "[Baú Perdido]: O evento terminou, o Baú Perdido foi encontrado!", bc_all| bc_blue;
+		set $evt_a, 0;
+	}
+	end;
+}

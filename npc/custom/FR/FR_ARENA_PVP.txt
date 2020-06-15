@@ -30,7 +30,6 @@ OnInit:
 
 	//= Mapa da Arena 1 vs 1
 		set $PvP_3$[0],"force_1-1";
-		setmapflag	$PvP_3$, pvp_noparty;
 		setmapflag	$PvP_3$, 0;  //= [ nomemo ] Aqui você citara o mapa ou dungeon aonde o "acolyte" ou "noviço" não usara o comando /memo.
 		setmapflag	$PvP_3$, 2;  //= [ nosave ] Aqui você citara o mapa ou dungeon aonde não é possivel salvar.
 		setmapflag	$PvP_3$, 1;  //= [ noteleport ] Aqui você citara o mapa ou dungeon aonde o player não podera usar a magia "Teleport".
@@ -55,9 +54,16 @@ OnInit:
 		set .QNTgrupo, 3; //= Padrão: 6
 	//= Nível de GM que não irá ganhar pontos no PvP/GvG
 		set .GMrank, 10; //= Padrão: 5 [ Superior a 5 não irá aparecer no ranking ]
-		end;
+		
+		
+		
+		
+	//Check tabela
+	query_sql "CREATE TABLE IF NOT EXISTS `pvp` (`id` int(9) NOT NULL AUTO_INCREMENT,`char_id` int(12) NOT NULL,`nick` varchar(30) NOT NULL,`vitorias` int(8) NULL DEFAULT 0,`derrotas` int(8) NULL DEFAULT 0,PRIMARY KEY (`id`))";
+
+end;
 		}
-}
+
 -	script	PvP_Funcs#1	-1,{
 OnPCKillEvent:
 	getmapxy .@map$, .@x, .@y, BL_PC;
@@ -87,7 +93,7 @@ function	script	PvP_Kill	{
 	query_sql "SELECT `vitorias` FROM `pvp` WHERE `char_id`="+ .@CID +"", .@pPontos;
 	query_sql "SELECT `nick` FROM `pvp` WHERE `char_id`="+ .@CID +"", .@nick$;
 	if(.@nick$ == ""){ 
-		query_sql "INSERT INTO `pvp` (`char_id`,`nick`,`vitorias`) VALUES ("+ .@CID +",'"+ strcharinfo(0) +"',1)", .@confirm$; 
+		query_sql "INSERT INTO `pvp` VALUES (null,"+ .@CID +",'"+ strcharinfo(0) +"',1)", .@confirm$; 
 		message strcharinfo(0), "[Sistema PvP]: Você derrotou seu primeiro adversário.";  
 	}
 	else
@@ -111,7 +117,7 @@ function	script	PvP_Die	{
 	query_sql "SELECT `derrotas` FROM `pvp` WHERE `char_id`="+ .@CID +"", .@pPontos;
 	query_sql "SELECT `nick` FROM `pvp` WHERE `char_id`="+ .@CID +"", .@nick$;
 	if(.@nick$ == ""){ 
-		query_sql "INSERT INTO `pvp` (`char_id`,`nick`,`derrotas`) VALUES ("+ .@CID +",'"+ strcharinfo(0) +"',1)", .@confirm$; 
+		query_sql "INSERT INTO `pvp` VALUES (null,"+ .@CID +",'"+ strcharinfo(0) +"',1)", .@confirm$; 
 	}
 	query_sql "UPDATE `pvp` SET `derrotas` = `derrotas` + 1 WHERE `char_id`="+ .@CID +"", .@confirm$;
 	end;					

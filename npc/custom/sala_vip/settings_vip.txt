@@ -13,9 +13,13 @@ OnPCLoginEvent:
 		end;
 		}
 }
-prontera,145,138,0	script	entrada_vip	45,1,1,{
+prontera,171,167,0	script	entrada_vip	45,1,1,{
+	if( getgmlevel() >= 10 ){ 
+		warp "prt_in", 227, 19; 
+		end; 
+	} 
 	if( vip_status(1) ){
-		dispbottom "Obrigado por usar os serviços VIP da Coop. Kafra!", 0x00FFFF;
+		dispbottom "Obrigado por usar os nossos serviços VIP.", 0x00FFFF;
 		warp "prt_in", 227, 19; 
 		end;
 	}
@@ -23,6 +27,6 @@ prontera,145,138,0	script	entrada_vip	45,1,1,{
 	end;
 }
 prt_in,227,15,0	script	saida_vip	45,1,1,{
-	warp "prontera", 167, 168;
+	warp "prontera", 168, 167;
 	end;
 }

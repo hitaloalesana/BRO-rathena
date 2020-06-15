@@ -1,0 +1,73 @@
+-	script	SP#Evt	-1,{
+OnPCLoginEvent:
+	getmapxy .@map$, .@x, .@y, 0;
+	if( .@map$ == "bat_d01" ){
+		dispbottom "Você será removido do Super Poring Prêmiado.";
+		sleep2 6000;
+		warp "SavePoint", 0, 0;
+	}
+	end;
+OnInit:
+	bindatcmd "superporing", strnpcinfo(0) +"::OnCommand", 60, 100;
+	disablenpc "Super Poring#Evt";
+	end;
+OnCommand:
+	dispbottom "---------------------------------------------------" ,0x00FF00;
+	dispbottom " Digite '@superporing on' para ligar." ,0x00FF00;
+	dispbottom " Digite '@superporing off' para desligar." ,0x00FF00;
+	dispbottom "---------------------------------------------------" ,0x00FF00;
+	if( compare( .@atcmd_parameters$, "on" ) ){
+		dispbottom "» O portal do Super Poring está: Ativo.";
+		announce "[Super Poring]: O portal para o evento » Super Poring Prêmiado « foi aberto por: "+strcharinfo(0)+".", bc_all|bc_blue;
+		enablenpc "Super Poring#Evt";
+		end;
+	}
+	if( compare( .@atcmd_parameters$, "off" ) ){
+		dispbottom "» O portal do Super Poring está: Desativo.";
+		announce "[Super Poring]: O portal para o evento » Super Poring Prêmiado « foi fechado!", bc_all|bc_blue;
+		disablenpc "Super Poring#Evt";
+		end;
+		}
+}
+prontera,123,146,6	script	Super Poring#Evt	45,{
+		mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+		mes "Algum GM ligou o evento ^0000FFSuper Poring Prêmiado^000000. Qualquer um pode participar!";
+		mes "Nele é dropado muitos prêmios, tá afim de participar?";
+		next;
+		switch(select("^00CC00•^000000 Participar.:^00CC00•^000000 Saír.") ){
+			case 1:
+				mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+				mes "Aqui vamos nós!";
+				close2;
+				if( Class == 4041 || Class == 18 || Class == 4019 ){ 
+					atcommand "@useskill 244 1 "+ strcharinfo(0); 
+				}
+				if( getpetinfo(2) != "null" ){ 
+					dispbottom "[ Remova seu pet para entrar no evento ].";
+					close; 
+				}
+				sc_end SC_ALL;
+				sc_start SC_DECREASEAGI, 1200000, 10;
+				percentheal 100, 100;
+				setcart 0;
+				setfalcon 0;
+				setriding 0;
+				atcommand "@storeall";
+				announce "[Super Poring]: "+ strcharinfo(0) +" acabou de entrar no evento!", bc_all|bc_blue;
+				query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
+				warp "bat_d01", 0, 0;
+				end;
+			case 2:
+				mes "[ ^a60536"+ strnpcinfo(1) +"^000000 ]";
+				mes "Está bem, volte quando estiver interessado.";
+				close;
+				}
+}
+bat_d01	mapflag	nostorage
+bat_d01	mapflag	noskill
+bat_d01	mapflag	nobranch
+bat_d01	mapflag	nomemo
+bat_d01	mapflag	nopenalty
+bat_d01	mapflag	noreturn
+bat_d01	mapflag	nosave	SavePoint
+bat_d01	mapflag	noteleport

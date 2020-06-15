@@ -9,8 +9,8 @@ OnInit:
 	setarray .msg$[0],
 		"Desvende o Campo dos Inciantes!",
 		"Mate os Porings e consiga a Moeda Poring!",
-		"Muias quests espalhadas pelo Campo!",
-		"Quando precisar volte aqui!!",
+		"Muitas quests espalhadas pelo Campo!",
+		"Quando precisar volte aqui!",
 	startnpctimer;
 	end;
 	

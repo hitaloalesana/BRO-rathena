@@ -1,4 +1,5 @@
-prontera,161,221,5	script	Quests Oficiais	408,{
+//408
+prontera,137,203,4	script	Quests Oficiais	10298,{
 function Add; function Chk; function Slot; function A_An;
 	mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";
 	mes "Oi, ^EEAD0E"+ strcharinfo(0)+"^000000!"; 
@@ -30,8 +31,8 @@ function Add {
 	npcshopadditem "qqshop"+getarg(0),getarg(1),((.ShowZeny)?getarg(3):0);
 	return; }
 function Chk {
-	if (getarg(0)<getarg(1)) { set @qe0,1; return "^FF0000"; }
-	else return "^00FF00"; }
+	if (getarg(0)< getarg(1)) { set @qe0,1; return "^00CC00"; }
+	else return "^EEAD0E"; }
 function Slot {
 	set .@s$,getitemname(getarg(0));
 	switch(.ShowSlot){
@@ -50,17 +51,18 @@ OnBuyItem:
 	copyarray .@q[1],getd(".q_"+@bought_nameid+"[0]"),getarraysize(getd(".q_"+@bought_nameid+"[0]"));
 	if (!.@q[1]) { message strcharinfo(0),"An error has occurred."; end; }
 	mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";
-	mes "Recompensa: ^0055FF"+((.@q[1]>1)?.@q[1]+"x ":"")+Slot(.@q[0])+"^000000";
-	mes "Requerimentos:";
-	if (.@q[2]) mes "- "+Chk(Zeny,.@q[2])+.@q[2]+" Zeny^000000";
-	if (.@q[3]) mes "- "+Chk(getd(.Points$[0]),.@q[3])+.@q[3]+" "+.Points$[1]+" ("+getd(.Points$[0])+"/"+.@q[3]+")^000000";
+	mes "^777777- Recompensa^000000:"; 
+	mes "  ^0055FF"+((.@q[1]>1)?.@q[1]+"x ":"")+Slot(.@q[0])+"^000000";
+	mes "^777777- Requerimentos^000000:";
+	if (.@q[2]) mes "  "+Chk(Zeny,.@q[2])+.@q[2]+"^000000 ^777777Zenys.^000000";
+	if (.@q[3]) mes "  "+Chk(getd(.Points$[0]),.@q[3])+.@q[3]+" "+.Points$[1]+"^000000 ^008B00("+getd(.Points$[0])+"/"+.@q[3]+").^000000";
 	if (.@q[4]) for(set .@i,4; .@i < getarraysize(.@q); set .@i,.@i+2)
-		mes "- "+Chk(countitem(.@q[.@i]),.@q[.@i+1])+((.DisplayID)?"{"+.@q[.@i]+"} ":"")+Slot(.@q[.@i])+" ("+countitem(.@q[.@i])+"/"+.@q[.@i+1]+")^000000";
+		mes "  "+Chk(countitem(.@q[.@i]),.@q[.@i+1])+((.DisplayID)?"("+.@q[.@i]+") ":"")+Slot(.@q[.@i])+"^000000 ^008B00("+countitem(.@q[.@i])+"/"+.@q[.@i+1]+").^000000";
 	next;
 	set @qe1, getiteminfo(.@q[0],5); set @qe2, getiteminfo(.@q[0],11);
 	addtimer 1000, strnpcinfo(1)+"::OnEnd";
 	while(1){
-		switch(select("^00CC00•^000000 Fazer ^0055FF"+getitemname(.@q[0])+"^000000:"+((((@qe1&1) || (@qe1&256) || (@qe1&512)) && @qe2>0 && !@qe6)?"^00CC00•^000000 Experimentar Item.":"")+": ^777777Cancelar.^000000")) {
+		switch(select("^00CC00•^000000 Fazer ^0055FF"+getitemname(.@q[0])+".^000000:"+((((@qe1&1) || (@qe1&256) || (@qe1&512)) && @qe2>0 && !@qe6)?"^00CC00•^000000 Experimentar Item.":"")+": ^777777Cancelar.^000000")) {
 			case 1:
 				if (@qe0) { 
 					mes "^0099FF[ Quests Brasil Ragnarök Online ]^000000";

@@ -1,10 +1,10 @@
 prontera,162,191,3	script	Arena de Batalhas	10191,{
 
 	switch(select(
-			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena$[.map_arena$])+"^777777/^000000^FF6A6A99^000000^777777)^000000 ^0099FFArena Rankeada^000000 ^777777|^000000 ^104E8BMaestrias.^000000",
-			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena_livre$[.map_arena_livre$])+"^777777/^000000^FF6A6A99^000000^777777)^000000 ^00CC00Arena Livre ^777777|^000000 ^008B45Fogo Livre.^000000",
-			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena_nopot$[.map_arena_nopot$])+"^777777/^000000^FF6A6A99^000000^777777)^000000 ^EE9A00Arena Sem Pot.^000000",
-			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena_x1$[.map_arena_x1$])+"^777777/^000000^FF6A6A2^000000^777777)^000000 ^8B5A00Arena 1 vs 1.^000000",
+			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena$)+"^777777/^000000^FF6A6A99^000000^777777)^000000 ^0099FFArena Rankeada^000000 ^777777|^000000 ^104E8BMaestrias.^000000",
+			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena_livre$)+"^777777/^000000^FF6A6A99^000000^777777)^000000 ^00CC00Arena Livre ^777777|^000000 ^008B45Fogo Livre.^000000",
+			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena_nopot$)+"^777777/^000000^FF6A6A99^000000^777777)^000000 ^EE9A00Arena Sem Pot.^000000",
+			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena_x1$)+"^777777/^000000^FF6A6A2^000000^777777)^000000 ^8B5A00Arena 1 vs 1.^000000",
 			"^00CC00•^000000 Conheçer Sistema.",
 			"^00CC00•^000000 Ranking.",
 			"^00CC00•^000000 Saír.")){

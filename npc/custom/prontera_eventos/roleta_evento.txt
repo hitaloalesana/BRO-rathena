@@ -1,0 +1,143 @@
+prt_in,38,104,5	script	Roleta de Eventos	10054,{
+end;
+}
+//prontera,164,180,5	script	Sample	4_F_KAFRA1,{
+	if (quest_random_cd == gettime(8)) {
+		mes "You will be assigned with a new quest by tomorrow 6AM.";
+		close;
+	}
+	if (!quest_random) {
+		if (gettime(3) < 6) {
+			mes "You will be assigned with a new quest by 6AM today.";
+			close;
+		}
+		quest_random_cd = 0;
+		quest_random = rand(1, 2);
+		mes "You have been assigned with a new quest.";
+		next;
+	}
+	switch(quest_random) {
+		case 1:
+			setarray .@reward, 4001, 1;
+			setarray .@item, 512;
+			setarray .@amount, 100;
+			break;
+		case 2:
+			setarray .@reward, 4002, 1;
+			setarray .@item, 501, 502, 503;
+			setarray .@amount, 3, 1, 2;
+			break;
+		default:
+			mes "invalid quest.";
+			close;
+	}
+	
+	mes "Quest Requirement(s):";
+	.@size = getarraysize(.@item);
+	for (.@i = 0; .@i < .@size; .@i++) {
+		mes " > "+.@amount[.@i]+"x "+getitemname(.@item[.@i]);
+		if (countitem(.@item[.@i]) < .@amount[.@i])
+			.@fail++;
+	}
+	if (!.@fail) {
+		next;
+		if (select("Submit Quest", "Cancel") == 1) {
+			for (.@i = 0; .@i < .@size; .@i++)
+				delitem .@item[.@i], .@amount[.@i];
+			getitem .@reward[0], .@reward[1];
+			quest_random = 0;
+			quest_random_cd = gettime(8);
+		}
+	}
+	close;
+}
+
+
+//prontera,152,152,5	script	Daily Quest	733,{
+mes "[ Daily Quest ]";
+mes "Hello ^0000ff"+strcharinfo(0)+"^000000,";
+mes "How can i help you?";
+        mes "       ";
+        mes "^ff0000NOTE^000000 :";
+        mes "Daily quest starts every";
+        mes "1:00 A.M and 1:00 P.M";
+	next;
+    set .@t,gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 );
+    mes "[ Daily Quest ]";
+    mes ""+ .week$[.@t] + " Quest Detail :";
+    mes "^777777Required Items^000000 :";
+    set .@size,getarraysize( getd( ".req_item"+ .@t ) );
+    for ( set .@i,1; .@i < .@size; set .@i,.@i+2)
+    mes ""+((countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) ) < getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) ) ? "^ff0000":"^008800")+""+getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) +"x "+ getitemname( getd( ".req_item"+ .@t +"["+ .@i +"]" ) )+" ("+countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) )+"/"+getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) +")";
+    
+    mes "^777777Reward Items^000000 :";
+    mes "1x "+getitemname( getd( ".req_item"+ .@t ) );
+    mes "1x Refinement Card";
+    next;
+    if ( select ( "Submit ^0000ffDaily Quest Items", "^ff0000Exit^000000" ) == 2 ) {
+        close;
+    }
+    else if( #the_day_today == gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 ) ) {
+            mes "[ Daily Quest ]";
+        mes "I'm sorry, but you have completed";
+        mes "the ^ff0000"+( gettime(3) > 12 ? "P.M" : "A.M" )+"^000000 quest for today already.";
+        mes "Please comeback later for";
+        mes "the ^0000ff"+(gettime(3) > 12 ? "A.M" : "P.M" )+"^000000 quest.";
+        close;
+    }
+    else if ( gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 ) != .@t ) {
+        mes "[ Daily Quest ]";
+        mes "I'm sorry, but the daily quest has just been updated.";
+        mes "I now require a new set of quest items.";
+        close;
+    }
+    mes "[ Daily Quest ]";
+    mes "^ff0000*Checking Inventory*^000000";
+    mes "Please wait....";
+    sleep2 5000;
+    mes "             ";
+    mes "             ";
+    mes "• ^008800Inventory Check Complete^000000";
+    next;
+    for ( set .@i,1; .@i < .@size; set .@i,.@i+2 ) {
+        if ( countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) ) < getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) ) {
+            setarray .@not_enough[.@c], getd( ".req_item"+ .@t +"["+ .@i +"]" ), getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) - countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) );
+            set .@c,.@c + 2;
+        }
+    }
+    if ( .@c ) {
+        mes "[ Daily Quest ]";
+        mes "You do not have enough ^ff0000Quest Items^000000.";
+        close;
+    }
+    for ( set .@i,1; .@i < .@size; set .@i,.@i + 2 )
+    delitem getd( ".req_item"+ .@t +"["+ .@i +"]" ), getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" );
+    getitem getd( ".req_item"+ .@t ), 1;
+    set #the_day_today,gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 );
+    mes "[ Daily Quest ]";
+    mes "^777777Quest Completed^000000 :";
+    mes "^009900"+ .week$[.@t]+" Quest^000000";
+    mes "        ";
+    mes "^777777Received Items^000000 :";
+    mes "• ^0000ff1x "+getitemname( getd( ".req_item"+ .@t ) );
+    getitem 21013,1;
+    close;
+OnInit:
+    waitingroom "Daily Quest",0;
+    setarray .week$, "Sunday's (A.M)", "Sunday's (P.M)", "Monday's (A.M)", "Monday's (P.M)", "Tuesday's (A.M)", "Tuesday's (P.M)", "Wednesday's (A.M)", "Wednesday's (P.M)", "Thursday's (A.M)", "Thursday's (P.M)", "Friday's (A.M)", "Friday's (P.M)", "Saturday's (A.M)", "Saturday's (P.M)";
+    setarray .req_item0, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;// sunday
+    setarray .req_item1, 21010, rand( 901,1070 ),rand( 10,20 ), 502,20, 503,30, 504, 40;// sunday PM etc..
+    setarray .req_item2, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item3, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item4, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item5, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item6, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item7, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item8, 21010, rand( 901,1070 ),rand( 10,20 ), 502,20, 503,30, 504, 40;
+    setarray .req_item9, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item10, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item11, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item12, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    setarray .req_item13, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
+    end;
+}

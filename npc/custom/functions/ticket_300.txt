@@ -1,64 +1,57 @@
-sro_job,260,260,5	script	Upador 300/150#job1	831,{
-	mes "[ ^a60536Job Master^000000 ]";
-	mes "Olá!";
-	mes "Você gostaria de escolher sua classe agora?";
+prt_in,97,170,5	script	Assistente de Up!#job1	831,{
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Estou aqui para ajudar na escolha de uma classe e te dar aquele up no level máximo!";
+	mes "^777777Você gostaria de escolher sua classe agora?^000000";
 	next;
-	switch( select("[^ff0000»^000000] Sim.:[^ff0000»^000000] Não.") ){
+	switch( select("^00CC00•^000000 Sim.:^00CC00•^000000 Não.") ){
 	case 1:
-		mes "[ ^a60536Job Master^000000 ]";
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 		mes "Você está realmente pronto para escolher sua classe?";
 		mes "Espero que faça a escolha certa.";
 		next;
-
-		if( BaseLevel > 1 || JobLevel > 1 || Class != Job_Novice )
-		{
-			mes "[ ^a60536Job Master^000000 ]";
-			mes "Desculpa, esse serviço é apenas para aprendiz lvl 1/1.";
+		if( BaseLevel > 1 || JobLevel > 1 || Class != Job_Novice ){
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Desculpa, esse serviço é apenas para Aprendiz Level 1/1.";
 			mes "Tome seu ticket devolta...";
 			next;
-			getitem 21016,1;
-			warp "prontera",156,191;
+			getitem 21016, 1;
+			warp "prontera", 156, 191;
 			close;
 		}
 
-		mes "[ ^a60536Job Master^000000 ]";
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 		mes "Ok deixe-me te mostrar o menu de classes.";
-		mes "É separado em grupos: Avançada, Expandida e Bebê Classe.";
+		mes "É separado em grupos: ^777777Avançada, Expandida e Bebê Classe.^000000";
 		mes "Então, cheque a lista toda antes de decidir.";
 		next;
 
-		if( getarraysize(.Classes) <= 0 )
-			donpcevent "Chronos Girl#job1::OnInit";
+		if( getarraysize(.Classes) <= 0 ) donpcevent "Upador 300/150#job1::OnInit";
 
 		set .@Job, select(.Menu$) - 1;
 
-		mes "[ ^a60536Job Master^000000 ]";
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 		mes "Você escolheu ^0000FF" + jobname(.Classes[.@Job]) + "^000000.";
 		mes "Por favor, pense sobre essa classe. O próximo botão aparecerá em 5 segundos.";
 		sleep2 5000;
-		mes "Você está realmente certo sobre a escolha dessa classe?";
+		mes "^777777Você está realmente certo sobre a escolha dessa classe?^000000";
 		next;
-		if( select("[^ff0000»^000000] Sim, estou certo.:Não, desculpa... Eu vou escolher outra classe.") == 2 )
-		{
-			mes "[ ^a60536Job Master^000000 ]";
+		if( select("^00CC00•^000000 Sim.:^00CC00•^000000 Não.") == 2 ){
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 			mes "Ok, leve o seu tempo e pense direito sobre cada classe.";
 			close;
 		}
-
-		if( (.Classes[.@Job] == Job_Clown || .Classes[.@Job] == Job_Baby_Bard) && Sex == 0 )
-		{
-			mes "[ ^a60536Job Master^000000 ]";
+		if( (.Classes[.@Job] == Job_Clown || .Classes[.@Job] == Job_Baby_Bard) && Sex == 0 ){
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 			mes "A classe selecionada não está disponível para seu sexo.";
 			close;
 		}
-		if( (.Classes[.@Job] == Job_Gypsy || .Classes[.@Job] == Job_Baby_Dancer) && Sex == 1 )
-		{
-			mes "[ ^a60536Job Master^000000 ]";
+		if( (.Classes[.@Job] == Job_Gypsy || .Classes[.@Job] == Job_Baby_Dancer) && Sex == 1 ){
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 			mes "A classe selecionada não está disponível para seu sexo.";
 			close;
 		}
 
-		mes "[ ^a60536Job Master^000000 ]";
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 		mes "Agora deixe-me fazer a mágica, você se tornará um ^0000FF" + jobname(.Classes[.@Job]) + "^000000.";
 		next;
 
@@ -76,8 +69,7 @@ sro_job,260,260,5	script	Upador 300/150#job1	831,{
 		atcommand "@joblevel 149";
 		atcommand "@baselevel 299";
 
-		switch( .Classes[.@Job] )
-		{
+		switch( .Classes[.@Job] ){
 		// ****************
 		// * Baby Classes *
 		// ****************
@@ -390,13 +382,14 @@ sro_job,260,260,5	script	Upador 300/150#job1	831,{
 			break;
 		}
 
-		mes "[ ^a60536Job Master^000000 ]";
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 		mes "Beleza, o serviço está pronto.";
-		warp "prontera",156,191;
-		close;	
+		close2;
+		warp "prontera", 156, 191;
+		end;
 		
 	case 2:
-		mes "[ ^a60536Job Master^000000 ]";	
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";	
 		mes "Volte quando você ja tiver pensado em qual classe você quer se tornar.";
 		mes "E tome seu ticket devolta...";
 		next;
@@ -413,10 +406,3 @@ OnInit:
 	end;
 	}
 }
-
-sro_job	mapflag	noteleport
-sro_job	mapflag	nowarpto
-sro_job	mapflag	nowarp
-sro_job	mapflag	nomemo
-sro_job	mapflag	nopenalty
-sro_job	mapflag	nobranch

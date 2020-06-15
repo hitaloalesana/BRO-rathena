@@ -1,4 +1,5 @@
-prontera,162,191,3	script	Arena de Batalhas	10191,{
+//10191
+prontera,162,191,3	script	Arena de Batalhas	10092,{
 
 	switch(select(
 			"^00CC00•^000000 ^777777(^000000^66CD00"+getmapusers(.map_arena$[.map_arena$])+"^777777/^000000^FF6A6A99^000000^777777)^000000 ^0099FFArena Rankeada^000000 ^777777|^000000 ^104E8BMaestrias.^000000",
@@ -176,7 +177,7 @@ OnPCDieEvent:
 	} else {
 		query_sql "INSERT INTO `pvp_patente` VALUES (null,"+getcharid(0)+",'"+strcharinfo(0)+"',0,1,0)"; 
 	}
-	warp "prontera", 155, 178;
+	//warp "prontera", 155, 178;
 	end;
 
 S_ICOEFF:
@@ -272,8 +273,8 @@ OnInit:
 	//Mapflags a remover
 	setarray .removmapflag[0],MF_GVG;
 
-	//Mapflags a adicionar.
-	setarray .addmapflag[0],MF_NOTELEPORT,MF_NOPENALTY,MF_PVP,MF_NOSAVE,MF_NOWARP,MF_NOGO,MF_NORETURN,MF_NOWARPTO;
+	//Mapflags a adicionar.MF_NOSAVE
+	setarray .addmapflag[0],MF_NOTELEPORT,MF_NOPENALTY,MF_PVP,MF_NOWARP,MF_NOGO,MF_NORETURN,MF_NOWARPTO;
 	
 	//tabela
 	query_sql "CREATE TABLE IF NOT EXISTS `pvp_patente` (`id` int(9) NOT NULL AUTO_INCREMENT,`char_id` INT(11) NOT NULL,`nome` VARCHAR(30) NOT NULL,`matou` INT(9) NULL DEFAULT 0,`morreu` INT(9) NULL DEFAULT 0,`rank` SMALLINT(1) NOT NULL, PRIMARY KEY (`id`))";

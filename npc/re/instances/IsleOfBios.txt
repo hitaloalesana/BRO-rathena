@@ -7,9 +7,9 @@
 //= 1.0 First version. [Capuche]
 //============================================================
 
-moro_cav,50,64,5	script	Yellow Seed#bios	CLEAR_NPC,{
-	if (BaseLevel < 160) {
-		mes "^ff0000Characters below Level 160 cannot enter this dungeon.^000000";
+help_lobby,89,157,5	script	Ceifador Ankou#bios	10092,{
+	if (BaseLevel < 255) {
+		mes "^ff0000Characters below Level 255 cannot enter this dungeon.^000000";
 		close;
 	}
 	if (isbegin_quest(15006) == 0) {
@@ -68,7 +68,7 @@ moro_cav,50,64,5	script	Yellow Seed#bios	CLEAR_NPC,{
 			mes "^ff0000Your party leader has not yet created a Crack of Time.^000000";
 			close;
 		case IE_OK:
-			mapannounce "moro_cav", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering Isle of Bios.",bc_map,"0x00FF99";
+			mapannounce "help_lobby", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering Isle of Bios.",bc_map,"0x00FF99";
 			if (isbegin_quest(15005) == 0) {
 				setquest 15005;// Memorial Dungeon: Isle of Bios
 				setquest 15007;// Memorial Dungeon: Isle of Bios
@@ -88,12 +88,12 @@ OnInit:
 	end;
 }
 
-moro_cav,45,60,5	script	Wandering Old Man#sara	4_M_EINOLD,{
-	if (BaseLevel < 160) {
+help_lobby,84,161,5	script	Wandering Old Man#sara	4_M_EINOLD,{
+	if (BaseLevel < 255) {
 		mes "[Wandering Old Man]";
 		mes "...";
 		mes "I'm afraid you're not up for this yet.";
-		mes "You have to be at least Level 160.";
+		mes "You have to be at least Level 255.";
 		close;
 	}
 	if (isbegin_quest(15006) == 0) {
@@ -361,7 +361,7 @@ OnMyMobDead:
 			ep14_3_isle = 1;
 		if (checkquest(15007,PLAYTIME) == 0 || checkquest(15007,PLAYTIME) == 1)
 			setquest 15008;// Memorial Dungeon: Isle of Bios
-		warp "moro_cav",45,63;
+		warp "help_lobby",89,145;
 	}
 	end;
 }
