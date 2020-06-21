@@ -7495,7 +7495,7 @@ Body:
       Skill:
         Plagiarism: true
         Reproduce: true
-    CastTime: 500
+    CastTime: 1000
     AfterCastActDelay: 500
     AfterCastWalkDelay:
       - Level: 2
@@ -7506,20 +7506,19 @@ Body:
         Time: 600
       - Level: 5
         Time: 800
-    FixedCastTime: 500
     Requires:
-      SpCost:
+      SpCost: 10
+      SpiritSphereCost:
         - Level: 1
-          Amount: 12
+          Amount: 1
         - Level: 2
-          Amount: 16
+          Amount: 2
         - Level: 3
-          Amount: 20
+          Amount: 3
         - Level: 4
-          Amount: 24
+          Amount: 4
         - Level: 5
-          Amount: 28
-      SpiritSphereCost: 1
+          Amount: 5
   - Id: 268
     Name: MO_STEELBODY
     Description: Mental Strength
