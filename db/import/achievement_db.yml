@@ -80,3 +80,63 @@
 Header:
   Type: ACHIEVEMENT_DB
   Version: 1
+
+Body:
+  - ID: 110000
+    Group: "AG_GOAL_LEVEL"
+    Name: "Acquire the first aura!"
+    Condition: " BaseLevel >= 99 "
+    Reward:
+      ItemID: 14532
+      Script: " specialeffect2 EF_BLESSING; sc_start SC_BLESSING,30000,10; "
+      TitleID: 1000
+    Score: 50
+  - ID: 110001
+    Group: "AG_GOAL_LEVEL"
+    Name: "Acquire the second aura!"
+    Condition: " BaseLevel >= 255 "
+    Dependent:
+      - Id: 110000
+    Reward:
+      ItemID: 14532
+      Script: " specialeffect2 EF_BLESSING; sc_start SC_BLESSING,30000,10; "
+      TitleID: 1001
+    Score: 60
+  - ID: 110002
+    Group: "AG_GOAL_LEVEL"
+    Name: "Acquire the third aura!"
+    Condition: " BaseLevel >= 300 "
+    Dependent:
+      - Id: 110001
+    Reward:
+      ItemID: 14532
+      Script: " specialeffect2 EF_BLESSING; sc_start SC_BLESSING,30000,10; "
+      TitleID: 1002
+    Score: 70
+  - ID: 110003
+    Group: "AG_GOAL_LEVEL"
+    Name: "Master Job level!"
+    Condition: " JobLevel >= 50 "
+    Reward:
+      ItemID: 14532
+      Script: " specialeffect2 EF_BLESSING; sc_start SC_BLESSING,30000,10; "
+      TitleID: 1003
+    Score: 30
+  - ID: 110004
+    Group: "AG_GOAL_LEVEL"
+    Name: "Grandmaster Job level!"
+    Condition: " JobLevel >= 150 "
+    Dependent:
+      - Id: 110003
+    Reward:
+      ItemID: 14532
+      Script: " specialeffect2 EF_BLESSING; sc_start SC_BLESSING,30000,10; "
+      TitleID: 1004
+    Score: 50
+  - ID: 110005
+    Group: "AG_GOAL_LEVEL"
+    Name: "First Login after the introduction of Achievement Tasks"
+    Score: 10
+    Condition: " true "
+    Reward:
+      Script: " specialeffect2 EF_BLESSING; sc_start SC_BLESSING,30000,10; "

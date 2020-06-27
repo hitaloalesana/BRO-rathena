@@ -3,3 +3,2368 @@
 Header:
   Type: ITEM_ADVANCED_DROP_GROUP
   Version: 1
+
+Body:
+  - GroupId: MELEE_ARMA_OPTION1_1_20
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 3 
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 3  
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 1
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 20
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 20
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 3
+            Max: 6
+  - GroupId: RANGED_ARMA_OPTION1_1_20
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 3  
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 1
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 20
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 20
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_RANGE_ATTACK_DAMAGE_TARGET
+          Value:
+            Min: 3
+            Max: 5
+  - GroupId: MAGIC_ARMA_OPTION1_1_20
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_HEAL_VALUE
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_DEC_SPELL_CAST_TIME
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+  - GroupId: MELEE_ARMA_OPTION1_21_40
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 4 
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 20
+            Max: 50
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 2
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 7
+            Max: 15
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_DAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_DAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 5
+            Max: 15
+  - GroupId: RANGED_ARMA_OPTION1_21_40
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 4 
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 20
+            Max: 50
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 2
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 7
+            Max: 15
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RANGE_ATTACK_DAMAGE_TARGET
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_DAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_DAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 5
+            Max: 15
+  - GroupId: MAGIC_ARMA_OPTION1_21_40
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 4
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 20
+            Max: 50
+        - OptionId: RDMOPT_VAR_MAGICATKPERCENT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_HEAL_VALUE
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DEC_SPELL_CAST_TIME
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_MDAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_MDAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_MDAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 5
+            Max: 15
+  - GroupId: MELEE_ARMA_OPTION1_41_60
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 5 
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 20
+            Max: 50
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 2
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 7
+            Max: 15
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 10
+            Max: 20 
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_UNDEAD
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_NOTHING
+          Value:
+            Min: 10
+            Max: 20   
+        - OptionId: RDMOPT_RACE_DAMAGE_ANIMAL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_PLANT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_INSECT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_FISHS
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_DEVIL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_HUMAN
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_ANGEL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_DRAGON
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+  - GroupId: RANGED_ARMA_OPTION1_41_60
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 5  
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 20
+            Max: 50
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 2
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 7
+            Max: 15
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RANGE_ATTACK_DAMAGE_TARGET
+          Value:
+            Min: 3
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 10
+            Max: 20 
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_UNDEAD
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_NOTHING
+          Value:
+            Min: 10
+            Max: 20   
+        - OptionId: RDMOPT_RACE_DAMAGE_ANIMAL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_PLANT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_INSECT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_FISHS
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_DEVIL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_HUMAN
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_ANGEL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_DAMAGE_DRAGON
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+  - GroupId: MAGIC_ARMA_OPTION1_41_60
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 20
+            Max: 50
+        - OptionId: RDMOPT_VAR_MAGICATKPERCENT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_HEAL_VALUE
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DEC_SPELL_CAST_TIME
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 10
+            Max: 20 
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_UNDEAD
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_NOTHING
+          Value:
+            Min: 10
+            Max: 20   
+        - OptionId: RDMOPT_RACE_MDAMAGE_ANIMAL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_PLANT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_INSECT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_FISHS
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_DEVIL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_HUMAN
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_ANGEL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_DRAGON
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+  - GroupId: MELEE_ARMA_OPTION1_61_99
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 6 
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 500
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 100
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 5
+            Max: 12
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 7
+            Max: 20
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 40
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 40
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 24
+        - OptionId: RDMOPT_DAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 10
+            Max: 25 
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_UNDEAD
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_NOTHING
+          Value:
+            Min: 10
+            Max: 25   
+        - OptionId: RDMOPT_RACE_DAMAGE_ANIMAL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_PLANT
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_INSECT
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_FISHS
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_DEVIL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_HUMAN
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_ANGEL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_DRAGON
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+  - GroupId: RANGED_ARMA_OPTION1_61_99
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 6  
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 500
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 20
+            Max: 100
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 20
+            Max: 60
+        - OptionId: RDMOPT_VAR_ATKPERCENT
+          Value:
+            Min: 5
+            Max: 12
+        - OptionId: RDMOPT_VAR_PLUSASPD
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 7
+            Max: 18
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 35
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 35
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 12
+        - OptionId: RDMOPT_RANGE_ATTACK_DAMAGE_TARGET
+          Value:
+            Min: 5
+            Max: 15
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 10
+            Max: 24
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 24
+        - OptionId: RDMOPT_DAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 10
+            Max: 25
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 10
+            Max: 25 
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_UNDEAD
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_NOTHING
+          Value:
+            Min: 10
+            Max: 25   
+        - OptionId: RDMOPT_RACE_DAMAGE_ANIMAL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_PLANT
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_INSECT
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_FISHS
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_DEVIL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_HUMAN
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_ANGEL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_DAMAGE_DRAGON
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+  - GroupId: MAGIC_ARMA_OPTION1_61_99
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 6
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 200
+            Max: 500
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 40
+            Max: 130
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 30
+            Max: 80
+        - OptionId: RDMOPT_VAR_MAGICATKPERCENT
+          Value:
+            Min: 5
+            Max: 12
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_HEAL_VALUE
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_DEC_SPELL_CAST_TIME
+          Value:
+            Min: 5
+            Max: 12
+        - OptionId: RDMOPT_MDAMAGE_SIZE_SMALL_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_SIZE_MIDIUM_TARGET
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_MDAMAGE_SIZE_LARGE_TARGET
+          Value:
+            Min: 10
+            Max: 20
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 10
+            Max: 25 
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_UNDEAD
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_NOTHING
+          Value:
+            Min: 10
+            Max: 25   
+        - OptionId: RDMOPT_RACE_MDAMAGE_ANIMAL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_PLANT
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_INSECT
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_FISHS
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_DEVIL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_MDAMAGE_HUMAN
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_ANGEL
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_RACE_MDAMAGE_DRAGON
+          Value:
+            Min: 10
+            Max: 25
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE        
+  - GroupId: MELEE_ARMA_BOSS
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 3
+            Max: 6 
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 40
+            Max: 100
+        - OptionId: RDMOPT_VAR_MAXHPPERCENT
+          Value:
+            Min: 3
+            Max: 8
+        - OptionId: RDMOPT_VAR_MAXSPPERCENT
+          Value:
+            Min: 3
+            Max: 8
+        - OptionId: RDMOPT_VAR_HPACCELERATION
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_SPACCELERATION
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 20 
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_DEC_SPELL_DELAY_TIME
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_DEC_SP_CONSUMPTION
+          Value:
+            Min: 2
+            Max: 5
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_NOTHING
+          Value:
+            Min: 4
+            Max: 10   
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_UNDEAD
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_ANIMAL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_PLANT
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_FISHS
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_DEVIL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_HUMAN
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_ANGEL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_DRAGON
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 8
+            Max: 25
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 5
+            Max: 20
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 6
+            Max: 20
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 5
+            Max: 10
+    - Slot: 3
+      PossibleOptions:
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 5
+            Max: 10 
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_UNDEAD
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_NOTHING
+          Value:
+            Min: 5
+            Max: 10   
+        - OptionId: RDMOPT_RACE_DAMAGE_ANIMAL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_PLANT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_INSECT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_FISHS
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_DEVIL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_HUMAN
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_ANGEL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_DRAGON
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+        - OptionId: RDMOPT_WEAPON_ATTR_WATER
+        - OptionId: RDMOPT_WEAPON_ATTR_GROUND
+        - OptionId: RDMOPT_WEAPON_ATTR_FIRE
+        - OptionId: RDMOPT_WEAPON_ATTR_WIND
+        - OptionId: RDMOPT_WEAPON_ATTR_DARKNESS
+        - OptionId: RDMOPT_WEAPON_ATTR_SAINT
+        - OptionId: RDMOPT_DAMAGE_SIZE_PERFECT
+  - GroupId: RANGED_ARMA_BOSS
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 3
+            Max: 6 
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 40
+            Max: 100
+        - OptionId: RDMOPT_VAR_MAXHPPERCENT
+          Value:
+            Min: 3
+            Max: 8
+        - OptionId: RDMOPT_VAR_MAXSPPERCENT
+          Value:
+            Min: 3
+            Max: 8
+        - OptionId: RDMOPT_VAR_HPACCELERATION
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_SPACCELERATION
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 20 
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_DEC_SPELL_DELAY_TIME
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_DEC_SP_CONSUMPTION
+          Value:
+            Min: 2
+            Max: 5
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_NOTHING
+          Value:
+            Min: 4
+            Max: 10   
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_UNDEAD
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_ANIMAL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_PLANT
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_FISHS
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_DEVIL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_HUMAN
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_ANGEL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_DEF_PERCENT_DRAGON
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 8
+            Max: 25
+        - OptionId: RDMOPT_VAR_PLUSASPDPERCENT
+          Value:
+            Min: 5
+            Max: 20
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 6
+            Max: 20
+        - OptionId: RDMOPT_VAR_CRITICALSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_CRI_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RANGE_ATTACK_DAMAGE_TARGET
+          Value:
+            Min: 5
+            Max: 10
+    - Slot: 3
+      PossibleOptions:
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 5
+            Max: 10 
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_UNDEAD
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_NOTHING
+          Value:
+            Min: 5
+            Max: 10   
+        - OptionId: RDMOPT_RACE_DAMAGE_ANIMAL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_PLANT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_INSECT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_FISHS
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_DEVIL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_HUMAN
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_ANGEL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_DAMAGE_DRAGON
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+        - OptionId: RDMOPT_DAMAGE_SIZE_PERFECT
+  - GroupId: MAGIC_ARMA_BOSS
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 3
+            Max: 6 
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 3
+            Max: 6
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 40
+            Max: 100
+        - OptionId: RDMOPT_VAR_MAXHPPERCENT
+          Value:
+            Min: 3
+            Max: 8
+        - OptionId: RDMOPT_VAR_MAXSPPERCENT
+          Value:
+            Min: 3
+            Max: 8
+        - OptionId: RDMOPT_VAR_HPACCELERATION
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_SPACCELERATION
+          Value:
+            Min: 10
+            Max: 30
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 20 
+        - OptionId: RDMOPT_HEAL_MODIFY_PERCENT
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_HEAL_VALUE
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_DEC_SPELL_CAST_TIME
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_DEC_SPELL_DELAY_TIME
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_DEC_SP_CONSUMPTION
+          Value:
+            Min: 2
+            Max: 5
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_NOTHING
+          Value:
+            Min: 4
+            Max: 10   
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_UNDEAD
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_ANIMAL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_PLANT
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_FISHS
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_DEVIL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_HUMAN
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_ANGEL
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_RACE_IGNORE_MDEF_PERCENT_DRAGON
+          Value:
+            Min: 4
+            Max: 10
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 15
+            Max: 35
+    - Slot: 3
+      PossibleOptions:
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_NOTHING_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_POISON_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_SAINT_TARGET
+          Value:
+            Min: 5
+            Max: 10 
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_DARKNESS_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_MDAMAGE_PROPERTY_UNDEAD_TARGET
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_UNDEAD
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_NOTHING
+          Value:
+            Min: 5
+            Max: 10   
+        - OptionId: RDMOPT_RACE_MDAMAGE_ANIMAL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_PLANT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_INSECT
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_FISHS
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_DEVIL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_HUMAN
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_ANGEL
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_RACE_MDAMAGE_DRAGON
+          Value:
+            Min: 5
+            Max: 10
+        - OptionId: RDMOPT_WEAPON_INDESTRUCTIBLE
+  - GroupId: ARMOR_OPTION_NORMAL
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_MAXHPPERCENT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_MAXSPPERCENT
+          Value:
+            Min: 1
+            Max: 5
+        - OptionId: RDMOPT_VAR_HPACCELERATION
+          Value:
+            Min: 10
+            Max: 50
+        - OptionId: RDMOPT_VAR_SPACCELERATION
+          Value:
+            Min: 10
+            Max: 30
+  - GroupId: GARMENT_OPTION_NORMAL
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_AVOIDSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 15
+  - GroupId: SHOES_OPTION_NORMAL
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 1
+            Max: 3
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 5
+            Max: 15
+  - GroupId: ARMOR_OPTION_CHAMPION
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_MAXHPPERCENT
+          Value:
+            Min: 3
+            Max: 7
+        - OptionId: RDMOPT_VAR_MAXSPPERCENT
+          Value:
+            Min: 3
+            Max: 7
+        - OptionId: RDMOPT_VAR_HPACCELERATION
+          Value:
+            Min: 40
+            Max: 100
+        - OptionId: RDMOPT_VAR_SPACCELERATION
+          Value:
+            Min: 30
+            Max: 50
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 200
+            Max: 500
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 50
+            Max: 100
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 20
+            Max: 35
+        - OptionId: RDMOPT_VAR_ITEMDEFPOWER
+          Value:
+            Min: 10
+            Max: 100
+        - OptionId: RDMOPT_VAR_MDEFPOWER
+          Value:
+            Min: 10
+            Max: 40
+        - OptionId: RDMOPT_RACE_TOLERACE_NOTHING
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_UNDEAD
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_ANIMAL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_PLANT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_INSECT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_FISHS
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_DEVIL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_HUMAN
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_ANGEL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_DRAGON
+          Value:
+            Min: 10
+            Max: 20
+  - GroupId: GARMENT_OPTION_CHAMPION
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 10
+            Max: 30
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 40
+            Max: 100
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 20
+            Max: 35
+        - OptionId: RDMOPT_VAR_ITEMDEFPOWER
+          Value:
+            Min: 10
+            Max: 50
+        - OptionId: RDMOPT_VAR_MDEFPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_TOLERACE_HUMAN
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_WATER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_GROUND
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_FIRE
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_WIND
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_POISON
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_SAINT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_DARKNESS
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_TELEKINESIS
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_ATTR_TOLERACE_UNDEAD
+          Value:
+            Min: 10
+            Max: 20
+  - GroupId: SHOES_OPTION_CHAMPION
+    RandomOptions:
+    - Slot: 1
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_STRAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_AGIAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_VITAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_INTAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_LUKAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_DEXAMOUNT
+          Value:
+            Min: 3
+            Max: 5
+        - OptionId: RDMOPT_VAR_HITSUCCESSVALUE
+          Value:
+            Min: 15
+            Max: 30
+    - Slot: 2
+      PossibleOptions:
+        - OptionId: RDMOPT_VAR_MAXHPAMOUNT
+          Value:
+            Min: 100
+            Max: 300
+        - OptionId: RDMOPT_VAR_MAXSPAMOUNT
+          Value:
+            Min: 40
+            Max: 100
+        - OptionId: RDMOPT_VAR_ATTPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_VAR_ATTMPOWER
+          Value:
+            Min: 20
+            Max: 35
+        - OptionId: RDMOPT_VAR_ITEMDEFPOWER
+          Value:
+            Min: 10
+            Max: 50
+        - OptionId: RDMOPT_VAR_MDEFPOWER
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_NOTHING
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_UNDEAD
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_ANIMAL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_PLANT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_INSECT
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_FISHS
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_DEVIL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_HUMAN
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_ANGEL
+          Value:
+            Min: 10
+            Max: 20
+        - OptionId: RDMOPT_RACE_CRI_PERCENT_DRAGON
+          Value:
+            Min: 10
+            Max: 20

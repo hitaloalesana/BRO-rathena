@@ -2582,4 +2582,4 @@
 27020,Gypsy Trentini@NPC_POWERUP,attack,349,5,2000,0,25000,yes,self,myhpltmaxrate,30,,,,,,,
 27020,Gypsy Trentini@NPC_CRITICALSLASH,attack,170,1,2000,0,5000,yes,target,always,0,,,,,,,
 27020,Gypsy Trentini@NPC_STUNATTACK,attack,179,5,2000,0,5000,yes,target,always,0,,,,,,,
-27020,Gypsy Trentini@NPC_WINDATTACK,attack,187,5,2000,0,5000,yes,target,always,0,,,,,,,
+27020,Gypsy Trentini@NPC_WINDATTACK,attack,187,5,2000,0,5000,yes,target,always,0,,,,,,,,
