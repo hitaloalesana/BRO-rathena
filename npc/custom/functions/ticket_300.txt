@@ -14,7 +14,7 @@ prt_in,97,170,5	script	Assistente de Up!#job1	831,{
 			mes "Desculpa, esse serviço é apenas para Aprendiz Level 1/1.";
 			mes "Tome seu ticket devolta...";
 			next;
-			getitem 21016, 1;
+			getitem 40016, 1;
 			warp "prontera", 156, 191;
 			close;
 		}
