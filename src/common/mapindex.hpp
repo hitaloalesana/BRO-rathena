@@ -9,7 +9,7 @@
 #define MAX_MAPINDEX 2000
 
 //Some definitions for the mayor city maps.
-#define MAP_PRONTERA "prontera"
+#define MAP_PRONTERA "prtbrasilro"
 #define MAP_GEFFEN "geffen"
 #define MAP_MORROC "morocc"
 #define MAP_ALBERTA "alberta"
