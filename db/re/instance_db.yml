@@ -224,13 +224,13 @@ Body:
       1@dth2: true
       1@dth3: true
   - Id: 26
-    Name: Morse's Cave
+    Name: Caverna Morse
     Enter:
       Map: 1@rev
       X: 26
       Y: 181
   - Id: 27
-    Name: Temple of the Demon God
+    Name: Templo do Deus Demonio
     Enter:
       Map: 1@eom
       X: 102
