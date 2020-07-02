@@ -34,7 +34,7 @@ prt_in,40,95,4	script	Corrida dos Porings	514,{
 	mes "O evento ^EE1289Corrida dos Porings^000000 é uma corrida de porings, nela você aposta no monstro de sua preferência e se ele ganhar, você também ganha.";
 	mes "^777777- Prêmio do Evento^000000:";
 	mes "  ^00CC00"+getitemname(40024)+".^000000";
-	mes "  ^EEAD0E15,000,000 Zenys.^000000";
+	mes "  ^EEAD0E10,000,000 Zenys.^000000";
 	next;
 	if(select("^00CC00•^000000 Participar.","^00CC00•^000000 Saír.") == 2 ) close;
 		if( $accessPrace == 0 ){
@@ -59,10 +59,9 @@ OnChequeo:
 			if( prace_winner$ == $prace_winner$ && prace_winner$ != "") {  
 				dispbottom "Parabéns, você acertou!" ,0x00FF00;
 				announce "[Corrida dos Porings]: A aposta de "+strcharinfo(0)+" venceu a corrida!", bc_all|bc_blue;
-				getitem 21024, 10;
+				getitem 40024, 10;
 				query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
-				set Zeny, Zeny + 15000000;
-				emotion 21, 1;
+				set Zeny, Zeny + 10000000;
 			} else 
 				dispbottom "Você errou na sua aposta." ,0x00FF00;
 				emotion 28,1;

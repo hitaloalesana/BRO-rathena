@@ -1,12 +1,12 @@
--	itemshop	evt_shop_utilidades	-1,40042,40049:5,12214:5,12103:15,7621:50,12210:100,40034:200
--	itemshop	evt_shop_equips		-1,40042,13032:450,13031:450,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
--	itemshop	evt_shop_visuais	-1,40042,13032:450,13031:450,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
+-	itemshop	evt_shop_utilidades	-1,40024,40049:5,12214:5,12103:15,7621:50,12210:100,40034:200
+-	itemshop	evt_shop_equips		-1,40024,13032:450,13031:450,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
+-	itemshop	evt_shop_visuais	-1,40024,13032:450,13031:450,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
 
 prt_in,38,107,5	script	Lojinha Eventos	10053,{
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 	mes "Troque seus ^EEAD0E"+ getitemname(40024) +"^000000 por diversos utensilhos e equipamentos. Eles são obtidos participando dos eventos!";
 	next;
-	switch( select("^00CC00•^000000 Trocar Cupons por ^00CC00(Utensilhos).^000000","^00CC00•^000000 Trocar Cupons por ^00CC00(Equipamentos).^000000","^00CC00•^000000 Trocar Cupons por ^00CC00(Visuais).^000000","^00CC00•^000000 Saír.") ){
+	switch( select("^00CC00•^000000 Trocar Cupons por ^00CC00(Utensílios).^000000","^00CC00•^000000 Trocar Cupons por ^00CC00(Equipamentos).^000000","^00CC00•^000000 Trocar Cupons por ^00CC00(Visuais).^000000","^00CC00•^000000 Saír.") ){
 		case 1:
 			callshop "evt_shop_utilidades", 1;
 			end;

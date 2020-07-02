@@ -1,0 +1,289 @@
+-	shop	ds_shop	-1,501:50
+prt_in,136,116,4	script	Devil Square Elemental#1	704,{
+	mes "[ ^a60536Devil Square Elemental^000000 ]";
+	mes "Na ^66CD00Devil Square Elemental^000000 você precisa manter-se vivo derrotando monstros elementais em diferentes rounds, no final você é recompensando!";
+	mes "Mate o máximo de monstros elementais para receber ^0000ff"+ getitemname( .ds_requerid ) +"^000000.";
+	mes "^777777Prêmio do Evento:^000000";
+	mes " ^FF0000»^000000 ^0000FF"+getitemname(21024)+".^000000";
+	mes " ^FF0000»^000000 ^0000FF"+getitemname(21003)+".^000000";
+	mes " ^FF0000»^000000 ^0000FF"+getitemname(21039)+".^000000";
+	mes " ^FF0000»^000000 ^0000FF40,000,000z.^000000";
+	next;
+	switch(select("[^ff0000»^000000] Participar.:[^ff0000»^000000] ^777777Devil Square Shop.^000000:[^ff0000»^000000] Saír.")) {
+	case 3: close;
+	case 1:
+		if( $start_ds != 1 ){
+			mes "[ ^a60536Devil Square Elemental^000000 ]";
+			mes "Devil Square está fechada no momento.";
+			close;
+		}
+		if( BaseLevel < 300 ){
+			mes "[ ^a60536Devil Square Elemental^000000 ]";
+			mes "Você não possui todos os requisitos para entrar na Devil Square Elemental.";
+			mes "Requisitos:";
+			mes "^777777- Level de Base 300.^000000";
+			close;
+		}
+		announce "[Devil Square Elemental]: » "+ strcharinfo(0) +" « acaba de entrar no evento!", bc_all | bc_blue;
+		percentheal 100, 100;
+		warp "devilsquare", 184, 184;
+		close;
+	case 2:
+		mes "[ ^a60536Devil Square Elemental^000000 ]";
+		mes "Você tem ^0000ff"+ countitem( .ds_requerid ) +"x "+ getitemname( .ds_requerid ) +"^000000 para negociar.";
+		mes "Boas compras!";
+		close2;
+		callshop "ds_shop", 1;
+		npcshopattach "ds_shop";
+		end;
+	OnBuyItem:
+		for( set .@j, 0; .@j < getarraysize( .items ); set .@j, .@j + 2 ){	   
+		for( set .@k, 0; .@k < getarraysize( @bought_nameid ); set .@k, .@k + 1 ){		   
+		if( @bought_nameid[.@k] == .items[.@j] ){			   
+		if( checkweight( @bought_nameid[ .@k ], @bought_quantity[ .@k ] )){		  
+		if( countitem( .ds_requerid ) < .items[ .@j + 1 ] ){				  
+			message strcharinfo(0), "[ Você precisa de "+ getitemname(.ds_requerid) +" para trocar ].";   
+			close;				   
+		} else {					   
+			delitem .ds_requerid, .items[ .@j + 1 ] * @bought_quantity[ .@k ];
+			rentitem @bought_nameid[ .@k ], 604800;		
+			//getitem @bought_nameid[ .@k ], @bought_quantity[ .@k ];
+			end;				    
+			}			    
+		} else                  
+			message strcharinfo(0), "[ Você não consegue realizar esta negociação ].";                   
+			end;		   
+			}	    
+		}    
+	}    
+	deletearray @bought_quantity, getarraysize( @bought_quantity );
+	deletearray @bought_nameid, getarraysize( @bought_nameid );    
+	end;
+OnInit:    
+	set .ds_requerid, 21072;
+	setarray .items, 23051, 150, 26019, 150, 25078, 150, 26023, 150; // Usage : <item id>,<price>    
+	npcshopitem "ds_shop", 0, 0; 
+	for( set .@i, 0; .@i < getarraysize( .items ); set .@i, .@i + 2 )      
+		npcshopadditem "ds_shop", .items[.@i], .items[.@i + 1]; 
+		end;
+		}
+}
+-	script	Devil_Square#Drops	-1,{
+OnNPCKillEvent:
+	setarray .@ds_mob[0], 3004, 3005, 3013, 3017, 3003, 3023, 3020, 3032, 3034, 3056, 3095, 3045;
+	getmapxy .@map$, .@x, .@y, 0;
+	if( .@map$ != "devilsquare" ) end;
+	for( set .@i, 0; .@i <= getarraysize( .@ds_mob ); set .@i, .@i + 1 )
+		if( killedrid == .@ds_mob[.@i] ){
+			getitem 21072, 1;
+			dispbottom "[DS]: Matou um monstro premiado!";
+			end;
+			}
+}
+-	script	Devil_Square#Start	-1,{
+OnWhisperGlobal:
+	
+	if( getgmlevel() >= 60 ){
+ 
+		if( @whispervar0$ == "ativar" )
+ 
+			donpcevent strnpcinfo(0) +"::OnStartEvent";
+
+	}	
+	end;
+
+OnClock1200:
+OnClock1800:
+OnClock1500:
+OnClock0600:
+OnStartEvent:
+	set $start_ds, 1;
+	hideonnpc "Premiação Devil Square#1";
+	mapannounce "devilsquare","Devil Square Elemental está fechada agora.",bc_map,0x00BFFF;
+	getmapxy .@map$, .@x, .@y, 1;
+	mapwarp "devilsquare", .@map$, .@x, .@y;
+	killmonsterall "devilsquare";
+	announce "[Devil Square Elemental]: O evento irá começar em 5 minutos. Digite @evento para participar!", bc_all | bc_blue;
+	sleep 1000;
+	announce "[Devil Square Elemental]: O evento irá começar em 4 minutos. Digite @evento para participar!", bc_all | bc_blue;
+	sleep 60000; 
+	announce "[Devil Square Elemental]: O evento irá começar em 3 minutos. Digite @evento para participar!", bc_all | bc_blue;
+	sleep 60000;
+	announce "[Devil Square Elemental]: O evento irá começar em 2 minutos. Digite @evento para participar!", bc_all | bc_blue;
+	sleep 60000;
+	announce "[Devil Square Elemental]: O evento irá começar em 1 minuto. Digite @evento para participar!", bc_all | bc_blue;
+	sleep 60000;
+	announce "[Devil Square Elemental]: O evento começou!", bc_all | bc_blue;
+	sleep 1000;
+	mapannounce "devilsquare","» Devil Square Elemental está entrando na 1ª rodada [Elemento Gelo] «",bc_map,0x00BFFF;
+	if( !getmapusers("devilsquare") ){
+		killmonsterall "devilsquare";
+		hideoffnpc "Premiação Devil Square#1";
+		set $start_ds, 0;
+		set .round, 0;
+		set .mob, 0;
+		end;
+	}
+	set $start_ds, 2;
+	set .round, 1;
+	set .mob, 118;
+	areamonster "devilsquare",183,182,246,244,"[DS] Insectvore Azul",3004,5,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Insectvore Amarelo",3005,5,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Rosa Congelada",3013,5,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Lesma Gary",3017,5,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Less",1881,20,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Leshij",1880,20,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Mavka",1884,20,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Dríade",1493,14,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Drosera",1781,20,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Lady Tanee",1688,2,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Abelha Rainha",1059,1,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "devilsquare",183,182,246,244,"[DS] Mushroom",3021,1,strnpcinfo(0)+"::OnDevilDead_01";
+	end;
+
+OnDevilDead_01:
+	set .mob,.mob - 1;
+	if( .mob == 25 || .mob == 5 ){
+		mapannounce "devilsquare","[Devil Square Elemental]: "+ .mob +" monstros faltando na 1ª rodada.",bc_map,0x00BFFF;
+	} else if( .mob <= 0 ){
+		mapannounce "devilsquare","» Devil Square Elemental está entrando na 2ª rodada [Elemento Fantasma] «",bc_map,0x00BFFF;
+		sleep 10000;
+		goto OnDevilStart_02;
+	}
+	end;
+
+OnDevilStart_02:
+	set .round, 2;
+	set .mob, 98;
+	areamonster "devilsquare",183,182,246,244,"[DS] Almaosce",3003,5,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Plantsoul",3023,5,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Golemsoul",3020,5,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Treesoul",3032,5,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Suma-Sarcedortisa Margar",1643,15,strnpcinfo(0)+"::OnDevilDead_02";
+
+	areamonster "devilsquare",183,182,246,244,"[DS] Eremes Guile",1641,15,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Cecil Damon",1644,15,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Arquimaga Kathryne",1645,15,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Seyren",1640,15,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Mestre dos Fantasmas",3046,1,strnpcinfo(0)+"::OnDevilDead_02";
+	areamonster "devilsquare",183,182,246,244,"[DS] Lord Seyren",1646,2,strnpcinfo(0)+"::OnDevilDead_02";
+	end;
+
+OnDevilDead_02:
+	set .mob, .mob - 1;
+	if( .mob == 25 || .mob == 5 ){
+		mapannounce "devilsquare","[Devil Square Elemental]: "+ .mob +" monstros faltando na 2ª rodada.",bc_map,0x00BFFF;
+	} else if ( .mob <= 0 ){
+		mapannounce "devilsquare","» Devil Square Elemental está entrando na 3ª rodada [Elemento Água] «",bc_map,0x00BFFF;
+		sleep 10000;
+		goto OnDevilStart_03;
+	}
+	end;
+
+OnDevilStart_03:
+	set .round, 3;
+	set .mob, 172;
+	areamonster "devilsquare",183,182,246,244,"[DS] Sereia Comilona",3034,5,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Sereia Encantadora",3056,5,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Tritão",3095,5,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Capitão Fantasma",3045,5,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Carangueijo",1073,20,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Iara",2069,40,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Obeaune",1044,40,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Piranha",2070,20,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Marte",1144,20,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Cavalo-Marinho",1045,10,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] General Tartaruga",1312,1,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "devilsquare",183,182,246,244,"[DS] Rainha dos Mares",3002,1,strnpcinfo(0)+"::OnDevilDead_03";
+	end;
+
+OnDevilDead_03:
+	set .mob, .mob - 1;
+	if( .mob == 15 || .mob == 5 ){
+		mapannounce "devilsquare","[Devil Square Elemental]: "+ .mob +" monstros faltando na ultima rodada.",bc_map,0x00BFFF;
+	} else if( .mob <= 0 ){
+		mapannounce "devilsquare","[Devil Square Elemental]: A penúltimo rodada foi alcançada. Enfrem a furia da Deusa dos Elementos! ",bc_map,0x00BFFF;
+		sleep 10000;
+		goto OnDevilStart_04;
+	}
+	end;
+
+OnDevilStart_04:
+	set .round, 4;
+	set .mob, 3;
+	areamonster "devilsquare",233,250,233,250,"[DS] Deusa da Lua", 3000, 1, strnpcinfo(0) +"::OnDevilDead_04";
+	sleep 2000;
+	areamonster "devilsquare",237,237,237,237,"[DS] Deusa da Lua", 3000, 1, strnpcinfo(0) +"::OnDevilDead_04";
+	sleep 2000;
+	areamonster "devilsquare",250,232,250,232,"[DS] Deusa da Lua", 3000, 1, strnpcinfo(0) +"::OnDevilDead_04";
+	end;
+
+OnDevilDead_04:
+	set .mob, .mob - 1;
+	if( .mob > 0 ){
+		mapannounce "devilsquare","[Devil Square Elemental]: A DS está em sua penúltima rodada. Enfrentando [Deusas da Lua].",bc_map,0x00BFFF;
+	} else if( .mob <= 0 ){
+		mapannounce "devilsquare","[Devil Square Elemental]: A último rodada foi atingida. Mostre sua força e enfrentem o Rei Elemental! ",bc_map,0x00BFFF;
+		sleep 10000;
+		goto OnDevilStart_05;
+	}
+	end;
+
+OnDevilStart_05:
+	set .round, 5;
+	set .mob, 1;
+	areamonster "devilsquare",237,237,237,237,"[DS] Rei Elemental", 3145, 1, strnpcinfo(0) +"::OnDevilDead_05";
+	end;
+
+OnDevilDead_05:
+	set .mob, .mob - 1;
+	if( .mob > 0 ){
+		mapannounce "devilsquare","[Devil Square Elemental]: A DS está em sua último rodada. Enfrentando [Rei Elemental].",bc_map,0x00BFFF;
+	} else if( .mob <= 0 ){
+		mapannounce "devilsquare","» Clique no [Premiação Devil Square] para ganharem seus prêmios «",bc_map,0x00BFFF;
+		sleep 5000;
+		announce "[Devil Square Elemental]: O evento foi zerado pelos corajosos jogadores que enfrentaram as Deusas da Lua e o Rei Elemental!",bc_all | bc_blue;
+		killmonsterall "devilsquare";
+		hideoffnpc "Premiação Devil Square#1";
+		set $start_ds, 0;
+		set .round, 0;
+		set .mob, 0;
+		end;
+	}
+	end;
+OnInit:
+	hideonnpc "Premiação Devil Square#1";
+	killmonsterall "devilsquare";
+	set $start_ds, 0;
+	set .round, 0;
+	set .mob, 0;
+	end;
+}
+devilsquare,246,245,7	script	Premiação Devil Square#1	741,{
+	message strcharinfo(0), "[ Parabéns! ].";
+	mes "[ ^a60536Premiação^000000 ]";
+	mes "Parabéns pela vitória. Está pronto para receber seu prêmio? Tenha certeza de ter capacidade de carga sobrando!";
+	next;
+	if( select("[^ff0000»^000000] Sim!:[^ff0000»^000000] Não.") == 2 ) close;
+		mes "[ ^a60536Premiação e Saída^000000 ]";
+		mes "Desfrute da glória!";
+		getitem 21024, 30;
+		getitem 21003, 5;
+		getitem	21039, 1;
+		getitem	6268, 1;
+		getitem	21000, 1;
+		set zeny, zeny + 40000000;
+		sleep2 5000;
+		warp "SavePoint", 0, 0;
+		end;
+}
+devilsquare	mapflag	nowarp
+devilsquare	mapflag	nowarpto
+devilsquare	mapflag	noteleport
+devilsquare	mapflag	monster_noteleport
+devilsquare	mapflag	nosave	SavePoint
+devilsquare	mapflag	nomemo
+devilsquare	mapflag	nobranch
+devilsquare	mapflag	nopenalty
+devilsquare	mapflag	noicewall
+devilsquare	mapflag	restricted	1

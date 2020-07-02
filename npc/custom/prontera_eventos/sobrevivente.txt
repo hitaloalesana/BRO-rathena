@@ -32,7 +32,7 @@ prt_in,43,115,4	script	Sobrevivente	468,{
 		setarray $@mapevent$, "guild_vs5", 50, 47;	// = Configuração do mapa do evento
 		set $@minparticipantes, 2;	// = Número mínimo de participantes para iniciar o evento
 		set $@lvminGM, 60;	// = Level mínimo de GM para ligar/desligar o evento
-		setarray $@premiacao_ITEM, 40024, 40024, 40024;	// = Itens
+		setarray $@premiacao_ITEM, 40024, 40003, 40015;	// = Itens
 		setarray $@premiacao_QUANT, 5, 5, 1;	// = Quantidade de cada item
 		callfunc ("resetEvento", $participantes$, $@mapevent$[0]);
 		setarray .mapflag, 0, 1, 7, 8, 13, 22, 33, 34;

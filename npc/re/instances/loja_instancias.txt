@@ -1,0 +1,22 @@
+-	itemshop	inst_shop_utilidades	-1,6684,13848:5,22537:10,14753:15,17435:20,17519:30,12411:5,7621:1
+-	itemshop	inst_shop_heroi		-1,6684,22035:150,22036:150,15093:200,15094:200,15095:200,15096:200,15097:200,15098:200,20783:100,5985:80,18898:100,12623:50
+-	itemshop	inst_shop_visuais	-1,6684,20727:200
+
+help_lobby,118,144,3	script	Prêmios dos Heróis	10018,{
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Troque ^EEAD0E"+ getitemname(6684) +"^000000 por diversos utensilios e equipamentos. Eles são obtidos através das instâncias (masmorras)!";
+	next;
+	switch( select("^00CC00•^000000 Marca do Herói por ^00CC00(Utensilios).^000000","^00CC00•^000000 Marca do Herói por ^00CC00(Equipamentos).^000000","^00CC00•^000000 Marca do Herói por ^00CC00(Visuais).^000000","^00CC00•^000000 Saír.") ){
+		case 1:
+			callshop "inst_shop_utilidades", 1;
+			end;
+		case 2:
+			callshop "inst_shop_heroi", 1;
+			end;
+		case 3:
+			callshop "inst_shop_visuais", 1;
+			end;
+		case 4:
+			close;
+			}
+}

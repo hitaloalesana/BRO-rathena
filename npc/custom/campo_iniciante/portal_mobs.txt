@@ -39,18 +39,20 @@ new_zone01,146,112,0	script	prt_warp#n	45,1,1,{
 	}
 	mes "Deseja saír do Campo de Iniciantes e ir para nossa capital ou prefere continuar e finalizar suas quests?";
 	next;
-	if( select("^00CC00•^000000 Ficar no Campo de Iniciantes.:^00CC00•^000000 Saír do Campo de Iniciantes.") == 2 ) close;
+	if( select("^00CC00•^000000 Ficar no Campo de Iniciantes.:^00CC00•^000000 Saír do Campo de Iniciantes.") == 2 ){
 		close2;
 		warp "prontera", 156, 191;
 		savepoint "prontera", 156, 191;
 		end;
+	}
+	close;
 }
 
 //------------------------------------------
 
-new_zone01,47,88,5	script	Corporação KafraBR#n	759,{
+new_zone01,47,88,5	script	Kafra Alice#n	759,{
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000"; 
-	mes "Oi, "+strcharinfo(0)+"! Eu sou ^00CC00Kafra Neila^000000, prazer em conhece-lo.";
+	mes "Oi, "+strcharinfo(0)+"! Eu sou ^00CC00Kafra Alice^000000, prazer em conhece-lo.";
 	mes "Prestos serviços para comunidade ^0099FFBrasil Ragnarök Online^000000 e estou aqui para te ajudar!";
 	next;
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";

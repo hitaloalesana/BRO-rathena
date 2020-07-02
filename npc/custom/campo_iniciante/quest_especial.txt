@@ -1,53 +1,65 @@
 -	cashshop	quests#hide	-1,41032:0,41033:0,41035:0,41039:0,41040:0,41041:0,43118:0,44048:0,44043:0,44045:0,44100:0,44078:0,44100:0,19587:0,44071:0,43067:0,45019:0
-new_zone01,138,77,1	script	Quest de Visuais	502,{
+new_zone01,138,77,1	script	Quest de Visuais#n	502,{
 	mes set(.@n$, "^0099FF[ "+strnpcinfo(1)+" ]^000000");
 	if( #check == 0 ){ 
 		mes "Antes de dar inicio a alguma quest é necessário que fale com a ^EEAD0EAjudante de Iniciantes^000000, caso contrário não posso te ajudar! ";
 		close;
 	}
 	mes "Que tal realizar uma quest diferente? Esta requer habilidades especiaís, terá que ser apto a derrotar muitos monstros.";
-	mes "Estarei lhe mostrando o premio e a quantidade de monstros necessários.";
+	mes "Estarei lhe mostrando os premios e a quantidade de monstros necessários.";
 	next;
+	if( start_quest == 0 ){
+		mes .@n$;
+		mes "^777777Antes de dar inicio as quest preciso saber se está pronto para este desafio...^000000";
+		mes "^777777Tudo certo para derrotar centenas de monstros?^000000";
+		next;
+		if( select("^00CC00•^000000 Estou Pronto!:^00CC00•^000000 Ainda Não...") == 2 ){ close; }
+			set start_quest, 1;
+			dispbottom "Quests de Visuais foram liberadas para serem realizadas.", 0xEEAD0E;
+			close2;
+	}
 	mes .@n$;
-	mes "^777777- "+ getitemname(41032) +"^000000:";
-	mes "        ^EEAD0E»^000000 "+ (( #item_a ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(41033) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_b ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(41035) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_c ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(41039) +"^000000:";
-	mes "        ^EEAD0E»^000000 "+ (( #item_d ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(41040) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_e ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(41041) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_f ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(43118) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_g ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44048) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_h ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44043) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_i) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44045) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_j ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44100) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_k ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44078) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_l ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44100) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_m ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(19587)+"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_n ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(44071) +"^000000:";
-	mes "        ^EEAD0E»^000000 "+ (( #item_o ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(45019) +"^000000:";
-	mes "        ^EEAD0E»^000000 "+ ((#item_p ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
-	mes "^777777- "+ getitemname(43067) +"^000000:"; 
-	mes "        ^EEAD0E»^000000 "+ (( #item_q ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "Lista de Visuais:";
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(41032) +"^000000: "+ (( #item_a ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(41033) +"^000000: "+ (( #item_b ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(41035) +"^000000: "+ (( #item_c ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(41039) +"^000000: "+ (( #item_d ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(41040) +"^000000: "+ (( #item_e ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(41041) +"^000000: "+ (( #item_f ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(43118) +"^000000: "+ (( #item_g ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(44048) +"^000000: "+ (( #item_h ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(44043) +"^000000: "+ (( #item_i ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(44045) +"^000000: "+ (( #item_j ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(44100) +"^000000: "+ (( #item_k ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(44078) +"^000000: "+ (( #item_l ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(44100) +"^000000: "+ (( #item_m ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(19587) +"^000000: "+ (( #item_n ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(44071) +"^000000: "+ (( #item_o ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(45019) +"^000000: "+ (( #item_p ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- "+ getitemname(43067) +"^000000: "+ (( #item_q ) ? "^00BB22(Realizada)^000000":"^FF2200(Não Realizada)^000000");
+	mes "^D3D3D3----------------------------------^000000";
 	next;
 	switch( select("^00CC00•^000000 Fazer uma Quest.:^00CC00•^000000 Visualizar os Itens.:^00CC00•^000000 Cancelar.") ){
 		case 2:
 			close2;
-			message strcharinfo(0), "Carregando lista de itens.";
+			message strcharinfo(0), "Carregando lista de itens...";
 			dispbottom "Esta é uma loja demonstrativa, não é possível comprar nenhum dos itens demonstrados.",0xEEAD0E;
 			progressbar "0xFF0000", 3;
 			callshop "quests#hide", 1;
@@ -429,6 +441,7 @@ new_zone01,138,77,1	script	Quest de Visuais	502,{
 }
 
 OnNPCKillEvent:
+	if( start_quest == 0 ) end;
 	if( strcharinfo(3) != "new_zone01" ) end; 
 	if( killedrid == 22183 ){
 		if( #item_a ) end;

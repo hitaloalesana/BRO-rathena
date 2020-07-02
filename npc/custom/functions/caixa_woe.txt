@@ -5,17 +5,17 @@ function	script	Caixa_WoE#Brasil	{
     	}
 	mes "^0099FF[ Prêmio de Guerra ]^000000";
 	mes "Abrir sua ^EF8319Caixa de Prêmiação WoE^000000 pode vir:";
-	mes " ^FF0000»^000000 2% ^0000FF"+ getitemname(21020) +"^000000";
-	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21019) +"^000000";
-	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21035) +"^000000";
-	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21036) +"^000000";
-	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21037) +"^000000";
-	mes " ^FF0000»^000000 5% ^0000FF"+ getitemname(21038) +"^000000";
-	mes " ^FF0000»^000000 10% ^0000FF"+ getitemname(21038) +"^000000";
-	mes " ^FF0000»^000000 40% ^0000FF"+ getitemname(21039) +"^000000";
-	mes " ^FF0000»^000000 50% ^0000FF"+ getitemname(21000) +"^000000";
-	mes " ^FF0000»^000000 50% ^0000FF"+ getitemname(6266) +"^000000";
-	mes " ^FF0000»^000000 100% ^0000FF"+ getitemname(21046) +"^000000";
+	mes "2% ^0000FF"+ getitemname(21020) +"^000000";
+	mes "5% ^0000FF"+ getitemname(21019) +"^000000";
+	mes "5% ^0000FF"+ getitemname(21035) +"^000000";
+	mes "5% ^0000FF"+ getitemname(21036) +"^000000";
+	mes "5% ^0000FF"+ getitemname(21037) +"^000000";
+	mes "5% ^0000FF"+ getitemname(21038) +"^000000";
+	mes "10% ^0000FF"+ getitemname(21038) +"^000000";
+	mes "40% ^0000FF"+ getitemname(21039) +"^000000";
+	mes "50% ^0000FF"+ getitemname(21000) +"^000000";
+	mes "50% ^0000FF"+ getitemname(6266) +"^000000";
+	mes "100% ^0000FF"+ getitemname(21046) +"^000000";
 	if(select("^00CC00•^000000 Receber Prêmios.:^00CC00•^000000 Saír.") == 2 ) close;
 		close2;
 		delitem 21053, 1;

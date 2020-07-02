@@ -41,7 +41,7 @@ new_zone01,124,124,5	script	Ajudante de Iniciantes#n	642,{
 OnNPCKillEvent:
 	if( #save_quest == 0 ){
 		message strcharinfo(0), "Quest Inativa.";
-		dispbottom "Fale com o (Ajudante de Iniciantes) e de inicio a quest de iniciantes.",0x00FFFF;
+		dispbottom "Fale com o (Ajudante de Iniciantes) e de inicio a quest de iniciantes.", 0x00FFFF;
 		end;
 	}
 	if( #check == 1 ) end;

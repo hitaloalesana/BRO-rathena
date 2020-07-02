@@ -101,4 +101,4 @@
 // --------------------------------------------------------------------------
 // Use duplicates to put your npc on different cities
 // --------------------------------------------------------------------------
-prontera,155,181,4      duplicate(Costume Clown)        Costume Clown#1 715
+prontera,146,03,4      duplicate(Costume Clown)        Costume Clown#1 715

@@ -1,0 +1,89 @@
+prontera,187,194,3	script	Senhor dos Encantos	10187,{
+	disable_items;
+
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Já imaginou a possibilidade de encantar alguns de seus itens com pedras especiais, podendo vir desde ^006400HP Máximo^000000 até pontos de ^CD1076Força^000000, ^9A32CDAgilidade^000000 ou ^009ACDDestreza^000000?";
+	mes "São mais de 50 encatamentos diferentes, é possível realizar este feito, traga-me:";
+	mes "^777777- Requerimento^000000: ^00CC001x "+ getitemname( 7227 ) +".^000000";
+	next;
+	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+	mes "Deixando claro que os encantamentos são aleatórios podendo saír até mesmo algum encanto que já estava em seu anteriormente em seu item.";
+	next;
+	switch (select ("^00CC00•^000000 Aplicar um ^B452CD(Encantamento).^000000", "^00CC00•^000000 Desistir.")) {
+	case 1:
+		.@equip_id = getequipid( EQI_COSTUME_GARMENT );
+		switch( .@equip_id ){
+			case 47496: case 47497: case 47498: case 47499:
+			break;
+		case -1:
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Nenhum item está equipado portanto não posso ajudá-lo!";
+			close;				
+		default:
+			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+			mes "Não é possível aplicar um encantamento neste item.";
+			close;
+		}
+		.@equip_name$ = getequipname( EQI_COSTUME_GARMENT );
+		.@refine = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+		
+		setarray .@card[0], getequipcardid( EQI_COSTUME_GARMENT, 0 ), getequipcardid( EQI_COSTUME_GARMENT, 1 ), getequipcardid( EQI_COSTUME_GARMENT, 2 ), getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+		setarray .@enchant[0],
+			4809, 4808, 4820, 4821,		// Fighting Spirit 3~5 / Fighting Spirit 6
+			4812, 4826, 4827, 4828,		// Spell 4~6 / Spell 7
+			4832, 4833, 4834, 4835,		// Expert Archer 1~3 / Expert Archer 4
+			4863, 4864, 4865, 4866,		// Fatal 1~3 / Fatal 4
+			4861, 4862, 4867, 4868,		// MaxHP +1~3% / MaxHP +4%
+			4870, 4800, 4871, 4801,		// +25,50 or 75 sp / +100 sp
+			4869, 4872, 4873, 4807,		// Delayafterattack 1~3 / +1 ASPD
+			4702, 4703, 4704, 4853,		// Str +3~5 / Special Str
+			4731, 4732, 4733, 4854,		// Agi +2~4 / Special Agi
+			4742, 4743, 4744, 4855,		// Vit +3~5 / Special Vit
+			4712, 4713, 4714, 4856,		// Int +3~5 / Special Int
+			4722, 4723, 4724, 4857,		// Dex +3~5 / Special Dex
+			4752, 4753, 4754, 4858;		// Luk +3~5 / Special Luk
+	
+		mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+		mes "Confirme abaixo o processo de encantamento...";
+		mes "^777777- Aplicar em^000000: ^0000FF" + .@equip_name$ + ".^000000";
+		mes "Podemos prosseguir com procedimento de encatamento?";
+		next;
+		if (select( "^00CC00•^000000 Aplicar.", "^00CC00•^000000 Cancelar." ) == 2 ) close;
+			if( countitem( 7227 ) < 1 ){
+				mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+				mes "É necessário 1x "+ getitemname(7227) +" para aplicar um encantamento.";
+				close;
+			}
+			close2;
+			if( .@card[3] == 0 ){
+				.@card[3] = .@enchant[ rand(52) ];
+				.@slot = 4;
+			} else if( .@card[2] == 0 ){
+				.@card[2] = .@enchant[ rand(52) ];
+				.@slot = 3;
+			} else if( .@card[1] == 0 ){
+				.@card[1] = .@enchant[ rand(52) ];
+				.@slot = 2;
+			} else if( .@card[0] == 0 ){
+				.@card[0] = .@enchant[ rand(52) ];
+				.@slot = 1;
+			} else {
+				mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
+				mes "Você atingiu o máximo de encantos nessa item!";
+				close;
+		}
+		delitem 7227, 1;
+		message strcharinfo(0), "Aplicando encantamento...";
+		progressbar "ffff00", 5;
+		specialeffect2 608;
+		delequip EQI_COSTUME_GARMENT;
+		message strcharinfo(0), "Encantamento aplicado!";
+		specialeffect2 610;
+		getitem2 .@equip_id, 1, 1, .@refine, 0, .@card[0], .@card[1], .@card[2], .@card[3];
+		end;
+	
+	case 2:
+		close;
+		}
+}		

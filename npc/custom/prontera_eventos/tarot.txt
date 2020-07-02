@@ -188,6 +188,6 @@ poring_w01,102,73,1	script	[GM] Cartomante	2001,{
 function	script	resetEventoTarot	{
 	deletearray getarg(0);
 	set $tarot_status,0;
-	mapwarp getarg(1), "prontera",156,202;
+	mapwarp getarg(1), "prontera",156,191;
 	return;
 }

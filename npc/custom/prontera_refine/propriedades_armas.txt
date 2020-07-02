@@ -1,4 +1,4 @@
-prontera,186,193,6	script	Keitenai	856,{
+prontera,184,191,3	script	Propriedades Misteríosas	10295,{
 	goto NPC;
 	end;
 
@@ -7,14 +7,14 @@ OnInit:
 	//	RANDOM OPTION SETTING
 	//==============================
 
-	set .OverWrite, 1;	// Allows overwriting the already existing option enchantment ( 0 to disable )
+	set .OverWrite, 0;	// Allows overwriting the already existing option enchantment ( 0 to disable )
 	set .FailRate, 10;	// Sets fail chance
 	set .MaxOpt, 192;	// Maximum item option a player can enchant ( reference: https://github.com/rathena/rathena/blob/master/db/const.txt#L1645-L1836 )
 	set .MinOpt, 1;		// Minimum item option a player can enchant
 	set .MinValue, 1;	// Minimum option effect value
 	set .MaxValue, 10;	// Maximum option effect value
 	set .MaxIndex, 4;	// Maximum option slots ( default is 0 to 4 )
-	set .Wait, 3;		// Progress bar delay in seconds
+	set .Wait, 5;		// Progress bar delay in seconds
 
 	// Random option that will not be applied
 	setarray .ignore[0],
@@ -31,22 +31,40 @@ NPC:
 disable_items;
 	// EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	setarray .@eq[1], EQI_HAND_L, EQI_HAND_R;
-	for( set .@i, 1; .@i < getarraysize( .@eq ); set .@i, .@i + 1 ){
-		if( getequipisequiped(.@eq[.@i] )){
-			set .@menu$, .@menu$ + F_getpositionname( .@eq[.@i] ) +" ~ [ " + getequipname(.@eq[.@i]) + " ]";
-			set .@equipped, 1;
-		} 
-		set .@menu$, .@menu$ +":";
-	} 
-	set .@part, .@eq[select(.@menu$)];
-
-	set .@val, rand(.MinValue,.MaxValue);
+	
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "Posso adicionar uma nova propriedade misteríosa ao seus armamentos, é simples e rápido!";
+	mes "Seus armamentos terão ilimitados combos de bonificação.";
+	mes "^777777- Requisito^000000: ^00CC001x "+ getitemname( 607 ) +".^000000";
+	next;
+	switch( select("^00CC00•^000000 Adicionar uma ^EE1289(Propriedade).^000000:^00CC00•^000000 Saíba Mais.:^00CC00•^000000 Saír.")){ 
+		case 3: close;
+		case 2:
+			mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+			mes "As propriedades são status ou bônus especiais aplicado a um determinado equipamento assim que ele é dropado.";
+			mes "No caso do meu serviço, é cobrado ^00CC001x "+ getitemname( 607 ) +"^000000 e este bonus é exclusivo para armamentos sendo impossível remover deste item caso queira.";
+			mes "Vale lembrar também que eles veem de forma aleatória, portante nunca serão iguais.";
+			close;
+		case 1:
+			for( set .@i, 1; .@i < getarraysize( .@eq ); set .@i, .@i + 1 ){
+			if( getequipisequiped( .@eq[.@i] )){
+				set .@menu$, .@menu$ +" ^00CC00•^000000 Aplicar em ^2596C2(" + getequipname(.@eq[.@i]) + ").^000000";
+				set .@equipped, 1;
+			} else {
+				mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+				mes "Nenhuma arma está equipada.";
+				close;
+			}
+			set .@menu$, .@menu$ +":";
+			} 
+			set .@part, .@eq[select(.@menu$)];
+			set .@val, rand(.MinValue,.MaxValue);
+}
 
 IgnoreCheck:
 	set .@opt, rand( .MinOpt, .MaxOpt );
 	for( set .@f, 1; .@f < getarraysize( .ignore ); set .@f, .@f + 1 )
-		if( .@opt == .ignore[.@f] )
-			goto IgnoreCheck;
+		if( .@opt == .ignore[.@f] ) goto IgnoreCheck;
 
 	set .@indx, rand( .MaxIndex );
 	if( !.OverWrite ){
@@ -76,44 +94,16 @@ IgnoreCheck:
 	if( .@indx == 2 && ( !getequiprandomoption(.@part,1,ROA_ID,getcharid(0) ))) set .@indx, 1;
 	if( .@indx == 1 && ( !getequiprandomoption(.@part,0,ROA_ID,getcharid(0) ))) set .@indx, 0;
 
+	close2;
+	message strcharinfo(0), "Aplicando propriedade...";
 	progressbar "ffff00", .Wait;
+	specialeffect2 608;
 	setrandomoption( .@part, .@indx, .@opt, .@val, .@indx, getcharid(0) );
+	message strcharinfo(0), "Propriedade aplicada!";
+	specialeffect2 610;
 	end;
-
 OnMax:
-	mes "[ Keitenai ]";
-	mes "Wow! your equip already";
-	mes "Maxed out its option";
-	mes "enchant slots!";
-	mes "Sorry but I can't add";
-	mes "any more enchantment with";
-	mes "your equipment.";
+	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
+	mes "Seu armamento atingiu o máximo de propriedades possíveis.";
 	close;
-
-OnFailure:
-	specialeffect2 EF_PHARMACY_FAIL;
-	mes "[ Keitenai ]"," ";
-	mes "I'm really sorry..."," ";
-	mes "^FF0000The process have failed...";
-	mes "Your item has been destroyed.^000000";
-	delequip .@part;
-close;
-
-PriceFail:
-	mes "[ Keitenai ]";
-	mes "What's this?";
-	mes "Are you kidding me?";
-	mes "Sorry but I don't work";
-	mes "for free!";
-	mes "You can come back if you";
-	mes "Have enough to pay for";
-	mes "my service.";
-close;
-
-OnCancel:
-	mes "[ Keitenai ]";
-	mes "Suit yourself.";
-	mes "Let me know if you";
-	mes "ever changed you mind";
-close;
 }

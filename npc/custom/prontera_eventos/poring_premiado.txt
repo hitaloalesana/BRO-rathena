@@ -3,7 +3,7 @@ prt_in,43,95,4	script	Poring Prêmiado	644,{
 		mes "No evento ^EE1289Poring Prêmiado^000000 terá diversos porings, todos com nomes estranhos, encontre o certo e será recompensado!";
 		mes "^777777- Prêmio do Evento:^000000";
 		mes "  ^00CC00"+ getitemname(40024)+".^000000";
-		mes "  ^EEAD0E10.000,000 Zenys.^000000";
+		mes "  ^EEAD0E20.000,000 Zenys.^000000";
 		next;
 		if( select("^00CC00•^000000 Participar.:^00CC00•^000000 Saír.") == 1 ){
 			mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
@@ -67,7 +67,7 @@ OnEventStart:
 	monster "pvp_n_2-2", 0, 0,"Porng", 1002, 25, strnpcinfo(0) +"::OnWrongKilled";
 	sleep 600000;
 	while( getmapusers("pvp_n_2-2") > 1 ){
-		mapannounce "pvp_n_2-2","--- "+ getmapusers("safari") +" jogadore(s) e ninguém encontrou o Poring ---", bc_all|bc_blue;
+		mapannounce "pvp_n_2-2","--- "+ getmapusers("pvp_n_2-2") +" jogadore(s) e ninguém encontrou o Poring ---", bc_all|bc_blue;
 		sleep 5000;
 	}
 	announce "[Poring Prêmiado]: O tempo acabou, obrigado pela participação.", bc_all|bc_blue;
@@ -80,8 +80,8 @@ OnMobKilled:
 	announce "[Poring Prêmiado]: "+strcharinfo(0)+" encontrou o Poring Prêmiado. O evento terminou!", bc_all|bc_blue;
 	message strcharinfo(0),"Parabéns, você achou o Poring Prêmiado.";
 	query_sql( "INSERT INTO `rank_evento` SET `char_id`='"+ getcharid(0) +"',`name`='"+ strcharinfo(0) +"',`count`='1' ON DUPLICATE KEY UPDATE `count`=`count`+1" );
-	getitem 21024, 10;
-	set Zeny, Zeny + 15000000;
+	getitem 40024, 10;
+	set Zeny, Zeny + 10000000;
 	sleep 6500;
 	mapwarp "pvp_n_2-2", "prontera", 156, 191; 
 

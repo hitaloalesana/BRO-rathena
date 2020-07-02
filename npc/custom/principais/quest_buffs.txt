@@ -20,7 +20,7 @@ prontera,156,204,6	script	Fonte Milagrosa	111,8,8,{
 	end;
 }
 
-prontera,149,190,6	script	Quests de Buffs	769,{
+prontera,149,190,6	script	Kafra Ana	769,{
 
 	//-------------------------------------------
 	// ID dos Monstros.
@@ -46,18 +46,31 @@ prontera,149,190,6	script	Quests de Buffs	769,{
 	next;
 	mes .@n$;
 	mes "Lista de buffs realizado e não realizado:";
-	mes "^777777- Benção^000000: "+ ((#blessing) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Agi Up^000000: "+ ((#agi_up) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Impositio^000000: "+ ((#impositio) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Magnificat^000000: "+ ((#magnificat) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Suffragium^000000: "+ ((#suffragium) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Grito de Guerra^000000: "+ ((#grito_guerra) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Força^000000: "+ ((#for) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Agilidade^000000: "+ ((#agi) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Vitalidade^000000: "+ ((#vit) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Inteligência^000000: "+ ((#int) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Destreza^000000: "+ ((#dex) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
-	mes "^777777- Sorte^000000: "+ ((#sor) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Benção^000000: "+ (( #blessing ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Agi Up^000000: "+ (( #agi_up ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Impositio^000000: "+ (( #impositio ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Magnificat^000000: "+ (( #magnificat ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Suffragium^000000: "+ (( #suffragium ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Grito de Guerra^000000: "+ (( #grito_guerra ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Força^000000: "+ (( #for ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Agilidade^000000: "+ (( #agi ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Vitalidade^000000: "+ (( #vit ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Inteligência^000000: "+ (( #int ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Destreza^000000: "+ (( #dex ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
+	mes "^777777- Sorte^000000: "+ (( #sor ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000");
+	mes "^D3D3D3----------------------------------^000000";
 	next;
 	switch(select("^00CC00•^000000 Receber Buffs.:^00CC00•^000000 Quests de Buffs.:^00CC00•^000000 Cancelar.")){
 		case 1:
