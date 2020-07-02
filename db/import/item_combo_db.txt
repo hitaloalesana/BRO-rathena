@@ -3,3 +3,17 @@
 // Structure of Database:
 // ID:ID:ID:ID,{ Script }
 
+//CUSTONS BRASIL RAGNAROK ONLINE
+15166:47091,{ .@r = getequiprefinerycnt(EQI_HEAD_TOP); bonus bFlee2,.@r; bonus bHealPower,2*.@r; }
+47091:47304,{ .@cast = -(readparam(bInt)/8); .@sub = 2; .@heal = 5; if (.@i >= 120) { .@cast -= 10; .@sub += 6; .@heal += 25; } else if (.@i >= 108) { .@cast -= 4; .@sub += 2; .@heal += 10; } bonus bVariableCastrate,.@cast; bonus2 bSubRace,RC_DemiHuman,.@sub; bonus2 bSubRace,RC_Player,.@sub; bonus bHealPower,.@heal; bonus bAddItemHealRate,.@heal; bonus2 bVariableCastrate,"PR_MAGNUS",-100; }
+47186:19381,{ bonus bMdef,5; bonus bDef,50; bonus bAspdRate,5; bonus bVit,5; bonus2 bSubRace,RC_Player,3; if (readparam(bVit)>=150) { bonus bMdef,5; bonus bDef,50; bonus bAspdRate,5; bonus bVit,5; } if (readparam(bVit)>=200) { bonus bMdef,10; bonus bDef,100; bonus bVit,10; } }
+47186:19381,{ bonus bMdef,5; bonus bDef,50; bonus bAspdRate,5; bonus bVit,5; bonus2 bSubRace,RC_Player,3; if (readparam(bVit)>=150) { bonus bMdef,5; bonus bDef,50; bonus bAspdRate,5; bonus bVit,5; } if (readparam(bVit)>=200) { bonus bMdef,10; bonus bDef,100; bonus bVit,10; } }
+47195:4365,{ bonus bVariableCastrate,-100; bonus2 bSkillCooldown,"WL_TELEKINESIS_INTENSE",-120000; if(BaseJob==Job_Wizard) skill "WL_TELEKINESIS_INTENSE",5; }
+19299:4463,{ .@type = getiteminfo(getequipid(EQI_COMPOUND_ON),11); if (.@type == W_BOOK || .@type == W_STAFF || .@type == W_2HSTAFF) { bonus2 bMagicAddRace,RC_Player, getequiprefinerycnt(EQI_HAND_R)*1; } }
+19299:47249,{ .@a = readparam(bDex); bonus bMatk,10; bonus bVariableCastrate,-2; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; if (.@a>=150) { bonus bMatk,20; bonus bVariableCastrate,-3; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; } if (.@a>=200) { bonus bMatk,30; bonus bVariableCastrate,-5; bonus2 bSubRace,RC_DemiHuman,4; bonus2 bSubRace,RC_Player,4; } }
+47026:47225,{ bonus bStr,2; .@int = readparam(bInt); bonus bBaseAtk,(.@int/8)*5; bonus bHealPower,.@int/8; bonus bVariableCastrate,.@int/8; if ((.@int>149)) { bonus bBaseAtk,50; bonus bHealPower,5; bonus bVariableCastrate,4; } if ((.@int>199)) { bonus bBaseAtk,75; bonus bHealPower,5; bonus bVariableCastrate,2; }
+47234:47097,{ bonus3 bAutoSpell,"AC_DOUBLE",max(getskilllv("AC_DOUBLE"),3),20; }
+47234:19306,{ .@aspd = 1; .@crit_dmg = 2 + 2 * (readparam(bDex) / 25); .@sub_demi = 2; .@luk = readparam(bLuk); if (.@luk > 149) { .@aspd += 1; .@crit_dmg += 2; .@sub_demi += 2; } if (.@luk > 199) { .@aspd += 2; .@crit_dmg += 4; .@sub_demi += 4; bonus bSplashRange,1; } bonus bAspd,.@aspd; bonus bCritAtkRate,.@crit_dmg; bonus2 bSubRace,RC_DemiHuman,.@sub_demi; bonus2 bSubSkill,"NPC_CRITICALSLASH",100; }
+
+
+ 
