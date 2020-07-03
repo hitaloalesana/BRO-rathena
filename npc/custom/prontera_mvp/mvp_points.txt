@@ -2,17 +2,7 @@
 -	pointshop	mvp_shop_equips		-1,#MvP_Points,15175:50,13032:450,13031:450,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
 -	pointshop	mvp_shop_visuais	-1,#MvP_Points,43163:100,43172:100,43190:350,44103:350,41061:350,41071:350,31325:350,31331:350,31332:350,20432:350,31205:350,20268:350,20167:350,20175:350,43063:400,43068:400,43067:400,43069:400,43083:400 
 
-<<<<<<< .mine
 prt_in,128,116,5	script	 Pontos MvP	610,{
-||||||| .r111
--	pointshop	mvp_shop_utilidades	-1,#MvP_Points,40049:5,12214:5,12103:15,7621:50,12210:100,40034:200
--	pointshop	mvp_shop_equips		-1,#MvP_Points,13032:450,13031:450,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
--	pointshop	mvp_shop_visuais	-1,#MvP_Points,43190:500,44103:500,41010:1000,41061:1000,41071:1000,42036:1000,42037:1000
-
-prt_in,121,116,5	script	Lojinha MvP	10053,{
-=======
-prt_in,121,116,5	script	Lojinha MvP	10053,{
->>>>>>> .r130
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 	mes "Troque seus ^00CC00MvPs Points^000000 por diversos utensilhos e equipamentos, também poderá receber ^EEAD0E1x "+ getitemname(40042) +"^000000 toda vez que derrotar um MvP.";
 	if( #MvP_Points >= 1 ){
@@ -35,7 +25,6 @@ prt_in,121,116,5	script	Lojinha MvP	10053,{
 			close;
 			}
 }
-<<<<<<< .mine
 prt_in,138,112,2	script	Ranking MVP	10309,{
 	query_sql( "SELECT `name`,`count` FROM `mvp_ranking` ORDER BY `count` DESC LIMIT 5", .@name$, .@count );
 	specialeffect 258;
@@ -53,26 +42,6 @@ prt_in,138,112,2	script	Ranking MVP	10309,{
 	mes "^D3D3D3----------------------------------^000000";
 	close;
 }
-||||||| .r111
-=======
-prt_in,138,118,5	script	MvP Ranking	10053,{
-	query_sql( "SELECT `name`,`count` FROM `mvp_ranking` ORDER BY `count` DESC LIMIT 5", .@name$, .@count );
-	specialeffect 258;
-	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-	mes "    ^EE1289--- TOP 5 MVPS ---^000000";
-	mes "^D3D3D3----------------------------------^000000";
-	mes "  ^D3D3D3*^000000 ^777777Pos.^000000 - ^EEAD0ENome^000000 - ^00CC00Total de Pontos^000000";
-	mes "^D3D3D3----------------------------------^000000";
-	if( getarraysize( .@name$ ) ){
-	for( set .@i, 0; .@i < getarraysize( .@name$ ); set .@i, .@i + 1 )
-		mes "  ^D3D3D3*^000000 ^777777"+ ( .@i + 1 )+"º^000000 - ^EEAD0E"+ .@name$[.@i] +"^000000 - ^00CC00"+ .@count[.@i] +" Points.^000000";
-	} else {
-		mes "  * Nenhum registro de recordes encontrado.";
-	}
-	mes "^D3D3D3----------------------------------^000000";
-	close;
-}
->>>>>>> .r130
 -	script	MvP_Count	-1,{
 OnNPCKillEvent:
 	if( killedrid == 1087 || killedrid == 2094 || killedrid== 1147 || killedrid == 1190 || killedrid == 1806 || killedrid == 1511 || killedrid == 1159 || killedrid == 1389 || killedrid == 1150 || killedrid == 1688 || killedrid == 1980 || killedrid == 1251 || killedrid == 2068 || killedrid== 2194 || killedrid == 1885 || killedrid == 1252 || killedrid == 1583 || killedrid == 2131 ){

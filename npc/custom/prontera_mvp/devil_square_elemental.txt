@@ -1,17 +1,7 @@
 -	shop	ds_shop	-1,501:50
-<<<<<<< .mine
 prt_in,126,121,4	script	Devil Square Elemental#1	624,{
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 	mes "Na ^EE1289Devil Square Elemental^000000 você precisa manter-se vivo derrotando monstros elementais em diferentes rounds, no final você é recompensando!";
-||||||| .r111
-prt_in,136,116,4	script	Devil Square Elemental#1	704,{
-	mes "[ ^a60536Devil Square Elemental^000000 ]";
-	mes "Na ^66CD00Devil Square Elemental^000000 você precisa manter-se vivo derrotando monstros elementais em diferentes rounds, no final você é recompensando!";
-=======
-prt_in,126,116,4	script	Devil Square Elemental#1	704,{
-	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-	mes "Na ^EE1289Devil Square Elemental^000000 você precisa manter-se vivo derrotando monstros elementais em diferentes rounds, no final você é recompensando!";
->>>>>>> .r130
 	mes "Mate o máximo de monstros elementais para receber ^0000ff"+ getitemname( .ds_requerid ) +"^000000.";
 	mes "^777777Prêmio do Evento:^000000";
 	mes "  ^00CC00"+getitemname(40024)+".^000000";
