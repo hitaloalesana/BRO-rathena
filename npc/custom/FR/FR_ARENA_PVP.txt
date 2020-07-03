@@ -1,6 +1,6 @@
 -	script	PvP#count	-1,{
 OnInit:
-		set $PvP$[0],"guild_vs1";
+		set $PvP$[0],"pvp_y_8-2";
 		setmapflag	$PvP$, 0;  //= [ nomemo ] Aqui você citara o mapa ou dungeon aonde o "acolyte" ou "noviço" não usara o comando /memo.
 		setmapflag	$PvP$, 2;  //= [ nosave ] Aqui você citara o mapa ou dungeon aonde não é possivel salvar.
 		setmapflag	$PvP$, 1;  //= [ noteleport ] Aqui você citara o mapa ou dungeon aonde o player não podera usar a magia "Teleport".
@@ -13,8 +13,8 @@ OnInit:
 					   //  Obs: Não remova essa linha! Essa função fará com que o dano causado no jogador apareça. Com o GvG ligado ficará igual a WoE
 		pvpon $PvP$;               //= [ pvpon ] Aqui você citará o mapa onde o PvP ficará ativado. (PvP On)
 	
-	//= Mapa da Sem Custons
-		set $PvP_2$[0],"guild_vs2";
+	//= unranked
+		set $PvP_2$[0],"prt_pvp";
 		setmapflag	$PvP_2$, mf_restricted, 128;
 		setmapflag	$PvP_2$, 0;  //= [ nomemo ] Aqui você citara o mapa ou dungeon aonde o "acolyte" ou "noviço" não usara o comando /memo.
 		setmapflag	$PvP_2$, 2;  //= [ nosave ] Aqui você citara o mapa ou dungeon aonde não é possivel salvar.

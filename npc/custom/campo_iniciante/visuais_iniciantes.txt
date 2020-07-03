@@ -1,5 +1,5 @@
 -	shop	hats_shop	-1,501:50
-new_zone01,151,144,4	script	Vendedora de Balões#n	55,{
+new_zone01,151,144,4	script	Vendedora de Balões#n	612,{
 		announce "Loja de Aluguel | Moeda: '"+ getitemname( .hats_requerid ) +"'", bc_blue|bc_self;
 		dispbottom "Atenção: Os itens desta loja são de Aluguel e duram 7 dias.", 0x00FF00;
 		callshop "hats_shop", 1;

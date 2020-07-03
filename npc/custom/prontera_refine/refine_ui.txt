@@ -1,4 +1,4 @@
-prt_in,63,59,3	script	Refinadora#br	850,{
+prt_in,63,59,3	script	Refinador#br	826,{
 	mes "^0099FF[ "+strnpcinfo(1)+" ]^000000";
 	mes "Deseja refinar seus equipamentos? Eu sou a pessoa certa para ajudá-lo!";
 	mes "^777777É requerído alguns itens e zeny para realizar o refinamento de seus itens.^000000";

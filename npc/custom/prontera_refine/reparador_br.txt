@@ -1,4 +1,4 @@
-prt_in,64,68,3	script	Conversor de Perfeito#prt	851,{
+prt_in,64,68,3	script	Conversor de Perfeito#prt	826,{
 	//----------------------------------------------------
 	set .@zeny, 300000; 	// Valor em Zeny pago.
 	//----------------------------------------------------
