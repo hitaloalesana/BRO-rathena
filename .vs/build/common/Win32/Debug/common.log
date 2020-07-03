@@ -1,0 +1,26 @@
+﻿  cli.cpp
+  conf.cpp
+  core.cpp
+  database.cpp
+  db.cpp
+  des.cpp
+  ers.cpp
+  grfio.cpp
+  malloc.cpp
+  mapindex.cpp
+  md5calc.cpp
+  msg_conf.cpp
+  nullpo.cpp
+  random.cpp
+  showmsg.cpp
+  socket.cpp
+  sql.cpp
+  strlib.cpp
+  timer.cpp
+  utils.cpp
+  Gerando Código...
+  Compilando...
+  winapi.cpp
+  utilities.cpp
+  Gerando Código...
+  common.vcxproj -> K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\.vs\build\common.lib

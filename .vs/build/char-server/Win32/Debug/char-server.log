@@ -1,0 +1,20 @@
+﻿  char.cpp
+  char_clif.cpp
+  char_cnslif.cpp
+  char_logif.cpp
+  char_mapif.cpp
+  inter.cpp
+  int_achievement.cpp
+  int_auction.cpp
+  int_clan.cpp
+  int_elemental.cpp
+  int_guild.cpp
+  int_homun.cpp
+  int_mail.cpp
+  int_mercenary.cpp
+  int_party.cpp
+  int_pet.cpp
+  int_quest.cpp
+  int_storage.cpp
+  Gerando Código...
+  char-server.vcxproj -> K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\char-server.exe

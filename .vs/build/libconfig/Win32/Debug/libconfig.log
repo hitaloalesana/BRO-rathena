@@ -1,0 +1,7 @@
+﻿  grammar.c
+  libconfig.c
+  scanctx.c
+  scanner.c
+  strbuf.c
+  Gerando Código...
+  libconfig.vcxproj -> K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\.vs\build\libconfig.lib

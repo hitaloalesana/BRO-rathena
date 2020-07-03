@@ -1,0 +1,2 @@
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\.vs\build\common\Win32\Debug\common.pdb
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\.vs\build\common.pdb

@@ -1,0 +1,17 @@
+﻿  cli.cpp
+  conf.cpp
+  core.cpp
+  des.cpp
+  grfio.cpp
+  malloc.cpp
+  mapindex.cpp
+  md5calc.cpp
+  msg_conf.cpp
+  nullpo.cpp
+  random.cpp
+  showmsg.cpp
+  strlib.cpp
+  utils.cpp
+  winapi.cpp
+  Gerando Código...
+  common-minicore.vcxproj -> K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\.vs\build\common-minicore.lib

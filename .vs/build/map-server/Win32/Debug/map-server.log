@@ -1,0 +1,276 @@
+﻿  achievement.cpp
+  atcommand.cpp
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\atcommand.cpp(1393,5): error C2227: esquerda de '->equip' deve apontar para tipo class/struct/union/generic
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\atcommand.cpp(1393,5): message : tipo é 'item_data *[10]'
+  battle.cpp
+  battleground.cpp
+  buyingstore.cpp
+  cashshop.cpp
+  channel.cpp
+  chat.cpp
+  chrif.cpp
+  clan.cpp
+  clif.cpp
+  date.cpp
+  duel.cpp
+  elemental.cpp
+  guild.cpp
+  homunculus.cpp
+  instance.cpp
+  intif.cpp
+  itemdb.cpp
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\itemdb.cpp(1796,66): warning C4244: 'argumento': conversão de 'int64' para 'keytype', possível perda de dados
+          with
+          [
+              keytype=uint32
+          ]
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\itemdb.cpp(1804,15): warning C4244: '=': conversão de 'int64' para 'uint32', possível perda de dados
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\itemdb.cpp(1911,23): warning C4244: '=': conversão de 'int64' para 'uint32', possível perda de dados
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\itemdb.cpp(1959,13): warning C4244: 'argumento': conversão de 'int64' para 'keytype', possível perda de dados
+          with
+          [
+              keytype=uint32
+          ]
+  log.cpp
+  Gerando Código...
+  Compilando...
+  mail.cpp
+  map.cpp
+  mapreg.cpp
+  mercenary.cpp
+  mob.cpp
+  npc.cpp
+  npc_chat.cpp
+  party.cpp
+  path.cpp
+  pc.cpp
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(300,2): error C2078: muitos inicializadores
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(972,1): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(972,24): error C2065: 'n': identificador não declarado
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(973,1): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(973,45): error C2065: 'n': identificador não declarado
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(973,77): error C2065: 'n': identificador não declarado
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(973,1): error C2660: 'MakeDWord': função não recebe 1 argumentos
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\utils.hpp(38,15): message : consulte a declaração de 'MakeDWord'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(988,53): error C2601: 'pc_equippoint': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1011,1): error C2601: 'pc_setinventorydata': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1026,1): error C2601: 'pc_calcweapontype': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1072,1): error C2601: 'pc_setequipindex': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1143,1): error C2601: 'pc_isequipped': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1182,1): error C2601: 'pc_try_adopt': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1232,1): error C2601: 'pc_adoption': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1290,82): error C2267: 'pc_isItemClass': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1290,82): error C2601: 'pc_isItemClass': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1334,1): error C2601: 'pc_isequip': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1451,1): error C2601: 'pc_authok': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1672,1): error C2601: 'pc_authfail': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1685,1): error C2601: 'pc_set_hate_mob': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1715,1): error C2601: 'pc_reg_received': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1865,1): error C2267: 'pc_calc_skillpoint': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1865,1): error C2601: 'pc_calc_skillpoint': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1889,73): error C2267: 'pc_grant_allskills': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1889,73): error C2601: 'pc_grant_allskills': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(1948,1): error C2601: 'pc_calc_skilltree': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2145,1): error C2267: 'pc_check_skilltree': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2145,1): error C2601: 'pc_check_skilltree': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2217,1): error C2601: 'pc_clean_skilltree': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2233,1): error C2601: 'pc_calc_skilltree_normalize_job': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2313,1): error C2601: 'pc_updateweightstatus': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2346,1): error C2601: 'pc_disguise': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2413,1): error C2267: 'pc_bonus_autospell': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2413,1): error C2601: 'pc_bonus_autospell': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2466,1): error C2267: 'pc_bonus_autospell_onskill': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2466,1): error C2601: 'pc_bonus_autospell_onskill': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2499,1): error C2267: 'pc_bonus_addeff': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2499,1): error C2601: 'pc_bonus_addeff': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2548,1): error C2267: 'pc_bonus_addeff_onskill': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2548,1): error C2601: 'pc_bonus_addeff_onskill': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2589,1): error C2267: 'pc_bonus_item_drop': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2589,1): error C2601: 'pc_bonus_item_drop': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2658,1): error C2601: 'pc_addautobonus': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2702,1): error C2601: 'pc_delautobonus': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2749,1): error C2601: 'pc_exeautobonus': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2777,28): error C2601: 'pc_endautobonus': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2804,1): error C2267: 'pc_bonus_addele': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2804,1): error C2601: 'pc_bonus_addele': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2852,1): error C2267: 'pc_bonus_subele': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2852,1): error C2601: 'pc_bonus_subele': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2898,1): error C2267: 'pc_bonus_itembonus': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2898,1): error C2601: 'pc_bonus_itembonus': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2929,101): error C2267: 'pc_bonus_addvanish': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2929,101): error C2601: 'pc_bonus_addvanish': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(2974,1): error C2601: 'pc_bonus': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(3627,1): error C2601: 'pc_bonus2': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4214,1): error C2601: 'pc_bonus3': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4352,1): error C2601: 'pc_bonus4': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4438,1): error C2601: 'pc_bonus5': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4487,99): error C2601: 'pc_skill': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4564,1): error C2601: 'pc_insert_card': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4622,1): error C2601: 'pc_identifyall': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4646,1): error C2601: 'pc_modifybuyvalue': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4665,1): error C2601: 'pc_modifysellvalue': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4686,1): error C2601: 'pc_checkadditem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4725,1): error C2601: 'pc_inventoryblank': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4747,1): error C2601: 'pc_payzeny': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4782,1): error C2601: 'pc_getzeny': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4820,1): error C2601: 'pc_paycash': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4865,1): error C2601: 'pc_getcash': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4921,79): error C2601: 'pc_search_inventory': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(4944,117): error C2601: 'pc_additem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5051,1): error C2601: 'pc_delitem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5085,1): error C2601: 'pc_dropitem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5132,1): error C2601: 'pc_takeitem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5207,1): error C2601: 'pc_isUseitem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5379,1): error C2601: 'pc_useitem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5489,1): error C2601: 'pc_cart_additem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5565,1): error C2601: 'pc_cart_delitem': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5590,1): error C2601: 'pc_putitemtocart': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5624,1): error C2601: 'pc_cartitem_amount': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5640,1): error C2601: 'pc_getitemfromcart': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5671,1): error C2601: 'pc_bound_chk': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5686,1): error C2601: 'pc_show_steal': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5713,1): error C2601: 'pc_steal_item': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5805,1): error C2601: 'pc_steal_coin': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(5844,1): error C2601: 'pc_setpos': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6065,1): error C2601: 'pc_randomwarp': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6091,1): error C2601: 'pc_memo': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6152,89): error C2601: 'pc_get_skillcooldown': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6182,1): error C2601: 'pc_checkskill': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6207,1): error C2267: 'pc_checkallowskill': funções static com escopo de bloco são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6207,1): error C2601: 'pc_checkallowskill': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6258,1): error C2601: 'pc_checkequip': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6286,1): error C2601: 'pc_checkequip2': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6305,1): error C2601: 'pc_jobid2mapid': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6465,1): error C2601: 'pc_mapid2jobid': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6618,1): error C2601: 'job_name': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6879,28): error C2601: 'pc_follow_timer': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6919,1): error C2601: 'pc_stop_following': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(953): message : esta linha contém um '{' que ainda não foi correspondido
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6935,1): error C2601: 'pc_follow': definições de função local são inválidas
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.cpp(6935,1): fatal error C1003: contador de erros excede 100; interrompendo compilação
+  pc_groups.cpp
+  pet.cpp
+  quest.cpp
+  script.cpp
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(23145,21): warning C4101: 'bl': variável local não referenciada
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24904,1): error C2084: função 'int buildin_costume(script_state *)' já possui um corpo
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(23022): message : consulte a definição anterior de 'buildin_costume'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24909,7): error C2664: 'bool script_rid2sd_(script_state *,map_session_data **,const char *)': não é possível converter um argumento 2 de 'script_state **' em 'map_session_data **'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24909,7): message : Tipos apontados não são relacionados; conversão requer reinterpret_cast, conversão C-style ou conversão function-style
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(2680,13): message : consulte a declaração de 'script_rid2sd_'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24913,24): error C2065: 'equip': identificador não declarado
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24914,25): error C2065: 'equip': identificador não declarado
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24914,39): error C2660: 'pc_checkequip': função não recebe 1 argumentos
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\pc.hpp(1081,7): message : consulte a declaração de 'pc_checkequip'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24918,27): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24922,60): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24922,63): error C2660: 'log_pick_pc': função não recebe 3 argumentos
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\log.hpp(72,6): message : consulte a declaração de 'log_pick_pc'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24926,22): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24927,22): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24928,22): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24929,22): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24930,22): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24931,22): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24937,59): error C2039: ' inventory': não é um membro de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\common\mmo.hpp(477): message : consulte a declaração de 'mmo_charstatus'
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\script.cpp(24937,62): error C2660: 'log_pick_pc': função não recebe 3 argumentos
+K:\Backup hitalo rag\BrasilRO\rathena-master\SVN\src\map\log.hpp(72,6): message : consulte a declaração de 'log_pick_pc'
+  searchstore.cpp
+  skill.cpp
+  status.cpp
+  storage.cpp
+  trade.cpp
+  unit.cpp
+  Gerando Código...
+  Compilando...
+  vending.cpp
+  Gerando Código...
