@@ -1,4 +1,4 @@
-prontera,128,215,4	script	Negociador de Moedas	10299,{        
+prontera,128,215,6	script	Negociador de Moedas	10299,{        
   	mes .npc_name$;
 	mes "Oi, ^EEAD0E"+strcharinfo(0)+"^000000!";
 	

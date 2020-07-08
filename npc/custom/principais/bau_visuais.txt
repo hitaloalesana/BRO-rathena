@@ -57,7 +57,7 @@ prontera,143,203,5	script	Baú de Visuais	741,{
 			mes "^777777Selecione o item que deseja transformar em visual:^000000";
 			next;
 			setarray .@Position$[ 1 ], "Topo", "Meio", "Baixo";
-			setarray .@Position[ 1 ],     1,    9,   10;
+			setarray .@Position[ 1 ],    13,    12,   11;
 			set .@Menu$,"";
 			for( set .@i, 1; .@i < 4; set .@i, .@i + 1 ){
 			if( getequipisequiped( .@Position[ .@i ] ))
@@ -70,7 +70,7 @@ prontera,143,203,5	script	Baú de Visuais	741,{
 				mes "Nenhum item equipado neste slot.";
 				close;
 			}
-			if( countitem( 21034 ) < 5){
+			if( countitem( 40034 ) < 5){
 				mes "Para realizar esta ação é necessário "+ .@price +"x "+ getitemname( .@id_price ) +".";
 				close;
 			}

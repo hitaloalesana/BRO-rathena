@@ -458,7 +458,7 @@ function	DropCheff	{
 	}
 }
 
-prt_in,131,121,5	script	Cheffênia	618,{
+prt_in,131,121,3	script	Cheffênia	2249,{
 	//------------------------------------------------------------------------------
 	set .@nome$, "^0099FF[ "+strnpcinfo(1)+" ]^000000";
 	//------------------------------------------------------------------------------
@@ -677,6 +677,19 @@ bossnia_04,208,209,5	script	Saída#4	837,{
 	bossnia_04,0,0	monster	Criador Flamel		26062,1,60000,60000,1
 	bossnia_04,0,0	monster	Cigana Trentini		26063,1,60000,60000,1
 
+//prt_in,133,120,4	script	Sombra#B	1920,{ end; }
+//prt_in,130,120,4	script	Sombra#a	1920,{ end; }
+//prt_in,133,123,5	script	Sombra#c	1919,{ end; }
+//prt_in,130,123,5	script	Sombra#d	1921,{ end; }
+prt_in,133,120,4	script	Sombra#B	2250,{ end; }
+prt_in,130,120,4	script	Sombra#a	2250,{ end; }
+//prt_in,133,123,5	script	Sombra#c	2250,{ end; }
+//prt_in,130,123,5	script	Sombra#d	2250,{ end; }
+
+//prt_in,133,119,4	script	Sombra#B	27014,{ end; }
+//prt_in,130,119,4	script	Sombra#a	27016,{ end; }
+//prt_in,133,123,5	script	Sombra#c	27017,{ end; }
+//prt_in,130,123,5	script	Sombra#d	27019,{ end; }
 
 bossnia_01	mapflag	nowarp
 bossnia_01	mapflag	nowarpto

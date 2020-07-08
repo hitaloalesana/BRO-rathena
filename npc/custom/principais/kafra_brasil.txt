@@ -1,8 +1,8 @@
 prontera,153,196,5	script	Kafra Aurora	758,{
 	set .n$, "^0099FF[ "+strnpcinfo(1)+" ]^000000";
-	set $@JC_MinimumJB,40; 	//Minimum job level for changing between 2nd and advance Class (Default : 40)
-	set $@JC_Plat,1; 	//Give Platinum skills on Jobchange (Default : 1-yes)
-	set $@JC_SupNovM,45; 	//Base Level to change into Super Novice (Default : 45)
+	set $@JC_MinimumJB, 40; //Minimum job level for changing between 2nd and advance Class (Default : 40)
+	set $@JC_Plat, 1; 	//Give Platinum skills on Jobchange (Default : 1-yes)
+	set $@JC_SupNovM, 45; 	//Base Level to change into Super Novice (Default : 45)
 
 	mes .n$;
 	mes (gettime(3)>= 6&&gettime(3)<= 12?"Bom-dia":(gettime(3)>=13&&gettime(3)<=18?"Boa-tarde":"Boa-noite"))+", ^EEAD0E"+ strcharinfo(0)+"^000000!";
@@ -11,42 +11,37 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 	mes "^777777- Calendário^000000: ^0099FF("+gettimestr("%I:%M%p ",10) + gettime(5) + gettimestr(" %B ",15) + gettime(7)+")^000000.";
 	mes "^777777Diga-me em que posso te ajudar:^000000";
 	next;
-	switch(select("^00CC00•^000000 Abrir Armazém ^EEAD0E(500 Zenys).^000000","^00CC00•^000000 Salvar Ponto de Retorno.","^00CC00•^000000 Classes ^8B0A50Transcendentais^000000 ^777777|^000000 ^CD1076Expandidas.^000000","^00CC00•^000000 Classes ^8B008BBebê.^000000","^00CC00•^000000 Carrinho ^777777|^000000 Falcão ^777777|^000000 Peco.","^00CC00•^000000 Resetar Habilidades ^777777|^000000 Skills.","^00CC00•^000000 Remover Habilidades.","^00CC00•^000000 Habilidades de Platina.","^00CC00•^000000 Quest Kafra ^1E90FFB^EE9A00R^000000^008B45O.^000000","^00CC00•^000000 Saír.")){
+	switch(select("^00CC00•^000000 Abrir Armazém.","^00CC00•^000000 Salvar Ponto de Retorno.","^00CC00•^000000 Classes ^8B0A50Transcendentais^000000 ^777777|^000000 ^CD1076Expandidas.^000000","^00CC00•^000000 Classes ^8B008BBebê.^000000","^00CC00•^000000 Carrinho ^777777|^000000 Falcão ^777777|^000000 Peco.","^00CC00•^000000 Resetar Habilidades ^777777|^000000 Skills.","^00CC00•^000000 Remover Habilidades.","^00CC00•^000000 Habilidades de Platina.","^00CC00•^000000 Quest Mochila Kafra "+ (( #q_kafra ) ? "^00CC00(Realizado)^000000":"^FF2200(Não Realizado)^000000") +"","^00CC00•^000000 Saír.")){
 		case 9:
 			mes .n$;			
 			if( #q_kafra ){
-				mes "Parece que você já realizou nossa Quest!";
+				mes "Você já realizou a quest da Mochila Kafra Aurora!";
 				close;
 			}
-			mes "Separamos uma quest exclusiva pra você! O equipamento disponível é ^EEAD0E"+ getitemname(607) +"^000000 e para recebe-lo você deverá matar ^00CC00600x "+ getmonsterinfo( 1002,MOB_NAME ) +"^000000.";
+			mes "Separamos uma quest exclusiva para você!"; 
+			mes "O equipamento disponível é ^EEAD0E"+ getitemname(47012) +"^000000 e para recebe-lo você deverá matar ^00CC00600x "+ getmonsterinfo( 22176,MOB_NAME ) +"^000000.";
 			next;
 			if( select("^00CC00•^000000 Finalizar Quest.:^00CC00•^000000 Saír.") == 1 ){
 				mes .n$;
 				mes "Foram derrotados ^00CC00"+ q_kafra +"x^000000 monstros!"; 
-				if( q_kafra < 10 ){ 
+				if( q_kafra < 9999 ){ 
 					mes "^2596C2Você precisa matar mais monstros para concluír a Quest.^000000"; 
 					close; 
 				}
 				if( #q_kafra ) close;
-				announce "[Coorp. Kafra]: "+ strcharinfo(0) +" acabou de fazer sua Quest Kafra!", bc_all|bc_blue;
+				announce "[Kafra Aurora]: "+ strcharinfo(0) +" acabou de fazer sua "+ getitemname(47012) +"!", bc_all|bc_blue;
 				next;
 				mes .n$;
 				mes "Parabéns, aqui está sua Quest!";
 				set #q_kafra, 1;
-				getitem 607, 1;
+				getitem 47012, 1;
 				close;
 			}
 			close;
 			
 		case 1: // Abrir Storage
 			mes .n$;
-			if( Zeny < 500 ){
-				mes "Você não tem dinheiro suficiente.";
-				mes "^777777- Taxa do Armazém^000000: ^0099FF500 Zenys.^000000";
-				close;
-			}
 			mes "Certo, vou liberar o seu armazém.";
-			Zeny -= 500;
 			close2;
 			openstorage;
 			end;
@@ -60,15 +55,15 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 
 		case 3: // Mestre das Classes
 			mes .n$;
-			if(Upper == 1 && Class >= Job_Lord_Knight){
+			if( Upper == 1 && Class >= Job_Lord_Knight ){
 				mes "Sinto muito, você não possui todos os requisitos para mudar de classe.";
 				close;
 			}
-			if(SkillPoint != 0){
+			if( SkillPoint != 0 ){
 				mes "Me desculpe, você tem que usar todos os seus pontos de habilidade antes de mudar de classe.";
 				close;
 			}
-			if(JobLevel < 10){
+			if( JobLevel < 10 ){
 				mes "Sinto muito, mas você não parece que possui nivel suficiente de Job.";
 				close;
 			}
@@ -165,7 +160,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 					close;
 					break;
 				default:
-					if(JobLevel < $@JC_MinimumJB){
+					if( JobLevel < $@JC_MinimumJB ){
 						mes .n$;
 						mes "Sinto muito, mas você não parece que possui nivel suficiente de Job.";
 						close;
@@ -242,17 +237,17 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 					}
 					if((Class >=Job_Knight) && (Class <=Job_Crusader2)){
 						mes "Você quer renascer?";
-						if(select("^00CC00•^000000 Sim.","^00CC00•^000000 Não.") == 1){
-							if(BaseLevel < 99 || JobLevel < 50){
+						if(select("^00CC00•^000000 Sim.","^00CC00•^000000 Não.") == 1 ){
+							if( BaseLevel < 99 || JobLevel < 50 ){
 								mes .n$;
 								mes "Sinto muito, você não possui todos os requisitos para mudar de classe.";
 								close;
 							}
 							set lastJob, Class;
-							if(Class == Job_Knight2){
+							if( Class == Job_Knight2 ){
 								set lastJob,Job_Knight;
 							} else {
-								if(Class == Job_Crusader2){
+								if( Class == Job_Crusader2 ){
 									set lastJob,Job_Crusader;
 								}
 							}
@@ -270,7 +265,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 			if((Class == 0) && (JobLevel >9)){
 				mes .n$;
 				mes "^777777- JobLevel: ^0099FF"+JobLevel+".^000000";
-				mes "^777777- Class: ^0099FF"+Class+".^000000";
+				mes "^777777- Classe: ^0099FF"+Class+".^000000";
 				switch(select("^00CC00•^000000 Bebê Novice.","^00CC00•^000000 Saír.")){
 					case 1:
 						jobchange 4023;
@@ -369,7 +364,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 						mes "Volte quando precisar!";
 						break;
 					}
-			}else if((Class == 4029) && (JobLevel > 39)){
+			}else if( (Class == 4029) && (JobLevel > 39) ){
 				switch(select("^00CC00•^000000 Bebê Assassin.","^00CC00•^000000 Bebê Rogue.","^00CC00•^000000 Saír.")){
 					case 1:
 						jobchange 4035;
@@ -421,15 +416,15 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 			}
 		case 6: // Resetadora
 			mes .n$;
-			mes "^777777- Resetar Atributos^000000: ^0000FF500.000^000000z";
-			mes "^777777- Resetar Habilidades^000000: ^0000FF500.000^000000z";
-			mes "^777777- Resetar Ambos^000000: ^0000FF900.000^000000z";
-			mes "^777777Selecione o serviço que você quer:";
+			mes "^777777- Resetar Atributos^000000: ^EEAD0E500.000Z.^000000";
+			mes "^777777- Resetar Habilidades^000000: ^EEAD0E500.000Z.^000000";
+			mes "^777777- Resetar Ambos^000000: ^EEAD0E900.000Z.^000000";
+			mes "Selecione o serviço que você quer:";
 			next;
 			switch(select("^00CC00•^000000 Resetar Habilidades.:^00CC00•^000000 Resetar Atributos.:^00CC00•^000000 Resetar Ambos.:^00CC00•^000000 Sair.")) {
 				case 1:
 					mes .n$;
-					if(Zeny < 500000){ 
+					if( Zeny < 500000 ){ 
 						mes "Você não possui zeny suficiente."; 
 						close; 
 					}
@@ -439,7 +434,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 					close;
 				case 2:
 					mes .n$;
-					if(Zeny < 500000){ 
+					if( Zeny < 500000 ){ 
 						mes "Você não possui zeny suficiente."; 
 						close; 
 					}
@@ -449,7 +444,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 					close;
 				case 3:
 					mes .n$;
-					if(Zeny < 900000){ 
+					if( Zeny < 900000 ){ 
 						mes "Você não possui zeny suficiente."; 
 						close; 
 					}
@@ -468,7 +463,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 			next;
 			if(select("^00CC00•^000000 Sim.:^00CC00•^000000 Não.") == 2) close;
 				mes .n$;
-				if(SkillPoint < 1){ 
+				if( SkillPoint < 1 ){ 
 					mes "Você não possui pontos de habilidades sobrando."; 
 					close; 
 				}
@@ -478,7 +473,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 					mes .n$;
 				case 1:
 					mes "Pontos removidos.";
-					set SkillPoint,SkillPoint - SkillPoint;
+					set SkillPoint, SkillPoint - SkillPoint;
 					close;
 				case 2:
 					mes "Digite quantos pontos você gostaria de remover.";
@@ -486,7 +481,7 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 					next;
 					mes .n$;
 					mes "Pontos removidos.";
-					set SkillPoint,SkillPoint - @skillpoint_qnt;
+					set SkillPoint, SkillPoint - @skillpoint_qnt;
  					close;
 				case 3:
 					close;
@@ -497,11 +492,9 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 			mes "Eu posso te dar as habilidades especiais para sua classe.";
 			mes "^777777Você gostaria de recebê-los agora?^000000";
 			next;
-			if(select("^00CC00•^000000 Sim.:^00CC00•^000000 Não.") == 2){
-				close; 
-			}
-			skill 142,1,0;
-			switch(BaseClass){
+			if(select("^00CC00•^000000 Sim.:^00CC00•^000000 Não.") == 2 ){ close; }
+			skill 142, 1, 0;
+			switch( BaseClass ){
 				case 0: if (Class !=23) skill 143,1,0; break;
 				case 1: skill 144,1,0; skill 145,1,0; skill 146,1,0; break;
 				case 2: skill 157,1,0; break;
@@ -535,13 +528,13 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 			close;
 	}
 	OnNPCKillEvent:
-	if( killedrid == 1002 ){ 
-		if( q_kafra < 10 ){
+	if( killedrid == 22176 ){ 
+		if( q_kafra < 9999 ){
 			set q_kafra, q_kafra + 1; 
-			dispbottom "[Quest Kafra]: Derrote ("+ q_kafra +"/10) "+ getmonsterinfo( 1002,MOB_NAME ) +".",0x00FFFF;
+			dispbottom "Derrote ("+ q_kafra +"/10000) "+ getmonsterinfo( 22176,MOB_NAME ) +" para receber sua mochila.", 0x00FFFF;
 			end;
 		} else {
-			dispbottom "[Quest Kafra]: Você já matou 10x "+ getmonsterinfo( 1002,MOB_NAME ) +" necessários. Quest concluída!",0x00FFFF;
+			dispbottom "Você já matou 10000x "+ getmonsterinfo( 22176,MOB_NAME ) +" necessários. Quest concluída!", 0x00FFFF;
 			end;
 		}
 		end;
@@ -592,3 +585,169 @@ prontera,153,196,5	script	Kafra Aurora	758,{
 		skill 152,1,0;
 		close;
 }
+//------------------------------------------------------------------
+// Monstros da Quest Mochila Kafra Aurora.
+//------------------------------------------------------------------
+ama_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ayo_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ayo_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+bif_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+bif_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+cmd_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+dew_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ein_fild10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+dic_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+dic_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild00,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild11,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild12,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild13,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gef_fild14,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+gon_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+hu_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+hu_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+hu_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+hu_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+hu_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+hu_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+hu_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+lhz_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+lhz_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+lhz_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+lou_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+xmas_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+man_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+man_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+man_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_11,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mjolnir_12,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ma_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ma_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mosk_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+mosk_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+nif_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+nif_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+odin_tem01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+odin_tem02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+odin_tem03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+pay_fild11,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild00,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+prt_fild11,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild11,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild12,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ra_fild13,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild11,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild12,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild13,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild14,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild15,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild16,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild17,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild18,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild19,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild20,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild21,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+moc_fild22,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+spl_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+spl_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+spl_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+um_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+um_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+um_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+um_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ve_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ve_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ve_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ve_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ve_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ve_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+ve_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild01,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild02,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild03,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild04,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild05,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild06,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild07,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild08,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild09,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild10,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild11,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0
+yuno_fild12,0,0,0,0	monster	Unicórnio Bebê Azul	22176,10,3000,0,0

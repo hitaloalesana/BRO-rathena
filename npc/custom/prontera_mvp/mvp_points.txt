@@ -1,8 +1,8 @@
 -	pointshop	mvp_shop_utilidades	-1,#MvP_Points,14542:3,14544:3,40049:5,12214:5,12103:15,7621:50,12210:100,40034:200
--	pointshop	mvp_shop_equips		-1,#MvP_Points,15175:50,13032:450,13031:450,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
+-	pointshop	mvp_shop_equips		-1,#MvP_Points,15175:50,2177:100,13032:450,13031:450,15186:500,2347:500,2351:500,2349:500,18574:600,5490:600,5363:600
 -	pointshop	mvp_shop_visuais	-1,#MvP_Points,43163:100,43172:100,43190:350,44103:350,41061:350,41071:350,31325:350,31331:350,31332:350,20432:350,31205:350,20268:350,20167:350,20175:350,43063:400,43068:400,43067:400,43069:400,43083:400 
 
-prt_in,128,116,5	script	 Pontos MvP	610,{
+prt_in,137,108,3	script	 Pontos MvP	998,{
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 	mes "Troque seus ^00CC00MvPs Points^000000 por diversos utensilhos e equipamentos, também poderá receber ^EEAD0E1x "+ getitemname(40042) +"^000000 toda vez que derrotar um MvP.";
 	if( #MvP_Points >= 1 ){
@@ -29,7 +29,7 @@ prt_in,138,112,2	script	Ranking MVP	10309,{
 	query_sql( "SELECT `name`,`count` FROM `mvp_ranking` ORDER BY `count` DESC LIMIT 5", .@name$, .@count );
 	specialeffect 258;
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
-	mes "    ^EE1289--- TOP 5 caçadores de MVPs ---^000000";
+	mes "   ^EE1289--- TOP 5 CAÇADORES DE MVPS ---^000000";
 	mes "^D3D3D3----------------------------------^000000";
 	mes "  ^D3D3D3*^000000 ^777777Pos.^000000 - ^EEAD0ENome^000000 - ^00CC00Total de Pontos^000000";
 	mes "^D3D3D3----------------------------------^000000";

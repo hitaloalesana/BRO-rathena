@@ -1,4 +1,4 @@
-prontera,130,217,4	script	Empacotador	10128,{
+prontera,130,217,6	script	Empacotador	10128,{
 
 	set .@n$, "^0099FF[ "+strnpcinfo(1)+" ]^000000";
 

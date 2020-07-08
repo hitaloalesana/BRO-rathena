@@ -38,7 +38,7 @@
 //= 2.4 Added GM management function. [Euphy]
 //============================================================ 
 
-prt_in,136,118,5	script	Torre Sem Fim	406,{
+prt_in,136,118,5	script	Torre Sem Fim	1674,{
 
 	set .@Valor_Zeny,1000000; //Padrão: 1kk
 	set .@party_id,getcharid(1);

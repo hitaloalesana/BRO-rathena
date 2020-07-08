@@ -1,4 +1,5 @@
 -	shop	ds_shop	-1,501:50
+-	shop	ds_shop2 -2,501:50
 prt_in,126,121,4	script	Devil Square Elemental#1	22122,{
 	mes "^0099FF[ "+ strnpcinfo(1) +" ]^000000";
 	mes "Na ^EE1289Devil Square Elemental^000000 você precisa manter-se vivo derrotando monstros elementais em diferentes rounds, no final você é recompensando!";
@@ -10,8 +11,8 @@ prt_in,126,121,4	script	Devil Square Elemental#1	22122,{
 	mes "  ^00CC00"+getitemname(40049)+".^000000";
 	mes "  ^EEAD0E40,000,000 Zenys.^000000";
 	next;
-	switch(select("^00CC00•^000000 Participar.:^00CC00•^000000 ^777777Devil Square Shop.^000000:^00CC00•^000000 Saír.")) {
-	case 3: close;
+	switch(select("^00CC00•^000000 Participar.:^00CC00•^000000 ^777777Devil Square Shop fogo.^000000:^00CC00•^000000 ^777777Devil Square Shop Terra.^000000:^00CC00•^000000 Saír.")) {
+	case 4: close;
 	case 1:
 		if( $start_ds != 1 ){
 			mes "[ ^a60536Devil Square Elemental^000000 ]";
@@ -34,9 +35,20 @@ prt_in,126,121,4	script	Devil Square Elemental#1	22122,{
 		mes "Você tem ^0000ff"+ countitem( .ds_requerid ) +"x "+ getitemname( .ds_requerid ) +"^000000 para negociar.";
 		mes "Boas compras!";
 		close2;
-		callshop "ds_shop", 1;
-		npcshopattach "ds_shop";
+		callshop "ds_shop2", 1;
+		npcshopattach "ds_shop2";
+
 		end;
+
+	case 3:
+		mes "[ ^a60536Devil Square Elemental^000000 ]";
+		mes "Você tem ^0000ff"+ countitem( .ds_requerid ) +"x "+ getitemname( .ds_requerid ) +"^000000 para negociar.";
+		mes "Boas compras!";
+		close2;
+		callshop "ds_shop", 2;
+		npcshopattach "ds_shop2";
+		end;
+
 	OnBuyItem:
 		for( set .@j, 0; .@j < getarraysize( .items ); set .@j, .@j + 2 ){	   
 		for( set .@k, 0; .@k < getarraysize( @bought_nameid ); set .@k, .@k + 1 ){		   
@@ -61,8 +73,17 @@ prt_in,126,121,4	script	Devil Square Elemental#1	22122,{
 	deletearray @bought_nameid, getarraysize( @bought_nameid );    
 	end;
 OnInit:    
-	set .ds_requerid, 40096;
-	setarray .items, 47324, 300, 47325, 300, 47326, 300, 47327, 300, 31395, 500, 47328, 3000, 47329, 3000, 47330, 3000, 47331, 3000; // Usage : <item id>,<price>    
+	set .ds_requerid, 608;
+	setarray .items, 47324, 100, 47325, 100, 47326, 100, 47327, 100, 47332, 100; // Usage : <item id>,<price>    
+	npcshopitem "ds_shop2", 0, 0; 
+	for( set .@i, 0; .@i < getarraysize( .items ); set .@i, .@i + 2 )      
+		npcshopadditem "ds_shop2", .items[.@i], .items[.@i + 1]; 
+		end;
+		}
+}
+OnInit:    
+	set .ds_requerid, 607;
+	setarray .items, 47324, 100, 47325, 100, 47326, 100, 47327, 100, 47332, 100; // Usage : <item id>,<price>    
 	npcshopitem "ds_shop", 0, 0; 
 	for( set .@i, 0; .@i < getarraysize( .items ); set .@i, .@i + 2 )      
 		npcshopadditem "ds_shop", .items[.@i], .items[.@i + 1]; 
@@ -71,11 +92,11 @@ OnInit:
 }
 -	script	Devil_Square#Drops	-1,{
 OnNPCKillEvent:
-	setarray .@ds_mob[0], 2114, 2115, 2116, 2117, 2118, 2119, 2120, 2121, 2122, 2123, 2124, 2125;
+	setarray .@ds_mob[0], 22004, 22005, 22013, 22017, 22003, 22023, 22020, 22032, 22034, 22056, 22095, 22045;
 	if( strcharinfo(3) != "ordeal_1-1" ) end; 
 	for( set .@i, 0; .@i <= getarraysize( .@ds_mob ); set .@i, .@i + 1 )
 		if( killedrid == .@ds_mob[.@i] ){
-			getitem 40096, 1;
+			getitem 607, 1;
 			dispbottom "[DS]: Matou um monstro premiado!";
 			end;
 			}
@@ -137,8 +158,8 @@ OnStartEvent:
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Neo Punk",2919,10,strnpcinfo(0)+"::OnDevilDead_01";
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Petal",2364,10,strnpcinfo(0)+"::OnDevilDead_01";
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Tikbalang",2313,5,strnpcinfo(0)+"::OnDevilDead_01";
-	areamonster "ordeal_1-1",183,182,246,244,"[DS] Vayu Level 1",2120,3,strnpcinfo(0)+"::OnDevilDead_01";
-	areamonster "ordeal_1-1",183,182,246,244,"[DS] Vayu Level 2",2121,5,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "ordeal_1-1",183,182,246,244,"[DS] Ventus Level 1",2120,3,strnpcinfo(0)+"::OnDevilDead_01";
+	areamonster "ordeal_1-1",183,182,246,244,"[DS] Ventus Level 2",2121,5,strnpcinfo(0)+"::OnDevilDead_01";
 	end;
 
 OnDevilDead_01:
@@ -200,8 +221,8 @@ OnDevilStart_03:
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Golpeador",1838,10,strnpcinfo(0)+"::OnDevilDead_03";
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Naga",2047,10,strnpcinfo(0)+"::OnDevilDead_03";
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Tengu",1405,4,strnpcinfo(0)+"::OnDevilDead_03";
-	areamonster "ordeal_1-1",183,182,246,244,"[DS] Cha?ndra Level 1",2123,3,strnpcinfo(0)+"::OnDevilDead_03";
-	areamonster "ordeal_1-1",183,182,246,244,"[DS] Cha?ndra Level 2",2124,5,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "ordeal_1-1",183,182,246,244,"[DS] Tera Level 1",2123,3,strnpcinfo(0)+"::OnDevilDead_03";
+	areamonster "ordeal_1-1",183,182,246,244,"[DS] Tera Level 2",2124,5,strnpcinfo(0)+"::OnDevilDead_03";
 	end;
 
 OnDevilDead_03:
@@ -232,16 +253,16 @@ OnDevilStart_04:
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Ryncho",2020,1,strnpcinfo(0)+"::OnDevilDead_04";
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Phylla",2021,1,strnpcinfo(0)+"::OnDevilDead_04";
 	areamonster "ordeal_1-1",183,182,246,244,"[DS] Iara",2069,20,strnpcinfo(0)+"::OnDevilDead_04";
-	areamonster "ordeal_1-1",183,182,246,244,"[DS] Varuna Level 1",2117,3,strnpcinfo(0)+"::OnDevilDead_04";
-	areamonster "ordeal_1-1",183,182,246,244,"[DS] Varuna Level 2",2118,5,strnpcinfo(0)+"::OnDevilDead_04";
+	areamonster "ordeal_1-1",183,182,246,244,"[DS] Aqua Level 1",2117,3,strnpcinfo(0)+"::OnDevilDead_04";
+	areamonster "ordeal_1-1",183,182,246,244,"[DS] Aqua Level 2",2118,5,strnpcinfo(0)+"::OnDevilDead_04";
 	end;
 
 OnDevilDead_04:
-	set .mob, .mob - 3;
+	set .mob, .mob - 1;
 	if( .mob == 15 || .mob == 5 ){
 		mapannounce "ordeal_1-1","[Devil Square Elemental]: "+ .mob +" monstros faltando na ultima rodada.",bc_map,0x00BFFF;
 	} else if( .mob <= 0 ){
-		mapannounce "ordeal_1-1","[Devil Square Elemental]: A última rodada foi alcançada. Enfrem as Furias Elementais ",bc_map,0x00BFFF;
+		mapannounce "ordeal_1-1","[Devil Square Elemental]: A penúltimo rodada foi alcançada. Enfrem as Furias Elementais ",bc_map,0x00BFFF;
 		sleep 10000;
 		goto OnDevilStart_05;
 	}
@@ -252,18 +273,34 @@ OnDevilStart_05:
 	set .mob, 4;
 	areamonster "ordeal_1-1",233,250,233,250,"[DS] Fúria Agni", 2116, 1, strnpcinfo(0) +"::OnDevilDead_05";
 	sleep 2000;
-	areamonster "ordeal_1-1",237,237,237,237,"[DS] Fúria Varuna", 2119, 1, strnpcinfo(0) +"::OnDevilDead_05";
+	areamonster "ordeal_1-1",237,237,237,237,"[DS] Fúria Aqua", 2119, 1, strnpcinfo(0) +"::OnDevilDead_05";
 	sleep 2000;
-	areamonster "ordeal_1-1",250,232,250,232,"[DS] Fúria Vayu", 2122, 1, strnpcinfo(0) +"::OnDevilDead_05";
+	areamonster "ordeal_1-1",250,232,250,232,"[DS] Fúria Ventus", 2122, 1, strnpcinfo(0) +"::OnDevilDead_05";
 	sleep 2000;
-	areamonster "ordeal_1-1",247,247,247,247,"[DS] Fúria Cha?ndra", 2125, 1, strnpcinfo(0) +"::OnDevilDead_05";
+	areamonster "ordeal_1-1",247,247,247,247,"[DS] Fúria Terra", 2125, 1, strnpcinfo(0) +"::OnDevilDead_05";
 	end;
 
-
 OnDevilDead_05:
-	set .mob, .mob - 3;
+	set .mob, .mob - 1;
 	if( .mob > 0 ){
-		mapannounce "ordeal_1-1","[Devil Square Elemental]: A DS está em sua última rodada. Enfrentando as Fúrias Elementais.",bc_map,0x00BFFF;
+		mapannounce "ordeal_1-1","[Devil Square Elemental]: A DS está em sua penúltima rodada. Enfrentando As Fúrias Elementais.",bc_map,0x00BFFF;
+	} else if( .mob <= 0 ){
+		mapannounce "ordeal_1-1","[Devil Square Elemental]: A último rodada foi atingida. Mostre sua força e enfrentem a Feiticeira Elemental! ",bc_map,0x00BFFF;
+		sleep 10000;
+		goto OnDevilStart_05;
+	}
+	end;
+
+OnDevilStart_06:
+	set .round, 6;
+	set .mob, 1;
+	areamonster "ordeal_1-1",237,237,237,237,"[DS] Feiticeira Elemental", 22122, 1, strnpcinfo(0) +"::OnDevilDead_06";
+	end;
+
+OnDevilDead_06:
+	set .mob, .mob - 1;
+	if( .mob > 0 ){
+		mapannounce "ordeal_1-1","[Devil Square Elemental]: A DS está em sua última rodada. Enfrentando Feiticeira Elemental.",bc_map,0x00BFFF;
 	} else if( .mob <= 0 ){
 		mapannounce "ordeal_1-1","» Clique no [Premiação Devil Square] para ganharem seus prêmios «",bc_map,0x00BFFF;
 		sleep 5000;
@@ -302,11 +339,47 @@ ordeal_1-1,246,245,7	script	Premiação Devil Square#1	741,{
 		end;
 }
 
+-	script	DS_Bonus	-1,{
+function DSBonus;
 
-prt_in,124,119,4	script	Fúria Agni#B	2116,{ end; }
-prt_in,127,119,5	script	Fúria Varuna#B	2119,{ end; }
-prt_in,124,123,5	script	Fúria Vayu#B	2122,{ end; }
-prt_in,127,123,5	script	Fúria Chandra#B	2125,{ end; }
+OnNPCKillEvent:
+	// DSBBonus( <MobID>,<CardID>,<Rate> );
+	// Rate : 1 = 0.01%  /  1000 = 10%  /  10000 = 100%
+
+
+	DSBonus( 2114, 40092, 10000 );
+	DSBonus( 2115, 40092, 10000 );
+	DSBonus( 2116, 40092, 10000 );
+	DSBonus( 2117, 40093, 10000 );
+	DSBonus( 2118, 40093, 10000 );
+	DSBonus( 2119, 40093, 10000 );
+	DSBonus( 2120, 40094, 10000 );
+	DSBonus( 2121, 40094, 10000 );
+	DSBonus( 2122, 40094, 10000 );
+	DSBonus( 2123, 40095, 10000 );
+	DSBonus( 2124, 40095, 10000 );
+	DSBonus( 2125, 40095, 10000 );
+	end;
+
+
+function	DSBonus	{
+	if( killedrid == getarg(0) && rand( 10000 ) <= getarg(2) ){
+			getitem getarg(1), 1;
+	}
+	return;
+	}
+
+}
+
+
+prt_in,124,121,4	script	Fúria Agni#B	2116,{
+}
+prt_in,127,120,5	script	Fúria Aqua#B	2119,{
+}
+prt_in,125,123,5	script	Fúria Ventus#B	2122,{
+}
+prt_in,127,123,5	script	Fúria Tera#B	2125,{
+}
 
 ordeal_1-1	mapflag	nowarp
 ordeal_1-1	mapflag	nowarpto

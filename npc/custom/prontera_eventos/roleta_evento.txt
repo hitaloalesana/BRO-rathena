@@ -1,143 +1,164 @@
-prt_in,38,104,5	script	Roleta de Eventos	10054,{
-end;
-}
-//prontera,164,180,5	script	Sample	4_F_KAFRA1,{
-	if (quest_random_cd == gettime(8)) {
-		mes "You will be assigned with a new quest by tomorrow 6AM.";
-		close;
-	}
-	if (!quest_random) {
-		if (gettime(3) < 6) {
-			mes "You will be assigned with a new quest by 6AM today.";
-			close;
-		}
-		quest_random_cd = 0;
-		quest_random = rand(1, 2);
-		mes "You have been assigned with a new quest.";
-		next;
-	}
-	switch(quest_random) {
+prt_in,38,104,5	script	Roleta de Eventos	563,{
+	set .@cupom_id, 40024;
+	set(.@n$, "^0099FF[ "+strnpcinfo(1)+" ]^000000");
+
+	switch(select("^00CC00•^000000 ^0099FFUsar Cupons.^000000","^00CC00•^000000 Ver Itens ^EEAD0E50 "+getitemname(.@cupom_id)+"^000000.","^00CC00•^000000 Ver Itens ^EEAD0E300 "+getitemname(.@cupom_id)+"^000000.","^00CC00•^000000 Ver Itens ^EEAD0E1000 "+getitemname(.@cupom_id)+"^000000.","^00CC00•^000000 Informações.","^00CC00•^000000 Saír.") ){
 		case 1:
-			setarray .@reward, 4001, 1;
-			setarray .@item, 512;
-			setarray .@amount, 100;
-			break;
+			switch(select("^00CC00•^000000 Usar ^EEAD0E10x "+getitemname(.@cupom_id)+"^000000.","^00CC00•^000000 Usar ^EEAD0E50x "+getitemname(.@cupom_id)+"^000000.","^00CC00•^000000 Usar ^EEAD0E100x "+getitemname(.@cupom_id)+"^000000.","^00CC00•^000000 Saír.") ){
+				cutin "", 255;
+				case 1: 
+					if(((Weight * 100) / MaxWeight) > 49){
+						mes .@n$;
+        					mes "Você está acima peso. Guarde alguns itens em seu storage!";
+        					close;
+    					}
+					if(countitem(.@cupom_id) < 50){
+						mes .@n$;
+						mes "Você não tem a quantidade necessária para continuar.";
+						close;
+					}
+					delitem .@cupom_id, 50;
+					callfunc "cupom_50";
+					break;
+				case 2:
+					if(((Weight * 100) / MaxWeight) > 49){
+						mes .@n$;
+        					mes "Você está acima peso. Guarde alguns itens em seu storage!";
+        					close;
+    					}
+					if(countitem(.@cupom_id) < 300){
+						mes .@n$;
+						mes "Você não tem a quantidade necessária para continuar.";
+						close;
+					}
+					delitem .@cupom_id, 300;
+					callfunc "cupom_300";
+					break;
+				case 3: 
+					if(((Weight * 100) / MaxWeight) > 49){
+						mes .@n$;
+        					mes "Você está acima peso. Guarde alguns itens em seu storage!";
+        					close;
+    					}
+					if(countitem(.@cupom_id) < 1000){
+						mes .@n$;
+						mes "Você não tem a quantidade necessária para continuar.";
+						close;
+					}
+					delitem .@cupom_id,1000;
+					callfunc "cupom_1000";
+					break;
+				case 4:
+					close;
+			}
 		case 2:
-			setarray .@reward, 4002, 1;
-			setarray .@item, 501, 502, 503;
-			setarray .@amount, 3, 1, 2;
-			break;
-		default:
-			mes "invalid quest.";
+			cutin "", 255;
+			message strcharinfo(0),"Carregando lista de itens.";
+			dispbottom "Esta é uma loja demonstrativa, não é possível comprar nenhum dos itens demonstrados.",0xEEAD0E;
+			progressbar "0xFF0000",3;
+			callshop "cupom_10#hide",1;
+			end;
+		case 3:
+			cutin "", 255;
+			message strcharinfo(0),"Carregando lista de itens.";
+			dispbottom "Esta é uma loja demonstrativa, não é possível comprar nenhum dos itens demonstrados.",0xEEAD0E;
+			progressbar "0xFF0000",3;
+			callshop "cupom_50#hide",1;
+			end;
+		case 4:
+			cutin "", 255;
+			message strcharinfo(0),"Carregando lista de itens.";
+			dispbottom "Esta é uma loja demonstrativa, não é possível comprar nenhum dos itens demonstrados.",0xEEAD0E;
+			progressbar "0xFF0000",3;
+			callshop "cupom_100#hide",1;
+			end;
+		case 5:
+			mes .@n$;
+			mes "Participe dos eventos e ganhe os Cupons de Evento.";
+			mes "^FFB90FSelecione a melhor opção e receba um super prêmio!^000000"; 
+			close2;
+			cutin "", 255;
+			end;
+		case 6: 
+			cutin "", 255;
 			close;
 	}
-	
-	mes "Quest Requirement(s):";
-	.@size = getarraysize(.@item);
-	for (.@i = 0; .@i < .@size; .@i++) {
-		mes " > "+.@amount[.@i]+"x "+getitemname(.@item[.@i]);
-		if (countitem(.@item[.@i]) < .@amount[.@i])
-			.@fail++;
+	OnInit:
+		npcshopattach "cupom_10#hide";
+		npcshopattach "cupom_50#hide";
+		npcshopattach "cupom_100#hide";
+		end;
+}
+-	cashshop	cupom_10#hide	-1,682:0,12210:0,40043:0,14586:0,12232:0,12209:0,12124:0,14526:0,12319:0,12191:0,12031:0,683:0,684:0,14619:0,14616:0,12684:0,12270:0,12269:0,12549:0,40003:0,40015:0,40045:0
+-	cashshop	cupom_50#hide	-1,40000:0,40034:0,12633:0,40070:0,12902:0,13717:0,12211:0,7776:0,7621:0,12312:0,12105:0,12194:0,12210:0,13749:0,14091:0,13717:0
+-	cashshop	cupom_100#hide	-1,607:0
+
+function	script	cupom_50	{
+	setarray .cupom_50[0],682,12210,40043,40045,40003,40015,14586,12232,12209,12124,14526,12319,12191,12031,683,684,14619,14616,12684,12270,12269,12549;
+	set .@a,0;
+	set .@b,0;
+	while(.@a < 20){
+		cutin rand(1,3)+"_noluck_img",3;
+		set .@a,.@a + 1;
+		sleep2 500;
 	}
-	if (!.@fail) {
-		next;
-		if (select("Submit Quest", "Cancel") == 1) {
-			for (.@i = 0; .@i < .@size; .@i++)
-				delitem .@item[.@i], .@amount[.@i];
-			getitem .@reward[0], .@reward[1];
-			quest_random = 0;
-			quest_random_cd = gettime(8);
-		}
+	while(.@b < 10){
+		cutin rand(1,2)+"_luck_img",3;
+		set .@b,.@b + 1;
+		sleep2 500;
 	}
+	dispbottom "Cupons trocados com sucesso.",0xFFFFFF;
+	sleep2 500;
+	cutin "", 255;
+	set .r,rand(getarraysize(.cupom_50));
+	getitem .cupom_50[.r],1;
+	announce "[Baú de Visuais]: "+ strcharinfo(0) +" destrancou o baú com uma Chave de Ouro e dropou ["+ getitemname( .chave_ouro[.r] ) +"].", bc_all|bc_blue;
+	specialeffect2 12;
 	close;
 }
-
-
-//prontera,152,152,5	script	Daily Quest	733,{
-mes "[ Daily Quest ]";
-mes "Hello ^0000ff"+strcharinfo(0)+"^000000,";
-mes "How can i help you?";
-        mes "       ";
-        mes "^ff0000NOTE^000000 :";
-        mes "Daily quest starts every";
-        mes "1:00 A.M and 1:00 P.M";
-	next;
-    set .@t,gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 );
-    mes "[ Daily Quest ]";
-    mes ""+ .week$[.@t] + " Quest Detail :";
-    mes "^777777Required Items^000000 :";
-    set .@size,getarraysize( getd( ".req_item"+ .@t ) );
-    for ( set .@i,1; .@i < .@size; set .@i,.@i+2)
-    mes ""+((countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) ) < getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) ) ? "^ff0000":"^008800")+""+getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) +"x "+ getitemname( getd( ".req_item"+ .@t +"["+ .@i +"]" ) )+" ("+countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) )+"/"+getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) +")";
-    
-    mes "^777777Reward Items^000000 :";
-    mes "1x "+getitemname( getd( ".req_item"+ .@t ) );
-    mes "1x Refinement Card";
-    next;
-    if ( select ( "Submit ^0000ffDaily Quest Items", "^ff0000Exit^000000" ) == 2 ) {
-        close;
-    }
-    else if( #the_day_today == gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 ) ) {
-            mes "[ Daily Quest ]";
-        mes "I'm sorry, but you have completed";
-        mes "the ^ff0000"+( gettime(3) > 12 ? "P.M" : "A.M" )+"^000000 quest for today already.";
-        mes "Please comeback later for";
-        mes "the ^0000ff"+(gettime(3) > 12 ? "A.M" : "P.M" )+"^000000 quest.";
-        close;
-    }
-    else if ( gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 ) != .@t ) {
-        mes "[ Daily Quest ]";
-        mes "I'm sorry, but the daily quest has just been updated.";
-        mes "I now require a new set of quest items.";
-        close;
-    }
-    mes "[ Daily Quest ]";
-    mes "^ff0000*Checking Inventory*^000000";
-    mes "Please wait....";
-    sleep2 5000;
-    mes "             ";
-    mes "             ";
-    mes "• ^008800Inventory Check Complete^000000";
-    next;
-    for ( set .@i,1; .@i < .@size; set .@i,.@i+2 ) {
-        if ( countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) ) < getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) ) {
-            setarray .@not_enough[.@c], getd( ".req_item"+ .@t +"["+ .@i +"]" ), getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" ) - countitem( getd( ".req_item"+ .@t +"["+ .@i +"]" ) );
-            set .@c,.@c + 2;
-        }
-    }
-    if ( .@c ) {
-        mes "[ Daily Quest ]";
-        mes "You do not have enough ^ff0000Quest Items^000000.";
-        close;
-    }
-    for ( set .@i,1; .@i < .@size; set .@i,.@i + 2 )
-    delitem getd( ".req_item"+ .@t +"["+ .@i +"]" ), getd( ".req_item"+ .@t +"["+( .@i +1 )+"]" );
-    getitem getd( ".req_item"+ .@t ), 1;
-    set #the_day_today,gettime(4)*2 + ( gettime(3) > 12 ? 1 : 0 );
-    mes "[ Daily Quest ]";
-    mes "^777777Quest Completed^000000 :";
-    mes "^009900"+ .week$[.@t]+" Quest^000000";
-    mes "        ";
-    mes "^777777Received Items^000000 :";
-    mes "• ^0000ff1x "+getitemname( getd( ".req_item"+ .@t ) );
-    getitem 21013,1;
-    close;
-OnInit:
-    waitingroom "Daily Quest",0;
-    setarray .week$, "Sunday's (A.M)", "Sunday's (P.M)", "Monday's (A.M)", "Monday's (P.M)", "Tuesday's (A.M)", "Tuesday's (P.M)", "Wednesday's (A.M)", "Wednesday's (P.M)", "Thursday's (A.M)", "Thursday's (P.M)", "Friday's (A.M)", "Friday's (P.M)", "Saturday's (A.M)", "Saturday's (P.M)";
-    setarray .req_item0, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;// sunday
-    setarray .req_item1, 21010, rand( 901,1070 ),rand( 10,20 ), 502,20, 503,30, 504, 40;// sunday PM etc..
-    setarray .req_item2, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item3, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item4, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item5, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item6, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item7, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item8, 21010, rand( 901,1070 ),rand( 10,20 ), 502,20, 503,30, 504, 40;
-    setarray .req_item9, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item10, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item11, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item12, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    setarray .req_item13, 21010, rand( 901,1070 ),rand( 10,20 ), 502,1;
-    end;
+function	script	cupom_300	{
+	setarray .cupom_300[0],40000,40034,12633,40070,12902,13717,12211,7776,7621,12312,12105,12194,12210,13749,14091,13717;
+	set .@a,0;
+	set .@b,0;
+	while(.@a < 20){
+		cutin rand(1,3)+"_noluck_img",3;
+		set .@a,.@a + 1;
+		sleep2 500;
+	}
+	while(.@b < 10){
+		cutin rand(1,2)+"_luck_img",3;
+		set .@b,.@b + 1;
+		sleep2 500;
+	}
+	dispbottom "Cupons trocados com sucesso.",0xFFFFFF;
+	sleep2 500;
+	cutin "",255;
+	set .r,rand(getarraysize(.cupom_300));
+	getitem .cupom_300[.r],1;
+	announce "[Baú de Visuais]: "+ strcharinfo(0) +" destrancou o baú com uma Chave de Prata e dropou ["+ getitemname( .chave_prata[.r] ) +"].", bc_all|bc_blue;
+	specialeffect2 12;
+	close;
+}
+function	script	cupom_1000	{
+	setarray .cupom_1000[0],6266,24030,24031,24032,24033,24034,24035,24036,24037,24038,24039,24040,24070,24074,24086,24087,24088,24089,24090,24091,24092,24103,24104,24105,24107,24109,24114,24119,24125,24138,24140,24141,24142,24143,24144,24163,24164,24166,24167,24172,24178,25012,25013,25014,25015,25016,25017,25018,25019,25053,25054,25055,25056,25059,25062,25063,25064,25065,25066,26061,26062,26063;
+	set .@a, 0;
+	set .@b, 0;
+	while(.@a < 20){
+		cutin rand(1,3)+"_noluck_img",3;
+		set .@a,.@a + 1;
+		sleep2 500;
+	}
+	while(.@b < 10){
+		cutin rand(1,2)+"_luck_img",3;
+		set .@b,.@b + 1;
+		sleep2 500;
+	}
+	dispbottom "Cupons trocados com sucesso.",0xFFFFFF;
+	sleep2 500;
+	cutin "",255;
+	set .r,rand(getarraysize(.cupom_1000));
+	getitem .cupom_1000[.r],1;
+	announce "[Baú de Visuais]: "+ strcharinfo(0) +" destrancou o baú com uma Chave de Bronze e dropou ["+ getitemname( .chave_bronze[.r] ) +"].", bc_all|bc_blue;
+	specialeffect2 12;
+	close;
 }
