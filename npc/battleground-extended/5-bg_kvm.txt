@@ -1,0 +1,242 @@
+// ==============================================================================
+// BattleGround System - KvM
+// ==============================================================================
+
+// Light Effects
+// *********************************************************************
+
+bg_kvm,54,123,0	script	#bat_c01a	139,{
+	end;
+
+OnKvM01LightA: misceffect 54; end;
+OnKvM01LightB: misceffect 55; end;
+OnKvM01LightC: misceffect 56; end;
+}
+
+bg_kvm,56,125,0	duplicate(#bat_c01a)	#bat_c01b	139
+bg_kvm,58,127,0	duplicate(#bat_c01a)	#bat_c01c	139
+bg_kvm,141,56,0	duplicate(#bat_c01a)	#bat_c01d	139
+bg_kvm,143,58,0	duplicate(#bat_c01a)	#bat_c01e	139
+bg_kvm,145,60,0	duplicate(#bat_c01a)	#bat_c01f	139
+
+// Battleground Therapist
+// *********************************************************************
+bg_kvm,148,53,1	script	Therapist in battle#2	95,{
+	mes "[Therapist in battle]";
+	mes "Just close your eyes, and take a deep breathe.";
+	mes "You can be free from pain.";
+	specialeffect2 312;
+	percentheal 100,100;
+	close2;
+	openstorage;
+	end;
+}
+bg_kvm,51,130,5	duplicate(Therapist in battle#2)	Therapist in battle#1	95
+
+// Battleground Engine
+// *********************************************************************
+
+-	script	KvM01_BG	-1,{
+	end;
+
+OnInit:
+	setwall "bg_kvm",54,122,6,7,0,"batc01wall_a";
+	setwall "bg_kvm",55,122,5,7,0,"batc01wall_b";
+	setwall "bg_kvm",140,56,6,7,0,"batc01wall_c";
+	setwall "bg_kvm",140,57,5,7,0,"batc01wall_d";
+	disablenpc "Therapist in battle#1";
+	disablenpc "Therapist in battle#2";
+	end;
+
+OnTeam1Quit:
+	setquest 8506; // Deserter
+	if( $@BG_Status != 0 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "KvM01_BG" )
+		donpcevent "BG_Queue_Join::OnJoinEvent";
+OnTeam1Die:
+	if( $@KvM01BG == 2 && $@BG_Status == 2 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "KvM01_BG")
+	{
+		getmapxy .@m$, .@x, .@y, BL_PC;
+		if( .@m$ != "bg_kvm" || (.@x >= 50 && .@x <= 58 && .@y >= 123 && .@y <= 131) )
+			end; // Killed/Logout on Cementery or outside the map?
+
+		set .Guillaume_Count, .Guillaume_Count - 1;
+		set .Team2_Score, .Team2_Score + 1;
+		bg_updatescore "bg_kvm",.Team1_Score,.Team2_Score;
+		if( .Guillaume_Count < 1 ) donpcevent "KvM01_BG::OnCroixWin";
+	}
+	end;
+
+OnTeam2Quit:
+	setquest 8506; // Deserter
+	if( $@BG_Status != 0 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "KvM01_BG" )
+		donpcevent "BG_Queue_Join::OnJoinEvent";
+OnTeam2Die:
+	if( $@KvM01BG == 2 && $@BG_Status == 2 && getvariableofnpc(.BG_Arena$,"BG_Queue_Join") == "KvM01_BG")
+	{
+		getmapxy .@m$, .@x, .@y, BL_PC;
+		if( .@m$ != "bg_kvm" || (.@x >= 141 && .@x <= 149 && .@y >= 52 && .@y <= 60) )
+			end; // Killed/Logout on Cementery or outside the map?
+
+		set .Croix_Count, .Croix_Count - 1;
+		set .Team1_Score, .Team1_Score + 1;
+		bg_updatescore "bg_kvm",.Team1_Score,.Team2_Score;
+		if( .Croix_Count < 1 ) donpcevent "KvM01_BG::OnGuillaumeWin";
+	}
+	end;
+	
+OnBuildTeams:
+	set $@BG_Team1,bg_team_create("bg_kvm",53,128,0,"KvM01_BG::OnTeam1Quit","KvM01_BG::OnTeam1Die",$Palette_BG_Bleu);
+	set $@BG_Team2,bg_team_create("bg_kvm",146,55,1,"KvM01_BG::OnTeam2Quit","KvM01_BG::OnTeam2Die",$Palette_BG_Rouge);
+	end;
+
+OnReady:
+	if( getvariableofnpc(.BG_Arena$,"BG_Queue_Join") != "KvM01_BG" )
+		end;
+	if( $@KvM01BG || $@Global_BG_Block )
+		end;
+
+	set $@KvM01BG, 1; // Starting
+	donpcevent "KvM01_BG::OnStart";
+	end;
+
+OnStart:
+	if( $@BG_Status != 1 || getvariableofnpc(.BG_Arena$,"BG_Queue_Join") != "KvM01_BG" )
+		end;
+		
+	enablenpc "Therapist in battle#1";
+	enablenpc "Therapist in battle#2";
+	set $@KvM01BG_Victory, 0;
+	sleep 2000;
+	// Warp Teams
+	bg_warp $@BG_Team1,"bg_kvm",53,128;
+	bg_warp $@BG_Team2,"bg_kvm",146,55;
+	// ScoreBoard
+	set .Team1_Score, 0;
+	set .Team2_Score, 0;
+	initnpctimer;
+	end;
+
+OnTimer5000:
+	areapercentheal "bg_kvm",50,123,58,131,100,100;
+	areapercentheal "bg_kvm",141,52,149,60,100,100;
+	mapannounce "bg_kvm","The Battle will start in 25 seconds!!",1,0x00BFFF;
+	end;
+
+OnTimer26000:
+	mapannounce "bg_kvm","The Battle will start in 4 seconds!!",1,0x00BFFF;
+	set $@BG_Status, 2; // Empêche les gens d'entrer de l'exterieur
+	end;
+
+OnTimer27000:
+	donpcevent "::OnKvM01LightA";
+	end;
+
+OnTimer28000:
+	donpcevent "::OnKvM01LightB";
+	end;
+	
+OnTimer29000:
+	donpcevent "::OnKvM01LightC";
+	end;
+
+OnTimer30000:
+	// Team Members
+	set .Guillaume_Count, bg_get_data($@BG_Team1, 0);
+	set .Croix_Count, bg_get_data($@BG_Team2, 0);
+	if( .Guillaume_Count < getvariableofnpc(.BG_Min[8],"BG_Queue_Join") || .Croix_Count < getvariableofnpc(.BG_Min[8],"BG_Queue_Join") )
+	{
+		set $@KvM01BG_Victory, 3;
+		set $@KvM01BG, 3;
+		mapannounce "bg_kvm","There are not enough players to start the battle",1,0x00BFFF;
+		stopnpctimer;
+		sleep 2000;
+		donpcevent "KvM01_BG::OnStop";
+		end;
+	}
+	disablenpc "Therapist in battle#1";
+	disablenpc "Therapist in battle#2";
+	set $@KvM01BG, 2; // Playing
+	areapercentheal "bg_kvm",50,123,58,131,100,100;
+	bg_warp $@BG_Team1,"bg_kvm",62,119;
+	areapercentheal "bg_kvm",141,52,149,60,100,100;
+	bg_warp $@BG_Team2,"bg_kvm",137,64;
+	end;
+
+OnTimer32000:
+	mapannounce "bg_kvm","The Battle of Kreiger Von Midgard has begun!!",1,0x00BFFF;
+	end;
+
+OnTimer300000:
+	mapannounce "bg_kvm","The Battle will ends in 30 seconds!!",1,0x00BFFF;
+	end;
+
+OnTimer330000:
+OnPrematureEnd:
+	if( .Croix_Count > .Guillaume_Count )
+		donpcevent "KvM01_BG::OnCroixWin";
+	else if( .Croix_Count < .Guillaume_Count )
+		donpcevent "KvM01_BG::OnGuillaumeWin";
+	else
+	{ // Draw Game
+		set $@KvM01BG, 3;
+		set $@KvM01BG_Victory, 3;
+		stopnpctimer;
+		sleep 2000;
+		mapannounce "bg_kvm","The time is out! This is a Tie...",1,0x00BFFF;
+		callfunc("Reward_BG",6,6,getd("$@" + strnpcinfo(0)));
+		donpcevent "KvM01_BG::OnStop";
+	}
+	end;
+
+OnGuillaumeWin:
+	set $@KvM01BG, 3;
+	set $@KvM01BG_Victory, 1;
+	stopnpctimer;
+	sleep 2000;
+	callfunc("Reward_BG",9,3,getd("$@" + strnpcinfo(0)));
+	mapannounce "bg_kvm","The " + bg_get_data($@BG_Team1,2) + " army has won the Battle of Kreiger Von Midgard!",1,bg_get_data($@BG_Team1,4);
+	donpcevent "KvM01_BG::OnStop";
+	end;
+
+OnCroixWin:
+	set $@KvM01BG, 3;
+	set $@KvM01BG_Victory, 2;
+	stopnpctimer;
+	sleep 2000;
+	callfunc("Reward_BG",3,9,getd("$@" + strnpcinfo(0)));
+	
+	mapannounce "bg_kvm","The " + bg_get_data($@BG_Team2,2) + " army has won the Battle of Kreiger Von Midgard!",1,bg_get_data($@BG_Team2,4);
+	donpcevent "KvM01_BG::OnStop";
+	end;
+
+OnStop:
+	// Reset salle
+	set .Croix_Count, 0;
+	set .Guillaume_Count, 0;
+	set .Team2_Score, 0;
+	set .Team1_Score, 0;
+	set $@KvM01BG_Victory, 0;
+	disablenpc "Therapist in battle#1";
+	disablenpc "Therapist in battle#2";
+	sleep 2000;
+	set $@KvM01BG, 0;
+	donpcevent "BG_Queue_Join::OnRotate";
+	bg_updatescore "bg_kvm",0,0;
+	end;
+}
+
+
+// MapFlags
+// *********************************************************************
+
+bg_kvm	mapflag	battleground	2
+bg_kvm	mapflag	nomemo
+bg_kvm	mapflag	nosave	SavePoint
+bg_kvm	mapflag	noteleport
+bg_kvm	mapflag	nowarp
+bg_kvm	mapflag	nowarpto
+bg_kvm	mapflag	noreturn
+bg_kvm	mapflag	nobranch
+bg_kvm	mapflag	nopenalty
+//bg_kvm	mapflag	noemergencycall
+bg_kvm	mapflag	nodrop

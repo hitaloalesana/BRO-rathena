@@ -928,7 +928,7 @@ int mob_spawn_guardian(const char* mapname, int16 x, int16 y, const char* mobnam
 /*==========================================
  * Summoning BattleGround [Zephyrus]
  *------------------------------------------*/
-int mob_spawn_bg(const char* mapname, int16 x, int16 y, const char* mobname, int mob_id, const char* event, unsigned int bg_id)
+int mob_spawn_bg(const char* mapname, int16 x, int16 y, const char* mobname, int mob_id, const char* event, unsigned int bg_id, unsigned int size)
 {
 	struct mob_data *md = nullptr;
 	struct spawn_data data;
@@ -966,6 +966,10 @@ int mob_spawn_bg(const char* mapname, int16 x, int16 y, const char* mobname, int
 	md = mob_spawn_dataset(&data);
 	mob_spawn(md);
 	md->bg_id = bg_id; // BG Team ID
+
+	md->special_state.ai = AI_ATTACK;
+	md->special_state.size = size;
+	sc_start4(NULL,&md->bl, SC_MODECHANGE, 100, 1, 0, MD_AGGRESSIVE, 0, 60000);
 
 	return md->bl.id;
 }

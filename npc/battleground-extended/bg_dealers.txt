@@ -1,0 +1,770 @@
+//===== rAthena Script ======================================= 
+//= BattleGround System - Item Dealer
+//===== By: ================================================== 
+//= L0ne_W0lf & Vykimo
+//===== Current Version: ===================================== 
+//= 2.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//============================================================
+
+bat_room,159,150,3	script	KVM Logistic Officer#a	10187,{
+	if (countitem(7773)) {
+		set .@pointstoadd,countitem(7773);
+		delitem 7773,.@pointstoadd;
+		set kvm_point,kvm_point+.@pointstoadd;
+		mes "[Logistics]";
+		mes "Are those "+getitemname(7773)+"s I see?";
+		mes "We no longer accept that currency,";
+		mes "but I can exchange those for you,";
+		mes "So you have "+.@pointstoadd+" "+getitemname(7773)+"s?";
+		mes "Alright, all set, you now have ^580080"+ kvm_point +"^000000 KVM Points.";
+		next;
+	}
+	if (checkweight(1201,1) == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Logistics]";
+	mes "Hello?";
+	mes "I am in charge of distributing";
+	mes "reward items for KVM points. Any";
+	mes "wrong selection of items will not";
+	mes "be reversed. Please be carefull.";
+	mes "Select the next step please.";
+	next;
+	set .@name$,strcharinfo(0);
+	switch(select("Read the KVM Catalogue.:Purchase KVM Items.:Confirm KVM Points.:Explanation of KVM Rewards.:Explanation of KVM Points.")) {
+	case 1:
+		mes "[Logistics]";
+		mes "Here is the catalogue of KVM items.";
+		mes "Each weapon requires 2,000 points";
+		mes "and each armor from 10 to 1,200";
+		mes "points. So, be carefull when";
+		mes "selecting a reward.";
+		close2;
+		readbook 11017,1;
+		end;
+	case 2:
+		mes "[Logistics]";
+		mes "Wich items do you want to see? As";
+		mes "for the detailed specification of";
+		mes "the items, please refer to the";
+		mes "^3131FFCatalogue^000000.";
+		next;
+		switch(select("Weapon:Armor/Accessory:Mass-Production Armor/Accessory:Popularized Armor/Accessory")) {
+		case 1:
+			mes "[Logistics]";
+			mes "You have selected the Weapon Category.";
+			mes "Please select a sub-category.";
+			next;
+			switch(select("Dagger/Sword/Spear:Staff/Mace/Axe/Shuriken:Bow/Katar/Instrument/Whip:Book/Knuckle:Revolver/Rifle/Gun/Grenade Launcher")) {
+			case 1:
+				mes "[Logistics]";
+				mes "You have selected the Dagger/Sword/Spear category.";
+				mes "Please select a sub-category.";
+				next;
+				switch(select("Dagger:One-handed Sword:Two-handed Sword:One-handed Spear:Two-handed Spear")) {
+				case 1: callsub PurchaseItem,13042,0,1; //Krieger_Dagger1 
+				case 2:
+					mes "[Logistics]";
+					mes "You have selected the 'One-handed Sword' category.";
+					mes "There are 3 One-handed Swords: Glorious Flamberge, Glorious Rapier and Glorious Holy Avenger.";
+					mes "If you want their details, please refer to the KVM Catalogue.";
+					mes "Please select one of them.";
+					next;
+					switch(select("Glorious Flamberge:Glorious Rapier:Glorious Holy Avenger")) {
+					case 1: callsub PurchaseItem,13416,0,0; //Krieger_Onehand_Sword1
+					case 2: callsub PurchaseItem,13417,0,0; //Krieger_Onehand_Sword2
+					case 3: callsub PurchaseItem,13418,0,0; //Krieger_Onehand_Sword3
+					}
+				case 3: callsub PurchaseItem,1187,0,1; //Krieger_Twohand_Sword1
+				case 4: callsub PurchaseItem,1426,0,1; //Krieger_Onehand_Spear1
+				case 5: callsub PurchaseItem,1486,0,1; //Krieger_Twohand_Spear1
+				}
+			case 2:
+				mes "[Logistics]";
+				mes "You have selected the 'Staff/Mace/Axe/Shuriken' category.";
+				mes "Please select a sub-category.";
+				next;
+				switch(select("Staff:Mace:One-handed Axe:Two-handed Axe:Shuriken")) {
+				case 1:
+					mes "[Logistics]";
+					mes "You have selected the 'Staff' category.";
+					mes "There are 3 Staffs: a Two-handed Weapon Glorious Destruction Staff, a One-handed Glorious Arc Wand and a Glorious Healing Staff.";
+					mes "If you want their details, please refer to the KVM Catalogue.";
+					mes "Please select one of them.";
+					next;
+					switch(select("Glorious Destruction Staff:Glorious Arc Wand:Glorious Healing Staff")) {
+					case 1: callsub PurchaseItem,2002,0,0; //Krieger_Twohand_Staff1
+					case 2: callsub PurchaseItem,1640,0,0; //Krieger_Onehand_Staff1
+					case 3: callsub PurchaseItem,1641,0,0; //Krieger_Onehand_Staff2
+					}
+				case 2: callsub PurchaseItem,1546,0,1; //Krieger_Onehand_Mace1
+				case 3: callsub PurchaseItem,1310,0,1; //Krieger_Onehand_Axe1
+				case 4: callsub PurchaseItem,1382,0,1; //Krieger_Twohand_Axe1
+				case 5: callsub PurchaseItem,13307,0,1; //Krieger_Huuma_Shuriken1
+				}
+			case 3:
+				mes "[Logistics]";
+				mes "You have selected the Bow/Katar/Instrument/Whip category.";
+				mes "Please select a sub-category.";
+				next;
+				switch(select("Bow:Katar:Instrument:Whip")) {
+				case 1: callsub PurchaseItem,1743,0,1; //Krieger_Bow1
+				case 2:
+					mes "[Logistics]";
+					mes "You have selected the 'Katar' category.";
+					mes "There are 2 Katars: Glorious Bloody Roar and Glorious Jamadhar.";
+					mes "If you want their details, please refer to the KVM Catalogue.";
+					mes "Please select one of them.";
+					next;
+					switch(select("Glorious Bloody Roar:Glorious Jamadhar")) {
+					case 1: callsub PurchaseItem,1281,0,0; //Krieger_Katar1
+					case 2: callsub PurchaseItem,1282,0,0; //Krieger_Katar2
+					}
+				case 3: callsub PurchaseItem,1927,0,1; //Krieger_Instrument1
+				case 4: callsub PurchaseItem,1981,0,1; //Krieger_Whip1
+				}
+			case 4:
+				mes "[Logistics]";
+				mes "You have selected the Book/Knuckle category.";
+				mes "Please select a sub-category.";
+				next;
+				switch(select("Book:Knuckle")) {
+				case 1:
+					mes "[Logistics]";
+					mes "You have selected 'Book'.";
+					mes "There are 2 Books: Glorious Tablet and Glorious Apocalypse.";
+					mes "If you want their details, please refer to the KVM Catalogue.";
+					mes "Please select one of them.";
+					next;
+					switch(select("Glorious Tablet:Glorious Apocalypse")) {
+					case 1: callsub PurchaseItem,1576,0,0; //Krieger_Book1
+					case 2: callsub PurchaseItem,1577,0,0; //Krieger_Book2
+					}
+				case 2:
+					mes "[Logistics]";
+					mes "You have selected the 'Knuckle' category.";
+					mes "There are 2 Knuckles: Glorious Claw and Glorious Fist.";
+					mes "If you want their details, please refer to the KVM Catalogue.";
+					mes "Please select one of them.";
+					next;
+					switch(select("Glorious Claw:Glorious Fist")) {
+					case 1: callsub PurchaseItem,1826,0,0; //Krieger_Knuckle1
+					case 2: callsub PurchaseItem,1827,0,0; //Krieger_Knuckle2
+					}
+				}
+			case 5:
+				mes "[Logistics]";
+				mes "You have selected the 'Revolver/Rifle/Gun/Grenade Launcher' category.";
+				mes "Please select a sub-category.";
+				next;
+				switch(select("Revolver:Rifle:Gatling Gun:Shotgun:Grenade Launcher")) {
+				case 1: callsub PurchaseItem,13110,0,1; //Krieger_Pistol1
+				case 2: callsub PurchaseItem,13176,0,1; //Krieger_Rifle1
+				case 3: callsub PurchaseItem,13177,0,1; //Krieger_Gatling1
+				case 4: callsub PurchaseItem,13178,0,1; //Krieger_Shotgun1
+				case 5: callsub PurchaseItem,13179,0,1; //Krieger_Launcher1
+				}
+			}
+		case 2:
+			mes "[Logistics]";
+			mes "You have selected the 'Armor/Accessory' category.";
+			mes "Please select a sub-category.";
+			next;
+			switch(select("Armor:Cloak:Shoes:Accessory")) {
+			case 1: callsub PurchaseItem,2394,1,2; //Krieger_Suit1
+			case 2: callsub PurchaseItem,2549,2,2; //Krieger_Muffler1
+			case 3: callsub PurchaseItem,2444,3,2; //Krieger_Shoes1
+			case 4: callsub PurchaseItem,2772,4,2; //Krieger_Ring1
+			}
+		case 3:
+			mes "[Logistics]";
+			mes "You have selected the 'Mass-Production Armor/Accessory' category.";
+			mes "Please select a sub-category.";
+			next;
+			switch(select("Mass-Production Armor:Mass-Production Shoes:Mass-Production Accessory")) {
+			case 1: callsub PurchaseItem,2395,5,3; //Krieger_Suit2
+			case 2: callsub PurchaseItem,2445,6,3; //Krieger_Shoes2
+			case 3: callsub PurchaseItem,2773,7,3; //Krieger_Ring2
+			}
+		case 4:
+			mes "[Logistics]";
+			mes "You have selected the 'Popularized Armor/Accessory' category.";
+			mes "Please select a sub-category.";
+			next;
+			switch(select("Popularized Armor:Popularized Shoes:Popularized Accessory")) {
+			case 1: callsub PurchaseItem,2396,8,4; //Krieger_Suit3
+			case 2: callsub PurchaseItem,2446,9,4; //Krieger_Shoes3
+			case 3: callsub PurchaseItem,2774,10,4; //Krieger_Ring3
+			}
+		}
+	case 3:
+		mes "[Logistics]";
+		mes ""+ .@name$ +", your current points are ^580080"+ kvm_point +"^000000 KVM Points.";
+		close;
+	case 4:
+		mes "[Logistics]";
+		mes "There are 3 categories in KVM Rewards: Weapon/Armor.Accessory.";
+		next;
+		mes "[Logistics]";
+		mes "Weapon rewards require 2,000 KVM points for each.";
+		mes "There are 3 types of Armor rewards and they require 840/630/580 KVM points fo each.";
+		mes "Accessory rewards require 1,200 KVM points for each.";
+		next;
+		mes "[Logistics]";
+		mes "Kreiger Weapons are LV 4 Weapons, they can be upgraded and will have special effects: Slaughter, Destruction and Blessing.";
+		next;
+		mes "[Logistics]";
+		mes "When you can wear all 3 armors, you can have a special set of options.";
+		mes "Also, when Kreiger Accessory rewards are worn with medalsm it will bring you special set rewards.";
+		next;
+		mes "[Logistics]";
+		mes "Finally, there are Mass-Production Armor and Accessory rewards.";
+		mes "Players whose Lvl is higher than 60 can equip Mass-Production Armors and there is a Lvl limit for Popularized Armor as well.";
+		close;
+	case 5:
+		mes "[Logistics]";
+		mes "KVM Points are rewarded when you win, lose or draw in Kreiger Von Midgard (KVM).";
+		mes "You can have special Rewards by using these points.";
+		close;
+	}
+
+PurchaseItem:
+	// Pricing for Weapon, Suit1, Muffler1, Shoes1, Ring1m Suit2, Shoes2, Ring2, Suit3, Shoes3, Ring3
+	setarray .@prices[0],2000,840,630,580,1200,120,70,200,15,10,30;
+
+	.@item_id = getarg(0);
+	.@req_setting = getarg(1);
+	.@item_type = getarg(2);
+
+	mes "[Logistics]";
+
+	if (!.@item_type)
+		mes "You have selected ^ff0000"+ getitemname(.@item_id) +"^000000.";
+	else if (.@item_type == 1)
+		mes "There is only one "+ callfunc("F_GetWeaponType",.@item_id) +": "+ getitemname(.@item_id) +".";
+	else if (.@item_type == 2) {
+		mes "You have selected '"+ callfunc("F_GetArmorType",.@item_id) +"'.";
+		mes "The armor for one whose Lvl is more than 80 is: ^ff0000"+ getitemname(.@item_id) +"^000000.";
+	}
+	else if (.@item_type == 3) {
+		mes "You have selected 'Mass-Production "+ callfunc("F_GetArmorType",.@item_id) +"'.";
+		mes "There is only one Mass-Production "+ callfunc("F_GetArmorType",.@item_id) +": ^ff0000"+ getitemname(.@item_id) +"^000000.";
+	}
+	else if (.@item_type == 4) {
+		mes "You have selected 'Popularized "+ callfunc("F_GetArmorType",.@item_id) +"'.";
+		mes "There is only one Popularized "+ callfunc("F_GetArmorType",.@item_id) +": ^ff0000"+ getitemname(.@item_id) +"^000000.";
+	}
+
+	if (!.@req_setting)
+		mes "It requires ^0000ff2,000^000000 KVM Points, and "+ .@name$ +", your points are: ^580080"+ kvm_point +"^000000.";
+	else if (.@req_setting == 4)
+		mes "It requires ^0000ff1,200^000000 KVM Points, and "+ .@name$ +", your points are: ^580080"+ kvm_point +"^000000.";
+	else
+		mes "It requires ^0000ff"+ .@prices[.@req_setting] +"^000000 KVM Points, and "+ .@name$ +", your points are: ^580080"+ kvm_point +"^000000.";
+
+	mes "Are you sure you want this item?";
+	next;
+	switch(select("No, I won't purchase it.:Yes, I will purchase it.")) {
+	case 1:
+		mes "[Logistics]";
+		mes "You have selected 'I won't purchase it'.";
+		mes "When purchasing an item, please be careful there are no refunds.";
+		break;
+	case 2:
+		if (kvm_point >= .@prices[.@req_setting]) {
+			kvm_point = kvm_point -.@prices[.@req_setting];
+			getitem .@item_id,1;
+			mes "[Logistics]";
+			mes "You have purchased a "+ getitemname(.@item_id) +".";
+			if (!.@req_setting)
+				mes "Your KVM Points are reduced by ^0000ff"+ .@req_setting +"^000000 points, your KVM Points are now ^580080"+kvm_point+"^000000.";
+			if (.@req_setting == 4)
+				mes "Your KVM Points are reduced by ^0000ff1,200^000000 points, your KVM Points are now ^580080"+kvm_point+"^000000.";
+			else
+				mes "Your KVM Points are reduced by ^0000ff"+ .@prices[.@req_setting] +"^000000 points, your KVM Points are now ^580080"+kvm_point+"^000000.";
+		}
+		else {
+			mes "[Logistics]";
+			if (!.@req_setting)
+				mes "You need ^0000ff2,000^000000 KVM Points to purchase this item.";
+			else if (.@req_setting == 4)
+				mes "You need ^0000ff1,200^000000 KVM Points to purchase this item.";
+			else
+				mes "You need ^0000ff"+ .@prices[.@req_setting] +"^000000 KVM Points to purchase this item.";
+			mes "However, your KVM Points are now ^580080"+ kvm_point +"^000000.";
+			mes "Which are not enough to buy it.";
+			mes "When you get enough points, please come back again.";
+		}
+	}
+	close;
+OnInit:
+    waitingroom "KvM pts Business",0;
+	end;
+}
+
+// Badges Exchange
+//============================================================
+bat_room,159,146,3	script	Telma	10121,{
+	mes "[Telma]";
+	mes "Welcome, mighty warrior.";
+	mes "Do you need supply for your battles?";
+	mes "I can exchange you for a nice amount of your badges.";
+	next;
+	switch( select("WoE Items:BG Items") )
+	{
+	case 1: // WoE Items
+		{
+			switch( select("^0000FFWoE Exclusive^000000:Other Items (All):Other Items (Genetic):Other Items (Guillotine Cross):Other Items (Warlock):Other Items (Mechanics):Other Items (Sorcerer):Other Items (Rune Knight)") )
+			{
+			case 1: // WoE Supply Items
+				setarray .@Items[0],   547, 505, 12016, 12030, 12029, 12031, 6217, 12262;
+				setarray .@Amount[0],  100, 100,    20,    10,    10,    10,   10,    10;
+				setarray .@Value[0],   100, 100,    80,    25,    25,    25,   30,    20;
+				set .@cID, getbattleflag("woe_reserved_char_id");
+				set .@Tarjet$, "War of Emperium or GvG";
+				break;				
+			case 2: // Other Items (All)
+				setarray .@Items[0],  12072, 12077, 12082, 12087, 12092, 12097, 12429, 12430, 12431, 12432, 12433, 12434, 7776;
+				setarray .@Amount[0],     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,    1;
+				setarray .@Value[0],     20,    20,    20,    20,    20,    20,    20,    20,    20,    20,    20,    20, 2000;
+				set .@cID, 0;
+				set .@Tarjet$, "Everywhere";
+				break;				
+			case 3: // Other Items (Genetic)
+				setarray .@Items[0],   7136,  7137,  6217,  6210,  7139,  7135,  6211,  7138,  6212, 13260, 13261, 13262, 13263, 13264;
+				setarray .@Amount[0],     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1;
+				setarray .@Value[0],     75,    20,    30,    15,    20,    20,    20,    30,    30,    30,    30,    30,    30,    30;
+				set .@cID, 0;
+				set .@Tarjet$, "Everywhere";
+				break;				
+			case 4: // Other Items (Guillotine Cross)
+				setarray .@Items[0],    678, 12717, 12722, 12720, 12718,  6128, 12724, 12723, 12721, 12719;
+				setarray .@Amount[0],     1,     1,     1,     1,     1,     1,     1,     1,     1,     1;
+				setarray .@Value[0],     75,   300,   300,   300,   300,   300,   300,   300,   300,   300;
+				set .@cID, 0;
+				set .@Tarjet$, "Everywhere";
+				break;				
+			case 5: // Other Items (Warlock)
+				setarray .@Items[0],  6195, 6196;
+				setarray .@Amount[0],    1,    1;
+				setarray .@Value[0],  1500, 1500;
+				set .@cID, 0;
+				set .@Tarjet$, "Everywhere";
+				break;				
+			case 6: // Other Items (Mecanics)
+				setarray .@Items[0],  1549;
+				setarray .@Amount[0],    1;
+				setarray .@Value[0],  1500;
+				set .@cID, 0;
+				set .@Tarjet$, "Everywhere";
+				break;				
+			case 7: // Other Items (Sorcerer)
+				setarray .@Items[0],  1025, 997, 996, 995, 994;
+				setarray .@Amount[0],   10,   5,   5,   5,   5;
+				setarray .@Value[0],    10,  25,  25,  25,  25;
+				set .@cID, 0;
+				set .@Tarjet$, "Everywhere";
+				break;				
+			case 8: // Other Items (RK)
+				setarray .@Items[0],  12731, 12728, 12732, 12733, 12729, 12730, 12726, 12725, 12727;
+				setarray .@Amount[0],     1,     1,     1,     1,     1,     1,     1,     1,     1;
+				setarray .@Value[0],     35,    35,    35,    35,    35,    35,    35,    35,    35;
+				set .@cID, 0;
+				set .@Tarjet$, "Everywhere";
+				break;
+			}
+		}
+		break;
+		
+	case 2: 
+		{
+			switch( select("BG Exclusive (All):BG Exclusive (Genetic):BG Exclusive (Guillotine Cross):BG Exclusive (Warlock):BG Exclusive (Sorcerer):BG Exclusive (Archbishop):BG Exclusive (Rune Knight)") )
+			{
+			case 1: // BG Supply (all)
+				setarray .@Items[0],   12016, 547, 505, 12072, 12077, 12082, 12087, 12092, 12097, 12429, 12430, 12431, 12432, 12433, 12434, 12029, 12030, 12031, 12262;
+				setarray .@Amount[0],     25, 100, 100,    10,    10,    10,    10,    10,    10,    10,    10,    10,    10,    10,    10,    10,    10,    10,    10;
+				setarray .@Value[0],       1,   1,   1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1,     1;
+				set .@cID, getbattleflag("bg_reserved_char_id");
+				set .@Tarjet$, "Battleground";
+				break;
+			case 2: // BG Supply (Genetic)
+				setarray .@Items[0],   7136, 7137, 6217, 6210, 7139, 7135, 6211, 7138, 6212, 13260, 13261, 13262, 13263, 13264;
+				setarray .@Amount[0],    25,   20,   10,   10,   15,   25,   10,   10,   10,     5,     5,     5,     5,     5;
+				setarray .@Value[0],      1,    1,    1,    1,    1,    1,    1,    1,    1,     1,     1,     1,     1,     1;
+				set .@cID, getbattleflag("bg_reserved_char_id");
+				set .@Tarjet$, "Battleground";
+				break;
+			case 3: // BG Supply (Guillotine Cross)
+				setarray .@Items[0],   678, 12717, 12722, 12720, 12718, 6128, 12724, 12723, 12721, 12719;
+				setarray .@Amount[0],   25,     5,     5,     5,     5,   10,     5,     5,     5,     5;
+				setarray .@Value[0],     1,     1,     1,     1,     1,    1,     1,     1,     1,     1;
+				set .@cID, getbattleflag("bg_reserved_char_id");
+				set .@Tarjet$, "Battleground";
+				break;
+			case 4: // BG Supply (Warlock)
+				setarray .@Items[0],   715, 716;
+				setarray .@Amount[0],   25,  25;
+				setarray .@Value[0],     1,   1;
+				set .@cID, getbattleflag("bg_reserved_char_id");
+				set .@Tarjet$, "Battleground";
+				break;
+			case 5: // BG Supply (Sorcerer)
+				setarray .@Items[0],   715, 716, 1025, 997, 996, 995, 994;
+				setarray .@Amount[0],   25,  25,   10,   5,   5,   5,   5;
+				setarray .@Value[0],     1,   1,    1,   1,   1,   1,   1;
+				set .@cID, getbattleflag("bg_reserved_char_id");
+				set .@Tarjet$, "Battleground";
+				break;
+			case 6: // BG Supply (Archbishop)
+				setarray .@Items[0],   523;
+				setarray .@Amount[0],   25;
+				setarray .@Value[0],     1;
+				set .@cID, getbattleflag("bg_reserved_char_id");
+				set .@Tarjet$, "Battleground";
+				break;
+			case 7: // BG Supply (Rune Knight)
+				setarray .@Items[0],   12731, 12728, 12732, 12733, 12729, 12730, 12726, 12725, 12727;
+				setarray .@Amount[0],      2,     2,     2,     2,     2,     2,     2,     2,     2;
+				setarray .@Value[0],       1,     1,     1,     1,     1,     1,     1,     1,     1;
+				set .@cID, getbattleflag("bg_reserved_char_id");
+				set .@Tarjet$, "Battleground";
+				break;
+			}
+		}
+		break;
+	}
+
+	set .@Menu$, "";
+	for( set .@i, 0; .@i < getarraysize(.@Items); set .@i, .@i + 1 )
+		set .@Menu$, .@Menu$ + .@Amount[.@i] + " " + getitemname(.@Items[.@i]) + " (" + .@Value[.@i] + " badges):";
+	set .@j, select(.@Menu$) - 1;
+
+	mes "[Telma]";
+	mes "^0000FF" + .@Amount[.@j] + " " + getitemname(.@Items[.@j]) + "^000000";
+	mes "It will cost you " + .@Value[.@j] + " badges per pack.";
+	mes "Remember this can only be used on " + .@Tarjet$ + ".";
+	next;
+	
+	mes "[Telma]";
+	mes "But tell me first, where do you want to receive the items?";
+	next;
+	set .@Destiny, select("Here, in my Inventory:Direct to my Storage") - 1;
+
+	mes "[Telma]";
+	mes "How many packets do you want to buy? (1..50)";
+	next;
+
+	input .@total;
+	if( .@total < 1 || .@total > 50 )
+	{
+		mes "[Telma]";
+		mes "I am sorry, please input a value from 1 to 50.";
+		mes "Talk to me again when you do your selections.";
+		close;
+	}
+	
+	set .@vtotal, .@total * .@Value[.@j]; // Value of all Packages
+	set .@total, .@total * .@Amount[.@j]; // Total Amount of Items
+
+	if( .@Destiny )
+	{ // Check Storage Space Limit
+		if( .@cID )
+		{
+			if( checkspace(.@Items[.@j],.@total,1,0,0,254,0,.@cID&0xffff,(.@cID>>16)&0xffff) == 0 )
+			{
+				mes "[Telma]";
+				mes "It's seen your storage cannot accept more items.";
+				mes "Go to your store and check the free space.";
+				close;
+			}
+		}
+		else
+		{
+			if( checkspace(.@Items[.@j],.@total,1,0,0,0,0,0,0) == 0 )
+			{
+				mes "[Telma]";
+				mes "It's seen your storage cannot accept more items.";
+				mes "Go to your store and check the free space.";
+				close;
+			}
+		}
+	}
+	else
+	{ // Check Weight Limit
+		if( checkweight(.@Items[.@j],.@total) == 0 )
+		{
+			mes "[Telma]";
+			mes "It's seen you can't carry the stuff you want to buy.";
+			mes "Go and store some items on your Kafra Storage.";
+			close;
+		}
+	}
+
+	if( countitem(7828) + countitem(7829) + countitem(7773) < .@vtotal )
+	{
+		mes "[Telma]";
+		mes "Required Badges: ^0000FF" + .@vtotal + "^000000";
+		mes "You do not have enough badges. Sorry...";
+		mes "Participate in Battleground arenas to receive it.";
+		close;
+	}
+	set .@vcount, .@vtotal;
+	set .@i7828, 0;
+	set .@i7829, 0;
+	set .@i7773, 0;
+
+	// Bravery Badges
+	if( countitem(7828) > 0 )
+	{
+		mes "[Telma]";
+		mes "Required Badges: ^0000FF" + .@vcount + "^000000";
+		mes "Bravery Badges to expend:";
+		next;
+		input .@i7828;
+		if( .@i7828 < 0 || .@i7828 > countitem(7828) )
+		{
+			mes "[Telma]";
+			mes "Invalid number... Sorry.";
+			close;
+		}
+		
+		if( .@i7828 > .@vcount ) set .@i7828,.@vcount;
+		set .@vcount, .@vcount - .@i7828;
+	}
+
+	// Valor Badges
+	if( .@vcount && countitem(7829) > 0 )
+	{
+		mes "[Telma]";
+		mes "Required Badges: ^0000FF" + .@vcount + "^000000";
+		mes "Valor Badges to expend:";
+		next;
+		input .@i7829;
+		if( .@i7829 < 0 || .@i7829 > countitem(7829) )
+		{
+			mes "[Telma]";
+			mes "Invalid number... Sorry.";
+			close;
+		}
+		
+		if( .@i7829 > .@vcount ) set .@i7829,.@vcount;
+		set .@vcount, .@vcount - .@i7829;
+	}
+
+	// Heroism Badges
+	if( .@vcount && countitem(7773) > 0 )
+	{
+		mes "[Telma]";
+		mes "Required Badges: ^0000FF" + .@vcount + "^000000";
+		mes "Heroism Badges to expend:";
+		next;
+		input .@i7773;
+		if( .@i7773 < 0 || .@i7773 > countitem(7773) )
+		{
+			mes "[Telma]";
+			mes "Invalid number... Sorry.";
+			close;
+		}
+
+		if( .@i7773 > .@vcount ) set .@i7773, .@vcount;
+		set .@vcount, .@vcount - .@i7773;
+	}
+
+	// Final Checks
+	if( .@vcount != 0 )
+	{
+		mes "[Telma]";
+		mes "Sorry, not enough badges to pay the total value.";
+		close;
+	}
+
+	mes "[Telma]";
+	mes "Are you ready to pay and receive your items?";
+	mes "Your payment details:";
+	mes "^0000FF" + .@i7828 + "^000000 Bravery Badges";
+	mes "^0000FF" + .@i7829 + "^000000 Valor Badges";
+	mes "^0000FF" + .@i7773 + "^000000 Heroism Badges";
+	next;
+
+	if( select("Yes, let's do it:I am sorry... not this time") == 2 )
+	{
+		mes "[Telma]";
+		mes "Ok, come again if you change your mind.";
+		close;
+	}
+
+	if( .@Destiny )
+	{ // Check Storage Space Limit
+		if( .@cID )
+		{
+			if( checkspace(.@Items[.@j],.@total,1,0,0,254,0,.@cID&0xffff,(.@cID>>16)&0xffff) == 0 )
+			{
+				mes "[Telma]";
+				mes "It's seen your storage cannot accept more items.";
+				mes "Go to your store and check the free space.";
+				close;
+			}
+		}
+		else
+		{
+			if( checkspace(.@Items[.@j],.@total,1,0,0,0,0,0,0) == 0 )
+			{
+				mes "[Telma]";
+				mes "It's seen your storage cannot accept more items.";
+				mes "Go to your store and check the free space.";
+				close;
+			}
+		}
+	}
+	else
+	{ // Check Weight Limit
+		if( checkweight(.@Items[.@j],.@total) == 0 )
+		{
+			mes "[Telma]";
+			mes "It's seen you can't carry the stuff you want to buy.";
+			mes "Go and store some items on your Kafra Storage.";
+			close;
+		}
+	}
+
+	if( .@i7828 > countitem(7828) || .@i7829 > countitem(7829) || .@i7773 > countitem(7773) )
+	{
+		mes "[Telma]";
+		mes "What!?, are you a magician or a thief? What did you do with your badges!?";
+		mes "Get out of here!";
+		close;
+	}
+
+	delitem 7828,.@i7828;
+	delitem 7829,.@i7829;
+	delitem 7773,.@i7773;
+
+	if( .@cID )
+	{
+		if( .@Destiny )
+			storeitem2 .@Items[.@j],.@total,1,0,0,254,0,.@cID&0xffff,(.@cID>>16)&0xffff;
+		else
+			getitem2 .@Items[.@j],.@total,1,0,0,254,0,.@cID&0xffff,(.@cID>>16)&0xffff;
+	}
+	else
+	{
+		if( .@Destiny )
+			storeitem .@Items[.@j],.@total;
+		else
+			getitem .@Items[.@j],.@total;
+	}
+
+	mes "[Telma]";
+	mes "Here it is... Now take care and fight for the honor and glory of your prince.";
+	close;
+OnInit:
+    waitingroom "Goods Business",0;
+	end;
+}
+
+bat_room,1,1,3	itemshop	BraveryExchanger	111,7828,13036:100,13411:100,1425:100,1632:100,1634:100,1543:100,1924:100,1978:100,1574:100,1824:100,1183:100,1380:100,13305:100,1279:100,1739:100,13108:100,13172:100,2538:50,2539:50,2540:50,2435:50,2436:50,2437:50,2376:80,2377:80,2378:80,2379:80,2380:80,2381:80,2382:80,2720:500,2721:500,2722:500,2723:500,2724:500,2725:500,2733:500
+bat_room,1,1,3	itemshop	ValorExchanger	111,7829,13037:100,13410:100,1633:100,1635:100,1542:100,1923:100,1977:100,1575:100,1823:100,1184:100,1482:100,1379:100,13306:100,1280:100,1738:100,13171:100,13173:100,13174:100,2538:50,2539:50,2540:50,2435:50,2436:50,2437:50,2376:80,2377:80,2378:80,2379:80,2380:80,2381:80,2382:80,2720:500,2721:500,2722:500,2723:500,2724:500,2725:500,2733:500
+bat_room,1,1,3	itemshop	HeroismExchanger	111,7773,1187:2000,1281:2000,1282:2000,1310:2000,1382:2000,1426:2000,1486:2000,1546:2000,1576:2000,1577:2000,1640:2000,1641:2000,1743:2000,1826:2000,1827:2000,1927:2000,1981:2000,2002:2000,13042:2000,13110:2000,13176:2000,13177:2000,13178:2000,13179:2000,13307:2000,13416:2000,13417:2000,13418:2000,2394:840,2395:170,2396:25,2444:580,2445:70,2446:15,2549:630,2772:1200,2773:280,2774:40
+
+bat_room,159,154,3	script	Erundek	10132,{
+	mes "[Erundek]";
+	mes "Welcome, mighty warrior.";
+	mes "What can I do for you today ?";
+	next;
+	switch( select("Exchange Bravery Badges","Exchange Valor Badges","Exchange Heroism Badges","Hmm, nothing I guess.") )
+	{
+		case 4:
+			mes "[Erundek]";
+			mes "As you wish.";
+			mes "See you later.";
+			close;
+		case 1: // Bravery Badges
+			mes "[Erundek]";
+			mes "So you want to exchange ^0000FFBravery Badges^000000 from the Battle of Tierra Valley.";
+			mes "Close this window to open shop.";
+			close2;
+			callshop "BraveryExchanger",0;
+			end;
+		case 2: // Valor Badges
+			mes "[Erundek]";
+			mes "So you want to exchange ^FF0000Valor Badges^000000 from the Battle of Flavius.";
+			mes "Close this window to open shop.";
+			close2;
+			callshop "ValorExchanger",0;
+			end;
+		case 3: // Heroism Badges
+			mes "[Erundek]";
+			mes "So you want to exchange ^FFA500Heroism Badges^000000 from the Battle of Kriger Von Midgard.";
+			mes "Close this window to open shop.";
+			close2;
+			callshop "HeroismExchanger",0;
+			end;
+	}
+OnInit:
+    waitingroom "Badges Business",0;
+	end;
+}
+
+bat_room,148,153,4	script	Location::Mount_Rent	875,{
+	if (bgcheck()){
+		setmadogear;
+		setcart;
+		setfalcon;
+		setdragon;
+		setriding;
+		specialeffect2 911;
+	} else {
+		mes "[^1AAF9BLocation^000000]";
+		mes "I work only during Battleground, please come back later.";
+	}
+	end;
+}
+
+bat_room,163,152,2	script	Exchange Machine#bg	564,{
+	input .@cb,0,100000;
+	if(.@cb == 0) end;
+	// 7804 : Battleground Badges
+	// 7773 : War Badges
+	// 7829 : Valor Badges
+	// 7828 : Bravery Badges
+	switch(select("War Badges:Valor Badges:Bravery Badges")) {
+		case 1:
+			if(countitem(7804) >= .@cb) {
+				delitem 7804, .@cb; 
+				getitem 7773, .@cb;
+				.@ok = 1;
+			}
+			break;
+		case 2:
+			if(countitem(7804) >= .@cb) {
+				delitem 7804, .@cb; 
+				getitem 7829, .@cb;
+				.@ok = 1;
+			}
+			break;
+		case 3:
+			if(countitem(7804) >= .@cb) {
+				delitem 7804, .@cb; 
+				getitem 7828, .@cb;
+				.@ok = 1;
+			}
+			break;
+	}
+	if(.@ok) {
+		specialeffect 618;
+		dispbottom "[Exchange Machine] You successfully exchanged " + .@cb + " Battleground Badge(s).";
+	} else
+		dispbottom "[Exchange Machine] No enough Battleground Badges for the exchange.";
+	end;
+	
+OnInit:
+    waitingroom "BG Badges Exchanger",0;
+	end;
+}

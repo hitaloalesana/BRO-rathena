@@ -1693,34 +1693,6 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 }
 
 /**
- * Determines whether battleground target can be hit
- * @param src: Source of attack
- * @param bl: Target of attack
- * @param skill_id: Skill ID used
- * @param flag: Special flags
- * @return Can be hit (true) or can't be hit (false)
- */
-bool battle_can_hit_bg_target(struct block_list *src, struct block_list *bl, uint16 skill_id, int flag)
-{
-	struct mob_data* md = BL_CAST(BL_MOB, bl);
-	struct unit_data *ud = unit_bl2ud(bl);
-
-	if (ud && ud->immune_attack)
-		return false;
-	if (md && md->bg_id) {
-		if (status_bl_has_mode(bl, MD_SKILL_IMMUNE) && flag&BF_SKILL) //Skill immunity.
-			return false;
-		if (src->type == BL_PC) {
-			struct map_session_data *sd = map_id2sd(src->id);
-
-			if (sd && sd->bg_id == md->bg_id)
-				return false;
-		}
-	}
-	return true;
-}
-
-/**
  * Calculates BG related damage adjustments.
  * @param src
  * @param bl
@@ -1736,9 +1708,6 @@ bool battle_can_hit_bg_target(struct block_list *src, struct block_list *bl, uin
 int64 battle_calc_bg_damage(struct block_list *src, struct block_list *bl, int64 damage, uint16 skill_id, int flag)
 {
 	if( !damage )
-		return 0;
-
-	if (!battle_can_hit_bg_target(src, bl, skill_id, flag))
 		return 0;
 
 	if(skill_get_inf2(skill_id, INF2_IGNOREBGREDUCTION))
@@ -2354,7 +2323,7 @@ int battle_calc_chorusbonus(struct map_session_data *sd) {
 
 	int members = 0;
 
-	if (!sd || !sd->status.party_id)
+	if (!sd || (!sd->status.party_id && !map_getmapflag(sd->bl.m, MF_BATTLEGROUND)))
 		return 0;
 
 	members = party_foreachsamemap(party_sub_count_class, sd, 0, MAPID_THIRDMASK, MAPID_MINSTRELWANDERER);
@@ -3411,7 +3380,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 					ATK_ADDRATE(wd->damage, wd->damage2, sd->bonus.crit_atk_rate);
 				}
 #endif
-				if(sd->status.party_id && (skill=pc_checkskill(sd,TK_POWER)) > 0) {
+				if((sd->status.party_id || map_getmapflag(sd->bl.m, MF_BATTLEGROUND)) && (skill=pc_checkskill(sd,TK_POWER)) > 0) {
 					if( (i = party_foreachsamemap(party_sub_count, sd, 0)) > 1 ) { // exclude the player himself [Inkfish]
 						ATK_ADDRATE(wd->damage, wd->damage2, 2*skill*i);
 						RE_ALLATK_ADDRATE(wd, 2*skill*i);
@@ -6323,7 +6292,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						else
 							skillratio += 900 + 500 * skill_lv; // 19 x 19 cell
 
-						if (sd && sd->status.party_id) {
+						if (sd && (sd->status.party_id || map_getmapflag(sd->bl.m, MF_BATTLEGROUND))) {
 							struct map_session_data* psd;
 							int p_sd[MAX_PARTY], c;
 
@@ -8262,7 +8231,9 @@ int battle_check_target( struct block_list *src, struct block_list *target,int f
 		if( flag&(BCT_PARTY|BCT_ENEMY) )
 		{
 			int s_party = status_get_party_id(s_bl);
-			if( s_party && s_party == status_get_party_id(t_bl) && !(mapdata->flag[MF_PVP] && mapdata->flag[MF_PVP_NOPARTY]) && !(mapdata_flag_gvg(mapdata) && mapdata->flag[MF_GVG_NOPARTY]) && (!mapdata->flag[MF_BATTLEGROUND] || sbg_id == tbg_id) )
+			if( s_party && s_party == status_get_party_id(t_bl) && !(mapdata->flag[MF_PVP] && mapdata->flag[MF_PVP_NOPARTY]) && !(mapdata_flag_gvg(mapdata) && mapdata->flag[MF_GVG_NOPARTY]) && !mapdata->flag[MF_BATTLEGROUND] )
+				state |= BCT_PARTY;
+			else if(mapdata->flag[MF_BATTLEGROUND] && sbg_id == tbg_id)
 				state |= BCT_PARTY;
 			else
 				state |= BCT_ENEMY;
@@ -8271,7 +8242,9 @@ int battle_check_target( struct block_list *src, struct block_list *target,int f
 		{
 			int s_guild = status_get_guild_id(s_bl);
 			int t_guild = status_get_guild_id(t_bl);
-			if( !(mapdata->flag[MF_PVP] && mapdata->flag[MF_PVP_NOGUILD]) && s_guild && t_guild && (s_guild == t_guild || (!(flag&BCT_SAMEGUILD) && guild_isallied(s_guild, t_guild))) && (!mapdata->flag[MF_BATTLEGROUND] || sbg_id == tbg_id) )
+			if( !(mapdata->flag[MF_PVP] && mapdata->flag[MF_PVP_NOGUILD]) && s_guild && t_guild && (s_guild == t_guild || (!(flag&BCT_SAMEGUILD) && guild_isallied(s_guild, t_guild))) && !mapdata->flag[MF_BATTLEGROUND] )
+				state |= BCT_GUILD;
+			else if(mapdata->flag[MF_BATTLEGROUND] && sbg_id == tbg_id)
 				state |= BCT_GUILD;
 			else
 				state |= BCT_ENEMY;
@@ -8902,7 +8875,6 @@ static const struct _battle_data {
 	{ "boss_nopc_move_rate",                &battle_config.boss_nopc_move_rate,             100,    0,    100,              },
 	{ "hom_idle_no_share",                  &battle_config.hom_idle_no_share,               0,      0,      INT_MAX,        },
 	{ "devotion_standup_fix",               &battle_config.devotion_standup_fix,            1,      0,      1,              },
-	{ "feature.bgqueue",                    &battle_config.feature_bgqueue,                 1,      0,      1,              },
 	{ "homunculus_exp_gain",                &battle_config.homunculus_exp_gain,             10,     0,      100,            },
 
 #include "../custom/battle_config_init.inc"
@@ -8989,13 +8961,6 @@ void battle_adjust_conf()
 	if (battle_config.feature_search_stores) {
 		ShowWarning("conf/battle/feature.conf:search_stores is enabled but it requires PACKETVER 2010-08-03 or newer, disabling...\n");
 		battle_config.feature_search_stores = 0;
-	}
-#endif
-
-#if PACKETVER < 20120101
-	if (battle_config.feature_bgqueue) {
-		ShowWarning("conf/battle/feature.conf:bgqueue is enabled but it requires PACKETVER 2012-01-01 or newer, disabling...\n");
-		battle_config.feature_bgqueue = 0;
 	}
 #endif
 

@@ -1051,3 +1051,21 @@ star_in
 //======================================================================================
 // - Other/Extra maps -
 //======================================================================================
+
+// BG Extended
+bg_ctf
+bg_tdm
+bg_eoe
+bg_con01
+bg_con02
+bg_con03
+bg_con04
+bg_con05
+bg_con06
+bg_kvm
+bg_sc
+bg_dom
+bg_rush01
+bg_rush02
+bg_rush03
+bg_rush04

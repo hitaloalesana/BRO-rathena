@@ -131,6 +131,7 @@ int map_port=0;
 int autosave_interval = DEFAULT_AUTOSAVE_INTERVAL;
 int minsave_interval = 100;
 int16 save_settings = CHARSAVE_ALL;
+bool bg_flag = false;
 bool agit_flag = false;
 bool agit2_flag = false;
 bool agit3_flag = false;
@@ -1958,6 +1959,18 @@ void map_reqnickdb(struct map_session_data * sd, int charid)
 		return;
 	}
 
+	if( battle_config.bg_reserved_char_id && battle_config.bg_reserved_char_id == charid )
+	{
+		clif_solved_charname(sd->fd, charid, "Battleground");
+		return;
+	}
+
+	if( battle_config.woe_reserved_char_id && battle_config.woe_reserved_char_id == charid )
+	{
+		clif_solved_charname(sd->fd, charid, "WoE");
+		return;
+	}
+
 	tsd = map_charid2sd(charid);
 	if( tsd )
 	{
@@ -2066,11 +2079,8 @@ int map_quit(struct map_session_data *sd) {
 	if (sd->npc_id)
 		npc_event_dequeue(sd);
 
-	if (sd->bg_id)
-		bg_team_leave(sd, true, true);
-
-	if (sd->bg_queue != nullptr)
-		bg_queue_leave(sd);
+	if( sd->bg_id )
+		bg_team_leave(sd,1);
 
 	if( sd->status.clan_id )
 		clan_member_left(sd);
@@ -5252,9 +5262,9 @@ int do_init(int argc, char *argv[])
 	do_init_elemental();
 	do_init_quest();
 	do_init_achievement();
-	do_init_battleground();
 	do_init_npc();
 	do_init_unit();
+	do_init_battleground();
 	do_init_duel();
 	do_init_vending();
 	do_init_buyingstore();

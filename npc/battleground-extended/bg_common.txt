@@ -1,0 +1,1014 @@
+// ==============================================================================
+// = BY VYKIMO
+// ==============================================================================
+// BattleGround Extended System - Core NPCs
+// ==============================================================================
+// NEW! 
+// BG Badges Exchange Machine
+// *********************************************************************
+// ==============================================================================
+
+//  Mapflags
+bat_room	mapflag	nomemo
+bat_room	mapflag	nowarpto
+bat_room	mapflag	nowarp
+bat_room	mapflag	nobranch
+bat_room	mapflag	nopenalty
+bat_room	mapflag	noteleport
+bat_room	mapflag	nosave	SavePoint
+bat_room	mapflag	town
+
+// Fonction reward
+// Reward_BG(Equipe1,Equipe2)
+function	script	Reward_BG	{
+	
+	if($@PrematureEnd && !$PREMATURE_REWARDS)
+		return;
+	
+	if(getargcount() == 3) {
+	
+		.@total1 = getarg(0);
+		.@total2 = getarg(1);
+
+		// Rewards constants
+		.@nb_joueurs = (bg_get_data($@BG_Team1,0) + bg_get_data($@BG_Team2,0))/2;
+	
+		if(.@total1 > .@total2) {
+			bg_reward($@BG_Team1,$BGREWARD_ITID,.@total1+.@nb_joueurs,0,0,"",0,getarg(2),0);
+			bg_reward($@BG_Team2,$BGREWARD_ITID,.@total2+.@nb_joueurs,0,0,"",0,getarg(2),2);
+		} else if(.@total1 < .@total2) {
+			bg_reward($@BG_Team1,$BGREWARD_ITID,.@total1+.@nb_joueurs,0,0,"",0,getarg(2),2);
+			bg_reward($@BG_Team2,$BGREWARD_ITID,.@total2+.@nb_joueurs,0,0,"",0,getarg(2),0);
+		} else {
+			bg_reward($@BG_Team1,$BGREWARD_ITID,.@total1+.@nb_joueurs,0,0,"",0,getarg(2),1);
+			bg_reward($@BG_Team2,$BGREWARD_ITID,.@total2+.@nb_joueurs,0,0,"",0,getarg(2),1);
+		}
+		
+		deletearray $@bgmembers$;
+		.@cb = bg_get_data($@BG_Team1,1);
+		for(.@i=0;.@i<.@cb;.@i++) {
+			if(attachrid(getcharid(3,$@bgmembers$[.@i]))) {
+				set getd(getvariableofnpc(.BG_VAR$[getarg(2)],"BG_Queue_Join")),getd(getvariableofnpc(.BG_VAR$[getarg(2)],"BG_Queue_Join"))+1;
+				dispbottom "[" + getvariableofnpc(.BG_Names$[getarg(2)],"BG_Queue_Join")+ "] Participation score : " + getd(getvariableofnpc(.BG_VAR$[getarg(2)],"BG_Queue_Join")) + " participation(s)";
+				detachrid;
+			}
+		}
+		deletearray $@bgmembers$;
+		.@cb = bg_get_data($@BG_Team2,1);
+		for(.@i=0;.@i<.@cb;.@i++) {
+			if(attachrid(getcharid(3,$@bgmembers$[.@i]))) {
+				set getd(getvariableofnpc(.BG_VAR$[getarg(2)],"BG_Queue_Join")),getd(getvariableofnpc(.BG_VAR$[getarg(2)],"BG_Queue_Join"))+1;
+				dispbottom "[" + getvariableofnpc(.BG_Names$[getarg(2)],"BG_Queue_Join")+ "] Participation score : " + getd(getvariableofnpc(.BG_VAR$[getarg(2)],"BG_Queue_Join")) + " participation(s)";
+				detachrid;
+			}
+		}
+		
+		
+	}
+	return;
+}
+
+// Battleground Queue Admin
+// *********************************************************************
+bat_room,0,0,0	script	BG_Queue_Join	-1,{
+	end;
+	
+	
+// ================================== BattleGround Hour ======================================
+// Uncomment to have Scheduled Battleground :
+/*
+OnReloadMapServer:
+	if(!agitcheck3() && !agitcheck2() && !agitcheck())
+		end;
+		
+OnMon1800:
+OnMon1900:
+OnTue2100:
+OnTue2200:
+OnThu1900:
+OnThu2000:
+OnFri2000:
+OnFri2100:
+OnSat1800:
+OnSat1900:
+	switch( gettime(DT_DAYOFWEEK) ) {
+		case MONDAY:
+		case SATURDAY:
+			if( gettime(DT_HOUR) >= 18 && gettime(DT_HOUR) < 19 && !bgcheck() ) bgstart();
+			if( gettime(DT_HOUR) == 19 && bgcheck() ) bgend;
+			break;
+		case TUESDAY:
+			if( gettime(DT_HOUR) >= 21 && gettime(DT_HOUR) < 22 && !bgcheck()  ) bgstart();
+			if( gettime(DT_HOUR) == 22 && bgcheck() ) bgend;
+			break;
+		case THURSDAY:
+			if( gettime(DT_HOUR) >= 19 && gettime(DT_HOUR) < 20 && !bgcheck()  ) bgstart();
+			if( gettime(DT_HOUR) == 20 && bgcheck() ) bgend;
+			break;
+		case FRIDAY:
+			if( gettime(DT_HOUR) >= 20 && gettime(DT_HOUR) < 21 && !bgcheck()  ) bgstart();
+			if( gettime(DT_HOUR) == 21 && bgcheck() ) bgend;
+			break;
+	}
+	end;
+*/
+// OR
+// 24H/24 Battleground
+// Uncomment to have 24/24 BG :
+
+OnReloadMapServer:
+/* BG Mode enabler ! */
+/*
+// To enable Rotative modes, uncomment lines below
+OnMon0000:
+OnTue0000:
+OnWed0000:
+OnWed1200:
+OnWed1700:
+OnThu0000:
+OnFri0000:
+OnSat0000:
+OnSun0000:
+OnSun0800:
+OnSun2300:
+	$@BG_ENABLED = 0; // reset all modes
+	switch( gettime(DT_DAYOFWEEK) ) {
+		// Monday Enable Eoe and Con
+		case MONDAY:
+			$@BG_ENABLED += $@BG_EOE;
+			$@BG_ENABLED += $@BG_CON;
+			break;
+		// Tuesday enable CTF and TDM
+		case TUESDAY:
+			$@BG_ENABLED += $@BG_CTF;
+			$@BG_ENABLED += $@BG_TDM;
+			break;
+		// Wednesday enable all modes between 12-17:00 
+		case WEDNESDAY:
+			if( gettime(DT_HOUR) >= 12 && gettime(DT_HOUR) < 17) {
+				$@BG_ENABLED = 0; // Enable all modes
+			} else {
+				$@BG_ENABLED += $@BG_EOE;
+				$@BG_ENABLED += $@BG_CON;
+			}
+			break;
+		// Thursday enable KVM and SC
+		case THURSDAY:
+			$@BG_ENABLED += $@BG_KVM;
+			$@BG_ENABLED += $@BG_SC;
+			break;
+		// Friday enable dom and rush
+		case FRIDAY:
+			$@BG_ENABLED += $@BG_DOM;
+			$@BG_ENABLED += $@BG_RUSH;
+			break;
+		// Saturday enable PB and TD
+		case SATURDAY:
+			$@BG_ENABLED += $@BG_PB;
+			$@BG_ENABLED += $@BG_TD;
+			break;
+		// Sunday enable all modes
+		case SUNDAY:
+			if( gettime(DT_HOUR) >= 8 && gettime(DT_HOUR) < 23) {
+				$@BG_ENABLED = 0; // Enable all modes
+			}
+			break;
+	}
+	*/
+	if(!agitcheck3() && !agitcheck2() && !agitcheck() && !bgcheck())
+		bgstart();
+		
+	end;
+
+// ================================== BattleGround Happy Hour ===================================
+// BattleGround Happy Hour
+OnDoHappyHour:
+OnClock1600:
+OnClock1800:
+OnClock2000:
+OnClock2200:
+	switch( gettime(DT_DAYOFWEEK) )
+	{
+	case MONDAY:
+	case WEDNESDAY:
+	case FRIDAY:
+		if( gettime(DT_HOUR) >= 20 && gettime(DT_HOUR) < 22 )
+		{
+			bgannounce "-- Battleground Happy Hour has begun --",0x00FF00;
+			setbattleflag "bg_reward_rates",120; // +20% Reward Rates
+			end;
+		}
+		
+		if( gettime(DT_HOUR) == 22 )
+		{
+			bgannounce "-- Battleground Happy Hour is over --",0x00BFFF;
+			setbattleflag "bg_reward_rates",100; // Normal Rates
+			end;
+		}
+		break;
+	case TUESDAY:
+	case THURSDAY:
+	case SATURDAY:
+		if( gettime(DT_HOUR) >= 16 && gettime(DT_HOUR) < 18 )
+		{
+			bgannounce "-- Battleground Happy Hour has begun --",0x00FF00;
+			setbattleflag "bg_reward_rates",120; // +20% Reward Rates
+			end;
+		}
+		
+		if( gettime(DT_HOUR) == 18 )
+		{
+			bgannounce "-- Battleground Happy Hour is over --",0x00BFFF;
+			setbattleflag "bg_reward_rates",100; // Normal Rates
+			end;
+		}
+		break;
+	}
+	end;
+
+
+// ======================================== OnEvents ========================================
+OnAgitStart:
+	if(bgcheck())
+		bgend();
+	end;
+	
+// 1 minute waiting after woe end
+OnAgitEnd:
+	sleep 60000;
+	donpcevent "BG_Queue_Join::OnReloadMapServer";
+	end;
+
+OnBGGlobalStart:
+	bgannounce "==== The Battleground is starting ==== @joinbg"+($JOIN_REDBLUE_TEAM?"/@joinredteam/@joinblueteam":"")+"/@leavebg available in town.",0xBFFF00;
+	sleep 1000;
+	enablenpc "BG_Register";
+	// On lance la rotation
+	donpcevent "BG_Queue_Join::OnRotate";
+	end;
+	
+OnBGEnd:
+	bgannounce "==== The Battleground just ended. ====",0xBFFF00;
+	disablenpc "BG_Register";
+	// On stoppe la rotation
+	stopnpctimer;
+	end;
+
+OnCompterVotes:
+	deletearray $@Total_Votes_BG[0],getarraysize($@Total_Votes_BG);
+	cleararray $@Total_Votes_BG[0],0,10;
+
+	deletearray .@cqueue[0],getarraysize(.@cqueue);
+	deletearray .@aqueue[0],getarraysize(.@aqueue);
+	bg_queue_data .BG_Queue, 3;
+	copyarray .@cqueue[0],$@cmembers[0],getarraysize($@cmembers);
+	copyarray .@aqueue[0],$@amembers[0],getarraysize($@amembers);
+	
+	.@taille_queue = getarraysize(.@cqueue[0]);
+	for(.@i=0;.@i<.@taille_queue;.@i++) {
+		
+		if(isloggedin(.@aqueue[.@i],.@cqueue[.@i])) {
+		
+			if(getd("$@VBG"+.@cqueue[.@i])>0)
+				$@Total_Votes_BG[getd("$@VBG"+.@cqueue[.@i])-1]+=1;
+				
+		} else // if offline, reset vote
+			set getd("$@VBG"+.@cqueue[.@i]),0;
+	}
+	end;
+// ======================================== Commandes ========================================
+// @joinbg
+OnDoJoin:
+	if($@BG_Status == 2) {
+		dispbottom "Please retry in few seconds, just wait for the end of the current mode.";
+	} else if(($@BG_Status == 1) || (.@atcmd_numparameters == 1 && (.@mode = atoi(.@atcmd_parameters$[0])) > 0 && (.@mode) <= getarraysize(.BG_Arenas$) ) || !$ROTATION_MODE) {
+		if(bgcheck()) {
+			if(BaseLevel < $@BG_MinLevel) dispbottom .@atcmd_command$+" failed. Level "+$@BG_MinLevel+" is required to compete.";
+			else {
+				if( checkquest(8506,PLAYTIME) == 2 )
+					erasequest 8506;
+
+				if( checkquest(8506,PLAYTIME) != -1 ) {
+					dispbottom .@atcmd_command$+" failed. You are a deserter. You cannot participate for a short time.";
+					end;
+				}
+				// Joinblueteam/joinredteam
+				if($JOIN_REDBLUE_TEAM) {
+					if(compare(.@atcmd_command$,"@joinblueteam"))
+						@JoinSpecificTeamBG = 1;
+					else if(compare(.@atcmd_command$,"@joinredteam"))
+						@JoinSpecificTeamBG = 2;
+					else				
+						@JoinSpecificTeamBG = 0;
+						
+					.@msg$ = .@atcmd_command$+" trying to join ";
+					if(@JoinSpecificTeamBG == 1)
+						.@msg$ += "blue ";
+					else if(@JoinSpecificTeamBG == 2)
+						.@msg$ += "red ";
+					.@msg$ += "queue. @leavebg to quit the queue.";
+				} else
+					.@msg$ = .@atcmd_command$+" trying to join the queue. @leavebg to quit the queue.";
+					
+				if($ROTATION_MODE) {
+					if(getvariableofnpc(.Mode_Precedent,"BG_Queue_Join")+1 != .@mode || $@BG_Status == 1) {
+						if($@BG_ENABLED > 0 && !($@BG_ENABLED & getd("$@" + .BG_VAR$[.@mode-1]))) {
+							dispbottom .@atcmd_command$+" you cannot vote for this mode (not activated).";
+						} else {
+							dispbottom .@msg$;
+							if(bg_queue_join(.BG_Queue,@JoinSpecificTeamBG) && $@BG_Status == 0) {
+								set getd("$@VBG"+getcharid(0)),.@mode;
+								
+								if($@BG_Status == 0)
+									bgannounce "[ Battleground ] ~ '" + strcharinfo(0) + "' just voted for ''"+getelementofarray(getvariableofnpc(.BG_Names$, "BG_Queue_Join"),getd("$@VBG"+getcharid(0))-1)+
+									"'' -- @joinbg"+($JOIN_REDBLUE_TEAM?"/@joinredteam/@joinblueteam":"")+" <1-" + getarraysize(getvariableofnpc(.BG_Arenas$, "BG_Queue_Join")) + "> to vote.",0xBFFF00;
+							}
+						}
+					} else
+						dispbottom .@atcmd_command$+" you cannot vote for this mode (latest).";
+				} else {
+					dispbottom .@msg$;
+					bg_queue_join(.BG_Queue,@JoinSpecificTeamBG);
+				}
+			}
+		} else {
+			dispbottom .@atcmd_command$+" failed. Command available when the battleground is on.";
+		}
+	} else {
+		dispbottom .@atcmd_command$+" failed. Please vote for one mode.";
+		for(.@i = 0; .@i < getarraysize(.BG_Arenas$); .@i++) {
+			.@name$ = .BG_Names$[.@i];
+			if((.@i == $@PB_BG_Index && !$PB_AVAILABLE) || (.@i == $@TD_BG_Index && !$TD_AVAILABLE))
+				.@name$ += " - NOT AVAILABLE";
+			
+			if($@BG_ENABLED <= 0) 
+				dispbottom "= "+.@atcmd_command$+" "+(.@i+1)+" - [ "+.@name$+" ] min "+(.BG_Min[.@i]*2)+" players "+(getvariableofnpc(.Mode_Precedent,"BG_Queue_Join")==.@i?"(latest) ":"")+"=";
+			else
+				dispbottom "= "+.@atcmd_command$+" "+(.@i+1)+" - [ "+.@name$+" ] min "+(.BG_Min[.@i]*2)+" players "+(getvariableofnpc(.Mode_Precedent,"BG_Queue_Join")==.@i?"(latest) ":"")+""+(($@BG_ENABLED & getd("$@" + .BG_VAR$[.@i]))?"":"(Not Active)")+"=";
+		}
+	}
+	end;
+	
+// @leavebg
+OnDoLeave: 
+	if(bgcheck()) {
+		dispbottom "@leavebg trying to quit the queue.";
+		
+		if($JOIN_REDBLUE_TEAM)
+			@JoinSpecificTeamBG = 0;
+			
+		if(bg_queue_leave(.BG_Queue) && $ROTATION_MODE)
+			set getd("$@VBG"+getcharid(0)),0;
+	} else 
+		dispbottom "@leavebg failed. Command available when the battleground is on.";
+	end;
+	
+// ======================================== CONFIG ========================================
+OnInit:
+	function AddBGmode;
+	// Configuration
+	// *****************************************************
+	// Red and blue palette
+	$Palette_BG_Rouge = 409;
+	$Palette_BG_Bleu = 376;
+	// joinbg/rotation mode
+	// 1 = Vote for modes with @joinbg
+	// 0 = Normal Rotation
+	$ROTATION_MODE = 0;
+	// Min Votes to start choosing mode in vote mode
+	$Min_Votes_To_Start = 2;
+	// Activate or disable @joinredteam/@joinblueteam
+	$JOIN_REDBLUE_TEAM = 1;
+	// Rewards when premature end (0 players in one team) ?
+	$PREMATURE_REWARDS = 1;
+	// Reward item id
+	// 7804 : Battleground Badges
+	// 7773 : War Badges
+	// 7829 : Valor Badges
+	// 7828 : Bravery Badges
+	$BGREWARD_ITID = 7804;
+	// *****************************************************
+	// Bg Extension
+	// ================================================
+	// PORING BALL BY VYKIMO AVAILABLE? 1 = yes, 0 = no
+	$PB_AVAILABLE = 0;
+	// ================================================
+	// TOUCH DOWN BY VYKIMO AVAILABLE? 1 = yes, 0 = no
+	$TD_AVAILABLE = 0;
+	// ================================================
+	// Max player count difference allowed between teams ( default : 1 player )
+	.Diff = 3;
+	// ================================================
+	// Min level
+	$@BG_MinLevel = 80;
+	// *****************************************************
+	// Don't touch the 2 lines below
+	$@PB_BG_Index = -1;
+	$@TD_BG_Index = -1;
+	// Battleground Modes :
+	// AddBGmode( NPC_Name, BG Label, BG ID, Min Player per team, Max Player per team, Activated? )
+	AddBGmode("Flavius_CTF",	"Capture the Flag",		"BG_CTF",	2,	20,		1);
+	AddBGmode("Flavius_TD",		"Team DeathMatch",		"BG_TDM",	2,	20,		1);
+	AddBGmode("Tierra_EOS",		"Eye of Storm",			"BG_EOE",	2,	20,		1);
+	AddBGmode("Conquest",		"Conquest",				"BG_CON",	3,	30,		1);
+	AddBGmode("KvM01_BG",		"Kreiger Von Midgard",	"BG_KVM", 	2,	20,		1);
+	AddBGmode("Flavius_SC",		"Stone Control",		"BG_SC", 	2,	20,		1);
+	AddBGmode("Tierra_DOM",		"Domination",			"BG_DOM",	2,	20,		1);
+	AddBGmode("Rush", 			"Rush",					"BG_RUSH",	3,	30,		1);
+	AddBGmode("PoringBall",		"Poring Ball",			"BG_PB",	2,	20,		$PB_AVAILABLE);
+	AddBGmode("s4_game",		"Touch Down",			"BG_TD",	2,	20,		$TD_AVAILABLE);
+	// Main Code
+	// *****************************************************
+	bindatcmd "leavebg", strnpcinfo(3)+"::OnDoLeave";
+	bindatcmd "joinbg", strnpcinfo(3)+"::OnDoJoin";
+	if($JOIN_REDBLUE_TEAM) {
+		bindatcmd "joinredteam", strnpcinfo(3)+"::OnDoJoin";
+		bindatcmd "joinblueteam", strnpcinfo(3)+"::OnDoJoin";
+	}
+	set .BG_Count, getarraysize(.BG_Arenas$);
+	set .BG_Queue, bg_queue_create("Battleground Arena","BG_Queue_Join::OnJoinEvent",$@BG_MinLevel);
+	bg_queue_clean .BG_Queue;
+	donpcevent "BG_Queue_Join::OnDoHappyHour";
+	disablenpc "BG_Register";
+	if(!$ROTATION_MODE)	disablenpc "Votes Results";
+	bgend();
+	// Warps Teams
+	if( $@BG_Team1 ) { bg_warp $@BG_Team1,"bat_room",155,150; bg_destroy $@BG_Team1; set $@BG_Team1, 0; }
+	if( $@BG_Team2 ) { bg_warp $@BG_Team2,"bat_room",155,150; bg_destroy $@BG_Team2; set $@BG_Team2, 0; }	
+	// Enable all modes
+	$@BG_ENABLED = 0;
+	donpcevent "BG_Queue_Join::OnReloadMapServer";
+	.Mode_Precedent = -1;
+	$BG_Index = 0;
+	end;
+
+OnRotate:
+OnTimer180000:
+	$@PrematureEnd = 0;
+	set $@BG_Status, 0;	
+	// Warps Teams
+	if( $@BG_Team1 ) { bg_warp $@BG_Team1,"bat_room",155,150; bg_destroy $@BG_Team1; set $@BG_Team1, 0; }
+	if( $@BG_Team2 ) { bg_warp $@BG_Team2,"bat_room",155,150; bg_destroy $@BG_Team2; set $@BG_Team2, 0; }
+	
+	if($ROTATION_MODE)
+		.Mode_Precedent = $BG_Index;
+	else {
+		// End script if bg ended
+		if(!bgcheck())	end;
+		
+		do {
+			// Move to Next Arena
+			if( set($BG_Index,$BG_Index + 1) >= .BG_Count )
+				set $BG_Index,0; // Restart Rotation
+
+			if($BG_Index == $@PB_BG_Index && !$PB_AVAILABLE) {
+				if($TD_AVAILABLE)
+					$BG_Index = $@TD_BG_Index;
+				else 
+					$BG_Index = 0;
+				
+			} else if($BG_Index == $@TD_BG_Index && !$TD_AVAILABLE)
+				$BG_Index = 0;
+			
+		} while ( $@BG_ENABLED > 0 && !($@BG_ENABLED & getd("$@" + .BG_VAR$[$BG_Index])));
+		
+		set .BG_Arena$,.BG_Arenas$[$BG_Index];
+		initnpctimer; // Rotation if BG don't start... Comment if you don't want to use this method
+	}
+
+OnJoinEvent:
+	if( $@BG_Status == 2 )
+		end; // BG Ending... Must wait until OnRotate is called
+
+	set .@Queue_Count, bg_queue_data(.BG_Queue,0);
+	if($JOIN_REDBLUE_TEAM) {
+		set .@Queue_Blue_Count, bg_queue_data(.BG_Queue,1);
+		set .@Queue_Red_Count, bg_queue_data(.BG_Queue,2);
+		.@Queue_reste = .@Queue_Count - (.@Queue_Red_Count+.@Queue_Blue_Count);
+		
+		while(.@Queue_reste > 0) {
+			if(.@Queue_Blue_Count > .@Queue_Red_Count)
+				.@Queue_Red_Count++;
+			else
+				.@Queue_Blue_Count++;
+			.@Queue_reste--;
+		}
+	}
+	
+	sc_end SC_SPIRIT;
+	
+	switch( $@BG_Status )
+	{
+	case 0: // Idle - Ready to Start
+	
+		if($ROTATION_MODE) {
+		
+			if(.@Queue_Count >= $Min_Votes_To_Start) {
+			
+				sleep 50;
+				
+				donpcevent "BG_Queue_Join::OnCompterVotes";
+				
+				// On d?termine ceux qui ont le plus de votes			
+				deletearray .@candidats[0],getarraysize(.@candidats);
+				for(.@k=0;.@k<10;.@k++) {
+					if(max($@Total_Votes_BG) <= $@Total_Votes_BG[.@k] && .@k != .Mode_Precedent)
+						setarray .@candidats[getarraysize(.@candidats)],.@k+1;
+				}			
+				// Random choice between the most popular modes		
+				
+				if( getarraysize(.@candidats) < 1 )
+					end;
+				
+				$BG_Index = .@candidats[rand(getarraysize(.@candidats))]-1;
+
+
+				if(($BG_Index == $@PB_BG_Index && !$PB_AVAILABLE && !$TD_AVAILABLE) || ($BG_Index == $@TD_BG_Index && !$TD_AVAILABLE))
+				{
+					bgannounce "[ Battleground - "+.BG_Names$[$BG_Index]+"] ~ This mode is not available until now, please re-vote.",0xBFFF00;
+					end;
+				}
+				
+				if($@BG_ENABLED > 0 && !($@BG_ENABLED & getd("$@" + .BG_VAR$[$BG_Index])))
+				{
+					bgannounce "[ Battleground - "+.BG_Names$[$BG_Index]+"] ~ This mode is not available now, please re-vote.",0xBFFF00;
+					end;
+				}
+				
+				.BG_Arena$ = .BG_Arenas$[$BG_Index];
+				
+				set .@Req, .BG_Min[$BG_Index] * 2;
+				
+				.@queue_state = bg_queue_checkstart(.BG_Queue, .BG_Min[$BG_Index], .BG_Max[$BG_Index], .Diff);
+				if( .@queue_state == -2 ) {
+					bgannounce "[ Battleground ] ~ Too many players in queue ! Queue was cleaned.",0xBFFF00;
+					bg_queue_clean .BG_Queue;
+				} else if( .@queue_state == -1 && .@Queue_Red_Count >= .BG_Min[$BG_Index] && .@Queue_Blue_Count >= .BG_Min[$BG_Index]) {
+					bgannounce "[ Battleground ] ~ Too big difference between teams (Queue : "+bg_queue_data(.BG_Queue,2)+" red, "+bg_queue_data(.BG_Queue,1)+" blue)... Please do @joinbg or re-equilibrate team.",0xBFFF00;
+				} else if( .@queue_state == 1 )
+				{
+					donpcevent .BG_Arena$ + "::OnBuildTeams";
+
+					// Fill Teams with Queue Members
+					bg_queue2teams .BG_Queue,.BG_Min[$BG_Index],.BG_Max[$BG_Index],$@BG_Team1,$@BG_Team2,0;
+
+					set $@BG_Status,1;
+					
+					set .@msg$, "[ Battleground ] ~ " + .BG_Names$[$BG_Index] + " -- Started. You can join the mode with @joinbg"+($JOIN_REDBLUE_TEAM?"/@joinredteam/@joinblueteam":"")+".";
+				
+					bgannounce .@msg$,0xBFFF00;
+					
+					donpcevent .BG_Arena$ + "::OnReady";
+				}
+				else
+				{
+					sleep 500;
+					if($JOIN_REDBLUE_TEAM) {
+						set .@msg$, "[ Battleground ] ~ " + .BG_Names$[$BG_Index] + " -- ";
+						.@blue_a = 0;
+						.@red_a = 0;
+						if( .BG_Min[$BG_Index] - .@Queue_Red_Count > 0) {
+							.@red_a = 1;
+							.@msg$ += ( .BG_Min[$BG_Index] - .@Queue_Red_Count) + " red";
+							
+							if( .BG_Min[$BG_Index] - .@Queue_Blue_Count > 0)
+								.@msg$ += " and ";					
+						}
+						if( .BG_Min[$BG_Index] - .@Queue_Blue_Count > 0) {
+							.@blue_a = 1;
+							.@msg$ += ( .BG_Min[$BG_Index] - .@Queue_Blue_Count) + " blue";
+						}
+						if(.@blue_a || .@red_a)
+							.@msg$ +=  " players left ";
+						.@msg$ += "-- @joinbg/";
+						if(.@blue_a && .@red_a)
+							.@msg$ += "@joinredteam/@joinblueteam to join the battle.";
+						else if(.@blue_a)
+							.@msg$ += "@joinblueteam to join the battle.";
+						else
+							.@msg$ += "@joinredteam to join the battle.";
+					} else 
+						set .@msg$, "[ Battleground ] ~ " + .BG_Names$[$BG_Index] + " -- " + (.@Req - .@Queue_Count) + " players left -- @joinbg to join the battle.";
+					bgannounce .@msg$,0x00FFFF;
+				}
+			}
+		} else {
+			set .@Req, .BG_Min[$BG_Index] * 2;
+			.@queue_state = bg_queue_checkstart(.BG_Queue, .BG_Min[$BG_Index], .BG_Max[$BG_Index], .Diff);
+			if( .@queue_state == -2 ) {
+				bgannounce "[ Battleground ] ~ Too many players in queue ! Queue was cleaned.",0xBFFF00;
+				bg_queue_clean .BG_Queue;
+			} else if( .@queue_state == -1 && .@Queue_Red_Count >= .BG_Min[$BG_Index] && .@Queue_Blue_Count >= .BG_Min[$BG_Index]) {
+				bgannounce "[ Battleground ] ~ Too big difference between teams (Queue : "+bg_queue_data(.BG_Queue,2)+" red, "+bg_queue_data(.BG_Queue,1)+" blue)... Please do @joinbg or re-equilibrate team.",0xBFFF00;
+			} else if( .@queue_state == 1)
+			{
+				donpcevent .BG_Arena$ + "::OnBuildTeams";
+
+				// Fill Teams with Queue Members
+				bg_queue2teams .BG_Queue,.BG_Min[$BG_Index],.BG_Max[$BG_Index],$@BG_Team1,$@BG_Team2,0;
+				
+				stopnpctimer; // Rotation if BG don't start... Comment if you don't want to use this method
+				
+				set $@BG_Status,1;
+				set .@msg$, "[ Battleground ] ~ " + .BG_Names$[$BG_Index] + " -- Started. You can join the mode with @joinbg"+($JOIN_REDBLUE_TEAM?"/@joinredteam/@joinblueteam":"")+".";
+			
+				bgannounce .@msg$,0x00FFCF;
+				
+				donpcevent .BG_Arena$ + "::OnReady";
+			}
+			else
+			{
+				sleep 500;
+				if($JOIN_REDBLUE_TEAM) {
+					set .@msg$, "[ Battleground ] ~ " + .BG_Names$[$BG_Index] + " -- ";
+					.@blue_a = 0;
+					.@red_a = 0;
+					if( .BG_Min[$BG_Index] - .@Queue_Red_Count  > 0) {
+						.@red_a = 1;
+						.@msg$ += ( .BG_Min[$BG_Index] - .@Queue_Red_Count) + " red";
+						
+						if( .BG_Min[$BG_Index] - .@Queue_Blue_Count > 0)
+							.@msg$ += " and ";					
+					}
+					if( .BG_Min[$BG_Index] - .@Queue_Blue_Count  > 0) {
+						.@blue_a = 1;
+						.@msg$ += ( .BG_Min[$BG_Index] - .@Queue_Blue_Count) + " blue";
+					}
+					.@msg$ +=  " players left -- @joinbg/";
+					if(.@blue_a && .@red_a)
+						.@msg$ += "@joinredteam/@joinblueteam to join the battle.";
+					else if(.@blue_a)
+						.@msg$ += "@joinblueteam to join the battle.";
+					else
+						.@msg$ += "@joinredteam to join the battle.";
+				} else 
+					set .@msg$, "[ Battleground ] ~ " + .BG_Names$[$BG_Index] + " -- " + (.@Req - .@Queue_Count) + " players left -- @joinbg to join the battle.";
+				bgannounce .@msg$,0x00FFFF;
+			}		
+		}
+		break;
+	case 1: // Running - Others can join
+		if( .@Queue_Count > 0 )
+		{	
+			if($JOIN_REDBLUE_TEAM) {
+				.@queue_state = bg_queue_checkstart(.BG_Queue, .BG_Min[$BG_Index], .BG_Max[$BG_Index], .Diff, $@BG_Team1, $@BG_Team2);
+				if( .@queue_state == -2 ) {
+					bgannounce "[ Battleground ] ~ Too many players in queue ! Queue was cleaned.",0xBFFF00;
+					bg_queue_clean .BG_Queue;
+					break;
+				} else if( .@queue_state == -1 ) {
+					bgannounce "[ Battleground ] ~ Too big difference between teams (Queue : "+bg_queue_data(.BG_Queue,2)+" red, "+bg_queue_data(.BG_Queue,1)+" blue)... Please do @joinbg or re-equilibrate team.",0xBFFF00;
+					break;
+				} else if( .@queue_state != 1)	{				
+					set .@msg$, "[ Battleground ] - " + .BG_Names$[$BG_Index] + " -- Players are waiting in queue. Join the battle now with @joinbg ("+(.@Queue_Blue_Count+.@Queue_Red_Count)+" players)!";
+					bgannounce .@msg$,0xBFFF00;
+					break;
+				}
+			}
+			
+			bg_queue2teams .BG_Queue,.BG_Min[$BG_Index],.BG_Max[$BG_Index],$@BG_Team1,$@BG_Team2,1;
+			if( .BG_Arena$ == "KvM01_BG" ) {
+				set getvariableofnpc(.Guillaume_Count,"KvM01_BG"), 	bg_get_data($@BG_Team1, 0);
+				set getvariableofnpc(.Croix_Count,"KvM01_BG"), 		bg_get_data($@BG_Team2, 0);
+			}
+			
+		}
+		
+		set .@BG_Count1, bg_get_data($@BG_Team1,0);
+		set .@BG_Count2, bg_get_data($@BG_Team2,0);
+		
+		if(.@BG_Count1 <= 0 || .@BG_Count2 <= 0) {	
+			$@PrematureEnd = 1;	
+			set .@msg$, "[ Battleground ] - No more enough players. " + .BG_Names$[$BG_Index] + " will end soon.";
+			bgannounce .@msg$,0xBFFF00;
+			donpcevent .BG_Arena$ + "::OnPrematureEnd";			
+		} else {
+			set .@msg$, "[ Battleground ] - " + .BG_Names$[$BG_Index] + " -- B: " + .@BG_Count1 + "/" + .BG_Max[$BG_Index] + ", R: " + .@BG_Count2 + "/" + .BG_Max[$BG_Index] + " (Playing)";
+			bgannounce .@msg$,0xBFFF00;
+		}
+		break;
+	}
+	end;
+	
+	function AddBGmode {
+		if(getargcount() != 6) return;
+		
+		.@size = getarraysize(.BG_Arenas$);
+		
+		if (getarg(5)) {
+			.BG_Arenas$[.@size] = getarg(0);
+			.BG_Names$[.@size] = getarg(1);
+			.BG_VAR$[.@size] = getarg(2);
+			.BG_Min[.@size] = getarg(3);
+			.BG_Max[.@size] = getarg(4);
+			set getd("$@" + getarg(0)), .@size;
+			set getd("$@" + getarg(2)), pow(2,(.@size + 1));
+			
+			if(getarg(0) == "PoringBall") $@PB_BG_Index = .@size;
+			else if(getarg(0) == "s4_game") $@TD_BG_Index = .@size;
+		}
+		return;
+	}
+}
+// Registration NPC
+// *********************************************************************
+bat_room,155,157,0	script	Votes Results	857,{
+	mes "[Votes Results]";
+	donpcevent "BG_Queue_Join::OnCompterVotes";
+	for(.@k=0;.@k<10;.@k++) 
+		mes $@Total_Votes_BG[.@k]+" vote"+($@Total_Votes_BG[.@k]>1?"s":"")+" pour "+getelementofarray(getvariableofnpc(.BG_Names$, "BG_Queue_Join"),.@k)+"";
+	close;
+}
+bat_room,153,157,4	script	Battle Recruiter::BG_Register	10127,{
+	mes "[^1AAF9B Battle Recruiter ^000000]";
+	mes "This is the Battleground Information and Registration service.";
+	mes "What do you want to do?";
+	next;
+	switch( select("^FF0000Full round Badges^000000:^FFA500Battleground's Modes^000000:Quit") )
+	{
+	case 4: close;
+	case 1:
+		mes "[^1AAF9B Battle Recruiter ^000000]";
+		mes "You can exchange your BG partipation points, a full round of each won BG, for a random number of ^FF0000"+ getitemname($BGREWARD_ITID) +"^000000.";
+		mes "Let me check your points...";
+		next;
+		.@ok = 0;
+		for(.@i=0;.@i<getarraysize(getvariableofnpc(.BG_VAR$,"BG_Queue_Join"));.@i++) {
+			mes getvariableofnpc(.BG_Names$[.@i],"BG_Queue_Join")+" : ^0000FF" + getd(getvariableofnpc(.BG_VAR$[.@i],"BG_Queue_Join")) + "^000000";
+			if(getd(getvariableofnpc(.BG_VAR$[.@i],"BG_Queue_Join")) > 0) .@ok++;
+		}
+		next;
+		if( .@ok == getarraysize(getvariableofnpc(.BG_VAR$,"BG_Queue_Join")))
+		{
+			specialeffect 618;
+			
+			for(.@i=0;.@i<getarraysize(getvariableofnpc(.BG_VAR$,"BG_Queue_Join"));.@i++)
+				set getd(getvariableofnpc(.BG_VAR$[.@i],"BG_Queue_Join")),getd(getvariableofnpc(.BG_VAR$[.@i],"BG_Queue_Join"))-1;
+
+			getitem $BGREWARD_ITID,rand(40,60);
+			mes "[^1AAF9B Battle Recruiter ^000000]";
+			mes "Here are Badges for you!!";
+			mes "I hope you can find inside it a big surprise.";
+			mes "Talk to me if you want to exchange more.";
+		}
+		else
+		{
+			mes "[^1AAF9B Battle Recruiter ^000000]";
+			mes "To exchange your points, you need at least 2 one of each Battleground.";
+			mes "Play all kinds of BG's!";
+		}
+		close;
+	case 2:
+		mes "[^1AAF9B Battle Recruiter ^000000]";
+		mes "Battlegrounds Arena are different kinds of games where Teams fight for victory.";
+		mes "What do you want to do?";
+		next;
+		switch( select("Register -@joinbg-:Leave the queue -@leavebg-:About the Battleground") )
+		{
+		case 1:
+			if(BaseLevel < $@BG_MinLevel)
+			{
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "Level "+$@BG_MinLevel+" is required to compete.";
+				close;
+			}
+			if( checkquest(8506,PLAYTIME) == 2 )
+				erasequest 8506;
+			if( checkquest(8506,PLAYTIME) != -1 )
+			{
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "You are a Deserter. You can't participate until the indicator goes off";
+				close;
+			}
+
+			mes "[^1AAF9B Battle Recruiter ^000000]";
+			if(!bgcheck()) {
+				mes "BG is currently off. Please wait for it to start.";
+				close;
+			} else if($@BG_Status == 2) {
+				mes "The mode is currently ending, Please retry in few minutes.";
+				close;
+			} else {
+				if(!$ROTATION_MODE) {
+					bg_queue_join getvariableofnpc(.BG_Queue,"BG_Queue_Join"),0;
+					close;
+				} else {
+					if($@BG_Status == 0) {
+						mes "Please vote for the mode you want to play.";
+						set getd("$@VBG"+getcharid(0)), select("[ Capture the Flag ]:[ Team DeathMatch ]:[ Eye of Storm ]:[ Conquest ]:[ Kreiger Von Midgard ]:[ Stone Control ] :[ Domination ]:[ Rush ]:[ Poring Ball "+($PB_AVAILABLE?"":"- NOT AVAILABLE")+"]:[ Touch Down "+($TD_AVAILABLE?"":"- NOT AVAILABLE")+"]");
+						if(getd("$@VBG"+getcharid(0)) != getvariableofnpc(.Mode_Precedent,"BG_Queue_Join")+1){
+							if(bg_queue_join (getvariableofnpc(.BG_Queue,"BG_Queue_Join"),0) && $@BG_Status == 0)
+								bgannounce "[ Battleground ] ~ '" + strcharinfo(0) + "' just voted for ''"+getelementofarray(getvariableofnpc(.BG_Names$, "BG_Queue_Join"),getd("$@VBG"+getcharid(0))-1)+
+								"'' -- @joinbg"+($JOIN_REDBLUE_TEAM?"/@joinredteam/@joinblueteam":"")+" <1-10> to vote.",0xBFFF00;
+						} else mes "You cannot vote for this mode (latest).";
+					} else {
+						mes "Let's proceed with the registration...";
+						if(bg_queue_join (getvariableofnpc(.BG_Queue,"BG_Queue_Join"),0))
+							mes "^00fa00Success^000000.";
+						close;
+					}
+				}
+			}
+			end;
+		case 2:
+			mes "[^FFA500Battle Recruiter^000000]";
+			mes "If you are registered, you will be removed.";
+			mes "Are you sure?";
+			next;
+			if( select("Yes, leave queue:No, I will stay") == 2 )
+			{
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Ok, nothing to change.";
+				close;
+			}
+
+			mes "[^FFA500Battle Recruiter^000000]";
+			mes "Close this window to continue...";
+			close2;
+			bg_queue_leave getvariableofnpc(.BG_Queue,"BG_Queue_Join");
+			end;
+		case 3:
+			mes "[^1AAF9B Battle Recruiter ^000000]";
+			mes "Tell me... what battleground you don't understand?";
+			next;
+			switch( select("Capture the Flag:Team DeathMatch:Stone Control:Eye of Storm:Domination:Conquest:Rush:KvM:Poring Ball "+($PB_AVAILABLE?"":"- NOT AVAILABLE")+":Touch Down "+($PB_AVAILABLE?"":"- NOT AVAILABLE") ) )
+			{
+			case 1:
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "The objective of the Flavius Battle CTF is to score 3 points before your enemy, by capture their Flag.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "To capture a Flag you need to take the enemy flag, and bring it to your base flag.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "If your base flag is captured too, you need to kill the flag carrier and take the flag back to your base.";
+				break;
+			case 2:
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Kill all the enemy players to let their Team without points.";
+				mes "Protect our army.";
+				break;
+			case 3:
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Take the Stones in the middle of the battlefield and put in on your base, in the Stone Points.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Each Stone will give points to your team. First team reach 99 points wins the game.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Protect your stones from to be captured by the enemy.";
+				break;
+			case 4:
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "There are two bases, North and South which teams can capture by holding position on the Base more than the other team.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Each base will give you points each 5 seconds of Domination. If your Team control both bases the amount of points increases.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "To get aditional points, in the middle there is a Flag spawn, capture it and put it on any of your team Bases.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "The first Team reach 99 points wins the match.";
+				break;
+			case 5:
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "There are three bases, North, Center and South which teams can capture by holding position on the Base more than the other team.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Each base will give you points each 5 seconds of Domination.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "The first Team reach 99 points wins the match.";
+				break;			
+			case 6:
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "If you are Attacking, destroy the enemy defenses and it's Flag.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "If you are Defending, protect your castle defenses and the Flag.";
+				break;
+			case 7:
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "Fight to capture the Castle and organize your team to defend it.";
+				next;
+				mes "[^FFA500Battle Recruiter^000000]";
+				mes "If you fail on the first capture, kill the defender and take it for your team.";
+				break;
+			case 8:
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "Fight to drop down the opponent's points to 0.";
+				next;
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "Each player represent one point, if you kill him your team win a point and his team loose one point.";
+				next;
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "5 minutes of fighting. The team with the high score win the game.";
+				break;
+			case 9:
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "It is a soccer game, the goal is to score more goals than the opposing team during the 4 minutes of the match.";
+				next;
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "You can not hit your opponents but be careful not to take the ball in your face...";				
+				next;
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "If a player dies in the penalty area, a throw-in is made by the team on which the foul was committed.";
+				break;
+			case 10:
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "You have to put the Fumbi in the opposing goal.";
+				next;
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "To take the Fumbi you just have to touch it when it's on the ground.";
+				next;
+				mes "[^1AAF9B Battle Recruiter ^000000]";
+				mes "Goals, kills and Fumbi possession will give you points.";
+				break;
+			}
+			break;
+		}
+		close;
+	}
+	end;
+}
+
+// General Guillaume
+// *********************************************************************
+bat_room,160,159,3	script	General Guillaume	420,{
+	cutin "bat_kiyom2",2;
+	mes "[General Guillaume]";
+	mes "Hot-blooded adventurer, we need your ability to win this battle.";
+	next;
+	cutin "bat_kiyom1",2;
+	mes "[General Guillaume]";
+	mes "Our great king, Marcel Marollo VII, is very sick lately. His Majesty has declared that he chosen either me or Prince Croix as the next king amongst his 9 sons.";
+	next;
+	mes "[General Guillaume]";
+	mes "Two kings can't share a nation!";
+	mes "Only the one victorious from His Majesty's appointed battle will be enthroned.";
+	next;
+	mes "[General Guillaume]";
+	mes "This is however, not just a battle between us. This battle will determine the future of this country. I pledge on my honor to prove that I'm the one who can protect this Maroll from outside threats.";
+	close2;
+	cutin "",255;
+	end;
+}
+
+// General Croix
+// *********************************************************************
+bat_room,160,140,3	script	Prince Croix	416,{
+	cutin "bat_crua1",2;
+	mes "[Prince Croix]";
+	mes "Wise adventurer, why don't you lend us your power for victory?";
+	next;
+	cutin "bat_crua2",2;
+	mes "[Prince Croix]";
+	mes "I do not wish to shed blood, but I have no choice but to fight for the possibility of peace and for the sake of my people.";
+	next;
+	mes "[Prince Croix]";
+	mes "General Guillaume may have an advantage in this battle as he is the great general of Maroll, but that doesn't automatically mean he'll win. I want to win this battle so that I can grant a better future for my people.";
+	close2;
+	cutin "",255;
+	end;
+}
+
+// Guard Dummy
+// *********************************************************************
+
+bat_room,161,141,3	script	Prince Croix's Aid::bat_aid	415,{ end; }
+bat_room,161,139,3	duplicate(bat_aid)	Prince Croix's Aid::bat_aid2	415
+bat_room,161,160,3	duplicate(bat_aid)	General Guillaume's Aid::bat_aid3	419
+bat_room,161,158,3	duplicate(bat_aid)	General Guillaume's Aid::bat_aid4	419
+
+// Flags
+// *********************************************************************
+
+-	script	Base Flag#bg	-1,{ end; }
+
+// BattleGround Warper - Exit
+// *********************************************************************
+
+bat_room,148,150,4	script	Teleporter#bat	124,{
+	mes "[Teleporter]";
+	mes "Do you wish to leave the battlefield? Use my service to return to town.";
+	next;
+	if( select("Leave:Don't Leave") == 2 )
+	{
+		mes "[Teleporter]";
+		mes "I'll be here whenever you're in need of my service.";
+		close;
+	}
+	mes "[Teleporter]";
+	mes "You will be sent back to " + getsavepoint(0) + ".";
+	close2;
+	warp getsavepoint(0), getsavepoint(1), getsavepoint(2);
+	end;
+}
+
+// Kafra
+// *********************************************************************
+bat_room,148,147,4	script	Kafra Staff::kaf_bat	861,{
+	cutin "kafra_09",2;
+	callfunc "F_Kafra",0,2,1,150,0;
+}

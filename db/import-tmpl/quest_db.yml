@@ -85,6 +85,11 @@ Header:
   Type: QUEST_DB
 
   Version: 1
+  
+Body:
+  - Id: 8506
+
+  Version: 1
 
   
 

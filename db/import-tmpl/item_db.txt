@@ -67,6 +67,7 @@
 //=============================================================
 //22508,Para_Team_Mark_,Eden Group Mark,11,0,,0,,,,0,0xFFFFFFFF,63,2,,,,,,{ unitskilluseid getcharid(3),"AL_TELEPORT",3; },{},{}
 
+7804,Battleground_Badge,Battleground Badge,3,0,0,0,,,,,,,,,,,,,{},{},{}
 
 
 // [BRASILRO]: Custom Items

@@ -520,6 +520,14 @@ struct Battle_Config
 	int bg_magic_damage_rate;
 	int bg_misc_damage_rate;
 	int bg_flee_penalty;
+	int bg_reward_rates;
+	int bg_invincible_time;
+	int bg_idle_announce;
+	int bg_idle_autokick;
+	int bg_reportafk_leaderonly;
+	int bg_queue2team_balanced;
+	int bg_queue_onlytowns;
+	int bg_logincount_check;
 
 	// rAthena
 	int max_third_parameter;
@@ -674,7 +682,6 @@ struct Battle_Config
 	int boss_nopc_move_rate;
 	int hom_idle_no_share;
 	int devotion_standup_fix;
-	int feature_bgqueue;
 	int homunculus_exp_gain;
 
 #include "../custom/battle_config_struct.inc"

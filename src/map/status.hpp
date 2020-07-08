@@ -906,9 +906,6 @@ enum sc_type : int16 {
 	SC_ADAPTATION,
 	SC_BASILICA_CELL, // Used in renewal mode for cell_basilica only
 
-	SC_ENTRY_QUEUE_APPLY_DELAY,
-	SC_ENTRY_QUEUE_NOTIFY_ADMISSION_TIME_OUT,
-
 	// Star Emperor
 	SC_LIGHTOFMOON,
 	SC_LIGHTOFSUN,
@@ -947,6 +944,9 @@ enum sc_type : int16 {
 #ifdef RENEWAL
 	SC_EXTREMITYFIST2, //! NOTE: This SC should be right before SC_MAX, so it doesn't disturb if RENEWAL is disabled
 #endif
+
+	SC_FULLINVINCIBLE,
+
 	SC_MAX, //Automatically updated max, used in for's to check we are within bounds.
 };
 

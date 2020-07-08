@@ -56,6 +56,7 @@ int storage_storageopen(struct map_session_data *sd);
 void storage_storageadd(struct map_session_data *sd, struct s_storage *stor, int index, int amount);
 void storage_storageget(struct map_session_data *sd, struct s_storage *stor, int index, int amount);
 void storage_storageaddfromcart(struct map_session_data *sd, struct s_storage *stor, int index, int amount);
+int storage_additem2(struct map_session_data *sd, struct item* item_data, int amount);
 void storage_storagegettocart(struct map_session_data *sd, struct s_storage *stor, int index, int amount);
 void storage_storagesave(struct map_session_data *sd);
 void storage_storageclose(struct map_session_data *sd);
@@ -90,6 +91,6 @@ void storage_premiumStorage_saved(struct map_session_data *sd);
 void storage_premiumStorage_close(struct map_session_data *sd);
 void storage_premiumStorage_quit(struct map_session_data *sd);
 
-int compare_item(struct item *a, struct item *b);
+int compare_item(struct item *a, struct item *b, short flag);
 
 #endif /* STORAGE_HPP */

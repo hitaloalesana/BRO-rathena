@@ -2599,6 +2599,10 @@ static int unit_attack_timer_sub(struct block_list* src, int tid, t_tick tick)
 	if( ud->skilltimer != INVALID_TIMER && !(sd && pc_checkskill(sd,SA_FREECAST) > 0) )
 		return 0; // Can't attack while casting
 
+	if( sd && map_getmapflag(src->m, MF_BATTLEGROUND) )
+		pc_update_last_action(sd,0,IDLE_ATTACK);
+
+
 	if( !battle_config.sdelay_attack_enable && DIFF_TICK(ud->canact_tick,tick) > 0 && !(sd && pc_checkskill(sd,SA_FREECAST) > 0) ) {
 		// Attacking when under cast delay has restrictions:
 		if( tid == INVALID_TIMER ) { // Requested attack.
@@ -3287,6 +3291,8 @@ int unit_free(struct block_list *bl, clr_type clrtype)
 			guild_send_memberinfoshort(sd,0);
 			pc_cleareventtimer(sd);
 			pc_inventory_rental_clear(sd);
+			if( sd->qd ) queue_leaveall(sd);
+	
 			pc_delspiritball(sd, sd->spiritball, 1);
 			pc_delspiritcharm(sd, sd->spiritcharm, sd->spiritcharm_type);
 			pc_delsoulball(sd,sd->soulball, 1);

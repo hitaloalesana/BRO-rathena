@@ -18,6 +18,7 @@
 #include "achievement.hpp"
 #include "atcommand.hpp"	//msg_txt()
 #include "battle.hpp"
+#include "battleground.hpp"
 #include "clif.hpp"
 #include "instance.hpp"
 #include "intif.hpp"
@@ -1282,24 +1283,37 @@ int party_sub_count_banding(struct block_list *bl, va_list ap)
 int party_foreachsamemap(int (*func)(struct block_list*,va_list),struct map_session_data *sd,int range,...)
 {
 	struct party_data *p;
+	struct battleground_data *bg;
 	int i;
 	int x0,y0,x1,y1;
-	struct block_list *list[MAX_PARTY];
 	int blockcount=0;
 	int total = 0; //Return value.
 
 	nullpo_ret(sd);
-
+	
+	bool bg_mode = (map_getmapflag(sd->bl.m, MF_BATTLEGROUND)>0);
+	int max_i = bg_mode?MAX_BG_MEMBERS:MAX_PARTY;
+	struct block_list *list[MAX_PARTY];
+	
+	if(bg_mode) {
+		if((bg = bg_team_search(bg_team_get_id(&sd->bl))) == NULL)
+			return 0;
+	} else {
 	if((p = party_search(sd->status.party_id)) == NULL)
 		return 0;
+	}
 
 	x0 = sd->bl.x-range;
 	y0 = sd->bl.y-range;
 	x1 = sd->bl.x+range;
 	y1 = sd->bl.y+range;
 
-	for(i = 0; i < MAX_PARTY; i++) {
-		struct map_session_data *psd = p->data[i].sd;
+	for(i = 0; i < max_i; i++) {
+		struct map_session_data *psd;
+		if(bg_mode)
+			psd = bg->members[i].sd;
+		else
+			psd = p->data[i].sd;
 
 		if(!psd)
 			continue;

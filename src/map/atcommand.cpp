@@ -53,6 +53,7 @@
 #include "script.hpp"
 #include "storage.hpp"
 #include "trade.hpp"
+#include "battleground.hpp"
 
 using namespace rathena;
 
@@ -4040,6 +4041,9 @@ ACMD_FUNC(reload) {
 			pc_close_npc(pl_sd,1);
 			clif_cutin(pl_sd, "", 255);
 			pl_sd->state.block_action &= ~(PCBLOCK_ALL ^ PCBLOCK_IMMUNE);
+			
+			if(pl_sd->qd)
+				queue_member_remove(pl_sd->qd,pl_sd->bl.id);
 		}
 		mapit_free(iter);
 
@@ -4249,6 +4253,10 @@ ACMD_FUNC(mapinfo) {
 		strcat(atcmd_output, " NoGo |"); //
 	if (map_getmapflag(m_id, MF_NOMEMO))
 		strcat(atcmd_output, "  NoMemo |");
+	if (map_getmapflag(m_id, MF_ALLOW_BG_ITEMS))
+		strcat(atcmd_output, "  Allow_bg_items |");
+	if (map_getmapflag(m_id, MF_ALLOW_WOE_ITEMS))
+		strcat(atcmd_output, "  Allow_woe_items |");
 	clif_displaymessage(fd, atcmd_output);
 
 	sprintf(atcmd_output, msg_txt(sd,1065),  // No Exp Penalty: %s | No Zeny Penalty: %s
