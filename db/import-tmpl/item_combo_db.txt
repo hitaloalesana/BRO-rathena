@@ -11,9 +11,11 @@
 47195:4365,{ bonus bVariableCastrate,-100; bonus2 bSkillCooldown,"WL_TELEKINESIS_INTENSE",-120000; if(BaseJob==Job_Wizard) skill "WL_TELEKINESIS_INTENSE",5; }
 19299:4463,{ .@type = getiteminfo(getequipid(EQI_COMPOUND_ON),11); if (.@type == W_BOOK || .@type == W_STAFF || .@type == W_2HSTAFF) { bonus2 bMagicAddRace,RC_Player, getequiprefinerycnt(EQI_HAND_R)*1; } }
 19299:47249,{ .@a = readparam(bDex); bonus bMatk,10; bonus bVariableCastrate,-2; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; if (.@a>=150) { bonus bMatk,20; bonus bVariableCastrate,-3; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; } if (.@a>=200) { bonus bMatk,30; bonus bVariableCastrate,-5; bonus2 bSubRace,RC_DemiHuman,4; bonus2 bSubRace,RC_Player,4; } }
-47026:47225,{ bonus bStr,2; .@int = readparam(bInt); bonus bBaseAtk,(.@int/8)*5; bonus bHealPower,.@int/8; bonus bVariableCastrate,.@int/8; if ((.@int>149)) { bonus bBaseAtk,50; bonus bHealPower,5; bonus bVariableCastrate,4; } if ((.@int>199)) { bonus bBaseAtk,75; bonus bHealPower,5; bonus bVariableCastrate,2; }
+47026:47225,{ bonus bStr,2; .@int = readparam(bInt); bonus bBaseAtk,(.@int/8)*5; bonus bHealPower,.@int/8; bonus bVariableCastrate,.@int/8; if ((.@int>149)) { bonus bBaseAtk,50; bonus bHealPower,5; bonus bVariableCastrate,4; } if ((.@int>199)) { bonus bBaseAtk,75; bonus bHealPower,5; bonus bVariableCastrate,2; }}
 47234:47097,{ bonus3 bAutoSpell,"AC_DOUBLE",max(getskilllv("AC_DOUBLE"),3),20; }
 47234:19306,{ .@aspd = 1; .@crit_dmg = 2 + 2 * (readparam(bDex) / 25); .@sub_demi = 2; .@luk = readparam(bLuk); if (.@luk > 149) { .@aspd += 1; .@crit_dmg += 2; .@sub_demi += 2; } if (.@luk > 199) { .@aspd += 2; .@crit_dmg += 4; .@sub_demi += 4; bonus bSplashRange,1; } bonus bAspd,.@aspd; bonus bCritAtkRate,.@crit_dmg; bonus2 bSubRace,RC_DemiHuman,.@sub_demi; bonus2 bSubSkill,"NPC_CRITICALSLASH",100; }
-
-
- 
+47084:19137:47318,{ .@r = getequiprefinerycnt(EQI_HEAD_TOP); if(.@r>8) { bonus2 bVariableCastrate,"MO_EXTREMITYFIST",-100; bonus2 bFixedCastrate,"MO_EXTREMITYFIST",-100; bonus4 bautospellonskill,"MO_EXPLOSIONSPIRITS","CH_SOULCOLLECT",1,1000; } }
+47318:47084,{ .@a = (readparam(bStr)+readparam(bLuk))/260; .@b = (readparam(bAgi)+readparam(bVit))/260; .@c = (readparam(bInt)+readparam(bDex))/260; bonus bMaxHPrate,5*.@b; bonus2 bAddClass,Class_All,6*.@a; bonus bMatk,120*.@c; bonus bCritical,5*.@a; bonus bAspdRate,5*.@b; bonus bVariableCastrate,-3*.@c; bonus bCritAtkRate,10*.@a; bonus2 bSubRace,RC_DemiHuman,((2*.@b)+2); bonus2 bSubRace,RC_Player,((2*.@b)+2); bonus bHealPower,10*.@c;  skill "SO_VACUUM_EXTREME",1;}
+47308:47016,{ bonus3 bAutoSpell,"ASC_BREAKER",max(getskilllv("ASC_BREAKER"),1),20; if(readparam(bStr)>259) { bonus bBaseAtk,30; } bonus2 bAddClass,Class_All,10; bonus bMatkRate,10; bonus bCritical,-20; } 
+47016:47308,{ .@r = getequiprefinerycnt(EQI_HEAD_TOP); if (.@r>=6) { bonus bDelayrate,-5; bonus bAspdRate,5; bonus2 bAddClass,Class_All,5; bonus2 bIgnoreDefClassRate,Class_All,25; } if (.@r>=8) { bonus bDelayrate,-10; bonus bAspdRate,10; bonus2 bAddClass,Class_All,5; bonus2 bIgnoreDefClassRate,Class_All,25; } }
+19101:47308,{ skill "MO_TRIPLEATTACK",10;}
