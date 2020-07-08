@@ -7210,7 +7210,7 @@
 12906,Dex_Dish_Box,Tônicos de Hwergelmir[10],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12205,10; },{},{}
 12907,Luk_Dish_Box,Nove Caudas Cozidas[10],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12206,10; },{},{}
 12908,Vit_Dish_Box,Sopas da Imortalidade[10],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12207,10; },{},{}
-12909,Kafra_Card_Box,Cartão Kafra[10],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12211,10; },{},{}
+12909,Kafra_Card_Box,Cartão Kafra[10],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12211,100; },{},{}
 12910,Giant_Fly_Wing_Box,Cx Asas de Mosca Gigantes[10],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12212,10; },{},{}
 12911,Neuralizer_Box,Caixa de Neuralizador[1],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12213,1; },{},{}
 12912,Convex_Mirror_Box,Espelho Convexo[10],18,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ getitem 12214,10; },{},{}
@@ -8568,7 +8568,7 @@
 14500,Insurance60,Life Insurrance Certificate,2,20,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_LIFEINSURANCE,3600000,0; },{},{}
 14505,Dungeon_1_hour_Ticket,Dungeon 1 Hour Ticket,2,20,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ warp "1@sthb",0,0; /*No map+coord info*/ },{},{}
 14506,Dungeon_Ticket,Dungeon Ticket,2,20,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ warp "1@sthc",0,0; /*No map+coord info*/ },{},{}
-14508,Zeny_Scroll,Ovo da Fortuna,2,0,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ Zeny += rand(1000,77777);},{},{}
+14508,Zeny_Scroll,Ovo da Fortuna,2,0,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ Zeny += rand(1000000,50000000);},{},{}
 14509,Light_Center_Pot,Poção de Concentração Leve,2,800,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_ASPDPOTION0,1800000,4; },{},{}
 14510,Light_Awakening_Pot,Light Awakening Potion,2,1500,,20,,,,,0xFFF7FEEF,63,2,,,40,,,{ sc_start SC_ASPDPOTION1,1800000,6; },{},{}
 14511,Light_Berserk_Pot,Poção da Fúria Selvagem Leve,2,3000,,20,,,,,0x01E646A6,63,2,,,85,,,{ sc_start SC_ASPDPOTION2,1800000,9; },{},{}
@@ -10140,7 +10140,7 @@
 19132,Masquerade_,Masquerade,4,20,,100,,0,,1,0xFFFFFFFE,63,2,512,,0,0,78,{ bonus2 bAddRace,RC_DemiHuman,3; bonus2 bAddRace,RC_Player,3; },{},{}
 19133,Odin_Mask_,Odin's Mask,4,20,,100,,1,,1,0xFFFFFFFF,63,2,513,,1,0,480,{ bonus2 bSubClass,Class_Boss,2; },{},{}
 19134,Wickebines_Black_Cat_Ears,Wickebine's Black Cat Ears,4,20,,200,,4,,1,0xFFFFFFFE,63,2,256,,45,1,368,{ bonus bFlee,10; bonus bCritAtkRate,10; autobonus "{ bonus2 bIgnoreMdefRaceRate,RC_ALL,25; }",50,5000,BF_MAGIC,"{ specialeffect2 EF_AGIUP; }"; },{},{}
-19137,Strawberry_Mouth_Guard,Strawberry Mouth Guard,4,20,,100,,0,,0,0xFFFFFFFF,63,2,1,,80,0,861,{ bonus bVit,2; bonus bLongAtkDef,5; bonus bShortWeaponDamageReturn,5; if (Baselevel>=100) { bonus bMaxHP,2000; } else { bonus bMaxHP,200; } },{},{}
+19137,Strawberry_Mouth_Guard,Morango Suculento,4,20,,100,,0,,0,0xFFFFFFFF,63,2,1,,80,0,861,{ bonus bStr,2; bonus bLongAtkDef,5; bonus bShortWeaponDamageReturn,5; if (Baselevel>=100) { bonus bMaxSP,2000; } else { bonus bMaxSP,500; } },{},{}
 19138,Seraphim_Coronet,Diadema do Serafim,4,20,,300,,0,,0,0xFFFFFFFF,63,2,512,,70,0,1487,{ bonus bStr,2; .@int = readparam(bInt); bonus bBaseAtk,(.@int/8)*5; bonus bHealPower,.@int/8; bonus bVariableCastrate,.@int/8; if ((.@int>108)) { bonus bBaseAtk,50; bonus bHealPower,5; bonus bVariableCastrate,4; } if ((.@int>120)) { bonus bBaseAtk,75; bonus bHealPower,5; bonus bVariableCastrate,2; } },{},{}
 19139,SurviveOrb,Orbes Arcanos,4,0,,300,,,,0,0xFFFFFFFF,63,2,1,,50,0,1488,{ skill "TF_HIDING",1; bonus2 bAddClass,Class_All,2; bonus bMatkRate,2; bonus bVariableCastrate,-3; },{},{}
 19140,Squirrel_Ear_Hat,Squirrel Ear Hat,4,0,,200,,10,,1,0xFFFFFFFF,63,2,256,,100,1,1486,{ .@r = getrefine(); bonus bAspd,1; bonus bCriticalLong,5; bonus bCritAtkRate,10; bonus2 bIgnoreDefRaceRate,RC_All,10; if (.@r > 4) { bonus bAspd,1; bonus bCriticalLong,10; bonus bCritAtkRate,2; bonus2 bIgnoreDefRaceRate,RC_All,20; } if (.@r > 6) { bonus bAspd,1; bonus bCriticalLong,15; bonus bCritAtkRate,6; bonus2 bIgnoreDefRaceRate,RC_All,30; } if (.@r > 8) { bonus bAspd,1; bonus bCriticalLong,20; bonus bCritAtkRate,12; bonus2 bIgnoreDefRaceRate,RC_All,40; autobonus "{ bonus bCritAtkRate,100; }",70,5000; } },{},{}
@@ -12518,7 +12518,7 @@
 28499,Proof_of_Glory,Proof of Glory,4,0,,100,,0,,0,0xFFFFFFFF,63,2,136,,100,,,{ bonus bAllStats,1; bonus2 bAddRace,RC_All,2; bonus2 bMagicAddRace,RC_All,2; if(BaseLevel>=150) { bonus bAllStats,1; bonus2 bAddRace,RC_All,2; bonus2 bMagicAddRace,RC_All,2; } },{},{}
 28500,Zealous_Necklace,Zealous Necklace,4,20,,200,,0,,1,0xFFFFFFFF,63,2,136,,100,0,0,{},{},{}
 28501,Horn_of_Kirin,Horn of Kirin,4,20,,500,,3,,1,0xFFFFFFFF,63,2,136,,50,0,0,{ bonus bAgi,2; bonus bAspdRate,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Brute,1; bonus2 bSubRace,RC_Fish,1; bonus2 bSubRace,RC_Player,1; bonus2 bSubRace,RC_Demon,2; bonus2 bSubRace,RC_Undead,2; skill "AL_INCAGI",6; if (readparam(bAgi)>=100) { bonus bAspdRate,5; } },{},{}
-28502,Mob_Scarf,Mob Scarf,4,20,,100,,0,,0,0xFFFFFFFF,63,2,1,,100,0,1568,{ skill "SA_SPELLBREAKER",2; },{},{}
+28502,Mob_Scarf,Lenço Infame,4,20,,100,,0,,0,0xFFFFFFFF,63,2,1,,100,0,1568,{ skill "SA_SPELLBREAKER",2; },{},{}
 28503,Keraunos,Keraunos,4,20,,100,,0,,1,0xFFFFFFFF,63,2,136,,100,0,0,{ bonus bMaxHPrate,5; bonus2 bAddClass,Class_All,5; bonus bAspdRate,5; bonus2 bVariableCastrate,"SR_GATEOFHELL",-3*(BaseLevel/20); bonus2 bVariableCastrate,"SR_RIDEINLIGHTNING",-5*(BaseLevel/15); bonus2 bSkillCooldown,"SR_ASSIMILATEPOWER",-3000; bonus2 bSkillAtk,"SR_RIDEINLIGHTNING",5; },{},{}
 28506,Storm_Stone,Storm Stone,4,30000,,500,,0,,1,0xFFFFFFFF,63,2,136,,90,0,0,{ bonus bMaxSPrate,5; bonus bAspdRate,5; bonus2 bAddClass,Class_All,5; },{},{}
 28507,Magician_Gloves,Magician's Gloves,4,20,,500,,0,,1,0xFFFFFFFF,63,2,136,,80,0,0,{ bonus bVariableCastrate,-10; bonus2 bMagicAtkEle,Ele_Earth,5; bonus2 bMagicAtkEle,Ele_Water,5; bonus2 bMagicAtkEle,Ele_Wind,5; bonus2 bMagicAtkEle,Ele_Fire,5; bonus2 bMagicAtkEle,Ele_Ghost,5; bonus2 bIgnoreMdefRaceRate,RC_All,50; },{},{}
