@@ -1,8 +1,0 @@
--	script	ResetRankWoE	-1,{
-
-OnSun2100:
-OnTue2100:
-OnThu2100:
-	rankreset 0; // Ranking Reset
-	end;
-}

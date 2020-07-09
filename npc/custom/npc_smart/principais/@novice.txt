@@ -1,8 +1,0 @@
--	script	novice#smart	-1,{
-OnInit:
-	bindatcmd("novice", strnpcinfo(0) +"::OnNovice");
-	end;
-OnNovice:
-	warp "novice", 52, 39;
-	end;
-}

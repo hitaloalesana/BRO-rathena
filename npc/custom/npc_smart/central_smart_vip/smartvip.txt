@@ -1,7 +1,0 @@
--	script	CSV_Login	-1,{
-OnPCLoginEvent:
-	if( csv_login == 1 ) end;
-	getitem 21057, 1;
-	set csv_login, 1;
-	end;
-}
